@@ -1,0 +1,298 @@
+.width_products{
+
+	display: inline-block; width: 32%;
+	margin-left: 3px;
+	margin-top: 8px;
+	position: relative;
+	left: 5px;
+	border:1px solid;
+	background-color: white;
+	border:1px solid;
+	border-radius: 4px;
+	border-color:#d6d6c2;
+	
+
+
+}
+.width_products:hover{
+-webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+-moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+}
+
+.pagination_profucts{
+	width: 100%;
+	position: relative;
+	top:4px;
+	left: -2px;
+}
+.write_add_card{
+	display: inline-block;
+}
+.glyphicon{
+	display: inline-block;
+
+}
+.footer_products{
+	width: 100%;
+     height: 25px;
+    
+     position: relative;
+     top: 3px;
+     border-top:1px solid;
+
+	border-color:#d6d6c2;
+}
+
+.button_footer_products {
+	text-align: center;
+	width: 32.2%;
+	height:100%;
+	background-color:white; 
+	display:inline-block;
+
+	position: relative;
+	top: 0px;
+	
+	
+}
+.hover_footer_products{
+	transition: 0.5s;
+	-webkit-trasition:1s;
+	background-color:#708090;
+	color:white;
+}
+.plus_height{
+	width: 100%;
+	height: 6px;
+}
+.prise_products{
+	width: 100%;
+	height: 25px;
+	position: relative;
+	top: 7px;
+}
+.both_prise_products{
+	display: inline-block;
+}
+
+.dropdown_products{
+	display: inline-block;
+	float: right;
+	position: relative;
+	top: 2px;
+}
+.title_products{
+	display: inline-block;
+	font-size: 20px;
+}
+.icon_eye{
+	position: relative;
+	top: 5px;
+	display: inline-block;
+	text-decoration: none;
+}
+.number_eye{
+	display: inline-block;
+	text-decoration: none;
+}
+.each_width_product{
+	width: 94%;
+	background-color: white;
+	margin-left: 8px;
+}
+.image_secondary{
+	
+	display: inline-block;
+	opacity: 0.5;
+}
+
+ .icon_hover{
+   display: none;
+   position: absolute;
+   margin-top: -50px;
+   float: right;
+   transform: rotate(270deg);
+
+   
+}
+.first_primary_img{
+	opacity: 1;
+}
+.image_secondary_icon{
+		width: 32%;
+		display: inline-block;
+	
+}
+
+
+.img_prod{
+	width: 100%;
+	height: 100%;
+}
+.image_product_secondary{
+	width: 100%;
+	height: 50px;
+	display: block;
+	margin-top: 4px;
+	
+}
+
+.image_product_primary{
+   	width: 100%;
+	height: 270px;
+	
+	background-color: white;
+	
+}
+.zoom{
+width: 100%;
+}
+.plus_icon{
+	display: inline-block;
+}
+.option_products{
+	z-index: 3 !important;
+	width: 97.5%; 
+	height: 30px;
+	background-color:white;
+	margin-left: 9px;
+	border-radius:3px; 
+	margin-top: 10px;
+	margin-left: 9px;
+}
+.add_elemnt_option{
+		z-index: 3 !important;
+	width: 97.5%; 
+	height: 30px;
+	background-color:white; 
+	border-radius:3px; 
+	margin-top: 10px;
+	margin-left: 9px;
+	display: none;
+}
+.option_products_bo{
+
+
+
+position:fixed;
+width: 50.8% ;
+
+top:0;
+margin-left: 9px;
+opacity: 0.9;
+
+}
+.option_products_shoadow{
+-webkit-box-shadow: 0px 20px 11px -13px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 20px 11px -13px rgba(0,0,0,0.75);
+box-shadow: 0px 20px 11px -13px rgba(0,0,0,0.75);
+
+}
+.wish_list{
+	position: absolute;
+	width: 94%;
+	height: 30px;
+	background-color: #DB7093;
+	opacity: 0.3;
+	margin-top: -30px;
+}
+.wish_list_icon{
+
+	position: absolute;
+display: inline-block;
+
+margin-left: 5px;
+top: 3px;
+	 
+}
+.wish_list_write{
+	font-family: arial;
+	color:#E6E6FA;
+
+    margin-left: -40px;
+   margin-top: 6px;
+    display: inline-block;
+
+	
+
+}
+.about_wish{
+
+	position: absolute;
+	width: 100%;
+	margin-top: -30px;
+}
+
+.wish_list_hover{
+	opacity: 0.7;
+	float: right;
+}
+.wish_list_icon_hover img{
+	display: inline-block;
+	position: relative;
+	top: -3px;
+	left: -2px;
+
+
+	width: 30px;
+}
+.own_img_product{
+	position: absolute;
+	z-index: 2 !important;
+	color:red;
+	width: 50px;
+	height: 50px;
+	background-color: white;
+	opacity: 0.5;
+	border-bottom-right-radius: 50px;
+}
+.image_prof_admin{
+
+	width: 100%;
+	height: 100%;
+	border-radius: 70px;
+}
+.image_profile_company{
+position: absolute;
+	width: 40px;
+	height: 40px;
+ border-radius: 50px;
+ background-color: red;
+ z-index: 2 !important;
+}
+.write_owner{
+	position: absolute;
+	z-index: 2 !important;
+  font:bold 13px/1 sans-serif;
+	margin-left: 50px;
+}
+
+
+.hearts_div{
+	position: relative;
+	z-index: 2 !important;
+}
+.zindex_hearts{
+z-index: 8 !important;
+}
+.success_add_wish{
+position: absolute;
+top: 3px;
+display: none;
+}
+
+.color_hearts_first{
+	 display: inline-block; width: 20px ;height: 18px; background-color: #708090; position: absolute; margin-left: -22px; margin-top:3px; z-index: 2 !important;
+                
+
+}
+.color_hearts_build{
+	 display: inline-block; width: 20px ;height: 18px; background-color: red; position: absolute; margin-left: -22px; margin-top:3px; z-index: 2 !important;
+                
+
+}
+
+
+
+
