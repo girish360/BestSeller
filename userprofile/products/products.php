@@ -9,7 +9,7 @@ class products extends connection{
             public $favorite_cookie;
             public $card_cookie;
             public $allpages;
-            public $products_for_pages=1;
+            public $products_for_pages=6;
             public $products_limit;
             public $total_pages;
 

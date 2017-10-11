@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e14b9dbf-ee1a-4b7f-90da-30f0834a13a1" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/1234.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/Icon-user.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/Shopping-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/action.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/albania.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/atomic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/b3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/back.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/bc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/canada.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/car.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/card.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/chat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/city.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/close1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/closesubcat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/country.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/email2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/england.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/exit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/fblogin-btn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/france.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/germany.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/greece.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/help.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/italy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/jeep.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/key.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/klo.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/list.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/load.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/more.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/morecat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/name.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/number.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/phone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/preloader.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/search1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/sign.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/spain.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/street.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/tractor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/turkey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/wish.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/assets/images/world.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/1234.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/Icon-user.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/Shopping-icon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/action.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/albania.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/atomic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/b3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/back.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/bc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/canada.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/car.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/card.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/chat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/city.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/close1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/closesubcat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/country.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/email2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/england.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/exit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/fblogin-btn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/france.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/germany.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/greece.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/help.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/italy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/jeep.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/key.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/klo.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/list.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/load.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/loading.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/more.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/morecat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/name.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/number.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/phone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/preloader.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/search1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/sign.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/spain.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/street.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/tractor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/turkey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/wish.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/angularcli/src/images/world.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userprofile/checkuserprofile.php" afterPath="$PROJECT_DIR$/userprofile/checkuserprofile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/userprofile/products/products.php" afterPath="$PROJECT_DIR$/userprofile/products/products.php" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="1112" column="18" lean-forward="false" selection-start-line="1112" selection-start-column="18" selection-end-line="1112" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="590">
+              <caret line="91" column="44" lean-forward="false" selection-start-line="91" selection-start-column="44" selection-end-line="91" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="166" column="20" lean-forward="false" selection-start-line="166" selection-start-column="20" selection-end-line="166" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>center</find>
+      <find>logo1</find>
+      <find>imgf</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/angularcli/src/index.html" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/app.component.css" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/app.component.html" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.jetbrains.php.config.library.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angularcli" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angularcli" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angularcli" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\assets" />
+      <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e14b9dbf-ee1a-4b7f-90da-30f0834a13a1" name="Default" comment="" />
+      <created>1507275532343</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1507275532343</updated>
+      <workItem from="1507275538006" duration="43000" />
+      <workItem from="1507747711752" duration="4407000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4450000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21915168" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/angularcli/.angular-cli.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/css_login/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="631" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/js_login/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="37" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1505" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/userprofile/images/Icon-user.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="1112" column="18" lean-forward="false" selection-start-line="1112" selection-start-column="18" selection-end-line="1112" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="166" column="20" lean-forward="false" selection-start-line="166" selection-start-column="20" selection-end-line="166" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="91" column="44" lean-forward="false" selection-start-line="91" selection-start-column="44" selection-end-line="91" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

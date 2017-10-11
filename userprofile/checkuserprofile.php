@@ -264,20 +264,8 @@ if(isset($_COOKIE['card_products'])){
                   </center>  
             </div>
         </div>
-         <center>
-            <div class="preloader">
-                 <div class="imgpreloader">
-                      <img src="../images/preloader.gif">
-                 </div>
-                 <div class="writeloader">
-                    <h3>Loading </h3>
-                 </div>
-                 <div class="imgloading">
-                     <img src="../images/loading.gif">
-                 </div>
-            </div>
-        </center>
-<div class="reload_page">
+         
+
 <div class="allpage">
    <nav class="navigation" >
        <div class="writemenu">  <!-- this is open category  -->
@@ -425,8 +413,21 @@ if(isset($_COOKIE['card_products'])){
                         </div>
                      </span>
                  </div> <!--  end headerdi v................-->
+                  <center>
 
-        
+            <div class="preloader">
+                 <div class="imgpreloader">
+                      <img src="../images/preloader.gif">
+                 </div>
+                 <div class="writeloader">
+                    <h3>Loading </h3>
+                 </div>
+                 <div class="imgloading">
+                     <img src="../images/loading.gif">
+                 </div>
+            </div>
+        </center>
+         
                   <div class="dropmore">
                       <div class="lang">
                           <a href="logout.php"><div class="">logout</div></a>
@@ -803,7 +804,7 @@ if(isset($_COOKIE['card_products'])){
            </div>
       </nav>
 <div class="under_category"></div>
-      
+    
       <div class="category">
       <div class="border_write_cat"></div>
          <div class="categoposition" style="z-index: 4 !important;" >
@@ -878,7 +879,7 @@ if(isset($_COOKIE['card_products'])){
             
                
         </div><br>
-
+       <div class="reload_page">
         <div class="containere">  <!-- container for products .....................................-->
              <div class="gjeresia">
                  <div class="containerleft">
@@ -944,7 +945,7 @@ if(isset($_COOKIE['card_products'])){
             </div>
         </div>
 
-
+         </div>
 
         <div class="clickchat"> <!--  start the chat ................................................-->
             <a href="#">
@@ -978,7 +979,7 @@ if(isset($_COOKIE['card_products'])){
 
 </div>
 
-</div>
+
 
 </body>
 
