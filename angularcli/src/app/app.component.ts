@@ -6,24 +6,34 @@ declare var $:any;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
+
 })
+
 
 export class AppComponent implements OnInit{
   title = 'app';
 
  ngOnInit(){
-
-
    $(document).ready(function(){
      var errsingin=0;
      var errsingup=0;
      var acc=0;
      var nrr=0;	// tabet sing in and sing up
-     var activ='1';
+     var activ=1;
      var clickinpu=0;
      var errorsingin=1;
      var arr=[];
      var arry=[];
+     var vlera= 0;
+     //color input and icon variable
+     var inputName='';
+     var color_input_icon='';
+     var iconName='';
+     //end..
+     // variable submit button ......
+     var inputName_submit='';
+     var status_submit='';
+     // end..
 
      var nrconfirm=0;
      showlogin();
@@ -34,16 +44,18 @@ export class AppComponent implements OnInit{
 
      $('.radioforgett1').attr('checked',true);
 
+     $('.inittab').css({ backgroundColor: '#F5F5F5' ,borderColor:'#00BFFF',color:'red'});
+
 
      $('.tabs').click(function(){  // click tabs from sign up ang sign in . . . .. . . .. . .. . . .. . .. .. . . ..
        var t=0;
        zerovariablat();
        $('.valemail').remove();
        $('.error').css("display","none");
-       $('.tabs').css("color"," #663399");
-       $(this).css("color","black");
+       $('.tabs').css({ backgroundColor: '	#E6E6FA' ,borderColor:'	#E6E6FA'});
+       $(this).css({ backgroundColor: '#F5F5F5' ,borderColor:'#00BFFF'});
        var id = $(this).attr('id');
-       if(activ==id){ // check if double click a tab................................................................
+       if(activ==id){ // check if is double click  on one tab................................................................
        }
        else{
          activ=id;
@@ -53,7 +65,7 @@ export class AppComponent implements OnInit{
          }
          else{
            nrr++;
-           if(nrr==="1"){
+           if(nrr==1){
              $('#rad2').prop('checked',false);
              $('#rad1').prop('checked',true);
              $('#radio1').css("border-color","#00BFFF");
@@ -64,100 +76,82 @@ export class AppComponent implements OnInit{
          }
        }
      });
+
+
+
+
+
      // end tabs click button here ...........................................................................................
 
      // start sign in   check email when click buton , when write in input keyup , when  click in input onblur..................
 
-     $('.input').keyup(function(){ // check email on keyup .... .. .. .... .. .. . . ..  .. .. ..  ..........................
-       var val =$(this).val();
-       if(IsEmail(val)==true){
-         $('.valemail').remove();
-         $('.error').slideUp();
-         zerovariablat();
-       } else{
-         $('.valemail').remove();
-         zerovariablat();
-         var div=1;
-         showdiverror(div);
-         $('.error').css("background-color"," #FFB6C1");
-       }
-       if(val==0){
 
+     $('.input').on("focus",function () {
 
-         $(this).css('border-color','#A52A2A');
+       GiveColorInput(inputName="input-email" , iconName ='icon-email' ,color_input_icon="#00BFFF" );
 
-       }
-       else{
-         $(this).css('border-color','#00BFFF');
-       }
      });
      // check email on blur ..................................................................................................
      $('.input').on("blur",function(){
        var value=$(this).val();
+
        if(value==''){
-         $(this).css('border-color','#A52A2A');
-         $(this).css('border-color','#A52A2A');
+
+         GiveColorInput(inputName="input-email" , iconName ='icon-email' ,color_input_icon="#A52A2A" );
        }
      });
      // click button  for take email  valid and send email in server with ajax chehck if exsits ............................
      $('.inputsubmit').click(function(){
-       $(this).css({
-         background: 'url("images/load.gif") no-repeat center '
-       });
-       $(this).css('background-color',"#1E90FF");
-       $(this).css('opacity',"0.7");
-       $(this).val("");
-       checkemail();  // call function for click button ....................................................................
+
+        var value = '';
+       clicksubmit( inputName_submit = 'inputsubmit' , status_submit='show' ,value);
+        // call function for click button ....................................................................
+        checkemail();
 
 
      });
      function checkemail(){
+
        clickinpu++;
        var val = $('#us').val();
        var radiotypelogin=0;
        var nreach=0;
+       var vlera;
+       var each=0;
+       var currectly=0;
+       var value="";
+
        $('.radiotypelogin').each(function(){
          nreach++;
          if($(this).is(':checked',true)){
            radiotypelogin=nreach;
          }
        });
-       if(radiotypelogin=='1'){//check if is client login
+
+       if(currectly==1){
+         value='Next Client';
+       }
+       else{
+         value='Next Business';
+       }
+
+       if(radiotypelogin==1){//check if is client login
          if(IsEmail(val)==false){  // check if email is invalid........................................................
-           $('#us').css('border-color','#A52A2A');
-           if(clickinpu=="1" ){
+
+           GiveColorInput( inputName="input-email" , iconName ='icon-email' ,color_input_icon="#A52A2A" );
+
+           if(clickinpu==1 ){
              showdiverror(errorsingin);
              clickinpu++;
            }
 
            setTimeout(function(){
-             var each=0;
-             var currectly=0;
-             var value=0;
-             $('.radiotypelogin').each(function(){
-               each++;
-               if($(this).is(":checked",true)){
-                 currectly=each;
-               }
-             });
-             if(currectly=='1'){
-               value='Next Client';
-             }
-             else{
-               value='Next Business';
-             }
-             $('.inputsubmit').val(value);
-             $('.inputsubmit').css({
-               background: 'url("") no-repeat center '
-             });
-             $('.inputsubmit').css('background-color',"#1E90FF");
-             $('.inputsubmit').css('opacity',"1");
-
-
+             clicksubmit( inputName_submit = 'inputsubmit' , status_submit='hide',value);
            },1000);
            return false;
          }
          else{  /// send email in server ..............................................................................
+
            zerovariablat();
            $.ajax({
              type:'GET',
@@ -165,27 +159,9 @@ export class AppComponent implements OnInit{
              data: 'email='+val,
 
              success:function(data){
-               var each=0;
-               var currectly=0;
-               var value=0;
-               $('.radiotypelogin').each(function(){
-                 each++;
-                 if($(this).is(":checked",true)){
-                   currectly=each;
-                 }
-               });
-               if(currectly=='1'){
-                 value='Next Client';
-               }
-               else{
-                 value='Next Business';
-               }
-               $('.inputsubmit').val(value);
-               $('.inputsubmit').css({
-                 background: 'url("") no-repeat center '
-               });
-               $('.inputsubmit').css('background-color',"#1E90FF");
-               $('.inputsubmit').css('opacity',"1");
+
+               clicksubmit( inputName_submit = 'inputsubmit' , status_submit='hide',value);
+
                if(data==1){
 
 
@@ -247,6 +223,15 @@ export class AppComponent implements OnInit{
                  });
 
                }
+             },error:function(){
+
+                setTimeout(function(){
+                  clicksubmit( inputName_submit = 'inputsubmit' , status_submit='hide',value);
+                  var vale='nointernet';
+                  showdiverror(vale);
+                },1000);
+
+
              }
 
            });
@@ -280,7 +265,7 @@ export class AppComponent implements OnInit{
      $('.inputsubmit2').click(function(){
        var nreach=0;
        var nrbosh=0;
-       var vlera='';
+       var  vlera ="";
        var nrbo=0;
        var vleraok=0;
        var nraccount=0;
@@ -297,14 +282,14 @@ export class AppComponent implements OnInit{
        setTimeout(function(){
          var each=0;
          var currectly=0;
-         var value=0;
+         var value="";
          $('.radio').each(function(){
            each++;
            if($(this).is(":checked",true)){
              currectly=each;
            }
          });
-         if(currectly=='1'){
+         if(currectly==1){
            value='Register Client';
          }
          else{
@@ -486,8 +471,8 @@ export class AppComponent implements OnInit{
          }
          if(nrbo==3){  // check if nr emmpty are 3
            $('.valemail').remove();
-           vlera=2;
-           showdiverror(vlera);
+            var error = 2;
+           showdiverror(error);
            $('.input2').each(function(){
              $(this).css('border-color','none');
              $(this).css('border-color','#A52A2A');
@@ -500,12 +485,12 @@ export class AppComponent implements OnInit{
        $(this).css('border-color','#00BFFF');
      });
      $('.input2').keyup(function(){  // chechk inputs on keyupp.....................................
-       var vlera=0;
+       var vlera="";
        var val=$(this).attr('id');
        var value=$(this).val();
        if(val==1){ // check if is input name .............................................
          if(value==''){
-           vlera='emri';
+           vlera = 'emri';
            $('.valemail').remove();
            $('.error').css("background-color","#FFB6C1");
            showdiverror(vlera);
@@ -520,7 +505,7 @@ export class AppComponent implements OnInit{
        }
        if(val==2){  //check if is input email .......................................
          if(IsEmail(value)==false){
-           vlera='email';
+           vlera = "email";
            $('.valemail').remove();
            $('.error').css("background-color","#FFB6C1");
            showdiverror(vlera);
@@ -563,7 +548,7 @@ export class AppComponent implements OnInit{
      // here end chechk for  sing up  client account and bussinnes account ...............................
 
      // here check for passwordi  and you can have acsses in your account ............................
-     var activ=0;
+     var activ =0;
      $('.btnlogin').click(function(){ // click btton login .................................
        var valtype=$(this).attr('id');
 
@@ -598,7 +583,7 @@ export class AppComponent implements OnInit{
            showdiverror(valu);
          }
          else{ // send password in server , check if exsists in database
-           var email = jQuery('.em').text();
+           var email = $('.em').text();
            $.ajax({
              type:'GET',
              url:'classlogin.php',
@@ -630,7 +615,7 @@ export class AppComponent implements OnInit{
                    $('.loading2').css("visibility","hidden");
                    $('.loading2').css("width","5px");
                    $('.valpass').css('border-color','#A52A2A');
-                   if(activ=="0"){
+                   if(activ == 0){
                      $('.error').css("background-color"," #A52A2A");
                      var valu ='fjalkaliminukeshteisakte';
                      showdiverror(valu);
@@ -685,7 +670,7 @@ export class AppComponent implements OnInit{
        if(id=='radio1'){  //check if click is radio button1 ...................................
          $('.input2').each(function(){   // each  if you change type sign up  .. we change  some  placeholder .... ..
            i++
-           if(i=="1"){
+           if(i==1){
              $(this).attr("placeholder","Your Name");
              $('input[name="inputsubmit2"]').val('Register Client');
            }
@@ -702,7 +687,7 @@ export class AppComponent implements OnInit{
          $('input[name="radioacount"]',this).prop("checked",true);
          $('.input2').each(function(){
            i++
-           if(i=="1"){
+           if(i==1){
              $(this).attr("placeholder","Company Name");
              $('input[name="inputsubmit2"]').val('Next Business Create');
            }
@@ -720,7 +705,7 @@ export class AppComponent implements OnInit{
 
      var accounttype="radiologintype1";
      $('.typeaccountlogin').click(function(){  // click radio button type sign in   client or  bussinness .. .... .
-       each=0;
+     var each=0;
        clickinpu=0;
        var i=0;
        var id= $(this).attr('id');
@@ -737,7 +722,7 @@ export class AppComponent implements OnInit{
        if(id=='radiologintype1'){  //check if click is radio button1 ...................................
          $('.input').each(function(){   // each  if you change type sign up  .. we change  some  placeholder .... ..
            i++
-           if(i=="1"){
+           if(i==1){
 
              $('input[name="inputsubmit"]').val('Next Client');
              $('.client').show();
@@ -756,7 +741,7 @@ export class AppComponent implements OnInit{
          $('input[name="radiotypelogin"]',this).prop("checked",true);
          $('.input').each(function(){
            i++
-           if(i=="1"){
+           if(i==1){
 
              $('input[name="inputsubmit"]').val('Next Business');
              $('.client').hide();
@@ -846,7 +831,7 @@ export class AppComponent implements OnInit{
 
 
        function buutonforget(){
-         if(nrconfirm=="0"){
+         if(nrconfirm==0){
            nrconfirm++;
            if ($('.radioforgett1').is(":checked")==true){ // check if you choose email for confirm account ...........
 
@@ -935,8 +920,8 @@ export class AppComponent implements OnInit{
          if(code.length==0 || code.length<6){
            $('.valemail').remove();
            $('.codeconfi').css('border-color',"#A52A2A");
-           var code='kodi6digit';
-           showdiverror(code);
+           var codes = "kodi6digit";
+           showdiverror(codes);
          }
          else{
            var emaili = $('.emmm').text();
@@ -1117,7 +1102,7 @@ export class AppComponent implements OnInit{
            }
          }
 
-         if(nrboshselect=='5'){
+         if(nrboshselect==5){
            $('.valemail').remove();
            var error = 'totalerror';
            showdiverror(error);
@@ -1127,13 +1112,13 @@ export class AppComponent implements OnInit{
 
        });
 
-       if(nrboshselect=='0'){
+       if(nrboshselect==0){
 
          // get location user  to show it into google map ........... API
 
          var map, infoWindow;
 
-         initMap();// call function initmap to get latitude and langitude...................
+
          setTimeout(function(){
            next_bussines_to_verify_account();
          },2000);
@@ -1142,54 +1127,7 @@ export class AppComponent implements OnInit{
 
          // end get latitude and longitude that are for location in google map .........................
        }
-     } // end function .....
-
-     function initMap() {
-       map = new google.maps.Map(document.getElementById('map'), {
-         center: {lat: -34.397, lng: 150.644},
-         zoom: 6
-       });
-       infoWindow = new google.maps.InfoWindow;
-
-       // Try HTML5 geolocation.
-       if (navigator.geolocation) {
-         navigator.geolocation.getCurrentPosition(function(position) {
-           var pos = {
-             lat: position.coords.latitude,
-             lng: position.coords.longitude
-           };
-
-           infoWindow.setPosition(pos);
-           infoWindow.setContent('Location found.');
-           infoWindow.open(map);
-           map.setCenter(pos);
-           var i=0;
-           var j=1;
-           arry[i]=pos['lat'];
-           arry[j]=pos['lng'];
-
-
-         }, function() {
-           handleLocationError(true, infoWindow, map.getCenter());
-         });
-
-
-       } else {
-         // Browser doesn't support Geolocation
-         handleLocationError(false, infoWindow, map.getCenter());
-
-       }
-
-     }
-
-     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-       infoWindow.setPosition(pos);
-       infoWindow.setContent(browserHasGeolocation ?
-           'Error: The Geolocation service failed.' :
-           'Error: Your browser doesn\'t support geolocation.');
-       infoWindow.open(map);
-     }
-
+     } // end function ....
      function next_bussines_to_verify_account(){
        $('.error').slideUp();
 
@@ -1243,7 +1181,7 @@ export class AppComponent implements OnInit{
          error:function(e){
            if(e.status==0){
              var value = 'nointernet';
-             nointernet(value);
+             showdiverror(value);
            }
          }
        });
@@ -1344,6 +1282,7 @@ export class AppComponent implements OnInit{
      $('.input').keypress(function(e){
        if(e.which == 13){//Enter key pressed
          $('.inputsubmit').click();//Trigger search button click event
+
        }
      });
      $('.input2').keypress(function(e){
@@ -1395,15 +1334,15 @@ export class AppComponent implements OnInit{
      // function for show div error ..................................................................................
 
      function showdiverror(nr){
-       if(nr='nointernet'){
+       if(nr=='nointernet'){
          $('.valemail').remove();
-         $('.error').show('fast');
-         $('.error').append('<div class="valemail">Please check you internet connection!!</div>');
+         $('.error').slideDown('fast');
+         $('.error').append('<div class="valemail">Please check you internet connection!! and  click again</div>');
        }
        if(nr==1){
          errsingin++;
          $('.valemail').remove();
-         $('.error').show('fast');
+         $('.error').slideDown('fast');
          $('.error').append('<div class="valemail">Ju lutem plotesoni sakte E-mail</div>');
        }
        if(nr==2){
@@ -1516,6 +1455,36 @@ export class AppComponent implements OnInit{
        errsingup=0;
        clickinpu=0;
        activ=0;
+     }
+
+     function GiveColorInput(inputName , iconName, color_input_icon ){
+
+         $('.'+inputName).css({borderColor:color_input_icon});
+         $('.'+iconName).css({color:color_input_icon,borderColor:color_input_icon});
+     }
+
+     function clicksubmit(inputName_submit , status ,value){
+       if(status=='show'){
+         $('.'+inputName_submit).val('');
+         $('.'+inputName_submit).css({ background:'url("assets/images/load.gif") no-repeat center', backgroundColor:'#1E90FF', opacity:'0.7' });
+
+       }
+       if(status=='hide'){
+         $('.'+inputName_submit).css({background:'url("") no-repeat center', backgroundColor:'#1E90FF', opacity:'1' });
+         $('.'+inputName_submit).val(value);
+       }
+
+     }
+
+     function Send_Request_in_server( Path , Data , Status){
+
+       if(Status == 'GET'){
+
+       }
+       if(Status == 'POST'){
+         
+       }
+
      }
    }); // end documen  ready function .......................................................
 

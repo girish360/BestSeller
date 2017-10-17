@@ -1,6 +1,6 @@
-
 <div id="map"></div>
 <div class="opacity"></div>
+
 <br>
 <div class="hide">X</div>
 <div class="loginandhija">
@@ -8,17 +8,32 @@
         <div class="slid">
             <div class="btabs"><!-- start the tabs sing in ore sing up  -->
                 <div class="lgtb">
-                    <a href="#"> <div class="tabs" id="1"> <div class="tabtext" id="tab1"><img src="assets/images/sign.png" ><div class="word">Sign In</div></div> </div></a><a href="#"><div class="tabs" id="2"><div class="tabtext" id="tab2"><img src="assets/images/add.png"><div class="word">Sign Up</div></div></div></a><br>
+
+                        <div class="tabs inittab" id="1">
+                            <div class="tabtext" id="tab1">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                <div class="word">Sign In</div>
+                            </div>
+                        </div>
+
+                        <div class="tabs" id="2">
+                            <div class="tabtext" id="tab2">
+                                <span class="glyphicon glyphicon-user"></span>
+                                <div class="word">Sign Up</div>
+                            </div>
+                        </div>
                     <div class="loading"></div>
+
+
                 </div>
                 <div class="btnlgtb">
-                    <a href="#"> <div class="back" id="1"><div class="tabtext"><img src="assets/images/back.png"><div class="word">Back</div></div></div></a><a href="#"><div class="forget" id="2"><div class="tabtext"><img src="images/help.png"><div class="word">Forget Key</div></div></div></a> <div class="loading2"></div><br>
+                    <a href="#"> <div class="back" id="1"><div class="tabtext"><img src="assets/images/back.png"><div class="word">Back</div></div></div></a><a href="#"><div class="forget" id="2"><div class="tabtext"><img src="assets/images/help.png"><div class="word">Forget Key</div></div></div></a> <div class="loading2"></div><br>
                 </div>
                 <div class="forgettb">
-                    <a href="#"> <div class="backlogin" id=""><div class="tabtext"><img src="images/back.png"><div class="word">Back</div></div></div></a><a href="#"><div class="forget" id=""><div class="tabtext"><img src="images/help.png"><div class="word">Forget Key</div></div></div></a> <div class="loading2"></div><br>
+                    <a href="#"> <div class="backlogin" id=""><div class="tabtext"><img src="assets/images/back.png"><div class="word">Back</div></div></div></a><a href="#"><div class="forget" id=""><div class="tabtext"><img src="assets/images/help.png"><div class="word">Forget Key</div></div></div></a> <div class="loading2"></div><br>
                 </div>
                 <div class="confirmcodetb">
-                    <a href="#"> <div class="accountcode" id=""><div class="tabtext" style="color:gray;">Confirm Your Account</div></div></a><div class="loading2" style="-webkit-box-shadow: 142px 142px 9px -137px rgba(199,52,135,1);-moz-box-shadow: 142px 142px 9px -137px rgba(199,52,135,1);box-shadow: 142px 142px 9px -137px rgba(199,52,135,1);"></div><br>
+                    <a href="#"> <div class="accountcode" id="1"><div class="tabtext" style="color:gray;">Confirm Your Account</div></div></a><div class="loading2" style="-webkit-box-shadow: 142px 142px 9px -137px rgba(199,52,135,1);-moz-box-shadow: 142px 142px 9px -137px rgba(199,52,135,1);box-shadow: 142px 142px 9px -137px rgba(199,52,135,1);"></div><br>
                 </div>
             </div><br> <!-- end the tabs sing in ore sing up  -->
             <div class="sing1" id="sing" > <!-- start sing in -->
@@ -42,9 +57,9 @@
 
 
 
-                        <input class="input" id="us" type="text" placeholder=" Email ose numer telefoni ">
+                        <input class="input input-email" id="us" type="text" placeholder=" Email ose numer telefoni ">
                         <div class="namediv">
-                            <img src="assets/images/email2.png">
+                           <span class="glyphicon glyphicon-user  icon-email"></span>
                         </div>
                         <br><br>
                         <input class="inputsubmit" name="inputsubmit" id="submi" type="submit" value="Next Client"><br><br>
@@ -79,17 +94,17 @@
                         </div> <!-- start these input are for both create account  first step for both-->
                         <input class="input2" id="name" type="text" placeholder="Your Name ">
                         <div class="namediv">
-                            <img src="assets/images/name.png">
+                            <span class="glyphicon glyphicon-user"></span>
                         </div>
                         <br><br>
                         <input class="input2" id="email" type="text" placeholder="Email ">
                         <div class="namediv">
-                            <img src="assets/images/email2.png">
+                            <span class="glyphicon glyphicon-user"></span>
                         </div>
                         <br><br>
                         <input class="input2" id="password" type="password" placeholder="Password ">
                         <div class="namediv">
-                            <img src="assets/images/key.png">
+                            <span class="glyphicon glyphicon-user"></span>
                         </div>
                         <br><br>
                         <input class="inputsubmit2" name="inputsubmit2" id="register" type="submit" value="Register Client"><br><br>
@@ -106,17 +121,17 @@
                             <option value="Other">Other</option>
                         </select>
                         <div class="namediv">
-                            <img src="images/name.png">
+                            <img src="assets/images/name.png">
                         </div>
                         <br><br>
                         <input class="inpu" id="email" type="text" placeholder=" Street Adress ">
                         <div class="namediv">
-                            <img src="images/street.png">
+                            <img src="assets/images/street.png">
                         </div>
                         <br><br>
                         <input class="inpu" id="in" type="text" placeholder="City ">
                         <div class="namediv">
-                            <img src="images/city.png">
+                            <img src="assets/images/city.png">
                         </div><br><br>
                         <select class="inpu" id="in" name="industry">  <!-- start choose of nationality-->
                             <option value="0" style="color:#848C91;"> Select State</option>
@@ -371,11 +386,11 @@
                             <option value="Zimbabwe" title="Zimbabwe">Zimbabwe</option>
                         </select>
                         <div class="namediv">
-                            <img src="images/country.png">
+                            <span class="glyphicon glyphicon-user"></span>
                         </div><br><br>
                         <input class="inpu" id="in" type="tel" placeholder="Phone number ">
                         <div class="namediv">
-                            <img src="images/number.png">
+                            <span class="glyphicon glyphicon-user"></span>
                         </div><br><br>
 
 
@@ -392,7 +407,7 @@
                                     <input type="radio" name="vf" class="radioverify1" id="radioforget">
                                     <div class="emailkompani"></div>
                                 </div>
-                                <div class="named"><img src="images/email2.png">
+                                <div class="named"><img src="assets/images/email2.png">
                                 </div>
                             </div><br>
                         </a>
@@ -401,7 +416,7 @@
                                 <div class="position2">
                                     <input type="radio" name="vf" class="radioverify2" id="radioforget"><div class="telkompani"></div>
                                 </div>
-                                <div class="named"><img src="images/phone.png">
+                                <div class="named"><img src="assets/images/phone.png">
                                 </div>
                             </div>
                         </a>
@@ -415,7 +430,7 @@
                             <h2>"We send you the code"</h2><br>
                             <input class="inpucode" id="in" type="tel" placeholder="Put the code please ">
                             <div class="namediv">
-                                <img src="images/key.png">
+                                <span class="glyphicon glyphicon-user"></span>
                             </div><br><br>
                             <input class="submitcode" id="sub" type="submit" value="Finish Verify"><br><br>
 
@@ -429,7 +444,7 @@
                     <div class="em"></div><br><br>
                     <input class="valpass" id="us" type="password" placeholder="Password ">
                     <div class="namediv">
-                        <img src="images/key.png">
+                        <span class="glyphicon glyphicon-user"></span>
                     </div>
                     <br><br>
                     <input class="btnlogin" id="login" type="submit" value="Login"><br><br><br>
@@ -451,7 +466,7 @@
 
 
                         </div>
-                        <div class="named"><img src="images/email2.png"></div>
+                        <div class="named"><img src="assets/images/email2.png"></div>
                     </div><br></a>
                 <a href="#">
                     <div class="forgetclick" id="radioforgett2">
@@ -459,7 +474,7 @@
                             <input type="radio" name="radio" class="radioforgett2" id="radioforget"><div class="phone"></div>
 
                         </div>
-                        <div class="named"><img src="images/phone.png"></div>
+                        <div class="named"><img src="assets/images/phone.png"></div>
                     </div></a>
                 <br>
 
@@ -474,7 +489,7 @@
                 <div class="emmm"></div><br>
                 <div class="sms">"Check your E-mail for code 6 digit"</div><br>
 
-                <input class="codeconfi" type="text" name="condeconfirm" placeholder="Enter Confirm Code"><div class="namediv"><img src="images/key.png"></div>
+                <input class="codeconfi" type="text" name="condeconfirm" placeholder="Enter Confirm Code"><div class="namediv"><img src="assets/images/key.png"></div>
            <br>
            <input class="btnconfirm" id="sub" type="submit" value=" Send Confirm Code"><br>
 
@@ -485,8 +500,9 @@
         </div>
         <div class="error"></div>
 
-    </div><br><br>
+    </div>
 
 
 </div>
+
 
