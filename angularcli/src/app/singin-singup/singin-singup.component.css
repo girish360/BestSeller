@@ -1,0 +1,641 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+
+}
+body{
+
+}
+.glyphicon{
+    font-size: 20px;
+    color:gray;
+    position: relative;
+    top:2px;
+}
+.tabs:hover .glyphicon {
+
+    color:#00BFFF;
+
+}
+.tabs:hover .tabtext{
+    color:#00BFFF;
+}
+
+
+
+.opacity{
+    width: 100%;
+    height: 100vh;
+    opacity: 0.7;
+    background-color: #DCDCDC;
+    position: absolute;
+    display: inline-block;
+}
+.show ,.hide{
+    position: relative;
+    float: right;
+    right: 50px;
+}
+.opacity{
+    display: none;
+    position: absolute;
+}
+.loginandhija{
+    position: relative;
+    top: 50px;
+    background-color: red;
+    width: 370px;
+    margin: 0px auto;
+    background: url("../../assets/images/under_login.jpg") no-repeat;
+
+}
+.login{
+    text-align: center;
+    opacity: 0.97;
+    margin:0px auto;
+    position: relative;
+    background-color:  	#F5F5F5;
+    width:370px;
+    border-radius:2px;
+    -webkit-box-shadow: 0px 1px 4px 1px rgba(201,209,193,1);
+    -moz-box-shadow: 0px 1px 4px 1px rgba(201,209,193,1);
+    box-shadow: 0px 1px 4px 1px rgba(201,209,193,1);
+
+
+}
+.load{
+
+    margin:0px auto;
+    width:22%;
+
+}
+.back{
+    width:50%;
+}
+.backlogin{
+    width:50%;
+}
+.input{
+    width:77%;
+    height: 30px;
+    border-radius: 3px;
+    border:1px solid;
+    border-color:			#A9A9A9;
+    position: relative;
+    left:-3px;
+
+
+}
+.input:focus{
+    outline: none;
+}
+.input2 ,.inpucode {
+    width:77%;
+    height: 30px;
+    border-radius: 3px;
+    border:1px solid;
+    border-color:#A9A9A9;
+    background-color:white;
+
+
+
+}
+.Codeverify{
+    color:gray;
+}
+.inpu , .telephone ,.selectoption ,.inpucode {
+    width:77%;
+    height: 30px;
+    border-radius: 3px;
+    border:1px solid;
+    border-color:#A9A9A9;
+    background-color: white;
+}
+
+.codeconfi{
+    width:77%;
+    height: 30px;
+    border-radius: 3px;
+    border:1px solid;
+    border-color:#A9A9A9;
+    position: relative;
+    left:-5px;
+}
+.valpass{
+    width:77%;
+    height: 30px;
+    border-radius: 3px;
+    border:1px solid;
+    border-color:#A9A9A9;
+
+}
+.inpu{
+    width:77%;
+    height: 30px;
+}
+.Codeverify{
+    display: none;
+}
+.inputsubmit,.btnlogin ,.buttonforgetdb ,.btnconfirm ,.buttonverify ,.submitcode{
+    width:77%;
+    height: 30px;
+    background-color:#1E90FF;
+    border:none;
+    border-radius: 3px;
+    margin:0px auto;
+}
+.inputsubmit:hover ,.btnlogin:hover ,.buttonforgetdb:hover ,.btnconfirm:hover ,.buttonverify:hover ,.submitcode:hover {
+    background-color: #00BFFF;
+    color:white;
+}
+.inputsubmit2 {
+    width:77%;
+    height: 30px;
+    background-color: 	#1E90FF;
+    border:none;
+    border-radius: 3px;
+    margin:0px auto;
+}
+.inputsubmit2:hover {
+    background-color: 			#00BFFF;
+    color:white;
+}
+.inputsubmit3 {
+    width:76.5%;
+    height: 30px;
+    background-color: 	#1E90FF;
+    border:none;
+    border-radius: 3px;
+}
+.inputsubmit3:hover {
+    background-color: 			#00BFFF;
+    color:white;
+}
+.btnlogin{
+    width:77%;
+    height: 30px;
+}
+.imgfb{
+    margin: 0px auto;
+    width:77%;
+    height: 30px;
+
+}
+.next{
+    display: none;
+    margin-top:-2px;
+}
+.imgf{
+    width:99%;
+    height: 35px;
+    border-radius: 3px;
+
+}
+.tabs{
+    display: inline-block;
+    width:50%;
+    text-align: center;
+    background-color:  	#E6E6FA;
+    height:35px;
+    border-radius: 2px;
+    margin-left: -4px;
+    position: relative;
+    left: 2px;
+    border-top: 2px solid;
+    border-color:#E6E6FA ;
+}
+
+.putcode{
+    margin-top: -20px;
+    width:100%;
+    text-align: center;
+    background-color:  	#E6E6FA;
+    height:35px;
+    border-radius: 2px;
+}
+.confi{
+    font-size: 18px;
+
+}
+
+
+.back:hover{
+    color:#00BFFF;
+}
+.forget:hover{
+    color:#00BFFF;
+}
+.back{
+    display: inline-block;
+    width:50%;
+    text-align: center;
+    background-color:  	#E6E6FA;
+    height:35px;
+    margin-top:-18px;
+}
+.backlogin{
+    display: inline-block;
+    width:50%;
+    text-align: center;
+    background-color:  	#E6E6FA;
+    height:35px;
+    margin-top:-18px;
+}
+.accountcode{
+    display: inline-block;
+    width:100%;
+    text-align: center;
+    background-color:  	#E6E6FA;
+    height:35px;
+    margin-top:-18px;
+    font-size: 18px;
+}
+.forget{
+    display: inline-block;
+    width:50%;
+    text-align: center;
+    background-color:  	#E6E6FA;
+    height:35px;
+    margin-top:-18px;
+}
+.imgback{
+    margin-top: 5px;
+}
+.userpass{
+
+    width:100%;
+    margin-top: -20px;
+    background-color:  	#E6E6FA;
+    height:35px;
+}
+.mirsevini{
+    margin-top: -20px;
+    text-align: center;
+}
+.sing2{
+    display: none;
+}
+
+
+.tabtext{
+    display: inline-block;
+    margin-top:4px;
+    border-radius: 2px;
+    color:black;
+}
+.tabtext h3{
+
+
+    display: inline-block;
+}
+.logo{
+    font-size: 25px;
+}
+
+.logfbtxt{
+    margin-top:5px;
+}
+.logo2{
+    width:120px;
+    height: 120px;
+    border-radius:150px;
+    background-color: #E6E6FA;
+}
+.tabtext img{
+
+}
+
+#in{
+    position: relative;
+    left: -2px;
+}
+
+
+
+input#name ,input#email ,input#password , input.valpass ,input.input ,input.codeconfi,.inpu ,.selectoption ,.telephone{
+
+
+    padding-left:5px;
+    padding-right: 35px;
+    background-color: white;
+}
+
+
+.namediv{
+
+    display: inline-block;
+    position: relative;
+    margin-left: -39px;
+    top: 2.5px;
+
+    border-left:1px solid;
+    border-color:#A9A9A9;
+    padding-left: 5px;
+}
+.named{
+    display: inline-block;
+    float: right;
+    position: relative;
+    left: -5px;
+    top:3px;
+
+    border-left:1px solid;
+    border-color:#A9A9A9;
+    padding-left: 5px;
+}
+
+.word{
+    opacity:0.8;
+    position: relative;
+    font-size: 17px;
+
+    display: inline;
+    top:-2px;
+    margin-left: 5px;
+}
+.logo1{
+    margin: 0px auto;
+    width:120px;
+    height: 120px;
+    border-radius:150px;
+    background-color: #E6E6FA;
+}
+.imgu{
+    width:120px;
+    height: 120px;
+    border-radius:150px;
+    background-color: #E6E6FA;
+    overflow:hidden;
+}
+.imgu img{
+    width:100%;
+}
+.imguser{
+
+    width: 100%;
+
+}
+.imguse{
+
+    width: 100%;
+}
+.error{
+
+    width :5px;
+    height: 25px;
+    background-color: #FFB6C1;
+    color :white;
+    display: none;
+    margin:0px auto;
+
+}
+.valemail{
+    font-size: 18px;
+}
+.typeaccount {
+    width:100%;
+}
+.clientacc , .typeaccountlogin{
+    display: inline-block;
+    width:37.99%;
+    border:1px solid;
+    border-radius:3px;
+    border-color:#A9A9A9;
+    color: #848C91;
+    position: relative;
+    left: -1px;
+    background-color: white;
+}
+.clientacc{
+    position: relative;
+    left: 0px;
+}
+.clientaccount{
+    font-size: 23px;
+    color: #848C91;
+}
+.client ,.bussiness{
+    color: #848C91;
+    font-size: 18px;
+}
+.bussiness{
+    display: none;
+}
+.bussinessascc{
+    display: inline-block;
+    width:37.5%;
+    border:1px solid;
+    border-radius:3px;
+    border-color:#A9A9A9;
+    background-color: white;
+}
+.btnlgtb ,.forgettb,.confirmcodetb{
+    display: none;
+
+}
+.radioacc{
+    float: right;
+}
+
+
+
+.loading{
+    background-color:#A52A2A;
+    height: 3px;
+    width: 5px;
+    visibility: hidden;
+    -webkit-box-shadow: 142px 142px 9px -137px rgba(199,52,135,1);
+    -moz-box-shadow: 142px 142px 9px -137px rgba(199,52,135,1);
+    box-shadow: 142px 142px 9px -137px rgba(199,52,135,1);
+}
+.choosetypeforget{
+    display: none;
+    position: relative;
+    top: -2px;
+
+}
+
+
+.forgetclick , .verifyclick{
+    margin: 0 auto;
+    border-radius: 3px;
+    border:1px solid;
+    border-color:#A9A9A9;
+    width:77%;
+    height: 30px;
+    background-color: white;
+}
+#radioforgett1{
+    background-color: #E6E6FA;
+    border-color:#00BFFF ;
+}
+.radioemail{
+    display: inline-block;
+}
+.em,.emm , .emailkompani , .telkompani{
+    display: inline-block;
+    color:#848C91;
+    position: relative;
+    top:-2px;
+    margin-left: 5px;
+}
+.emmm{
+    color:#848C91;
+}
+.sms{
+    color:#848C91;
+    font-size: 17px;
+}
+.name , .em , .last{
+    color: #848C91;
+    font-size: 17px;
+
+}
+.choseforget h2{
+    color: #848C91;
+    font-size: 17px;
+}
+.radionumber{
+    display: inline-block;
+}
+.phone , .telkompani , .emailkompani{
+    display: inline-block;
+    color:#848C91;
+    position: relative;
+    top:-1px;
+    margin-left: 5px;
+}
+.iconforget{
+    text-align: right;
+}
+.position{
+    float: left;
+    position: relative;
+    top:3px;
+    left: 4px;
+    display: inline-block;
+}
+.inpu option {
+    color:#848C91;
+}
+.position2{
+    float: left;
+    position: relative;
+    top:3px;
+    left: 4px;
+    display: inline-block;
+}
+.putconfirmcode{
+    display: none;
+}
+.steps{
+    display: none;
+    color: #848C91;
+}
+.step1 ,.step2, .step3{
+    display: inline-block;
+    width: 25%;
+    height: 5px;
+    background-color: 	#E6E6FA;
+    border-radius: 20px;
+}
+.bussinness{
+    font-size: 23px;
+
+}
+.b , .s , .v {
+    margin-top: 6px;
+}
+.setup , .verify{
+    display: none;
+}
+.vija{
+    width : 100%;
+    height: 20px;
+    background-color: gray;
+}
+
+.css3-shadow,.css3-gradient1,.css3-gradient2 {
+    position:relative;
+
+}
+
+/*==================================================
+ * Drop shadow effect with box-shadow
+ * ===============================================*/
+.css3-shadow:after
+{
+    content:"";
+    position:absolute;
+
+    z-index:-1;
+    -webkit-box-shadow: 0px 4px 3px -1px rgba(194,183,194,1);
+    -moz-box-shadow: 0px 4px 3px -1px rgba(194,183,194,1);
+    box-shadow: 0px 4px 3px -1px rgba(194,183,194,1);
+    bottom:0px;
+    width:80%;
+    height:100%;
+    -moz-border-radius:100%;
+    border-radius:5%;
+    left:10%;
+    right:10%;
+
+}
+
+
+.box {
+    width:450px;
+    padding:20px;
+
+    margin:20px auto 60px;
+    border-radius:2px;
+    text-align: center;
+
+    position: relative;
+
+    border-radius: 2%;
+
+
+}
+.box h3{
+    color:	#A9A9A9;
+
+}
+
+.clacc , .radio ,.radiotypelogin{
+    display: inline-block;
+    position: relative;
+    top:2px;
+    float: left;
+    font-size: 17px;
+    left: 5px;
+}
+
+.clacc{
+    position: relative;
+    left: 8px;
+    top: 1px;
+}
+
+@media only screen and (max-width: 390px){
+    .login{
+        width: 100%;
+        position: relative;
+        top: -50px;
+    }
+}
+
