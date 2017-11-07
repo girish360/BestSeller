@@ -18,10 +18,516 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
-
+.hide-login{
+    z-index: 14 !important;
+    position: absolute;
+    padding: 9px 15px;
+    border-radius: 170px;
+    float: right;
+}
 
 body{
     background-color:#E6E6FA;
     color:gray;
 
 }
+a{
+    color: white;
+}
+
+/* Begin css for category profile user here ....................................................................................................*/
+
+
+
+body::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 3px;
+    position: absolute;
+}
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    position: absolute;
+}
+
+body::-webkit-scrollbar-thumb {
+
+    -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 3px;
+    position: absolute;
+}
+
+.category::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 3px;
+    position: absolute;
+}
+.category::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    position: absolute;
+}
+
+.category::-webkit-scrollbar-thumb {
+
+    -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 3px;
+    position: absolute;
+}
+
+.closelist{
+    display: none;
+}
+
+
+
+.minimize ,.big_click{
+    display: inline-block;
+    padding: 7px 10px ;
+
+    position: relative;
+    top:-6px;
+
+}
+.minimize:hover ,.big_click:hover{
+    background-color: white;
+}
+.minimize_category{
+    position: relative;
+    left: 4px;
+}
+.minimize_category_icon{
+    position: relative;
+    top: 4px;
+}
+.categorytype{
+    height: 32px;
+    width: 100%;
+
+
+
+}
+.categorytype:hover{
+   background-color: #f5f5ef;
+
+
+
+}
+.all_countsearch_number{
+    display: none;
+}
+.morecontact{
+    width: 70%;
+    height: 30px;
+    display: none;
+}
+.writemorecompany{
+    position: relative;
+    left: 13px;
+    top: 6px;
+
+}
+.subcat ,.company_subscribe ,.dont_have_subcategory{
+    height: 32px;
+    width: 100%;
+}
+.numbernencategory{
+    display: inline-block;
+    float: right;
+    color: gray;
+    position: relative;
+    right: 10px;
+    top: 8px;
+
+}
+.categorywidth{
+    height: 42%;
+    overflow-y: auto;
+    width: 100%;
+    z-index: 5 !important;
+}
+.mini_category_click{
+    height:1%;
+    transition: 0.5s;
+}
+.mini_subscribe_click{
+    height: -moz-calc(100% - (100px + 30px));
+    height: -webkit-calc(100% - (100px + 30px));
+    height: calc(100% - (100px + 30px));
+    transition: 0.5s;
+
+}
+.mini_sub_click_sub{
+    height: 1%;
+    transition: 0.5s;
+}
+
+.mini_cat_click_sub{
+
+
+    height: -moz-calc(100% - (100px + 30px));
+    height: -webkit-calc(100% - (100px + 30px));
+    height: calc(100% - (100px + 30px));
+    transition: 0.5s;
+}
+.categorywidth::-webkit-scrollbar {
+    width: 8px;
+
+    border-radius: 3px;
+    z-index: 2 !important;
+    opacity: 0.2;
+    display: none;
+
+}
+.categorywidth::-webkit-scrollbar-thumb{
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+
+    border-radius: 3px;
+}
+
+.categorywidth::-webkit-scrollbar-thumb:hover{
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+}
+
+.imgcategory{
+    display: inline-block;
+    position: relative;
+    left: 10px;
+    top: 4px;
+}
+.imgsubscribe{
+    display: inline-block;
+    position: relative;
+    left: 10px;
+    top: 4px;
+    width: 25px;
+    height: 25px;
+}
+.imagesubscribe{
+    width: 100%;
+    height: 25px;
+
+}
+.bordertypecat ,.bordertypecategory_addsearch{
+    float: left;
+    height: 32px;
+    width: 4px;
+    background-color: #004080;
+
+    visibility: hidden;
+}
+.namecate {
+    display: inline-block;
+}
+.namecategory{
+    color:gray;
+    text-decoration: none;
+    position: relative;
+    left: 20px;
+    top: -3px;
+}
+.addsearch_namecompany{
+    color:gray;
+    text-decoration: none;
+    position: relative;
+    left: 50px;
+    top: -3px;
+
+}
+.writecategory{
+    position: relative;
+
+    height: 30px;
+    width: 100%;
+
+    z-index: 3 !important;
+
+}
+
+.numberkategory{
+    display: inline-block;
+    float: right;
+    position: relative;
+    top: 6px;
+    right: 0px;
+}
+.widthcat{
+    width: 97%;
+}
+.bordercat{
+    width: 92%;
+    height: 1px;
+    background-color: #d6d6c2;
+
+}
+.underline, .nondecoration{
+    text-decoration: none;
+}
+.catgow{
+    position: relative;
+    left: 12px;
+    top: 6px;
+    display: inline-block;
+    width: 15px;
+}
+
+
+.imgcatego{
+    display: inline-block;
+    float: right;
+    position: relative;
+    top: 2px;
+    right: 10px;
+}
+
+
+
+.subscribe_add_hover{
+    background-color: #d4d4f7;
+
+}
+.categorytype_add_hover ,.subcat_add_hover ,.company_subscribe_add_hover{
+
+    background-color: #f5f5ef;
+
+}
+.subcategory{
+    display: none;
+}
+.exitsubcategory{
+    display: none;
+    position: relative;
+    top:-4px;
+}
+.imgnc{
+
+    display: inline-block;
+
+
+float: right;
+    position: relative;
+
+    right: 10px;
+    top:4px;
+}
+.imgnc img{
+    font-size: 15px;
+}
+.iconsubcategory{
+    display: none;
+}
+.moresubcategory{
+    position: relative;
+    top: 4px;
+}
+.writemenu{
+    position: absolute;
+    color:white;
+    background-color: #708090;
+    width: 250px;
+    height: 40px;
+
+}
+
+.color{
+    background-color: #f5f5ef;
+}
+.allcolor{
+    background-color:#E6E6FA;
+}
+
+
+.visibleborder,.bordercolor,.animateborderleft{
+    visibility:visible;
+}
+.animateicon{
+    display: block;
+}
+
+.iconcategory{
+    display: block;
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Safari */
+    transform: rotate(180deg); /* Standard syntax */
+}
+.moresub{
+    display: none;
+}
+.exitsub{
+    display: block;
+}
+.searchsubscribe{
+    width: 248px;
+    height: 32px;
+    background-color:#eaefff;
+    position: fixed;
+    left: -250px;
+    bottom: 0;
+    z-index: 2 !important;
+
+
+}
+.inputsearchcompany{
+    border:none;
+    height: 32px;
+    width: 100%;
+    position: relative;
+    background-color:#eaefff;
+
+    outline: none;
+}
+.iconsearchsub ,.inputsearchcompany ,.searchsub,.settings_delete_search_company{
+    display: inline-block;
+}
+.iconsearchsub ,.settings_delete_search_company{
+
+    width: 25px;
+    height: 32px;
+    background-color:#eaefff;
+    position: relative;
+    top: -4px;
+}
+
+.wisthisearchsub{
+    width: 95%;
+    height: 32px;
+    position:
+            relative;
+    left: 14px;
+    background-color: #eaefff;
+}
+.delete_search_company{
+    display: none;
+}
+.imgsearchsub,.settings_search_company,.delete_search_company{
+    position: relative;
+    top: 7px;
+}
+.loadersubscribe{
+    position: fixed;
+    bottom:32px;
+    left: -250px;
+    height: 32px;
+    width: 250px;
+    display: none;
+    background-color:#eaefff;
+    z-index: 3 !important;
+
+}
+.pointer_catego  {
+    position: absolute; background-color: gray; z-index: 11 !important;
+    width:auto;
+    height: 32px;
+    left: 250px;
+    top: 100px;
+    color: white;
+    opacity: 0.7;
+    border-radius: 3px;
+
+    display: none;
+}
+.border_pointer_category{
+    float: left;
+    width: 11px;
+    height: 100%;
+    background-color: #E6E6FA;
+    display: inline-block;
+    z-index: 2 !important;
+
+
+}
+.opacity_border_pointer{
+    background-color: gray;
+    height: 100%;
+    width: 11px;
+    float: left;
+    position: absolute;
+    opacity: 0.6;
+
+}
+.pointer_div{
+    width: 15px;
+    height: 15px;
+    background-color: gray;
+    -webkit-transform:rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: relative;
+    top: 9px;
+    left: 4px;
+    z-index: 1 !important;
+}
+
+.bodypointer{
+    height: 100%;
+    position: relative;
+    z-index: 4 !important;
+    display: inline-block;
+
+}
+.writepointer{
+    position: relative;
+    top: 6px;
+}
+
+.searchsub{
+    width: 75%;
+}
+.iconsearchsub{
+    float: right;
+    position: relative;
+    top: 0px;
+    right: 5px;
+}
+.settings_delete_search_company{
+    float: left;
+
+}
+
+.position_loader{
+    position: relative;
+    left: 12px;
+}
+.full_name_hover,.full_name_hover_category_active{
+    display: none;
+}
+
+@media only screen and (max-width: 850px){
+    .searchsubscribe{
+        width: 100%;
+        height: 32px;
+        background-color:#eaefff;
+        position: fixed;
+        bottom: 0;
+        left: -850px;
+
+
+    }
+    .loadersubscribe{
+        position: fixed;
+        bottom:32px;
+        left: -850px;
+        height: 32px;
+        width: 100%;
+
+        background-color:#eaefff;
+
+
+    }
+    .iconsubcategory{
+        display: none;
+    }
+
+
+    .iconsearchsub{
+        float: right;
+        position: relative;
+        top: 0px;
+        right: 65px;
+    }
+    .searchsub{
+        width: 60%;
+    }
+
+}
+

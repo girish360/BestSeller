@@ -1384,7 +1384,7 @@ export class SinginSingupComponent implements OnInit {
             success:function(data){
 
               Response = data;
-              alert(data);
+
               success_response(); // call function success
 
             },error:function(e){

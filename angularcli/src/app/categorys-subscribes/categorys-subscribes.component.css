@@ -10,11 +10,6 @@
     overflow-x: auto;
     opacity: 1;
 
-
-
-
-
-
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -98,7 +93,7 @@ body::-webkit-scrollbar-thumb {
 }
 .categorytype{
     height: 32px;
-    width: 100%;
+    width: 100vh;
 
 
 
@@ -133,7 +128,7 @@ body::-webkit-scrollbar-thumb {
 .categorywidth{
     height: 42%;
     overflow-y: auto;
-
+    width: 100px;
     z-index: 5 !important;
 }
 .mini_category_click{
@@ -235,6 +230,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .numberkategory{
+    display: inline-block;
     float: right;
     position: relative;
     top: 6px;
