@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent} from './app.component';
 
 import { SinginSingupComponent } from './singin-singup/singin-singup.component';
-import { AboutComponent } from './about/about.component';
+
 
 export const router: Routes = [
     {path: '',redirectTo:'',pathMatch:'full'},

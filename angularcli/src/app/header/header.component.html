@@ -1,5 +1,8 @@
+<div class="opacity_dropdown">
 
+</div>
 <nav class="navigation" >
+  <div data-toggle="tooltip" title="Category">
   <div class="writemenu">  <!-- this is open category  -->
     <div class="herewrite">
       <div class="radius_category">
@@ -13,6 +16,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
   <div class="space">
 
@@ -34,8 +38,19 @@
           <a href="#">BestSeller</a>
         </div>
         <div class="search">
-
-          <input type="text" class="kerkim" name="search" placeholder="serch"><a href="#"><div class="iconsearch"><img class="imgsearch" src="../../assets/images/search.png"><img class="imgsearchexit" src="../../assets/images/close1.png" ></div></a>
+          <div data-toggle="tooltip" title="Search product and company">
+          <input type="text" class="kerkim" name="search" placeholder="serch">
+              <a href="#">
+                <div class="iconsearch">
+                     <div class="imgsearch">
+                           <span class="glyphicon glyphicon-search"></span>
+                     </div>
+                     <div class="imgsearchexit">
+                          <span class="glyphicon glyphicon-remove"></span>
+                     </div>
+                </div>
+              </a>
+          </div>
 
         </div>
         <span class="rightee">
@@ -43,7 +58,7 @@
                               left: 5px;">
                               <a href="#" class="gjuha"  id="1">
                                  <div class="nameuser">
-                                   <a routerLink="login">Login/Register</a>
+
 
 
                                  </div>
@@ -53,7 +68,7 @@
                            <a href="#" class="gjuha"  id="1">
 
                                     <div class="photouser">
-                                         <img  class="pictureuser" id="pictureuser" src="">
+
                                      </div>
 
                            </a>
@@ -69,25 +84,42 @@
                             </a>
                         </div>
                         <div class="menu3" id="search">
-                             <a class="searchresponse" href="#"><img src="../../assets/images/search.png"></a>
+                             <a class="searchresponse" href="#"> <span class="glyphicon glyphicon-search"></span></a>
                         </div>
-                        <div class="menu3 fvk">
+                        <a href="#" data-toggle="tooltip" title="Login/Register">
+                        <div class="menu3 ">
+                            <div  class="user-login " id="user-login" href="#" style="z-index: 3 !important;">
+                                 <a href="" routerLink="login">
+                                      <span class="glyphicon glyphicon-user gh-header"></span>
+                                 </a>
+                            </div>
+                        </div>
+                        </a>
+                         <a href="#" data-toggle="tooltip" title="Wish List">
+                        <div class="menu3 ">
                             <a  class="favority " id="favority" href="#" style="z-index: 3 !important;">
-                                <img  src="../../assets/images/wish.png">
+                                 <span class="glyphicon glyphicon-heart gh-header"></span>
                              </a>
                         </div>
-                        <div class="menu3">
+                         </a>
+                        <a href="#" data-toggle="tooltip" title="Your Card">
+                        <div class="menu3 ">
                             <a class="card" id="card" href="#">
-                                <img src="../../assets/images/card.png">
+                                 <span class="glyphicon glyphicon-shopping-cart gh-header"></span>
 
                             </a>
                         </div>
-                        <div class="menu3">
-                            <a class="language" id="language" href="#"><img src="../../assets/images/world.png"></a>
+                         </a>
+                        <a href="#" data-toggle="tooltip" title="Your language">
+                        <div class="menu3 ">
+                            <a class="language" id="language" href="#">
+                                  <span class="glyphicon glyphicon-globe gh-header"></span>
+                            </a>
                             <div class="write_language">
 
                             </div>
                         </div>
+                        </a>
                      </span>
       </div> <!--  end headerdi v................-->
 

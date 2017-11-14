@@ -1,10 +1,20 @@
 <?php
-if(isset($_GET['lang'])){
-  $lang=$_GET['lang'];
-  $language = new language();
-  $res=$language->languages($lang);
-  echo $res;
-}
+header('Access-Control-Allow-Origin:*');
+
+
+
+    $postdata = file_get_contents("php://input");
+
+    $request = json_decode($postdata,true);
+    @$email = $request->name;
+    @$pass = $request->age;
+    echo json_encode(array('name'=>$email,'age'=>$pass));
+
+
+
+
+
+
 class language{
         private $dbHost     = "localhost";
         private $dbUsername = "root";

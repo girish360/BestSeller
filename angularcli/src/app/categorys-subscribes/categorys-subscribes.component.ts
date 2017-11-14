@@ -15,6 +15,7 @@ export class CategorysSubscribesComponent implements OnInit {
 
   ngOnInit() {
 
+
     $(document).ready(function(){
 
       var activ=0;
@@ -617,32 +618,6 @@ export class CategorysSubscribesComponent implements OnInit {
 
       var statusi=0;
       var errori=0;
-      function chechkinternet(){ // function check_internet....................
-        $.ajax({
-          url:'checkuserprofile.php',
-          timeout: 10000,
-          error: function(e) {
-            if(e.status==0) {// check internet connection here
-              if(statusi==0){
-                statusi=1;
-                errori=1;
-
-              }
-
-            }
-          },
-          success:function(){
-            if(errori==1 && statusi==1){
-              errori=0;
-              statusi=0;
-
-            }
-          }
-        });
-      }
-      setInterval(function(){
-        chechkinternet();
-      },500);
 
 
       function Send_Request_In_Server( Path , Data , Status ){
@@ -710,18 +685,19 @@ export class CategorysSubscribesComponent implements OnInit {
 
       function Put_Category_Element(){
 
-         $('.categoposition').html(
+         $('.categoposition').append(
              '<div class="totaldiv">'+
                    '<div class="writecategory on_hover_category" id="on_hover_category">'+
                          '<div class="catgow">'+
-                               'Category'+
+                               'Categorys'+
                           '</div>'+
                           '<div class="numberkategory">'+
+
                                 '<div class="minimize" id="minimize_category">'+
                                       '<a href="#"><img class="minimize_category_icon" src="../../assets/images/remove.png"></a>'+
                                 '</div>'+
                                 '<div class="big_click" id="big_category">'+
-                                      '<a href="#"><img src="../../assets/images/big.png"></div>'+
+                                      '<a href="#"><img src="../../assets/images/big.png"></a></div>'+
                                 '</div>'+
                           '</div>'+
                           '<div class="categorywidth mini_cat on_hover_category" id="on_hover_category">'
@@ -729,9 +705,11 @@ export class CategorysSubscribesComponent implements OnInit {
                           for ( var i = 0 ; i < Object.keys(Response).length ; i++){ //  loop  with status  that  identify for what is this json  , and json data ..
 
                                for ( var j = 0 ; j < Object.keys(Response[i]).length ; j++){  // loop category .....
+                                 var id_category;
 
 
-                                    if (Response[i][j]['name_category']){ // data category
+                                 if (Response[i][j]['name_category']){ // data category
+                                  id_category = Response[i][j]['id'];
 
                                         $('.categoposition').append(
                                             '<div class="cat_sub">'+
@@ -755,8 +733,8 @@ export class CategorysSubscribesComponent implements OnInit {
                                         );
 
                                     }else{ // obj with  data sub_category
-
-                                          for ( var f = 0 ; f < Object.keys(Response[i][j]).length; f++){ // loop  with data sub_category .........
+                                          if(Object.keys(Response[i][j]).length > 0){
+                                          for ( var f = 0 ; f < Object.keys(Response[i][j]).length; f++ ){ // loop  with data sub_category .........
                                               $('.categoposition').append(
                                                   '<div class="subcategory sub'+Response[i][j][f]['id_categorytype']+'">'+
                                                        '<div class="cat_sub">'+
@@ -779,6 +757,31 @@ export class CategorysSubscribesComponent implements OnInit {
                                                   '</div>'
                                               );
                                           }
+                                          }else{
+
+                                            $('.categoposition').append(
+
+                                                '<div class="subcategory sub'+id_category+'">'+
+                                                      '<div class="cat_sub">'+
+                                                           '<a href="#" class="nondecoration">'+
+                                                                '<div class="dont_have_subcategory">'+
+                                                                      '<div class="bordertypecat"></div>'+
+                                                                      '<div class="imgcategory">'+
+                                                                           '<img src="../../assets/images/not.png">'+
+                                                                      '</div>'+
+                                                                      '<div class="namecate">'+
+                                                                           '<div class="namecategory" href="#">Empty Category</div>'+
+                                                                      '</div>'+
+                                                                      '<div class="imgnc iconsubcategory">'+
+                                                                           '<img src="../../assets/images/drop1.png">'+
+                                                                      '</div>'+
+                                                                 '</div>'+
+                                                            '</a>'+
+                                                       '</div>'+
+                                                '</div>'
+                                            );
+                                          }
+
                                      }
                                }
                           }

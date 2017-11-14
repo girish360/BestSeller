@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import set = Reflect.set;
+
 
 
 declare var $:any;
@@ -9,6 +9,7 @@ declare var $:any;
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
+
 
 })
 

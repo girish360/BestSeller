@@ -1201,10 +1201,10 @@ export class SinginSingupComponent implements OnInit {
 
 
       function showlogin(){
-        $('.loginandhija').css('top','-600px');
-        $('.loginandhija').show();
+        $('.under_login').css('top','-600px');
+        $('.under_login').show();
         $('.opacity').show();
-        $('.loginandhija').animate({
+        $('.under_login').animate({
           top:"100px"
         },'fast');
 

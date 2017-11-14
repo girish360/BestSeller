@@ -541,7 +541,7 @@ if($_SERVER['REQUEST_METHOD']==='POST' || $_SERVER['REQUEST_METHOD']==='GET'){
 
                                  </a>
                             	 	  
-                                  <a href="#" data-toggle="tooltip" title="Add to Card!">
+                                 bvfcbgt
                              
                                     <div class="button_footer_products">
                                       <span class="glyphicon glyphicon-plus icon_eye"></span>

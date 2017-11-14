@@ -1,29 +1,10 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+
+.glyphicon{
+    font-size: 22px;
+
 }
-
-
-body{
-    background-color:#E6E6FA;
-    color:gray;
-
+a{
+    text-decoration: none;
 }
 
 .Box-shodown{
@@ -214,10 +195,11 @@ body{
 .opacity_dropdown{
     position: fixed;
     background-color: gray;
-    height: 95vh;
+    height: 100vh;
     width: 100%;
-    bottom:0;
-    z-index: 4 !important;
+    top:0;
+    z-index: 4
+    !important;
     opacity: 0.6;
     display: none;
 }
@@ -296,7 +278,7 @@ body{
 
 }
 .menu1 a{
-    color:white; font-size: 24px; position: relative; top:5px; text-decoration: none;
+     font-size: 24px; position: relative; top:5px; text-decoration: none;
 }
 .card ,.favority , .language{
     position: relative;
@@ -460,10 +442,12 @@ input[name='searchres']{
     position: relative;
     top:-5px;
     background-color: #708090;
-border:none;
-    border-bottom:1px solid;
+    border:none;
+    border-bottom: 1px solid;
     display: inline-block;
-    color: white;
+    color:  #E6E6FA;
+
+
 }
 .kerkimresponse{
     z-index: 1 !important;
@@ -487,9 +471,13 @@ html>/**/body .kerkim, x:-moz-any-link {
 .imgsearch{
     position: relative;
     left: 8px;
-    top:1px;
+    top:-2px;
 
 
+}
+.header-icon-right {
+
+    background-color: green;
 }
 
 #search{
@@ -591,7 +579,7 @@ input[name='respondesearch']:focus{
 }
 
 input[name='search']::-webkit-input-placeholder {
-    color:white;
+    color:#E6E6FA;
 }
 input[name='respondesearch']:focus::-webkit-input-placeholder {
     color:white;
@@ -612,14 +600,14 @@ input[name='search']:focus{
 
 
 input[name='search']:focus::-webkit-input-placeholder {
-    color:	white;
+    color:#E6E6FA;
 
 }
 input[name='search']:focus:-moz-placeholder {
     color:	white;
 }
 input[name='search']:focus:-ms-input-placeholder {
-    color:		white;
+
 }
 input[name='search']:focus {
     width: 450px;
@@ -880,9 +868,10 @@ input[name='search']:focus {
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     border-radius: 3px;
-    z-index: 11 !important;
+
 }
 .dropfavority{
+    z-index: 10 !important;
     position: relative;
     width: 700px;
     left: -27px;
@@ -896,6 +885,7 @@ input[name='search']:focus {
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     border-radius: 3px;
+
 }
 
 .lang a{

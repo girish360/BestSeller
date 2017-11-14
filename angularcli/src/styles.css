@@ -31,9 +31,17 @@ body{
     color:gray;
 
 }
+
 a{
-    color: white;
+    color: #E6E6FA;
+    text-decoration: none;
 }
+.glyphicon{
+    color: #E6E6FA;
+    text-decoration: none;
+}
+
+
 
 /* Begin css for category profile user here ....................................................................................................*/
 
@@ -263,10 +271,12 @@ body::-webkit-scrollbar-thumb {
 }
 .catgow{
     position: relative;
-    left: 12px;
+    left: 15px;
     top: 6px;
     display: inline-block;
     width: 15px;
+   color: gray;
+    font-size: 20px;
 }
 
 

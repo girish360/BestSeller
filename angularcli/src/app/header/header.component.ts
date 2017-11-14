@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
+
 declare var $:any;
 @Component({
   selector: 'app-header',
@@ -8,9 +11,13 @@ declare var $:any;
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+
+
+
+
     $(document).ready(function(){
       var nameposition='language';
       focus();
@@ -304,9 +311,13 @@ export class HeaderComponent implements OnInit {
 
       $('.language').click(function(){
         var name = $(this).attr('id');
+
+        give_color_icon_header('gh-header' , $(this).find('.gh-header') , language);
+
         nameposition=name;
         findposition(name);
         if(language==0){
+
           $('.opacity_dropdown').fadeIn();
           static_click = 'language';
           closecontainere(language,static_click);
@@ -331,6 +342,7 @@ export class HeaderComponent implements OnInit {
       });
       $('.card').click(function(){
         var name = $(this).attr('id');
+        give_color_icon_header('gh-header' , $(this).find('.gh-header') , card);
         nameposition=name;
         findposition(name);
         if(card==0){
@@ -356,6 +368,7 @@ export class HeaderComponent implements OnInit {
 
       $('.favority').click(function(){
         var name = $(this).attr('id');
+        give_color_icon_header('gh-header' , $(this).find('.gh-header') , favority);
         nameposition=name;
         findposition(name);
         if(favority==0){
@@ -383,6 +396,7 @@ export class HeaderComponent implements OnInit {
 
       $('.pictureuser').click(function(){
         var name = $(this).attr('id');
+
         nameposition=name;
         findposition(name);
         if(more==0){
@@ -445,6 +459,7 @@ export class HeaderComponent implements OnInit {
 
           $('.treguesi').hide();
           $('.opacity_dropdown').fadeOut();
+          give_color_icon_header('gh-header' , $(this).find('.gh-header') , '1');
         }
         if($(e.target).closest('.details_products_container, .button_footer_products, .more_detail_product,#map').length==0){
           hide_details_product();
@@ -711,6 +726,15 @@ export class HeaderComponent implements OnInit {
 
 
       }// ..................................................................end
+
+      function give_color_icon_header( all , single , status){
+
+        $('.'+all).css({color:'#E6E6FA'});
+        if(status==0) {
+          single.css({ color: 'white' , zIndex: '10'});
+        }
+
+      }
     });
   }
 

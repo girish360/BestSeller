@@ -1,5 +1,42 @@
 /* Begin css for category profile user here ....................................................................................................*/
+a{
+    color: gray;
+    text-decoration: none;
+}
 
+.users-in-category{
+    width: 89%;
+    margin: 0px auto;
+
+
+}
+.user-icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 150px;
+    background-color: gray;
+    opacity: 0.3;
+    display: inline-block;
+    border:2px solid;
+    border-style: dotted;
+    color: red;
+
+
+}
+.write_login_register{
+    display: inline-block;
+    position: relative;
+    top: -12px;
+    left: 10px;
+
+}
+.user-icon:hover{
+    background-color: green;
+
+}
+.name-user-category{
+    font-size: 20px;
+}
 .category{
     z-index: 2 !important;
     position: fixed;
@@ -236,6 +273,12 @@ body::-webkit-scrollbar-thumb {
     top: 6px;
     right: 0px;
 }
+.user-category_icon{
+
+    font-size: 42px;
+    margin-left: 2px;
+}
+
 .widthcat{
     width: 97%;
 }
@@ -254,6 +297,7 @@ body::-webkit-scrollbar-thumb {
     top: 6px;
     display: inline-block;
     width: 15px;
+
 }
 
 
