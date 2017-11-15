@@ -2,25 +2,171 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e14b9dbf-ee1a-4b7f-90da-30f0834a13a1" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/classlogin.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/conn.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/connection/conn.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/css/css_login/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/css/css_user_profile/usercategory.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/css/css_user_profile/userchat.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/css/css_user_profile/userpage.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/1234.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/Icon-user.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/Shopping-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/action.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/add.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/albania.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/atomic.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/b3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/back.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/bc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/canada.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/car.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/card.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/chat.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/city.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/close1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/closesubcat.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/country.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/email2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/england.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/exit.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/fblogin-btn.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/france.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/germany.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/greece.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/help.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/italy.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/jeep.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/key.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/klo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/list.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/load.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/loading.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/more.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/morecat.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/name.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/number.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/ok.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/phone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/preloader.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/search.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/search1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/sign.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/spain.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/street.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/tractor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/turkey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/wish.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/images/world.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/jquery-1.9.1.min.js.download" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/jquery-3.1.1.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/jquery-3.2.1.min .js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/js_login/login.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/js_userprofile/category.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/js_userprofile/dropdown_header_chat.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/js_userprofile/jquery-1.9.1.min.js.download" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/js_userprofile/language_more.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/js_userprofile/products.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/js/js_userprofile/requestchecksession.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/ngjyra iconave.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/category_and_subscribe.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/class_connection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/css/css_login/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/css/css_products/style_products.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/1234.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/Icon-user.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/b1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/b2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/b3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/bm1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/bm2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/bm3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/klo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/klodian (2).jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/klodian.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/ok.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/p1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/p2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/p3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/image_products/show.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/1234.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/Icon-user.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/Shopping-icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/action.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/add.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/albania.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/b3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/back.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/back_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/bc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/big.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/canada.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/car.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/card.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/chat.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/city.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/close.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/closesubcat.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/country.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/delete.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/drop1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/email2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/england.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/fblogin-btn.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/france.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/germany.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/greece.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/help.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/italy.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/key.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/klo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/list.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/load.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/loading.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/minimize.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/more.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/morecat.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/name.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/not.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/number.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/phone.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/preloader.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/remove.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/search.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/search1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/searchcompany.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/settings.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/sign.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/sort-down.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/spain.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/street.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/tractor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/turkey.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/under_category.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/up.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/wish.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/images/world.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/js/jquery-3.1.1.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/js/jquery.zoom.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/js/js_login/login.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/js/js_userprofile/jquery-1.9.1.min.js.download" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/js/js_userprofile/requestchecksession.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/products/class_connection.php" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server_PHP/database.sql" afterPath="$PROJECT_DIR$/Server_PHP/connection_db/database.sql" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Server_PHP/fbConfig.php" afterPath="$PROJECT_DIR$/Server_PHP/facebook-php-sdk/fbConfig.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php" afterPath="$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/products/products.php" afterPath="$PROJECT_DIR$/Server_PHP/userprofile/products/products.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/.angular-cli.json" afterPath="$PROJECT_DIR$/angularcli/.angular-cli.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/app.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/app.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/app.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/app.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/package-lock.json" afterPath="$PROJECT_DIR$/angularcli/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/package.json" afterPath="$PROJECT_DIR$/angularcli/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/app.module.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/app.module.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/app.router.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/app.router.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/header/header.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/header/header.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/styles.css" afterPath="$PROJECT_DIR$/angularcli/src/styles.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,49 +187,32 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="header.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.ts">
+      <file leaf-file-name="header.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2516">
-              <caret line="150" column="51" lean-forward="false" selection-start-line="150" selection-start-column="51" selection-end-line="150" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#50#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#58#0" expanded="true" />
-                <marker date="1510607932782" expanded="true" signature="817:833" ph="[...]" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".angular-cli.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/.angular-cli.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+            <state relative-caret-position="220">
+              <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.router.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.router.ts">
+      <file leaf-file-name="singin-singup.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="220">
+              <caret line="41" column="48" lean-forward="false" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -91,18 +220,18 @@
       <file leaf-file-name="client-products.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+            <state relative-caret-position="489">
+              <caret line="54" column="16" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client-products.component.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts">
+      <file leaf-file-name="header.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+            <state relative-caret-position="415">
+              <caret line="583" column="12" lean-forward="false" selection-start-line="583" selection-start-column="12" selection-end-line="583" selection-end-column="12" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -110,109 +239,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classlangugage.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php">
+      <file leaf-file-name="categorys-subscribes.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="products.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/products/products.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6409">
-              <caret line="377" column="76" lean-forward="false" selection-start-line="377" selection-start-column="3" selection-end-line="377" selection-end-column="76" />
+            <state relative-caret-position="-17">
+              <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
               <folding>
-                <marker date="1510339563182" expanded="true" signature="549:588" ph="SELECT * fro... products" />
-                <marker date="1510339563182" expanded="true" signature="764:816" ph="SELECT * fro... products" />
-                <marker date="1510339563182" expanded="true" signature="1079:1134" ph="SELECT * fro... image_products" />
-                <marker date="1510339563182" expanded="true" signature="1458:1504" ph="SELECT * fro... adminat" />
-                <marker date="1510339563182" expanded="true" signature="1730:1779" ph="SELECT * fro... products" />
-                <marker date="1510339563182" expanded="true" signature="5831:5880" ph="SELECT * fro... products" />
-                <marker date="1510339563182" expanded="true" signature="6587:6685" ph="SELECT * FRO... products" />
-                <marker date="1510339563182" expanded="true" signature="7000:7135" ph="SELECT * fro... products" />
-                <marker date="1510339563182" expanded="true" signature="8374:8693" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="8386:8589" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="8458:8585" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="8487:8579" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="8812:9131" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="8824:9027" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="8896:9023" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="8925:9017" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="10383:10706" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="10395:10602" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="10467:10598" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="10496:10592" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="11171:11446" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="11183:11391" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="11255:11387" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="11284:11381" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="12324:12647" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="12336:12543" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="12408:12539" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="12437:12533" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="12864:13192" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="12876:13088" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="12948:13084" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="12977:13078" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="14352:14631" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="14364:14576" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="14436:14572" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="14465:14566" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="15658:15992" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="15670:15888" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="15742:15884" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="15771:15878" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="17607:17930" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="17619:17826" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="17691:17822" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="17720:17816" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="18069:18392" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="18081:18288" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="18153:18284" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="18182:18278" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="18923:19246" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="18935:19142" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="19007:19138" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="19036:19132" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="19409:19732" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="19421:19628" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="19493:19624" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="19522:19618" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="21584:21907" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="21596:21803" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="21668:21799" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="21697:21793" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="22037:22360" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="22049:22256" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="22121:22252" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="22150:22246" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="22634:22957" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="22646:22853" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="22718:22849" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="22747:22843" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="23120:23443" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="23132:23339" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="23204:23335" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="23233:23329" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="26570:26893" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="26582:26789" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="26654:26785" ph="..." />
-                <marker date="1510339563182" expanded="true" signature="26683:26779" ph="..." />
+                <marker date="1510745794198" expanded="true" signature="23955:23984" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cookies.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Server_PHP/Session_Cookie/Cookies.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="categorys-subscribes.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client-products.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Route_Http.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="471">
+              <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -221,17 +297,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hide-login</find>
-      <find>gly</find>
-      <find>.language</find>
-      <find>E6E6FA</find>
-      <find>input</find>
-      <find>favorit</find>
-      <find>dropfavority</find>
-      <find>.widthi</find>
-      <find>opacity_dr</find>
-      <find>numberkategory</find>
-      <find>users-in-category</find>
       <find>catgow</find>
       <find>kerkim</find>
       <find>imgsearch</find>
@@ -251,6 +316,17 @@
       <find>login</find>
       <find>loginadhija</find>
       <find>loginandhija</find>
+      <find>send_re</find>
+      <find>listcategory</find>
+      <find>up.pn</find>
+      <find>up</find>
+      <find>u</find>
+      <find>up.png</find>
+      <find />
+      <find>listca</find>
+      <find>category_and_subscr</find>
+      <find>category_and_subsc</find>
+      <find>alert</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -259,8 +335,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/classlogin.php" />
-        <option value="$PROJECT_DIR$/angularcli/ServerFile/classlogin.php" />
         <option value="$PROJECT_DIR$/laravel/routes/web.php" />
         <option value="$PROJECT_DIR$/angularcli/src/index.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/login_register/login_register.component.ts" />
@@ -271,7 +345,6 @@
         <option value="$PROJECT_DIR$/angularcli/.angular-cli.json" />
         <option value="$PROJECT_DIR$/angularcli/src/assets/Server/classlogin.php" />
         <option value="$PROJECT_DIR$/angularcli/src/assets/Server/css/css_user_profile/userpage.css" />
-        <option value="$PROJECT_DIR$/Server_PHP/classlogin.php" />
         <option value="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.spec.ts" />
         <option value="$PROJECT_DIR$/Server_PHP/userprofile/checkuserprofile.php" />
         <option value="$PROJECT_DIR$/Server_PHP/css/css_login/style.css" />
@@ -280,30 +353,39 @@
         <option value="$PROJECT_DIR$/angularcli/protractor.conf.js" />
         <option value="$PROJECT_DIR$/angularcli/webpack.config.js" />
         <option value="$PROJECT_DIR$/Server_PHP/js/js_userprofile/dropdown_header_chat.js" />
-        <option value="$PROJECT_DIR$/Server_PHP/userprofile/category_and_subscribe.php" />
         <option value="$PROJECT_DIR$/angularcli/src/app/app.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/about/about.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/app.router.ts" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/styles.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" />
         <option value="$PROJECT_DIR$/Server_PHP/userprofile/products/products.php" />
         <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/app.component.html" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.html" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/Server_PHP/database.sql" />
         <option value="$PROJECT_DIR$/angularcli/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" />
         <option value="$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/userprofile/class_connection.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/Http_Request/Route_Auth.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/classlogin.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/Auth_Register_user/Auth_Register_user.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/userprofile/category_and_subscribe.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/Category_Subscribe_and_Products/Category_Subscribe.php" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" />
+        <option value="$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/Session_Cookie/Cookies.php" />
       </list>
     </option>
   </component>
@@ -338,7 +420,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -369,7 +451,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userprofile" />
+              <option name="myItemId" value="Session_Cookie" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -387,29 +469,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userprofile" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="products" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BestSeller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BestSeller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Server_PHP" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="Http_Request" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -464,6 +524,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BestSeller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angularcli" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="singin-singup" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -547,7 +633,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -556,12 +642,14 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\ServerFile" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\assets" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\ServerFile" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\BestSeller\Server_PHP\connection_db" />
+      <recent name="C:\xampp\htdocs\BestSeller\Server_PHP\facebook-php-sdk" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\assets" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src" />
     </key>
@@ -691,33 +779,34 @@
       <workItem from="1510517438337" duration="5451000" />
       <workItem from="1510585956777" duration="17748000" />
       <workItem from="1510642773704" duration="86000" />
+      <workItem from="1510665575292" duration="46618000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="349657000" />
+    <option name="totallyTimeSpent" value="396275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1612" height="876" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2261598" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26417527" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -731,7 +820,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22300771" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26417527" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969153" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -749,109 +838,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/karma.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/.editorconfig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/protractor.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="74" column="4" lean-forward="false" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="647" column="17" lean-forward="true" selection-start-line="647" selection-start-column="17" selection-end-line="647" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/class_connection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/products/class_connection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/details_products.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/node_modules/jquery/src/ajax/parseXML.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/node_modules/jquery/src/ajax/jsonp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/node_modules/jquery/src/ajax/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/class_search_company.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -863,13 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/classlogin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -951,13 +935,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1720">
-          <caret line="111" column="29" lean-forward="false" selection-start-line="111" selection-start-column="29" selection-end-line="111" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -979,38 +956,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20570">
-          <caret line="1210" column="7" lean-forward="false" selection-start-line="1210" selection-start-column="7" selection-end-line="1210" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
           <caret line="62" column="23" lean-forward="false" selection-start-line="62" selection-start-column="23" selection-end-line="62" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="6" lean-forward="false" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1021,130 +970,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2516">
-          <caret line="150" column="51" lean-forward="false" selection-start-line="150" selection-start-column="51" selection-end-line="150" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/products/products.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6409">
           <caret line="377" column="76" lean-forward="false" selection-start-line="377" selection-start-column="3" selection-end-line="377" selection-end-column="76" />
-          <folding>
-            <marker date="1510339563182" expanded="true" signature="549:588" ph="SELECT * fro... products" />
-            <marker date="1510339563182" expanded="true" signature="764:816" ph="SELECT * fro... products" />
-            <marker date="1510339563182" expanded="true" signature="1079:1134" ph="SELECT * fro... image_products" />
-            <marker date="1510339563182" expanded="true" signature="1458:1504" ph="SELECT * fro... adminat" />
-            <marker date="1510339563182" expanded="true" signature="1730:1779" ph="SELECT * fro... products" />
-            <marker date="1510339563182" expanded="true" signature="5831:5880" ph="SELECT * fro... products" />
-            <marker date="1510339563182" expanded="true" signature="6587:6685" ph="SELECT * FRO... products" />
-            <marker date="1510339563182" expanded="true" signature="7000:7135" ph="SELECT * fro... products" />
-            <marker date="1510339563182" expanded="true" signature="8374:8693" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="8386:8589" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="8458:8585" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="8487:8579" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="8812:9131" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="8824:9027" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="8896:9023" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="8925:9017" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="10383:10706" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="10395:10602" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="10467:10598" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="10496:10592" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="11171:11446" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="11183:11391" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="11255:11387" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="11284:11381" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="12324:12647" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="12336:12543" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="12408:12539" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="12437:12533" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="12864:13192" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="12876:13088" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="12948:13084" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="12977:13078" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="14352:14631" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="14364:14576" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="14436:14572" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="14465:14566" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="15658:15992" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="15670:15888" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="15742:15884" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="15771:15878" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="17607:17930" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="17619:17826" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="17691:17822" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="17720:17816" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="18069:18392" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="18081:18288" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="18153:18284" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="18182:18278" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="18923:19246" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="18935:19142" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="19007:19138" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="19036:19132" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="19409:19732" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="19421:19628" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="19493:19624" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="19522:19618" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="21584:21907" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="21596:21803" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="21668:21799" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="21697:21793" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="22037:22360" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="22049:22256" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="22121:22252" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="22150:22246" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="22634:22957" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="22646:22853" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="22718:22849" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="22747:22843" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="23120:23443" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="23132:23339" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="23204:23335" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="23233:23329" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="26570:26893" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="26582:26789" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="26654:26785" ph="..." />
-            <marker date="1510339563182" expanded="true" signature="26683:26779" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/category_and_subscribe.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="64" column="43" lean-forward="true" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="37" lean-forward="false" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.router.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1163,14 +993,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
+    <entry file="file://$PROJECT_DIR$/Server_PHP/connection_db/database.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-            <marker date="1510607932782" expanded="true" signature="817:833" ph="[...]" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" column="41" lean-forward="true" selection-start-line="1" selection-start-column="41" selection-end-line="1" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1182,21 +1009,249 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.router.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#52#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="16" lean-forward="false" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/facebook-php-sdk/fbConfig.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/class_connection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/Session_Cookie/Session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/Http_Request/Route_Auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="121" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/classlogin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="269" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/products/class_connection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/category_and_subscribe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="62" column="2" lean-forward="true" selection-start-line="62" selection-start-column="2" selection-end-line="62" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="39" lean-forward="true" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/Auth_Register_user/Auth_Register_user.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" lean-forward="true" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+          <folding>
+            <marker date="1510744280066" expanded="true" signature="264:308" ph="SELECT * fro... users" />
+            <marker date="1510744280066" expanded="true" signature="669:711" ph="SELECT * fro... users" />
+            <marker date="1510744280066" expanded="true" signature="937:1000" ph="SELECT email... users" />
+            <marker date="1510744280066" expanded="true" signature="1218:1382" ph="INSERT into users... " />
+            <marker date="1510744280066" expanded="true" signature="1565:1618" ph="SELECT emai adminat" />
+            <marker date="1510744280066" expanded="true" signature="1850:1900" ph="SELECT id fr... users" />
+            <marker date="1510744280066" expanded="true" signature="2278:2319" ph="SELECT * fro... users" />
+            <marker date="1510744280066" expanded="true" signature="2899:3033" ph="SELECT * FRO... ${$this-&gt;userTbl}" />
+            <marker date="1510744280066" expanded="true" signature="3781:4243" ph="INSERT INTO ${$this-&gt;userTbl}... " />
+            <marker date="1510744280066" expanded="true" signature="4672:4740" ph="UPDATE users... " />
+            <marker date="1510744280066" expanded="true" signature="4962:5336" ph="..." />
+            <marker date="1510744280066" expanded="true" signature="4976:5077" ph="..." />
+            <marker date="1510744280066" expanded="true" signature="5091:5321" ph="..." />
+            <marker date="1510744280066" expanded="true" signature="6003:6092" ph="SELECT id fr... users" />
+            <marker date="1510744280066" expanded="true" signature="6689:7052" ph="INSERT INTO adminat... " />
+            <marker date="1510744280066" expanded="true" signature="7205:7274" ph="UPDATE admin... " />
+            <marker date="1510744280066" expanded="true" signature="7736:8094" ph="..." />
+            <marker date="1510744280066" expanded="true" signature="7750:7842" ph="..." />
+            <marker date="1510744280066" expanded="true" signature="7856:8079" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/Category_Subscribe_and_Products/Category_Subscribe.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding>
+            <marker date="1510745771312" expanded="true" signature="518:544" ph="SELECT * FRO... categorytype" />
+            <marker date="1510745771312" expanded="true" signature="1424:1496" ph="SELECT * fro... allcategory_item" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="31" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="41" column="48" lean-forward="false" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/assets/images/up.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="54" column="16" lean-forward="true" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+          <folding>
+            <marker date="1510745794198" expanded="true" signature="23955:23984" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="583" column="12" lean-forward="false" selection-start-line="583" selection-start-column="12" selection-end-line="583" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="47" lean-forward="true" selection-start-line="28" selection-start-column="47" selection-end-line="28" selection-end-column="47" />
+        <state relative-caret-position="459">
+          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="24" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="136" column="0" lean-forward="false" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/Session_Cookie/Cookies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>

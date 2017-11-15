@@ -1,14 +1,13 @@
 <?php
 header('Access-Control-Allow-Origin:*');
 
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
+$email = $request->name;
+$pass = $request->age;
 
+echo json_encode(array('asd'=>$request));
 
-    $postdata = file_get_contents("php://input");
-
-    $request = json_decode($postdata,true);
-    @$email = $request->name;
-    @$pass = $request->age;
-    echo json_encode(array('name'=>$email,'age'=>$pass));
 
 
 
