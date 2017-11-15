@@ -34,16 +34,16 @@ export class CategorysSubscribesComponent implements OnInit {
       var max_cat=0;
       var max_sub=0;
 
-      var Response;
+      var Server_path_http='http://localhost/bestseller/Server_PHP/Http_Request/Route_Http.php'; //  path where go requests .. ..
+      var Data = ''; // data is to send data in server .........
+      var Status = ''; // status is for identify  what kind of http is requests post or get
+      var Response;  // response from server ....
 
-      var Server_path='http://localhost';
 
-      var Path; var Data; var Status;
       var default_data = 1;
-      Path = Server_path+'/bestseller/Server_PHP/userprofile/category_and_subscribe.php';
       Data = 'get_category='+default_data;
       Status = 'GET';
-      Send_Request_In_Server( Path , Data , Status );
+      Send_Request_In_Server( Server_path_http , Data , Status );
 
 
 
@@ -673,6 +673,7 @@ export class CategorysSubscribesComponent implements OnInit {
 
       }
       function success_response() {
+
         if(Response.status == 'get_category'){
           Put_Category_Element();
         }

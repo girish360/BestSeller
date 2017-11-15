@@ -5,6 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 
+declare  var $:any;
 @Injectable()
 @Component({
   selector: 'app-client-products',
@@ -20,20 +21,18 @@ export class ClientProductsComponent implements OnInit {
   ngOnInit() {
 
 
-
-
-
       const headers = new HttpHeaders();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+      headers.append('Content-Type', 'application/json');
+      headers.append('Accept', 'text/plain');
 
       const obj = { name: 'gabriel', age: 20 };
-      const body = 'data=' + JSON.stringify(obj);
+      const body = JSON.stringify(obj);
 
       this.http.post('http://localhost/bestseller/server_PHP/userprofile/classlangugage.php',
           body,
           { headers })
           .subscribe( HttpResponse => console.log(HttpResponse)
-          ,(error)=>(console.log(error.status))
+          ,(error)=>(console.log(error.error))
           );
 
 

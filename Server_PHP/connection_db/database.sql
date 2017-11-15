@@ -1,6 +1,5 @@
 
-
-#administrators or account for Company.............
+CREATE DATABASE IF NOT EXISTS world_sell;
 
 create table adminat (
   `id` int NOT NULL primary key AUTO_INCREMENT,
@@ -24,7 +23,7 @@ create table adminat (
 );
 
 
-#table for users...............
+
 
 create table users(
 
@@ -48,7 +47,7 @@ create table users(
 
 );
 
-#table for image slide_show for profile company 
+
 
 create table image_slide_company(
      `id` int not null primary key AUTO_INCREMENT,
@@ -56,7 +55,7 @@ create table image_slide_company(
      `image` varchar(255)
 );
 
-#table for Category_Company 
+
 
 create table Category_Company(
    `id` int not null primary key AUTO_INCREMENT,
@@ -79,7 +78,7 @@ create table categorytype(
 
 );
 
-#table for products........
+
 
 create table products(
 
@@ -94,7 +93,7 @@ create table products(
   `date`  TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP
 );
 
-#table comment like see for product 
+
 
 create table comment_products(
   `id` int not null primary key AUTO_INCREMENT,
@@ -104,7 +103,7 @@ create table comment_products(
   `see` int(11)
 );
 
-#table for image_products...
+
 
 create table image_products(
 
@@ -113,7 +112,7 @@ create table image_products(
   `image` varchar(255)
 );
 
-#table for order .........
+
 
 create table orders(
    `id` int not null primary key AUTO_INCREMENT,
@@ -123,7 +122,7 @@ create table orders(
    
 );
 
-# table for orderdetails......
+
 
 create table orderdetails(
    `id` int not null primary key AUTO_INCREMENT,
@@ -136,7 +135,6 @@ create table orderdetails(
    `date`  TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP
 );
 
-#table for sponsorised......
 
 create table sponsorised(
   `id` int not null primary key AUTO_INCREMENT, 
@@ -145,7 +143,7 @@ create table sponsorised(
   
 );
 
-#table for subscribe ......
+
 
 create table followers(
 `id` int not null primary key AUTO_INCREMENT, 
@@ -153,7 +151,7 @@ create table followers(
 `id_user` int(11) 
 );
 
-#table for chat ........
+
 
 create table chat(
  `id` int not null primary key AUTO_INCREMENT, 
@@ -164,7 +162,7 @@ create table chat(
  );
 
 
-# insert categorytype add  default category here 
+
 
 insert into categorytype(name_category,language)values('Automjete','albanian'),
                                                       ('vehicles','english'),
@@ -184,8 +182,8 @@ insert into categorytype(name_category,language)values('Automjete','albanian'),
 insert into allcategory_item(name_category,language,id_categorytype)values('Vetura','albanian','1'),
                                                                           ('Fugona','albanian','1'),
                                                                           ('Kamiona','albanian','1'),
-                                                                          ('Motoçiklet','albanian','1'),
-                                                                          ('Biçikleta','albanian','1'),
+                                                                          ('Motociklet','albanian','1'),
+                                                                          ('Bicikleta','albanian','1'),
                                                                           ('Vehicles','english','2'),
                                                                           ('Fugona','english','2'),
                                                                           ('Trucks','english','2'),

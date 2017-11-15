@@ -3,7 +3,6 @@ import { Component, OnInit} from '@angular/core';
 declare var $:any;
 
 
-
 @Component({
   selector: 'app-singin-singup',
   templateUrl: './singin-singup.component.html',
@@ -46,17 +45,17 @@ export class SinginSingupComponent implements OnInit {
       var Error_Value;
 
       //variable for send request in server .......
-      var Path ='';
-      var Data = '';
-      var Status = '';
-      var Response;
+      var Server_path_http='http://localhost/bestseller/Server_PHP/Http_Request/Route_Http.php'; //  path where go requests .. ..
+      var Data = ''; // data is to send data in server .........
+      var Status = ''; // status is for identify  what kind of http is requests post or get
+      var Response;  // response from server ....
       //end
       var radiotypelogin=0;
       var value_input='';
 
       var nrconfirm=0;
 
-      var Server_path='http://localhost';
+
       showlogin();
 
       $('#radiotypelogin1').attr('checked',true);
@@ -210,10 +209,9 @@ export class SinginSingupComponent implements OnInit {
           }
           else{  /// send email in server ..............................................................................
             zerovariablat(); // empty variable ....
-            Path = Server_path+'/bestseller/Server_PHP/classlogin.php';
             Data = 'email='+val;
             Status='GET';
-            Send_Request_In_Server( Path , Data , Status); // call function  to make request in server .........
+            Send_Request_In_Server( Server_path_http , Data , Status); // call function  to make request in server .........
           }
         }
         else{ // here is login for business...............
@@ -320,10 +318,10 @@ export class SinginSingupComponent implements OnInit {
 
               First_array_singup_user[3]='icon-user.png';
               // send request in server ......
-              Path = Server_path+'/bestseller/Server_PHP/classlogin.php';
+
               Data = 'arraydatauser='+First_array_singup_user;
               Status='GET';
-              Send_Request_In_Server( Path , Data , Status ); // call function  to make request in server .........
+              Send_Request_In_Server( Server_path_http , Data , Status ); // call function  to make request in server .........
             }
             else{  //Bussinness Account here  sign up  data are valid create array and send in server  .........................................
               $('.input2').each(function(){
@@ -1380,10 +1378,14 @@ export class SinginSingupComponent implements OnInit {
             type: Status,
             url: Path,
             data: Data,
+            dataType: 'json',
+
 
             success:function(data){
 
               Response = data;
+
+
 
               success_response(); // call function success
 
@@ -1493,7 +1495,7 @@ export class SinginSingupComponent implements OnInit {
             Status = 'Blue';
             loading_Submit_Red_Blue(Status);
 
-            var result = $.parseJSON(Response); // get data json ..............................................................................
+            // get data json ..............................................................................
 
             $('.name').html('');
             $('.last').html('');
@@ -1501,18 +1503,18 @@ export class SinginSingupComponent implements OnInit {
             $('.emm').html('');
             $('.emmm').html('');
             $('.phone').html('');
-            $('.name').append(result['emri']);
-            $('.last').append(result['mbiemri']);
-            $('.em').append(result['email']);
-            $('.emm').append(result['email']);
-            $('.emmm').append(result['email']);
-            $('.phone').append(result['phone']);
+            $('.name').append(Response['first_name']);
+            $('.last').append(Response['last_name']);
+            $('.em').append(Response['email']);
+            $('.emm').append(Response['email']);
+            $('.emmm').append(Response['email']);
+            $('.phone').append(Response['phone']);
             $('.closelogin').slideUp();
             $('.error').slideUp();
             $('.next').slideDown(function () {
               $('.imguser').hide();
               $('.writetypelogin').hide();
-              $('.logo1').append('<img class="imguse" src="' + result['foto'] + '"/>');
+              $('.logo1').append('<img class="imguse" src="../../assets/images/'+Response['picture']+'"/>');
               $('.imguse').css({width: "0px", height: '120px'});
               $('.imguse').animate({
                 width: '100%',

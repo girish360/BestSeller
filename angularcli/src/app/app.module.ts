@@ -30,7 +30,7 @@ import { ClientProductsComponent } from './client-products/client-products.compo
     routes,
       HttpClientModule
   ],
-  providers: [ClientProductsComponent],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

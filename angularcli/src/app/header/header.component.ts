@@ -32,6 +32,10 @@ export class HeaderComponent implements OnInit {
       var numberpassicoractiv;
       var nrclicksearchresponse=0;
       var static_click = '';
+      var Server_path_http='http://localhost/bestseller/Server_PHP/Http_Request/Route_Http.php'; //  path where go requests .. ..
+      var Data = ''; // data is to send data in server .........
+      var Status = ''; // status is for identify  what kind of http is requests post or get
+      var Response;  // response from server ....
 
 
       $(window).bind("load", function() {
@@ -39,10 +43,12 @@ export class HeaderComponent implements OnInit {
           var cookie_menu = 'cookie_menu';
           $.ajax({
             type:'GET',
-            url:'category_and_subscribe.php',
+            url:Server_path_http,
             data:'check_cookie_menu='+cookie_menu,
             success:function(data){
+alert(data);
               if(data==1){
+
                 actuallist=1;
 
                 $('.containere').addClass('newcontainere');
@@ -60,7 +66,7 @@ export class HeaderComponent implements OnInit {
 
           });
 
-        },800);
+        },100);
       });
 
 
@@ -572,10 +578,10 @@ export class HeaderComponent implements OnInit {
         var cookie_menu = 'cookie_menu';
         $.ajax({
           type:'GET',
-          url:'category_and_subscribe.php',
+          url:Server_path_http,
           data:'cookie_menu='+cookie_menu,
           success:function(data){
-
+alert(data);
           },
           error:function(){
 
@@ -618,10 +624,10 @@ export class HeaderComponent implements OnInit {
           var cookie_menu = 'cookie_menu';
           $.ajax({
             type:'GET',
-            url:'category_and_subscribe.php',
+            url:Server_path_http,
             data:'cookie_menu='+cookie_menu,
             success:function(data){
-
+alert(data);
             },
             error:function(){
 
