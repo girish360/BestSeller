@@ -14,10 +14,6 @@ export class HeaderComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-
-
-
-
     $(document).ready(function(){
       var nameposition='language';
       focus();
@@ -41,31 +37,9 @@ export class HeaderComponent implements OnInit {
       $(window).bind("load", function() {
         setTimeout(function(){
           var cookie_menu = 'cookie_menu';
-          $.ajax({
-            type:'GET',
-            url:Server_path_http,
-            data:'check_cookie_menu='+cookie_menu,
-            success:function(data){
-alert(data);
-              if(data==1){
-
-                actuallist=1;
-
-                $('.containere').addClass('newcontainere');
-                $('.space').addClass('newspace');
-                $('.listcategory').hide();
-                $('.closelist').show();
-                show_category_menu();
-
-              }else{
-              }
-            },
-            error:function(){
-
-            }
-
-          });
-
+          Data = 'check_cookie_menu='+cookie_menu;
+          Status = 'GET';
+           Send_Request_In_Server( Server_path_http , Data , Status ); // call method that send http request to check cookie menu ................
         },100);
       });
 
@@ -126,7 +100,7 @@ alert(data);
 
           },500);
 
-          actuallist=0;
+
 
 
         }
@@ -149,7 +123,7 @@ alert(data);
             $('.containere').removeClass('newcontainerechat');
             $('.space').removeClass('newspacechat');
 
-            actualchat=0;
+
           }
 
 
@@ -173,7 +147,7 @@ alert(data);
 
 
 
-          actuallist=1;
+
 
 
 
@@ -194,7 +168,7 @@ alert(data);
 
           if(actuallist==1){
             hide_category_menu(width); // call function hide category menu ..........................
-            actuallist=0;
+
           }
 
           $('.containere').removeClass('newcontainere');
@@ -210,7 +184,7 @@ alert(data);
           $('.space').removeClass('exitspacechat');
           $('.containere').removeClass('exitcalculationchat');
 
-          actualchat=1;
+
         }
         else{
           static_click='openchat';
@@ -231,7 +205,7 @@ alert(data);
             $('.space').removeClass('newspacechat');
 
           },100);
-          actualchat=0;
+
 
         }
       });
@@ -559,6 +533,11 @@ alert(data);
       } // ............................................... end
 
       function show_category_menu(){ //  function for show category menu and subsribe  when user click show menu call this function for show with animate ............................
+        actuallist = 1;
+        $('.containere').addClass('newcontainere');
+        $('.space').addClass('newspace');
+        $('.listcategory').hide();
+        $('.closelist').show();
         $('.category , .under_category ,.searchsubscribe,.loadersubscribe').animate({
           left:"0px"
         },"fast");
@@ -576,23 +555,14 @@ alert(data);
         $('.all_show_multiple').hide();
 
         var cookie_menu = 'cookie_menu';
-        $.ajax({
-          type:'GET',
-          url:Server_path_http,
-          data:'cookie_menu='+cookie_menu,
-          success:function(data){
-alert(data);
-          },
-          error:function(){
-
-          }
-
-        });
+        Data = 'cookie_menu='+cookie_menu;
+        Status = 'GET';
+        Send_Request_In_Server( Server_path_http , Data ,Status); // method to send data in server ......
 
       } // ............................................ end
 
       function hide_category_menu(width_function){ // function for hide category menu when user click for close it  call this function with animate ...........................
-
+        actuallist = 0;
         if(width_function<800){
           $('.listcategory').css("display","block");
           $('.closelist').css("display","none");
@@ -622,18 +592,9 @@ alert(data);
           $('.all_show_multiple_open').hide();
 
           var cookie_menu = 'cookie_menu';
-          $.ajax({
-            type:'GET',
-            url:Server_path_http,
-            data:'cookie_menu='+cookie_menu,
-            success:function(data){
-alert(data);
-            },
-            error:function(){
-
-            }
-
-          });
+          Data = 'cookie_menu='+cookie_menu;
+          Status = 'GET';
+          Send_Request_In_Server( Server_path_http , Data , Status ); // method to send data in server ......
 
         }
 
@@ -740,6 +701,41 @@ alert(data);
           single.css({ color: 'white' , zIndex: '10'});
         }
 
+      }
+      function Send_Request_In_Server( Server_path_http , Data , Status) { // function for send http request POST and GET in SERVER .......
+           if (Status == 'GET') { // check if request is with  GET .....
+                $.ajax({ // declare ajax syntax ..........
+                      type: Status, // put Status is GET ...........
+                      url: Server_path_http, // Path where is going the request .........
+                      data: Data, // data that are going in server ..........
+                      dataType: 'json', // type of response   json  .............
+                      xhrFields: {
+                          withCredentials: true // credencials in header to set cookie in browser ..............
+                      },
+                      crossDomain: true, // cross true .......
+                      success: function (data) { // success function  get  response ................
+                            Response = data;
+                            success_response(); // call function success
+                      }, error: function (e) { // error response from server ...........
+                      }, beforeSend: function () {  // before send request in server ..........
+                      }
+                });
+           }
+           else if (Status == 'POST') { // check if request is POST
+
+           }
+           else {
+                Response = 'Nothing';
+           }
+
+      }
+      function success_response(){
+            if(Response.status == 'cookie_menu'){ // response is for cookie menu ........
+
+               if(Response[0]['Value'] == '1'){ // check if is active .....................
+                   show_category_menu();  // call method shoe category_menu ....
+               }
+            }
       }
     });
   }

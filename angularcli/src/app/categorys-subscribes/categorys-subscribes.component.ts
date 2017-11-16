@@ -1,6 +1,5 @@
 import { Component, OnInit , AfterViewInit } from '@angular/core';
-import {sendRequest} from "selenium-webdriver/http";
-import * as jQuery from 'jquery';
+
 declare var $:any;
 @Component({
   selector: 'app-categorys-subscribes',
@@ -44,8 +43,6 @@ export class CategorysSubscribesComponent implements OnInit {
       Data = 'get_category='+default_data;
       Status = 'GET';
       Send_Request_In_Server( Server_path_http , Data , Status );
-
-
 
 
       // click buttin minimizate category and subscribe.........................

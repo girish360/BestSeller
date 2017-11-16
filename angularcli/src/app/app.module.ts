@@ -11,8 +11,7 @@ import { SinginSingupComponent } from './singin-singup/singin-singup.component';
 import { HeaderComponent } from './header/header.component';
 import { CategorysSubscribesComponent } from './categorys-subscribes/categorys-subscribes.component';
 import { ClientProductsComponent } from './client-products/client-products.component';
-
-
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,8 @@ import { ClientProductsComponent } from './client-products/client-products.compo
     SinginSingupComponent,
     HeaderComponent,
     CategorysSubscribesComponent,
-    ClientProductsComponent
+    ClientProductsComponent,
+    ChatComponent
 
 
   ],

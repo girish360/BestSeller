@@ -20,7 +20,7 @@
 .containerleft{
 
     position: relative;
-    top: 42px;
+    top: 53px;
     float: left;
     position: relative;
 
@@ -31,10 +31,10 @@
 }
 .containerright{
 
-    position: fixed;
+
     top: 53px;
     width: 19.2%;
-    height: 93%;
+    height: 93vh;
 
 
     display: inline-block;
@@ -102,7 +102,7 @@
     text-decoration: none;
 }
 .active_link{
-    background-color: 708090;
+    background-color: #708090;
     color:white;
 }
 .icon_go_up{
@@ -279,8 +279,10 @@
     background-color:white;
     margin-left: 9px;
     border-radius:3px;
-    margin-top: 10px;
-    margin-left: 9px;
+    margin-top: -35px;
+
+
+
 }
 .add_elemnt_option{
     z-index: 3 !important;

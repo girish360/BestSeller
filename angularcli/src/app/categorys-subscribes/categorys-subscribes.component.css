@@ -39,10 +39,10 @@ a{
 }
 .category{
     z-index: 2 !important;
-    position: fixed;
+position: absolute;
     left: -250px;
     width: 250px;
-    top: 40px;
+    top: 100px;
     height: 100vh;
     overflow-x: auto;
     opacity: 1;
@@ -55,11 +55,11 @@ a{
 }
 .under_category{
     z-index: 1 !important;
-    position: fixed;
+   position: absolute;
     left: -250px;
     width: 250px;
 
-    top: 40px;
+    top: 100px;
     height: 100vh;
     overflow-x: auto;
     opacity: 0.1;

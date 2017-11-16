@@ -36,12 +36,7 @@ class connection{
 
     }
 
-    public function fetch_data_array($query){
 
-    }
-    public function fetch_data_array_dependent($query){
-
-    }
 
 
 }
