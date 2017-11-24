@@ -1,0 +1,67 @@
+.pointerchat{
+
+    width: 15px;
+    height: 15px;
+    background-color:#E6E6FA;
+
+    -webkit-transform:rotate(100deg);
+    -moz-transform: rotate(100deg);
+    -ms-transform: rotate(100deg);
+    -o-transform: rotate(100deg);
+    transform: rotate(100deg);
+    position: relative;
+    top: 0px;
+    left: -15px;
+    visibility: hidden;
+
+}
+.clickchat a{
+    text-decoration: none;
+}
+.clickchat{
+    z-index: 2 !important;
+}
+.openchat{
+    z-index: 2 !important;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    border-top-left-radius: 100px;
+    background-color:#708090;
+    color:white;
+    bottom: 0px;
+    right: -1px;
+    display: inline-block;
+
+}
+
+.bodychat{
+    z-index: 1 !important;
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    border-top-left-radius: 100px;
+    background-color:#E6E6FA;
+    color:white;
+    bottom: 0px;
+    right: -1px;
+    display: inline-block;
+    border:1px solid;
+    border-color:#d6d6c2;
+}
+
+
+.pasiv_activ_bodychat{
+    display: none;
+}
+.imgopenchat{
+    position: relative;
+    top: 12px;
+    left: 22px;
+}
+.headerchat{
+    width: 100%;
+    height: 30px;
+    background-color: #708090;
+    border-top-left-radius: 3px;
+}

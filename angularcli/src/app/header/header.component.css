@@ -1,6 +1,8 @@
 
 .glyphicon{
     font-size: 22px;
+    position: relative;
+    top:0px;
 
 }
 a{
@@ -13,18 +15,27 @@ a{
 
 /* Begin css for header profile user here ....................................................................................................*/
 .navigation{
+    position: absolute;
+    top:60px;
     z-index: 4 !important;
     width: 100%;
     height: 40px;
-    background-color:	red;
-    -webkit-box-shadow: -1px -2px 67px -4px rgba(112,128,144,1);
-    -moz-box-shadow: -1px -2px 67px -4px rgba(112,128,144,1);
-    box-shadow: -1px -2px 67px -4px rgba(112,128,144,1);
-
-
-
+    border-bottom: 1px solid;
+    color: lightgray;
+    background-color:#E6E6FA;
+}
+.fixed_navigation{
+    position: fixed;
+    top:0px;
 }
 
+.lefte{
+    float: left;
+}
+.rightee{
+    float: right;
+
+}
 .opacity_detail_product{
     position: fixed;
     background-color: gray;
@@ -85,15 +96,23 @@ a{
 .space {
     width: 100%;
     height: 40px;
-    background-color:#708090;
+
+
 
 }
 .above_space_header{
+    z-index: 4 !important;
+    position: absolute;
     width: 100%;
     height: 60px;
-    background-color: #708090;
     opacity: 0.3;
 
+
+}
+.icon-list-remove{
+    position: relative;
+    left: 2px;
+    top: -1px;
 }
 .exitlogin ,.exit_details_product{
     color:white;
@@ -132,7 +151,6 @@ a{
 }
 .radius_category{
     width: 42px;
-    background-color: #9aa6b1;
     height: 40px;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
@@ -140,13 +158,20 @@ a{
     top: 0px;
     display: inline-block;
     z-index: 8!important;
-    border-top:3px solid;
+    border-top:2px solid;
+    color: gray;
+
 
 
 
 
 }
-
+.writemenu{
+    position: absolute;
+    color:white;
+    width: 250px;
+    height: 40px;
+}
 .position_icon_ctegory{
     position: relative;
     top: 7px;
@@ -204,12 +229,12 @@ a{
 .opacity_dropdown{
     position: fixed;
     background-color: gray;
-    height: 100vh;
+    height: 87.3vh;
     width: 100%;
-    top:0;
+    bottom:0;
     z-index: 4
     !important;
-    opacity: 0.6;
+    opacity: 0.1;
     display: none;
 }
 .popuplogout{
@@ -249,14 +274,13 @@ a{
     width: 1155px;
     height: 40px;
     margin:0px auto;
-    background-color: #708090;
+
 }
 .widthi_above_header{
     width: 1155px;
     height: 60px;
     margin:0px auto;
-    background-color: #708090;
-    opacity: 0.1;
+    opacity:1;
 }
 .menu1 {
     display: inline-block;
@@ -299,6 +323,7 @@ a{
 .card ,.favority , .language{
     position: relative;
     top: -1px;
+    display: inline-block;
 
 }
 .menu2 {
@@ -318,20 +343,24 @@ a{
 .menu3 {
     display: inline-block;
     width: 70px;
-    color:white;
+    height: 40px;
+
     position: relative;
     text-align: right;
-
-    top: 6px;
+    top: 0px;
     text-align: center;
+    border-top: 2px solid;
+    border-color: #E6E6FA;
+}
+.write_icon_header{
+    position: relative;
+    top: -8px;
+    font-size: 17px;
 
 }
 .menu3 a{
     color:white;
     text-decoration: none;
-}
-.rightee{
-    float: right;
 }
 
 .dropmenuprofile {
@@ -359,7 +388,7 @@ a{
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    margin-top: 2px;
+    margin-top: 33px;
     left: 0px;
     display: none;
     z-index: 1 !important;
@@ -399,22 +428,21 @@ input[name='searchres']{
 }
 .iconsearch{
     position: relative;
-    left: -40px;
-    top:2px;
+    left: -46px;
+    top:0.5px;
     display: inline-block;
-
     width: 40px;
-    height: 25px;
-    border-top-right-radius: 2px;
-    border-bottom-right-radius: 2px;
-
-
+    height: 26px;
+    background-color: darkgrey;
+}
+.iconsearch:hover{
+    opacity: 0.8;
 }
 .imgsearchexit{
     display: none;
     position: relative;
-    top: 1px;
-    left: 7px;
+    top: 3px;
+    left: 9px;
 }
 
 .photouser{
@@ -453,16 +481,16 @@ input[name='searchres']{
 }
 
 .kerkim{
-    width: 400px;
-    height: 25px;
+    width: 450px;
+    height: 30px;
     position: relative;
-    top:-5px;
-    background-color: #708090;
+    top:-3px;
+background-color: #E6E6FA;
     border:none;
-    border-bottom: 1px solid;
+    border: 1px solid;
     display: inline-block;
-    color:  #E6E6FA;
-
+    color:  lightgray;
+ border-radius: 2px;
 
 }
 .kerkimresponse{
@@ -486,8 +514,8 @@ html>/**/body .kerkim, x:-moz-any-link {
 
 .imgsearch{
     position: relative;
-    left: 8px;
-    top:-2px;
+    left: 9px;
+    top:2px;
 
 
 }
@@ -594,43 +622,16 @@ input[name='respondesearch']:focus{
 
 }
 
-input[name='search']::-webkit-input-placeholder {
-    color:#E6E6FA;
-}
-input[name='respondesearch']:focus::-webkit-input-placeholder {
-    color:white;
-}
-input[name='respondesearch']::-webkit-input-placeholder {
-    color:white;
-}
-input[name='respondesearch']:focus:-moz-placeholder {
-    color:white;
-}
-input[name='respondesearch']:focus:-ms-input-placeholder {
-    color:white;
-}
+
+
+
 input[name='search']:focus{
     outline: none;
-
-}
-
-
-input[name='search']:focus::-webkit-input-placeholder {
-    color:#E6E6FA;
-
-}
-input[name='search']:focus:-moz-placeholder {
-    color:	white;
-}
-input[name='search']:focus:-ms-input-placeholder {
-
-}
-input[name='search']:focus {
-    width: 450px;
+    border:1px solid;
+   border-color: lightgray;
+    width: 480px;
     transition:1s;
 }
-
-
 .exitsearch1{
     display: inline-block;
     z-index: 2 !important;
@@ -687,153 +688,22 @@ input[name='search']:focus {
 }
 
 
-
-
-
-
 /* End css for header profile user here ....................................................................................................*/
 
-
-/* begin css for container .........................................*/
-
-.containere{
-    width:100%;
-    z-index: 1 !important;
-
-}
-
-
-
-.gjeresia{
-    width: 1170px;
-    margin:0px auto;
-    position: relative;
-    top: -15px;
-
-
-}
-.containerleft{
-
-    position: relative;
-    top: 42px;
-    float: left;
-    position: relative;
-
-    display: inline-block;
-    width: 71%;
-
-
-}
-.containerright{
-
-    position: fixed;
-    top: 53px;
-    width: 19.2%;
-    height: 93%;
-
-
-    display: inline-block;
-
-    border-radius: 4px;
-
-    background-color: #E6E6FA;
-
-}
-.sponsorized_right{
-    width: 99.5%;
-    height: 90%;
-    border:1px solid;
-    border-radius: 4px;
-    border-color:#d6d6c2;
-    background-color: white;
-
-}
-.pagination_containerleft{
-    display: none;
-}
-.padding_link{
-    width: 28.6px;
-    height: 30px;
-    background-color: red;
-    border:1px solid;
-    border-radius: 4px;
-    border-color:#d6d6c2;
-    background-color: white;
-    margin-left: 2px;
-    text-align: center;
-    position: relative;
-
-
-}
-
-.padding_link_fast_step_forward_backward{
-    width: 28.6px;
-    height: 30px;
-    background-color: red;
-    border:1px solid;
-    border-radius: 4px;
-    border-color:#d6d6c2;
-    background-color: white;
-    margin-left: 2px;
-    text-align: center;
-    position: relative;
-    top:1px;
-}
-.link_page_value{
-    position: relative;
-    top: 5px;
-}
-.padding_link:hover,  .padding_link_fast_step_forward_backward:hover{
-    -moz-transition:0.7s;
-    -webkit-transition:0.7s;
-    transition: 0.7s;
-    background-color: #708090;
-    color:white;
-}
-.pagess_link a , .pagess_link_back_forward a{
-    text-decoration: none;
-}
-.cat_sub a{
-    text-decoration: none;
-}
-.active_link{
-    background-color: 708090;
-    color:white;
-}
-.icon_go_up{
-    position: relative;
-    top:8px;
-    display: inline-block;
-}
-.pagin_number{
-    display: inline-block;
-}
-.pagess_link ,.pagess_link_back_forward{
-    display: inline-block;
-}
-
-
-
-
-
-
-
 /* dropdown list language ...............*/
-
 .dropworld{
     position: relative;
     width: 300px;
-    left: -27px;
     height: auto;
     background-color: white;
     float: right;
-
-    top: 8px;
+    top: 9px;
+    left: 292px;
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    border-radius: 3px;
+
     z-index: 11 !important;
 
 }
@@ -846,7 +716,7 @@ input[name='search']:focus {
     background-color: white;
 
 
-    top: 8px;
+    top: 10px;
 
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -858,49 +728,53 @@ input[name='search']:focus {
     z-index:2 !important;
     position: relative;
     width: 300px;
-    left: -27px;
+    left: 292px;
     height: auto;
     background-color: white;
     float: right;
-    top: 8px;
+    top: 9px;
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    border-radius: 3px;
+
+
+
 
 }
 
 .dropcard{
     position: relative;
     width: 700px;
-    left: -27px;
+    left: 292px;
     height: auto;
     background-color: white;
     float: right;
-    top: 8px;
+    top: 9px;
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    border-radius: 3px;
+
+
 
 }
 .dropfavority{
     z-index: 10 !important;
     position: relative;
     width: 700px;
-    left: -27px;
+    left: 292px;
     height: auto;
     background-color: white;
     float: right;
 
-    top: 8px;
+    top: 9px;
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    border-radius: 3px;
+
+
 
 }
 
@@ -1001,7 +875,7 @@ input[type='radio'] {
 
 @media only screen and (min-width: 1280px){
 
-    .newspace , .newcontainere{
+    .newspace{
 
         float: right;
         right: 0;
@@ -1011,14 +885,14 @@ input[type='radio'] {
         -moz-transition:0.5s;
         width: calc(100% - 250px);
     }
-    .exitcalculation ,.exitspace{
+   .exitspace{
         transition:0.5s;
         -webkit-transition:0.5s;
         -moz-transition:0.5s;
         width:100%;
 
     }
-    .newspacechat , .newcontainerechat{
+    .newspacechat{
 
         float: left;
         right: 0;
@@ -1027,14 +901,21 @@ input[type='radio'] {
         -webkit-transition:0.5s;
         -moz-transition:0.5s;
         width: calc(100% - 250px);
+
+
     }
-    .exitcalculationchat ,.exitspacechat{
+   .exitspacechat{
         transition:0.5s;
         -webkit-transition:0.5s;
         -moz-transition:0.5s;
         width:100%;
 
     }
+    .up_scroll{
+        position: absolute;
+
+    }
+
 
 }
 

@@ -156,6 +156,12 @@ if($_SERVER['REQUEST_METHOD']==='POST' ||  $_SERVER['REQUEST_METHOD']==='GET') {
     }
 
     // end http request for  category and subscripe .............................................................................................
+
 } // end if reequest_method post anf get ...................................................
+
+
+// request from angular .........................................................
+
+
 
 ?>

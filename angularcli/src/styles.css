@@ -26,6 +26,9 @@ time, mark, audio, video {
     float: right;
 }
 
+
+
+
 body{
     background-color:#E6E6FA;
     color:gray;
@@ -33,11 +36,11 @@ body{
 }
 
 a{
-    color: #E6E6FA;
+    color: gray;
     text-decoration: none;
 }
 .glyphicon{
-    color: #E6E6FA;
+    color:slategrey;
     text-decoration: none;
 }
 
@@ -328,14 +331,7 @@ float: right;
     position: relative;
     top: 4px;
 }
-.writemenu{
-    position: absolute;
-    color:white;
-    background-color: #708090;
-    width: 250px;
-    height: 40px;
 
-}
 
 .color{
     background-color: #f5f5ef;
