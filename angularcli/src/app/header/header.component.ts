@@ -11,9 +11,11 @@ declare var $:any;
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  constructor() { }
 
-  constructor(private http: HttpClient) { }
-
+ckm(){
+alert('ok');
+}
   ngOnInit() {
     $(document).ready(function(){
       var nameposition='language';
@@ -100,10 +102,6 @@ export class HeaderComponent implements OnInit {
             $('.space').removeClass('newspace');
 
           },500);
-
-
-
-
         }
         else{
 
@@ -119,15 +117,9 @@ export class HeaderComponent implements OnInit {
             var heig= $(window).height();
             hide_chat_div(heig);//call function hide chat...................................
             $('.pasiv_activ_bodychat').hide();
-
-
             $('.containere').removeClass('newcontainerechat');
             $('.space').removeClass('newspacechat');
-
-
           }
-
-
           $('.containere').removeClass('exitcalculationchat');
           $('.space').removeClass('exitspacechat');
 
@@ -145,17 +137,7 @@ export class HeaderComponent implements OnInit {
           $('.closelist').each(function(){
             $(this).show();
           });
-
-
-
-
-
-
-
-
         }
-
-
       });
 
       $('.openchat').click(function(){
@@ -212,11 +194,6 @@ export class HeaderComponent implements OnInit {
 
         }
       });
-
-
-
-
-
       $('.searchresponse').click(function(){
         var widthto = $(window).width();
         if(widthto>'500'){
@@ -717,8 +694,8 @@ export class HeaderComponent implements OnInit {
         $('.write_icon_header').css('visibility', 'visible');
 
         if(status==0) {
-          $('.'+single).animate({backgroundColor:"green"},100,function(){
-            $('.'+single).animate({backgroundColor:"#E6E6FA"},100);
+          $('.'+single).find('.click_bg').css({visibility:'visible',width:'2px',height:'2px'}).animate({backgroundColor:"green" , width:"40px",height:"40px"},400,function(){
+            $('.'+single).find('.click_bg').animate({backgroundColor:"#E6E6FA"},100).css({visibility:'hidden'});
           }); // change bg color when click on icon in header
 
           $(removewrite).css('visibility', 'hidden'); // remove write below icon in header
@@ -756,7 +733,7 @@ export class HeaderComponent implements OnInit {
       function success_response(){
             if(Response.status == 'cookie_menu'){ // response is for cookie menu ........
 
-               if(Response[0]['Value'] == '1'){ // check if is active .....................
+               if( Response['data']['Value'] == '1' ){ // check if is active .....................
                    show_category_menu();  // call method shoe category_menu ....
                }
             }

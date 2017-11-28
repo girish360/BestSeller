@@ -5,23 +5,13 @@
       <div class="containerleft">
         <div class="option_products"></div>
         <div class="add_elemnt_option"></div>
-        <div class="all_prod"></div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b></b>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      </div>
+        <div class="all_prod" ></div>
 
+        <div class ="" *ngFor=" let product of products " > {{product.title}} </div>
 
+        </div>
 
-
-        <style type="text/css">
+      <style type="text/css">
           /* styles unrelated to zoom */
           * { border:0; margin:0; padding:0; }
           p { position:absolute; top:3px; right:28px; color:white; font:bold 13px/1 sans-serif;}
@@ -54,7 +44,7 @@
         </style>
       </div>
 
-      <div class="containerright" >
+      <div class="containerright" (click)="get_data()">
 
         <div class="sponsorized_right">
           <div class="icon_go_up">

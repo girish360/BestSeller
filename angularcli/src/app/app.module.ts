@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule } from "@angular/common/http";
+import { HttpModule } from "@angular/http";
 
 
 import {routes} from './app.router';
@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { CategorysSubscribesComponent } from './categorys-subscribes/categorys-subscribes.component';
 import { ClientProductsComponent } from './client-products/client-products.component';
 import { ChatComponent } from './chat/chat.component';
+import { HtppServicesComponent } from './htpp-services/htpp-services.component';
 
 @NgModule({
   declarations: [
@@ -21,16 +22,17 @@ import { ChatComponent } from './chat/chat.component';
     HeaderComponent,
     CategorysSubscribesComponent,
     ClientProductsComponent,
-    ChatComponent
+    ChatComponent,
+    HtppServicesComponent
 
 
   ],
   imports: [
     BrowserModule,
     routes,
-      HttpClientModule
+    HttpModule
   ],
-  providers: [],
+  providers: [AppComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
