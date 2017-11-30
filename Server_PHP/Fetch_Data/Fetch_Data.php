@@ -2,11 +2,13 @@
 
 class Fetch_Data extends connection {
 
-    public $Data_array = [];
+    public $Data_array = array();
 
-    public $Data_dependet_array = [];
+    public $Data_dependet_array = array();
 
-    public $dependet = [];
+    public $dependet = array();
+
+    public $data = array();
 
     public function fetch_data_array( $result_fromDB ){
 
@@ -30,12 +32,14 @@ class Fetch_Data extends connection {
     public function fetch_data_array_dependet( $result_fromDB , $tb_name_dep , $column_dep , $id ){
 
         while( $result = $result_fromDB->fetch_assoc() ){
-
-            $this->Data_array[] = $result;
-
+            $this->data = [];
+            $this->data[] = $result;
             $this->Data_dependet_array = self::data_dependet( $tb_name_dep , $column_dep , $result[$id] );
 
-            $this->Data_array[] =  $this->Data_dependet_array;
+            $this->Data_array[] = array(
+                 "product"=>$this->data,
+                 "company"=> $this->Data_dependet_array
+            );
         }
         return $this->Data_array; //  return array
     }

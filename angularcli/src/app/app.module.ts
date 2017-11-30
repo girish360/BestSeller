@@ -13,6 +13,8 @@ import { CategorysSubscribesComponent } from './categorys-subscribes/categorys-s
 import { ClientProductsComponent } from './client-products/client-products.component';
 import { ChatComponent } from './chat/chat.component';
 import { HtppServicesComponent } from './htpp-services/htpp-services.component';
+import { SlideshowComponent } from './slideshow/slideshow.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { HtppServicesComponent } from './htpp-services/htpp-services.component';
     CategorysSubscribesComponent,
     ClientProductsComponent,
     ChatComponent,
-    HtppServicesComponent
+    HtppServicesComponent,
+    SlideshowComponent,
+    NotfoundComponent
 
 
   ],

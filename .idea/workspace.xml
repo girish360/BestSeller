@@ -2,321 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e14b9dbf-ee1a-4b7f-90da-30f0834a13a1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server_PHP/Fetch_Data/Fetch_Data.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/Fetch_Data_From_DB/Fetch_Data.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/Products/Visitor_Products.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/check_session.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/classlogin.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Authentication/AccessToken.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Authentication/AccessTokenMetadata.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Authentication/OAuth2Client.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Exceptions/FacebookAuthenticationException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Exceptions/FacebookAuthorizationException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Exceptions/FacebookClientException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Exceptions/FacebookOtherException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Exceptions/FacebookResponseException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Exceptions/FacebookSDKException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Exceptions/FacebookServerException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Exceptions/FacebookThrottleException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Facebook.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/FacebookApp.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/FacebookBatchRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/FacebookBatchResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/FacebookClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/FacebookRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/FacebookResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/FileUpload/FacebookFile.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/FileUpload/FacebookVideo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/FileUpload/Mimetypes.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/Collection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphAchievement.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphAlbum.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphApplication.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphCoverPhoto.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphEdge.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphEvent.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphGroup.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphList.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphLocation.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphNode.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphNodeFactory.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphObject.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphObjectFactory.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphPage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphPicture.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphSessionInfo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/GraphNodes/GraphUser.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Helpers/FacebookCanvasHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Helpers/FacebookJavaScriptHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Helpers/FacebookPageTabHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Helpers/FacebookRedirectLoginHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Helpers/FacebookSignedRequestFromInputHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Http/GraphRawResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Http/RequestBodyInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Http/RequestBodyMultipart.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Http/RequestBodyUrlEncoded.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/HttpClients/FacebookCurl.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/HttpClients/FacebookCurlHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/HttpClients/FacebookCurlHttpClient.php-tmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/HttpClients/FacebookGuzzleHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/HttpClients/FacebookHttpClientInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/HttpClients/FacebookStream.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/HttpClients/FacebookStreamHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/HttpClients/certs/DigiCertHighAssuranceEVRootCA.pem" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/PersistentData/FacebookMemoryPersistentDataHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/PersistentData/FacebookSessionPersistentDataHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/PersistentData/PersistentDataInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/PseudoRandomString/McryptPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/PseudoRandomString/OpenSslPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/PseudoRandomString/PseudoRandomStringGeneratorInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/PseudoRandomString/PseudoRandomStringGeneratorTrait.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/PseudoRandomString/UrandomPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/SignedRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Url/FacebookUrlDetectionHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Url/FacebookUrlManipulator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/Url/UrlDetectionInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/autoload.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Authentication/AccessToken.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Authentication/AccessTokenMetadata.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Authentication/OAuth2Client.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Exceptions/FacebookAuthenticationException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Exceptions/FacebookAuthorizationException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Exceptions/FacebookClientException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Exceptions/FacebookOtherException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Exceptions/FacebookResponseException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Exceptions/FacebookSDKException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Exceptions/FacebookServerException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Exceptions/FacebookThrottleException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Facebook.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/FacebookApp.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/FacebookBatchRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/FacebookBatchResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/FacebookClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/FacebookRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/FacebookResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/FileUpload/FacebookFile.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/FileUpload/FacebookVideo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/FileUpload/Mimetypes.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/Collection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphAchievement.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphAlbum.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphApplication.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphCoverPhoto.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphEdge.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphEvent.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphGroup.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphList.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphLocation.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphNode.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphNodeFactory.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphObject.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphObjectFactory.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphPage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphPicture.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphSessionInfo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/GraphNodes/GraphUser.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Helpers/FacebookCanvasHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Helpers/FacebookJavaScriptHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Helpers/FacebookPageTabHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Helpers/FacebookRedirectLoginHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Helpers/FacebookSignedRequestFromInputHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Http/GraphRawResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Http/RequestBodyInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Http/RequestBodyMultipart.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Http/RequestBodyUrlEncoded.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/HttpClients/FacebookCurl.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/HttpClients/FacebookCurlHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/HttpClients/FacebookGuzzleHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/HttpClients/FacebookHttpClientInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/HttpClients/FacebookStream.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/HttpClients/FacebookStreamHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/HttpClients/certs/DigiCertHighAssuranceEVRootCA.pem" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/PersistentData/FacebookMemoryPersistentDataHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/PersistentData/FacebookSessionPersistentDataHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/PersistentData/PersistentDataInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/PseudoRandomString/McryptPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/PseudoRandomString/OpenSslPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/PseudoRandomString/PseudoRandomStringGeneratorInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/PseudoRandomString/PseudoRandomStringGeneratorTrait.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/PseudoRandomString/UrandomPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/SignedRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Url/FacebookUrlDetectionHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Url/FacebookUrlManipulator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/Url/UrlDetectionInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/facebook-php-sdk/src/Facebook/autoload.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/fbConfig.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/check_session/index.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/checkuserprofile.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/class_search_company.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/details_products.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Authentication/AccessToken.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Authentication/AccessTokenMetadata.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Authentication/OAuth2Client.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Exceptions/FacebookAuthenticationException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Exceptions/FacebookAuthorizationException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Exceptions/FacebookClientException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Exceptions/FacebookOtherException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Exceptions/FacebookResponseException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Exceptions/FacebookSDKException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Exceptions/FacebookServerException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Exceptions/FacebookThrottleException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Facebook.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/FacebookApp.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/FacebookBatchRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/FacebookBatchResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/FacebookClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/FacebookRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/FacebookResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/FileUpload/FacebookFile.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/FileUpload/FacebookVideo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/FileUpload/Mimetypes.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/Collection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphAchievement.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphAlbum.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphApplication.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphCoverPhoto.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphEdge.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphEvent.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphGroup.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphList.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphLocation.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphNode.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphNodeFactory.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphObject.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphObjectFactory.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphPage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphPicture.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphSessionInfo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/GraphNodes/GraphUser.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Helpers/FacebookCanvasHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Helpers/FacebookJavaScriptHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Helpers/FacebookPageTabHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Helpers/FacebookRedirectLoginHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Helpers/FacebookSignedRequestFromInputHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Http/GraphRawResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Http/RequestBodyInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Http/RequestBodyMultipart.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Http/RequestBodyUrlEncoded.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/HttpClients/FacebookCurl.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/HttpClients/FacebookCurlHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/HttpClients/FacebookCurlHttpClient.php-tmp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/HttpClients/FacebookGuzzleHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/HttpClients/FacebookHttpClientInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/HttpClients/FacebookStream.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/HttpClients/FacebookStreamHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/HttpClients/certs/DigiCertHighAssuranceEVRootCA.pem" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/PersistentData/FacebookMemoryPersistentDataHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/PersistentData/FacebookSessionPersistentDataHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/PersistentData/PersistentDataInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/PseudoRandomString/McryptPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/PseudoRandomString/OpenSslPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/PseudoRandomString/PseudoRandomStringGeneratorInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/PseudoRandomString/PseudoRandomStringGeneratorTrait.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/PseudoRandomString/UrandomPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/SignedRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Url/FacebookUrlDetectionHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Url/FacebookUrlManipulator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/Url/UrlDetectionInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/autoload.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Authentication/AccessToken.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Authentication/AccessTokenMetadata.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Authentication/OAuth2Client.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Exceptions/FacebookAuthenticationException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Exceptions/FacebookAuthorizationException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Exceptions/FacebookClientException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Exceptions/FacebookOtherException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Exceptions/FacebookResponseException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Exceptions/FacebookSDKException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Exceptions/FacebookServerException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Exceptions/FacebookThrottleException.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Facebook.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/FacebookApp.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/FacebookBatchRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/FacebookBatchResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/FacebookClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/FacebookRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/FacebookResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/FileUpload/FacebookFile.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/FileUpload/FacebookVideo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/FileUpload/Mimetypes.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/Collection.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphAchievement.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphAlbum.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphApplication.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphCoverPhoto.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphEdge.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphEvent.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphGroup.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphList.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphLocation.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphNode.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphNodeFactory.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphObject.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphObjectFactory.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphPage.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphPicture.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphSessionInfo.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/GraphNodes/GraphUser.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Helpers/FacebookCanvasHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Helpers/FacebookJavaScriptHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Helpers/FacebookPageTabHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Helpers/FacebookRedirectLoginHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Helpers/FacebookSignedRequestFromInputHelper.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Http/GraphRawResponse.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Http/RequestBodyInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Http/RequestBodyMultipart.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Http/RequestBodyUrlEncoded.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/HttpClients/FacebookCurl.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/HttpClients/FacebookCurlHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/HttpClients/FacebookGuzzleHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/HttpClients/FacebookHttpClientInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/HttpClients/FacebookStream.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/HttpClients/FacebookStreamHttpClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/HttpClients/certs/DigiCertHighAssuranceEVRootCA.pem" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/PersistentData/FacebookMemoryPersistentDataHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/PersistentData/FacebookSessionPersistentDataHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/PersistentData/PersistentDataInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/PseudoRandomString/McryptPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/PseudoRandomString/OpenSslPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/PseudoRandomString/PseudoRandomStringGeneratorInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/PseudoRandomString/PseudoRandomStringGeneratorTrait.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/PseudoRandomString/UrandomPseudoRandomStringGenerator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/SignedRequest.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Url/FacebookUrlDetectionHandler.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Url/FacebookUrlManipulator.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/Url/UrlDetectionInterface.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/facebook-php-sdk/src/Facebook/autoload.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/fbConfig.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/login.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/logout.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/products/products.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/userprofile_classlogin.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/daisy.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/grab.cur" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/grabbed.cur" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/jquery.zoom.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/jquery.zoom.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/readme.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server_PHP/userprofile/zoom/roxy.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Category_Subscribe_and_Products/Category_Subscribe.php" afterPath="$PROJECT_DIR$/Server_PHP/Category_Subscribe_and_Products/Category_Subscribe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php" afterPath="$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php" afterPath="$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/connection_db/database.sql" afterPath="$PROJECT_DIR$/Server_PHP/connection_db/database.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/app.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/app.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Fetch_Data/Fetch_Data.php" afterPath="$PROJECT_DIR$/Server_PHP/Fetch_Data/Fetch_Data.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Products/Products.php" afterPath="$PROJECT_DIR$/Server_PHP/Products/Products.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/app.module.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/app.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/app.router.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/app.router.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/header/header.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/header/header.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/index.html" afterPath="$PROJECT_DIR$/angularcli/src/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/styles.css" afterPath="$PROJECT_DIR$/angularcli/src/styles.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -340,152 +36,103 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Route_Http.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php">
+      <file leaf-file-name="slideshow.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/slideshow/slideshow.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="582">
+              <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slideshow.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/slideshow/slideshow.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="616">
+              <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="categorys-subscribes.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="15" lean-forward="false" selection-start-line="20" selection-start-column="3" selection-end-line="22" selection-end-column="15" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slideshow.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/slideshow/slideshow.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2465">
+              <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.router.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.router.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notfound.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/notfound/notfound.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="client-products.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html">
+      <file leaf-file-name="notfound.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/notfound/notfound.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Products.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server_PHP/Products/Products.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2312">
-              <caret line="136" column="5" lean-forward="false" selection-start-line="136" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
-              <folding>
-                <marker date="1511882881224" expanded="true" signature="418:440" ph="SELECT * fro... products" />
-                <marker date="1511882881224" expanded="true" signature="616:668" ph="SELECT * fro... products" />
-                <marker date="1511882881224" expanded="true" signature="930:985" ph="SELECT * fro... image_products" />
-                <marker date="1511882881224" expanded="true" signature="1311:1357" ph="SELECT * fro... adminat" />
-                <marker date="1511882881224" expanded="true" signature="1589:1638" ph="SELECT * fro... products" />
-                <marker date="1511882881224" expanded="true" signature="5602:5651" ph="SELECT * fro... products" />
-                <marker date="1511882881224" expanded="true" signature="6655:6720" ph="SELECT * fro... products" />
-                <marker date="1511882881224" expanded="true" signature="6655:6790" ph="SELECT * fro... products" />
-                <marker date="1511882881224" expanded="true" signature="7979:8298" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="7991:8194" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="8063:8190" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="8092:8184" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="8408:8727" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="8420:8623" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="8492:8619" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="8521:8613" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="9901:10224" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="9913:10120" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="9985:10116" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="10014:10110" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="10647:10922" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="10659:10867" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="10731:10863" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="10760:10857" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="11719:12042" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="11731:11938" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="11803:11934" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="11832:11928" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="12227:12555" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="12239:12451" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="12311:12447" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="12340:12441" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="13557:13836" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="13569:13781" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="13641:13777" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="13670:13771" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="14716:15050" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="14728:14946" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="14800:14942" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="14829:14936" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="16444:16767" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="16456:16663" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="16528:16659" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="16557:16653" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="16885:17208" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="16897:17104" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="16969:17100" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="16998:17094" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="17629:17952" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="17641:17848" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="17713:17844" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="17742:17838" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="18092:18415" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="18104:18311" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="18176:18307" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="18205:18301" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="20073:20396" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="20085:20292" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="20157:20288" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="20186:20282" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="20514:20837" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="20526:20733" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="20598:20729" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="20627:20723" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="21068:21391" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="21080:21287" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="21152:21283" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="21181:21277" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="21531:21854" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="21543:21750" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="21615:21746" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="21644:21740" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="24741:25064" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="24753:24960" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="24825:24956" ph="..." />
-                <marker date="1511882881224" expanded="true" signature="24854:24950" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="class_connection.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1768">
-              <caret line="104" column="5" lean-forward="false" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
-              <folding>
-                <marker date="1511885174641" expanded="true" signature="608:623" ph="SELECT * FRO... " />
-                <marker date="1511885174641" expanded="true" signature="608:635" ph="SELECT * FRO... ${$table}" />
-                <marker date="1511885174641" expanded="true" signature="608:636" ph="SELECT * FRO... adminat" />
-                <marker date="1511885174641" expanded="true" signature="871:918" ph="SELECT * FRO... ${$table_name}" />
-                <marker date="1511885174641" expanded="true" signature="1194:1265" ph="SELECT * FRO... products" />
-                <marker date="1511885174641" expanded="true" signature="1543:1574" ph="DELETE FROM " />
-                <marker date="1511885174641" expanded="true" signature="1543:1584" ph="DELETE FROM " />
-                <marker date="1511885174641" expanded="true" signature="1543:1586" ph="DELETE FROM " />
-                <marker date="1511885174641" expanded="true" signature="1875:2079" ph="UPDATE movie... " />
-                <marker date="1511885174641" expanded="true" signature="2517:2568" ph="SELECT * fro... ${$table_name}" />
-                <marker date="1511885174641" expanded="true" signature="2517:2775" ph="SELECT * fro... ${$table_name}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Category_Subscribe.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server_PHP/Category_Subscribe_and_Products/Category_Subscribe.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="57" column="9" lean-forward="false" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
-              <folding>
-                <marker date="1511858630051" expanded="true" signature="518:530" ph="SELECT * FRO... categorytype" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Products_Http.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server_PHP/Http_Request/Products_Http.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            <state relative-caret-position="238">
+              <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -495,36 +142,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>icon_go_up</find>
-      <find>containere</find>
-      <find>container</find>
-      <find>widthi</find>
-      <find>write</find>
-      <find>favority</find>
-      <find>writemenu</find>
-      <find>radius</find>
-      <find>above_space_header</find>
-      <find>widthi_above_header</find>
-      <find>write_icon_header</find>
-      <find>gjeresia</find>
-      <find>kerk</find>
-      <find>search</find>
-      <find>kerkim</find>
-      <find>radius_category</find>
-      <find>iconsearch</find>
-      <find>imgsearchexit</find>
-      <find>imgsearch</find>
-      <find>opacity_dropdown</find>
-      <find>opacity_dropdow</find>
-      <find>user-category_icon</find>
-      <find>glyphicon</find>
-      <find>language</find>
-      <find>fixed_navigation</find>
       <find>menu3</find>
       <find>up_scroll</find>
-      <find>containerright</find>
       <find>getpages</find>
       <find>select_query</find>
+      <find>prise_products</find>
+      <find>gjeresia</find>
+      <find>wish_list_icon</find>
+      <find>about_wish</find>
+      <find>wish_list_hover</find>
+      <find>width_products</find>
+      <find>footer_products</find>
+      <find>img_prod</find>
+      <find>image_product_primary</find>
+      <find>zoom</find>
+      <find>containerr</find>
+      <find>each_width_product</find>
+      <find>inde</find>
+      <find>add_elemnt_option</find>
+      <find>option_products</find>
+      <find>option_products_bo</find>
+      <find>option</find>
+      <find>option_products_fixed_show</find>
+      <find>bacward_position</find>
+      <find>user-icon</find>
+      <find>forward_position</find>
+      <find>write_slider</find>
+      <find>backward_hover</find>
+      <find>slider_point</find>
+      <find>containerright</find>
+      <find>number_point</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -533,12 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/angularcli/protractor.conf.js" />
-        <option value="$PROJECT_DIR$/angularcli/webpack.config.js" />
-        <option value="$PROJECT_DIR$/Server_PHP/js/js_userprofile/dropdown_header_chat.js" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.css" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/about/about.component.html" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/app.router.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.html" />
         <option value="$PROJECT_DIR$/Server_PHP/database.sql" />
         <option value="$PROJECT_DIR$/Server_PHP/userprofile/class_connection.php" />
@@ -548,7 +189,6 @@
         <option value="$PROJECT_DIR$/Server_PHP/userprofile/category_and_subscribe.php" />
         <option value="$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/chat/chat.component.ts" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/Server_PHP/Session_Cookie/Cookies.php" />
         <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts" />
         <option value="$PROJECT_DIR$/Server_PHP/Language/language.php" />
@@ -559,13 +199,10 @@
         <option value="$PROJECT_DIR$/angularcli/src/app/chat/chat.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/app.component.css" />
-        <option value="$PROJECT_DIR$/angularcli/src/styles.css" />
-        <option value="$PROJECT_DIR$/angularcli/src/index.html" />
         <option value="$PROJECT_DIR$/angularcli/.angular-cli.json" />
         <option value="$PROJECT_DIR$/angularcli/src/app/app.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.css" />
         <option value="$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" />
         <option value="$PROJECT_DIR$/Server_PHP/Products/Visitor_Products.php" />
         <option value="$PROJECT_DIR$/Server_PHP/userprofile/products/products.php" />
@@ -574,16 +211,26 @@
         <option value="$PROJECT_DIR$/angularcli/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php" />
         <option value="$PROJECT_DIR$/Server_PHP/Fetch_Data_From_DB/Fetch_Data.php" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" />
         <option value="$PROJECT_DIR$/Server_PHP/Category_Subscribe_and_Products/Category_Subscribe.php" />
         <option value="$PROJECT_DIR$/Server_PHP/Http_Request/Category_Subscribe_Http.php" />
-        <option value="$PROJECT_DIR$/Server_PHP/Fetch_Data/Fetch_Data.php" />
         <option value="$PROJECT_DIR$/angularcli/src/app/htpp-services/htpp-services.component.ts" />
-        <option value="$PROJECT_DIR$/Server_PHP/Products/Products.php" />
         <option value="$PROJECT_DIR$/Server_PHP/Http_Request/Products_Http.php" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" />
         <option value="$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/Fetch_Data/Fetch_Data.php" />
+        <option value="$PROJECT_DIR$/Server_PHP/Products/Products.php" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/cycle2.js" />
+        <option value="$PROJECT_DIR$/angularcli/src/index.html" />
+        <option value="$PROJECT_DIR$/angularcli/src/styles.css" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.css" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/slideshow/slideshow.component.html" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/slideshow/slideshow.component.css" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/slideshow/slideshow.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/notfound/notfound.component.html" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/app.router.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/app.component.html" />
       </list>
     </option>
   </component>
@@ -618,8 +265,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -712,7 +357,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="htpp-services" />
+              <option name="myItemId" value="slideshow" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -738,7 +383,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="header" />
+              <option name="myItemId" value="notfound" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -796,6 +441,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -804,14 +451,15 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\BestSeller\Server_PHP\connection_db" />
-      <recent name="C:\xampp\htdocs\BestSeller\Server_PHP\facebook-php-sdk" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\ServerFile" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\assets" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\ServerFile" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\BestSeller\angularcli\src" />
+      <recent name="C:\xampp\htdocs\BestSeller\Server_PHP\connection_db" />
+      <recent name="C:\xampp\htdocs\BestSeller\Server_PHP\facebook-php-sdk" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\assets" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src" />
     </key>
@@ -952,25 +600,26 @@
       <workItem from="1511358735410" duration="90404000" />
       <workItem from="1511788322566" duration="13663000" />
       <workItem from="1511803190146" duration="17492000" />
-      <workItem from="1511855746215" duration="12576000" />
+      <workItem from="1511855746215" duration="14181000" />
+      <workItem from="1511886927166" duration="72115000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="579622000" />
+    <option name="totallyTimeSpent" value="653342000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30987054" sideWeight="0.4959631" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30420712" sideWeight="0.4959631" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23867314" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23867314" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28236246" sideWeight="0.5040369" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -979,6 +628,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -988,18 +638,18 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32686085" sideWeight="0.4959631" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30420712" sideWeight="0.4959631" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23867314" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28236246" sideWeight="0.5040369" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1021,133 +671,8 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/chat/chat.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="21" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/chat/chat.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="67" lean-forward="false" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/node_modules/jquery-color-animation/jquery.animate-colors-min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/node_modules/jquery-color-animation/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/node_modules/jquery-color-animation/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="121" column="0" lean-forward="false" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="28" lean-forward="true" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/.angular-cli.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/package-lock.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="43" column="19" lean-forward="true" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-523">
-          <caret line="962" column="19" lean-forward="false" selection-start-line="962" selection-start-column="5" selection-end-line="962" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="45" column="14" lean-forward="true" selection-start-line="45" selection-start-column="14" selection-end-line="45" selection-end-column="14" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#nav#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#a#0;n#div#0;n#span#1;n#div#1;n#div#0;n#div#1;n#nav#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#nav#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/classlangugage.php" />
     <entry file="file://$PROJECT_DIR$/Server_PHP/Products/Visitor_Products.php" />
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1156,24 +681,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/htpp-services/htpp-services.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#73#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/htpp-services/htpp-services.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1192,33 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12495">
-          <caret line="737" column="16" lean-forward="false" selection-start-line="737" selection-start-column="16" selection-end-line="737" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#50#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="14" lean-forward="false" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1236,15 +716,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/Fetch_Data/Fetch_Data.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1253,7 +724,7 @@
         <state relative-caret-position="533">
           <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
           <folding>
-            <element signature="e#0#50#0" expanded="true" />
+            <element signature="e#0#50#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1276,19 +747,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Server_PHP/Category_Subscribe_and_Products/Category_Subscribe.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
+        <state relative-caret-position="969">
           <caret line="57" column="9" lean-forward="false" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
           <folding>
             <marker date="1511858630051" expanded="true" signature="518:530" ph="SELECT * FRO... categorytype" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1300,195 +763,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/Products/Products.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2312">
-          <caret line="136" column="5" lean-forward="false" selection-start-line="136" selection-start-column="5" selection-end-line="136" selection-end-column="5" />
-          <folding>
-            <marker date="1511882881224" expanded="true" signature="418:440" ph="SELECT * fro... products" />
-            <marker date="1511882881224" expanded="true" signature="616:668" ph="SELECT * fro... products" />
-            <marker date="1511882881224" expanded="true" signature="930:985" ph="SELECT * fro... image_products" />
-            <marker date="1511882881224" expanded="true" signature="1311:1357" ph="SELECT * fro... adminat" />
-            <marker date="1511882881224" expanded="true" signature="1589:1638" ph="SELECT * fro... products" />
-            <marker date="1511882881224" expanded="true" signature="5602:5651" ph="SELECT * fro... products" />
-            <marker date="1511882881224" expanded="true" signature="6655:6720" ph="SELECT * fro... products" />
-            <marker date="1511882881224" expanded="true" signature="6655:6790" ph="SELECT * fro... products" />
-            <marker date="1511882881224" expanded="true" signature="7979:8298" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="7991:8194" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="8063:8190" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="8092:8184" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="8408:8727" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="8420:8623" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="8492:8619" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="8521:8613" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="9901:10224" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="9913:10120" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="9985:10116" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="10014:10110" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="10647:10922" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="10659:10867" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="10731:10863" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="10760:10857" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="11719:12042" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="11731:11938" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="11803:11934" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="11832:11928" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="12227:12555" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="12239:12451" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="12311:12447" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="12340:12441" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="13557:13836" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="13569:13781" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="13641:13777" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="13670:13771" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="14716:15050" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="14728:14946" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="14800:14942" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="14829:14936" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="16444:16767" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="16456:16663" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="16528:16659" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="16557:16653" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="16885:17208" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="16897:17104" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="16969:17100" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="16998:17094" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="17629:17952" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="17641:17848" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="17713:17844" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="17742:17838" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="18092:18415" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="18104:18311" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="18176:18307" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="18205:18301" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="20073:20396" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="20085:20292" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="20157:20288" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="20186:20282" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="20514:20837" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="20526:20733" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="20598:20729" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="20627:20723" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="21068:21391" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="21080:21287" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="21152:21283" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="21181:21277" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="21531:21854" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="21543:21750" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="21615:21746" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="21644:21740" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="24741:25064" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="24753:24960" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="24825:24956" ph="..." />
-            <marker date="1511882881224" expanded="true" signature="24854:24950" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/products/products.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/products/products.php" />
     <entry file="file://$PROJECT_DIR$/Server_PHP/Language/language.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/logout.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/userprofile_classlogin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/checkuserprofile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16643">
-          <caret line="982" column="0" lean-forward="true" selection-start-line="982" selection-start-column="0" selection-end-line="982" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/details_products.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/class_search_company.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="2" lean-forward="true" selection-start-line="35" selection-start-column="2" selection-end-line="35" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session/check_session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session/classlogin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2193">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session/fbConfig.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-88">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1632">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/login.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/logout.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/userprofile_classlogin.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/checkuserprofile.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/details_products.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/class_search_company.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session/check_session.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session/classlogin.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session/fbConfig.php" />
+    <entry file="file://$PROJECT_DIR$/Server_PHP/userprofile/check_session/index.php" />
     <entry file="file://$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
@@ -1504,8 +797,284 @@
             <marker date="1511885174641" expanded="true" signature="1543:1586" ph="DELETE FROM " />
             <marker date="1511885174641" expanded="true" signature="1875:2079" ph="UPDATE movie... " />
             <marker date="1511885174641" expanded="true" signature="2517:2568" ph="SELECT * fro... ${$table_name}" />
-            <marker date="1511885174641" expanded="true" signature="2517:2775" ph="SELECT * fro... ${$table_name}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/Fetch_Data/Fetch_Data.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="34" column="29" lean-forward="false" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server_PHP/Products/Products.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding>
+            <marker date="1511894497220" expanded="true" signature="419:441" ph="SELECT * fro... products" />
+            <marker date="1511894497220" expanded="true" signature="617:669" ph="SELECT * fro... products" />
+            <marker date="1511894497220" expanded="true" signature="931:986" ph="SELECT * fro... image_products" />
+            <marker date="1511894497220" expanded="true" signature="1312:1358" ph="SELECT * fro... adminat" />
+            <marker date="1511894497220" expanded="true" signature="1590:1639" ph="SELECT * fro... products" />
+            <marker date="1511894497220" expanded="true" signature="5603:5652" ph="SELECT * fro... products" />
+            <marker date="1511894497220" expanded="true" signature="6656:6721" ph="SELECT * fro... products" />
+            <marker date="1511894497220" expanded="true" signature="6656:6791" ph="SELECT * fro... products" />
+            <marker date="1511894497220" expanded="true" signature="7980:8299" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="7992:8195" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="8064:8191" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="8093:8185" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="8409:8728" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="8421:8624" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="8493:8620" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="8522:8614" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="9902:10225" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="9914:10121" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="9986:10117" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="10015:10111" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="10648:10923" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="10660:10868" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="10732:10864" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="10761:10858" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="11720:12043" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="11732:11939" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="11804:11935" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="11833:11929" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="12228:12556" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="12240:12452" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="12312:12448" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="12341:12442" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="13558:13837" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="13570:13782" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="13642:13778" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="13671:13772" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="14717:15051" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="14729:14947" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="14801:14943" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="14830:14937" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="16445:16768" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="16457:16664" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="16529:16660" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="16558:16654" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="16886:17209" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="16898:17105" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="16970:17101" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="16999:17095" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="17630:17953" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="17642:17849" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="17714:17845" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="17743:17839" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="18093:18416" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="18105:18312" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="18177:18308" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="18206:18302" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="20074:20397" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="20086:20293" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="20158:20289" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="20187:20283" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="20515:20838" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="20527:20734" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="20599:20730" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="20628:20724" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="21069:21392" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="21081:21288" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="21153:21284" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="21182:21278" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="21532:21855" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="21544:21751" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="21616:21747" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="21645:21741" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="24742:25065" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="24754:24961" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="24826:24957" ph="..." />
+            <marker date="1511894497220" expanded="true" signature="24855:24951" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../shitble/login/js/js_userprofile/products.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="423" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="385" column="41" lean-forward="false" selection-start-line="385" selection-start-column="4" selection-end-line="385" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#73#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="974" column="11" lean-forward="false" selection-start-line="974" selection-start-column="9" selection-end-line="974" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/htpp-services/htpp-services.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="70" column="64" lean-forward="false" selection-start-line="70" selection-start-column="64" selection-end-line="70" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/cycle2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-527">
+          <caret line="35" column="15" lean-forward="false" selection-start-line="35" selection-start-column="15" selection-end-line="35" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="8" column="43" lean-forward="false" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="15" lean-forward="false" selection-start-line="20" selection-start-column="3" selection-end-line="22" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/slideshow/slideshow.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/slideshow/slideshow.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="582">
+          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/slideshow/slideshow.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2465">
+          <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/notfound/notfound.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/notfound/notfound.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.router.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -3,12 +3,120 @@
     <br>
     <div class="gjeresia">
       <div class="containerleft">
+
+        <app-slideshow></app-slideshow>
+
         <div class="option_products"></div>
-        <div class="add_elemnt_option"></div>
-        <div class="all_prod" ></div>
 
-        <div class ="" *ngFor=" let product of products " > {{product.title}} </div>
+        <div class="all_prod" >
 
+        <div class="width_products" *ngFor="let array of products"  >
+
+          <div class="each_width_product" *ngFor="let product of array['product']">
+
+            <a href='#'>
+              <div class="title_products more_detail_product">
+               {{product.title }}
+              </div>
+            </a>
+            <div class="dropdown_products">
+              <span class="glyphicon glyphicon-chevron-down"></span>
+            </div>
+
+            <div class="date_products">
+              <span class='glyphicon glyphicon-time'></span> {{product.date}}
+            </div>
+
+            <div class="own_img_product" >
+
+            </div>
+            <div class="image_profile_company" *ngFor="let company of array['company']">
+              <a href="#"><img  class="image_prof_admin" src="../../assets/images/{{company.imageprofile}}"></a>
+            </div>
+
+            <div class="image_product_primary">
+
+              <div class='zoom  nrtotal_products' id="ex{{product.id}}">
+                   <img class="img_prod img_primary_product{{product.id}}" src="../../assets/images/{{product.image}}">
+                   <p>Click</p>
+
+            </div>
+
+            </div>
+
+            <a href="#" class="hover_all_wish" id="wish_list{{product.id}}">
+              <div class="wish_list">
+              </div>
+              <div class="about_wish" id="{{product.id}}">
+
+                  <div class="wish_list_write">
+                    <div class="plus_icon">Add_Wish</div>
+                  </div>
+                  <div class="wish_list_icon">
+                    <div class="hearts_div">
+                      <img  src="../../assets/images/hearts.png">
+                    </div>
+                    <div class="success_add_wish">
+                      <img  src="../../assets/images/ok.png">
+                    </div>
+                  </div>
+
+              </div>
+            </a>
+
+          <div class="footer_products">
+
+            <a href="#" data-toggle="tooltip" title="View!">
+              <div class="button_footer_products">
+
+                <span class="glyphicon glyphicon-eye-open icon_eye"></span>
+
+
+                <div class="both_write number_eye">
+                  12889
+                </div>
+
+              </div>
+
+
+            </a>
+
+            <a href="#" data-toggle="tooltip" title="Add to Card!">
+
+              <div class="button_footer_products">
+                <span class="glyphicon glyphicon-plus icon_eye"></span>
+                <div class="both_write write_add_card">
+                  Card
+                </div>
+              </div>
+            </a>
+            <a href="#" data-toggle="tooltip" title="Details Product!">
+              <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
+                <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
+                <div class="both_write write_add_card">
+                  More
+                </div>
+              </div>
+            </a>
+
+
+          </div>
+          <div class="prise_products">
+
+              Price:
+
+              <div class="both_prise_products prise_primary">
+                <del>$2500</del>
+              </div>
+              <div class="both_prise_products prise_secondary">
+                $3500
+              </div>
+
+          </div>
+
+          <div class="plus_height"></div>
+        </div>
+      </div>
         </div>
 
       <style type="text/css">
@@ -44,7 +152,7 @@
         </style>
       </div>
 
-      <div class="containerright" (click)="get_data()">
+      <div class="containerright" >
 
         <div class="sponsorized_right">
           <div class="icon_go_up">

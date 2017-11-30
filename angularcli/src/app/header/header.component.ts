@@ -13,9 +13,7 @@ declare var $:any;
 export class HeaderComponent implements OnInit {
   constructor() { }
 
-ckm(){
-alert('ok');
-}
+
   ngOnInit() {
     $(document).ready(function(){
       var nameposition='language';
