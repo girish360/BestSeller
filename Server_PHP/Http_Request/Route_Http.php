@@ -20,20 +20,40 @@ include '../Fetch_Data/Fetch_Data.php'; // include fetch data file  ............
 
 include '../Products/Products.php';  // include  products file .......................................
 
+include  '../Language/language.php';
+
 if($_SERVER['REQUEST_METHOD']==='POST' ||  $_SERVER['REQUEST_METHOD']==='GET') { // chekc if request http is  GET or POST ...................
 
     if( $_SERVER['REQUEST_METHOD']==='POST' ){
+
         $postdata = file_get_contents("php://input");
+
         $_POST = json_decode($postdata);
+
         $status = $_POST->status;
 
         // include products http request post ......
          include 'Products_Http.php';
         // end http request post........
+        // include  language http request post ...........
+        include "Language_Http.php";
+        // end
+        // include categrgory and sub htt request ..............
+        if(  $status == 'category' ){
+
+             $category_result = $connection->select_all('categorytype');
+
+             $category_and_subcategory = $fetch_data->fetch_data_array_dependet($category_result,'allcategory_item','id_categorytype','id');
+
+             echo $fetch_data->json_data('category', $category_and_subcategory );
+        }
+        //end
 
 
     }
+
     if( $_SERVER['REQUEST_METHOD']==='GET' ) {
+
         // Auth users ...... http request post ang get .................................................................................................
 
         include 'Auth_Register_Http.php'; // include http request for users to login ang register .........

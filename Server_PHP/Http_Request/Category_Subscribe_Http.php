@@ -2,25 +2,41 @@
 
 if(isset($_GET['get_category'])){
 
-$category_subcategory = $category->get_category(); // call method get_category .....
+    $category_subcategory = $category->get_category(); // call method get_category .....
 
-echo json_encode( array( "status"=>"get_category",$category_subcategory) , JSON_FORCE_OBJECT ); // convert array to json
+    echo json_encode( array( "status"=>"get_category",$category_subcategory) , JSON_FORCE_OBJECT ); // convert array to json
 
 }
-if(isset($_GET['cookie_menu'])){
 
-$result = $cookie->set_cookie($_GET['cookie_menu']);
+if(isset($_GET['cookie_menu_set'])){
 
-$json = $fetch_data->json_data($status = 'cookie_menu' , $array_data = $result); // status is to identify event ................
-echo $json; // echo json response ..................................
+    $result = $cookie->set_cookie($_GET['cookie_menu_set']);
+
+    $json = $fetch_data->json_data($status = 'cookie_menu' , $array_data = $result); // status is to identify event ................
+
+    echo $json; // echo json response ..................................
+
 }
+
+if(isset($_GET['cookie_menu_remove'])){
+
+    $result = $cookie->remove_cookie($_GET['cookie_menu_remove']);
+
+    $json = $fetch_data->json_data($status = 'cookie_menu' , $array_data = $result); // status is to identify event ................
+
+    echo $json; // echo json response ..................................
+}
+
 if(isset($_GET['check_cookie_menu'])){
 
-$result = $cookie->check_cookie($_GET['check_cookie_menu']);
+    $result = $cookie->check_cookie($_GET['check_cookie_menu']);
 
-$json = $fetch_data->json_data($status = 'cookie_menu' , $array_data = $result); // status is to identify event ................
-echo $json; // echo json response ..................................
+    $json = $fetch_data->json_data($status = 'cookie_menu' , $array_data = $result); // status is to identify event ................
+
+    echo $json; // echo json response ..................................
 
 }
+
+
 
 ?>

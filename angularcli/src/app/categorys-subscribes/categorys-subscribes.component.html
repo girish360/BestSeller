@@ -5,27 +5,84 @@
 
   <div class="categoposition" >
     <!--  show all category type -->
-    <div class="users-in-category" >
 
-       <div class="name-user-category">
-         User
-       </div>
+      <div class="categorywidth mini_cat on_hover_category" id="on_hover_category">
+
+           <div class="users-in-category" >
+
+               <div class="name-user-category">
+                  {{get_Language.User}}
+               </div>
 
 
-       <a routerLink="login">
-         <div class="user-icon">
-           <span class="glyphicon glyphicon-user user-category_icon"></span>
+               <a routerLink="login">
+                   <div class="user-icon">
+                       <span class="glyphicon glyphicon-user user-category_icon"></span>
+                   </div>
+                   <div class="write_login_register">
+                       {{get_Language.login_register}}
+                   </div>
+               </a>
+           </div>
+      </div>
+
+      <div class="totaldiv">
+          <div class="writecategory on_hover_category" id="on_hover_category">
+              <div class="catgow">
+                  Categorys
+              </div>
+              <div class="numberkategory">
+                  <div class="minimize" id="minimize_category">
+                      <a href="#"><img class="minimize_category_icon" src="../../assets/images/remove.png"></a>
+                  </div>
+                  <div class="big_click" id="big_category">
+                      <a href="#"><img src="../../assets/images/big.png"></a></div>
+              </div>
           </div>
-         <div class="write_login_register">
-           Login/Register
-         </div>
-       </a>
 
-    </div>
+          <div class="cat_sub" *ngFor="let category of categorys">
+              <a href="#" class="underline" id="{{category.id}}">
+                  <div class="categorytype" id="category{{category.id}}">
+                      <div class="bordertypecat"></div>
+                      <div class="imgsubscribe">
+                          <img class="" src="../../assets/images/{{category.image}}">
+                      </div>
+                      <div class="namecate">
+                          <div class="namecategory" href="#">{{category.name_category}}</div>
+                          <div class="full_name_hover"> Open {{category.name_category}}</div>
+                          <div class="full_name_hover_category_active"> Close {{category.name_category}}</div>
+                      </div>
+                      <div class="imgnc">
+                          <img class="moresubcategory" src="../../assets/images/morecat.png"><img  class="exitsubcategory" src="../../assets/images/closesubcat.png">
+                      </div>
+                  </div>
+              </a>
 
+              <div class="subcategory sub{{category.id}}" *ngFor="let subcategory of category['allcategory_item']" >
+
+                  <div class="cat_sub">
+
+                      <a href="#" class="nondecoration" id="{{subcategory.id}}">
+                          <div class="subcat" id="{{subcategory.is}}">
+                              <div class="bordertypecat"></div>
+                              <div class="imgcategory">
+                                  <img src="../../assets/images/{{subcategory.image}}">
+                              </div>
+                              <div class="namecate">
+                                  <div class="namecategory" href="#">{{subcategory.name_category}}</div>
+                                  <div class="full_name_hover"> {{subcategory.name_category}}</div>
+                              </div>
+                              <div class="imgnc iconsubcategory">
+                                  <img src="../../assets/images/drop1.png">
+                              </div>
+                          </div>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 
-</div>
 
 
 

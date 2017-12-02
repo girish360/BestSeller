@@ -10,12 +10,12 @@
 
         <div class="all_prod" >
 
-        <div class="width_products" *ngFor="let array of products"  >
+        <div class="width_products" *ngFor="let product of products"  >
 
-          <div class="each_width_product" *ngFor="let product of array['product']">
+          <div class="each_width_product" >
 
             <a href='#'>
-              <div class="title_products more_detail_product">
+              <div class="title_products more_detail_product" >
                {{product.title }}
               </div>
             </a>
@@ -30,7 +30,7 @@
             <div class="own_img_product" >
 
             </div>
-            <div class="image_profile_company" *ngFor="let company of array['company']">
+            <div class="image_profile_company"  *ngFor="let company of product['adminat']">
               <a href="#"><img  class="image_prof_admin" src="../../assets/images/{{company.imageprofile}}"></a>
             </div>
 
@@ -50,7 +50,7 @@
               <div class="about_wish" id="{{product.id}}">
 
                   <div class="wish_list_write">
-                    <div class="plus_icon">Add_Wish</div>
+                    <div class="plus_icon">{{get_Language.add_wishlist}}</div>
                   </div>
                   <div class="wish_list_icon">
                     <div class="hearts_div">

@@ -14,6 +14,9 @@ export class AppComponent implements OnInit{
  kush ='f';
     ngOnInit(){
         $(document).ready(function() {
+            $('body').click('a',function(e) {
+                e.preventDefault();
+            });
 
             $(window).scroll(function () {
                 var scroll = 0;

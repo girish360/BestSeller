@@ -4,27 +4,35 @@ class Cookie {
 
     public function set_cookie($name_cookie)
     {
-        if (isset($_COOKIE['cookie_menu'])) {
-            setcookie('cookie_menu', '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
-            return array('Value'=>'false');
-        } else {
-            setcookie('cookie_menu', 'menu_active', time() + ((3600*60)*24)*30, '/'); // set cookie ..////////
-            return array('Value'=>'true');
-        }
+
+        setcookie('cookie_menu', 'menu_active', time() + ((3600*60)*24)*30, '/'); // set cookie ..////////
+
+        return array('Value'=>'set');
+
 
     }
 
-    public function check_cookie($name_cookie){
+    public function remove_cookie( $name_cookie ){
 
-        if(isset($_COOKIE['cookie_menu'])){
-            setcookie('cookie_menu','',time()-((3600*60)*24)*30 ,'/');
-            return array('Value'=>'1');
+        setcookie( $name_cookie, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
+
+        return array('Value'=>'false');
+    }
+
+    public function check_cookie( $name_cookie ){
+
+        if(isset($_COOKIE[$name_cookie])){
+
+            return array('Value'=>'true');
+
         }
         else{
-            return array('Value'=>'0');
+
+            return array('Value'=>'false');
         }
     }
 }
+
 $cookie = new Cookie(); //  declare obj .....
 
 ?>

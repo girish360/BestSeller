@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -15,24 +15,28 @@ declare  var $:any;
 })
 export class ClientProductsComponent implements OnInit {
 
-   public  products =[];
+   public  products = [] ;
+
+    @Input() get_Language = {};
+
+  constructor( private Httpservice :HtppServicesComponent ) { }
 
 
-  constructor( private httpservice :HtppServicesComponent ) { }
 
   ngOnInit() {
 
-  this.httpservice.Http_Post()
-     .subscribe(
-         data => {
-             if( data['status'] == 'products' ){
-                 this.products = data['data'];
-                 console.log(data['data']);
-             }
-         },
-         error => console.log( error +'gabim' )
+      this.Httpservice.create_obj( 'products','products' );
 
-     );
+      this.Httpservice.Http_Post()
+          .subscribe(
+               data => {
+                  if( data['status'] == 'products' ){
+                       this.products = data['data'];
+                  }
+               },
+               error => console.log( error +'gabim' )
+
+          );
 
 
 
@@ -78,21 +82,13 @@ export class ClientProductsComponent implements OnInit {
               }
           }); // end ...........................................
 
-
-
           var wish_list_active_pass=0; //  make this variable active  when mouse is hover in wishlist  ..........................
           var small_big=0;  //  make this variable small ore big every time ........
           var id_wish=0; // get id products where mouse is hover .................................................................
 
 
 
-          $(document).on('click', 'a', function(event){ // when click a href in body scroll stay in this position ................................
-              event.preventDefault();
 
-              $('html, body').animate({
-                  scrollTop: $( $.attr(this, 'href') ).offset().top
-              }, 200);
-          }); // end
 
           // setInterval call function every time that is located in this function  .............
           setInterval(function(){
@@ -219,62 +215,6 @@ export class ClientProductsComponent implements OnInit {
 
 
           });
-
-          $('body').on('click','.more_detail_product',function(){ // click  button for more detail on product.........................
-              var id_product = $(this).attr('id');
-
-              show_details_product(id_product);
-
-
-          });
-
-          function show_details_product(id_product){   // function to show detail product ..................................
-              $.ajax({
-                  type:'GET',
-                  url:'products/products.php',
-                  data:'id_product_details='+id_product,
-                  success:function(data){
-
-                      var jsonn=$.parseJSON(data);
-
-                      if(jsonn.length>0){
-                          for(var i=0;i<jsonn.length;i++){
-
-
-                          }
-
-                      }
-                      $('.open_detail_product').show();
-                      setTimeout(function(){
-                          $('.loading_product_details').fadeOut();
-                          $('.details_products_container').css({width:'50px',height:'50px',borderRadius:'100px'}).show();
-                          $('.details_products_container').animate({
-                              width:'700px',
-                              height:'600px',
-                              borderRadius:'2px'
-                          });
-                      },1000);
-
-
-                  },
-                  beforeSend:function(){
-                      $('.opacity_detail_product').fadeIn(function(){
-                          $('.details_products,.loading_product_details').show();
-                      });
-                  },
-                  error:function(e){
-                      if(e.status==0){
-                          setTimeout(function(){
-
-                          },3000);
-
-                      }
-                  }
-              });
-          }
-
-
-
 
 
           $('.click_up').click(function(){

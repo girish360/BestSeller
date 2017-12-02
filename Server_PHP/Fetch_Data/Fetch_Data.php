@@ -8,16 +8,14 @@ class Fetch_Data extends connection {
 
     public $dependet = array();
 
-    public $data = array();
-
     public function fetch_data_array( $result_fromDB ){
 
-       while( $result = $result_fromDB->fetch_assoc() ){
+        while( $result = $result_fromDB->fetch_assoc() ){
 
-           $this->Data_array[] = $result;
-       }
+            $this->Data_array[] = $result;
+        }
 
-       return $this->Data_array;
+        return $this->Data_array;
     }
 
 
@@ -29,17 +27,18 @@ class Fetch_Data extends connection {
     }
 
 
-    public function fetch_data_array_dependet( $result_fromDB , $tb_name_dep , $column_dep , $id ){
+    public function fetch_data_array_dependet( $result_fromDB , $table_name_depependet , $column_depenendet , $id_dependet ){
+        $nr = 0 ;
 
         while( $result = $result_fromDB->fetch_assoc() ){
-            $this->data = [];
-            $this->data[] = $result;
-            $this->Data_dependet_array = self::data_dependet( $tb_name_dep , $column_dep , $result[$id] );
 
-            $this->Data_array[] = array(
-                 "product"=>$this->data,
-                 "company"=> $this->Data_dependet_array
-            );
+            $this->Data_array[$nr] = $result;
+
+            $this->Data_dependet_array = self::data_dependet( $table_name_depependet , $column_depenendet , $result[$id_dependet] );
+
+            $this->Data_array[$nr][$table_name_depependet]= $this->Data_dependet_array;
+
+            $nr++;
         }
         return $this->Data_array; //  return array
     }
@@ -50,9 +49,11 @@ class Fetch_Data extends connection {
 
         while( $result = $result_fromDB->fetch_assoc() ){
 
-               $this->dependet[] = $result;
+            $this->dependet[] = $result;
         }
         return $this->dependet;
+
+
     }
 
 }

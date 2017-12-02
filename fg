@@ -1,0 +1,89 @@
+[33mcommit bd8ed3e01cdc8821b5aaf8b93476c7b9f2499661[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Sat Dec 2 03:00:19 2017 +0100
+
+    language
+
+[33mcommit 97378f051809fca31afdcecc039589a3a518c93f[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Thu Nov 30 22:38:20 2017 +0100
+
+    slide show component
+
+[33mcommit c4cae6d6fc5838dccfa0c5784f02b2349e8c9527[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Tue Nov 28 17:08:27 2017 +0100
+
+    products and some method to access data
+
+[33mcommit 46e650c066f93738171131290d88c4c78df2f50a[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Fri Nov 24 23:35:08 2017 +0100
+
+    header sticky
+
+[33mcommit 663cc2f47db5be45b7d46608758058d249a4260f[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Fri Nov 17 00:43:54 2017 +0100
+
+    cookie_menu
+
+[33mcommit 1b6042754e28c1b90ea5f319c5a7e674f4f337f4[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Wed Nov 15 21:55:47 2017 +0100
+
+    route http
+
+[33mcommit 3508e9ac28386aad2f7cfebeaf53916ddca32dd1[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Wed Nov 15 21:52:32 2017 +0100
+
+    send http request only one route
+
+[33mcommit 452e90e55f163e5add2f7ae4cd429a92153a1bac[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Tue Nov 14 08:34:11 2017 +0100
+
+    add  client product component
+
+[33mcommit 9b679796abf456861bc6e23efbf75e86aa4ccb54[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Tue Nov 7 22:47:21 2017 +0100
+
+    add category component
+
+[33mcommit c83af177162aa373cbba834a6dbe73a874066bbd[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Mon Nov 6 01:28:58 2017 +0100
+
+    change page  visitors put  in conponents angular cli
+
+[33mcommit e828e2edeec67212c64bc1aaf6c9ce44bcce5ec2[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Tue Oct 17 12:13:25 2017 +0200
+
+    change login
+
+[33mcommit 2a23e794790b0c6ca9fc77334d850e42297a98aa[m
+Author: klodianshaba <klodian.tik@gmail.com>
+Date:   Wed Oct 11 22:16:01 2017 +0200
+
+    delete index php set it in angularcli component
+
+[33mcommit 0e88c70c890b8e1b7fdc2909ecb31240b6c38769[m
+Author: klodianshaba <klodia.tik@gmail.com>
+Date:   Wed Oct 11 22:06:06 2017 +0200
+
+    add angularcli
+
+[33mcommit 190e75726f7fc12ca2ea2fc056e9b91a3004f593[m
+Author: klodian.tik@gmail.com <klodian.tik@gmail.com>
+Date:   Thu Oct 5 21:20:53 2017 +0200
+
+    remove databse.sql
+
+[33mcommit c94d27dfd82dcbf545c99fc25abbba5e28253995[m
+Author: klodian.tik@gmail.com <klodian.tik@gmail.com>
+Date:   Thu Oct 5 21:17:00 2017 +0200
+
+    first commit

@@ -1,20 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit ,Input , Output , EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
+import 'rxjs/add/observable/bindCallback';
 
 
 declare var $:any;
+
+@Injectable()
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  providers:[HtppServicesComponent ],
+
 })
 export class HeaderComponent implements OnInit {
-  constructor() { }
 
+  @Input() get_Language = {};
+
+  @Output() languageFromHeader:EventEmitter<object> = new EventEmitter;
+
+  constructor( private Httpservices : HtppServicesComponent  ) { }
+
+  public language_allow = [
+    {name: 'English', id: "English" , image:'england.png'},
+    {name: 'Albanian', id: "Albania", image:'albania.png'},
+    {name: 'Italy', id: "Italy" ,image:'italy.png'}
+
+  ];
+
+
+  choose_language(id_language){
+
+    this.Httpservices.create_obj( 'language',id_language );
+
+    this.Httpservices.Http_Post()
+        .subscribe(data=>{ this.get_Language = data , this.send_Language_to_visitors() }
+
+            ,error=>(console.log( error +'gabim' ))
+
+        );
+
+  }
+
+  send_Language_to_visitors(){
+
+    this.languageFromHeader.emit(this.get_Language);
+  }
 
   ngOnInit() {
+
+
+this.choose_language('English');
     $(document).ready(function(){
       var nameposition='language';
       focus();
@@ -40,10 +79,15 @@ export class HeaderComponent implements OnInit {
           var cookie_menu = 'cookie_menu';
           Data = 'check_cookie_menu='+cookie_menu;
           Status = 'GET';
-           Send_Request_In_Server( Server_path_http , Data , Status ); // call method that send http request to check cookie menu ................
+          Send_Request_In_Server( Server_path_http , Data , Status ); // call method that send http request to check cookie menu ................
         },100);
       });
 
+      $('.albanian').click(function(e){ // make checked radio language when user choose a language
+        e.preventDefault();
+        $('.radiolang').attr('checked',false);
+        $(this).find('.radiolang').attr('checked', true);
+      });
 
       $('.optionprofile').click(function(){
         $('.dropmenuprofile').css("top","50px");
@@ -58,7 +102,8 @@ export class HeaderComponent implements OnInit {
       });
 
 
-      $('.gjuha').click(function(){
+      $('.gjuha').click(function(e){
+        e.preventDefault();
         $('.dropdowngjuha').css("top","50px");
         $('.dropdowngjuha').slideToggle(function(){
           $('.dropdowngjuha').animate({
@@ -126,7 +171,7 @@ export class HeaderComponent implements OnInit {
           $('.space').removeClass('exitspace');
           $('.containere').removeClass('exitcalculation');
 
-          show_category_menu()// call function show category_menu.................................
+          show_category_menu();// call function show category_menu.................................
 
           $('.listcategory').each(function(){
             $(this).hide();
@@ -267,7 +312,8 @@ export class HeaderComponent implements OnInit {
 
       });
 
-      $('.language').click(function(){
+      $('.language').click(function(e){
+        e.preventDefault();
         var name = $(this).attr('id');
 
         give_color_icon_header('gh-header' , $(this).find('.gh-header') , language);
@@ -298,7 +344,8 @@ export class HeaderComponent implements OnInit {
         }
 
       });
-      $('.card').click(function(){
+      $('.card').click(function(e){
+        e.preventDefault();
         var name = $(this).attr('id');
         give_color_icon_header('gh-header' , $(this).find('.gh-header') , card);
         give_bgcolor_icon_header('menu3' , 'card', card ,$(this).find('.write_icon_header'));
@@ -325,7 +372,8 @@ export class HeaderComponent implements OnInit {
         }
       });
 
-      $('.favority').click(function(){
+      $('.favority').click(function(e){
+        e.preventDefault();
         var name = $(this).attr('id');
         give_color_icon_header('gh-header' , $(this).find('.gh-header') , favority);
         give_bgcolor_icon_header('menu3' , 'favority', favority ,  $(this).find('.write_icon_header'));
@@ -538,13 +586,13 @@ export class HeaderComponent implements OnInit {
         $('.all_show_multiple').hide();
 
         var cookie_menu = 'cookie_menu';
-        Data = 'cookie_menu='+cookie_menu;
+        Data = 'cookie_menu_set='+cookie_menu;
         Status = 'GET';
-        Send_Request_In_Server( Server_path_http , Data ,Status); // method to send data in server ......
+        Send_Request_In_Server( Server_path_http , Data ,Status ); // method to send data in server ......
 
       } // ............................................ end
 
-      function hide_category_menu(width_function){ // function for hide category menu when user click for close it  call this function with animate ...........................
+      function hide_category_menu( width_function ){ // function for hide category menu when user click for close it  call this function with animate ...........................
         actuallist = 0;
         if(width_function<800){
           $('.listcategory').css("display","block");
@@ -575,7 +623,7 @@ export class HeaderComponent implements OnInit {
           $('.all_show_multiple_open').hide();
 
           var cookie_menu = 'cookie_menu';
-          Data = 'cookie_menu='+cookie_menu;
+          Data = 'cookie_menu_remove='+cookie_menu;
           Status = 'GET';
           Send_Request_In_Server( Server_path_http , Data , Status ); // method to send data in server ......
 
@@ -702,39 +750,43 @@ export class HeaderComponent implements OnInit {
       }
 
       function Send_Request_In_Server( Server_path_http , Data , Status) { // function for send http request POST and GET in SERVER .......
-           if (Status == 'GET') { // check if request is with  GET .....
-                $.ajax({ // declare ajax syntax ..........
-                      type: Status, // put Status is GET ...........
-                      url: Server_path_http, // Path where is going the request .........
-                      data: Data, // data that are going in server ..........
-                      dataType: 'json', // type of response   json  .............
-                      xhrFields: {
-                          withCredentials: true // credencials in header to set cookie in browser ..............
-                      },
-                      crossDomain: true, // cross true .......
-                      success: function (data) { // success function  get  response ................
-                            Response = data;
-                            success_response(); // call function success
-                      }, error: function (e) { // error response from server ...........
-                      }, beforeSend: function () {  // before send request in server ..........
-                      }
-                });
-           }
-           else if (Status == 'POST') { // check if request is POST
+        if (Status == 'GET') { // check if request is with  GET .....
 
-           }
-           else {
-                Response = 'Nothing';
-           }
+          $.ajax({ // declare ajax syntax ..........
+            type: Status, // put Status is GET ...........
+            url: Server_path_http, // Path where is going the request .........
+            data: Data, // data that are going in server ..........
+            dataType:'json',// type of response   json  .............
+            xhrFields: {
+              withCredentials: true // credencials in header to set cookie in browser ..............
+            },
+            crossDomain: true, // cross true .......
+            success: function (data) { // success function  get  response ................
+              Response = data;
+              console.log('success');
+              success_response(); // call function success
+            }, error: function (e) { // error response from server ...........
+              console.log(e.error);
+            }, beforeSend: function () {  // before send request in server ..........
+            }
+          });
+        }
+        else if (Status == 'POST') { // check if request is POST
+
+
+        }
+        else {
+          Response = 'Nothing';
+        }
 
       }
       function success_response(){
-            if(Response.status == 'cookie_menu'){ // response is for cookie menu ........
 
-               if( Response['data']['Value'] == '1' ){ // check if is active .....................
-                   show_category_menu();  // call method shoe category_menu ....
-               }
-            }
+        if(Response['status']=='cookie_menu'){
+           if(Response['data']['Value']=='true'){
+             show_category_menu();
+           }
+        }
       }
     });
   }

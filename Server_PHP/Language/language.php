@@ -2,9 +2,9 @@
 class language{
     public $datauser;
 
-    public function languages($lang){
+    public function languages( $lang ){
         $language=[];
-        switch ($lang) {
+        switch ( $lang ) {
             case 'English':
                 $language['wellcome']='Wellcome';
                 $language['choselanguage']='Choose your language';
@@ -23,7 +23,15 @@ class language{
                 $language['emptycat']='This is empty';
                 $language['add_wishlist']='WishList';
                 $language['header']="EN";
-
+                $language['Active_language']="English";
+                $language['Active_language_image']="england.png";
+                $language['sing']="Sing In";
+                $language['wish']="WishList";
+                $language['card']="Card";
+                $language['language']="Language";
+                $language['User']="User";
+                $language['login_register']="Login/Register";
+                $language['chat']="Chat Live";
                 break;
             case 'Albania':
                 $language['wellcome']='Mirsevini';
@@ -43,6 +51,15 @@ class language{
                 $language['emptycat']='Kjo eshte bosh';
                 $language['add_wishlist']='Preferencat';
                 $language['header']="AL";
+                $language['Active_language']="Albania";
+                $language['Active_language_image']="albania.png";
+                $language['sing']="Hyni";
+                $language['wish']="Preferencat";
+                $language['card']="Karta";
+                $language['language']="Gjuha";
+                $language['User']="Perdorues";
+                $language['login_register']="Hyni/Regjistrohu";
+                $language['chat']="Komunikim Live";
 
                 break;
             case 'Germany':
@@ -65,11 +82,22 @@ class language{
                 break;
             case 'Italy':
                 $language['wellcome']='Mirsevini';
-                $language['choselanguage']='Zgjidhni gjuhen tuaj';
+                $language['choselanguage']='Scegli la tua LINGUA';
                 $language['seemorelanguage']='Shikoni me shume';
-                $language['searchproducts']='Kerkoni produkte ose kompani....';
+                $language['searchproducts']='Kerkoni produkte ose kompani it....';
                 $language['imgactivlanguage']='italy.png';
                 $language['chooselanguage']=$lang;
+                $language['Active_language']="Italy";
+                $language['Active_language_image']="italy.png";
+                $language['sing']="Sing In";
+                $language['wish']="WishList";
+                $language['card']="Card";
+                $language['language']="Language";
+                $language['User']="Perdorues it";
+                $language['login_register']="Hyni/Regjistrohu it";
+                $language['add_wishlist']='WishList it';
+                $language['chat']="Chat Live it";
+
 
                 break;
             case 'Turkey':

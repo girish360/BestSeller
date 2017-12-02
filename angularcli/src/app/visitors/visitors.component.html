@@ -1,11 +1,11 @@
 
-<app-header> </app-header>
+<app-header [get_Language]="get_Language" (languageFromHeader)="setLanguageFromHeader($event)"> </app-header>
 
 
-<app-categorys-subscribes>  </app-categorys-subscribes>
+<app-categorys-subscribes [get_Language]="get_Language" >  </app-categorys-subscribes>
 
 
-<app-client-products>  </app-client-products>
+<app-client-products [get_Language]="get_Language" >  </app-client-products>
 
 
-<app-chat></app-chat>
+<app-chat [get_Language]="get_Language" > </app-chat>

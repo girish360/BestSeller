@@ -16,6 +16,7 @@ export class HtppServicesComponent implements OnInit {
 
   path = 'http://localhost/bestseller/server_PHP/Http_Request/Route_Http.php';
 
+  private object = {};
 
   ngOnInit() {
   }
@@ -30,14 +31,22 @@ export class HtppServicesComponent implements OnInit {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     headers.append('Accept', 'text/plain');
 
-    const obj = { status: 'products' , name: 'gabriel', age: 20 };
-    const body = JSON.stringify(obj);
+
+    const body = JSON.stringify(this.object);
 
     return this.http.post(this.path,
         body,
         { headers:headers })
-        .map((res: Response )=> res.json());
+        .map((Response )=> Response.json());
 
+
+  }
+
+  create_obj( status , value ) {
+
+    this.object = { status: status , value: value };
+
+    return this.object;
 
   }
 

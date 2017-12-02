@@ -1,6 +1,9 @@
-import { Component, OnInit , AfterViewInit } from '@angular/core';
+import { Component, OnInit , AfterViewInit , Input } from '@angular/core';
 
-declare var $:any;
+import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
+
+ declare var $:any;
+
 @Component({
   selector: 'app-categorys-subscribes',
   templateUrl: './categorys-subscribes.component.html',
@@ -8,12 +11,26 @@ declare var $:any;
 })
 export class CategorysSubscribesComponent implements OnInit {
 
-  constructor() { }
+  constructor( private Httpservice : HtppServicesComponent) { }
 
+  public categorys = [];
 
+  @Input() get_Language = {};
 
   ngOnInit() {
 
+    this.Httpservice.create_obj( 'category','category' );
+
+    this.Httpservice.Http_Post()
+        .subscribe(
+            data => {
+              if( data['status'] == 'category' ){
+                this.categorys = data['data']
+              }
+            },
+            error => console.log( error +'gabim' )
+
+        );
 
     $(document).ready(function(){
 
@@ -37,12 +54,6 @@ export class CategorysSubscribesComponent implements OnInit {
       var Data = ''; // data is to send data in server .........
       var Status = ''; // status is for identify  what kind of http is requests post or get
       var Response;  // response from server ....
-
-
-      var default_data = 1;
-      Data = 'get_category='+default_data;
-      Status = 'GET';
-      Send_Request_In_Server( Server_path_http , Data , Status );
 
 
       // click buttin minimizate category and subscribe.........................
@@ -634,7 +645,7 @@ export class CategorysSubscribesComponent implements OnInit {
 
 
             },error:function(e){
-
+               console.log(e.error);
             },beforeSend:function(){
 
             }
@@ -678,113 +689,7 @@ export class CategorysSubscribesComponent implements OnInit {
 
 
       }
-
-
-
       function Put_Category_Element(){
-
-         $('.categoposition').append(
-             '<div class="totaldiv">'+
-                   '<div class="writecategory on_hover_category" id="on_hover_category">'+
-                         '<div class="catgow">'+
-                               'Categorys'+
-                          '</div>'+
-                          '<div class="numberkategory">'+
-
-                                '<div class="minimize" id="minimize_category">'+
-                                      '<a href="#"><img class="minimize_category_icon" src="../../assets/images/remove.png"></a>'+
-                                '</div>'+
-                                '<div class="big_click" id="big_category">'+
-                                      '<a href="#"><img src="../../assets/images/big.png"></a></div>'+
-                                '</div>'+
-                          '</div>'+
-                          '<div class="categorywidth mini_cat on_hover_category" id="on_hover_category">'
-                          );
-                          for ( var i = 0 ; i < Object.keys(Response).length ; i++){ //  loop  with status  that  identify for what is this json  , and json data ..
-
-                               for ( var j = 0 ; j < Object.keys(Response[i]).length ; j++){  // loop category .....
-                                 var id_category;
-
-
-                                 if (Response[i][j]['name_category']){ // data category
-                                  id_category = Response[i][j]['id'];
-
-                                        $('.categoposition').append(
-                                            '<div class="cat_sub">'+
-                                                '<a href="#" class="underline" id="'+Response[i][j]['id']+'">'+
-                                                     '<div class="categorytype" id="category'+Response[i][j]['id']+'">'+
-                                                          '<div class="bordertypecat"></div>'+
-                                                          '<div class="imgsubscribe">'+
-                                                               '<img class="" src="../../assets/images/'+Response[i][j]['image']+'">'+
-                                                          '</div>'+
-                                                          '<div class="namecate">'+
-                                                               '<div class="namecategory" href="#">'+Response[i][j]['name_category']+'</div>'+
-                                                               '<div class="full_name_hover"> Open '+Response[i][j]['name_category']+'</div>'+
-                                                               '<div class="full_name_hover_category_active"> Close '+Response[i][j]['name_category']+'</div>'+
-                                                          '</div>'+
-                                                          '<div class="imgnc">'+
-                                                              '<img class="moresubcategory" src="../../assets/images/morecat.png"><img  class="exitsubcategory" src="../../assets/images/closesubcat.png">'+
-                                                          '</div>'+
-                                                     '</div>'+
-                                                '</a>'+
-                                            '</div>'
-                                        );
-
-                                    }else{ // obj with  data sub_category
-                                          if(Object.keys(Response[i][j]).length > 0){
-                                          for ( var f = 0 ; f < Object.keys(Response[i][j]).length; f++ ){ // loop  with data sub_category .........
-                                              $('.categoposition').append(
-                                                  '<div class="subcategory sub'+Response[i][j][f]['id_categorytype']+'">'+
-                                                       '<div class="cat_sub">'+
-                                                            '<a href="#" class="nondecoration" id="'+Response[i][j][f]['id']+'">'+
-                                                                 '<div class="subcat" id="'+Response[i][j][f]['id']+'">'+
-                                                                       '<div class="bordertypecat"></div>'+
-                                                                       '<div class="imgcategory">'+
-                                                                            '<img src="../../assets/images/'+Response[i][j][f]['image']+'">'+
-                                                                       '</div>'+
-                                                                       '<div class="namecate">'+
-                                                                            '<div class="namecategory" href="#">'+Response[i][j][f]['name_category']+'</div>'+
-                                                                            '<div class="full_name_hover"> '+Response[i][j][f]['name_category']+'</div>'+
-                                                                       '</div>'+
-                                                                       '<div class="imgnc iconsubcategory">'+
-                                                                             '<img src="../../assets/images/drop1.png">'+
-                                                                       '</div>'+
-                                                                  '</div>'+
-                                                            '</a>'+
-                                                       '</div>'+
-                                                  '</div>'
-                                              );
-                                          }
-                                          }else{
-
-                                            $('.categoposition').append(
-
-                                                '<div class="subcategory sub'+id_category+'">'+
-                                                      '<div class="cat_sub">'+
-                                                           '<a href="#" class="nondecoration">'+
-                                                                '<div class="dont_have_subcategory">'+
-                                                                      '<div class="bordertypecat"></div>'+
-                                                                      '<div class="imgcategory">'+
-                                                                           '<img src="../../assets/images/not.png">'+
-                                                                      '</div>'+
-                                                                      '<div class="namecate">'+
-                                                                           '<div class="namecategory" href="#">Empty Category</div>'+
-                                                                      '</div>'+
-                                                                      '<div class="imgnc iconsubcategory">'+
-                                                                           '<img src="../../assets/images/drop1.png">'+
-                                                                      '</div>'+
-                                                                 '</div>'+
-                                                            '</a>'+
-                                                       '</div>'+
-                                                '</div>'
-                                            );
-                                          }
-
-                                     }
-                               }
-                          }
-
-
 
 
       }
