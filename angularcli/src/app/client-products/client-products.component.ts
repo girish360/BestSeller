@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input , Output , EventEmitter  } from '@angular/core';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -6,7 +6,9 @@ import { HtppServicesComponent } from '../htpp-services/htpp-services.component'
 
 
 declare  var $:any;
+
 @Injectable()
+
 @Component({
   selector: 'app-client-products',
   templateUrl: './client-products.component.html',
@@ -17,9 +19,39 @@ export class ClientProductsComponent implements OnInit {
 
    public  products = [] ;
 
-    @Input() get_Language = {};
+   @Input() get_Language = {};
+
+   @Input() wishList_products = [];
+
+    public productInWish = false;
+
+
+
+   @Output() wish_product_fromProducts:EventEmitter<object> = new EventEmitter;
+
+
 
   constructor( private Httpservice :HtppServicesComponent ) { }
+
+    add_wish_list( product_data ){
+
+    this.wish_product_fromProducts.emit( product_data );
+
+    }
+
+    set_productInWish(  ){
+
+     this.productInWish = true;
+
+
+
+
+    }
+    update_product_in_wish(){
+
+        this.productInWish = false;
+
+    }
 
 
 
@@ -158,51 +190,7 @@ export class ClientProductsComponent implements OnInit {
 
 
 // function  animate hearts  into the products when click it  , it move and go to the favority icon ........................................................
-          $('body').on('click','.hover_all_wish',function(){
-              alert('sfd');
-              var offset_add_favority = $('.favority').offset();
-              var offset_prod_favority=$(this).find('.wish_list_icon').offset();
-              var total_animate_left=offset_add_favority.left-offset_prod_favority.left;
-              var total_animate_top = offset_prod_favority.top-scrollTop+-10;
-              $(this).find('.plus_icon').hide();
-              var id_product = $(this).find('.about_wish').attr('id');
-              var count_favorite_cookie=0;
-              $.ajax({
-                  type:'GET',
-                  url:'products/products.php',
-                  data:'favority='+id_product,
-                  success:function(data){
-                      count_favorite_cookie=data;
-                  },
-                  error:function(e){
-                      if(e.status==0){// error dont have int .......
-                      }
-                  },
-                  beforSend:function(){ //loader
-                  }
 
-              });
-              var tr = $(this).find('.hearts_div').addClass('zindex_hearts').animate({
-                  top:'-'+total_animate_top,
-                  left:total_animate_left+4.5
-              },1000,function(){
-                  $(tr).fadeOut('slow',function(){
-                      $(tr).removeClass('zindex_hearts');
-                      $(this).find('.hearts_div').addClass('hearts_div_add');
-                      if(count_favorite_cookie>=100){
-                          $('.nrnotification_favority').find('.count_number_favorite').html('99+');
-                      }
-                      else{
-                          $('.nrnotification_favority').find('.count_number_favorite').html(count_favorite_cookie);
-                      }
-                      $('.nrnotification_favority').css('display','inline-block').fadeIn();
-                  });
-                  $('.color_hearts_first').css("backgroundColor","red");
-              });
-              $(this).find('.success_add_wish').css({opacity:'0',display:'block'}).animate({
-                  opacity:'1',
-              },500);
-          }); // end ...............................................................................................
           $('body').on('mouseenter','.button_footer_products',function(){
               $(this).addClass('hover_footer_products');
 

@@ -22,6 +22,10 @@ export class HeaderComponent implements OnInit {
 
   @Output() languageFromHeader:EventEmitter<object> = new EventEmitter;
 
+  @Input() wishList_products = [];
+
+   private card_products = [];
+
   constructor( private Httpservices : HtppServicesComponent  ) { }
 
   public language_allow = [
@@ -32,7 +36,7 @@ export class HeaderComponent implements OnInit {
   ];
 
 
-  choose_language(id_language){
+  choose_language( id_language ){
 
     this.Httpservices.create_obj( 'language',id_language );
 
@@ -48,12 +52,24 @@ export class HeaderComponent implements OnInit {
   send_Language_to_visitors(){
 
     this.languageFromHeader.emit(this.get_Language);
+
   }
+
+  delete_from_wishList( product ){
+
+     var index_product = this.wishList_products.indexOf( product );
+
+     this.wishList_products.splice( index_product , 1 );
+
+  }
+
+
 
   ngOnInit() {
 
 
-this.choose_language('English');
+
+
     $(document).ready(function(){
       var nameposition='language';
       focus();
@@ -450,7 +466,7 @@ this.choose_language('English');
           }
 
         }
-        if($(e.target).closest('.favority').length == 0 && $(e.target).closest('.dropfavority').length == 0 && $(e.target).closest('.treguesi').length == 0 ) {
+        if($(e.target).closest('.favority , .delete_wish').length == 0 && $(e.target).closest('.dropfavority').length == 0 && $(e.target).closest('.treguesi').length == 0 ) {
           $('.dropfavority').hide();
 
         }
@@ -463,7 +479,7 @@ this.choose_language('English');
         }
         if($(e.target).closest(
                 '.card, .language, .dropworld, .dropcard ,.dropfavority ,.dropmore, .treguesi, .favority, .moreprofile, .pictureuser,'+
-                ' .treguesi, .listcategoryfind, .category, .searchsubscribe'
+                ' .treguesi, .listcategoryfind, .category, .searchsubscribe,.delete_wish'
             ).length == 0 )
         {
 

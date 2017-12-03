@@ -1,9 +1,8 @@
 
-
 <div class="above_space_header" >
 
   <div class="widthi_above_header" style="color: red;">
-    BEST_SELLER
+    BEST_SELLER {{ get_wishList_product }}
   </div>
 </div>
 <nav class="navigation " >
@@ -89,18 +88,46 @@
                         </a>
                          <a href="#" data-toggle="tooltip" title="Wish List">
                         <div class="menu3 favority" id="favority" >
+                                   <ng-container *ngIf="wishList_products.length>0;else empty" >
+                                       <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
+                                       <div class="number_event">
+                                           <div class="write_number">
+                                               {{wishList_products.length}}
+                                           </div>
+                                       </div>
+                                   </span>
 
-                                   <span class="glyphicon glyphicon-heart gh-header"></span>
-                                      <div class="write_icon_header" >{{get_Language.wish}}</div>
+                                   </ng-container>
+                                  <ng-template #empty>
+                                      <span class="glyphicon glyphicon-heart gh-header">
+                                       <div class="number_event">
+                                           <div class="write_number">
+                                               {{wishList_products.length}}
+                                           </div>
+                                       </div>
+                                   </span>
+                                  </ng-template>
+
+                                   <div class="write_icon_header"> {{get_Language.wish}} </div>
+
                                 <div class="click_bg">
+
                                 </div>
+
 
                         </div>
                          </a>
                         <a href="#" data-toggle="tooltip" title="Your Card">
                         <div class="menu3 card" id="card">
 
-                                 <span class="glyphicon glyphicon-shopping-cart gh-header"></span>
+                                 <span class="glyphicon glyphicon-shopping-cart gh-header">
+                                      <div class="number_event">
+                                          <div class="write_number">
+                                               {{card_products.length}}
+                                          </div>
+
+                                   </div>
+                                 </span>
                                 <div class="write_icon_header" >{{get_Language.card}}</div>
                            <div class="click_bg">
 
@@ -196,8 +223,13 @@
         </div>
         <div class="dropfavority">
           <div class="lang">
-            <a href="#"><div class="">favority</div></a>
+            <a href="#"><div class="">{{get_Language.Wish_Write}}</div></a>
             <a href="#"><div class="">plus</div></a>
+
+              <div *ngFor="let wish_product of wishList_products">
+
+                <div class="delete_wish" (click)="delete_from_wishList( wish_product )">delete</div>{{wish_product.title}}
+              </div>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
         </div>

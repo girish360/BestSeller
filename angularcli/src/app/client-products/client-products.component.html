@@ -44,7 +44,7 @@
 
             </div>
 
-            <a href="#" class="hover_all_wish" id="wish_list{{product.id}}">
+            <a href="#" class="hover_all_wish" id="wish_list{{product.id}}" (click)="add_wish_list(product)">
               <div class="wish_list">
               </div>
               <div class="about_wish" id="{{product.id}}">
@@ -52,55 +52,82 @@
                   <div class="wish_list_write">
                     <div class="plus_icon">{{get_Language.add_wishlist}}</div>
                   </div>
+
                   <div class="wish_list_icon">
-                    <div class="hearts_div">
-                      <img  src="../../assets/images/hearts.png">
-                    </div>
-                    <div class="success_add_wish">
-                      <img  src="../../assets/images/ok.png">
-                    </div>
+                      {{ update_product_in_wish() }}
+                      <ng-container *ngIf="wishList_products.length > 0; else emtyWish">
+
+                          <div *ngFor="let wishes of wishList_products">
+
+                              <ng-container *ngIf="wishes.id == product.id;">
+                                      {{ set_productInWish() }}
+                              </ng-container>
+
+                          </div>
+
+                          <div  *ngIf="productInWish != false ; else notinwish" >
+
+                          </div>
+
+                          <ng-template #notinwish >
+
+                              <div class="success_add_wish" *ngIf="productInWish != false; else notwish">
+                                    <img  src="../../assets/images/ok.png">
+                              </div>
+
+                              <ng-template #notwish>
+                                  <div class="hearts_div">
+                                      <img  src="../../assets/images/hearts.png">
+                                  </div>
+
+                              </ng-template>
+
+                          </ng-template>
+                      </ng-container>
+
+                      <ng-template #emtyWish>
+
+                          <div class="hearts_div">
+                              <img  src="../../assets/images/hearts.png">
+                          </div>
+
+                      </ng-template>
                   </div>
-
               </div>
             </a>
 
-          <div class="footer_products">
+            <div class="footer_products">
 
-            <a href="#" data-toggle="tooltip" title="View!">
-              <div class="button_footer_products">
+               <a href="#" data-toggle="tooltip" title="View!">
+                  <div class="button_footer_products">
 
-                <span class="glyphicon glyphicon-eye-open icon_eye"></span>
+                     <span class="glyphicon glyphicon-eye-open icon_eye"></span>
 
+                      <div class="both_write number_eye">
+                         12889
+                      </div>
+                  </div>
+               </a>
 
-                <div class="both_write number_eye">
-                  12889
-                </div>
+              <a href="#" data-toggle="tooltip" title="Add to Card!">
 
-              </div>
+                 <div class="button_footer_products">
+                    <span class="glyphicon glyphicon-plus icon_eye"></span>
+                    <div class="both_write write_add_card">
+                      Card
+                    </div>
+                 </div>
+              </a>
 
-
-            </a>
-
-            <a href="#" data-toggle="tooltip" title="Add to Card!">
-
-              <div class="button_footer_products">
-                <span class="glyphicon glyphicon-plus icon_eye"></span>
-                <div class="both_write write_add_card">
-                  Card
-                </div>
-              </div>
-            </a>
-            <a href="#" data-toggle="tooltip" title="Details Product!">
-              <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
-                <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
-                <div class="both_write write_add_card">
-                  More
-                </div>
-              </div>
-            </a>
-
-
-          </div>
+               <a href="#" data-toggle="tooltip" title="Details Product!">
+                  <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
+                     <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
+                     <div class="both_write write_add_card">
+                        More
+                     </div>
+                  </div>
+                </a>
+            </div>
           <div class="prise_products">
 
               Price:

@@ -1,11 +1,34 @@
 
-<app-header [get_Language]="get_Language" (languageFromHeader)="setLanguageFromHeader($event)"> </app-header>
+<app-header
+        [wishList_products]="wishList_products"
+
+        [get_Language]="get_Language"
+
+        (languageFromHeader)="setLanguageFromHeader($event)">
+
+</app-header>
 
 
-<app-categorys-subscribes [get_Language]="get_Language" >  </app-categorys-subscribes>
+<app-categorys-subscribes
+
+        [get_Language]="get_Language" >
+
+</app-categorys-subscribes>
 
 
-<app-client-products [get_Language]="get_Language" >  </app-client-products>
+<app-client-products
+
+        [wishList_products]="wishList_products"
+
+        [get_Language]="get_Language"
+
+        (wish_product_fromProducts)="get_wish_product($event)">
+
+</app-client-products>
 
 
-<app-chat [get_Language]="get_Language" > </app-chat>
+<app-chat
+
+        [get_Language]="get_Language" >
+
+</app-chat>

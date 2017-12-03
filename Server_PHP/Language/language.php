@@ -16,11 +16,11 @@ class language{
                 $language['logout']='Your Session Expired';
                 $language['bodylogout']='Please login again!!';
                 $language['exitlogin']='Exit login';
-                $language['categorywrite']='CATEGORY';
+                $language['categorywrite']='Categorys';
                 $language['subscribewrite']='SUBSCRIPTIONS';
                 $language['chat']='Chat Online';
                 $language['allkat']='All';
-                $language['emptycat']='This is empty';
+                $language['emptycat']='Category empty';
                 $language['add_wishlist']='WishList';
                 $language['header']="EN";
                 $language['Active_language']="English";
@@ -32,6 +32,8 @@ class language{
                 $language['User']="User";
                 $language['login_register']="Login/Register";
                 $language['chat']="Chat Live";
+                $language['Wish_Write']="Wish Products";
+
                 break;
             case 'Albania':
                 $language['wellcome']='Mirsevini';
@@ -44,11 +46,11 @@ class language{
                 $language['btngotologin']='Shkoni tek logimi';
                 $language['bodylogout']='Porta juaj e aksesit eshte mbyllur!!';
                 $language['exitlogin']='Ju lutem hyni persesi';
-                $language['categorywrite']='KATEGORITE';
+                $language['categorywrite']='Kategorit';
                 $language['subscribewrite']='SUBSCRIPTIONS';
                 $language['chat']='Bisedo Online';
                 $language['allkat']='Total';
-                $language['emptycat']='Kjo eshte bosh';
+                $language['emptycat']='Category Bosh';
                 $language['add_wishlist']='Preferencat';
                 $language['header']="AL";
                 $language['Active_language']="Albania";
@@ -60,6 +62,7 @@ class language{
                 $language['User']="Perdorues";
                 $language['login_register']="Hyni/Regjistrohu";
                 $language['chat']="Komunikim Live";
+                $language['Wish_Write']="Produktet e Preferuara";
 
                 break;
             case 'Germany':
@@ -91,12 +94,15 @@ class language{
                 $language['Active_language_image']="italy.png";
                 $language['sing']="Sing In";
                 $language['wish']="WishList";
+                $language['categorywrite']='Kategorit it';
                 $language['card']="Card";
                 $language['language']="Language";
                 $language['User']="Perdorues it";
                 $language['login_register']="Hyni/Regjistrohu it";
                 $language['add_wishlist']='WishList it';
                 $language['chat']="Chat Live it";
+                $language['emptycat']='Category Bosh it';
+                $language['Wish_Write']="Wish Products it";
 
 
                 break;

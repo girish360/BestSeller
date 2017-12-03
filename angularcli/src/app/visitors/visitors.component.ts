@@ -14,7 +14,45 @@ export class VisitorsComponent implements OnInit {
 
   private get_Language = {};
 
+  private wishList_products = [];
+
   ngOnInit() {
+
+    this.get_languageFromServer(); // fill language
+
+    this.get_WishListFromServer(); // fill wish list
+
+  }
+
+  setLanguageFromHeader( language ){
+
+    this.get_Language = language;
+
+  }
+
+  get_wish_product( wish_product ){
+
+    if(this.wishList_products.indexOf(wish_product) !== -1){
+
+    }else{
+      this.wishList_products.push ( wish_product );
+    }
+
+
+  }
+
+  get_WishListFromServer(){ // take wish list from  server ............
+
+
+  }
+
+  push_WishProduct_Server(){
+
+
+  }
+
+
+  get_languageFromServer(){ //  take language from server .........
 
     this.Httpservices.create_obj( 'language' , 'English' );
 
@@ -22,14 +60,7 @@ export class VisitorsComponent implements OnInit {
         .subscribe(data=>{ this.get_Language = data }
             ,error=>(console.log( error +'gabim' ))
         );
-
-
   }
 
-  setLanguageFromHeader( data ){
-
-    this.get_Language = data;
-
-  }
 
 }
