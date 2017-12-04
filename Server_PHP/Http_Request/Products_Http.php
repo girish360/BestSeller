@@ -28,9 +28,19 @@ if($status =='products'){
     $res= $fetch_data->fetch_data_array_dependet( $limit , $tb_name_dep , $column_dep , $id );
     echo $fetch_data->json_data('products',$res);
 }
-if($status == 'prova'){
+if( $status == 'add_wishProduct' ){
 
+     $all_products_inWish = $_POST->value;
 
+     $result =  $cookie->set_cookie_serialize( 'wishList' , $all_products_inWish );
+
+     echo $fetch_data->json_data('add_wishProduct',$result);
+}
+if( $status =='get_wishList'){
+
+    $wishList = $cookie->get_cookie_unserialize( 'wishList' );
+
+    echo $fetch_data->json_data( 'get_wishList' , $wishList );
 }
 
 ?>

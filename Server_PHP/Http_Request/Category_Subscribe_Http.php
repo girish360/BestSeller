@@ -10,7 +10,7 @@ if(isset($_GET['get_category'])){
 
 if(isset($_GET['cookie_menu_set'])){
 
-    $result = $cookie->set_cookie($_GET['cookie_menu_set']);
+    $result = $cookie->set_cookie($_GET['cookie_menu_set'] , $value='menu_active');
 
     $json = $fetch_data->json_data($status = 'cookie_menu' , $array_data = $result); // status is to identify event ................
 
@@ -20,7 +20,7 @@ if(isset($_GET['cookie_menu_set'])){
 
 if(isset($_GET['cookie_menu_remove'])){
 
-    $result = $cookie->remove_cookie($_GET['cookie_menu_remove']);
+    $result = $cookie->remove_cookie( $_GET['cookie_menu_remove'] );
 
     $json = $fetch_data->json_data($status = 'cookie_menu' , $array_data = $result); // status is to identify event ................
 

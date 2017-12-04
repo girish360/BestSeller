@@ -25,26 +25,37 @@ export class ClientProductsComponent implements OnInit {
 
     public productInWish = false;
 
+    private Response;
+
+    @Output() wish_product_fromProducts:EventEmitter<object> = new EventEmitter;
 
 
-   @Output() wish_product_fromProducts:EventEmitter<object> = new EventEmitter;
+    constructor( private Httpservice :HtppServicesComponent ) { }
 
+      add_wish_list( product_data ){
 
+        if( this.wishList_products.indexOf(product_data) == -1 ){
 
-  constructor( private Httpservice :HtppServicesComponent ) { }
+            this.wish_product_fromProducts.emit( product_data );
 
-    add_wish_list( product_data ){
+            this.Httpservice.create_obj( 'add_wishProduct', this.wishList_products );
 
-    this.wish_product_fromProducts.emit( product_data );
+            this.Httpservice.Http_Post()
+                .subscribe(
+                    data => {
+                        if( data['status'] == 'add_wishProduct' ){
+                          this.Response = data['data'];
+                        }
+                    },
+                    error => console.log( error +'gabim' )
 
-    }
+                );
+        }
+      }
 
-    set_productInWish(  ){
+    set_productInWish(){
 
      this.productInWish = true;
-
-
-
 
     }
     update_product_in_wish(){
@@ -75,17 +86,7 @@ export class ClientProductsComponent implements OnInit {
       $(document).ready(function(){
           var scrollTop=0;
           var scroll_status = false;
-          $(window).on('load',function(){
 
-              var html = $('.pagination_containerleft').html();
-
-              $('.pagin_number').html(html).hide();
-              setTimeout(function(){
-                  $('.pagin_number').fadeIn();
-
-              },800);
-
-          });
           $(window).scroll(function(){  // function for get scrolltop .................................
 
               scrollTop  = $(this).scrollTop();

@@ -682,17 +682,8 @@ export class CategorysSubscribesComponent implements OnInit {
       }
       function success_response() {
 
-        if(Response.status == 'get_category'){
-          Put_Category_Element();
-        }
-
-
-
       }
-      function Put_Category_Element(){
 
-
-      }
 
     }); // end document ready.................................................................................
 

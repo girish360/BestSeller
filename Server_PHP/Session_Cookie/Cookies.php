@@ -2,10 +2,10 @@
 
 class Cookie {
 
-    public function set_cookie($name_cookie)
+    public function set_cookie($name_cookie ,$value)
     {
 
-        setcookie('cookie_menu', 'menu_active', time() + ((3600*60)*24)*30, '/'); // set cookie ..////////
+        setcookie( $name_cookie , $value, time() + ((3600*60)*24)*30, '/'); // set cookie ..////////
 
         return array('Value'=>'set');
 
@@ -16,7 +16,7 @@ class Cookie {
 
         setcookie( $name_cookie, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
 
-        return array('Value'=>'false');
+        return array('Value'=>'remove');
     }
 
     public function check_cookie( $name_cookie ){
@@ -29,6 +29,29 @@ class Cookie {
         else{
 
             return array('Value'=>'false');
+        }
+    }
+
+    public function set_cookie_serialize( $cookie_name , $data ){
+
+        if( isset($_COOKIE[$cookie_name])){
+             $_COOKIE[$cookie_name]=serialize( $data );
+        }else{
+            setcookie($cookie_name , serialize($data) , time() + ((3600*60)*24)*30, '/' );
+        }
+
+        return array("Value"=>"true");
+    }
+
+    public function get_cookie_unserialize( $cookie_name ){
+
+        if( isset($_COOKIE[$cookie_name])) {
+
+           return unserialize($_COOKIE[$cookie_name]);
+
+        }else{
+
+            return array("Value"=>"false");
         }
     }
 }

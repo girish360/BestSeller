@@ -14,7 +14,7 @@ export class HtppServicesComponent implements OnInit {
 
   constructor( private http : Http ) { }
 
-  path = 'http://localhost/bestseller/server_PHP/Http_Request/Route_Http.php';
+  path = '/api/bestseller/server_PHP/Http_Request/Route_Http.php';
 
   private object = {};
 

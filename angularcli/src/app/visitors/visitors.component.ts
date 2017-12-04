@@ -10,11 +10,13 @@ import { HtppServicesComponent } from '../htpp-services/htpp-services.component'
 })
 export class VisitorsComponent implements OnInit {
 
-  constructor( private Httpservices : HtppServicesComponent ) { }
+  constructor( private Httpservice : HtppServicesComponent ) { }
 
   private get_Language = {};
 
   private wishList_products = [];
+
+
 
   ngOnInit() {
 
@@ -32,17 +34,25 @@ export class VisitorsComponent implements OnInit {
 
   get_wish_product( wish_product ){
 
-    if(this.wishList_products.indexOf(wish_product) !== -1){
-
-    }else{
-      this.wishList_products.push ( wish_product );
-    }
-
-
+      this.wishList_products.push ( wish_product ); // push wish product in wishList products
   }
 
   get_WishListFromServer(){ // take wish list from  server ............
 
+    this.Httpservice.create_obj( 'get_wishList', 'wish' );
+
+    this.Httpservice.Http_Post()
+        .subscribe(
+            data => {
+              if( data['status'] == 'get_wishList' ){
+                if(data['data']['Value']!=='false') {
+                  this.wishList_products = data['data'] , console.log(data['data']);
+                }
+              }
+            },
+            error => console.log( error +'gabim' )
+
+        );
 
   }
 
@@ -54,9 +64,9 @@ export class VisitorsComponent implements OnInit {
 
   get_languageFromServer(){ //  take language from server .........
 
-    this.Httpservices.create_obj( 'language' , 'English' );
+    this.Httpservice.create_obj( 'language' , 'English' );
 
-    this.Httpservices.Http_Post()
+    this.Httpservice.Http_Post()
         .subscribe(data=>{ this.get_Language = data }
             ,error=>(console.log( error +'gabim' ))
         );
