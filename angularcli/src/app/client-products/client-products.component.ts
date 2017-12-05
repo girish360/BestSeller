@@ -34,20 +34,20 @@ export class ClientProductsComponent implements OnInit {
 
       add_wish_list( product_data ){
 
-        if( this.wishList_products.indexOf(product_data) == -1 ){
+        if( this.wishList_products.indexOf( product_data ) == -1 ){
 
             this.wish_product_fromProducts.emit( product_data );
 
-            this.Httpservice.create_obj( 'add_wishProduct', this.wishList_products );
+            this.Httpservice.create_obj( 'add_wishProduct', product_data.id );
 
             this.Httpservice.Http_Post()
                 .subscribe(
                     data => {
                         if( data['status'] == 'add_wishProduct' ){
-                          this.Response = data['data'];
+                          this.Response = data['data'] ,console.log(data['data'])
                         }
                     },
-                    error => console.log( error +'gabim' )
+                    error => console.log( error['data'] )
 
                 );
         }

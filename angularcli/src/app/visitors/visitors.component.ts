@@ -45,8 +45,10 @@ export class VisitorsComponent implements OnInit {
         .subscribe(
             data => {
               if( data['status'] == 'get_wishList' ){
-                if(data['data']['Value']!=='false') {
-                  this.wishList_products = data['data'] , console.log(data['data']);
+
+                if(data['data'] !='false') {
+
+                    this.wishList_products=data['data'] ,console.log(data['data']);
                 }
               }
             },

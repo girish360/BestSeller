@@ -30,17 +30,12 @@ if($status =='products'){
 }
 if( $status == 'add_wishProduct' ){
 
-     $all_products_inWish = $_POST->value;
+     $id_prod = $_POST->value;
 
-     $result =  $cookie->set_cookie_serialize( 'wishList' , $all_products_inWish );
+     $result =  $cookie->set_cookie_serialize( 'wishList' , $id_prod );
 
      echo $fetch_data->json_data('add_wishProduct',$result);
 }
-if( $status =='get_wishList'){
 
-    $wishList = $cookie->get_cookie_unserialize( 'wishList' );
-
-    echo $fetch_data->json_data( 'get_wishList' , $wishList );
-}
 
 ?>

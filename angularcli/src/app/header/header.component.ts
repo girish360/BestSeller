@@ -26,6 +26,8 @@ export class HeaderComponent implements OnInit {
 
    private card_products = [];
 
+   private Response;
+
   constructor( private Httpservices : HtppServicesComponent  ) { }
 
   public language_allow = [
@@ -59,16 +61,24 @@ export class HeaderComponent implements OnInit {
 
      var index_product = this.wishList_products.indexOf( product );
 
-     this.wishList_products.splice( index_product , 1 );
+     this.wishList_products.splice( index_product , 1 ); // delete from angular
 
+    this.Httpservices.create_obj( 'delete_itemFromCookie', product.id ); // delete from server
+
+    this.Httpservices.Http_Post()
+        .subscribe(data=>{
+
+              if( data['status']=='delete_itemFromCookie' ){
+
+                this.Response = data['data'] , console.log(data['data'])
+              }
+            }
+            ,error=>(console.log( error['data']))
+
+        );
   }
 
-
-
   ngOnInit() {
-
-
-
 
     $(document).ready(function(){
       var nameposition='language';

@@ -27,16 +27,16 @@ class Fetch_Data extends connection {
     }
 
 
-    public function fetch_data_array_dependet( $result_fromDB , $table_name_depependet , $column_depenendet , $id_dependet ){
+    public function fetch_data_array_dependet( $result_fromDB , $table_name_dependet , $column_depenendet , $id_dependet ){
         $nr = 0 ;
 
         while( $result = $result_fromDB->fetch_assoc() ){
 
             $this->Data_array[$nr] = $result;
 
-            $this->Data_dependet_array = self::data_dependet( $table_name_depependet , $column_depenendet , $result[$id_dependet] );
+            $this->Data_dependet_array = self::data_dependet( $table_name_dependet , $column_depenendet , $result[$id_dependet] );
 
-            $this->Data_array[$nr][$table_name_depependet]= $this->Data_dependet_array;
+            $this->Data_array[$nr][$table_name_dependet]= $this->Data_dependet_array;
 
             $nr++;
         }
@@ -54,6 +54,42 @@ class Fetch_Data extends connection {
         return $this->dependet;
 
 
+    }
+
+    public function fetch_oneRow_dependet( $array_wishID , $table_name , $column , $table_name_dependet ,$column_dependet ,$id_dependet ){
+        $nr = 0 ;
+
+        foreach ( $array_wishID as $value ){
+
+           $result = self::select_dependet( $table_name ,$column , $value );
+
+            while ( $row = $result->fetch_assoc() ) {
+
+                $this->Data_array[$nr] = $row;
+
+                $this->Data_dependet_array = self::oneRow_dependet( $table_name_dependet , $column_dependet , $row[$id_dependet] );
+
+                $this->Data_array[$nr][$table_name_dependet] = $this->Data_dependet_array;
+
+            }
+            $nr++;
+        }
+
+        return $this->Data_array; //  return array
+
+    }
+
+    public function oneRow_dependet(  $table_name , $column , $id  ){
+
+        $this->dependet=[];
+
+        $result_fromDB = self::select_dependet( $table_name , $column , $id ); //select data dependet with where ....
+
+        while( $row = $result_fromDB->fetch_assoc() ){
+
+            $this->dependet[] = $row;
+        }
+        return $this->dependet;
     }
 
 }
