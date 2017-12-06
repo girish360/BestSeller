@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
+import { Routes, RouterModule , ActivatedRoute } from '@angular/router';
 
 
 declare  var $:any;
@@ -17,11 +18,13 @@ declare  var $:any;
 })
 export class ClientProductsComponent implements OnInit {
 
+    constructor( private Httpservice :HtppServicesComponent , private route: ActivatedRoute ) { }
+
    public  products = [] ;
 
-   @Input() get_Language = {};
+  private get_Language = {};
 
-   @Input() wishList_products = [];
+   private wishList_products = [];
 
     public productInWish = false;
 
@@ -30,7 +33,7 @@ export class ClientProductsComponent implements OnInit {
     @Output() wish_product_fromProducts:EventEmitter<object> = new EventEmitter;
 
 
-    constructor( private Httpservice :HtppServicesComponent ) { }
+
 
       add_wish_list( product_data ){
 
@@ -67,6 +70,8 @@ export class ClientProductsComponent implements OnInit {
 
 
   ngOnInit() {
+
+
 
       this.Httpservice.create_obj( 'products','products' );
 

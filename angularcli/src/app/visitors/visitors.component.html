@@ -16,15 +16,17 @@
 </app-categorys-subscribes>
 
 
-<app-client-products
-
-        [wishList_products]="wishList_products"
+<app-body
 
         [get_Language]="get_Language"
 
+        [wishList_products]="wishList_products"
+
         (wish_product_fromProducts)="get_wish_product($event)">
 
-</app-client-products>
+
+</app-body>
+
 
 
 <app-chat

@@ -1,0 +1,86 @@
+.containere{
+    width:100%;
+    z-index: 1 !important;
+    position: relative;
+    top:100px;
+
+}
+
+
+
+.gjeresia{
+    width: 1170px;
+    margin:0px auto;
+    position: relative;
+    top: -15px;
+
+
+}
+.containerleft{
+
+    position: relative;
+    top: 10px;
+    float: left;
+    position: relative;
+    display: inline-block;
+    width: 71%;
+
+
+}
+.containerright{
+    position: relative;
+    top: 10px;
+    width: 26.8%;
+    height: 93vh;
+    display: inline-block;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+.sponsorized_right{
+    width: 99.5%;
+    height: 90%;
+    border:1px solid;
+    border-radius: 4px;
+    border-color:#d6d6c2;
+
+
+}
+
+@media only screen and (min-width: 1280px){
+    .newcontainere{
+
+        float: right;
+        right: 0;
+        left: 0;
+        transition:0.5s;
+        -webkit-transition:0.5s;
+        -moz-transition:0.5s;
+        width: calc(100% - 250px);
+    }
+    .exitcalculation {
+        transition:0.5s;
+        -webkit-transition:0.5s;
+        -moz-transition:0.5s;
+        width:100%;
+
+    }
+    .newcontainerechat{
+
+        float: left;
+        right: 0;
+        left: 0;
+        transition:0.5s;
+        -webkit-transition:0.5s;
+        -moz-transition:0.5s;
+        width: calc(100% - 250px);
+    }
+    .exitcalculationchat{
+        transition:0.5s;
+        -webkit-transition:0.5s;
+        -moz-transition:0.5s;
+        width:100%;
+
+    }
+
+
+}

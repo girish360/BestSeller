@@ -24,6 +24,9 @@ export class HeaderComponent implements OnInit {
 
   @Input() wishList_products = [];
 
+  private id = 5;
+   obj = {'name':'klodian'};
+
    private card_products = [];
 
    private Response;

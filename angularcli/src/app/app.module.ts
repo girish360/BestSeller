@@ -15,6 +15,8 @@ import { ChatComponent } from './chat/chat.component';
 import { HtppServicesComponent } from './htpp-services/htpp-services.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { CompanyComponent } from './company/company.component';
+import { BodyComponent } from './body/body.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
     ChatComponent,
     HtppServicesComponent,
     SlideshowComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    CompanyComponent,
+    BodyComponent
 
 
   ],
