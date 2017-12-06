@@ -8,6 +8,7 @@ if($_SERVER['HTTP_ORIGIN'] == "http://localhost:4200") { // check is request are
     header('Content-Type: text/plain');
 
 }
+
 include  '../connection_db/class_connection.php'; // include connection with database and that have some method to access db ................
 
 include '../Fetch_Data/Fetch_Data.php'; // include fetch data file  ..............................
@@ -18,13 +19,15 @@ include '../Category_Subscribe_and_Products/Category_Subscribe.php'; // include 
 
 include '../Products/Products.php';  // include  products file .......................................
 
-include  '../Language/language.php';
-
 include  '../Session_Cookie/Cookies.php'; // include cookie class ............
+
+include  '../Language/language.php'; // include language class..............
+
+
 
 if($_SERVER['REQUEST_METHOD']==='POST' ||  $_SERVER['REQUEST_METHOD']==='GET') { // chekc if request http is  GET or POST ...................
 
-    if( $_SERVER['REQUEST_METHOD']==='POST' ){
+    if( $_SERVER['REQUEST_METHOD']==='POST' ){ // check if request is POST ........
 
         $postdata = file_get_contents("php://input");
 
@@ -60,7 +63,7 @@ if($_SERVER['REQUEST_METHOD']==='POST' ||  $_SERVER['REQUEST_METHOD']==='GET') {
 
     }
 
-    if( $_SERVER['REQUEST_METHOD']==='GET' ) {
+    if( $_SERVER['REQUEST_METHOD']==='GET' ) { // check if request if Get
 
         // Auth users ...... http request post ang get .................................................................................................
 

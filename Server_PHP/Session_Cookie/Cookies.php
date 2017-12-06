@@ -1,6 +1,7 @@
 <?php
 
 
+
 class Cookie extends Fetch_Data{
 
     public function set_cookie( $name_cookie , $value )
@@ -8,7 +9,7 @@ class Cookie extends Fetch_Data{
 
         setcookie( $name_cookie , $value, time() + ((3600*60)*24)*30, '/'); // set cookie ..////////
 
-        return array('Value'=>'set');
+        return array('set');
 
 
     }
@@ -17,19 +18,19 @@ class Cookie extends Fetch_Data{
 
         setcookie( $name_cookie, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
 
-        return array('Value'=>'remove');
+        return array('remove');
     }
 
     public function check_cookie( $name_cookie ){
 
-        if(isset($_COOKIE[$name_cookie])){
+        if(isset($_COOKIE[$name_cookie]) && !empty( $_COOKIE[$name_cookie] ) ){
 
-            return array('Value'=>'true');
+            return array('true');
 
         }
         else{
 
-            return array('Value'=>'false');
+            return array('false');
         }
     }
 
@@ -97,27 +98,31 @@ class Cookie extends Fetch_Data{
         }
     }
 
-    public function delete_item_fromCookie( $cookie_name , $value_which_you_want_to_delete )
+    public function delete_item_fromCookie( $cookie_name , $value_which_you_want_to_delete ) // delete
     {
         try {
-            $delete = array("0" => $value_which_you_want_to_delete);
 
-            if (isset ($_COOKIE[$cookie_name])) {
+            if (isset ($_COOKIE[$cookie_name])) { // check if exist this cookie .................
 
-                $array_from_cookie = json_decode($_COOKIE[$cookie_name]);
+                $array_from_cookie = json_decode( $_COOKIE[$cookie_name] ); // take  array data from cookie stock .............
 
-                if ( is_array( $array_from_cookie ) ) {
+                if ( is_array( $array_from_cookie ) ) { // check if is array ...................
 
-                    $new_array = array_diff( $array_from_cookie , array($value_which_you_want_to_delete));
+                    foreach ( $array_from_cookie as $key => $value ) { // loop all array
 
-                    self::put_coockie_serialize($cookie_name, $new_array);
+                        if( $value == $value_which_you_want_to_delete ) { // find value in array .....
+                            array_splice( $array_from_cookie , $key , 1); // delete this key from array ....
+                        }
+                    }
 
-                    return $new_array;
+                    self::put_coockie_serialize( $cookie_name, $array_from_cookie ); // call methot to set cookie .....
+
+                    return 'true'; // return true in frontend ........
                 }
-                return 'false';
+                return 'false'; // return false in frontend ........
 
             } else {
-                return 'false';
+                return 'false'; // return false in frontend ........
             }
 
         }catch( Exception $e ){

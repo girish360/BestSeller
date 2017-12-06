@@ -1,6 +1,6 @@
 <?php
 
-if($status =='products'){
+if( $status =='products' ){ //  request for products from frontend ........
 
     $default='default';
 
@@ -28,13 +28,13 @@ if($status =='products'){
     $res= $fetch_data->fetch_data_array_dependet( $limit , $tb_name_dep , $column_dep , $id );
     echo $fetch_data->json_data('products',$res);
 }
-if( $status == 'add_wishProduct' ){
+if( $status == 'add_wishProduct' ){ // request to add in wishList ........
 
-     $id_prod = $_POST->value;
+     $id_prod = $_POST->value; // value
 
-     $result =  $cookie->set_cookie_serialize( 'wishList' , $id_prod );
+     $result =  $cookie->set_cookie_serialize( 'wishList' , $id_prod ); //  call method that add one product  for wish list in cookie .....
 
-     echo $fetch_data->json_data('add_wishProduct',$result);
+     echo $fetch_data->json_data('add_wishProduct',$result);  // return result ......
 }
 
 

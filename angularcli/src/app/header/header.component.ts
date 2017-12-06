@@ -38,9 +38,9 @@ export class HeaderComponent implements OnInit {
   ];
 
 
-  choose_language( id_language ){
+  choose_language( language ){
 
-    this.Httpservices.create_obj( 'language',id_language );
+    this.Httpservices.create_obj( 'changeLanguage', language );
 
     this.Httpservices.Http_Post()
         .subscribe(data=>{ this.get_Language = data , this.send_Language_to_visitors() }
@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
 
   send_Language_to_visitors(){
 
-    this.languageFromHeader.emit(this.get_Language);
+    this.languageFromHeader.emit( this.get_Language );
 
   }
 
@@ -809,7 +809,7 @@ export class HeaderComponent implements OnInit {
       function success_response(){
 
         if(Response['status']=='cookie_menu'){
-           if(Response['data']['Value']=='true'){
+           if(Response['data']=='true'){
              show_category_menu();
            }
         }

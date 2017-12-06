@@ -1,5 +1,7 @@
 <?php
-class language{
+
+class language extends Cookie {
+
     public $datauser;
 
     public function languages( $lang ){
@@ -145,6 +147,8 @@ class language{
                 break;
 
         }
+
+        self::set_cookie( 'language', $lang ); //save language in cookie .............
 
         return $language;
     }
