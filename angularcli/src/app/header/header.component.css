@@ -798,12 +798,12 @@ input[name='search']:focus{
 .dropfavority{
     z-index: 10 !important;
     position: relative;
-    width: 700px;
+    width: 600px;
     left: 292px;
-    height: auto;
+    height:350px;
+
     background-color: white;
     float: right;
-
     top: 7px;
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -813,6 +813,39 @@ input[name='search']:focus{
 
 
 }
+
+
+.body_wish::-webkit-scrollbar {
+    width: 7px;
+    border-radius: 3px;
+    position: absolute;
+}
+.body_wish::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    position: absolute;
+}
+
+.body_wish::-webkit-scrollbar-thumb {
+
+    -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 3px;
+    position: absolute;
+
+}
+.top_wish{
+    width: 100%;
+    height: 30px;
+
+
+}
+.body_wish{
+    width: 100%;
+    height:calc( 100% - 30px);
+
+    overflow: auto;
+}
+
+
 
 .lang a{
     color: gray;

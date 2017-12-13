@@ -1,9 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { HttpModule } from "@angular/http";
-
-
 import {routes} from './app.router';
 import { AppComponent } from './app.component';
 import { VisitorsComponent } from './visitors/visitors.component';
@@ -17,6 +14,10 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CompanyComponent } from './company/company.component';
 import { BodyComponent } from './body/body.component';
+import { DataServiceService } from './htpp-services/data-service.service';
+
+
+
 
 @NgModule({
   declarations: [
@@ -33,14 +34,13 @@ import { BodyComponent } from './body/body.component';
     CompanyComponent,
     BodyComponent
 
-
   ],
   imports: [
     BrowserModule,
     routes,
     HttpModule
   ],
-  providers: [AppComponent],
+  providers: [AppComponent , HtppServicesComponent ,VisitorsComponent ,DataServiceService,ClientProductsComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

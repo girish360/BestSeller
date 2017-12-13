@@ -18,6 +18,8 @@ export class HtppServicesComponent implements OnInit {
 
   private object = {};
 
+  private language:object={};
+
   ngOnInit() {
   }
 
@@ -44,10 +46,9 @@ export class HtppServicesComponent implements OnInit {
 
   create_obj( status , value ) {
 
-    this.object = { status: status , value: value };
-
-    return this.object;
+      this.object = { status: status , value: value };
 
   }
+
 
 }

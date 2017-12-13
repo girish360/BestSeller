@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
 import 'rxjs/add/observable/bindCallback';
-
+import { DataServiceService } from '../htpp-services/data-service.service';
 
 declare var $:any;
 
@@ -20,18 +20,21 @@ export class HeaderComponent implements OnInit {
 
   @Input() get_Language = {};
 
-  @Output() languageFromHeader:EventEmitter<object> = new EventEmitter;
-
-  @Input() wishList_products = [];
+  public wishList_products = [];
 
   private id = 5;
+
    obj = {'name':'klodian'};
 
    private card_products = [];
 
    private Response;
 
-  constructor( private Httpservices : HtppServicesComponent  ) { }
+  constructor( private dataservices : DataServiceService, private Httpservices : HtppServicesComponent ) {
+
+    this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList } );
+
+  }
 
   public language_allow = [
     {name: 'English', id: "English" , image:'england.png'},
@@ -41,12 +44,13 @@ export class HeaderComponent implements OnInit {
   ];
 
 
-  choose_language( language ){
+  choose_language( language ){  //  function for update language ..........
+
 
     this.Httpservices.create_obj( 'changeLanguage', language );
 
     this.Httpservices.Http_Post()
-        .subscribe(data=>{ this.get_Language = data , this.send_Language_to_visitors() }
+        .subscribe(language =>{ this.get_Language = language , this.update_language( language) }
 
             ,error=>(console.log( error +'gabim' ))
 
@@ -54,9 +58,9 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  send_Language_to_visitors(){
+  update_language(new_language){ // change language to services file that  make share language to all components  .....
 
-    this.languageFromHeader.emit( this.get_Language );
+    this.dataservices.Language.emit(new_language);
 
   }
 
@@ -479,7 +483,7 @@ export class HeaderComponent implements OnInit {
           }
 
         }
-        if($(e.target).closest('.favority , .delete_wish').length == 0 && $(e.target).closest('.dropfavority').length == 0 && $(e.target).closest('.treguesi').length == 0 ) {
+        if($(e.target).closest('.favority ,.delete ,.about_wish,.hearts_div').length == 0 && $(e.target).closest('.dropfavority').length == 0 && $(e.target).closest('.treguesi').length == 0 ) {
           $('.dropfavority').hide();
 
         }
@@ -492,7 +496,7 @@ export class HeaderComponent implements OnInit {
         }
         if($(e.target).closest(
                 '.card, .language, .dropworld, .dropcard ,.dropfavority ,.dropmore, .treguesi, .favority, .moreprofile, .pictureuser,'+
-                ' .treguesi, .listcategoryfind, .category, .searchsubscribe,.delete_wish'
+                ' .treguesi, .listcategoryfind, .category, .searchsubscribe ,.delete ,.about_wish,.hearts_div'
             ).length == 0 )
         {
 

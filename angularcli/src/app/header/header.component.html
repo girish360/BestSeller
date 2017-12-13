@@ -1,6 +1,3 @@
-<a [routerLink]="['company/id',{ get_languag: get_Language }]">company</a>
-
-<a routerLink="">close </a>
 <div class="above_space_header" >
 
   <div class="widthi_above_header" style="color: red;">
@@ -42,7 +39,8 @@
       <div class="pcheader">
         <span class="lefte">
         <div class="menu1">
-          <a href="#">BestSeller</a>
+            <a routerLink=""> BestSeller </a>
+
         </div>
         <div class="search">
           <div data-toggle="tooltip" title="Search product and company">
@@ -76,7 +74,7 @@
                         <div class="menu3" id="search">
                              <a class="searchresponse" href="#"> <span class="glyphicon glyphicon-search"></span></a>
                         </div>
-                        <a routerLink="login" data-toggle="tooltip" title="Login/Register">
+                        <a routerLink="/login" data-toggle="tooltip" title="Login/Register">
 
                         <div class="menu3 user-login" id="user-login">
 
@@ -224,17 +222,21 @@
           </div>
         </div>
         <div class="dropfavority">
-          <div class="lang">
-            <a href="#"><div class="">{{get_Language.Wish_Write}}</div></a>
-            <a href="#"><div class="">plus</div></a>
 
-              <div *ngFor="let wish_product of wishList_products">
+            <div class="top_wish">
+                <a href="#"><div class="">{{get_Language.Wish_Write}}</div></a>
+            </div>
+              <div class="body_wish">
+                  <div class="each_wish"  *ngFor="let wish_product of wishList_products">
+                      {{wish_product.title}}
+                      <div class="delete" (click)="delete_from_wishList( wish_product )">delete</div>
+                  </div>
 
-                <div class="delete_wish" (click)="delete_from_wishList( wish_product )">delete</div>{{wish_product.title}}
+
+
+                  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 
               </div>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-          </div>
         </div>
 
 

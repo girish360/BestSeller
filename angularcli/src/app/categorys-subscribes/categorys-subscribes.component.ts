@@ -2,6 +2,7 @@ import { Component, OnInit , AfterViewInit , Input } from '@angular/core';
 
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
 
+
  declare var $:any;
 
 @Component({
@@ -18,6 +19,8 @@ export class CategorysSubscribesComponent implements OnInit {
   @Input() get_Language = {};
 
   ngOnInit() {
+
+
 
     this.Httpservice.create_obj( 'category','category' );
 
@@ -140,7 +143,7 @@ export class CategorysSubscribesComponent implements OnInit {
       // mouse hover for category and subscribe show detail when mouse stay about 1 sec over one elemnt from category and subscribe ......................
       $('body').on('mouseenter','.categorytype ,.subcat, .company_subscribe',function() {
 
-        alert('ok');
+
         id = $(this).attr('id');
         offset = $(this).offset();
         $('.bordertypecat').removeClass('animateborderleft');

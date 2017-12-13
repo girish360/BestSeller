@@ -1,60 +1,90 @@
 import { Component, OnInit,Input , Output , EventEmitter  } from '@angular/core';
-import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/Rx'
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
-import { Routes, RouterModule , ActivatedRoute } from '@angular/router';
+import { Routes, RouterModule , ActivatedRoute  ,Params , Data , Router} from '@angular/router';
+
+import { DataServiceService } from '../htpp-services/data-service.service';
 
 
 declare  var $:any;
-
-@Injectable()
 
 @Component({
   selector: 'app-client-products',
   templateUrl: './client-products.component.html',
   styleUrls: ['./client-products.component.css'],
-    providers:[HtppServicesComponent]
+    providers:[ HtppServicesComponent ]
 })
+
 export class ClientProductsComponent implements OnInit {
 
-    constructor( private Httpservice :HtppServicesComponent , private route: ActivatedRoute ) { }
+    constructor( private dataservices: DataServiceService ,    private Httpservice :HtppServicesComponent , private route: ActivatedRoute  ) {
 
-   public  products = [] ;
+        this.get_Language = this.dataservices.language;
 
-  private get_Language = {};
+        this.dataservices.Language.subscribe( ( language:object ) => { this.get_Language = language  } );
 
-   private wishList_products = [];
+        this.wishList_products = this.dataservices.wishlist;
+
+        this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList  } );
+
+        this.products = this.dataservices.products;
+
+        this.dataservices.Products.subscribe( ( products:any ) => { this.products = products  } );
+
+
+    }
+
+    public  products = [] ;
+
+    private wishList_products = [];
 
     public productInWish = false;
 
+    public get_Language :object={};
+
     private Response;
 
-    @Output() wish_product_fromProducts:EventEmitter<object> = new EventEmitter;
+    public status_in_wish;
 
 
+    add_wish_list( product_data ){  // function to add product in wishList
 
+        this.status_in_wish = false; // status to find  if this  product is in wish......
 
-      add_wish_list( product_data ){
+        for ( var i =  0 ; i<this.wishList_products.length ; i++ ){ // loop wish list with product ...
 
-        if( this.wishList_products.indexOf( product_data ) == -1 ){
+            if( this.wishList_products[i].id == product_data.id ){ // if product .id is equals with one product.id in wish status should be true ...
 
-            this.wish_product_fromProducts.emit( product_data );
+                this.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
 
-            this.Httpservice.create_obj( 'add_wishProduct', product_data.id );
+            }
+        }
 
-            this.Httpservice.Http_Post()
-                .subscribe(
+        if( this.status_in_wish != true ){ // check if status is not equals with true  to  add this prod in wish ....
+
+            this.wishList_products.push( product_data ); // push wish product in wishList products
+
+            this.dataservices.wishList_products.emit( this.wishList_products );  // change wish list to services to deliver this  chnage into header that tell number wishlist ....
+
+            this.dataservices.update_wishList( this.wishList_products); // change wish list in services   that get this  when change component with router outlet
+
+            this.Httpservice.create_obj( 'add_wishProduct', product_data.id ); //  create obj to change this in server
+
+            this.Httpservice.Http_Post() // make request ......
+                .subscribe( //  take success
                     data => {
                         if( data['status'] == 'add_wishProduct' ){
-                          this.Response = data['data'] ,console.log(data['data'])
+                            this.Response = data['data'] ,console.log(data['data'])
                         }
                     },
-                    error => console.log( error['data'] )
+                    error => console.log( error['data'] ) // take error .....
 
                 );
         }
-      }
+    }
+
 
     set_productInWish(){
 
@@ -67,28 +97,9 @@ export class ClientProductsComponent implements OnInit {
 
     }
 
+    ngOnInit() {
 
-
-  ngOnInit() {
-
-
-
-      this.Httpservice.create_obj( 'products','products' );
-
-      this.Httpservice.Http_Post()
-          .subscribe(
-               data => {
-                  if( data['status'] == 'products' ){
-                       this.products = data['data'];
-                  }
-               },
-               error => console.log( error +'gabim' )
-
-          );
-
-
-
-      $(document).ready(function(){
+        $(document).ready(function(){
           var scrollTop=0;
           var scroll_status = false;
 
