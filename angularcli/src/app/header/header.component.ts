@@ -345,6 +345,11 @@ export class HeaderComponent implements OnInit {
 
       });
 
+
+      $('.user-login').click(function(){
+
+           give_bgcolor_icon_header('menu3' , 'user-login', 0 ,$(this).find('.write_icon_header'));
+      });
       $('.language').click(function(e){
         e.preventDefault();
         var name = $(this).attr('id');
@@ -773,8 +778,8 @@ export class HeaderComponent implements OnInit {
         $('.write_icon_header').css('visibility', 'visible');
 
         if(status==0) {
-          $('.'+single).find('.click_bg').css({visibility:'visible',width:'2px',height:'2px'}).animate({backgroundColor:"green" , width:"40px",height:"40px"},400,function(){
-            $('.'+single).find('.click_bg').animate({backgroundColor:"#E6E6FA"},100).css({visibility:'hidden'});
+          $('.'+single).find('.glyphicon').css({marginTop:'40px' , borderRadius:'100px'}).animate({backgroundColor:"green"},50,function(){
+            $('.'+single).find('.glyphicon').animate({backgroundColor:"#E6E6FA", marginTop:'0px'},200);
           }); // change bg color when click on icon in header
 
           $(removewrite).css('visibility', 'hidden'); // remove write below icon in header

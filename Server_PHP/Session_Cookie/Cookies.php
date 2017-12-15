@@ -25,12 +25,12 @@ class Cookie extends Fetch_Data{
 
         if(isset($_COOKIE[$name_cookie]) && !empty( $_COOKIE[$name_cookie] ) ){
 
-            return array('true');
+            return 'true';
 
         }
         else{
 
-            return array('false');
+            return 'false';
         }
     }
 

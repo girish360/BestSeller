@@ -1,3 +1,4 @@
+
 <div class="above_space_header" >
 
   <div class="widthi_above_header" style="color: red;">
@@ -79,10 +80,15 @@
                         <div class="menu3 user-login" id="user-login">
 
 
-                                      <span class="glyphicon glyphicon-user gh-header"></span>
+                                      <span class="glyphicon glyphicon-user gh-header">
+                                          <div class="number_event">
+                                           <div class="write_number write_hidden">
+                                               {{wishList_products.length}}
+                                           </div>
+                                           </div>
+                                      </span>
                                        <div class="write_icon_header" >{{get_Language.sing}}</div>
-                                <div class="click_bg">
-                                 </div>
+
 
                         </div>
                         </a>
@@ -110,9 +116,7 @@
 
                                    <div class="write_icon_header"> {{get_Language.wish}} </div>
 
-                                <div class="click_bg">
 
-                                </div>
 
 
                         </div>
@@ -129,9 +133,7 @@
                                    </div>
                                  </span>
                                 <div class="write_icon_header" >{{get_Language.card}}</div>
-                           <div class="click_bg">
 
-                           </div>
 
 
                         </div>
@@ -139,10 +141,15 @@
                         <a href="#" data-toggle="tooltip" title="Your language">
                         <div class="menu3 language" id="language">
 
-                                  <span class="glyphicon glyphicon-globe gh-header"></span>
+                                  <span class="glyphicon glyphicon-globe gh-header">
+                                      <div class="number_event">
+                                           <div class="write_number write_hidden">
+                                               {{wishList_products.length}}
+                                           </div>
+                                           </div>
+                                  </span>
                                  <div class="write_icon_header" >{{get_Language.language}}</div>
-                                  <div class="click_bg">
-                                  </div>
+
 
 
                         </div>
@@ -195,6 +202,7 @@
                         </div>
                         <div class="leftlang">
                           <input class="radiolang" name="radiolang1"  type="radio">
+
                         </div>
                       </div>
                     </div>
@@ -223,20 +231,36 @@
         </div>
         <div class="dropfavority">
 
-            <div class="top_wish">
-                <a href="#"><div class="">{{get_Language.Wish_Write}}</div></a>
-            </div>
-              <div class="body_wish">
-                  <div class="each_wish"  *ngFor="let wish_product of wishList_products">
-                      {{wish_product.title}}
-                      <div class="delete" (click)="delete_from_wishList( wish_product )">delete</div>
-                  </div>
 
 
 
-                  <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+                <div class="top_wish">
+                    <div class="width_top_wish">
+                          <a href="#"><div class="">{{get_Language.Wish_Write}}</div></a>
 
-              </div>
+
+                    </div>
+                </div>
+                <div class="body_wish">
+                    <div class="width_body_wish">
+                         <div class="each_wish"  *ngFor="let wish_product of wishList_products">
+
+                            <div class="wish_image">
+
+                                <img  src="../../assets/images/{{wish_product.image}}">
+
+                            </div>
+                            <div class="check_radio">
+                                <input type="radio">
+                            </div>
+
+                         </div>
+
+
+                    </div>
+
+                </div>
+
         </div>
 
 

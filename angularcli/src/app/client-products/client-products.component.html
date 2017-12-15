@@ -22,7 +22,7 @@
             <div class="date_products">
               <span class='glyphicon glyphicon-time'></span> {{product.date}}
             </div>
-              <a [routerLink]="['/company',{ get_languag: 'id' }]">
+              <a [routerLink]="['/company',{ get_languag:  product['adminat'] }]">
                  <div class="own_img_product" >
 
                  </div>
@@ -30,16 +30,11 @@
                     <img  class="image_prof_admin" src="../../assets/images/{{company.imageprofile}}">
                  </div>
               </a>
-
-            <div class="image_product_primary">
-
-              <div class='zoom  nrtotal_products' id="ex{{product.id}}">
-                   <img class="img_prod img_primary_product{{product.id}}" src="../../assets/images/{{product.image}}">
-                   <p>Click</p>
-
-            </div>
-
-            </div>
+             <a href="#">
+                 <div class="image_product_primary">
+                     <img class=" img_primary_product{{product.id}}" src="../../assets/images/{{product.image}}">
+                  </div>
+             </a>
 
             <a href="#" class="hover_all_wish" id="wish_list{{product.id}}" (click)="add_wish_list(product)">
               <div class="wish_list">

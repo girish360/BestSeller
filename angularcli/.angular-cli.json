@@ -21,11 +21,14 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/bootstrap-toggle/css/bootstrap2-toggle.min.css",
         "styles.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/jquery-color-animation/jquery.animate-colors-min.js"
+        "../node_modules/jquery-color-animation/jquery.animate-colors-min.js",
+        "../node_modules/bootstrap-toggle/js/bootstrap-toggle.min.js"
+
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

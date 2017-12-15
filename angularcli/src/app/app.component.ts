@@ -40,7 +40,14 @@ export class AppComponent implements OnInit{
 
             });
 
-
+             $('.body_wish').scroll(function(){
+                 var topscroll = $(this).scrollTop();
+                 if(topscroll > 10 ){
+                      $('.width_top_wish').addClass('top_wish_change');
+                 }else{
+                     $('.width_top_wish').removeClass('top_wish_change');
+                 }
+             });
 
         });
     }
