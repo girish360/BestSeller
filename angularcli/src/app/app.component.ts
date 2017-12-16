@@ -19,21 +19,16 @@ export class AppComponent implements OnInit{
             });
 
             $(window).scroll(function () {
-                var scroll = 0;
-                if ($(this).scrollTop() <= 60 && $(this).scrollTop() >= 20) {
-                    var opacity = $(this).scrollTop() / 60;
-                    $('.above_space_header').css({opacity: opacity});
 
-                } else {
-                    var opacity = 1;
 
-                }
                 if ($(this).scrollTop() >= 60) {
                     $('.navigation').addClass('fixed_navigation');
                     $('.category ,.under_category').addClass('fixed_category');
+                    $('.icon_header_write').addClass('new_icon_header_write');
                 } else {
                     $('.navigation').removeClass('fixed_navigation');
                     $('.category , .under_category').removeClass('fixed_category');
+                    $('.icon_header_write').removeClass('new_icon_header_write');
 
                 }
 

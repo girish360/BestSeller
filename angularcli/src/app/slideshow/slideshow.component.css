@@ -6,6 +6,7 @@
     border-radius: 3px;
     border:1px solid;
     border-color:#d6d6c2;
+    overflow: hidden;
 }
 
 .sliders {
@@ -130,7 +131,7 @@
 .write_slider{
     position: relative;
     margin-top: -50px;
-    margin-left: 0px;
+    margin-left: -100px;
     font-size: 25px;
     color:gray;
 

@@ -160,7 +160,7 @@ export class HeaderComponent implements OnInit {
           nameposition=name;
           findposition(name);
         }
-        if(actuallist==1){
+        if( actuallist == 1 ){
 
           static_click='actuallist';
           closecontainere(actuallist,static_click);
@@ -171,13 +171,7 @@ export class HeaderComponent implements OnInit {
 
           hide_category_menu(width);
 
-          $('.containere').addClass('exitcalculation');
-          $('.space').addClass('exitspace');
-          setTimeout(function(){
-            $('.containere').removeClass('newcontainere');
-            $('.space').removeClass('newspace');
 
-          },500);
         }
         else{
 
@@ -189,20 +183,15 @@ export class HeaderComponent implements OnInit {
           $('.treguesi').show();
 
 
-          if(actualchat==1){
-            var heig= $(window).height();
-            hide_chat_div(heig);//call function hide chat...................................
-            $('.pasiv_activ_bodychat').hide();
-            $('.containere').removeClass('newcontainerechat');
-            $('.space').removeClass('newspacechat');
-          }
-          $('.containere').removeClass('exitcalculationchat');
-          $('.space').removeClass('exitspacechat');
+          if( actualchat == 1 ){
 
-          $('.containere').addClass('newcontainere');
-          $('.space').addClass('newspace');
-          $('.space').removeClass('exitspace');
-          $('.containere').removeClass('exitcalculation');
+            var heig= $(window).height();
+
+            hide_chat_div(heig);//call function hide chat...................................
+
+            $('.pasiv_activ_bodychat').hide();
+
+          }
 
           show_category_menu();// call function show category_menu.................................
 
@@ -226,26 +215,11 @@ export class HeaderComponent implements OnInit {
           numberpassicoractiv=1;
           zerovariablat(activclick,numberpassicoractiv);
 
-          if(actuallist==1){
+          if( actuallist == 1 ){
             hide_category_menu(width); // call function hide category menu ..........................
-            $('.containere').removeClass('newcontainere');
-            $('.space').removeClass('newspace');
+
           }
-
-
-
           show_chat_div(width); //call function show chat...........................................
-
-
-
-
-          $('.containere').addClass('newcontainerechat');
-          $('.space').addClass('newspacechat');
-
-          $('.space').removeClass('exitspacechat');
-          $('.containere').removeClass('exitcalculationchat');
-
-
         }
         else{
           static_click='openchat';
@@ -254,22 +228,14 @@ export class HeaderComponent implements OnInit {
           numberpassicoractiv=0;
           zerovariablat(activclick,numberpassicoractiv);
           var heig= $(window).height();
-          hide_chat_div(heig);
 
+          hide_chat_div(heig);
 
           $('#showchat').show();
 
-          $('.containere').addClass('exitcalculationchat');
-          $('.space').addClass('exitspacechat');
-          setTimeout(function(){
-            $('.containere').removeClass('newcontainerechat');
-            $('.space').removeClass('newspacechat');
-
-          },100);
-
-
         }
       });
+
       $('.searchresponse').click(function(){
         var widthto = $(window).width();
         if(widthto>'500'){
@@ -603,8 +569,9 @@ export class HeaderComponent implements OnInit {
 
       function show_category_menu(){ //  function for show category menu and subsribe  when user click show menu call this function for show with animate ............................
         actuallist = 1;
-        $('.containere').addClass('newcontainere');
-        $('.space').addClass('newspace');
+
+        $('.containere,.space,.above_space_header').addClass('active_menu');
+
         $('.listcategory').hide();
         $('.closelist').show();
         $('.category , .under_category ,.searchsubscribe,.loadersubscribe').animate({
@@ -660,6 +627,12 @@ export class HeaderComponent implements OnInit {
           });
           $('.all_show_multiple_open').hide();
 
+              $('.containere,.space,.above_space_header').addClass('exit_menu');
+
+
+              $('.containere,.space,.above_space_header').removeClass('active_menu');
+
+
           var cookie_menu = 'cookie_menu';
           Data = 'cookie_menu_remove='+cookie_menu;
           Status = 'GET';
@@ -705,9 +678,18 @@ export class HeaderComponent implements OnInit {
 
 
           },300,function(){
+
             $('.pointerchat').css("visibility","visible");
+
             $('.pasiv_activ_bodychat').show();
+
           });
+
+          $('.containere,.space,.above_space_header').removeClass('exit_menu');
+
+
+
+          $('.containere ,.space ,.above_space_header').addClass('active_chat');
 
         }
 
@@ -734,6 +716,14 @@ export class HeaderComponent implements OnInit {
         });
 
         $('.pointerchat').css("visibility","hidden");
+
+
+        $('.containere,.space,.above_space_header').removeClass('exit_menu');
+
+
+        $('.containere ,.space ,.above_space_header').removeClass('active_chat');
+
+
 
       } //.....................................end
 

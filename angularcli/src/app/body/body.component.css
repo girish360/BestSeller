@@ -2,7 +2,9 @@
     width:100%;
     z-index: 1 !important;
     position: relative;
-    top:100px;
+    top:30px;
+    transition: 0.5s;
+
 
 }
 
@@ -12,7 +14,7 @@
     width: 1170px;
     margin:0px auto;
     position: relative;
-    top: -15px;
+
 
 
 }
@@ -47,8 +49,8 @@
 }
 
 @media only screen and (min-width: 1280px){
-    .newcontainere{
 
+    .active_menu {
         float: right;
         right: 0;
         left: 0;
@@ -57,14 +59,9 @@
         -moz-transition:0.5s;
         width: calc(100% - 250px);
     }
-    .exitcalculation {
-        transition:0.5s;
-        -webkit-transition:0.5s;
-        -moz-transition:0.5s;
-        width:100%;
 
-    }
-    .newcontainerechat{
+
+    .active_chat{
 
         float: left;
         right: 0;
@@ -73,14 +70,10 @@
         -webkit-transition:0.5s;
         -moz-transition:0.5s;
         width: calc(100% - 250px);
-    }
-    .exitcalculationchat{
-        transition:0.5s;
-        -webkit-transition:0.5s;
-        -moz-transition:0.5s;
-        width:100%;
+
 
     }
-
-
+    .exit_menu{
+        float: right;
+    }
 }

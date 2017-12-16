@@ -35,7 +35,7 @@ export class SlideshowComponent implements OnInit {
                if( nr == active_slide ){
 
                  $(this).fadeIn();
-                 $(this).find('.write_slider').css({marginLeft:'0px'});
+                 $(this).find('.write_slider').css({marginLeft:'-100px'});
                  $(this).find('.write_slider').animate({
                            marginLeft:'3%'
                  },500);

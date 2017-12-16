@@ -14,7 +14,7 @@ export class CompanyComponent implements OnInit {
 
  public get_Language:object;
 
- private company:any;
+ private company_id:any;
 
 
     constructor( private route: ActivatedRoute , private router: Router  ) {
@@ -23,7 +23,7 @@ export class CompanyComponent implements OnInit {
 
   ngOnInit() {
 
-      this.route.params.subscribe( params => { this.company = params['get_languag'] } );
+      this.route.params.subscribe( params => { this.company_id = params['companyId'] } );
 
   }
 

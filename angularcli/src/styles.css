@@ -68,20 +68,10 @@ body::-webkit-scrollbar-thumb {
 
 }
 
-.radio-green [type="radio"]:checked+label:after {
-    border-color: #00C851;
-    background-color: #00C851;
-}
-/*Gap*/
 
-.radio-green-gap [type="radio"].with-gap:checked+label:before {
-    border-color: #00C851;
-}
 
-.radio-green-gap [type="radio"]:checked+label:after {
-    border-color: #00C851;
-    background-color: #00C851;
-}
+
+
 
 
 

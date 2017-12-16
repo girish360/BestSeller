@@ -22,14 +22,18 @@
             <div class="date_products">
               <span class='glyphicon glyphicon-time'></span> {{product.date}}
             </div>
-              <a [routerLink]="['/company',{ get_languag:  product['adminat'] }]">
-                 <div class="own_img_product" >
 
-                 </div>
-                 <div class="image_profile_company"  *ngFor="let company of product['adminat']">
-                    <img  class="image_prof_admin" src="../../assets/images/{{company.imageprofile}}">
-                 </div>
-              </a>
+              <span  *ngFor="let company of product['adminat']">
+                   <a [routerLink]=" ['/company',{ companyId:  company.id }] ">
+                       <div class="own_img_product" >
+
+                       </div>
+                       <div class="image_profile_company">
+                             <img  class="image_prof_admin" src="../../assets/images/{{company.imageprofile}}">
+                        </div>
+                   </a>
+              </span>
+
              <a href="#">
                  <div class="image_product_primary">
                      <img class=" img_primary_product{{product.id}}" src="../../assets/images/{{product.image}}">
