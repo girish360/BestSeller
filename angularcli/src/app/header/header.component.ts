@@ -1,15 +1,17 @@
-import { Component, OnInit ,Input , Output , EventEmitter } from '@angular/core';
+import { Component, OnInit ,Input , Output , EventEmitter} from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
 import 'rxjs/add/observable/bindCallback';
 import { DataServiceService } from '../htpp-services/data-service.service';
+import { CheckboxControlValueAccessor } from '@angular/forms';
 
 declare var $:any;
 
 @Injectable()
 
 @Component({
+
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
@@ -22,17 +24,24 @@ export class HeaderComponent implements OnInit {
 
   public wishList_products = [];
 
-  private id = 5;
-
-   obj = {'name':'klodian'};
-
-   private card_products = [];
+  private card_products = [];
 
    private Response;
+
+   public selected_wishList=[];
+
+
+
+   public toggle_checked_wishList=false;
+
+   public button_delete=true;
+
 
   constructor( private dataservices : DataServiceService, private Httpservices : HtppServicesComponent ) {
 
     this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList } );
+
+
 
   }
 
@@ -70,6 +79,10 @@ export class HeaderComponent implements OnInit {
 
      this.wishList_products.splice( index_product , 1 ); // delete from angular
 
+     if( this.selected_wishList.indexOf( product )> -1){ // check if set in the wishlist if exists delete and from there.....
+         this.selected_wishList.splice(index_product , 1);
+     }
+
     this.Httpservices.create_obj( 'delete_itemFromCookie', product.id ); // delete from server
 
     this.Httpservices.Http_Post()
@@ -84,6 +97,45 @@ export class HeaderComponent implements OnInit {
 
         );
   }
+
+  toggle_select_wish( item_wish ){
+
+      var index = this.selected_wishList.indexOf( item_wish );
+
+      if( index > -1 ){
+        this.selected_wishList.splice(index,1);
+
+      }else{
+        this.selected_wishList.push(item_wish);
+
+      }
+
+      if( this.selected_wishList.length > 0 ){
+
+          this.button_delete = false;
+          return;
+      }
+      this.button_delete = true;
+
+  }
+
+
+  check_selected_wish( item_wish ){
+
+      if( this.selected_wishList.indexOf( item_wish ) > -1 ) {
+         return true;
+
+      }else{
+          return false;
+      }
+
+
+  }
+
+
+
+
+
 
   ngOnInit() {
 
@@ -332,8 +384,7 @@ export class HeaderComponent implements OnInit {
           activclick='language';
           numberpassicoractiv=1;
           zerovariablat(activclick,numberpassicoractiv);
-          $('.dropworld').show()
-          $('.treguesi').show();
+         show_dropdown_header('dropworld');
 
         }
         else{
@@ -343,8 +394,7 @@ export class HeaderComponent implements OnInit {
           activclick='language';
           numberpassicoractiv=0;
           zerovariablat(activclick,numberpassicoractiv);
-          $('.treguesi').hide();
-          $('.dropworld').hide()
+        hide_dropdown_header('dropworld');
         }
 
       });
@@ -362,8 +412,7 @@ export class HeaderComponent implements OnInit {
           activclick='card';
           numberpassicoractiv=1;
           zerovariablat(activclick,numberpassicoractiv);
-          $('.dropcard').show()
-          $('.treguesi').show();
+           show_dropdown_header('dropcard');
         }
         else{
           closecontainere(card,static_click);
@@ -371,8 +420,7 @@ export class HeaderComponent implements OnInit {
           activclick='card';
           numberpassicoractiv=0;
           zerovariablat(activclick,numberpassicoractiv);
-          $('.treguesi').hide();
-          $('.dropcard').hide()
+          hide_dropdown_header('dropcard');
         }
       });
 
@@ -391,8 +439,8 @@ export class HeaderComponent implements OnInit {
           activclick='favority';
           numberpassicoractiv=1;
           zerovariablat(activclick,numberpassicoractiv);
-          $('.dropfavority').show()
-          $('.treguesi').show();
+
+           show_dropdown_header('dropfavority');
 
 
         }
@@ -402,8 +450,9 @@ export class HeaderComponent implements OnInit {
           activclick='favority';
           numberpassicoractiv=0;
           zerovariablat(activclick,numberpassicoractiv);
-          $('.treguesi').hide();
-          $('.dropfavority').hide()
+
+          hide_dropdown_header('dropfavority');
+
         }
       });
 
@@ -454,7 +503,7 @@ export class HeaderComponent implements OnInit {
           }
 
         }
-        if($(e.target).closest('.favority ,.delete ,.about_wish,.hearts_div').length == 0 && $(e.target).closest('.dropfavority').length == 0 && $(e.target).closest('.treguesi').length == 0 ) {
+        if($(e.target).closest('.favority ,.delete ,.about_wish,.hearts_div  ,.check_radio').length == 0 && $(e.target).closest('.dropfavority').length == 0 && $(e.target).closest('.treguesi').length == 0 ) {
           $('.dropfavority').hide();
 
         }
@@ -467,7 +516,7 @@ export class HeaderComponent implements OnInit {
         }
         if($(e.target).closest(
                 '.card, .language, .dropworld, .dropcard ,.dropfavority ,.dropmore, .treguesi, .favority, .moreprofile, .pictureuser,'+
-                ' .treguesi, .listcategoryfind, .category, .searchsubscribe ,.delete ,.about_wish,.hearts_div'
+                ' .treguesi, .listcategoryfind, .category, .searchsubscribe ,.delete ,.about_wish,.hearts_div ,.check_radio'
             ).length == 0 )
         {
 
@@ -491,6 +540,8 @@ export class HeaderComponent implements OnInit {
           $('.navigation').removeClass('Box-shodown');
         }
       });
+
+
 
       setInterval(function(){ // call function with setinterval findpossition for pointer when user click dropdown menu  ......................................
         findposition(nameposition);
@@ -726,6 +777,37 @@ export class HeaderComponent implements OnInit {
 
 
       } //.....................................end
+
+      function show_dropdown_header( dropdown_class ){  // function to make show dropdwon that are in header ....
+
+        $('.treguesi').hide();
+
+        $('.'+dropdown_class).css({top:'30px',opacity:'0.1'});
+
+        $('.'+dropdown_class).show().animate({
+          top:'7',
+          opacity:1
+        },300,function(){
+
+          $('.treguesi').show();
+
+        });
+
+      }
+
+      function hide_dropdown_header( dropdown_class ){ // function to make hide dropdwon that are in header ....
+
+        $('.treguesi').hide();
+
+        $('.'+dropdown_class).fadeOut('fast',function () {
+
+          $('.'+dropdown_class).animate({
+            top:'30'
+          },200);
+
+        });
+
+      }
 
       function zerovariablat(name,nr){ //  ky function therrite sa here useri clikon mbi nje dropdown menu  , edhe mbane activ vete ate dropdown menu te tjerat behen 0 ..............
         var width = $(window).width();

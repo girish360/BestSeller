@@ -5,6 +5,10 @@
     top:0px;
 
 }
+.mini_icon{
+    font-size: 15px;
+    color:white;
+}
 a{
     text-decoration: none;
 }
@@ -12,6 +16,7 @@ a{
 .Box-shodown{
 
 }
+
 
 
 /* Begin css for header profile user here ....................................................................................................*/
@@ -761,12 +766,12 @@ input[name='search']:focus{
 /* dropdown list language ...............*/
 .dropworld{
     position: relative;
-    width: 300px;
+    width: 340px;
+    left: 292px;
     height: auto;
     background-color: white;
     float: right;
-    top: 41px;
-    left: 292px;
+    top: 7px;
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -836,8 +841,9 @@ input[name='search']:focus{
 
     background-color: white;
     float: right;
-    top: 7px;
-    display: none;
+    top: 30px;
+   display: none;
+opacity: 0.1;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -867,10 +873,18 @@ input[name='search']:focus{
 .top_wish{
     width: 100%;
     height: 30px;
+
 }
 .top_wish_change{
     border-bottom: 1px solid;
 }
+.width_height_top_wish{
+    width: 98%;
+    height: 90%;
+    margin: 0px auto;
+    background-color: red;
+}
+
 .body_wish{
     width: 100%;
     height:calc( 100% - 32px);
@@ -883,21 +897,31 @@ input[name='search']:focus{
     height: 100%;
     margin: 0px auto;
 }
+.width_top_wish ,.delete_from_wish{
+    display: inline;
+}
+.delete_btn{
+    width: 30px;
+    height: 25px;
+}
 
 .wish_image{
-    width: 40%;
-    height:150px ;
+    width: 70px;
+    height:70px ;
     display: inline-block;
+    border-radius: 100px;
+    overflow: hidden;
 }
 .wish_image img{
     width: 100%;
     height: 100%;
 }
-.delete{
+.check_radio{
     display: inline-block;
+    float: right;
+
+
 }
-
-
 
 .lang a{
     color: gray;

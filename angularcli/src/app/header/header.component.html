@@ -242,6 +242,7 @@
           </div>
         </div>
         <div class="dropcard">
+
           <div class="lang">
             <a href="#"><div class="">Shporta</div></a>
             <a href="#"><div class="">plus</div></a>
@@ -250,27 +251,49 @@
         </div>
         <div class="dropfavority">
 
-
-
-
                 <div class="top_wish">
-                    <div class="width_top_wish">
-                          <a href="#"><div class="">{{get_Language.Wish_Write}}</div></a>
+                    <div class="width_height_top_wish">
+                        <span class="width_top_wish">
+                            {{get_Language.Wish_Write}}
+                        </span>
 
-
+                        <span class="delete_from_wish">
+                             <button  class="btn btn-primary delete_btn " [disabled]="button_delete" > <span  class="glyphicon glyphicon-trash mini_icon"></span> </button>
+                        </span>
                     </div>
                 </div>
+
                 <div class="body_wish">
+
                     <div class="width_body_wish">
-                         <div class="each_wish"  *ngFor="let wish_product of wishList_products">
+
+                         <div class="each_wish"  *ngFor="let wish_product of wishList_products;">
 
                             <div class="wish_image">
 
                                 <img  src="../../assets/images/{{wish_product.image}}">
 
                             </div>
+
+
+
                             <div class="check_radio">
-                                <input type="radio">
+                                <ng-container   *ngIf="check_selected_wish( wish_product ); else ok" >
+
+
+                                        <input  class="check_radio" type="checkbox" (click)="toggle_select_wish( wish_product )" [ngModel]="true">
+
+
+
+                                </ng-container>
+
+                                <ng-template #ok >
+
+
+                                        <input  class="check_radio" type="checkbox" (click)="toggle_select_wish( wish_product )" [ngModel]="false">
+                                      
+
+                                </ng-template>
                             </div>
 
                          </div>
@@ -279,11 +302,11 @@
                     </div>
 
                 </div>
-
         </div>
 
 
         <div class="treguesi"></div>
+
       </div>
     </div>
   </div>
