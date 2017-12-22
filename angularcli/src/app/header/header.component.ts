@@ -6,6 +6,12 @@ import 'rxjs/add/observable/bindCallback';
 import { DataServiceService } from '../htpp-services/data-service.service';
 import { CheckboxControlValueAccessor } from '@angular/forms';
 
+import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
+
+
+
+
+
 declare var $:any;
 
 @Injectable()
@@ -13,9 +19,27 @@ declare var $:any;
 @Component({
 
   selector: 'app-header',
-  templateUrl: './header.component.html',
+  templateUrl: './header.component.html' ,
   styleUrls: ['./header.component.css'],
   providers:[HtppServicesComponent ],
+  animations: [
+    trigger('wishList_animations', [
+      transition('* => void', [
+        style({ height: '*', opacity: '1', transform: 'translateX(0)'}),
+        sequence([
+          animate(".25s ease", style({ height: '*', opacity: '.2', transform: 'translateX(100px)', 'box-shadow': 'none'  })),
+          animate(".1s ease", style({ height: '0', opacity: 0, transform: 'translateX(100px)', 'box-shadow': 'none'  }))
+        ])
+      ]),
+      transition('void => active', [
+        style({ height: '0', opacity: '0', transform: 'translateX(20px)', 'box-shadow': 'none' }),
+        sequence([
+          animate(".1s ease", style({ height: '*', opacity: '.2', transform: 'translateX(40px)', 'box-shadow': 'none'  })),
+          animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)'  }))
+        ])
+      ])
+    ])
+  ],
 
 })
 export class HeaderComponent implements OnInit {
@@ -30,11 +54,15 @@ export class HeaderComponent implements OnInit {
 
    public selected_wishList=[];
 
+   public active = 'active';
+
 
 
    public toggle_checked_wishList=false;
 
    public button_delete=true;
+
+   public  selectedAll_value_wishlist = false;
 
 
   constructor( private dataservices : DataServiceService, private Httpservices : HtppServicesComponent ) {
@@ -73,30 +101,57 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  delete_from_wishList( product ){
+  delete_from_wishList( All_wishList ){
 
-     var index_product = this.wishList_products.indexOf( product );
+    if( this.selected_wishList.length > 50) {
 
-     this.wishList_products.splice( index_product , 1 ); // delete from angular
+      var index_product = this.wishList_products.indexOf(All_wishList);
 
-     if( this.selected_wishList.indexOf( product )> -1){ // check if set in the wishlist if exists delete and from there.....
-         this.selected_wishList.splice(index_product , 1);
-     }
+      this.wishList_products.splice(index_product, 1); // delete from angular
 
-    this.Httpservices.create_obj( 'delete_itemFromCookie', product.id ); // delete from server
+      if (this.selected_wishList.indexOf(All_wishList) > -1) { // check if set in the wishlist if exists delete and from there.....
+        this.selected_wishList.splice(index_product, 1);
+      }
 
-    this.Httpservices.Http_Post()
-        .subscribe(data=>{
+      this.Httpservices.create_obj('delete_itemFromCookie', All_wishList.id); // delete from server
 
-              if( data['status']=='delete_itemFromCookie' ){
+      this.Httpservices.Http_Post()
+          .subscribe(data => {
 
-                this.Response = data['data'] , console.log(data['data'])
+                if (data['status'] == 'delete_itemFromCookie') {
+
+                  this.Response = data['data'] , console.log(data['data'])
+                }
               }
-            }
-            ,error=>(console.log( error['data']))
+              , error => (console.log(error['data']))
+          );
+    }else{
 
-        );
+
+
+         for( var i = 0 ; i < this.selected_wishList.length ; i++ ) { // remove from wish list products that are in selected
+
+             var index = this.wishList_products.indexOf( this.selected_wishList[i] );
+
+             if( index  > -1 ){
+
+                 this.wishList_products.splice( index , 1 );
+
+
+             }
+
+         }
+         for( var i = 0 ; i < this.selected_wishList.length ; i ++ ){
+
+            this.selected_wishList.splice(this.selected_wishList[i] , this.selected_wishList.length);
+         }
+         this.check_button_deleteProducts_fromwishlist();
+         this.check_selectedAll_checkbox_wish();
+    }
+
+
   }
+
 
   toggle_select_wish( item_wish ){
 
@@ -109,13 +164,8 @@ export class HeaderComponent implements OnInit {
         this.selected_wishList.push(item_wish);
 
       }
-
-      if( this.selected_wishList.length > 0 ){
-
-          this.button_delete = false;
-          return;
-      }
-      this.button_delete = true;
+      this.check_button_deleteProducts_fromwishlist();
+      this.check_selectedAll_checkbox_wish();
 
   }
 
@@ -128,7 +178,48 @@ export class HeaderComponent implements OnInit {
       }else{
           return false;
       }
+  }
 
+  selectedAll_wishList(){
+
+      if( this.selectedAll_value_wishlist == true ){ // check if  are all wish list  selected  .........
+
+          for( var i = 0 ; i < this.selected_wishList.length ; i ++ ){
+
+              this.selected_wishList.splice(this.selected_wishList[i] , this.selected_wishList.length);
+
+          }
+          this.check_selectedAll_checkbox_wish();
+          return;
+      }
+      for( var i = 0 ; i < this.wishList_products.length ; i ++ ){
+
+              if( this.selected_wishList.indexOf(this.wishList_products[i]) > -1 ){
+                continue // exist in selected_wishlist next .....
+              }
+              this.selected_wishList.push( this.wishList_products[i] ); // push in selected_wishlist
+      }
+      this.check_button_deleteProducts_fromwishlist();
+      this.check_selectedAll_checkbox_wish();
+  }
+
+  check_button_deleteProducts_fromwishlist(){
+
+      if( this.selected_wishList.length > 0 ){
+          this.button_delete = false;
+          return;
+      }
+      this.button_delete = true;
+
+  }
+
+  check_selectedAll_checkbox_wish(){
+
+      if( this.wishList_products.length == this.selected_wishList.length ){
+         this.selectedAll_value_wishlist = true;
+         return;
+      }
+      this.selectedAll_value_wishlist = false;
 
   }
 
@@ -503,7 +594,7 @@ export class HeaderComponent implements OnInit {
           }
 
         }
-        if($(e.target).closest('.favority ,.delete ,.about_wish,.hearts_div  ,.check_radio').length == 0 && $(e.target).closest('.dropfavority').length == 0 && $(e.target).closest('.treguesi').length == 0 ) {
+        if($(e.target).closest('.favority ,.delete ,.about_wish,.hearts_div  ,.checkboxTwoInput').length == 0 && $(e.target).closest('.dropfavority').length == 0 && $(e.target).closest('.treguesi').length == 0 ) {
           $('.dropfavority').hide();
 
         }
@@ -516,7 +607,7 @@ export class HeaderComponent implements OnInit {
         }
         if($(e.target).closest(
                 '.card, .language, .dropworld, .dropcard ,.dropfavority ,.dropmore, .treguesi, .favority, .moreprofile, .pictureuser,'+
-                ' .treguesi, .listcategoryfind, .category, .searchsubscribe ,.delete ,.about_wish,.hearts_div ,.check_radio'
+                ' .treguesi, .listcategoryfind, .category, .searchsubscribe ,.delete ,.about_wish,.hearts_div ,.checkboxTwoInput'
             ).length == 0 )
         {
 

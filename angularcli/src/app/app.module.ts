@@ -16,6 +16,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CompanyComponent } from './company/company.component';
 import { BodyComponent } from './body/body.component';
 import { DataServiceService } from './htpp-services/data-service.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -35,12 +36,14 @@ import { DataServiceService } from './htpp-services/data-service.service';
     CompanyComponent,
     BodyComponent
 
+
   ],
   imports: [
     BrowserModule,
     routes,
     HttpModule,
-      FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [AppComponent , HtppServicesComponent ,VisitorsComponent ,DataServiceService,ClientProductsComponent ],
   bootstrap: [AppComponent]

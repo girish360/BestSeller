@@ -64,7 +64,7 @@ export class ClientProductsComponent implements OnInit {
 
         if( this.status_in_wish != true ){ // check if status is not equals with true  to  add this prod in wish ....
 
-            this.wishList_products.push( product_data ); // push wish product in wishList products
+            this.wishList_products.unshift( product_data ); // push wish product in wishList products
 
             this.dataservices.wishList_products.emit( this.wishList_products );  // change wish list to services to deliver this  chnage into header that tell number wishlist ....
 

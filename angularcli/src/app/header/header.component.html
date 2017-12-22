@@ -258,7 +258,16 @@
                         </span>
 
                         <span class="delete_from_wish">
-                             <button  class="btn btn-primary delete_btn " [disabled]="button_delete" > <span  class="glyphicon glyphicon-trash mini_icon"></span> </button>
+                             <button  class="btn btn-primary btn-deleteFromwish delete_btn " [disabled]="button_delete" (click)="delete_from_wishList( selected_wishList )" > <span  class="glyphicon glyphicon-trash mini_icon"></span> </button>
+                        </span>
+                        <span class="inline">
+                            <section>
+                                <div class="checkboxTwo">
+                                    <input  class="CheckboxInput" value="1" id="checkboxTwoInput" [checked]="selectedAll_value_wishlist" type="checkbox"  > <!-- check who is selected in array with selected wishlist-->
+                                    <label  class='checkboxTwoInput' for="checkboxTwoInput" (click)="selectedAll_wishList()"> <!--  click to select this checkbox-->
+                                    </label>
+                                </div>
+                            </section>
                         </span>
                     </div>
                 </div>
@@ -267,7 +276,7 @@
 
                     <div class="width_body_wish">
 
-                         <div class="each_wish"  *ngFor="let wish_product of wishList_products;">
+                         <div class="each_wish"  *ngFor="let wish_product of wishList_products;"  [@wishList_animations]="active">
 
                             <div class="wish_image">
 
@@ -275,33 +284,23 @@
 
                             </div>
 
-
-
-                            <div class="check_radio">
-                                <ng-container   *ngIf="check_selected_wish( wish_product ); else ok" >
-
-
-                                        <input  class="check_radio" type="checkbox" (click)="toggle_select_wish( wish_product )" [ngModel]="true">
-
-
-
-                                </ng-container>
-
-                                <ng-template #ok >
-
-
-                                        <input  class="check_radio" type="checkbox" (click)="toggle_select_wish( wish_product )" [ngModel]="false">
-                                      
-
-                                </ng-template>
-                            </div>
+                             <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
+                                <section>
+                                    <div class="checkboxTwo">
+                                        <input  class="CheckboxInput" value="1" id="checkboxTwoInput"  type="checkbox"  [checked]="check_selected_wish( wish_product )"> <!-- check who is selected in array with selected wishlist-->
+                                        <label  class='checkboxTwoInput' for="checkboxTwoInput" (click)="toggle_select_wish( wish_product )"> <!--  click to select this checkbox-->
+                                        </label>
+                                    </div>
+                                </section>
+                             </div>
 
                          </div>
-
 
                     </div>
 
                 </div>
+           
+
         </div>
 
 
