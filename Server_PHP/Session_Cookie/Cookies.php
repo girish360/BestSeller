@@ -98,34 +98,40 @@ class Cookie extends Fetch_Data{
         }
     }
 
-    public function delete_item_fromCookie( $cookie_name , $value_which_you_want_to_delete ) // delete
+    public function delete_item_fromCookie( $cookie_name , $Array_selected ) // delete
     {
         try {
 
-            if (isset ($_COOKIE[$cookie_name])) { // check if exist this cookie .................
+            if ( isset ( $_COOKIE[$cookie_name] ) ) { // check if exist this cookie .................
 
                 $array_from_cookie = json_decode( $_COOKIE[$cookie_name] ); // take  array data from cookie stock .............
 
                 if ( is_array( $array_from_cookie ) ) { // check if is array ...................
 
-                    foreach ( $array_from_cookie as $key => $value ) { // loop all array
+                    foreach ( $Array_selected as $key_in_selected  =>  $value_in_selected ) { // loop all id  that are in selected array ......
 
-                        if( $value == $value_which_you_want_to_delete ) { // find value in array .....
-                            array_splice( $array_from_cookie , $key , 1); // delete this key from array ....
+                        $nr = 0; //  start number from 0 for all id that are in selected array ......
+
+                        foreach ( $array_from_cookie as $key_in_cookie => $value_in_cookie ){ // loop array id that are in wishlist ........
+
+                            if( $value_in_selected == $value_in_cookie ){ // check  if  this value in selected  is  equals  wish one value in wish list
+
+                                array_splice( $array_from_cookie , $nr,1 ); // remove item .....
+                            }
+                            $nr++; // ascending  number in variable ........
                         }
                     }
-
                     self::put_coockie_serialize( $cookie_name, $array_from_cookie ); // call methot to set cookie .....
 
                     return 'true'; // return true in frontend ........
                 }
                 return 'false'; // return false in frontend ........
 
-            } else {
+            }else {
                 return 'false'; // return false in frontend ........
             }
 
-        }catch( Exception $e ){
+        }catch( Exception $e  ){
 
             return $e->getMessage();
         }
@@ -135,7 +141,5 @@ class Cookie extends Fetch_Data{
 }
 
 $cookie = new Cookie(); //  declare obj .....
-
-
 
 ?>

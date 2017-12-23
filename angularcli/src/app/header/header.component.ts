@@ -27,14 +27,14 @@ declare var $:any;
       transition('* => void', [
         style({ height: '*', opacity: '1', transform: 'translateX(0)'}),
         sequence([
-          animate(".25s ease", style({ height: '*', opacity: '.2', transform: 'translateX(100px)', 'box-shadow': 'none'  })),
-          animate(".1s ease", style({ height: '0', opacity: 0, transform: 'translateX(100px)', 'box-shadow': 'none'  }))
+          animate(".25s ease", style({ height: '*', opacity: '.2', transform: 'translateX(40px)', 'box-shadow': 'none'  })),
+          animate(".1s ease", style({ height: '0', opacity: 0, transform: 'translateX(40px)', 'box-shadow': 'none'  }))
         ])
       ]),
       transition('void => active', [
-        style({ height: '0', opacity: '0', transform: 'translateX(20px)', 'box-shadow': 'none' }),
+        style({ height: '0', opacity: '0', transform: 'translateX(40px)', 'box-shadow': 'none' }),
         sequence([
-          animate(".1s ease", style({ height: '*', opacity: '.2', transform: 'translateX(40px)', 'box-shadow': 'none'  })),
+          animate(".1s ease", style({ height: '*', opacity: '.2', transform: 'translateX(20px)', 'box-shadow': 'none'  })),
           animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)'  }))
         ])
       ])
@@ -63,6 +63,8 @@ export class HeaderComponent implements OnInit {
    public button_delete=true;
 
    public  selectedAll_value_wishlist = false;
+
+   public Array_wishID_delete_wishlist = [];
 
 
   constructor( private dataservices : DataServiceService, private Httpservices : HtppServicesComponent ) {
@@ -103,53 +105,43 @@ export class HeaderComponent implements OnInit {
 
   delete_from_wishList( All_wishList ){
 
-    if( this.selected_wishList.length > 50) {
+    for( var i = 0 ; i < this.selected_wishList.length ; i++ ) { // remove from wish list products that are in selected
 
-      var index_product = this.wishList_products.indexOf(All_wishList);
+      var index = this.wishList_products.indexOf( this.selected_wishList[i] );
 
-      this.wishList_products.splice(index_product, 1); // delete from angular
+      this.Array_wishID_delete_wishlist.push(this.selected_wishList[i].id);
 
-      if (this.selected_wishList.indexOf(All_wishList) > -1) { // check if set in the wishlist if exists delete and from there.....
-        this.selected_wishList.splice(index_product, 1);
+      if( index  > -1 ){
+
+        this.wishList_products.splice( index , 1 );
+
+
       }
 
-      this.Httpservices.create_obj('delete_itemFromCookie', All_wishList.id); // delete from server
-
-      this.Httpservices.Http_Post()
-          .subscribe(data => {
-
-                if (data['status'] == 'delete_itemFromCookie') {
-
-                  this.Response = data['data'] , console.log(data['data'])
-                }
-              }
-              , error => (console.log(error['data']))
-          );
-    }else{
-
-
-
-         for( var i = 0 ; i < this.selected_wishList.length ; i++ ) { // remove from wish list products that are in selected
-
-             var index = this.wishList_products.indexOf( this.selected_wishList[i] );
-
-             if( index  > -1 ){
-
-                 this.wishList_products.splice( index , 1 );
-
-
-             }
-
-         }
-         for( var i = 0 ; i < this.selected_wishList.length ; i ++ ){
-
-            this.selected_wishList.splice(this.selected_wishList[i] , this.selected_wishList.length);
-         }
-         this.check_button_deleteProducts_fromwishlist();
-         this.check_selectedAll_checkbox_wish();
     }
 
+    for( var i = 0 ; i < this.selected_wishList.length ; i ++ ){
 
+      this.selected_wishList.splice(this.selected_wishList[i] , this.selected_wishList.length);
+    }
+
+    this.Httpservices.create_obj('delete_itemFromCookie', this.Array_wishID_delete_wishlist ); // delete from server
+
+    this.Httpservices.Http_Post()
+        .subscribe(data => {
+
+              if (data['status'] == 'delete_itemFromCookie') {
+
+                this.Response = data['data'] , console.log( data['data'])
+              }
+            }
+            , error => (console.log(error['data']))
+        );
+
+    this.check_button_deleteProducts_fromwishlist();
+    this.check_selectedAll_checkbox_wish();
+
+    this.Array_wishID_delete_wishlist = []; // empty ....
   }
 
 
@@ -215,7 +207,7 @@ export class HeaderComponent implements OnInit {
 
   check_selectedAll_checkbox_wish(){
 
-      if( this.wishList_products.length == this.selected_wishList.length ){
+      if( this.wishList_products.length == this.selected_wishList.length &&  this.selected_wishList.length > 0  ){
          this.selectedAll_value_wishlist = true;
          return;
       }
