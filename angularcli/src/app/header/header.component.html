@@ -14,22 +14,28 @@
  </div>
 
  <nav class="navigation " >
-     <div data-toggle="tooltip" title="Category">
+
+
+
          <div class="writemenu">  <!-- this is open category  -->
              <div class="herewrite">
+
                  <div class="radius_category">
-                     <div class="position_icon_ctegory">
-                         <div class="listcategory" id="laptopscreen">
-                              <span class="glyphicon glyphicon-th-large"></span>
+                      <span matTooltip="Category">
+                         <div class="position_icon_ctegory">
+                              <div class="listcategory" id="laptopscreen">
+                                  <span class="glyphicon glyphicon-th-large"></span>
+                              </div>
+                              <div class="listcategory closelist" id="laptopscreen">
+                                  <span class="glyphicon glyphicon-log-out icon-list-remove"></span>
+                              </div>
                          </div>
-                         <div class="listcategory closelist" id="laptopscreen">
-                             <span class="glyphicon glyphicon-log-out icon-list-remove"></span>
-                         </div>
-                     </div>
+                      </span>
                  </div>
+
              </div>
          </div>
-     </div>
+
   <div class="space">
 
     <div class="widthi">
@@ -94,7 +100,9 @@
                         <div class="menu3" id="search">
                              <a class="searchresponse" href="#"> <span class="glyphicon glyphicon-search"></span></a>
                         </div>
-                        <a routerLink="/login" data-toggle="tooltip" title="Login/Register">
+
+                         <span matTooltip="Open login">
+                        <a routerLink="/login" >
 
                         <div class="menu3 user-login" id="user-login">
 
@@ -111,7 +119,10 @@
 
                         </div>
                         </a>
-                         <a href="#" data-toggle="tooltip" title="Wish List">
+                         </span>
+
+                          <span matTooltip="Open wishlist">
+                         <a href="#">
                         <div class="menu3 favority" id="favority" >
                                    <ng-container *ngIf="wishList_products.length>0;else empty" >
                                        <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
@@ -140,7 +151,10 @@
 
                         </div>
                          </a>
-                        <a href="#" data-toggle="tooltip" title="Your Card">
+                          </span>
+
+                      <span matTooltip="Open card">
+                        <a href="#" >
                         <div class="menu3 card" id="card">
 
                                  <span class="glyphicon glyphicon-shopping-cart gh-header">
@@ -157,7 +171,10 @@
 
                         </div>
                          </a>
-                        <a href="#" data-toggle="tooltip" title="Your language">
+                      </span>
+
+                        <span matTooltip="Open language">
+                        <a href="#" >
                         <div class="menu3 language" id="language">
 
                                   <span class="glyphicon glyphicon-globe gh-header">
@@ -173,6 +190,7 @@
 
                         </div>
                         </a>
+                        </span>
 
         </span>
 
@@ -258,17 +276,22 @@
                         </span>
 
                         <span class="delete_from_wish">
-                             <button  class="btn btn-primary btn-deleteFromwish delete_btn " [disabled]="button_delete" (click)="delete_from_wishList( selected_wishList )" > <span  class="glyphicon glyphicon-trash mini_icon"></span> </button>
+
+
+                             <button mat-button  class="btn btn-primary btn-deleteFromwish  " [disabled]="button_delete" (click)="delete_from_wishList( selected_wishList )" > <span  class="glyphicon glyphicon-trash mini_icon"></span> </button>
                         </span>
                         <span class="inline">
-                            <section>
-                                <div class="checkboxTwo">
-                                    <input  class="CheckboxInput" value="1" id="checkboxTwoInput" [checked]="selectedAll_value_wishlist" type="checkbox"  > <!-- check who is selected in array with selected wishlist-->
-                                    <label  class='checkboxTwoInput' for="checkboxTwoInput" (click)="selectedAll_wishList()"> <!--  click to select this checkbox-->
-                                    </label>
-                                </div>
-                            </section>
+
+                            <mat-checkbox
+                                    [checked]="selectedAll_value_wishlist"
+                                    (click)="selectedAll_wishList()"
+                                    mat-indeterminate="selectedAll_value_wishlist"   >
+                                    <span *ngIf="selectedAll_value_wishlist">Un-</span>Selected All
+                            </mat-checkbox>
+
                         </span>
+
+
                     </div>
                 </div>
 
@@ -286,13 +309,10 @@
                              {{wish_product.id}}
 
                              <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
-                                <section>
-                                    <div class="checkboxTwo">
-                                        <input  class="CheckboxInput" value="1" id="checkboxTwoInput"  type="checkbox"  [checked]="check_selected_wish( wish_product )"> <!-- check who is selected in array with selected wishlist-->
-                                        <label  class='checkboxTwoInput' for="checkboxTwoInput" (click)="toggle_select_wish( wish_product )"> <!--  click to select this checkbox-->
-                                        </label>
-                                    </div>
-                                </section>
+
+                                 <mat-checkbox class="green" [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
+
+                                 </mat-checkbox>
                              </div>
 
                          </div>

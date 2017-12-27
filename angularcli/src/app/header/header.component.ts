@@ -10,8 +10,6 @@ import {  trigger, sequence, transition, animate, style, state } from '@angular/
 
 
 
-
-
 declare var $:any;
 
 @Injectable()

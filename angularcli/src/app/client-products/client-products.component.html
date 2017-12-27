@@ -93,36 +93,41 @@
             </a>
 
             <div class="footer_products">
+                <span matTooltip="Views!">
+                    <a href="#">
+                       <div class="button_footer_products">
 
-               <a href="#" data-toggle="tooltip" title="View!">
-                  <div class="button_footer_products">
+                          <span class="glyphicon glyphicon-eye-open icon_eye"></span>
 
-                     <span class="glyphicon glyphicon-eye-open icon_eye"></span>
+                          <div class="both_write number_eye">
+                             12889
+                          </div>
+                       </div>
+                    </a>
+                </span>
 
-                      <div class="both_write number_eye">
-                         12889
-                      </div>
-                  </div>
-               </a>
+                <span matTooltip="Add to your card">
+                    <a href="#" >
 
-              <a href="#" data-toggle="tooltip" title="Add to Card!">
+                        <div class="button_footer_products">
+                             <span class="glyphicon glyphicon-plus icon_eye"></span>
+                             <div class="both_write write_add_card">
+                                 Card
+                             </div>
+                        </div>
+                    </a>
+                </span>
 
-                 <div class="button_footer_products">
-                    <span class="glyphicon glyphicon-plus icon_eye"></span>
-                    <div class="both_write write_add_card">
-                      Card
-                    </div>
-                 </div>
-              </a>
-
-               <a href="#" data-toggle="tooltip" title="Details Product!">
-                  <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
-                     <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
-                     <div class="both_write write_add_card">
-                        More
-                     </div>
-                  </div>
-                </a>
+                <span matTooltip="See Details!">
+                    <a href="#">
+                        <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
+                             <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
+                             <div class="both_write write_add_card">
+                                 More
+                              </div>
+                        </div>
+                    </a>
+                </span>
             </div>
           <div class="prise_products">
 

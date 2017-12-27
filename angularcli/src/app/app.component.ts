@@ -14,25 +14,32 @@ export class AppComponent implements OnInit{
  kush ='f';
     ngOnInit(){
         $(document).ready(function() {
+
+            var top_scroll = 0;
+
             $('body').click('a',function(e) {
                 e.preventDefault();
             });
 
             $(window).scroll(function () {
 
+                var scroll_top = $(this).scrollTop();
 
-                if ($(this).scrollTop() >= 60) {
+
+                if ( scroll_top >= 60  ) {
                     $('.navigation').addClass('fixed_navigation');
                     $('.category ,.under_category').addClass('fixed_category');
                     $('.icon_header_write').addClass('new_icon_header_write');
+
+                    top_scroll = scroll_top;
                 } else {
                     $('.navigation').removeClass('fixed_navigation');
                     $('.category , .under_category').removeClass('fixed_category');
                     $('.icon_header_write').removeClass('new_icon_header_write');
 
+                    top_scroll = scroll_top;
+
                 }
-
-
             });
 
              $('.body_wish').scroll(function(){
@@ -43,7 +50,6 @@ export class AppComponent implements OnInit{
                      $('.top_wish').removeClass('top_wish_change');
                  }
              });
-
         });
     }
 }

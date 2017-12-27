@@ -1,6 +1,8 @@
 /* Styles go here */
 
 
+
+
 .glyphicon{
     font-size: 24px;
     position: relative;
@@ -21,9 +23,7 @@ a{
 .inline{
     display: inline-block;
 }
-.btn-deleteFromwish{
-    background-color: green;
-}
+
 .checkboxTwo {
     width: 30px;
     height: 17.5px;
@@ -365,6 +365,8 @@ a{
 .left_above_header{
     display: inline-block;
 }
+
+
 .menu1 {
     display: inline-block;
     width: auto;
