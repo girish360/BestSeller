@@ -47,11 +47,7 @@ export class CategorysSubscribesComponent implements OnInit {
       var stay_over_elemnt = 0;
       var active_category=0;
 
-      var min_cat=0;
-      var min_sub=0;
 
-      var max_cat=0;
-      var max_sub=0;
 
       var Server_path_http='http://localhost/bestseller/Server_PHP/Http_Request/Route_Http.php'; //  path where go requests .. ..
       var Data = ''; // data is to send data in server .........
@@ -59,57 +55,8 @@ export class CategorysSubscribesComponent implements OnInit {
       var Response;  // response from server ....
 
 
-      // click buttin minimizate category and subscribe.........................
-      $('.minimize').click(function(){
-        var id = $(this).attr('id');
-        if(id == 'minimize_category'){
-          if(min_cat==0){
-            minimize_category(); //call function for min_cate........................
-            min_cat=1;
-            min_sub=0;
-            max_cat=0;
-            max_sub=1;
-          }
-        }
-        if (id == 'minimize_subscribe'){
-          if(min_sub==0){
-            minimize_subscribe(); // call function for min_sub ............................
-            min_sub=1
-            min_cat=0;
-            max_sub=0;
-            max_cat=1;
-          }
-
-        }
-
-      });
-      // end minimiate...................
-      // big  category and subscribe..........................
-      $('.big_click').click(function(){
-        var id = $(this).attr('id');
-        if(id == 'big_category'){
-          if(max_cat==0){
-            big_category(); // call function for big cat ................
-            max_cat=1;
-            max_sub=0;
-            min_cat=0;
-            min_sub=1;
-          }
-        }
-        if (id == 'big_subscribe'){
-          if(max_sub==0){
-            big_subscribe(); // call function for big sub ....................
-            max_cat=0;
-            max_sub=1;
-            min_sub=0;
-            min_cat=1;
 
 
-          }
-        }
-
-      });
-      // end big cat and sub ..........................
 
 
       $('body').on({ // moseover  category and subscribe for remove class when use isn't over element from category and subscribe .....................
@@ -208,28 +155,12 @@ export class CategorysSubscribesComponent implements OnInit {
 
       //mouse hover categorytype..............................
       $('body').on('mouseenter' ,'.categorytype',function(){ // add class for style .................
-        var id = $(this).attr('id');
-        // remove all
-        if(id=='subscrib'){
-          $('.bordertypecat').animate({left:'-5px;'}).hide();
-          $('.imgnc').hide().animate({left:'0px'});
-        }
-        else{
-          $('.bordertypecat').removeClass('animateborderleft').animate({left:'-5px'},'fast');
-          $('.imgnc').removeClass('animateicon');
 
-        }
-        // end remove ........
-        //add  this in hover .........
-        if(id=='subscrib'){
-          $(this).find('.bordertypecat').show().css({'left':'-5px'}).animate({left:'0px'});
-          $(this).find('.imgnc').show().css({'left':'-10px','top':'8px'}).animate({left:'-5px'});
-        }
-        else{
-          $(this).addClass('categorytype_add_hover');
-          $(this).find('.bordertypecat').addClass('animateborderleft').css('left','-5px').animate({left:'0px'},'fast');;
-          $(this).find('.imgnc').addClass('animateicon');
-        }
+
+               $('.bordertypecat').removeClass('animateborderleft');
+
+               $(this).find('.bordertypecat').addClass('animateborderleft');
+
         // end add..........
       });
       // end mouse hover categorytype .......................................
@@ -292,7 +223,7 @@ export class CategorysSubscribesComponent implements OnInit {
           $('.sub'+id).slideUp();
           nrclick='fillimi';
           $(this).find('.categorytype').removeClass("color");
-          $(this).find('.bordertypecat').removeClass("bordercolor");
+          $(this).find('.bordertypecat').removeClass("new_border_cat");
           $(this).find('.imgnc').removeClass("iconcategory");
           $(this).find('.moresubcategory').removeClass("moresub");
           $(this).find('.exitsubcategory').removeClass("exitsub");
@@ -305,13 +236,13 @@ export class CategorysSubscribesComponent implements OnInit {
           nrclick=id;
           $('.imgnc').removeClass("iconcategory");
           $('.categorytype').removeClass("color");
-          $('.bordertypecat').removeClass("bordercolor");
+          $('.bordertypecat').removeClass("new_border_cat");
           $('.moresubcategory').removeClass("moresub");
           $('.exitsubcategory').removeClass("exitsub");
 
           $(this).find('.categorytype').addClass("color");
           $(this).find('.imgnc').addClass("iconcategory");
-          $(this).find('.bordertypecat').addClass("bordercolor");
+          $(this).find('.bordertypecat').addClass("new_border_cat");
           $(this).find('.moresubcategory').addClass("moresub");
           $(this).find('.exitsubcategory').addClass("exitsub");
 
@@ -345,76 +276,7 @@ export class CategorysSubscribesComponent implements OnInit {
         search_company_dinamicy(val ,nradd_total); // call function search dynamically with jquery ajax json  and php fro akses DB .....................
 
       });
-      // function  big category and subscribe ........................
-      function big_category(){
-        $('.mini_cat').removeClass('mini_cat_click_sub');
-        $('.minimize_subscribe').removeClass('mini_sub_click_sub');
-        $('.mini_cat').removeClass('mini_category_click');
-        $('.minimize_subscribe').removeClass('mini_subscribe_click');
 
-        $('.mini_cat').show();
-        $('.mini_cat').removeClass('mini_category_click');
-        $('.minimize_subscribe').removeClass('mini_subscribe_click');
-        $('.minimize_subscribe').hide();
-        $('.mini_cat').addClass('mini_cat_click_sub');
-        setTimeout(function(){
-          $('.minimize_subscribe').hide();
-        },500);
-
-        $('.minimize_subscribe').addClass('mini_sub_click_sub');
-
-
-      }
-
-      function big_subscribe(){
-        $('.mini_cat').removeClass('mini_cat_click_sub');
-        $('.minimize_subscribe').removeClass('mini_sub_click_sub');
-        $('.mini_cat').removeClass('mini_category_click');
-        $('.minimize_subscribe').removeClass('mini_subscribe_click');
-
-        $('.mini_cat').removeClass('mini_cat_click_sub');
-        $('.minimize_subscribe').removeClass('mini_sub_click_sub');
-        $('.minimize_subscribe').show();
-
-        $('.mini_cat').addClass('mini_category_click');
-        setTimeout(function(){
-          $('.mini_cat').hide();
-        },500);
-
-        $('.minimize_subscribe').addClass('mini_subscribe_click');
-
-
-      }
-      // end function big sub and cat ...........
-      // function for minimizate category and sub ...................
-      function minimize_category(){
-        $('.mini_cat').removeClass('mini_cat_click_sub');
-        $('.minimize_subscribe').removeClass('mini_sub_click_sub');
-        $('.minimize_subscribe').show();
-
-        $('.mini_cat').addClass('mini_category_click');
-        setTimeout(function(){
-          $('.mini_cat').hide();
-        },500);
-
-        $('.minimize_subscribe').addClass('mini_subscribe_click');
-
-
-      }
-      function minimize_subscribe(){
-        $('.mini_cat').show();
-        $('.mini_cat').removeClass('mini_category_click');
-        $('.minimize_subscribe').removeClass('mini_subscribe_click');
-        $('.minimize_subscribe').hide();
-        $('.mini_cat').addClass('mini_cat_click_sub');
-        setTimeout(function(){
-          $('.minimize_subscribe').hide();
-        },500);
-
-        $('.minimize_subscribe').addClass('mini_sub_click_sub');
-
-      }
-      // end min cat and sub .................
 
       function search_subscribe_static(value ){ //function search static for subscribe
         $('.company_subscribe').each(function(index) {  // search statis from subscribe that exists in div ...........
@@ -439,13 +301,7 @@ export class CategorysSubscribesComponent implements OnInit {
           setTimeout(function(){ // call every 0.5 minutes ......................................................
             var valu1=$('.inputsearchcompany').val();
             if(valu1==valu){ // check if user stay without press any keypress for 0.5 minutes , if it's true  get data with ajax for search ..........
-              if(min_sub==1){ // check if is minimization div for show subscribe................
-                big_subscribe();
-                min_cat=1;
-                min_sub=0;
-                max_cat=0;
-                max_sub=1;
-              }
+
 
               // show loader until data are complete here in ajax ..........................
 

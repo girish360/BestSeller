@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
 import {routes} from './app.router';
 import { AppComponent } from './app.component';
@@ -17,7 +16,7 @@ import { CompanyComponent } from './company/company.component';
 import { BodyComponent } from './body/body.component';
 import { DataServiceService } from './htpp-services/data-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -107,9 +106,11 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
+    ReactiveFormsModule
 
   ],
-  providers: [AppComponent , HtppServicesComponent ,VisitorsComponent ,DataServiceService,ClientProductsComponent ],
+  providers: [AppComponent , HtppServicesComponent ,VisitorsComponent ,DataServiceService,ClientProductsComponent],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

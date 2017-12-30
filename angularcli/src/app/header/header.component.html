@@ -17,7 +17,7 @@
 
 
 
-         <div class="writemenu">  <!-- this is open category  -->
+         <div class="top_category">  <!-- this is open category  -->
              <div class="herewrite">
 
                  <div class="radius_category">
@@ -284,8 +284,8 @@
 
                             <mat-checkbox
                                     [checked]="selectedAll_value_wishlist"
-                                    (click)="selectedAll_wishList()"
-                                    mat-indeterminate="selectedAll_value_wishlist"   >
+                                    (click)="selectedAll_wishList()">
+
                                     <span *ngIf="selectedAll_value_wishlist">Un-</span>Selected All
                             </mat-checkbox>
 

@@ -17,6 +17,8 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 14px;
 }
 .hide-login{
     z-index: 14 !important;
@@ -70,6 +72,15 @@ body::-webkit-scrollbar-thumb {
 
 }
 
+.mat-tab-label{
+
+    width: 50%;
+    max-height: 35px;
+    background-color: white;
+}
+.mat-tab-label:hover,.mat-tab-label:hover span{
+    color: #004080;
+}
 
 
 

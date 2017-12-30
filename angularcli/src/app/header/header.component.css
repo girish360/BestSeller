@@ -3,6 +3,7 @@
 
 
 
+
 .glyphicon{
     font-size: 24px;
     position: relative;
@@ -212,7 +213,7 @@ a{
     display: none;
 }
 .radius_category{
-    width: 42px;
+    width: 50px;
     height: 40px;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
@@ -228,16 +229,22 @@ a{
 
 
 }
-.writemenu{
+.top_category{
     position: absolute;
     color:white;
     width: 250px;
     height: 40px;
 }
 .position_icon_ctegory{
+
+
     position: relative;
-    top: 7px;
-    left: 5px;
+    top: 5px;
+
+    width: 50%;
+    margin: 0px auto;
+
+
 }
 
 
@@ -356,14 +363,17 @@ a{
 .write_above_header{
     position: relative;
     top: 15px;
+
 }
 .right_above_header{
     display: inline-block;
     float: right;
-    font-size: 22px;
+    font-size: 18px;
+
 }
 .left_above_header{
     display: inline-block;
+    font-size: 18px;
 }
 
 
@@ -423,8 +433,9 @@ a{
 
 }
 .menu1 a{
-     font-size: 24px;  text-decoration: none;
+    text-decoration: none;
      position: relative;
+    font-size: 18px;
 }
 .card ,.favority , .language{
     position: relative;
@@ -475,8 +486,8 @@ a{
 .write_icon_header{
     position: relative;
     top: -8px;
-    font-size: 17px;
 
+  z-index: 10 !important;
 }
 .menu3 a{
     color:white;
@@ -818,7 +829,6 @@ input[name='search']:focus{
     height: auto;
     background-color: white;
     float: right;
-    top: 7px;
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -836,7 +846,7 @@ input[name='search']:focus{
     background-color: white;
 
 
-    top: 10px;
+
 
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -852,7 +862,7 @@ input[name='search']:focus{
     height: auto;
     background-color: white;
     float: right;
-    top: 7px;
+
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -870,7 +880,7 @@ input[name='search']:focus{
     height: auto;
     background-color: white;
     float: right;
-    top: 7px;
+
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -885,18 +895,13 @@ input[name='search']:focus{
     width: 600px;
     left: 292px;
     height:350px;
-
     background-color: white;
     float: right;
-    top: 30px;
-   display: none;
+    display: none;
     opacity: 0.1;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-
-
-
 }
 
 .body_wish::-webkit-scrollbar {
@@ -1439,7 +1444,7 @@ input[type='radio'] {
         transition:0.5s;
         -webkit-transition:0.5s;
         -moz-transition:0.5s;
-        width: calc(100% - 250px);
+        width: calc(100% - 200px);
 
 
     }

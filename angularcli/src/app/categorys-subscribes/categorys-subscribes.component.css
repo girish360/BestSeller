@@ -6,9 +6,15 @@ a{
 
 .users-in-category{
     width: 100%;
+    height: 90px;
+}
+.button_category{
+    width: 100%;
+    height: 32px;
+    text-align: left;
+    border: none;
     position: relative;
-    left: 15px;
-
+    margin-top: -4px;
 
 }
 
@@ -27,6 +33,12 @@ a{
 
     color: red;
 }
+.user-category_icon{
+
+    font-size: 42px;
+    margin-left: 2px;
+    color:#E6E6FA;
+}
 .write_login_register{
     display: inline-block;
 
@@ -39,12 +51,6 @@ a{
     background-color: green;
 
 }
-.categorytype:hover{
-    background-color: #f5f5ef;
-
-}
-
-
 .catgow{
     position: relative;
     left: 17px;
@@ -52,10 +58,10 @@ a{
     display: inline-block;
     width: 15px;
     color: gray;
-    font-size: 20px;
+
 }
 .name-user-category{
-    font-size: 20px;
+
 
 }
 .category{
@@ -63,7 +69,7 @@ a{
     z-index: 2 !important;
     position: absolute;
     left: -250px;
-    width: 250px;
+    width: 300px;
     top: 100px;
     height: 100vh;
     overflow-x: hidden;
@@ -77,12 +83,28 @@ a{
 
 }
 
+.full_category{
+    float: left;
+    width: calc( 100% - 50px );
+
+}
+
+.mini_category{
+    float: right;
+    width: 50px;
+
+
+}
+.hide_mini_category{
+    width: 100%;
+}
+
 
 .under_category{
     z-index: 1 !important;
     position: absolute;
     left: -250px;
-    width: 250px;
+    width: 300px;
     top: 100px;
     height: 100vh;
     overflow-x: auto;
@@ -136,33 +158,21 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-
-.minimize ,.big_click{
-    display: inline-block;
-    padding: 7px 10px ;
-
-    position: relative;
-    top:-6px;
-
-}
-.minimize:hover ,.big_click:hover{
-    background-color: white;
-}
-.minimize_category{
-    position: relative;
-    left: 4px;
-}
-.minimize_category_icon{
-    position: relative;
-    top: 4px;
-}
-.categorytype{
-    height: 32px;
-    width: 100vh;
+.categorytype {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
 
 
 
 }
+.width_category{
+    width: 90%;
+    margin:0px auto;
+}
+
 .all_countsearch_number{
     display: none;
 }
@@ -178,8 +188,13 @@ body::-webkit-scrollbar-thumb {
 
 }
 .subcat ,.company_subscribe ,.dont_have_subcategory{
-    height: 32px;
+    height: 100%;
     width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+
 }
 .numbernencategory{
     display: inline-block;
@@ -247,10 +262,11 @@ body::-webkit-scrollbar-thumb {
 .imgsubscribe{
     display: inline-block;
     position: relative;
-    left: 10px;
+
     top: 4px;
     width: 25px;
     height: 25px;
+    left:0;
 }
 .imagesubscribe{
     width: 100%;
@@ -262,8 +278,9 @@ body::-webkit-scrollbar-thumb {
     height: 32px;
     width: 4px;
     background-color: #004080;
-
     visibility: hidden;
+    margin-left: -5px;
+
 }
 .namecate {
     display: inline-block;
@@ -272,7 +289,7 @@ body::-webkit-scrollbar-thumb {
     color:gray;
     text-decoration: none;
     position: relative;
-    left: 20px;
+
     top: -3px;
 }
 .addsearch_namecompany{
@@ -285,12 +302,9 @@ body::-webkit-scrollbar-thumb {
 }
 .writecategory{
     position: relative;
-
     height: 30px;
     width: 100%;
-
     z-index: 3 !important;
-
 }
 
 .numberkategory{
@@ -300,12 +314,7 @@ body::-webkit-scrollbar-thumb {
     top: 6px;
     right: 0px;
 }
-.user-category_icon{
 
-    font-size: 42px;
-    margin-left: 2px;
-    color:#E6E6FA;
-}
 
 .widthcat{
     width: 97%;
@@ -316,18 +325,27 @@ body::-webkit-scrollbar-thumb {
     background-color: #d6d6c2;
 
 }
+
 .underline, .nondecoration{
     text-decoration: none;
+
+
 }
-.catgow{
+
+.catgowrite{
     position: relative;
-    left: 12px;
+
     top: 6px;
     display: inline-block;
-    width: 15px;
+    width: 100%;
+
 
 }
 
+.border_bottom{
+    border-bottom: 1px solid;
+    border-color:#d6d6c2;
+}
 
 .imgcatego{
     display: inline-block;
@@ -336,8 +354,6 @@ body::-webkit-scrollbar-thumb {
     top: 2px;
     right: 10px;
 }
-
-
 
 .subscribe_add_hover{
     background-color: #d4d4f7;
@@ -350,28 +366,27 @@ body::-webkit-scrollbar-thumb {
 }
 .subcategory{
     display: none;
+
+
+
 }
+
 .exitsubcategory{
     display: none;
     position: relative;
-    top:-4px;
+    top:-8px;
 }
 .imgnc{
-
     position: relative;
-    right: 10px;
-    top: -27px;
     float: right;
     display: inline-block;
-
-
 }
 .iconsubcategory{
     display: none;
 }
 .moresubcategory{
     position: relative;
-    top: 4px;
+    top: 1px;
 }
 .writemenu{
     position: absolute;
@@ -390,12 +405,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-.visibleborder,.bordercolor,.animateborderleft{
+.visibleborder,.new_border_cat,.animateborderleft{
     visibility:visible;
+    margin-left: 0px;
+    -webkit-transition: 0.2s; /* Safari */
+    transition: 0.2s;
 }
-.animateicon{
-    display: block;
-}
+
 
 .iconcategory{
     display: block;

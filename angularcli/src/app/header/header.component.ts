@@ -4,11 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
 import 'rxjs/add/observable/bindCallback';
 import { DataServiceService } from '../htpp-services/data-service.service';
-import { CheckboxControlValueAccessor } from '@angular/forms';
-
 import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
-
-
 
 declare var $:any;
 
@@ -54,8 +50,6 @@ export class HeaderComponent implements OnInit {
 
    public active = 'active';
 
-
-
    public toggle_checked_wishList=false;
 
    public button_delete=true;
@@ -69,8 +63,6 @@ export class HeaderComponent implements OnInit {
 
     this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList } );
 
-
-
   }
 
   public language_allow = [
@@ -80,9 +72,7 @@ export class HeaderComponent implements OnInit {
 
   ];
 
-
   choose_language( language ){  //  function for update language ..........
-
 
     this.Httpservices.create_obj( 'changeLanguage', language );
 
@@ -110,10 +100,7 @@ export class HeaderComponent implements OnInit {
       this.Array_wishID_delete_wishlist.push(this.selected_wishList[i].id);
 
       if( index  > -1 ){
-
         this.wishList_products.splice( index , 1 );
-
-
       }
 
     }
@@ -213,11 +200,6 @@ export class HeaderComponent implements OnInit {
 
   }
 
-
-
-
-
-
   ngOnInit() {
 
     $(document).ready(function(){
@@ -283,6 +265,7 @@ export class HeaderComponent implements OnInit {
       });
 
       $('.listcategory').click(function(){
+
         var width = $(window).width();
         var name = $(this).attr('id');
 
@@ -701,24 +684,27 @@ export class HeaderComponent implements OnInit {
 
       function show_category_menu(){ //  function for show category menu and subsribe  when user click show menu call this function for show with animate ............................
         actuallist = 1;
+        $('.mini_category').hide();
+        $('.full_category').addClass('hide_mini_category');
 
         $('.containere,.space,.above_space_header').addClass('active_menu');
 
         $('.listcategory').hide();
         $('.closelist').show();
         $('.category , .under_category ,.searchsubscribe,.loadersubscribe').animate({
-          left:"0px"
+          left:"0px",
+          width:'250px'
         },"fast");
 
         $('.radius_category').animate({
-          left:"208px",
+          left:"200px",
           borderTopRightRadius:"0px",
           borderBottomRightRadius:"0px",
 
         },"fast",function(){
 
           $('.all_show_multiple_open').show();
-          $('.position_icon_ctegory').css('left','8px');
+
         });
         $('.all_show_multiple').hide();
 
@@ -730,6 +716,9 @@ export class HeaderComponent implements OnInit {
       } // ............................................ end
 
       function hide_category_menu( width_function ){ // function for hide category menu when user click for close it  call this function with animate ...........................
+
+        $('.mini_category').show();
+        $('.full_category').removeClass('hide_mini_category');
         actuallist = 0;
         if(width_function<800){
           $('.listcategory').css("display","block");
@@ -744,7 +733,8 @@ export class HeaderComponent implements OnInit {
           $('.listcategory').css("display","block");
           $('.closelist').css("display","none");
           $('.category , .under_category ,.searchsubscribe ,.loadersubscribe').animate({
-            left:"-270px"
+            left:"-250px",
+            width:'300px'
           },"fast");
           $('.radius_category').animate({
             left:"0px",
@@ -755,7 +745,7 @@ export class HeaderComponent implements OnInit {
 
           },"fast",function(){
             $('.all_show_multiple').show();
-            $('.position_icon_ctegory').css('left','5px');
+
           });
           $('.all_show_multiple_open').hide();
 
@@ -866,7 +856,7 @@ export class HeaderComponent implements OnInit {
         $('.'+dropdown_class).css({top:'30px',opacity:'0.1'});
 
         $('.'+dropdown_class).show().animate({
-          top:'7',
+          top:'2',
           opacity:1
         },300,function(){
 
