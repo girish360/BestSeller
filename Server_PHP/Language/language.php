@@ -7,7 +7,8 @@ class language extends Cookie {
     public function languages( $lang ){
         $language=[];
         switch ( $lang ) {
-            case 'English':
+            case '1':
+                $language['id']='1';
                 $language['wellcome']='Wellcome';
                 $language['choselanguage']='Choose your language';
                 $language['seemorelanguage']='See more';
@@ -37,7 +38,8 @@ class language extends Cookie {
                 $language['Wish_Write']="Wish Products";
 
                 break;
-            case 'Albania':
+            case '2':
+                $language['id']='2';
                 $language['wellcome']='Mirsevini';
                 $language['choselanguage']='Zgjidhni gjuhen tuaj';
                 $language['seemorelanguage']='Shikoni me shume';
@@ -85,7 +87,8 @@ class language extends Cookie {
                 $language['chooselanguage']=$lang;
 
                 break;
-            case 'Italy':
+            case '3':
+                $language['id']='3';
                 $language['wellcome']='Mirsevini';
                 $language['choselanguage']='Scegli la tua LINGUA';
                 $language['seemorelanguage']='Shikoni me shume';

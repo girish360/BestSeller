@@ -38,7 +38,7 @@ declare var $:any;
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() get_Language = {};
+  @Input() get_Language = {'id':'1'};
 
   public wishList_products = [];
 
@@ -58,7 +58,6 @@ export class HeaderComponent implements OnInit {
 
    public Array_wishID_delete_wishlist = [];
 
-
   constructor( private dataservices : DataServiceService, private Httpservices : HtppServicesComponent ) {
 
     this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList } );
@@ -66,9 +65,9 @@ export class HeaderComponent implements OnInit {
   }
 
   public language_allow = [
-    {name: 'English', id: "English" , image:'england.png'},
-    {name: 'Albanian', id: "Albania", image:'albania.png'},
-    {name: 'Italy', id: "Italy" ,image:'italy.png'}
+    {name: 'English', id: "1" , image:'england.png'},
+    {name: 'Albanian', id: "2", image:'albania.png'},
+    {name: 'Italy', id: "3" ,image:'italy.png'}
 
   ];
 
@@ -200,6 +199,14 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  current_language(id_language){
+
+    if( this.get_Language.id == id_language ){
+       return true;
+    }
+    return false;
+  }
+
   ngOnInit() {
 
     $(document).ready(function(){
@@ -220,6 +227,13 @@ export class HeaderComponent implements OnInit {
       var Data = ''; // data is to send data in server .........
       var Status = ''; // status is for identify  what kind of http is requests post or get
       var Response;  // response from server ....
+
+       var show_dropdown_search=0;
+       var pointer_status = 0;
+
+      var active_icon_header = 1;
+
+      var  value_search_header;
 
 
       $(window).bind("load", function() {
@@ -372,20 +386,69 @@ export class HeaderComponent implements OnInit {
       });
 
       $('.kerkim').keyup(function(){
-        var val = $(this).val();
-        if(val.length>0){
-          $('.imgsearch').hide();
-          $('.imgsearchexit').show();
-        }
-        else{
-          $('.imgsearchexit').hide();
-          $('.imgsearch').show();
-        }
+
+        var new_value_search = $(this).val();
+
+        value_search_header = new_value_search;
+
+        setTimeout(function(){
+
+          if( value_search_header == new_value_search ){
+
+            check_value_search(value_search_header);
+          }
+
+        },200);
+
+
       });
+
+      $('.kerkim').on('click',function(){
+
+         if( value_search_header.length > 0 ){
+           check_value_search(value_search_header);
+         }
+
+      });
+
+     function  check_value_search( value_search_header ){
+
+       if( active_icon_header == 1 ) {
+
+         if ( value_search_header.length > 0 ) {
+
+           $('.imgsearch').hide();
+           $('.imgsearchexit').show();
+
+           if (show_dropdown_search != 1) {
+
+             show_dropdown_header('dropdown_search');
+             show_dropdown_search = 1;
+
+             return;
+
+           }
+
+           return;
+
+         }
+         $('.imgsearchexit').hide();
+         $('.imgsearch').show();
+         hide_dropdown_header('dropdown_search');
+         show_dropdown_search = 0;
+         return;
+       }
+
+      } // end function
+
       $('.imgsearchexit').click(function(){
+
         $('.kerkim').val("");
         $('.imgsearchexit').hide();
         $('.imgsearch').show();
+        value_search_header='';
+        check_value_search( value_search_header );
+
       });
       $('.iconsearch').click(function(){
         $('.kerkim').focus();
@@ -430,168 +493,159 @@ export class HeaderComponent implements OnInit {
 
       $('.user-login').click(function(){
 
-           give_bgcolor_icon_header('menu3' , 'user-login', 0 ,$(this).find('.write_icon_header'));
+
+          give_bgcolor_icon_header('menu3', 'user-login', 0 , $(this).find('.write_icon_header'));
+
+
       });
+
       $('.language').click(function(e){
         e.preventDefault();
-        var name = $(this).attr('id');
+        if( active_icon_header == 1 ) {
+          var name = $(this).attr('id');
 
-        give_color_icon_header('gh-header' , $(this).find('.gh-header') , language);
-        give_bgcolor_icon_header('menu3' , 'language', language ,$(this).find('.write_icon_header'));
-        nameposition=name;
-        findposition(name);
-        if(language==0){
 
-          $('.opacity_dropdown').fadeIn();
-          static_click = 'language';
-          closecontainere(language,static_click);
-          activclick='language';
-          numberpassicoractiv=1;
-          zerovariablat(activclick,numberpassicoractiv);
-         show_dropdown_header('dropworld');
+          give_bgcolor_icon_header('menu3', 'language', language, $(this).find('.write_icon_header'));
+          nameposition = name;
+          findposition(name);
+          if (language == 0) {
 
-        }
-        else{
-          $('.opacity_dropdown').fadeOut();
-          static_click='language';
-          closecontainere(language,static_click);
-          activclick='language';
-          numberpassicoractiv=0;
-          zerovariablat(activclick,numberpassicoractiv);
-        hide_dropdown_header('dropworld');
+            $('.opacity_dropdown').fadeIn();
+            static_click = 'language';
+            closecontainere(language, static_click);
+            activclick = 'language';
+            numberpassicoractiv = 1;
+            zerovariablat(activclick, numberpassicoractiv);
+            show_dropdown_header('dropworld');
+
+          }
+          else {
+            $('.opacity_dropdown').fadeOut();
+            static_click = 'language';
+            closecontainere(language, static_click);
+            activclick = 'language';
+            numberpassicoractiv = 0;
+            zerovariablat(activclick, numberpassicoractiv);
+            hide_dropdown_header('dropworld');
+          }
         }
 
       });
       $('.card').click(function(e){
         e.preventDefault();
-        var name = $(this).attr('id');
-        give_color_icon_header('gh-header' , $(this).find('.gh-header') , card);
-        give_bgcolor_icon_header('menu3' , 'card', card ,$(this).find('.write_icon_header'));
-        nameposition=name;
-        findposition(name);
-        if(card==0){
-          $('.opacity_dropdown').fadeIn();
-          static_click = 'card';
-          closecontainere(card ,static_click);
-          activclick='card';
-          numberpassicoractiv=1;
-          zerovariablat(activclick,numberpassicoractiv);
-           show_dropdown_header('dropcard');
-        }
-        else{
-          closecontainere(card,static_click);
-          $('.opacity_dropdown').fadeOut();
-          activclick='card';
-          numberpassicoractiv=0;
-          zerovariablat(activclick,numberpassicoractiv);
-          hide_dropdown_header('dropcard');
+        if( active_icon_header == 1 ) {
+          var name = $(this).attr('id');
+
+          give_bgcolor_icon_header('menu3', 'card', card, $(this).find('.write_icon_header'));
+          nameposition = name;
+          findposition(name);
+          if (card == 0) {
+            $('.opacity_dropdown').fadeIn();
+            static_click = 'card';
+            closecontainere(card, static_click);
+            activclick = 'card';
+            numberpassicoractiv = 1;
+            zerovariablat(activclick, numberpassicoractiv);
+            show_dropdown_header('dropcard');
+          }
+          else {
+            closecontainere(card, static_click);
+            $('.opacity_dropdown').fadeOut();
+            activclick = 'card';
+            numberpassicoractiv = 0;
+            zerovariablat(activclick, numberpassicoractiv);
+            hide_dropdown_header('dropcard');
+          }
         }
       });
 
       $('.favority').click(function(e){
         e.preventDefault();
-        var name = $(this).attr('id');
-        give_color_icon_header('gh-header' , $(this).find('.gh-header') , favority);
-        give_bgcolor_icon_header('menu3' , 'favority', favority ,  $(this).find('.write_icon_header'));
+        if( active_icon_header == 1 ) {
+          var name = $(this).attr('id');
 
-        nameposition=name;
-        findposition(name);
-        if(favority==0){
-          $('.opacity_dropdown').fadeIn();
-          static_click='favorite';
-          closecontainere(favority,static_click);
-          activclick='favority';
-          numberpassicoractiv=1;
-          zerovariablat(activclick,numberpassicoractiv);
+          give_bgcolor_icon_header('menu3', 'favority', favority, $(this).find('.write_icon_header'));
 
-           show_dropdown_header('dropfavority');
+          nameposition = name;
+          findposition(name);
+          if (favority == 0) {
+            $('.opacity_dropdown').fadeIn();
+            static_click = 'favorite';
+            closecontainere(favority, static_click);
+            activclick = 'favority';
+            numberpassicoractiv = 1;
+            zerovariablat(activclick, numberpassicoractiv);
 
-
-        }
-        else{
-          closecontainere(favority,static_click);
-          $('.opacity_dropdown').fadeOut();
-          activclick='favority';
-          numberpassicoractiv=0;
-          zerovariablat(activclick,numberpassicoractiv);
-
-          hide_dropdown_header('dropfavority');
-
-        }
-      });
+            show_dropdown_header('dropfavority');
 
 
-      $('.pictureuser').click(function(){
-        var name = $(this).attr('id');
+          }
+          else {
+            closecontainere(favority, static_click);
+            $('.opacity_dropdown').fadeOut();
+            activclick = 'favority';
+            numberpassicoractiv = 0;
+            zerovariablat(activclick, numberpassicoractiv);
 
-        nameposition=name;
-        findposition(name);
-        if(more==0){
-          $('.opacity_dropdown').fadeIn();
-          static_click='more';
-          closecontainere(more,static_click);
+            hide_dropdown_header('dropfavority');
 
-          activclick='more';
-          numberpassicoractiv=1;
-          zerovariablat(activclick,numberpassicoractiv);
-          $('.dropmore').show()
-          $('.treguesi').show();
-
-        }
-        else{
-          closecontainere(more,static_click);
-          activclick='more';
-          numberpassicoractiv=0;
-          zerovariablat(activclick,numberpassicoractiv);
-          $('.treguesi').hide();
-          $('.dropmore').hide()
+          }
         }
       });
+
+
+
 
       $('body').on('click', function(e) { // click in bady and close some div element................
-        var width =$(window).width();
-        if($(e.target).closest('.language').length == 0 && $(e.target).closest('.dropworld').length == 0  && $(e.target).closest('.treguesi').length == 0 ) {
-          $('.dropworld').hide();
+          var width =$(window).width();
 
-        }
-        if(width<=800){ // close category menu when click else  in 600px......................
-          if($(e.target).closest('.listcategoryfind').length == 0 && $(e.target).closest('.category').length == 0  && $(e.target).closest('.treguesi').length == 0 && $(e.target).closest('.searchsubscribe').length == 0 ) {
-            hide_category_menu(width);
-            actuallist=0;
+          if($(e.target).closest('.language ,.dropworld ,.treguesi').length == 0  ) {
+             $('.dropworld').hide();
+             language = 0;
           }
-          if($(e.target).closest('.pasiv_activ_bodychat').length == 0 && $(e.target).closest('.openchat').length == 0 && $(e.target).closest('.bodychat').length == 0  ) {
-            var heig= $(window).height();
-            hide_chat_div(heig);
+          if(width<=800){ // close category menu when click else  in 600px......................
+              if($(e.target).closest('.listcategoryfind').length == 0 && $(e.target).closest('.category').length == 0  && $(e.target).closest('.treguesi').length == 0 && $(e.target).closest('.searchsubscribe').length == 0 ) {
+                  hide_category_menu(width);
+                  actuallist=0;
+              }
+               if($(e.target).closest('.pasiv_activ_bodychat').length == 0 && $(e.target).closest('.openchat').length == 0 && $(e.target).closest('.bodychat').length == 0  ) {
 
-            actualchat=0;
+                  var heig= $(window).height();
+                  hide_chat_div(heig);
+
+                  actualchat=0;
+               }
+          }
+          if($(e.target).closest('.favority , .delete ,.about_wish,' +
+                '.hearts_div  ,.checkboxTwoInput ,.dropfavority ,.treguesi').length == 0  ) {
+
+             $('.dropfavority').hide();
+
+       favority = 0;
+
+          }
+          if($(e.target).closest('.search ,.dropdown_search').length == 0  ) {
+              $('.dropdown_search').hide();
+              show_dropdown_search = 0;
+
+          }
+          if($(e.target).closest('.card ,.dropcard ,.treguesi').length == 0  ) {
+              $('.dropcard').hide();
+
+                card=0;
           }
 
-        }
-        if($(e.target).closest('.favority ,.delete ,.about_wish,.hearts_div  ,.checkboxTwoInput').length == 0 && $(e.target).closest('.dropfavority').length == 0 && $(e.target).closest('.treguesi').length == 0 ) {
-          $('.dropfavority').hide();
-
-        }
-        if($(e.target).closest('.card').length == 0 && $(e.target).closest('.dropcard').length == 0 && $(e.target).closest('.treguesi').length == 0  ) {
-          $('.dropcard').hide();
-        }
-        if($(e.target).closest('.moreprofile').length == 0 && $(e.target).closest('.pictureuser').length==0 && $(e.target).closest('.treguesi').length == 0
-            && $(e.target).closest('.dropmore').length==0) {
-          $('.dropmore').hide();
-        }
-        if($(e.target).closest(
+          if($(e.target).closest(
                 '.card, .language, .dropworld, .dropcard ,.dropfavority ,.dropmore, .treguesi, .favority, .moreprofile, .pictureuser,'+
                 ' .treguesi, .listcategoryfind, .category, .searchsubscribe ,.delete ,.about_wish,.hearts_div ,.checkboxTwoInput'
             ).length == 0 )
-        {
 
-          $('.treguesi').hide();
-          $('.opacity_dropdown').fadeOut();
-          give_color_icon_header('gh-header' , $(this).find('.gh-header') , '1');
-          give_bgcolor_icon_header('menu3' , 'card', 1 ,'write_icon_header');
-        }
-        if($(e.target).closest('.details_products_container, .button_footer_products, .more_detail_product,#map').length==0){
-          hide_details_product();
-        }
+          {
+            $('.treguesi').css({display: 'none'});// disabled pointer header icon.....
+            give_bgcolor_icon_header('menu3' , 'card', 1 ,'write_icon_header');
+
+          }
+
 
       });
 
@@ -684,14 +738,15 @@ export class HeaderComponent implements OnInit {
 
       function show_category_menu(){ //  function for show category menu and subsribe  when user click show menu call this function for show with animate ............................
         actuallist = 1;
-        $('.mini_category').hide();
-        $('.full_category').addClass('hide_mini_category');
+
+        $('.menu_right_inside').hide();
+        $('.menu_left_inside').addClass('hide_mini_category');
 
         $('.containere,.space,.above_space_header').addClass('active_menu');
 
         $('.listcategory').hide();
         $('.closelist').show();
-        $('.category , .under_category ,.searchsubscribe,.loadersubscribe').animate({
+        $('.menu_left , .under_menu_left' ).animate({
           left:"0px",
           width:'250px'
         },"fast");
@@ -717,13 +772,13 @@ export class HeaderComponent implements OnInit {
 
       function hide_category_menu( width_function ){ // function for hide category menu when user click for close it  call this function with animate ...........................
 
-        $('.mini_category').show();
-        $('.full_category').removeClass('hide_mini_category');
+        $('.menu_right_inside').show();
+        $('.menu_left_inside').removeClass('hide_mini_category');
         actuallist = 0;
         if(width_function<800){
           $('.listcategory').css("display","block");
           $('.closelist').css("display","none");
-          $('.category , .under_category ,.searchsubscribe ,.loadersubscribe').animate({
+          $('.menu_left , .under_menu_left ,.searchsubscribe ,.loadersubscribe').animate({
             left:"-800px"
           },"fast");
 
@@ -732,7 +787,7 @@ export class HeaderComponent implements OnInit {
         else{
           $('.listcategory').css("display","block");
           $('.closelist').css("display","none");
-          $('.category , .under_category ,.searchsubscribe ,.loadersubscribe').animate({
+          $('.menu_left , .under_menu_left ,.searchsubscribe ,.loadersubscribe').animate({
             left:"-250px",
             width:'300px'
           },"fast");
@@ -851,36 +906,57 @@ export class HeaderComponent implements OnInit {
 
       function show_dropdown_header( dropdown_class ){  // function to make show dropdwon that are in header ....
 
-        $('.treguesi').hide();
+          if( active_icon_header == 1 ) { // check if  header button is active to click.......
 
-        $('.'+dropdown_class).css({top:'30px',opacity:'0.1'});
+              active_icon_header = 0; // disabled header button............
 
-        $('.'+dropdown_class).show().animate({
-          top:'2',
-          opacity:1
-        },300,function(){
+              $('.treguesi').css({display:'none'}); // disabled pointer header icon.....
 
-          $('.treguesi').show();
+              $('.' + dropdown_class).css({top: '30px', opacity: '0.1'}); //  css style...
 
-        });
+              $('.' + dropdown_class).show().animate({ // animation effect show dropdown header......
 
-      }
+                  top: '2',
+                  opacity: 1
 
-      function hide_dropdown_header( dropdown_class ){ // function to make hide dropdwon that are in header ....
+              }, 300, function () { //  function after effect ............
 
-        $('.treguesi').hide();
+                  if( card != 0 || language !=0 || favority != 0  ) {
 
-        $('.'+dropdown_class).fadeOut('fast',function () {
+                    $('.treguesi').css({display: 'block'}); // show pionter......
 
-          $('.'+dropdown_class).animate({
-            top:'30'
-          },200);
+                  }else{
+                    give_bgcolor_icon_header('menu3' , 'card', 1 ,'write_icon_header');
+                  }
+                active_icon_header = 1;
 
-        });
+              });
+          }
 
-      }
+      } // end function....
 
-      function zerovariablat(name,nr){ //  ky function therrite sa here useri clikon mbi nje dropdown menu  , edhe mbane activ vete ate dropdown menu te tjerat behen 0 ..............
+      function hide_dropdown_header( dropdown_class ) { // function to make hide dropdwon that are in header ....
+          if (active_icon_header == 1) { // ccheck if  header button is active to click.......
+
+               active_icon_header = 0; //disabled header button............
+
+               $('.treguesi').css({display: 'none'});// disabled pointer header icon.....
+
+               $('.' + dropdown_class).css({top: '30px', opacity: '1'}); // css style...
+
+               $('.' + dropdown_class).animate({ // animation effect hide dropdown header......
+
+                   top: '30',
+                   opacity: '0.1',
+
+               }, 300, function () { //  function after effect ............
+                    $('.' + dropdown_class).hide();
+                    active_icon_header=1;
+               });
+          }
+      } // end function .......
+
+      function zerovariablat( name , nr ){ //  ky function therrite sa here useri clikon mbi nje dropdown menu  , edhe mbane activ vete ate dropdown menu te tjerat behen 0 ..............
         var width = $(window).width();
         if(name=='more' && nr=='1'){
           more=1;
@@ -903,30 +979,26 @@ export class HeaderComponent implements OnInit {
           favority=0;
         }
 
-
-
-
-
       }// ..................................................................end
 
-      function give_color_icon_header( all , single , status ){
-        $('.'+all).css({color:'slategrey'});
-        if(status==0){
-          single.css({ color: 'white' , zIndex: '10'});
-        }
-      }
+
       function give_bgcolor_icon_header( all , single , status , removewrite){
-        $('.'+all).css({backgroundColor:'',borderTop:''});
 
-        $('.write_icon_header').css('visibility', 'visible');
+          $('.' + all).css({backgroundColor: '', borderTop: ''});
 
-        if(status==0) {
-          $('.'+single).find('.glyphicon').css({marginTop:'40px' , borderRadius:'100px'}).animate({backgroundColor:"green"},50,function(){
-            $('.'+single).find('.glyphicon').animate({backgroundColor:"#E6E6FA", marginTop:'0px'},200);
-          }); // change bg color when click on icon in header
+          $('.write_icon_header').css('visibility', 'visible');
 
-          $(removewrite).css('visibility', 'hidden'); // remove write below icon in header
-        }
+          if (status == 0) {
+            $('.' + single).find('.glyphicon').css({
+              marginTop: '40px',
+              borderRadius: '100px'
+            }).animate({backgroundColor: "green"}, 50, function () {
+              $('.' + single).find('.glyphicon').animate({backgroundColor: "#E6E6FA", marginTop: '0px'}, 200);
+            }); // change bg color when click on icon in header
+
+            $(removewrite).css('visibility', 'hidden'); // remove write below icon in header
+          }
+
 
       }
 

@@ -105,9 +105,7 @@ margin-left: -8px;
     top:4px;
     left: -2px;
 }
-.write_add_card{
-    display: inline-block;
-}
+
 .glyphicon{
     display: inline-block;
 
@@ -135,12 +133,21 @@ margin-left: -8px;
 
 
 }
-.hover_footer_products{
+.button_footer_products:hover {
     transition: 0.5s;
     -webkit-trasition:1s;
     background-color:#708090;
+
+}
+.button_footer_products:hover span , .button_footer_products:hover div {
+    transition: 0.5s;
+    -webkit-trasition:1s;
     color:white;
 }
+.footer_products a{
+    text-decoration: none;
+}
+
 .plus_height{
     width: 100%;
     height: 6px;
@@ -164,7 +171,7 @@ margin-left: -8px;
 }
 .title_products{
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px;
 }
 .icon_eye{
     position: relative;
@@ -172,17 +179,18 @@ margin-left: -8px;
     display: inline-block;
     text-decoration: none;
 }
-.number_eye{
-    display: inline-block;
-    text-decoration: none;
-}
+
 .each_width_product{
     width: 94%;
     margin-left: 8px;
     display: inline-block;
 }
 
-
+.both_write{
+    display: inline-block;
+    position: relative;
+    top:3px;
+}
 .icon_hover{
     display: none;
     position: absolute;
@@ -213,6 +221,7 @@ margin-left: -8px;
 
 .plus_icon{
     display: inline-block;
+    color: white;
 }
 .option_products{
 
@@ -254,7 +263,7 @@ margin-left: -8px;
 }
 .wish_list_write{
     font-family: arial;
-    color:#E6E6FA;
+
 
     margin-left: -40px;
     margin-top: 6px;
@@ -269,6 +278,7 @@ margin-left: -8px;
     width: 100%;
     margin-top: -30px;
     text-align: center;
+
 
 
 }

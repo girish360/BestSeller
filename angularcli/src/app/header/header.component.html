@@ -21,7 +21,7 @@
              <div class="herewrite">
 
                  <div class="radius_category">
-                      <span matTooltip="Category">
+                      <span  matTooltip="Category">
                          <div class="position_icon_ctegory">
                               <div class="listcategory" id="laptopscreen">
                                   <span class="glyphicon glyphicon-th-large"></span>
@@ -68,10 +68,10 @@
                      </div>
 
               </div>
-
+              <span matTooltip="Search product and company">
               <div class="search">
-                   <div data-toggle="tooltip" title="Search product and company">
-                        <input type="text" class="kerkim" name="search" placeholder="{{get_Language.searchproducts}}">
+
+                        <input type="text" class="kerkim" id="kerkim" name="search" placeholder="{{get_Language.searchproducts}}">
                         <a href="#">
                             <div class="iconsearch">
                                  <div class="imgsearch">
@@ -82,8 +82,10 @@
                                  </div>
                             </div>
                         </a>
-                   </div>
+
+
               </div>
+              </span>
         </span>
         <span class="rightee">
 
@@ -195,17 +197,15 @@
         </span>
 
 
-
-
-
-
-        <div class="dropmore">
-          <div class="lang">
-            <a href=""><div class="">logout</div></a>
-            <a href=""><div class="">other</div></a>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+          <div class="dropdown_search" >
+              sdg
+              <br><br><br><br><br><br><br><br><br><br>
+              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
           </div>
-        </div>
+
+
+
+
         <div class="languagefull">
           <div class="dropworld">
             <div class="lang">
@@ -226,7 +226,8 @@
 
                 </div>
                 <div class="alllanguages" *ngFor="let language of language_allow">
-                  <a>
+                  <a >
+
                     <div class="albanian " (click)="choose_language(language.id)"  >
                       <div class="positionlang">
                         <div class="centerlang">
@@ -238,8 +239,15 @@
                           </div>
                         </div>
                         <div class="leftlang">
-                          <input class="radiolang" name="radiolang1"  type="radio">
 
+                            <mat-radio-group>
+
+                                <mat-radio-button class="radiolang"  value="1" [checked]="current_language(language.id)"  >
+
+
+                                </mat-radio-button>
+
+                            </mat-radio-group>
                         </div>
                       </div>
                     </div>
@@ -310,7 +318,7 @@
 
                              <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
 
-                                 <mat-checkbox class="green" [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
+                                 <mat-checkbox  class="green" [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
 
                                  </mat-checkbox>
                              </div>

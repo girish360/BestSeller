@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD']==='POST' ||  $_SERVER['REQUEST_METHOD']==='GET') {
 
         $postdata = file_get_contents("php://input");
 
-        $_POST = json_decode($postdata);
+        $_POST = json_decode( $postdata );
 
         $status = $_POST->status;
 

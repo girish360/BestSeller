@@ -208,18 +208,7 @@ export class ClientProductsComponent implements OnInit {
 
 // function  animate hearts  into the products when click it  , it move and go to the favority icon ........................................................
 
-          $('body').on('mouseenter','.button_footer_products',function(){
-              $(this).addClass('hover_footer_products');
 
-
-          });
-          $('body').on('mouseleave','.button_footer_products',function(){
-
-              $(this).removeClass('hover_footer_products');
-
-
-
-          });
 
 
           $('.click_up').click(function(){

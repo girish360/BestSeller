@@ -204,14 +204,14 @@ insert into adminat (name_company,emai,username,password,phone_number,imageprofi
 
 insert into followers (id_admin,id_user)values('4','1'),('5','1'),('6','1')
 
-insert into products ( title , description , id_image , id_category , id_admin , price , quantity )
-values('benz mercedez','shitet per arsye mos perdorimi','1','1','1','500','5'),
-      ('Iphone 5 ','gjendje perfecte','2','1','1','400','2'),
-      ('Iphone 6 ','gjendje perfecte','3','1','1','550','7'),
-      ('Iphone 8 ','gjendje perfecte','4','2','1','400','2'),
-      ('Iphone 9 ','gjendje perfecte','5','2','1','200','2'),
-      ('Iphone 10 ','gjendje perfecte','6','2','1','800','10'),
-      ('Iphone 11 ','gjendje perfecte','7','3','1','1000','2'),
-      ('Iphone 12 ','gjendje perfecte','8','3','1','400','2'),
-      ('Iphone 13 ','gjendje perfecte','9','3','1','400','2')
+insert into products ( title , description , id_image , id_category , id_admin , price , quantity , image )
+values('benz mercedez','shitet per arsye mos perdorimi','1','1','1','500','5' ,'1234.jpg'),
+      ('Iphone 5 ','gjendje perfecte','2','1','1','400','2','b3.jpg'),
+      ('Iphone 6 ','gjendje perfecte','3','1','1','550','7','under_login.jpg'),
+      ('Iphone 8 ','gjendje perfecte','4','2','1','400','2','klo.jpg'),
+      ('Iphone 9 ','gjendje perfecte','5','2','1','200','2','b3.jpg'),
+      ('Iphone 10 ','gjendje perfecte','6','2','1','800','10','klo.jpg'),
+      ('Iphone 11 ','gjendje perfecte','7','3','1','1000','2','1234.jpg'),
+      ('Iphone 12 ','gjendje perfecte','8','3','1','400','2','klo.jpg'),
+      ('Iphone 13 ','gjendje perfecte','9','3','1','400','2','1234.jpg')
 

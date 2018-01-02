@@ -18,29 +18,25 @@ export class HtppServicesComponent implements OnInit {
 
   private object = {};
 
-  private language:object={};
-
   ngOnInit() {
   }
 
-  Http_get(){
+  Http_Get(){
 
   }
 
   Http_Post(){
 
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    headers.append('Accept', 'text/plain');
+       const headers = new Headers();
+       headers.append('Content-Type', 'application/x-www-form-urlencoded');
+       headers.append('Accept', 'text/plain');
 
+       const body = JSON.stringify(this.object);
 
-    const body = JSON.stringify(this.object);
-
-    return this.http.post(this.path,
-        body,
-        { headers:headers })
-        .map((Response )=> Response.json());
-
+       return this.http.post(this.path,
+           body,
+           { headers:headers })
+           .map( ( Response ) => Response.json() );
 
   }
 

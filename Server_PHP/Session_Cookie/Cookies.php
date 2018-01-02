@@ -23,7 +23,7 @@ class Cookie extends Fetch_Data{
 
     public function check_cookie( $name_cookie ){
 
-        if(isset($_COOKIE[$name_cookie]) && !empty( $_COOKIE[$name_cookie] ) ){
+        if( isset( $_COOKIE[$name_cookie] ) ){
 
             return 'true';
 

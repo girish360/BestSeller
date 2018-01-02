@@ -28,14 +28,18 @@ export class AppComponent implements OnInit{
 
                 if ( scroll_top >= 60  ) {
                     $('.navigation').addClass('fixed_navigation');
-                    $('.category ,.under_category').addClass('fixed_category');
+                    $('.menu_left ,.under_menu_left').addClass('fixed_category');
                     $('.icon_header_write').addClass('new_icon_header_write');
+
+                    $('.dropdown_search').addClass('down_dropwdown_search');
 
                     top_scroll = scroll_top;
                 } else {
                     $('.navigation').removeClass('fixed_navigation');
-                    $('.category , .under_category').removeClass('fixed_category');
+                    $('.menu_left , .under_menu_left').removeClass('fixed_category');
                     $('.icon_header_write').removeClass('new_icon_header_write');
+                    $('.dropdown_search').removeClass('down_dropwdown_search');
+
 
                     top_scroll = scroll_top;
 

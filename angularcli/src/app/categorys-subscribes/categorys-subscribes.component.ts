@@ -18,6 +18,42 @@ export class CategorysSubscribesComponent implements OnInit {
 
   @Input() get_Language = {};
 
+  private top_menus:object = [
+      { 'icon':'home','id':'1','name':'Home' },
+      { 'icon':'home','id':'2','name':'Expensive' },
+      { 'icon':'home','id':'3','name':'Today' },
+      { 'icon':'home','id':'4','name':'Subscriptions' },
+      { 'icon':'home','id':'4','name':'Trending' },
+      { 'icon':'home','id':'4','name':'History' }
+  ];
+
+  private subscriptions:object = [
+    { 'icon':'home','id':'1','name':'Electronics' },
+    { 'icon':'home','id':'2','name':'Phone' },
+    { 'icon':'home','id':'3','name':'Samsung' },
+    { 'icon':'home','id':'4','name':'T-shirt' }
+  ];
+
+  click_top_menu( id_top_menu ){
+
+     if( id_top_menu == '1'){
+        //  user clicked home ...
+       return;
+     }
+     else if(  id_top_menu == '2' ){
+        // user clicked expensice
+       return;
+     }
+     else if(  id_top_menu == '3' ){
+       // user clicked today
+       return;
+     }
+     else if(  id_top_menu == '4' ){
+       // user clicked subscriptions
+       return;
+     }
+  }
+
   ngOnInit() {
 
 
@@ -67,14 +103,14 @@ export class CategorysSubscribesComponent implements OnInit {
             $('.bordertypecat').removeClass('animateborderleft');
             $('.subcat , .company_subscribe').removeClass('subscribe_add_hover');
             $('.subcat ,.company_subscribe').find('.bordertypecat').removeClass('visibleborder');
-            $('.subcat ,.company_subscribe').find('.imgnc').hide();
+
           }
           if($(e.target).closest('.morecontact,.writecategory').length>0){
             $('.pointer_catego').fadeOut();
             $('.bordertypecat').removeClass('animateborderleft');
             $('.subcat , .company_subscribe').removeClass('subscribe_add_hover');
             $('.subcat ,.company_subscribe').find('.bordertypecat').removeClass('visibleborder');
-            $('.subcat ,.company_subscribe').find('.imgnc').hide();
+
           }
           if( $(e.target).closest('.on_hover_category').length==0 && $(e.target).closest('.pointer_catego').length==0){
             koha=0;
@@ -94,11 +130,11 @@ export class CategorysSubscribesComponent implements OnInit {
         id = $(this).attr('id');
         offset = $(this).offset();
         $('.bordertypecat').removeClass('animateborderleft');
-        $('.imgnc').removeClass('animateicon');
+
         $('.categorytype').removeClass('categorytype_add_hover');
         $('.subcat , .company_subscribe').removeClass('subscribe_add_hover');
         $('.subcat ,.company_subscribe').find('.bordertypecat').removeClass('visibleborder');
-        $('.subcat ,.company_subscribe').find('.imgnc').hide();
+
         var width = $(window).width();
         if(width>800){
           if( id == 'category'+active_category ){ // active category here ...............................................................................
@@ -168,11 +204,11 @@ export class CategorysSubscribesComponent implements OnInit {
       $('body').on('mouseenter','.subcat , .company_subscribe',function(){
         $('.subcat , .company_subscribe').removeClass('subscribe_add_hover');
         $('.subcat ,.company_subscribe').find('.bordertypecat').removeClass('visibleborder').animate({left:'-5px;'});
-        $('.subcat ,.company_subscribe').find('.imgnc').hide().animate({left:'0px'});
+
 
         $(this).addClass('subscribe_add_hover');
         $(this).find('.bordertypecat').addClass('visibleborder').css('left','-5px').animate({left:'0px'},'fast');
-        $(this).find('.imgnc').show().css({'left':'-10px','top':'8px'}).animate({left:'-5px'});
+
       });
 
       // hover company that add when user search for products .........................
@@ -222,9 +258,9 @@ export class CategorysSubscribesComponent implements OnInit {
         if(id==nrclick){ // check if the click is agan on one category ..........
           $('.sub'+id).slideUp();
           nrclick='fillimi';
-          $(this).find('.categorytype').removeClass("color");
+          $('.categorytype').removeClass("categorytype_newBackground");
           $(this).find('.bordertypecat').removeClass("new_border_cat");
-          $(this).find('.imgnc').removeClass("iconcategory");
+
           $(this).find('.moresubcategory').removeClass("moresub");
           $(this).find('.exitsubcategory').removeClass("exitsub");
         }
@@ -234,14 +270,13 @@ export class CategorysSubscribesComponent implements OnInit {
           $('.sub'+id).slideDown();
           active_category=id; // active category varioable ...............
           nrclick=id;
-          $('.imgnc').removeClass("iconcategory");
-          $('.categorytype').removeClass("color");
+
+          $('.categorytype').removeClass("categorytype_newBackground");
           $('.bordertypecat').removeClass("new_border_cat");
           $('.moresubcategory').removeClass("moresub");
           $('.exitsubcategory').removeClass("exitsub");
 
-          $(this).find('.categorytype').addClass("color");
-          $(this).find('.imgnc').addClass("iconcategory");
+          $(this).find('.categorytype').addClass("categorytype_newBackground");
           $(this).find('.bordertypecat').addClass("new_border_cat");
           $(this).find('.moresubcategory').addClass("moresub");
           $(this).find('.exitsubcategory').addClass("exitsub");

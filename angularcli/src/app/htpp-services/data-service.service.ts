@@ -65,15 +65,20 @@ export class DataServiceService {
   }
 
 
-
-
   get_language(){  // method that get language from server ......
 
-    this.http.create_obj('language','English'); // create objet that send to backend with http
+      this.http.create_obj('language','1'); // create objet that send to backend with http
 
-    const lang  = this.http.Http_Post(); // call method that make request .....
+      const lang  = this.http.Http_Post(); // call method that make request .....
 
-    lang.subscribe( data => {  this.Language.emit(data) , this.language = data });
+      lang.subscribe( data => {
+
+         this.Language.emit(data),
+             this.language = data ,
+                 console.log(data)
+         }
+
+         ,error =>( console.log( error.status ) ) );
 
   }
 
