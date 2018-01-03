@@ -17,6 +17,8 @@ import { BodyComponent } from './body/body.component';
 import { DataServiceService } from './htpp-services/data-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgxCarouselModule } from 'ngx-carousel';
+import 'hammerjs';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -106,7 +108,9 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCarouselModule
+
 
   ],
   providers: [AppComponent , HtppServicesComponent ,VisitorsComponent ,DataServiceService,ClientProductsComponent],

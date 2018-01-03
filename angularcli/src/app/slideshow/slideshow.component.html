@@ -1,133 +1,72 @@
+
 <div class="slide_width">
 
-  <div class="sliders" >
+     <ngx-carousel class="sliders"
+                [inputs]="carouselOne"
+                (carouselLoad)="myfunc($event)"
+                   (onMove)="onmove_item_slide($event)">
 
-    <div class="slider">
 
-      <img class="slider_img" src="../../assets/images/klo.jpg" >
+       <ngx-item NgxCarouselItem   *ngFor="let slide of images_slide" >
 
-      <div class="write_slider"> klodian shaba </div>
+             <img   src="{{slide.src}}">
 
-    </div>
-
-    <div class="slider">
-
-      <img class="slider_img" src="../../assets/images/1234.jpg" >
-
-      <div class="write_slider"> Gentian shaba </div>
-
-    </div>
-
-    <div class="slider">
-
-      <img class="slider_img" src="../../assets/images/b3.jpg" >
-
-      <div class="write_slider"> Together shaba </div>
-
-    </div>
-
-    <div class="slider">
-
-      <img class="slider_img" src="../../assets/images/1234.jpg" >
-
-      <div class="write_slider"> Gentian shaba </div>
-
-    </div>
-
-    <div class="slider">
-
-      <img class="slider_img" src="../../assets/images/klo.jpg" >
-
-      <div class="write_slider"> klodian shaba </div>
-
-    </div>
-
-    <div class="slider">
-
-      <img class="slider_img" src="../../assets/images/b3.jpg" >
-
-      <div class="write_slider"> Together shaba </div>
-
-    </div>
-
-    <div class="forward">
-
-    </div>
-
-    <div class="forward_fixed">
-
-    </div>
-
-    <div class="forward_hover">
-      <div class="forward_position">
-        <span class="glyphicon glyphicon-forward icon_forward"></span>
-      </div>
-    </div>
-
-    <div class="backward">
-
-    </div>
-
-    <div class="backward_fixed">
-
-    </div>
-
-    <div class="backward_hover">
-      <div class="backward_position">
-        <span class="glyphicon glyphicon-backward icon_backward "></span>
-      </div>
-    </div>
-
-     <div class="slider_point">
-
-       <a href="#">
-           <div class="number_point" id="0">
-               <div class="write_point">
-                  1
-               </div>
-           </div>
-       </a>
-
-       <a href="#">
-          <div class="number_point" id="1">
-              <div class="write_point">
-                 2
+            <ngx-tile>
+              <div>
+                {{slide.title}}
               </div>
-           </div>
-       </a>
 
-       <a href="#">
-         <div class="number_point" id="2">
-             <div class="write_point">
-                3
+            </ngx-tile>
+
+        </ngx-item>
+
+
+
+           <a    NgxCarouselPrev class='leftRs'>
+
+             <div class="forward">
+
              </div>
-          </div>
-       </a>
-       <a href="#">
-         <div class="number_point" id="3">
-           <div class="write_point">
-             4
-           </div>
-         </div>
-       </a>
 
-       <a href="#">
-         <div class="number_point" id="4">
-           <div class="write_point">
-             5
-           </div>
-         </div>
-       </a>
+            <div class="forward_fixed">
 
-       <a href="#">
-         <div class="number_point" id="5">
-           <div class="write_point">
-             6
-           </div>
-         </div>
-       </a>
+            </div>
 
-     </div>
+            <div class="forward_hover">
+                <button mat-mini-fab class=" mat-fab forward_position">
+                  <mat-icon> <span class="glyphicon glyphicon-forward icon_forward"></span></mat-icon>
+                </button>
+             </div>
 
-  </div>
+           </a>
+           <a NgxCarouselNext class='rightRs'>
+                <div class="backward">
+
+                </div>
+
+                 <div class="backward_fixed">
+
+                 </div>
+
+                <div class="backward_hover">
+
+                  <button mat-mini-fab class=" backward_position">
+                     <mat-icon> <span class="glyphicon glyphicon-backward icon_backward "></span></mat-icon>
+                  </button>
+
+                </div>
+
+           </a>
+
+
+
+    </ngx-carousel>
+
+
+
+
+
+
+
 </div>
+

@@ -1,37 +1,44 @@
 
+
 .slide_width{
-    width: 98.8%;
-    height: 300px;
-    margin-left: 6px;
+
+
+
     border-radius: 3px;
     border:1px solid;
     border-color:#d6d6c2;
-    overflow: hidden;
+
+
 }
 
 .sliders {
     width: 100%;
     height: 100%;
-
     border-radius: 3px;
+
 }
-.slider {
-    display: inline-block;
+ngx-item ,.slide_width {
+
+    width: 98.8%;
+    height: 300px;
+}
+
+ngx-item img {
     width: 100%;
     height: 100%;
-
-    display: none;
-
+    position: absolute;
+    pointer-events: none
 }
-.slider_img{
-    width: 100%;
-    height:100%;
-    border-radius: 3px;
-    margin: 0px auto;
+ngx-tile div {
+
+position: relative;
+    color:red;
 }
+
+
 .forward , .forward_fixed{
     position: absolute;
-    right: 5px;
+    right: 0px;
     top: 1px;
     width: 5px;
     height: 298px;
@@ -43,7 +50,7 @@
 }
 .forward_hover{
     position: absolute;
-    right: 5px;
+    right: 0px;
     top: 1px;
     width: 5px;
     height: 298px;
@@ -55,7 +62,7 @@
 }
 .backward ,.backward_fixed{
     position: absolute;
-    left: 7px;
+    left: 0px;
     top: 1px;
     width: 5px;
     height: 298px;
@@ -68,7 +75,7 @@
 }
 .backward_hover {
     position: absolute;
-    left: 7px;
+    left: 0px;
     top: 1px;
     width: 5px;
     height: 298px;
@@ -79,7 +86,7 @@
 
 
 }
-.backward_position,.forward_position{
+.backward_position,.forward_position {
 
     position: relative;
     top: 50%; left: 50%;
@@ -87,11 +94,17 @@
     width: 50px;
     height: 50px;
     background-color: #004080;
-    border-radius: 100px;
+border-radius: 150px;
     border:2px solid;
     border-style: dotted;
     color: green;
 
+}
+
+.backward_position{
+    width: 50px;
+    height: 50px;
+    border-radius: 150px;
 }
 
 .backward_position:hover , .forward_position:hover{
@@ -121,11 +134,17 @@
     background-color: #004080;
 }
 
-.icon_backward , .icon_forward{
+.icon_backward {
 
-    top: 50%; left: 50%;
-    transform: translate(-50%,-50%);
+    position: relative;
+    top:-7px;
+    left: -2px;
 
+}
+.icon_forward{
+    position: relative;
+    top:-7px;
+    left: 2px;
 }
 
 .write_slider{

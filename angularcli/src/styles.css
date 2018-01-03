@@ -32,8 +32,8 @@ time, mark, audio, video {
 }
 .menu_left::-webkit-scrollbar , .dropdown_search::-webkit-scrollbar ,.body_wish::-webkit-scrollbar {
     width: 7px;
-    border-radius: 3px;
-    position: inherit;
+
+
 
 }
 
@@ -43,8 +43,11 @@ time, mark, audio, video {
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
 
 
-}
 
+}
+.menu_left::-webkit-scrollbar-track{
+
+}
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
@@ -104,6 +107,7 @@ body::-webkit-scrollbar-thumb {
 mat-checkbox.mat-checked.green{
      background-color: rgba(0, 255, 0, 0.87);
 }
+
 
 
 

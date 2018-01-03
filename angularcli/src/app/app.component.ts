@@ -10,8 +10,10 @@ declare var $:any;
 
 
 export class AppComponent implements OnInit{
-  title = 'app';
- kush ='f';
+
+
+
+
     ngOnInit(){
         $(document).ready(function() {
 
