@@ -3,7 +3,7 @@ import { Component, OnInit , AfterViewInit , Input } from '@angular/core';
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
 
 
- declare var $:any;
+declare var $:any;
 
 @Component({
   selector: 'app-categorys-subscribes',
@@ -19,39 +19,53 @@ export class CategorysSubscribesComponent implements OnInit {
   @Input() get_Language = {};
 
   private top_menus:object = [
-      { 'icon':'home','id':'1','name':'Home' },
-      { 'icon':'home','id':'2','name':'Expensive' },
-      { 'icon':'home','id':'3','name':'Today' },
-      { 'icon':'home','id':'4','name':'Subscriptions' },
-      { 'icon':'home','id':'4','name':'Trending' },
-      { 'icon':'home','id':'4','name':'History' }
+    { icon:'home',id:'1',name:'Home'   },
+    { icon:'star rate',id:'2',name:'Expensive'  },
+    { 'icon':'today','id':'3','name':'Today'  },
+    { 'icon':'subscriptions','id':'4','name':'Subscriptions' },
+    { 'icon':'whatshot','id':'4','name':'Trending'  },
+    { 'icon':'history','id':'4','name':'History'  }
   ];
 
   private subscriptions:object = [
-    { 'icon':'home','id':'1','name':'Electronics' },
-    { 'icon':'home','id':'2','name':'Phone' },
-    { 'icon':'home','id':'3','name':'Samsung' },
-    { 'icon':'home','id':'4','name':'T-shirt' }
+    { 'icon':'klo.jpg','id':'1','name':'Electronics' },
+    { 'icon':'1234.jpg','id':'2','name':'Phone' },
+    { 'icon':'b3.jpg','id':'3','name':'Samsung' },
+    { 'icon':'klo.jpg','id':'4','name':'T-shirt' }
+  ];
+
+  private settings:object = [
+    { 'icon':'settings','id':'1','name':'Settings' },
+    { 'icon':'help','id':'2','name':'Help' },
+    { 'icon':'feedback','id':'3','name':'Feedback' }
+
+  ];
+
+  private user:object = [
+    { 'icon':'language','id':'1','name':'Language' },
+    { 'icon':'person pin','id':'2','name':'User Panel' }
+
+
   ];
 
   click_top_menu( id_top_menu ){
 
-     if( id_top_menu == '1'){
-        //  user clicked home ...
-       return;
-     }
-     else if(  id_top_menu == '2' ){
-        // user clicked expensice
-       return;
-     }
-     else if(  id_top_menu == '3' ){
-       // user clicked today
-       return;
-     }
-     else if(  id_top_menu == '4' ){
-       // user clicked subscriptions
-       return;
-     }
+    if( id_top_menu == '1'){
+      //  user clicked home ...
+      return;
+    }
+    else if(  id_top_menu == '2' ){
+      // user clicked expensice
+      return;
+    }
+    else if(  id_top_menu == '3' ){
+      // user clicked today
+      return;
+    }
+    else if(  id_top_menu == '4' ){
+      // user clicked subscriptions
+      return;
+    }
   }
 
   ngOnInit() {
@@ -193,9 +207,9 @@ export class CategorysSubscribesComponent implements OnInit {
       $('body').on('mouseenter' ,'.categorytype',function(){ // add class for style .................
 
 
-               $('.bordertypecat').removeClass('animateborderleft');
+        $('.bordertypecat').removeClass('animateborderleft');
 
-               $(this).find('.bordertypecat').addClass('animateborderleft');
+        $(this).find('.bordertypecat').addClass('animateborderleft');
 
         // end add..........
       });
@@ -539,7 +553,7 @@ export class CategorysSubscribesComponent implements OnInit {
 
 
             },error:function(e){
-               console.log(e.error);
+              console.log(e.error);
             },beforeSend:function(){
 
             }

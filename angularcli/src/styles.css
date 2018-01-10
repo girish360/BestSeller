@@ -36,6 +36,9 @@ time, mark, audio, video {
 
 
 }
+.menu_left::-webkit-scrollbar{
+   display: none;
+}
 
 
 .menu_left::-webkit-scrollbar-thumb ,.dropdown_search::-webkit-scrollbar-thumb ,.body_wish::-webkit-scrollbar-thumb {

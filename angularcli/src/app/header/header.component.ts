@@ -741,7 +741,7 @@ export class HeaderComponent implements OnInit {
 
         $('.menu_right_inside').hide();
         $('.menu_left_inside').addClass('hide_mini_category');
-
+        $('.menu_left').addClass('menu_left_open');
         $('.containere,.space,.above_space_header').addClass('active_menu');
 
         $('.listcategory').hide();
@@ -774,6 +774,7 @@ export class HeaderComponent implements OnInit {
 
         $('.menu_right_inside').show();
         $('.menu_left_inside').removeClass('hide_mini_category');
+          $('.menu_left').removeClass('menu_left_open');
         actuallist = 0;
         if(width_function<800){
           $('.listcategory').css("display","block");
