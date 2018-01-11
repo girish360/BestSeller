@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "build": "webpack",
+    "build": "ng build --prod --aot",
     "test": "karma start ./karma.conf.js",
     "lint": "ng lint",
     "e2e": "protractor ./protractor.conf.js",
@@ -28,6 +28,7 @@
     "bootstrap": "^3.3.7",
     "bootstrap-toggle": "^2.2.2",
     "core-js": "^2.4.1",
+    "crypto-js": "^3.1.9-1",
     "hammerjs": "^2.0.8",
     "jquery": "^3.2.1",
     "jquery-color-animation": "^1.5.1",

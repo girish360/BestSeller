@@ -15,6 +15,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { CompanyComponent } from './company/company.component';
 import { BodyComponent } from './body/body.component';
 import { DataServiceService } from './htpp-services/data-service.service';
+import { EncryptDecryptService } from './encrypt-decrypt.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgxCarouselModule } from 'ngx-carousel';
@@ -113,7 +114,14 @@ import {
 
 
   ],
-  providers: [AppComponent , HtppServicesComponent ,VisitorsComponent ,DataServiceService,ClientProductsComponent],
+  providers: [
+      AppComponent ,
+      HtppServicesComponent ,
+      VisitorsComponent ,
+      DataServiceService,
+      ClientProductsComponent,
+      EncryptDecryptService
+  ],
 
   bootstrap: [AppComponent]
 })

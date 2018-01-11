@@ -4,13 +4,14 @@
 
     <div class="width_menu_left">
 
+
         <div class="menu_left_inside">
             <!--  show all category type -->
             <div class="top_in_menu border_bottom" >
 
                 <button  mat-button class="button_menu"  *ngFor="let top_menu of top_menus" (click)=" click_top_menu( top_menu.id )">
 
-                    <a   href="#" class="underline" >
+                    <a   href="#" class="menu_navigation menu_navigation{{top_menu.id}}" id="{{top_menu.id}}" >
 
                         <div class="categorytype" >
 
@@ -152,7 +153,7 @@
 
                 <button  mat-button class="button_menu"  *ngFor="let subscription of subscriptions">
 
-                    <a   [routerLink]="['/company',{ companyId: subscription.id }]" class="underline" >
+                    <a    [routerLink]="['/company',{ companyId: subscription.id }]" class="menu_navigation menu_navigation{{subscription.id}}" id="{{subscription.id}}" >
 
                         <div class="categorytype" >
 
@@ -168,7 +169,6 @@
                                 <div class="namecate">
                                     <div class="namecategory" >{{subscription.name}}</div>
                                 </div>
-
 
                             </div>
 
@@ -192,7 +192,7 @@
 
                 <button  mat-button class="button_menu"  *ngFor="let setting of settings">
 
-                    <a   href="#" class="underline" >
+                    <a   href="#" class="menu_navigation menu_navigation{{setting.id}}" id="{{setting.id}}" >
 
                         <div class="categorytype" >
 
@@ -234,7 +234,7 @@
 
                 <button  mat-button class="button_menu"  *ngFor="let account of user">
 
-                    <a   href="#" class="underline" >
+                    <a   href="#" class="menu_navigation menu_navigation{{account.id}}" id="{{account.id}}" >
 
                         <div class="categorytype" >
 
@@ -310,11 +310,17 @@
 
                       <span matTooltip="{{top_menu.name}}">
 
-                          <button mat-mini-fab class="button-fab-menu-right" >
+                          <a   href="#" class="menu_mini_navigation menu_mini_navigation{{top_menu.id}}" id="{{top_menu.id}}">
 
-                              <mat-icon >{{top_menu.icon}}</mat-icon>
+                              <button mat-mini-fab class="button-fab-menu-right" >
 
-                          </button>
+                                  <mat-icon >{{top_menu.icon}}</mat-icon>
+
+                               </button>
+
+                          </a>
+
+
 
                       </span>
 
@@ -352,7 +358,8 @@
 
                       <span matTooltip="{{subscription.name}}">
 
-                           <a [routerLink]=" ['/company',{ companyId:  subscription.id }] ">
+
+                           <a class="menu_mini_navigation menu_mini_navigation{{subscription.id}}" id="{{subscription.id}}"  [routerLink]=" ['/company',{ companyId: crypto.encryp_AES( subscription.id , crypto.secret_key_company_profile ) }] ">
 
                                <button mat-mini-fab class="button-fab-menu-right" >
 
@@ -375,12 +382,14 @@
                     <div class="button_menu_right " *ngFor="let setting of settings">
 
                       <span matTooltip="{{setting.name}}">
+                          <a class="menu_mini_navigation menu_mini_navigation{{setting.id}}" id="{{setting.id}}">
 
-                          <button mat-mini-fab class="button-fab-menu-right" >
+                              <button mat-mini-fab class="button-fab-menu-right" >
 
-                              <mat-icon >{{setting.icon}}</mat-icon>
+                                  <mat-icon >{{setting.icon}}</mat-icon>
 
-                          </button>
+                               </button>
+                          </a>
 
                       </span>
 
@@ -397,11 +406,14 @@
 
                       <span matTooltip="{{identity.name}}">
 
-                          <button mat-mini-fab class="button-fab-menu-right" >
+                         <a class="menu_mini_navigation menu_mini_navigation{{identity.id}}" id="{{identity.id}}">
 
-                              <mat-icon> {{identity.icon}} </mat-icon>
+                             <button mat-mini-fab class="button-fab-menu-right" >
 
-                          </button>
+                                 <mat-icon> {{identity.icon}} </mat-icon>
+
+                             </button>
+                         </a>
 
                       </span>
 

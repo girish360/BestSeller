@@ -2,6 +2,7 @@ import { Component, OnInit , AfterViewInit , Input } from '@angular/core';
 
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
 
+import { EncryptDecryptService } from '../encrypt-decrypt.service';
 
 declare var $:any;
 
@@ -12,9 +13,13 @@ declare var $:any;
 })
 export class CategorysSubscribesComponent implements OnInit {
 
-  constructor( private Httpservice : HtppServicesComponent) { }
+  constructor( private Httpservice : HtppServicesComponent , private crypto:EncryptDecryptService) { }
+
+
 
   public categorys = [];
+
+
 
   @Input() get_Language = {};
 
@@ -23,27 +28,27 @@ export class CategorysSubscribesComponent implements OnInit {
     { icon:'star rate',id:'2',name:'Expensive'  },
     { 'icon':'today','id':'3','name':'Today'  },
     { 'icon':'subscriptions','id':'4','name':'Subscriptions' },
-    { 'icon':'whatshot','id':'4','name':'Trending'  },
-    { 'icon':'history','id':'4','name':'History'  }
+    { 'icon':'whatshot','id':'5','name':'Trending'  },
+    { 'icon':'history','id':'6','name':'History'  }
   ];
 
   private subscriptions:object = [
-    { 'icon':'klo.jpg','id':'1','name':'Electronics' },
-    { 'icon':'1234.jpg','id':'2','name':'Phone' },
-    { 'icon':'b3.jpg','id':'3','name':'Samsung' },
-    { 'icon':'klo.jpg','id':'4','name':'T-shirt' }
+    { 'icon':'klo.jpg','id':'7','name':'Electronics' },
+    { 'icon':'1234.jpg','id':'8','name':'Phone' },
+    { 'icon':'b3.jpg','id':'9','name':'Samsung' },
+    { 'icon':'klo.jpg','id':'10','name':'T-shirt' }
   ];
 
   private settings:object = [
-    { 'icon':'settings','id':'1','name':'Settings' },
-    { 'icon':'help','id':'2','name':'Help' },
-    { 'icon':'feedback','id':'3','name':'Feedback' }
+    { 'icon':'settings','id':'11','name':'Settings' },
+    { 'icon':'help','id':'12','name':'Help' },
+    { 'icon':'feedback','id':'13','name':'Feedback' }
 
   ];
 
   private user:object = [
-    { 'icon':'language','id':'1','name':'Language' },
-    { 'icon':'person pin','id':'2','name':'User Panel' }
+    { 'icon':'language','id':'14','name':'Language' },
+    { 'icon':'person pin','id':'15','name':'User Panel' }
 
 
   ];
@@ -66,6 +71,8 @@ export class CategorysSubscribesComponent implements OnInit {
       // user clicked subscriptions
       return;
     }
+
+
   }
 
   ngOnInit() {
@@ -87,7 +94,7 @@ export class CategorysSubscribesComponent implements OnInit {
 
     $(document).ready(function(){
 
-      var activ=0;
+      var activ_category=0;
       var on_hover_category = 0
       var name=0;
       var offset = 0;
@@ -97,6 +104,7 @@ export class CategorysSubscribesComponent implements OnInit {
       var stay_over_elemnt = 0;
       var active_category=0;
 
+      var nrclick_category='fillimi';
 
 
       var Server_path_http='http://localhost/bestseller/Server_PHP/Http_Request/Route_Http.php'; //  path where go requests .. ..
@@ -215,13 +223,11 @@ export class CategorysSubscribesComponent implements OnInit {
       });
       // end mouse hover categorytype .......................................
       // mouse hover subcategory......... add class for style ...............
-      $('body').on('mouseenter','.subcat , .company_subscribe',function(){
-        $('.subcat , .company_subscribe').removeClass('subscribe_add_hover');
-        $('.subcat ,.company_subscribe').find('.bordertypecat').removeClass('visibleborder').animate({left:'-5px;'});
+      $('body').on('mouseenter','.subcat ',function(){
 
+        $('.bordertypecat').removeClass('animateborderleft');
 
-        $(this).addClass('subscribe_add_hover');
-        $(this).find('.bordertypecat').addClass('visibleborder').css('left','-5px').animate({left:'0px'},'fast');
+        $(this).find('.bordertypecat').addClass('animateborderleft');
 
       });
 
@@ -265,41 +271,118 @@ export class CategorysSubscribesComponent implements OnInit {
       }); // end mouseenter and mouseleave search company.......................
       // end mouse hover subcategory.............................
 
-      var nrclick='fillimi';
+       var active_click_category;
       // start click to show subcategory ........................
       $('body').on('click','.underline',function(){ //
-        var id =$(this).attr('id');
-        if(id==nrclick){ // check if the click is agan on one category ..........
-          $('.sub'+id).slideUp();
-          nrclick='fillimi';
-          $('.categorytype').removeClass("categorytype_newBackground");
-          $(this).find('.bordertypecat').removeClass("new_border_cat");
 
-          $(this).find('.moresubcategory').removeClass("moresub");
-          $(this).find('.exitsubcategory').removeClass("exitsub");
+        var id =$(this).attr('id');
+
+
+
+        category_click( id  , $(this)  ,active_click_menu_navgation );
+
+      });  // end click show  subcategory
+
+      var active_click_menu_navgation;
+      $('body').on('click' , '.menu_navigation',function(){
+
+        var id = $(this).attr('id');
+
+        menu_mini_navigation(id);
+
+        menu_navigation(  id , active_click_category  );
+
+      });
+
+      $('body').on('click' , '.menu_mini_navigation',function(){
+
+        var  id = $(this).attr('id');
+
+         menu_mini_navigation(id);
+
+         menu_navigation( id , active_click_category);
+
+      });
+
+
+      function  category_click( id , this_click , active_click_menu_navgation ){
+
+        if(id==nrclick_category){ // check if the click is again on one category ..........
+          $('.sub'+id).slideUp();
+          nrclick_category='fillimi';
+          active_click_category='';
+          $('.categorytype').removeClass("categorytype_newBackground");
+          $('.bordertypecat').removeClass("new_border_cat");
+
+          $('.moresubcategory').removeClass("moresub");
+          $('.exitsubcategory').removeClass("exitsub");
+
+          $(active_click_menu_navgation).find('.categorytype').addClass("categorytype_newBackground");
+          $(active_click_menu_navgation).find('.bordertypecat').addClass("new_border_cat");
+          $(active_click_menu_navgation).find('.moresubcategory').addClass("moresub");
+          $(active_click_menu_navgation).find('.exitsubcategory').addClass("exitsub");
         }
         else{
-          activ=id;
+
+          active_click_category =this_click;
+          activ_category=id;
           $('.subcategory').slideUp();
           $('.sub'+id).slideDown();
           active_category=id; // active category varioable ...............
-          nrclick=id;
+          nrclick_category=id;
 
           $('.categorytype').removeClass("categorytype_newBackground");
           $('.bordertypecat').removeClass("new_border_cat");
           $('.moresubcategory').removeClass("moresub");
           $('.exitsubcategory').removeClass("exitsub");
 
-          $(this).find('.categorytype').addClass("categorytype_newBackground");
-          $(this).find('.bordertypecat').addClass("new_border_cat");
-          $(this).find('.moresubcategory').addClass("moresub");
-          $(this).find('.exitsubcategory').addClass("exitsub");
+          $(this_click).find('.categorytype').addClass("categorytype_newBackground");
+          $(this_click).find('.bordertypecat').addClass("new_border_cat");
+          $(this_click).find('.moresubcategory').addClass("moresub");
+          $(this_click).find('.exitsubcategory').addClass("exitsub");
 
+          $(active_click_menu_navgation).find('.categorytype').addClass("categorytype_newBackground");
+          $(active_click_menu_navgation).find('.bordertypecat').addClass("new_border_cat");
+          $(active_click_menu_navgation).find('.moresubcategory').addClass("moresub");
+          $(active_click_menu_navgation).find('.exitsubcategory').addClass("exitsub");
 
         }
         remove_show_detail_category(); // call remove detail when click on the category ......................................
 
-      });  // end click show  subcategory
+      }
+
+      function menu_navigation( this_click  , active_click_category ){
+
+        active_click_menu_navgation = this_click;
+
+        $('.categorytype').removeClass("categorytype_newBackground");
+        $('.bordertypecat').removeClass("new_border_cat");
+        $('.moresubcategory').removeClass("moresub");
+        $('.exitsubcategory').removeClass("exitsub");
+
+        $(active_click_category ).find('.categorytype').addClass("categorytype_newBackground");
+        $(active_click_category).find('.bordertypecat').addClass("new_border_cat");
+        $(active_click_category).find('.moresubcategory').addClass("moresub");
+        $(active_click_category).find('.exitsubcategory').addClass("exitsub");
+
+        $('.menu_navigation'+this_click).find('.categorytype').addClass("categorytype_newBackground");
+        $('.menu_navigation'+this_click).find('.bordertypecat').addClass("new_border_cat");
+        $('.menu_navigation'+this_click).find('.moresubcategory').addClass("moresub");
+        $('.menu_navigation'+this_click).find('.exitsubcategory').addClass("exitsub");
+
+      }
+
+      function menu_mini_navigation( id_mini_menu ){
+
+        $('.button-fab-menu-right').removeClass('active_mini_menu_button');
+        $('.mat-icon').removeClass("active_mini_menu_button_icon");
+
+        $('.menu_mini_navigation'+id_mini_menu).find('.button-fab-menu-right').addClass("active_mini_menu_button");
+        $('.menu_mini_navigation'+id_mini_menu).find('.mat-icon').addClass("active_mini_menu_button_icon");
+
+
+
+      }
 
       function show_detail_category(offset,name ,id){ //function for  show detail when mouseover in category , and find position  ..............................
         $('.pointer_catego').show().css("top",offset.top);

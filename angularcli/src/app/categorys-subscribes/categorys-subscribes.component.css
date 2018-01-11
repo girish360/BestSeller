@@ -159,10 +159,33 @@ a{
     margin-top: 6px;
 }
 .button-fab-menu-right{
+
     background-color:transparent;
+
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+
 }
+
+.active_mini_menu_button:not([class*=mat-elevation-z]) {
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+}
+
 .button-fab-menu-right:hover{
+
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+
+}
+.active_mini_menu_button_icon{
+    color: darkslategrey;
+}
+.menu_navigation1{
+    background-color: red;
+}
+.button-fab-menu-right:hover mat-icon ,.button_menu:hover mat-icon{
+    color:darkslategrey;
+}
+mat-icon{
+    color:slategrey;
 }
 .menu_right_inside{
     float: right;
