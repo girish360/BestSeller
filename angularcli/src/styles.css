@@ -69,10 +69,20 @@ a{
     color: gray;
     text-decoration: none;
 }
+
 .glyphicon , .mat-icon{
     color:slategrey;
     text-decoration: none;
 }
+
+.mat-checkbox-frame{
+    border-color: slategrey;
+}
+
+.mat-checkbox-checked.mat-primary .mat-checkbox-background, .mat-checkbox-indeterminate.mat-primary .mat-checkbox-background{
+    background-color:slategrey ;
+}
+
 .menu3:hover .glyphicon{
     color:darkslategrey;
 }
@@ -118,7 +128,9 @@ mat-checkbox.mat-checked.green{
     color: lightgray;
 }
 
-
+.inline-block{
+    display: inline-block;
+}
 
 
 

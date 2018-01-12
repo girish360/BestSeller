@@ -24,10 +24,7 @@ a{
 
     height: auto;
 
-    position: absolute;
-
-
-
+    position: relative;
 }
 .button_menu{
     width: 100%;

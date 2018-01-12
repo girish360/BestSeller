@@ -32,7 +32,7 @@ export class SlideshowComponent implements OnInit {
 
     this.carouselOne = {
       grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
-      slide: 1,
+      slide: 2,
       speed: 1000,
       interval: 4000,
       point: {

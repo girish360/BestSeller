@@ -65,6 +65,10 @@ export class HeaderComponent implements OnInit {
 
    public Array_wishID_delete_wishlist = [];
 
+   private show_hide_search_in_wishList = false;
+
+   public  filter_wish='';
+
   constructor( private dataservices : DataServiceService, private Httpservices : HtppServicesComponent ) {
 
     this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList } );
@@ -98,6 +102,8 @@ export class HeaderComponent implements OnInit {
   }
 
   delete_from_wishList( All_wishList ){
+
+      this.filter_wish='';
 
     for( var i = 0 ; i < this.selected_wishList.length ; i++ ) { // remove from wish list products that are in selected
 
@@ -225,6 +231,22 @@ export class HeaderComponent implements OnInit {
        return true;
     }
     return false;
+  }
+
+  show_hide_search_in_wishlist(){
+
+      return this.show_hide_search_in_wishList = !this.show_hide_search_in_wishList
+
+  }
+
+
+  check_show_hide_search_in_wishlist(){
+
+      if(this.show_hide_search_in_wishList == true){
+          return 'show_search_in_wishlist';
+      }
+
+      return '';
   }
 
   ngOnInit() {
@@ -442,7 +464,7 @@ export class HeaderComponent implements OnInit {
 
            if (show_dropdown_search != 1) {
 
-             show_dropdown_header('dropdown_search');
+             show_dropdown_header('dropdown_search','body_search_header');
              show_dropdown_search = 1;
 
              return;
@@ -454,7 +476,7 @@ export class HeaderComponent implements OnInit {
          }
          $('.imgsearchexit').hide();
          $('.imgsearch').show();
-         hide_dropdown_header('dropdown_search');
+         hide_dropdown_header('dropdown_search','body_search_header');
          show_dropdown_search = 0;
          return;
        }
@@ -536,7 +558,7 @@ export class HeaderComponent implements OnInit {
             activclick = 'language';
             numberpassicoractiv = 1;
             zerovariablat(activclick, numberpassicoractiv);
-            show_dropdown_header('dropworld');
+            show_dropdown_header('dropworld' ,'typelanguage');
 
           }
           else {
@@ -546,7 +568,7 @@ export class HeaderComponent implements OnInit {
             activclick = 'language';
             numberpassicoractiv = 0;
             zerovariablat(activclick, numberpassicoractiv);
-            hide_dropdown_header('dropworld');
+            hide_dropdown_header('dropworld','typelanguage');
           }
         }
 
@@ -566,7 +588,7 @@ export class HeaderComponent implements OnInit {
             activclick = 'card';
             numberpassicoractiv = 1;
             zerovariablat(activclick, numberpassicoractiv);
-            show_dropdown_header('dropcard');
+            show_dropdown_header('dropcard','body_cart');
           }
           else {
             closecontainere(card, static_click);
@@ -574,7 +596,7 @@ export class HeaderComponent implements OnInit {
             activclick = 'card';
             numberpassicoractiv = 0;
             zerovariablat(activclick, numberpassicoractiv);
-            hide_dropdown_header('dropcard');
+            hide_dropdown_header('dropcard','body_cart');
           }
         }
       });
@@ -582,12 +604,15 @@ export class HeaderComponent implements OnInit {
       $('.favority').click(function(e){
         e.preventDefault();
         if( active_icon_header == 1 ) {
+
           var name = $(this).attr('id');
 
           give_bgcolor_icon_header('menu3', 'favority', favority, $(this).find('.write_icon_header'));
 
           nameposition = name;
+
           findposition(name);
+
           if (favority == 0) {
             $('.opacity_dropdown').fadeIn();
             static_click = 'favorite';
@@ -596,7 +621,7 @@ export class HeaderComponent implements OnInit {
             numberpassicoractiv = 1;
             zerovariablat(activclick, numberpassicoractiv);
 
-            show_dropdown_header('dropfavority');
+            show_dropdown_header('dropfavority','body_wish');
 
 
           }
@@ -607,7 +632,7 @@ export class HeaderComponent implements OnInit {
             numberpassicoractiv = 0;
             zerovariablat(activclick, numberpassicoractiv);
 
-            hide_dropdown_header('dropfavority');
+            hide_dropdown_header('dropfavority','body_wish');
 
           }
         }
@@ -617,52 +642,60 @@ export class HeaderComponent implements OnInit {
 
 
       $('body').on('click', function(e) { // click in bady and close some div element................
+
           var width =$(window).width();
 
-          if($(e.target).closest('.language ,.dropworld ,.treguesi').length == 0  ) {
+          if($(e.target).closest('.notCloseDropdawnLanguage').length == 0  ) {
+
              $('.dropworld').hide();
+
              language = 0;
           }
           if(width<=800){ // close category menu when click else  in 600px......................
+
               if($(e.target).closest('.listcategoryfind').length == 0 && $(e.target).closest('.category').length == 0  && $(e.target).closest('.treguesi').length == 0 && $(e.target).closest('.searchsubscribe').length == 0 ) {
+
                   hide_category_menu(width);
+
                   actuallist=0;
               }
                if($(e.target).closest('.pasiv_activ_bodychat').length == 0 && $(e.target).closest('.openchat').length == 0 && $(e.target).closest('.bodychat').length == 0  ) {
 
                   var heig= $(window).height();
+
                   hide_chat_div(heig);
 
                   actualchat=0;
                }
           }
-          if($(e.target).closest('.favority , .delete ,.about_wish,' +
-                '.hearts_div  ,.checkboxTwoInput ,.dropfavority ,.treguesi').length == 0  ) {
+          if($(e.target).closest('.notCloseDropdawnFavorite').length == 0  ) {
 
              $('.dropfavority').hide();
 
-       favority = 0;
+             favority = 0;
 
           }
-          if($(e.target).closest('.search ,.dropdown_search').length == 0  ) {
+          if($(e.target).closest('.notCloseDropdawnSearch').length == 0  ) {
+
               $('.dropdown_search').hide();
+
               show_dropdown_search = 0;
 
           }
-          if($(e.target).closest('.card ,.dropcard ,.treguesi').length == 0  ) {
+          if($(e.target).closest('.notCloseDropdawnCard').length == 0  ) {
+
               $('.dropcard').hide();
 
                 card=0;
           }
 
-          if($(e.target).closest(
-                '.card, .language, .dropworld, .dropcard ,.dropfavority ,.dropmore, .treguesi, .favority, .moreprofile, .pictureuser,'+
-                ' .treguesi, .listcategoryfind, .category, .searchsubscribe ,.delete ,.about_wish,.hearts_div ,.checkboxTwoInput'
-            ).length == 0 )
+          if($(e.target).closest('.notCloseDropdawnFavorite , .notClosepointerHeader').length == 0
+             || $(e.target).closest( '.about_wish ,.hearts_div' ).length > 0 && favority == 0 )
 
           {
-            $('.treguesi').css({display: 'none'});// disabled pointer header icon.....
-            give_bgcolor_icon_header('menu3' , 'card', 1 ,'write_icon_header');
+            $('.treguesi').css({ display: 'none' });// disabled pointer header icon.....
+
+            give_bgcolor_icon_header( 'menu3' , 'card', 1 ,'write_icon_header' );
 
           }
 
@@ -776,11 +809,18 @@ export class HeaderComponent implements OnInit {
           borderTopRightRadius:"0px",
           borderBottomRightRadius:"0px",
 
-        },"fast",function(){
+        },300,function(){
 
           $('.all_show_multiple_open').show();
 
         });
+
+        $('.width_menu_left').css({top:'25px' ,opacity:'0.1'});
+        $('.width_menu_left').animate({
+            top:'0',
+            opacity:1
+        },500);
+
         $('.all_show_multiple').hide();
 
         var cookie_menu = 'cookie_menu';
@@ -830,6 +870,11 @@ export class HeaderComponent implements OnInit {
 
               $('.containere,.space,.above_space_header').removeClass('active_menu');
 
+            $('.width_menu_left').css({top:'25px' ,opacity:'0.1'});
+            $('.width_menu_left').animate({
+                top:'0',
+                opacity:1
+            },500);
 
           var cookie_menu = 'cookie_menu';
           Data = 'cookie_menu_remove='+cookie_menu;
@@ -925,14 +970,14 @@ export class HeaderComponent implements OnInit {
 
       } //.....................................end
 
-      function show_dropdown_header( dropdown_class ){  // function to make show dropdwon that are in header ....
+      function show_dropdown_header( dropdown_class , body_inside ){  // function to make show dropdwon that are in header ....
 
           if( active_icon_header == 1 ) { // check if  header button is active to click.......
 
               active_icon_header = 0; // disabled header button............
 
               $('.treguesi').css({display:'none'}); // disabled pointer header icon.....
-
+              $('.'+body_inside).css({top:'15px'});
               $('.' + dropdown_class).css({top: '30px', opacity: '0.1'}); //  css style...
 
               $('.' + dropdown_class).show().animate({ // animation effect show dropdown header......
@@ -949,31 +994,44 @@ export class HeaderComponent implements OnInit {
                   }else{
                     give_bgcolor_icon_header('menu3' , 'card', 1 ,'write_icon_header');
                   }
-                active_icon_header = 1;
+                  active_icon_header = 1;
 
               });
+              $('.'+body_inside).animate({
+                  top:'0'
+              },400);
           }
 
       } // end function....
 
-      function hide_dropdown_header( dropdown_class ) { // function to make hide dropdwon that are in header ....
+      function hide_dropdown_header( dropdown_class , body_inside ) { // function to make hide dropdwon that are in header ....
           if (active_icon_header == 1) { // ccheck if  header button is active to click.......
 
-               active_icon_header = 0; //disabled header button............
+              active_icon_header = 0; //disabled header button............
 
-               $('.treguesi').css({display: 'none'});// disabled pointer header icon.....
+              $('.treguesi').css({display: 'none'});// disabled pointer header icon.....
 
-               $('.' + dropdown_class).css({top: '30px', opacity: '1'}); // css style...
+              $('.'+body_inside).css({top:'0px'});
 
-               $('.' + dropdown_class).animate({ // animation effect hide dropdown header......
+              $('.' + dropdown_class).css({top: '30px', opacity: '1'}); // css style...
+
+              $('.' + dropdown_class).animate({ // animation effect hide dropdown header......
 
                    top: '30',
                    opacity: '0.1',
 
                }, 300, function () { //  function after effect ............
+
                     $('.' + dropdown_class).hide();
+
                     active_icon_header=1;
                });
+
+              $('.'+body_inside).animate({
+
+                  top:'15'
+
+              },400);
           }
       } // end function .......
 
