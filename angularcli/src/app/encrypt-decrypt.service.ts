@@ -11,19 +11,19 @@ export class EncryptDecryptService {
 
   private data_decription:any;
 
-  private secret_key_company_profile = 'KSweb_company_id-profile_12837';
+  public secret_key_company_profile = 'KSweb_company_id-profile_12837';
 
-  private hash(  data ){
+  public hash(  data ){
 
    return crypto.MD5(data);
 
   }
 
-  private encryp_AES( data , key){
+  public encryp_AES( data , key){
     return this.data_encription =  crypto.AES.encrypt( data , key);
   }
 
-  private decrypt_AES( data , key ){
+  public decrypt_AES( data , key ){
 
     var bytes  = crypto.AES.decrypt( data.toString(), key );
 

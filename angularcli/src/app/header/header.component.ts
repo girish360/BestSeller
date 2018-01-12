@@ -5,6 +5,8 @@ import { HtppServicesComponent } from '../htpp-services/htpp-services.component'
 import 'rxjs/add/observable/bindCallback';
 import { DataServiceService } from '../htpp-services/data-service.service';
 import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
+import { FilterPipe } from '../filter.pipe';
+
 
 declare var $:any;
 
@@ -16,6 +18,10 @@ declare var $:any;
   templateUrl: './header.component.html' ,
   styleUrls: ['./header.component.css'],
   providers:[HtppServicesComponent ],
+
+
+
+
   animations: [
     trigger('wishList_animations', [
       transition('* => void', [
@@ -33,7 +39,8 @@ declare var $:any;
         ])
       ])
     ])
-  ],
+  ]
+
 
 })
 export class HeaderComponent implements OnInit {
@@ -156,7 +163,20 @@ export class HeaderComponent implements OnInit {
       }
   }
 
-  selectedAll_wishList(){
+
+  getStyle_wish( item_wish ){
+
+      if( this.selected_wishList.indexOf( item_wish ) > -1 ) {
+
+          return 'selected_wish';
+
+      }else{
+          return '';
+      }
+
+  }
+
+  selectedAll_wishList( ){
 
       if( this.selectedAll_value_wishlist == true ){ // check if  are all wish list  selected  .........
 

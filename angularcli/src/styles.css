@@ -69,7 +69,7 @@ a{
     color: gray;
     text-decoration: none;
 }
-.glyphicon{
+.glyphicon , .mat-icon{
     color:slategrey;
     text-decoration: none;
 }
@@ -112,7 +112,11 @@ mat-checkbox.mat-checked.green{
 }
 
 
+.border_bottom{
 
+    border-bottom: 1px solid;
+    color: lightgray;
+}
 
 
 

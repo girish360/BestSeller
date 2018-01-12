@@ -18,7 +18,9 @@ import { DataServiceService } from './htpp-services/data-service.service';
 import { EncryptDecryptService } from './encrypt-decrypt.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { NgxCarouselModule } from 'ngx-carousel';
+
 import 'hammerjs';
 import {
   MatAutocompleteModule,
@@ -53,6 +55,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
@@ -68,7 +71,9 @@ import {
     SlideshowComponent,
     NotfoundComponent,
     CompanyComponent,
-    BodyComponent
+    BodyComponent,
+    FilterPipe,
+
 
 
   ],
@@ -113,6 +118,7 @@ import {
     NgxCarouselModule
 
 
+
   ],
   providers: [
       AppComponent ,
@@ -120,7 +126,8 @@ import {
       VisitorsComponent ,
       DataServiceService,
       ClientProductsComponent,
-      EncryptDecryptService
+      EncryptDecryptService,
+
   ],
 
   bootstrap: [AppComponent]

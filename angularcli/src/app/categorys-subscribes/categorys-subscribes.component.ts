@@ -357,19 +357,19 @@ export class CategorysSubscribesComponent implements OnInit {
 
         $('.categorytype').removeClass("categorytype_newBackground");
         $('.bordertypecat').removeClass("new_border_cat");
-        $('.moresubcategory').removeClass("moresub");
+        $('.mat-icon').removeClass("new_color_mat_icon");
         $('.exitsubcategory').removeClass("exitsub");
+        $('.namecategory').removeClass("new_color_namecategory");
 
-        $(active_click_category ).find('.categorytype').addClass("categorytype_newBackground");
+        $(active_click_category).find('.categorytype').addClass("categorytype_newBackground");
         $(active_click_category).find('.bordertypecat').addClass("new_border_cat");
-        $(active_click_category).find('.moresubcategory').addClass("moresub");
         $(active_click_category).find('.exitsubcategory').addClass("exitsub");
 
         $('.menu_navigation'+this_click).find('.categorytype').addClass("categorytype_newBackground");
         $('.menu_navigation'+this_click).find('.bordertypecat').addClass("new_border_cat");
-        $('.menu_navigation'+this_click).find('.moresubcategory').addClass("moresub");
+        $('.menu_navigation'+this_click).find('.mat-icon').addClass("new_color_mat_icon");
         $('.menu_navigation'+this_click).find('.exitsubcategory').addClass("exitsub");
-
+        $('.menu_navigation'+this_click).find('.namecategory').addClass("new_color_namecategory");
       }
 
       function menu_mini_navigation( id_mini_menu ){

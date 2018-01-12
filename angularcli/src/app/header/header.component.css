@@ -19,7 +19,7 @@
 
 .mini_icon{
     font-size: 15px;
-    color:white;
+
 }
 a{
     text-decoration: none;
@@ -27,6 +27,10 @@ a{
 
 .Box-shodown{
 
+}
+.selected_wish{
+   background-color:  #f2f2f2;
+    transition: 0.5s;
 }
 .inline{
     display: inline-block;
@@ -938,47 +942,78 @@ input[name='search']:focus{
 
 .top_wish{
     width: 100%;
-    height: 30px;
+    height: 40px;
 
 }
-.top_wish_change{
-    border-bottom: 1px solid;
-}
+
 .width_height_top_wish{
     width: 98%;
-    height: 85%;
+    height: 100%;
     margin: 0px auto;
-    position: relative;
-    top:2px
+
 }
 
 .body_wish{
     width: 100%;
-    height:calc( 100% - 32px);
-    margin-top: 2px;
+    height:calc( 100% - 40px);
+
     overflow-y: auto;
     overflow-x: hidden;
+    margin-top: 2px;
+}
+.width_each_wishlist {
+
+    height: 100%;
+    width: 98%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.width_body_wish{
+    width: 100%;
+    height: 80px;
+    border-radius: 0px;
+    position: relative;
+    margin-top: -2px;
+
+
+}
+.width_body_wish:hover ,.mat-button:hover{
+  background-color: transparent;
 }
 
-.width_body_wish ,.width_top_wish{
-    width: 97%;
-    height: 100%;
-    margin: 0px auto;
-}
 .width_top_wish ,.delete_from_wish{
     display: inline;
 }
-.delete_btn{
-    width: 30px;
-    height: 25px;
+
+.select_all_wishlist{
+    position: relative;
+    top:-6px;
+
+
 }
 
+
+.mat-checkbox-inner-container {
+    border-color: red;
+}
+
+.mat-mini-fab:not([class*=mat-elevation-z]){
+   box-shadow: none;
+}
+.mat-fab.mat-accent[disabled]{
+    background-color: red;
+}
 .wish_image{
     width: 70px;
     height:70px ;
     display: inline-block;
     border-radius: 100px;
     overflow: hidden;
+    float: left;
 }
 .wish_image img{
     width: 100%;
@@ -987,6 +1022,7 @@ input[name='search']:focus{
 .check_checkbox_wish{
     display: inline-block;
     float: right;
+
 }
 
 .lang a{

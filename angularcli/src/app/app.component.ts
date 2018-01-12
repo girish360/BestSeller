@@ -51,9 +51,9 @@ export class AppComponent implements OnInit{
              $('.body_wish').scroll(function(){
                  var topscroll = $(this).scrollTop();
                  if(topscroll > 10 ){
-                      $('.top_wish').addClass('top_wish_change');
+                      $('.top_wish').addClass('border_bottom');
                  }else{
-                     $('.top_wish').removeClass('top_wish_change');
+                     $('.top_wish').removeClass('border_bottom');
                  }
              });
         });

@@ -181,7 +181,7 @@ a{
 .menu_navigation1{
     background-color: red;
 }
-.button-fab-menu-right:hover mat-icon ,.button_menu:hover mat-icon{
+.button-fab-menu-right:hover mat-icon ,.button_menu:hover mat-icon ,.button_menu:hover .namecategory ,.new_color_namecategory ,.new_color_mat_icon{
     color:darkslategrey;
 }
 mat-icon{

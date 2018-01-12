@@ -242,7 +242,7 @@
 
                             <mat-radio-group>
 
-                                <mat-radio-button class="radiolang"  value="1" [checked]="current_language(language.id)"  >
+                                <mat-radio-button color="primary" class="radiolang"  value="1" [checked]="current_language(language.id)"  >
 
 
                                 </mat-radio-button>
@@ -282,20 +282,42 @@
                         <span class="width_top_wish">
                             {{get_Language.Wish_Write}}
                         </span>
+                        <span class="delete_from_wish">
+
+                            <button mat-icon-button class="btn-deleteFromwish" >
+                               <mat-icon>search</mat-icon>
+                            </button>
+                        </span>
 
                         <span class="delete_from_wish">
 
-
-                             <button mat-button  class="btn btn-primary btn-deleteFromwish  " [disabled]="button_delete" (click)="delete_from_wishList( selected_wishList )" > <span  class="glyphicon glyphicon-trash mini_icon"></span> </button>
+                             <input  [(ngModel)]="filter_wish"  type="text">
                         </span>
+
+                        <span class="delete_from_wish">
+
+                            <button mat-icon-button class="btn-deleteFromwish" [disabled]="button_delete" (click)="delete_from_wishList( selected_wishList )" >
+                               <mat-icon>delete</mat-icon>
+                            </button>
+                        </span>
+
+                        <span class="delete_from_wish">
+
+                            <button mat-icon-button class="btn-deleteFromwish" >
+                               <mat-icon>shopping cart</mat-icon>
+                            </button>
+                        </span>
+
                         <span class="inline">
-
-                            <mat-checkbox
-                                    [checked]="selectedAll_value_wishlist"
-                                    (click)="selectedAll_wishList()">
-
-                                    <span *ngIf="selectedAll_value_wishlist">Un-</span>Selected All
+                              <button mat-icon-button class="btn-deleteFromwish" >
+                               <mat-icon>
+                                   <mat-checkbox color="primary" class=" select_all_wishlist"
+                                           [checked]="selectedAll_value_wishlist"
+                                           (click)="selectedAll_wishList()">
                             </mat-checkbox>
+                               </mat-icon>
+                            </button>
+
 
                         </span>
 
@@ -305,32 +327,33 @@
 
                 <div class="body_wish">
 
-                    <div class="width_body_wish">
+                    <div  *ngFor="let wish_product of wishList_products | filter: filter_wish "  [@wishList_animations]="active">
+                    {{wish_product.title}}
+                        <button mat-button class="width_body_wish" [ngClass]="getStyle_wish( wish_product )">
 
-                         <div class="each_wish"  *ngFor="let wish_product of wishList_products;"  [@wishList_animations]="active">
+                            <div class="width_each_wishlist">
 
-                            <div class="wish_image">
+                                <div class="wish_image" >
 
-                                <img  src="../../assets/images/products_image/{{wish_product.image}}">
+                                    <img  src="../../assets/images/products_image/{{wish_product.image}}">
+
+                                </div>
+
+                                <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
+
+                                    <mat-checkbox  color="primary" [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
+
+                                    </mat-checkbox>
+                                </div>
 
                             </div>
-                             {{wish_product.id}}
 
-                             <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
-
-                                 <mat-checkbox  class="green  " [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
-
-                                 </mat-checkbox>
-                             </div>
-
-                         </div>
+                        </button>
 
                     </div>
 
                 </div>
-
-
-        </div>
+          </div>
 
 
         <div class="treguesi"></div>
