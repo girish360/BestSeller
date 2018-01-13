@@ -18,8 +18,10 @@ import { DataServiceService } from './htpp-services/data-service.service';
 import { EncryptDecryptService } from './encrypt-decrypt.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { CaruselComponent } from './carusel/carusel.component';
 import { NgxCarouselModule } from 'ngx-carousel';
+
+import { FilterPipe } from './filter.pipe';
 
 import 'hammerjs';
 import {
@@ -55,7 +57,9 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import { FilterPipe } from './filter.pipe';
+
+
+
 
 
 @NgModule({
@@ -73,6 +77,8 @@ import { FilterPipe } from './filter.pipe';
     CompanyComponent,
     BodyComponent,
     FilterPipe,
+    CaruselComponent,
+
 
 
 
@@ -127,6 +133,7 @@ import { FilterPipe } from './filter.pipe';
       DataServiceService,
       ClientProductsComponent,
       EncryptDecryptService,
+      CaruselComponent
 
   ],
 

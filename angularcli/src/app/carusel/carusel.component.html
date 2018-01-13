@@ -1,0 +1,41 @@
+
+
+<div class="carpusel_company">
+<ngx-carousel [inputs]="carouselTileOne" (carouselLoad)="carouselTileOneLoad()">
+
+  <ngx-tile NgxCarouselItem *ngFor="let item of carouselTileOneItems; let i = index;">
+
+    <div class="items_in_carousel outer">
+
+      <a href="#">
+
+         <div class="img_item border_bottom inner_large" >
+
+             <img src="{{item.src}}">
+
+         </div>
+
+      </a>
+
+        <div class="content_carousel">
+
+            {{item.title}}
+        </div>
+
+    </div>
+
+
+
+  </ngx-tile>
+
+  <button mat-mini-fab NgxCarouselPrev class="leftRs">
+    <mat-icon>skip_previous</mat-icon>
+  </button>
+
+  <button mat-mini-fab NgxCarouselNext class="rightRs">
+      <mat-icon>skip_next</mat-icon>
+  </button>
+
+</ngx-carousel>
+</div>
+

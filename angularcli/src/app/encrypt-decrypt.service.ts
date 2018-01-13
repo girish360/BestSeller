@@ -20,7 +20,11 @@ export class EncryptDecryptService {
   }
 
   public encryp_AES( data , key){
-    return this.data_encription =  crypto.AES.encrypt( data , key);
+
+     console.log('enc');
+
+    return this.data_encription =  crypto.AES.encrypt( `${ data }` , key );
+
   }
 
   public decrypt_AES( data , key ){
@@ -28,6 +32,7 @@ export class EncryptDecryptService {
     var bytes  = crypto.AES.decrypt( data.toString(), key );
 
     return this.data_decription =  bytes.toString(crypto.enc.Utf8);
+
   }
 
 }

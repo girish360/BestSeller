@@ -3,9 +3,12 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx'
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
+
 import { Routes, RouterModule , ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
 import { DataServiceService } from '../htpp-services/data-service.service';
+
+import { EncryptDecryptService } from '../encrypt-decrypt.service';
 
 
 declare  var $:any;
@@ -19,7 +22,7 @@ declare  var $:any;
 
 export class ClientProductsComponent implements OnInit {
 
-    constructor( private dataservices: DataServiceService ,    private Httpservice :HtppServicesComponent , private route: ActivatedRoute  ) {
+    constructor( private router : Router, private crypto:EncryptDecryptService , private dataservices: DataServiceService ,    private Httpservice :HtppServicesComponent , private route: ActivatedRoute  ) {
 
         this.get_Language = this.dataservices.language;
 
@@ -33,7 +36,7 @@ export class ClientProductsComponent implements OnInit {
 
         this.dataservices.Products.subscribe( ( products:any ) => { this.products = products  } );
 
-
+console.log(this.products);
     }
 
     public  products = [] ;
@@ -47,6 +50,8 @@ export class ClientProductsComponent implements OnInit {
     private Response;
 
     public status_in_wish;
+
+
 
 
     add_wish_list( product_data ){  // function to add product in wishList
@@ -85,15 +90,16 @@ export class ClientProductsComponent implements OnInit {
         }
     }
 
-
-    set_productInWish(){
-
-     this.productInWish = true;
-
+    set_status_wish(){
+         this.status_in_wish=true;
     }
-    update_product_in_wish(){
+    update_status_wish(){
+        this.status_in_wish=false;
+    }
 
-        this.productInWish = false;
+    encrypt_id( id_company ){
+
+        this.router.navigate(['/company',{ companyId: this.crypto.encryp_AES( id_company , this.crypto.secret_key_company_profile ) }]);
 
     }
 

@@ -151,9 +151,9 @@
                     </div>
                 </div>
 
-                <button  mat-button class="button_menu"  *ngFor="let subscription of subscriptions">
+                <button  mat-button class="button_menu"  *ngFor="let subscription of subscriptions; let i = index">
 
-                    <a    [routerLink]="['/company',{ companyId: subscription.id }]" class="menu_navigation menu_navigation{{subscription.id}}" id="{{subscription.id}}" >
+                    <a (click)="encrypt_id( subscription.id )"  class="menu_navigation menu_navigation{{subscription.id}}" id="{{subscription.id}}" >
 
                         <div class="categorytype" >
 
@@ -359,7 +359,7 @@
                       <span matTooltip="{{subscription.name}}">
 
 
-                           <a class="menu_mini_navigation menu_mini_navigation{{subscription.id}}" id="{{subscription.id}}"  [routerLink]=" ['/company',{ companyId: crypto.encryp_AES( subscription.id , crypto.secret_key_company_profile ) }] ">
+                           <a (click)="encrypt_id( subscription.id )" class="menu_mini_navigation menu_mini_navigation{{subscription.id}}" id="{{subscription.id}}" >
 
                                <button mat-mini-fab class="button-fab-menu-right" >
 

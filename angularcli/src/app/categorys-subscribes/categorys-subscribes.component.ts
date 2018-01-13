@@ -1,4 +1,6 @@
-import { Component, OnInit , AfterViewInit , Input } from '@angular/core';
+import { Component, OnInit , AfterViewInit , Input, NgZone  } from '@angular/core';
+
+import { RouterModule, Router , } from '@angular/router';
 
 import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
 
@@ -13,13 +15,13 @@ declare var $:any;
 })
 export class CategorysSubscribesComponent implements OnInit {
 
-  constructor( private Httpservice : HtppServicesComponent , private crypto:EncryptDecryptService) { }
+  constructor( private router:Router, private Httpservice : HtppServicesComponent , private crypto: EncryptDecryptService) { }
 
 
 
   public categorys = [];
 
-
+   public id_company:any;
 
   @Input() get_Language = {};
 
@@ -72,6 +74,12 @@ export class CategorysSubscribesComponent implements OnInit {
       return;
     }
 
+
+  }
+
+  encrypt_id( id_company ){
+
+    this.router.navigate(['/company',{ companyId: this.crypto.encryp_AES( id_company , this.crypto.secret_key_company_profile ) }]);
 
   }
 

@@ -320,7 +320,7 @@ export class HeaderComponent implements OnInit {
 
       });
 
-      $('.listcategory').click(function(){
+      $('.radius_category').click(function(){
 
         var width = $(window).width();
         var name = $(this).attr('id');
@@ -859,7 +859,7 @@ export class HeaderComponent implements OnInit {
             borderTopLeftRadius:"0px",
             borderBottomLeftRadius:"0px"
 
-          },"fast",function(){
+          },300,function(){
             $('.all_show_multiple').show();
 
           });

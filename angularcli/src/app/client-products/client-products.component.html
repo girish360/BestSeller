@@ -7,7 +7,7 @@
 
         <div class="all_prod" >
 
-        <div class="width_products" *ngFor="let product of products"  >
+        <div class="width_products outer" *ngFor="let product of products"  >
 
           <div class="each_width_product" >
 
@@ -24,19 +24,24 @@
               <span class='glyphicon glyphicon-time'></span> {{product.date}}
             </div>
 
-              <span  *ngFor="let company of product['adminat']">
-                   <a [routerLink]=" ['/company',{ companyId:  company.id }] ">
-                       <div class="own_img_product" >
+              <span *ngFor="let company of product['adminat']">
+
+                   <a (click)="encrypt_id(company.id)"  href="#">
+
+                       <div class="own_img_product">
 
                        </div>
+
                        <div class="image_profile_company">
                              <img  class="image_prof_admin" src="../../assets/images/products_image/{{company.imageprofile}}">
                         </div>
+
                    </a>
+
               </span>
 
              <a href="#">
-                 <div class="image_product_primary">
+                 <div class="image_product_primary  inner_large">
                      <img class=" img_primary_product{{product.id}}" src="../../assets/images/products_image/{{product.image}}">
                   </div>
              </a>
@@ -47,39 +52,59 @@
               <div class="about_wish notCloseDropdawnFavorite notClosepointerHeader" id="{{product.id}}">
 
                   <div class="wish_list_write">
+
                     <div class="plus_icon">{{get_Language.add_wishlist}}</div>
+
                   </div>
 
-                  <div class="wish_list_icon">
-                      {{ update_product_in_wish() }}
-                      <ng-container *ngIf="wishList_products.length > 0; else emtyWish">
+                  <div class="wish_list_icon"  >
+
+                      <ng-container *ngIf="wishList_products.length > 0; else  emtyWish" >
+
+                          {{ update_status_wish() }}
 
                           <div *ngFor="let wishes of wishList_products">
 
                               <ng-container *ngIf="wishes.id == product.id;">
-                                      {{ set_productInWish() }}
+
+                                  {{ set_status_wish() }}
+
                               </ng-container>
 
                           </div>
 
-                          <div  *ngIf="productInWish != false ; else notinwish" >
+                          <ng-container *ngIf=" status_in_wish == true; else notinwish ">
 
-                          </div>
+                              <div class="success_add_wish"  >
+
+                                  <img  src="../../assets/images/ok.png">
+
+                              </div>
+
+                          </ng-container>
 
                           <ng-template #notinwish >
 
-                              <div class="success_add_wish" *ngIf="productInWish != false; else notwish">
-                                    <img  src="../../assets/images/ok.png">
-                              </div>
+                              <ng-container *ngIf=" status_in_wish == true; else noinwish ">
 
-                              <ng-template #notwish>
-                                  <div class="hearts_div notClosepointerHeader">
-                                      <img  src="../../assets/images/hearts.png">
+                                  <div class="success_add_wish"  >
+
+                                      <img  src="../../assets/images/ok.png">
+
                                   </div>
 
+                              </ng-container>
+                              <ng-template #noinwish>
+
+                              <div class="hearts_div notClosepointerHeader"  >
+
+                                  <img  src="../../assets/images/hearts.png">
+
+                              </div>
                               </ng-template>
 
                           </ng-template>
+
                       </ng-container>
 
                       <ng-template #emtyWish>
@@ -89,6 +114,7 @@
                           </div>
 
                       </ng-template>
+
                   </div>
               </div>
             </a>
