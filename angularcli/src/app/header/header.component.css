@@ -29,7 +29,7 @@ a{
 
 }
 .selected_wish{
-   background-color:  #f2f2f2;
+    background-color:  #f2f2f2;
     transition: 0.5s;
 }
 .inline{
@@ -177,14 +177,7 @@ a{
     display: none;
 
 }
-.space {
-    width: 100%;
-    height: 40px;
-    transition: 0.5s;
 
-
-
-}
 
 .icon-list-remove{
     position: relative;
@@ -243,7 +236,7 @@ a{
 
 
 }
-.top_category{
+.top_menu{
     position: absolute;
     color:white;
     width: 250px;
@@ -352,26 +345,22 @@ a{
 }
 
 
-.widthi {
+.bottom_header {
     z-index:  2 !important;
-    width: 1155px;
+
     height: 40px;
-    margin:0px auto;
+
 
 }
-.widthi_above_header{
-    width: 1155px;
+.inner_top_header{
+
     height: 60px;
-    margin:0px auto;
-    opacity:1;
-    font-size: 24px;
-    color: slategrey;
 }
 .above_space_header{
 
-    width: 100%;
+
     height: 60px;
-    transition: 0.5s;
+
 
 }
 .write_above_header{
@@ -408,8 +397,8 @@ a{
 }
 .icon_header_write{
 
-     display: inline-block;
-     width: 0px;
+    display: inline-block;
+    width: 0px;
     transition: 1s;
     visibility: hidden;
 
@@ -449,7 +438,7 @@ a{
 }
 .menu1 a{
     text-decoration: none;
-     position: relative;
+    position: relative;
     font-size: 18px;
 }
 .card ,.favority , .language{
@@ -502,7 +491,7 @@ a{
     position: relative;
     top: -6px;
 
-  z-index: 10 !important;
+    z-index: 10 !important;
 }
 .menu3 a{
     color:white;
@@ -666,9 +655,9 @@ g
 
 .show_search_in_wishlist{
 
-     width: 250px;
-     visibility: visible;
-     transition: 0.5s;
+    width: 250px;
+    visibility: visible;
+    transition: 0.5s;
 
 }
 .kerkimresponse{
@@ -875,8 +864,9 @@ input[name='search']:focus , input[name='search_wish']:focus{
 
 /* dropdown list language ...............*/
 .dropworld{
+
     position: relative;
-    width: 340px;
+    width: 350px;
     left: 292px;
     height: auto;
     background-color: white;
@@ -1020,7 +1010,7 @@ input[name='search']:focus , input[name='search_wish']:focus{
 
 }
 .width_body_wish:hover ,.mat-button:hover{
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .width_top_wish ,.delete_from_wish{
@@ -1040,7 +1030,7 @@ input[name='search']:focus , input[name='search_wish']:focus{
 }
 
 .mat-mini-fab:not([class*=mat-elevation-z]){
-   box-shadow: none;
+    box-shadow: none;
 }
 .mat-fab.mat-accent[disabled]{
     background-color: red;
@@ -1167,27 +1157,12 @@ input[type='radio'] {
 
 
 
-@media only screen and (max-width: 1350px){
 
+@media only screen and (max-width: 1420px){
 
-    .gjeresiamectegory{
+    .response_inner_new{
         width: 100%;
     }
-
-
-
-
-}
-@media only screen and (max-width: 1200px){
-
-
-    .widthi{
-        width: 100%;
-    }
-
-
-
-
 }
 
 @media only screen and (max-width: 1170px){
@@ -1196,6 +1171,11 @@ input[type='radio'] {
     .nameuser{
         display:none;
     }
+
+    .response_inner{
+        width: 100%;
+    }
+
     .gjeresia{
         width: 99%;
     }
@@ -1263,9 +1243,7 @@ input[type='radio'] {
     #search{
         display: inline-block;
     }
-    .widthi{
-        width: 100%;
-    }
+
     .menu2{
         display: none;
     }
@@ -1521,9 +1499,9 @@ input[type='radio'] {
         float: right;
         right: 0;
         left: 0;
-        transition:0.5s;
-        -webkit-transition:0.5s;
-        -moz-transition:0.5s;
+        transition:0.3s;
+        -webkit-transition:0.3s;
+        -moz-transition:0.3s;
         width: calc(100% - 250px);
     }
 
@@ -1533,9 +1511,9 @@ input[type='radio'] {
         float: left;
         right: 0;
         left: 0;
-        transition:0.5s;
-        -webkit-transition:0.5s;
-        -moz-transition:0.5s;
+        transition:0.3s;
+        -webkit-transition:0.3s;
+        -moz-transition:0.3s;
         width: calc(100% - 200px);
 
 
@@ -1543,6 +1521,7 @@ input[type='radio'] {
     .exit_menu{
         float: right;
     }
+    .exit_chat{
+        float: left;
+    }
 }
-
-

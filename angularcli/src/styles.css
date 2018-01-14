@@ -22,6 +22,22 @@ time, mark, audio, video {
     color:gray;
 }
 
+.response_outer{
+
+    width: calc(100% - 50px);
+    float: right;
+
+    transition: 0.5s;
+
+}
+
+.response_inner{
+
+    width: 1170px;
+    margin: 0px auto;
+
+
+}
 
 .hide-login{
     z-index: 14 !important;
@@ -150,6 +166,9 @@ mat-checkbox.mat-checked.green{
     transition: all 0.3s;
 
 }
+
+
+
 
 /* Begin css for category profile user here ....................................................................................................*/
 
