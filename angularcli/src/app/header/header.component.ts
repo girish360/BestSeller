@@ -975,9 +975,13 @@
 
                 $('.menu_left').addClass('menu_left_open');
 
+                $('.containerright').addClass('containerright_new_openmenu');
+
+                $('.containerleft').addClass('containerleft_new_openmenu');
+
                 $('.response_outer').addClass(' active_menu ');
 
-                $('.response_inner').addClass(' response_inner_new ');
+                $('.width_products').addClass('width_products_open_menu');
 
                 $('.listcategory').hide();
 
@@ -1085,14 +1089,21 @@
 
                     $('.all_show_multiple_open').hide();
 
+
                     $('.response_outer').addClass('exit_menu');
-
-
 
                     $('.response_outer').removeClass(' active_menu  ');
 
                      setTimeout(function(){
+
+                         $('.containerright').removeClass('containerright_new_openmenu');
+
+                         $('.containerleft').removeClass('containerleft_new_openmenu');
+
                          $('.response_inner').removeClass(' response_inner_new ');
+
+                         $('.width_products').removeClass('width_products_open_menu');
+
                      },200);
 
                     $('.width_menu_left').css({top:'25px' ,opacity:'0.1'});
@@ -1177,8 +1188,6 @@
 
                     $('.response_outer').addClass('active_chat  ');
 
-                    $('.response_inner').addClass(' response_inner_new ');
-
                 }
 
             } //..................................................end
@@ -1216,12 +1225,6 @@
                 $('.response_outer').removeClass(' exit_menu , active_chat  ');
 
                 $('.response_outer').addClass(' exit_chat ');
-
-                setTimeout(function(){
-
-                    $('.response_inner').removeClass(' response_inner_new ');
-
-                },200);
 
             } //.....................................end
 

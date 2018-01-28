@@ -2,13 +2,10 @@
 
 .slide_width{
 
-
-
     border-radius: 3px;
     border:1px solid;
     border-color:#d6d6c2;
-margin-left: 5px;
-
+    margin: 0px auto;
 }
 
 .sliders {
@@ -19,7 +16,7 @@ margin-left: 5px;
 }
 ngx-item ,.slide_width {
 
-    width: 98.8%;
+    width: 100%;
     height: 300px;
 }
 
@@ -43,10 +40,8 @@ position: relative;
     width: 5px;
     height: 298px;
     background-color: #004080;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    display: inline-block;
 
+    display: inline-block;
 }
 .forward_hover{
     position: absolute;
@@ -73,6 +68,7 @@ position: relative;
 
 
 }
+
 .backward_hover {
     position: absolute;
     left: 0px;
@@ -94,10 +90,11 @@ position: relative;
     width: 50px;
     height: 50px;
     background-color: #004080;
-border-radius: 150px;
+    border-radius: 150px;
     border:2px solid;
     border-style: dotted;
     color: green;
+
 
 }
 
@@ -157,7 +154,7 @@ border-radius: 150px;
 }
 .sliders:hover .backward{
     transition: 0.5s;
-    width: 8%;
+    width: 50px;
     height: 100px;
     margin-top: 100px;
 
@@ -168,7 +165,7 @@ border-radius: 150px;
 }
 .sliders:hover .forward{
     transition: 0.5s;
-    width: 8%;
+    width: 50px;
     height: 100px;
     opacity: 0.4;
     margin-top: 100px;
@@ -192,7 +189,6 @@ border-radius: 150px;
     height: 100px;
 
     margin-top: 100px;
-
 }
 
 .number_point{
@@ -225,5 +221,16 @@ border-radius: 150px;
     opacity: 1;
     transition: 0.5s;
     color: white;
+}
+
+@media only screen and (max-width: 1050px) {
+
+
+    .backward_position,.forward_position {
+        display: none;
+    }
+
+
+
 }
 

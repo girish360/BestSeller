@@ -72,12 +72,9 @@ margin-left: -8px;
 }
 
 .width_products{
+
     display: inline-block;
-
-    width: 32%;
-
     margin-left: 8px;
-
     margin-top: 8px;
     position: relative;
     left: 5px;
@@ -87,6 +84,7 @@ margin-left: -8px;
     border-color:#d6d6c2;
 
 }
+
 .width_products:hover{
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -218,26 +216,28 @@ margin-left: -8px;
     display: inline-block;
     color: white;
 }
-.option_products{
+.option_products {
 
     z-index: 3 !important;
-    width: 99%;
+    width: 100%;
     height: 30px;
-    margin-left: 5px;
-    border-radius:3px;
     background-color: #E6E6FA;
-    border:1px solid;
-    border-color:#d6d6c2;
+
     margin-top: 8px;
 }
 
-.option_products_fixed_show{
-    position:fixed;
-    width: 51.6% ;
-    top: 32px;
-    opacity: 0.9;
-}
 
+.option_products_fixed_show{
+
+    position:fixed;
+
+    top: 32px;
+
+    -webkit-box-shadow: 0px 5px 2px -1px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 5px 2px -1px rgba(0,0,0,0.25);
+    box-shadow: 0px 5px 2px -1px rgba(0,0,0,0.25);
+
+}
 
 .wish_list{
     position: absolute;
@@ -346,7 +346,39 @@ margin-left: -8px;
 
 
 }
+.left_option_products{
+    float: left;
+}
+.right_option_products{
+    float: right;
+}
 
+
+@media only screen and ( max-width: 1600px ) {
+
+
+    .width_products{
+        width: 24%;
+    }
+    .width_products_open_menu {
+        width: 32%;
+    }
+
+}
+@media only screen and ( max-width: 1400px ) {
+
+    .width_products{
+       width: 32%;
+    }
+
+}
+
+@media only screen and (max-width: 1050px) {
+
+    .all_prod {
+        margin-left: 0px;
+    }
+}
 @media only screen and (max-width: 700px){
 
     .width_products{
@@ -358,40 +390,7 @@ margin-left: -8px;
 
     }
 }
-@media only screen and (max-width: 570px){
 
-
-    .menu1{
-        display: none;
-    }
-    .menu3{
-        width: 15%;
-        position: relative;
-        top: 6px;
-    }
-    .photouser{
-        width: 27px;
-
-        height: 0px;
-
-        border-color:white;
-        position: relative;
-        top:0px;
-
-    }
-    .treguesi{
-        position: relative;
-        top:4px;
-        z-index: 1 !important;
-    }
-
-
-
-
-
-
-
-}
 @media only screen and (max-width: 500px){
 
     .width_products{

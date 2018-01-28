@@ -34,7 +34,6 @@ export class AppComponent implements OnInit{
                     $('.icon_header_write').addClass('new_icon_header_write');
 
                     $('.dropdown_search').addClass('down_dropwdown_search');
-
                     top_scroll = scroll_top;
                 } else {
                     $('.navigation').removeClass('fixed_navigation');

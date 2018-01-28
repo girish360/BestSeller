@@ -96,7 +96,9 @@ a{
     float: left;
 }
 .rightee{
+
     float: right;
+
 
 }
 .closelist{
@@ -1158,37 +1160,7 @@ input[type='radio'] {
 
 
 
-@media only screen and (max-width: 1420px){
 
-    .response_inner_new{
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width: 1170px){
-
-
-    .nameuser{
-        display:none;
-    }
-
-    .response_inner{
-        width: 100%;
-    }
-
-    .gjeresia{
-        width: 99%;
-    }
-    .containerright{
-        display: none;
-    }
-    .containerleft{
-        width: 100%;
-    }
-
-
-
-}
 
 @media only screen and(min-width: 1050px){
     .kerkimresponse{
@@ -1200,6 +1172,9 @@ input[type='radio'] {
 }
 @media only screen and (max-width: 1050px){
 
+.menu_right_inside{
+    display: none;
+}
 
     .search{
         display: none;
@@ -1215,9 +1190,10 @@ input[type='radio'] {
     .menu3{
 
         position: relative;
-        top: 6px;
+        top: 0px;
         text-align: center;
-        width: 13%;
+        width: 14%;
+
 
 
     }
@@ -1277,18 +1253,10 @@ input[type='radio'] {
     }
     .dropfavority{
         position: relative;
-        width: 700px;
-        left: -1px;
+        width: 100%;
         height: auto;
-        background-color: white;
-        float: right;
-
-        top: 11px;
-        display: none;
-        -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        border-radius: 3px;
+        left: 0;
+        background-olor: white;
     }
     .dropworld{
         position: relative;
@@ -1303,7 +1271,7 @@ input[type='radio'] {
         -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
         -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
         box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        border-radius: 3px;
+
     }
     .dropmore{
         z-index:2 !important;
@@ -1319,7 +1287,7 @@ input[type='radio'] {
         -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
         -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
         box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        border-radius: 3px;
+
 
     }
     .category,.under_category {
@@ -1340,8 +1308,7 @@ input[type='radio'] {
 
     .menu3{
 
-        position: relative;
-        top: 6px;
+
         text-align: center;
         width: 12%;
 
@@ -1372,70 +1339,9 @@ input[type='radio'] {
         -moz-box-shadow: none;
         box-shadow: none;
     }
-    .dropcard{
-        position: relative;
-        width: 100%;
-        left: 0px;
-        height: 100vh;
-        background-color: white;
-
-        top: 11px;
-        display: none;
-        -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        border-radius: 3px;
-
-    }
-    .dropfavority{
-        position: relative;
-        width: 100%;
-        left: -1px;
-        height:100vh;
-        background-color: white;
-        float: right;
-
-        top: 11px;
-        display: none;
-        -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        border-radius: 3px;
-    }
-    .dropworld{
-        position: relative;
-        width: 100%;
 
 
-        height: 100vh;
-        background-color: white;
 
-
-        top: 11px;
-        display: none;
-        -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        border-radius: 3px;
-    }
-
-    .dropmore{
-        z-index:2 !important;
-        position: relative;
-        width: 100%;
-        left: -1px;
-        height: 100vh;
-        background-color: white;
-        float: right;
-
-        top: 11px;
-        display: none;
-        -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        border-radius: 3px;
-
-    }
 
 
 
@@ -1457,9 +1363,8 @@ input[type='radio'] {
         display: none;
     }
     .menu3{
-        width: 15%;
-        position: relative;
-        top: 6px;
+        width: 15.5%;
+
     }
     .photouser{
         width: 27px;
@@ -1493,7 +1398,7 @@ input[type='radio'] {
 
     }
 }
-@media only screen and (min-width: 1280px){
+@media only screen and (min-width: 1200px){
 
     .active_menu {
         float: right;
@@ -1524,4 +1429,6 @@ input[type='radio'] {
     .exit_chat{
         float: left;
     }
+
+
 }

@@ -119,6 +119,11 @@ console.log(this.products);
 
                       $('.option_products').addClass('option_products_fixed_show');
 
+                      var new_width = $('.containerleft').width();
+
+
+                      $('.option_products_fixed_show').width(new_width);
+
                       $('.option_products_fixed_show').hide().slideDown();
                   }
 
