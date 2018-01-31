@@ -19,8 +19,12 @@ export class AppComponent implements OnInit{
 
             var top_scroll = 0;
 
+            var scroll_status = false;
+
             $('body').click('a',function(e) {
                 e.preventDefault();
+
+
             });
 
             $(window).scroll(function () {
@@ -45,6 +49,31 @@ export class AppComponent implements OnInit{
                     top_scroll = scroll_top;
 
                 }
+
+                if( scroll_top > 380 ){ // scroll for option_products ................
+
+                    if( scroll_status == false ) {
+
+                        $('.option_products').addClass('option_products_fixed_show');
+
+                        $('.option_products_fixed_show').hide().slideDown();
+                    }
+
+                    scroll_status = true;
+
+                    }else{
+                        if( scroll_status == true ) {
+
+                            $('.option_products').hide().slideDown();
+
+
+                            $('.option_products').removeClass('option_products_fixed_show');
+                        }
+
+                        scroll_status = false;
+                    }
+
+
             });
 
              $('.body_wish').scroll(function(){

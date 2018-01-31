@@ -106,53 +106,16 @@ console.log(this.products);
     ngOnInit() {
 
         $(document).ready(function(){
-          var scrollTop=0;
-          var scroll_status = false;
 
-          $(window).scroll(function(){  // function for get scrolltop .................................
-
-              scrollTop  = $(this).scrollTop();
-
-              if($(this).scrollTop()>380){ // chech if scrollTop is  more bigger than 60 ..............................
-
-                  if( scroll_status == false ) {
-
-                      $('.option_products').addClass('option_products_fixed_show');
-
-                      var new_width = $('.containerleft').width();
-
-
-                      $('.option_products_fixed_show').width(new_width);
-
-                      $('.option_products_fixed_show').hide().slideDown();
-                  }
-
-                  scroll_status = true;
-
-              }else{
-                     if( scroll_status == true ) {
-
-                         $('.option_products').hide().slideDown();
-
-
-                         $('.option_products').removeClass('option_products_fixed_show');
-                     }
-
-                  scroll_status = false;
-              }
-          }); // end ...........................................
 
           var wish_list_active_pass=0; //  make this variable active  when mouse is hover in wishlist  ..........................
           var small_big=0;  //  make this variable small ore big every time ........
           var id_wish=0; // get id products where mouse is hover .................................................................
 
-
-
-
-
           // setInterval call function every time that is located in this function  .............
           setInterval(function(){
               wish_list(wish_list_active_pass,small_big,id_wish);
+
           },100);
           setInterval(function(){
 

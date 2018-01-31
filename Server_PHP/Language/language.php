@@ -31,7 +31,7 @@ class language extends Cookie {
                 $language['sing']="Sing In";
                 $language['wish']="WishList";
                 $language['card']="Card";
-                $language['language']="Language";
+                $language['more']="More";
                 $language['User']="User";
                 $language['login_register']="Login/Register";
                 $language['chat']="Chat Live";
@@ -62,7 +62,7 @@ class language extends Cookie {
                 $language['sing']="Hyni";
                 $language['wish']="Preferencat";
                 $language['card']="Karta";
-                $language['language']="Gjuha";
+                $language['more']="Me shum";
                 $language['User']="Perdorues";
                 $language['login_register']="Hyni/Regjistrohu";
                 $language['chat']="Komunikim Live";
@@ -101,7 +101,7 @@ class language extends Cookie {
                 $language['wish']="WishList";
                 $language['categorywrite']='Kategorit it';
                 $language['card']="Card";
-                $language['language']="Language";
+                $language['more']="more it";
                 $language['User']="Perdorues it";
                 $language['login_register']="Hyni/Regjistrohu it";
                 $language['add_wishlist']='WishList it';

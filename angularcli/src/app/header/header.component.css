@@ -500,19 +500,7 @@ a{
     text-decoration: none;
 }
 
-.dropmenuprofile {
-    position: absolute;
 
-    width: 300px;
-
-    margin-left: -150px;
-    background-color: white;
-    -webkit-box-shadow: 0px 1px 5px 1px rgba(224,224,224,1);
-    -moz-box-shadow: 0px 1px 5px 1px rgba(224,224,224,1);
-    box-shadow: 0px 1px 5px 1px rgba(224,224,224,1);
-    display: none;
-
-}
 
 .treguesi{
     position: absolute;
@@ -868,7 +856,7 @@ input[name='search']:focus , input[name='search_wish']:focus{
 .dropworld{
 
     position: relative;
-    width: 350px;
+    width: 600px;
     left: 292px;
     height: auto;
     background-color: white;
@@ -881,6 +869,18 @@ input[name='search']:focus , input[name='search_wish']:focus{
 
 
 }
+.body_more{
+
+
+    width: 100%;
+    height:300px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+
+}
+
 
 .search_width{
     position: relative;
@@ -901,14 +901,15 @@ input[name='search']:focus , input[name='search_wish']:focus{
 
 
 .dropcard{
+    z-index: 10 !important;
     position: relative;
-    width: 700px;
+    width: 600px;
     left: 292px;
-    height: auto;
+    height:350px;
     background-color: white;
     float: right;
-
     display: none;
+    opacity: 0.1;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -991,6 +992,7 @@ input[name='search']:focus , input[name='search_wish']:focus{
 .typelanguage ,.body_cart ,.body_search_header{
     position: relative;
 }
+
 .width_each_wishlist {
 
     height: 100%;
@@ -1185,18 +1187,28 @@ input[type='radio'] {
         display: block;
     }
 
+    .treguesi{
 
+
+        margin-top: -10px;
+
+    }
 
     .menu3{
 
         position: relative;
         top: 0px;
         text-align: center;
-        width: 14%;
+        width: 13%;
+    }
 
+    .dropcard , .dropworld ,.dropfavority{
 
+        left: 0;
+        margin-top:-5px;
 
     }
+
     .photouser{
         width: 27px;
 
@@ -1231,65 +1243,8 @@ input[type='radio'] {
         position: relative;
         top: -3px;
     }
-    .treguesi{
-        position: relative;
-        top: 2px;
-        z-index: 1 !important;
-    }
-    .dropcard{
-        position: relative;
-        width: 700px;
-        left: 0px;
-        height: auto;
-        background-color: white;
-
-        top: 11px;
-        display: none;
-        -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        border-radius: 3px;
-
-    }
-    .dropfavority{
-        position: relative;
-        width: 100%;
-        height: auto;
-        left: 0;
-        background-olor: white;
-    }
-    .dropworld{
-        position: relative;
-        width: 300px;
-        left: -1px;
-        height: auto;
-        background-color: white;
-        float: right;
-
-        top: 11px;
-        display: none;
-        -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-
-    }
-    .dropmore{
-        z-index:2 !important;
-        position: relative;
-        width: 300px;
-        left: -1px;
-        height: auto;
-        background-color: white;
-        float: right;
-
-        top: 11px;
-        display: none;
-        -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-        box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
 
 
-    }
     .category,.under_category {
         left: -800px;
         top: 40px;
@@ -1303,6 +1258,8 @@ input[type='radio'] {
         display: none;
     }
 
+
+
 }
 @media only screen and (max-width: 800px){
 
@@ -1315,11 +1272,7 @@ input[type='radio'] {
 
     }
 
-    .treguesi{
-        position: relative;
-        top: 2px;
-        z-index: 1 !important;
-    }
+
     .photouser{
         width: 27px;
 
@@ -1355,6 +1308,56 @@ input[type='radio'] {
 
 
     }
+
+    .dropcard{
+
+
+        position: relative;
+        width: 100%;
+        height: auto;
+        left: 0;
+        margin-top:-5px;
+        background-olor: white;
+    }
+    .dropfavority{
+
+        position: relative;
+        width: 100%;
+        height: auto;
+        left: 0;
+        margin-top:-5px;
+        background-olor: white;
+    }
+
+    .dropworld{
+
+        position: relative;
+        width: 100%;
+        height: auto;
+        float: left;
+        left: 0;
+        margin-top:-5px;
+        background-olor: white;
+
+    }
+
+    .dropmore{
+        z-index:2 !important;
+        position: relative;
+        width: 300px;
+        left: -1px;
+        height: auto;
+        background-color: white;
+        float: right;
+
+        top: 11px;
+        display: none;
+        -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+        -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+        box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+
+
+    }
 }
 @media only screen and (max-width: 570px){
 
@@ -1376,11 +1379,7 @@ input[type='radio'] {
         top:0px;
 
     }
-    .treguesi{
-        position: relative;
-        top:4px;
-        z-index: 1 !important;
-    }
+
 
 
 

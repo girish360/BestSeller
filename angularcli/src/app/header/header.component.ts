@@ -315,11 +315,11 @@
 
             var show_dropdown_search = 0;
 
-            var pointer_status = 0;
-
             var active_icon_header = 1;
 
             var value_search_header;
+
+
 
             $(window).bind("load", function () {
 
@@ -334,8 +334,8 @@
                     Send_Request_In_Server(Server_path_http, Data, Status); // call method that send http request to check cookie menu ................
 
                 }, 100);
-
             });
+
 
             $('body').on('click', function (e) { // click in bady and close some div element................
 
@@ -397,6 +397,8 @@
                 }
 
             });
+
+
 
             $('.radius_category').click(function () {
 
@@ -722,7 +724,7 @@
 
                         static_click = 'language';
 
-                        closecontainere(language, static_click);
+                        closecontainere(language , static_click);
 
                         activclick = 'language';
 
@@ -730,7 +732,7 @@
 
                         zerovariablat(activclick, numberpassicoractiv);
 
-                        show_dropdown_header('dropworld', 'typelanguage');
+                        show_dropdown_header('dropworld', 'body_more');
 
                     }
 
@@ -748,7 +750,7 @@
 
                         zerovariablat(activclick, numberpassicoractiv);
 
-                        hide_dropdown_header('dropworld', 'typelanguage');
+                        hide_dropdown_header('dropworld', 'body_more');
 
                     }
 
@@ -857,11 +859,11 @@
 
             });
 
-            function closecontainere(valu, static_div) { // function close containere when users click dropdown menu card or chat or ect ... ..................................
+            function closecontainere( valu, static_div ) { // function close containere when users click dropdown menu card or chat or ect ... ..................................
 
                 var width = $(window).width();
 
-                if (static_div == 'openchat') {
+                if ( static_div == 'openchat' ) {
 
                     if (valu == 1) {
 
@@ -889,14 +891,14 @@
 
                 } else {
 
-                    if (valu == 1) {
+                    if ( valu == 1 ) {
 
                         $('.containere').show();
 
                     }
                     else {
 
-                        if (width <= 800) {
+                        if (width <= 600) {
 
                             $('.containere').hide();
 
@@ -938,32 +940,22 @@
             }
 
 
-            function findposition(position) { //  function findposition for pointer when user click a dropdown menu  the pointer find position and go there  ................................
+            function findposition( position ) { //  function findposition for pointer when user click a dropdown menu  the pointer find position and go there  ................................
 
-                var left = $('.' + position).offset();
+                var left = $('.' + position).find('.glyphicon').offset();
 
-                if (position == 'iconmenu') {
 
-                    $('.treguesi').css({"margin-left": left.left + 28, "background-color": "#E6E6FA"});
-
-                }
-
-                else if (position == 'card') {
-
-                    $('.treguesi').css({"margin-left": left.left + 28, "background-color": "white"});
-
-                }
-
-                else {
-
-                    $('.treguesi').css({"margin-left": left.left + 28, "background-color": "white"});
-
-                }
+                $('.treguesi').css({"margin-left": left.left + 11, "background-color": "white"});
 
             } // ............................................... end
 
+            setInterval(function(){
+                findposition( pointer_name_header );
+            },50);
+
 
             function show_category_menu(){ //  function for show category menu and subsribe  when user click show menu call this function for show with animate ............................
+
 
                 actuallist = 1;
 
@@ -1033,6 +1025,8 @@
 
             function hide_category_menu( width_function ){ // function for hide category menu when user click for close it  call this function with animate ...........................
 
+
+
                 $('.menu_right_inside').show();
 
                 $('.menu_left_inside').removeClass('hide_mini_category');
@@ -1084,6 +1078,7 @@
                     },300,function(){
 
                         $('.all_show_multiple').show();
+
 
                     });
 

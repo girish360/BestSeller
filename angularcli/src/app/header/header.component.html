@@ -218,14 +218,14 @@
 
                              <div class="menu3 language notClosepointerHeader notCloseDropdawnLanguage" id="language">
 
-                                 <span class="glyphicon glyphicon-globe gh-header">
+                                 <span class="glyphicon glyphicon-option-vertical gh-header">
                                      <div class="number_event">
                                          <div class="write_number write_hidden">
                                              {{wishList_products.length}}
                                          </div>
                                      </div>
                                  </span>
-                                 <div class="write_icon_header" >{{get_Language.language}}</div>
+                                 <div class="write_icon_header" >{{get_Language.more}}</div>
                              </div>
 
                          </a>
@@ -246,71 +246,129 @@
 
                 <div class="languagefull">
                     <div class="dropworld notClosepointerHeader notCloseDropdawnLanguage">
-                        <div class="lang">
-                            <div class="choose" style="color:gray; text-align: left; position: relative; left: 10px;">
-                                <h2>{{get_Language.choselanguage}}</h2>
-                            </div>
-                            <div class="typelanguage"><br>
-                                <div class="activelanguage">
 
-                                    <div class="imgactiv">
-                                        <img src="../../assets/images/{{get_Language.Active_language_image}}">
+                        <mat-tab-group>
+
+                            <mat-tab>
+
+                                <ng-template mat-tab-label>
+                                    <mat-icon>
+                                        <span class="glyphicon glyphicon-globe"></span>
+                                    </mat-icon>
+                                    Language
+                                </ng-template><br>
+
+                                <div class="body_more">
+
+                                    <div class="choose" style="color:gray; text-align: left; position: relative; left: 10px;">
+                                        <h2>{{get_Language.choselanguage}}</h2>
                                     </div>
-                                    <div class="writeactivlanguage">
-                                        <h2>{{get_Language.Active_language}}</h2>
-                                    </div>
-                                    <div class="iconactive">
-                                        <img class="radiolang" src="../../assets/images/ok.png">
-                                    </div>
+                                    <div class="typelanguage"><br>
+                                        <div class="activelanguage">
 
-                                </div>
-
-                                <div class="alllanguages" *ngFor="let language of language_allow">
-                                    <a >
-
-                                        <div class="albanian " (click)="choose_language(language.id)"  >
-                                            <div class="positionlang">
-
-                                                <div class="centerlang">
-                                                    <div class="iconlang">
-                                                        <img  src="../../assets/images/{{language.image}}">
-                                                    </div>
-                                                    <div class="writelang">
-                                                        <h2>{{language.name}}</h2>
-                                                    </div>
-                                                </div>
-                                                <div class="leftlang">
-
-                                                    <mat-radio-group>
-
-                                                        <mat-radio-button color="primary" class="radiolang"  value="1" [checked]="current_language(language.id)"  >
-
-                                                        </mat-radio-button>
-
-                                                    </mat-radio-group>
-                                                </div>
-
+                                            <div class="imgactiv">
+                                                <img src="../../assets/images/{{get_Language.Active_language_image}}">
                                             </div>
+                                            <div class="writeactivlanguage">
+                                                <h2>{{get_Language.Active_language}}</h2>
+                                            </div>
+                                            <div class="iconactive">
+                                                <img class="radiolang" src="../../assets/images/ok.png">
+                                            </div>
+
                                         </div>
-                                    </a>
-                                </div>
 
-                                <!-- more language here click buttoon see more -->
-                                <div class="morelanguageclick">
+                                        <div class="alllanguages" *ngFor="let language of language_allow">
+                                            <a >
 
-                                </div>
+                                                <div class="albanian " (click)="choose_language(language.id)"  >
+                                                    <div class="positionlang">
 
-                                <div class="morelang">
+                                                        <div class="centerlang">
+                                                            <div class="iconlang">
+                                                                <img  src="../../assets/images/{{language.image}}">
+                                                            </div>
+                                                            <div class="writelang">
+                                                                <h2>{{language.name}}</h2>
+                                                            </div>
+                                                        </div>
+                                                        <div class="leftlang">
 
-                                    <a href="#">
-                                        <div class="writemore">
-                                            se more
+                                                            <mat-radio-group>
+
+                                                                <mat-radio-button color="primary" class="radiolang"  value="1" [checked]="current_language(language.id)"  >
+
+                                                                </mat-radio-button>
+
+                                                            </mat-radio-group>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
+
+
+                                    </div>
 
                                 </div>
-                            </div>
-                        </div>
+                            </mat-tab>
+
+                            <mat-tab>
+
+                                <ng-template mat-tab-label>
+                                    <mat-icon>
+                                        <span class="glyphicon glyphicon-log-in"></span>
+                                    </mat-icon>
+                                    Sing In
+                                </ng-template><br>
+
+                                <div class="body_more">
+                                shaba
+
+                                </div>
+
+                            </mat-tab>
+
+                            <mat-tab>
+
+                                <ng-template mat-tab-label>
+                                    <mat-icon>
+                                        <span class="glyphicon glyphicon-log-in"></span>
+                                    </mat-icon>
+                                    Sing In
+
+                                </ng-template><br>
+
+                                <div class="body_more">
+
+                                gentian
+
+                                </div>
+
+                            </mat-tab>
+
+                            <mat-tab>
+
+                                <ng-template mat-tab-label>
+                                    <mat-icon>
+                                        <span class="glyphicon glyphicon-log-in"></span>
+                                    </mat-icon>
+
+                                    Sing In
+
+                                </ng-template><br>
+
+                                <div class="body_more">
+
+                                ashtru
+
+                                </div>
+
+                            </mat-tab>
+
+                        </mat-tab-group>
+
                     </div>
                 </div>
 
