@@ -14,8 +14,5 @@ export class FilterPipe implements PipeTransform {
          return wish_product.title.toLowerCase().includes(value.toLowerCase());
 
     })
-
-
-
   }
 }

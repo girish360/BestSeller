@@ -93,7 +93,7 @@
         this.Httpservices.Http_Post()
 
             .subscribe( language =>{
-                    this.get_Language = language
+                    this.get_Language = language;
                     this.update_language( language)
                 }
                 ,error=>(console.log( error +'gabim' ))

@@ -14,6 +14,10 @@ import { SlideshowComponent } from './slideshow/slideshow.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CompanyComponent } from './company/company.component';
 import { BodyComponent } from './body/body.component';
+import { WishListComponent } from './wish-list/wish-list.component';
+import { SearchComponent } from './search/search.component';
+import { CardComponent } from './card/card.component';
+import { MoreHeaderComponent } from './more-header/more-header.component';
 import { DataServiceService } from './htpp-services/data-service.service';
 import { EncryptDecryptService } from './encrypt-decrypt.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -59,9 +63,6 @@ import {
 } from '@angular/material';
 
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +79,10 @@ import {
     BodyComponent,
     FilterPipe,
     CaruselComponent,
+    WishListComponent,
+    SearchComponent,
+    CardComponent,
+    MoreHeaderComponent,
 
 
 

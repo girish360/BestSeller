@@ -226,7 +226,7 @@ position: relative;
 @media only screen and (max-width: 1050px) {
 
 
-    .backward_position,.forward_position {
+    .backward_position,.forward_position ,.forward_fixed ,.backward_fixed , .forward, .backward {
         display: none;
     }
 

@@ -34,6 +34,7 @@ time, mark, audio, video {
 .response_inner{
 
     width:90% ;
+
     margin: 0px auto;
 
 
@@ -99,6 +100,7 @@ time, mark, audio, video {
 body{
     background-color:#E6E6FA;
     color:gray;
+
 
 
 }
@@ -178,6 +180,16 @@ mat-checkbox.mat-checked.green{
 .inner_large{
     overflow: hidden;
 }
+
+input[name='search']:focus , input[name='search_wish']:focus{
+    outline: none;
+    border:1px solid;
+    border-color: lightgray;
+    background-color: floralwhite;
+
+    transition:1s;
+}
+
 .outer:hover .inner_large img{
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);

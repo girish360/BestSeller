@@ -314,6 +314,8 @@
                                 </div>
                             </mat-tab>
 
+
+
                             <mat-tab>
 
                                 <ng-template mat-tab-label>
@@ -369,20 +371,118 @@
 
                         </mat-tab-group>
 
+                        <a routerLink="/more">
+
+                            <div class="see_all">
+                                Sell All
+                            </div>
+
+                        </a>
+
                     </div>
                 </div>
 
                 <div class="dropcard notClosepointerHeader notCloseDropdawnCard">
 
-                    <div class="lang">
-                        <a href="#"><div class="">Shporta</div></a>
-                        <a href="#"><div class="">plus</div></a>
+                    <div class="top_wish">
+                        <div class="width_height_top_wish">
+                            <div class="all_top_div_wish">
+                                 <span class="width_top_wish">
+                                     {{get_Language.Wish_Write}}
+                                 </span>
 
+                                <span  matTooltip="Search" class="search_icon_from_wish">
+
+                                     <button mat-icon-button class="btn-deleteFromwish"  (click)="show_hide_search_in_wishlist()">
+
+                                         <mat-icon class="notCloseDropdawnFavorite" *ngIf="show_hide_search_in_wishList == false">search</mat-icon>
+
+                                         <mat-icon class="notCloseDropdawnFavorite" *ngIf="show_hide_search_in_wishList == true">close</mat-icon>
+
+                                     </button>
+
+                                 </span>
+
+                                <span class="search_from_wish">
+
+                                     <input type="text" [(ngModel)]="filter_wish" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="check_show_hide_search_in_wishlist()">
+
+                                 </span>
+
+                                <span  matTooltip="Delete" class="delete_from_wish">
+
+                                     <button mat-icon-button class="btn-deleteFromwish" [disabled]="button_delete" (click)="delete_from_wishList( selected_wishList )" >
+                                         <mat-icon>delete</mat-icon>
+                                     </button>
+
+                                 </span>
+
+                                <span  matTooltip="Add to Cart" class="add_shopping_card_from_wish">
+
+                                     <button mat-icon-button class="btn-deleteFromwish" >
+                                         <mat-icon>shopping cart</mat-icon>
+                                     </button>
+
+                                 </span>
+
+                                <a routerLink="/card">
+
+                                    <span  matTooltip="See All" class="add_shopping_card_from_wish">
+
+                                        <button mat-icon-button class="btn-deleteFromwish" >
+                                            <mat-icon>remove_red_eye</mat-icon>
+                                        </button>
+
+                                    </span>
+                                </a>
+
+                                <span  matTooltip="Select all" class=" selected_all_wishlist">
+                                     <button mat-icon-button class="btn-deleteFromwish" >
+                                         <mat-icon>
+                                             <mat-checkbox color="primary" class=" select_all_wishlist"
+                                                           [checked]="selectedAll_value_wishlist"
+                                                           (click)="selectedAll_wishList()">
+                                             </mat-checkbox>
+                                         </mat-icon>
+                                     </button>
+                                 </span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="body_cart">
+                    <div class="body_wish body_cart">
 
-                        empty Cart
+                        <div  *ngFor="let wish_product of wishList_products | filter: filter_wish "  [@wishList_animations]="active">
+
+                            <button mat-button class="width_body_wish" [ngClass]="getStyle_wish( wish_product )">
+
+                                <div class="width_each_wishlist">
+
+                                    <div class="wish_image" >
+
+                                        <img  src="../../assets/images/products_image/{{wish_product.image}}">
+
+                                    </div>
+
+                                    <div class="title">
+                                        {{wish_product.title}}
+                                    </div>
+
+                                    <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
+                                        <span  matTooltip="select">
+                                             <mat-checkbox  color="primary" [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
+
+                                             </mat-checkbox>
+                                         </span>
+
+                                    </div>
+
+                                </div>
+
+                            </button>
+
+                        </div>
+
                     </div>
                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 </div>
@@ -429,6 +529,17 @@
                                      </button>
 
                                  </span>
+
+                                <a routerLink="/wish">
+
+                                    <span  matTooltip="See All" class="add_shopping_card_from_wish">
+
+                                        <button mat-icon-button class="btn-deleteFromwish" >
+                                            <mat-icon>remove_red_eye</mat-icon>
+                                        </button>
+
+                                    </span>
+                                </a>
 
                                 <span  matTooltip="Select all" class=" selected_all_wishlist">
                                      <button mat-icon-button class="btn-deleteFromwish" >

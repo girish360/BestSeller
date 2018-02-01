@@ -1,6 +1,9 @@
 .containere{
-    position: relative;
-    top:30px;
+
+
+    height: auto;
+margin-top: 50px;
+
 }
 
 
@@ -13,9 +16,6 @@
     float: left;
     display: inline-block;
     width: calc(100% - 320px);
-
-
-
 }
 
 
@@ -139,8 +139,9 @@
         width: 48.5%;
         margin-left: 0px;
 
-
     }
+
+
 }
 
 @media only screen and (max-width: 500px){
