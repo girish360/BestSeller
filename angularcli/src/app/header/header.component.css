@@ -56,7 +56,7 @@ a{
 .lefte{
     float: left;
 }
-.rightee{
+.right_header_pc{
 
     float: right;
 
@@ -441,7 +441,10 @@ a{
 
 
 }
-
+.mobile_header{
+    display: none;
+    width: 100%;
+}
 .write_hidden{
     visibility: hidden;
 }
@@ -1159,6 +1162,7 @@ input[type='radio'] {
         top: 0px;
         text-align: center;
         width: 13%;
+
     }
 
     .dropcard , .dropworld ,.dropfavority{
@@ -1167,7 +1171,7 @@ input[type='radio'] {
         margin-top:-5px;
 
     }
-    .rightee{
+    .right_header_pc{
         float: none;
 
     }
@@ -1210,7 +1214,7 @@ input[type='radio'] {
 
 
         text-align: center;
-        width: 12%;
+        width: 13%;
 
 
     }
@@ -1263,19 +1267,32 @@ input[type='radio'] {
 
     }
 
+    .right_header_pc{
+        display: none;
+    }
+    .mobile_header{
+        display:block;
+    }
+
+    .menu3{
+        text-align: center;
+        width: 19.1%;
+    }
+    .menu1{
+        display: none;
+    }
+    .right_above_header{
+        display: none;
+    }
+
 
 
 }
 @media only screen and (max-width: 570px){
 
 
-    .menu1{
-        display: none;
-    }
-    .menu3{
-        width: 15.5%;
 
-    }
+
     .photouser{
         width: 27px;
 
@@ -1302,6 +1319,14 @@ input[type='radio'] {
         margin-left: 0px;
 
 
+    }
+}
+
+@media only screen and (max-width: 350px){
+    .menu3{
+
+        text-align: center;
+        width: 18%;
     }
 }
 @media only screen and (min-width: 1200px){

@@ -25,6 +25,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CaruselComponent } from './carusel/carusel.component';
 import { NgxCarouselModule } from 'ngx-carousel';
 
+
 import { FilterPipe } from './filter.pipe';
 
 import 'hammerjs';
@@ -63,6 +64,7 @@ import {
 } from '@angular/material';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,6 +85,7 @@ import {
     SearchComponent,
     CardComponent,
     MoreHeaderComponent,
+
 
 
 

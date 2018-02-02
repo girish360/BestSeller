@@ -59,6 +59,7 @@ export class CategorysSubscribesComponent implements OnInit {
 
     if( id_top_menu == '1'){
       //  user clicked home ...
+
       return;
     }
     else if(  id_top_menu == '2' ){
@@ -82,6 +83,7 @@ export class CategorysSubscribesComponent implements OnInit {
     this.router.navigate(['/company',{ companyId: this.crypto.encryp_AES( id_company , this.crypto.secret_key_company_profile ) }]);
 
   }
+
 
   ngOnInit() {
 

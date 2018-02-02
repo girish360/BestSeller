@@ -18,8 +18,6 @@
     border-color: lightgray;
     border-radius: 2px;
 
-
-
 }
 
 .show_search_in_wishlist{
@@ -32,6 +30,9 @@
 
 .wishlist_component{
     height: auto;
+
+    width: 100%;
+
 }
 
 
@@ -48,11 +49,7 @@
     margin: 0px auto;
 
 }
-.all_top_div_wish{
 
-    height: 100%;
-
-}
 
 .body_wishlist{
     width: 100%;
@@ -60,8 +57,7 @@
 
     overflow-y: hidden;
     overflow-x: hidden;
-    position: relative;
-    top: 15px;
+    margin-top: 5px;
 
 
 }

@@ -11,6 +11,9 @@ import { SearchComponent } from './search/search.component';
 import { CardComponent } from './card/card.component';
 import { MoreHeaderComponent } from './more-header/more-header.component';
 import { ChatComponent } from './chat/chat.component';
+import { CategorysSubscribesComponent } from './categorys-subscribes/categorys-subscribes.component';
+
+
 
 import { DataServiceService } from './htpp-services/data-service.service';
 
@@ -44,11 +47,15 @@ export const router: Routes = [
                 path: 'more', component: MoreHeaderComponent
             },
             {
-                path: 'search', component: ChatComponent
+                path: 'search', component: SearchComponent
             },
             {
-                path: 'chat', component: SearchComponent
-            }
+                path: 'chat', component: ChatComponent
+            },
+            {
+                path: 'menu', component: CategorysSubscribesComponent
+            },
+
         ]
     },
 

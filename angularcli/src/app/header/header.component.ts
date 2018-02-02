@@ -323,17 +323,20 @@
 
             $(window).bind("load", function () {
 
-                setTimeout(function () {
+                if(width >700) {
 
-                    var cookie_menu = 'cookie_menu';
+                    setTimeout(function () {
 
-                    Data = 'check_cookie_menu=' + cookie_menu;
+                        var cookie_menu = 'cookie_menu';
 
-                    Status = 'GET';
+                        Data = 'check_cookie_menu=' + cookie_menu;
 
-                    Send_Request_In_Server(Server_path_http, Data, Status); // call method that send http request to check cookie menu ................
+                        Status = 'GET';
 
-                }, 100);
+                        Send_Request_In_Server(Server_path_http, Data, Status); // call method that send http request to check cookie menu ................
+
+                    }, 100);
+                }
             });
 
 
@@ -349,23 +352,7 @@
 
                     language = 0;
                 }
-                if (width <= 800) { // close category menu when click else  in 600px......................
 
-                    if ($(e.target).closest('.listcategoryfind').length == 0 && $(e.target).closest('.category').length == 0 && $(e.target).closest('.treguesi').length == 0 && $(e.target).closest('.searchsubscribe').length == 0) {
-
-                        hide_category_menu(width);
-
-                        actuallist = 0;
-                    }
-                    if ($(e.target).closest('.pasiv_activ_bodychat').length == 0 && $(e.target).closest('.openchat').length == 0 && $(e.target).closest('.bodychat').length == 0) {
-
-                        var heig = $(window).height();
-
-                        hide_chat_div(heig);
-
-                        actualchat = 0;
-                    }
-                }
                 if ($(e.target).closest('.notCloseDropdawnFavorite').length == 0) {
 
                     $('.dropfavority').hide();
@@ -526,39 +513,8 @@
 
             });
 
-            $('.searchresponse').click(function () {
 
-                var widthto = $(window).width();
 
-                if (widthto > '500') {
-
-                    $('.pcheader').hide();
-
-                    $('.kerkimresponse').show();
-
-                    $('.searchinputresp').animate({
-
-                        width: "80%"
-
-                    });
-
-                }
-
-                else {
-
-                    $('.pcheader').hide();
-
-                    $('.kerkimresponse').show();
-
-                    $('.searchinputresp').animate({
-
-                        width: "75%"
-
-                    });
-
-                }
-
-            });
 
             $('.kerkim').keyup(function () {
 
@@ -705,6 +661,8 @@
                 give_bgcolor_icon_header('menu3', 'user-login', 0, $(this).find('.write_icon_header'));
 
             });
+
+
 
             $('.language').click(function () {
 
@@ -957,69 +915,72 @@
             function show_category_menu(){ //  function for show category menu and subsribe  when user click show menu call this function for show with animate ............................
 
 
-                actuallist = 1;
 
-                $('.response_outer').removeClass(' exit_chat ');
+                    actuallist = 1;
 
-                $('.menu_right_inside').hide();
+                    $('.response_outer').removeClass(' exit_chat ');
 
-                $('.menu_left_inside').addClass('hide_mini_category');
+                    $('.menu_right_inside').hide();
 
-                $('.menu_left').addClass('menu_left_open');
+                    $('.menu_left_inside').addClass('hide_mini_category');
 
-                $('.containerright').addClass('containerright_new_openmenu');
+                    $('.menu_left').addClass('menu_left_open');
 
-                $('.containerleft').addClass('containerleft_new_openmenu');
+                    $('.containerright').addClass('containerright_new_openmenu');
 
-                $('.response_outer').addClass(' active_menu ');
+                    $('.containerleft').addClass('containerleft_new_openmenu');
 
-                $('.width_products').addClass('width_products_open_menu');
+                    $('.response_outer').addClass(' active_menu ');
 
-                $('.listcategory').hide();
+                    $('.width_products').addClass('width_products_open_menu');
 
-                $('.closelist').show();
+                    $('.listcategory').hide();
 
-                $('.menu_left , .under_menu_left' ).animate({
+                    $('.closelist').show();
 
-                    left:"0px",
+                    $('.menu_left , .under_menu_left').animate({
 
-                    width:'250px'
+                        left: "0px",
 
-                },"fast");
+                        width: '250px'
 
-                $('.radius_category').animate({
+                    }, "fast");
 
-                    left:"200px",
+                    $('.radius_category').animate({
 
-                    borderTopRightRadius:"0px",
+                        left: "200px",
 
-                    borderBottomRightRadius:"0px",
+                        borderTopRightRadius: "0px",
 
-                },300,function(){
+                        borderBottomRightRadius: "0px",
 
-                    $('.all_show_multiple_open').show();
+                    }, 300, function () {
 
-                });
+                        $('.all_show_multiple_open').show();
 
-                $('.width_menu_left').css({top:'25px' ,opacity:'0.1'});
+                    });
 
-                $('.width_menu_left').animate({
+                    $('.width_menu_left').css({top: '25px', opacity: '0.1'});
 
-                    top:'0',
+                    $('.width_menu_left').animate({
 
-                    opacity:1
+                        top: '0',
 
-                },500);
+                        opacity: 1
 
-                $('.all_show_multiple').hide();
+                    }, 500);
 
-                var cookie_menu = 'cookie_menu';
+                    $('.all_show_multiple').hide();
 
-                Data = 'cookie_menu_set='+cookie_menu;
+                    var cookie_menu = 'cookie_menu';
 
-                Status = 'GET';
+                    Data = 'cookie_menu_set=' + cookie_menu;
 
-                Send_Request_In_Server( Server_path_http , Data ,Status ); // method to send data in server ......
+                    Status = 'GET';
+
+                    Send_Request_In_Server(Server_path_http, Data, Status); // method to send data in server ......
+
+
 
             } // ............................................ end
 

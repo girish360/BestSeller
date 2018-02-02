@@ -29,9 +29,12 @@ export class VisitorsComponent implements OnInit {
   public get_Language:object={};
 
   private wishList_products = [];
+  public innerWidth;
 
   ngOnInit() {
 
   }
+
+
 
 }

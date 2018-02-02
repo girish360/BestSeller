@@ -2,7 +2,7 @@
     <div class="response_inner inner_top_header">
         <div class="write_above_header">
             <div class="left_above_header">
-                BestSeller
+               BestSeller
             </div>
 
             <div class="right_above_header">
@@ -110,7 +110,7 @@
                      </span>
                  </span>
 
-                <span class="rightee">
+                <span class="right_header_pc">
 
                      <div class="menu3" id="responselist">
                          <a  href="#" class="listcategoryfind notClosepointerHeader">
@@ -233,6 +233,113 @@
                      </span>
 
                  </span>
+
+                <span class="mobile_header">
+
+                    <a routerLink="">
+                    <div class="menu3" id="">
+                         <a  href="#" class="listcategoryfind notClosepointerHeader">
+                             <div class="listcategory" id="iconmenu">
+                                  <span class="glyphicon glyphicon-th-large"></span>
+                             </div>
+                             <div class="listcategory closelist" id="iconmenu">
+                                  <span class="glyphicon glyphicon-log-out icon-list-remove"></span>
+                             </div>
+                         </a>
+
+                          <div class="write_icon_header"> Home </div>
+
+                     </div>
+                        </a>
+                     <a routerLink="/search">
+                     <div class="menu3" id="">
+                         <a class="searchresponse" href="#">
+                             <span class="glyphicon glyphicon-search"></span>
+                         </a>
+                          <div class="write_icon_header"> Search </div>
+                     </div>
+                     </a>
+
+
+
+                     <span matTooltip="Open wishlist">
+                         <a routerLink="/wish">
+
+                             <div class="menu3 " id="favority" >
+
+                                 <ng-container *ngIf="wishList_products.length>0;else empty" >
+
+                                     <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
+                                         <div class="number_event">
+                                             <div class="write_number">
+                                                 {{wishList_products.length}}
+                                             </div>
+                                         </div>
+                                     </span>
+
+                                 </ng-container>
+
+                                 <ng-template #empty>
+
+                                     <span class="glyphicon glyphicon-heart gh-header">
+                                         <div class="number_event">
+                                             <div class="write_number">
+                                                 {{wishList_products.length}}
+                                             </div>
+                                         </div>
+                                     </span>
+                                 </ng-template>
+
+                                 <div class="write_icon_header"> {{get_Language.wish}} </div>
+                             </div>
+                         </a>
+                     </span>
+
+                     <span matTooltip="Open card">
+
+                         <a routerLink="/card" >
+
+                             <div class="menu3 " id="card">
+
+                                 <span class="glyphicon glyphicon-shopping-cart gh-header">
+
+                                     <div class="number_event">
+
+                                         <div class="write_number">
+
+                                             {{card_products.length}}
+                                         </div>
+
+                                     </div>
+                                 </span>
+                                 <div class="write_icon_header" >{{get_Language.card}}</div>
+                             </div>
+
+                         </a>
+
+                     </span>
+
+                     <span matTooltip="More option">
+
+                         <a routerLink="/menu" >
+
+                             <div class="menu3 " >
+
+                                 <span class="glyphicon glyphicon-option-vertical gh-header">
+                                     <div class="number_event">
+                                         <div class="write_number write_hidden">
+                                             {{wishList_products.length}}
+                                         </div>
+                                     </div>
+                                 </span>
+                                 <div class="write_icon_header" >{{get_Language.more}}</div>
+                             </div>
+
+                         </a>
+
+                     </span>
+
+                </span>
 
                 <div class="dropdown_search notCloseDropdawnSearch" >
                     sdg
