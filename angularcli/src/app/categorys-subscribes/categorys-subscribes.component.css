@@ -678,15 +678,16 @@ categorytype_new_background{
 
 @media only screen and (max-width: 700px){
     .menu_left{
-        z-index: 1 !important;
 
-        left: 0;
-        width: 100%;
-        top: -2px;
+
+left: 0;
+        top:0;
+z-index:  1 !important;
+width: 100%;
         height: auto;
         overflow-x: hidden;
         overflow-y:hidden ;
-        word-wrap: break-word;
+
         box-shadow: none;
     }
 
@@ -697,15 +698,16 @@ categorytype_new_background{
     .menu_left_inside{
         float: left;
         width: 100%;
-        display: block;
+display: block;
 
     }
     .width_menu_right{
        display: none;
     }
-    .category_in_menu{
-        margin-top: -22px;
-    }
+.category_in_menu{
+    margin-top: -22px;
+}
+
 
 }
 

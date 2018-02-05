@@ -33,9 +33,7 @@ export class HtppServicesComponent implements OnInit {
 
        const body = JSON.stringify(this.object);
 
-       return this.http.post(this.path,
-           body,
-           { headers:headers })
+       return this.http.post(this.path, body, { headers:headers })
            .map( ( Response ) => Response.json() );
 
   }

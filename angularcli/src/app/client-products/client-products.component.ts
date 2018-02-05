@@ -36,7 +36,7 @@ export class ClientProductsComponent implements OnInit {
 
         this.dataservices.Products.subscribe( ( products:any ) => { this.products = products  } );
 
-console.log(this.products);
+
     }
 
     public  products = [] ;

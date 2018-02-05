@@ -664,6 +664,12 @@
 
 
 
+      $('.hide_menu').click(function(){
+
+          var width_window = $(window).width();
+          hide_category_menu(width_window);
+      });
+
             $('.language').click(function () {
 
                 if (active_icon_header == 1) {
@@ -938,13 +944,15 @@
 
                     $('.closelist').show();
 
-                    $('.menu_left , .under_menu_left').animate({
 
-                        left: "0px",
 
-                        width: '250px'
+                        $('.menu_left , .under_menu_left').animate({
 
-                    }, "fast");
+                            left: "0px",
+
+                            width: '250px'
+
+                        }, "fast");
 
                     $('.radius_category').animate({
 

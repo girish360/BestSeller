@@ -74,9 +74,8 @@ export class DataServiceService {
 
       lang.subscribe( data => {
 
-         this.Language.emit(data),
-             this.language = data ,
-                 console.log(data)
+         this.Language.emit(data) ,  this.language = data
+
          }
 
          ,error =>( console.log( error.status ) ) );

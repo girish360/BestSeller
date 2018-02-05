@@ -18,6 +18,7 @@ import { WishListComponent } from './wish-list/wish-list.component';
 import { SearchComponent } from './search/search.component';
 import { CardComponent } from './card/card.component';
 import { MoreHeaderComponent } from './more-header/more-header.component';
+import { EmptyComponent } from './empty/empty.component';
 import { DataServiceService } from './htpp-services/data-service.service';
 import { EncryptDecryptService } from './encrypt-decrypt.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -65,6 +66,7 @@ import {
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +87,7 @@ import {
     SearchComponent,
     CardComponent,
     MoreHeaderComponent,
+    EmptyComponent,
 
 
 

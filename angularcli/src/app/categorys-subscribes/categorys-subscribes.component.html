@@ -52,7 +52,7 @@
 
                         <button  mat-button class="button_menu" >
 
-                            <a   href="#" class="underline" id="{{category.id}}">
+                            <a   href="#" class="underline"  id="{{category.id}}">
 
                                 <div class="categorytype" id="category{{category.id}}">
 
@@ -79,9 +79,11 @@
 
                         </button>
 
-                        <ng-container *ngIf="category['allcategory_item'].length>0; else notFirst">
+                        <div  class=" subcategory sub{{category.id}}">
 
-                            <div class="subcategory sub{{category.id}}" *ngFor="let subcategory of category['allcategory_item']" >
+                        <ng-container   *ngIf="category['allcategory_item'].length>0; else notFirst">
+
+                            <div  *ngFor="let subcategory of category['allcategory_item']" >
 
                                 <button  mat-button class="button_menu" >
 
@@ -109,34 +111,32 @@
 
                         </ng-container>
 
-                        <ng-template #notFirst>
-                            <div class="subcategory sub{{category.id}}">
-
-                                <button  mat-button class="button_menu" >
-
-                                    <div class="subcat" >
-
-                                        <div class="bordertypecat"></div>
-
-                                        <div class="width_category">
-
-                                            <div class="imgsubscribe">
-                                                <img src="../../assets/images/not.png">
-                                            </div>
-
-                                            <div class="namecate">
-                                                <div class="namecategory" >{{get_Language.emptycat}}</div>
-                                            </div>
+                        <ng-template  #notFirst>
 
 
+                            <button  mat-button class="button_menu" >
 
+                                <div class="subcat" >
+
+                                    <div class="bordertypecat"></div>
+
+                                    <div class="width_category">
+
+                                        <div class="imgsubscribe">
+                                            <img src="../../assets/images/not.png">
+                                        </div>
+
+                                        <div class="namecate">
+                                               <div class="namecategory" >{{get_Language.emptycat}}</div>
                                         </div>
 
                                     </div>
-                                </button>
+                                </div>
+                            </button>
 
-                            </div>
+
                         </ng-template>
+                        </div>
                     </div>
 
 
