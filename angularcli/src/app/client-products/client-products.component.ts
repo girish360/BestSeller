@@ -2,13 +2,14 @@ import { Component, OnInit,Input , Output , EventEmitter  } from '@angular/core'
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx'
-import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
 
 import { Routes, RouterModule , ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
-import { DataServiceService } from '../htpp-services/data-service.service';
+import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
-import { EncryptDecryptService } from '../encrypt-decrypt.service';
+import { HttpService } from '../services/http.service';
+
+import { DataService } from '../services/data.service';
 
 
 declare  var $:any;
@@ -16,13 +17,13 @@ declare  var $:any;
 @Component({
   selector: 'app-client-products',
   templateUrl: './client-products.component.html',
-  styleUrls: ['./client-products.component.css'],
-    providers:[ HtppServicesComponent ]
+  styleUrls: ['./client-products.component.css']
+
 })
 
 export class ClientProductsComponent implements OnInit {
 
-    constructor( private router : Router, private crypto:EncryptDecryptService , private dataservices: DataServiceService ,    private Httpservice :HtppServicesComponent , private route: ActivatedRoute  ) {
+    constructor( private router : Router, private crypto:EncryptDecryptService , private dataservices: DataService ,    private Httpservice :HttpService , private route: ActivatedRoute  ) {
 
         this.get_Language = this.dataservices.language;
 

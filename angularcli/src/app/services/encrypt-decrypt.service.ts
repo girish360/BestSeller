@@ -15,13 +15,13 @@ export class EncryptDecryptService {
 
   public hash(  data ){
 
-   return crypto.MD5(data);
+    return crypto.MD5(data);
 
   }
 
   public encryp_AES( data , key){
 
-     console.log('enc');
+    console.log('enc');
 
     return this.data_encription =  crypto.AES.encrypt( `${ data }` , key );
 

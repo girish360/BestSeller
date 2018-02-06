@@ -58,6 +58,18 @@ if($_SERVER['REQUEST_METHOD']==='POST' ||  $_SERVER['REQUEST_METHOD']==='GET') {
         }
         //end
 
+        if(  $status == 'insert' ){
+
+            $object_data = $_POST->value;
+
+            $array_data = $fetch_data->convert_to_array( $object_data );
+
+            $result = $connection->insert_query('products', $array_data  );
+
+            echo $fetch_data->json_data('insert', $result );
+        }
+
+
 
 
 

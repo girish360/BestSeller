@@ -92,6 +92,27 @@ class Fetch_Data extends connection {
         return $this->dependet;
     }
 
+    public function  convert_to_array( $data ){
+
+        foreach ($data as $key=>$value)
+        {
+            if (is_object($value))
+            {
+                $this->Data_array[$key]=$value;
+            }
+            if (is_array($value))
+            {
+                $this->Data_array[$key]=$value;
+            }
+            else
+            {
+                $this->Data_array[$key]=$value;
+            }
+        }
+
+        return $this->Data_array;
+    }
+
 }
 
 $fetch_data = new Fetch_Data(); // create obj ...............

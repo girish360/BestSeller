@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DataServiceService } from '../htpp-services/data-service.service';
-import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
+
 import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
+
+import { HttpService } from '../services/http.service';
+
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-wish-list',
@@ -50,7 +53,7 @@ export class WishListComponent implements OnInit {
 
   public  filter_wish='';
 
-  constructor( private dataservices : DataServiceService, private Httpservices : HtppServicesComponent ) {
+  constructor( private dataservices : DataService, private Httpservices : HttpService ) {
 
     this.wishList_products = this.dataservices.wishlist;
 

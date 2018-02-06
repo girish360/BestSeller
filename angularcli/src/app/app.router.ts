@@ -12,13 +12,6 @@ import { CardComponent } from './card/card.component';
 import { MoreHeaderComponent } from './more-header/more-header.component';
 import { ChatComponent } from './chat/chat.component';
 import { CategorysSubscribesComponent } from './categorys-subscribes/categorys-subscribes.component';
-import { EmptyComponent } from './empty/empty.component';
-
-
-import { DataServiceService } from './htpp-services/data-service.service';
-
-
-
 
 import { BodyComponent } from './body/body.component';
 

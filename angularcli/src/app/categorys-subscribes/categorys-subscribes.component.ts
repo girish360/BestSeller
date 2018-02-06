@@ -2,9 +2,9 @@ import { Component, OnInit , AfterViewInit , Input, NgZone  } from '@angular/cor
 
 import { RouterModule, Router , } from '@angular/router';
 
-import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
+import { HttpService } from '../services/http.service';
 
-import { EncryptDecryptService } from '../encrypt-decrypt.service';
+import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
 @Component({
   selector: 'app-categorys-subscribes',
@@ -13,7 +13,7 @@ import { EncryptDecryptService } from '../encrypt-decrypt.service';
 })
 export class CategorysSubscribesComponent implements OnInit {
 
-  constructor( private router:Router, private Httpservice : HtppServicesComponent , private crypto: EncryptDecryptService) { }
+  constructor( private router:Router, private Httpservice : HttpService , private crypto: EncryptDecryptService) { }
 
 
 
@@ -56,7 +56,8 @@ export class CategorysSubscribesComponent implements OnInit {
   click_top_menu( id_top_menu ){
 
     if( id_top_menu == '1'){
-      //  user clicked home ...
+
+      this.router.navigate([`/`]);
 
       return;
     }

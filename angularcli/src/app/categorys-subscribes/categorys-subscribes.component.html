@@ -307,7 +307,7 @@
 
                     <div class="top_mini_menu">
 
-                        <div class="button_menu_right " *ngFor="let top_menu of top_menus">
+                        <div class="button_menu_right " *ngFor="let top_menu of top_menus" (click)="click_top_menu(top_menu.id)">
 
                             <span matTooltip="{{top_menu.name}}">
 

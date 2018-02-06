@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
-
 declare var $:any;
 
 import { Routes, RouterModule , ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
-import { DataServiceService } from '../htpp-services/data-service.service';
+import { HttpService } from '../services/http.service';
 
-
-
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-visitors',
   templateUrl: './visitors.component.html',
-  styleUrls: ['./visitors.component.css'],
-  providers : [HtppServicesComponent]
+  styleUrls: ['./visitors.component.css']
+
 })
 export class VisitorsComponent implements OnInit {
 
-  constructor( private dataservices: DataServiceService , private route:ActivatedRoute ,private Httpservice : HtppServicesComponent ) {
+  constructor( private dataservices: DataService , private route:ActivatedRoute ,private Httpservice : HttpService ) {
 
       this.dataservices.Language.subscribe( ( language:object ) => { this.get_Language = language } );
 

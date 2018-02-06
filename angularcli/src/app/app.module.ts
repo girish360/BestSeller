@@ -9,7 +9,6 @@ import { HeaderComponent } from './header/header.component';
 import { CategorysSubscribesComponent } from './categorys-subscribes/categorys-subscribes.component';
 import { ClientProductsComponent } from './client-products/client-products.component';
 import { ChatComponent } from './chat/chat.component';
-import { HtppServicesComponent } from './htpp-services/htpp-services.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { CompanyComponent } from './company/company.component';
@@ -18,18 +17,16 @@ import { WishListComponent } from './wish-list/wish-list.component';
 import { SearchComponent } from './search/search.component';
 import { CardComponent } from './card/card.component';
 import { MoreHeaderComponent } from './more-header/more-header.component';
-import { EmptyComponent } from './empty/empty.component';
-import { DataServiceService } from './htpp-services/data-service.service';
-import { EncryptDecryptService } from './encrypt-decrypt.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CaruselComponent } from './carusel/carusel.component';
 import { NgxCarouselModule } from 'ngx-carousel';
-
-
+import { HttpService } from './services/http.service';
+import { DataService } from './services/data.service';
 import { FilterPipe } from './filter.pipe';
-
+import { EncryptDecryptService } from './services/encrypt-decrypt.service';
 import 'hammerjs';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -76,7 +73,6 @@ import {
     CategorysSubscribesComponent,
     ClientProductsComponent,
     ChatComponent,
-    HtppServicesComponent,
     SlideshowComponent,
     NotfoundComponent,
     CompanyComponent,
@@ -86,13 +82,7 @@ import {
     WishListComponent,
     SearchComponent,
     CardComponent,
-    MoreHeaderComponent,
-    EmptyComponent,
-
-
-
-
-
+    MoreHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -139,9 +129,9 @@ import {
   ],
   providers: [
       AppComponent ,
-      HtppServicesComponent ,
+      HttpService ,
       VisitorsComponent ,
-      DataServiceService,
+      DataService,
       ClientProductsComponent,
       EncryptDecryptService,
       CaruselComponent

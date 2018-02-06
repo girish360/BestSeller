@@ -3,11 +3,11 @@
 
  import { Injectable } from '@angular/core';
 
- import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
+ import { HttpService } from '../services/http.service';
 
  import 'rxjs/add/observable/bindCallback';
 
- import { DataServiceService } from '../htpp-services/data-service.service';
+ import { DataService } from '../services/data.service';
 
  import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
@@ -23,9 +23,8 @@
 
     styleUrls: ['./header.component.css'],
 
-    providers:[HtppServicesComponent ],
 
-    animations: [
+     animations: [
         trigger('wishList_animations', [
             transition('* => void', [
                 style({ height: '*', opacity: '1', transform: 'translateX(0)'}),
@@ -70,9 +69,13 @@
 
     private show_hide_search_in_wishList = false;
 
+
+
     public  filter_wish='';
 
-    constructor( private dataservices : DataServiceService, private Httpservices : HtppServicesComponent ) {
+    public array_data_insert ={'title':'klodia','description':'shitet','id_image':'1','id_category':'1','id_admin':'1','price':'800','quantity':'5','image':'klo.jpg'};
+
+    constructor( private dataservices : DataService, private Httpservices : HttpService ) {
 
         this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList } );
 
@@ -275,6 +278,19 @@
         }
 
         return '';
+    }
+
+    insert(){
+         this.Httpservices.create_obj('insert',this.array_data_insert);
+
+         this.Httpservices.Http_Post().subscribe( response => {
+
+             if( response['status'] =='insert' ){
+
+                 console.log(response['data']);
+             }
+         });
+
     }
 
     ngOnInit() {

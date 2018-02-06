@@ -2,7 +2,7 @@ import { Component, OnInit , Input } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { EncryptDecryptService } from '../encrypt-decrypt.service';
+import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
 @Component({
   selector: 'app-company',

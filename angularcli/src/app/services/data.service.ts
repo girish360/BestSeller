@@ -2,7 +2,7 @@ import { Injectable ,EventEmitter } from '@angular/core';
 
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot  } from '@angular/router';
 
-import { HtppServicesComponent } from '../htpp-services/htpp-services.component';
+import { HttpService } from './http.service';
 
 import {Observable} from 'rxjs/Observable';
 
@@ -12,9 +12,9 @@ interface  language {
 
 @Injectable()
 
-export class DataServiceService {
+export class DataService{
 
-  constructor(  private http: HtppServicesComponent , private router: Router  ) {
+  constructor(  private http: HttpService , private router: Router  ) {
 
     this.get_language(); // call method that get language from server ...
 
@@ -62,23 +62,23 @@ export class DataServiceService {
 
   update_wishList(new_wish){
 
-      this.wishlist=new_wish;
+    this.wishlist=new_wish;
   }
 
 
   get_language(){  // method that get language from server ......
 
-      this.http.create_obj('language','1'); // create objet that send to backend with http
+    this.http.create_obj('language','1'); // create objet that send to backend with http
 
-      const lang  = this.http.Http_Post(); // call method that make request .....
+    const lang  = this.http.Http_Post(); // call method that make request .....
 
-      lang.subscribe( data => {
+    lang.subscribe( data => {
 
-         this.Language.emit(data) ,  this.language = data
+          this.Language.emit(data) ,  this.language = data
 
-         }
+        }
 
-         ,error =>( console.log( error.status ) ) );
+        ,error =>( console.log( error.status ) ) );
 
   }
 
@@ -108,3 +108,4 @@ export class DataServiceService {
 
 
 }
+
