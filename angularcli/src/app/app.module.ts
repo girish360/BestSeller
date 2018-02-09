@@ -16,6 +16,7 @@ import { BodyComponent } from './body/body.component';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { SearchComponent } from './search/search.component';
 import { CardComponent } from './card/card.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { MoreHeaderComponent } from './more-header/more-header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -25,6 +26,9 @@ import { HttpService } from './services/http.service';
 import { DataService } from './services/data.service';
 import { FilterPipe } from './filter.pipe';
 import { EncryptDecryptService } from './services/encrypt-decrypt.service';
+
+import { AuthService } from './services/auth.service';
+
 import 'hammerjs';
 
 import {
@@ -64,6 +68,7 @@ import {
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +87,8 @@ import {
     WishListComponent,
     SearchComponent,
     CardComponent,
-    MoreHeaderComponent
+    MoreHeaderComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -134,7 +140,8 @@ import {
       DataService,
       ClientProductsComponent,
       EncryptDecryptService,
-      CaruselComponent
+      CaruselComponent,
+      AuthService
 
   ],
 

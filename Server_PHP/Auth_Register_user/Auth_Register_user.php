@@ -7,6 +7,7 @@ if(!session_id()){
 class user extends connection{   // class user extends from  connection ..................................
 
     public $response_status = '';
+
     public function checkuse($query){
 
         $sql=self::select_query("SELECT * from users where email='".$query."'");

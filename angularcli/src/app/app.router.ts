@@ -14,7 +14,7 @@ import { ChatComponent } from './chat/chat.component';
 import { CategorysSubscribesComponent } from './categorys-subscribes/categorys-subscribes.component';
 
 import { BodyComponent } from './body/body.component';
-
+import { ProductDetailsComponent } from './product-details/product-details.component';
 export const router: Routes = [
     {
         path: '', component: VisitorsComponent,
@@ -47,6 +47,9 @@ export const router: Routes = [
             },
             {
                 path: 'menu', component: CategorysSubscribesComponent
+            },
+            {
+                path :'product_details' , component : ProductDetailsComponent
             },
 
         ]

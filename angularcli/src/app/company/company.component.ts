@@ -13,10 +13,11 @@ import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
 export class CompanyComponent implements OnInit {
 
- public get_Language:object;
+    public get_Language:object;
 
- private company_id:any;
- private id:any;
+    private company_id:any;
+
+    private id:any;
 
 
     constructor( private crypto : EncryptDecryptService , private route: ActivatedRoute , private router: Router  ) {

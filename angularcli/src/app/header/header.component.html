@@ -20,7 +20,7 @@
 
             <a href="#">
 
-                <div class="radius_category" id="laptopscreen">
+                <div class="radius_category" id="laptopscreen" (click)="add_class()">
 
                      <span  matTooltip="Category">
 
@@ -546,7 +546,7 @@
                                 <span  matTooltip="Select all" class=" selected_all_wishlist">
                                      <button mat-icon-button class="btn-deleteFromwish" >
                                          <mat-icon>
-                                             <mat-checkbox color="primary" class=" select_all_wishlist"
+                                             <mat-checkbox color="primary" class="select_all_wishlist"
                                                            [checked]="selectedAll_value_wishlist"
                                                            (click)="selectedAll_wishList()">
                                              </mat-checkbox>
@@ -559,36 +559,7 @@
 
                     <div class="body_wish body_cart">
 
-                        <div  *ngFor="let wish_product of wishList_products | filter: filter_wish "  [@wishList_animations]="active">
 
-                            <button mat-button class="width_body_wish" [ngClass]="getStyle_wish( wish_product )">
-
-                                <div class="width_each_wishlist">
-
-                                    <div class="wish_image" >
-
-                                        <img  src="../../assets/images/products_image/{{wish_product.image}}">
-
-                                    </div>
-
-                                    <div class="title">
-                                        {{wish_product.title}}
-                                    </div>
-
-                                    <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
-                                        <span  matTooltip="select">
-                                             <mat-checkbox  color="primary" [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
-
-                                             </mat-checkbox>
-                                         </span>
-
-                                    </div>
-
-                                </div>
-
-                            </button>
-
-                        </div>
 
                     </div>
                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

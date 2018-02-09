@@ -9,6 +9,8 @@
 
  import { DataService } from '../services/data.service';
 
+ import { AuthService } from '../services/auth.service';
+
  import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
  declare var $:any;
@@ -75,9 +77,10 @@
 
     public array_data_insert ={'title':'klodia','description':'shitet','id_image':'1','id_category':'1','id_admin':'1','price':'800','quantity':'5','image':'klo.jpg'};
 
-    constructor( private dataservices : DataService, private Httpservices : HttpService ) {
+    constructor( private auth  : AuthService ,  private dataservices : DataService, private Httpservices : HttpService ) {
 
         this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList } );
+
 
     }
 
@@ -936,8 +939,6 @@
 
             function show_category_menu(){ //  function for show category menu and subsribe  when user click show menu call this function for show with animate ............................
 
-
-
                     actuallist = 1;
 
                     $('.response_outer').removeClass(' exit_chat ');
@@ -968,7 +969,7 @@
 
                             width: '250px'
 
-                        }, "fast");
+                        }, 50);
 
                     $('.radius_category').animate({
 
@@ -978,7 +979,7 @@
 
                         borderBottomRightRadius: "0px",
 
-                    }, 300, function () {
+                    }, 200, function () {
 
                         $('.all_show_multiple_open').show();
 
@@ -1020,23 +1021,7 @@
 
                 actuallist = 0;
 
-                if(width_function<800){
-
-                    $('.listcategory').css("display","block");
-
-                    $('.closelist').css("display","none");
-
-                    $('.menu_left , .under_menu_left ,.searchsubscribe ,.loadersubscribe').animate({
-
-                        left:"-800px"
-
-                    },"fast");
-
-                }
-
-                else{
-
-                    $('.listcategory').css("display","block");
+                $('.listcategory').css("display","block");
 
                     $('.closelist').css("display","none");
 
@@ -1046,7 +1031,7 @@
 
                         width:'300px'
 
-                    },"fast");
+                    },50);
 
                     $('.radius_category').animate({
 
@@ -1060,7 +1045,7 @@
 
                         borderBottomLeftRadius:"0px"
 
-                    },300,function(){
+                    },200,function(){
 
                         $('.all_show_multiple').show();
 
@@ -1106,7 +1091,7 @@
 
                     Send_Request_In_Server( Server_path_http , Data , Status ); // method to send data in server ......
 
-                }
+
 
             } // ........................................................end
 
@@ -1386,13 +1371,13 @@
 
                             Response = data;
 
-                            console.log('success');
+
 
                             success_response(); // call function success
 
                         }, error: function (e) { // error response from server ...........
 
-                            console.log(e.error);
+
 
                         }, beforeSend: function () {  // before send request in server ..........
 

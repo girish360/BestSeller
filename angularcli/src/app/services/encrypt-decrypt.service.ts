@@ -13,6 +13,8 @@ export class EncryptDecryptService {
 
   public secret_key_company_profile = 'KSweb_company_id-profile_12837';
 
+  public secret_key_product_profile = 'KSweb_product_id-profile_12837';
+
   public hash(  data ){
 
     return crypto.MD5(data);

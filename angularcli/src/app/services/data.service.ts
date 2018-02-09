@@ -46,12 +46,12 @@ export class DataService{
             data => {
               if( data['status'] == 'get_wishList' ){
 
-                if(data['data'] !='false') {
+                if( data['data'] !='false' ) {
 
                   this.wishList_products.emit(data['data']);
-                  this.wishlist = data['data'];
 
-                }
+                  this.wishlist = data['data'];
+                }git add .
               }
             },
             error => console.log( error +'gabim' )
@@ -90,10 +90,13 @@ export class DataService{
     this.http.Http_Post()
         .subscribe(
             data => {
+
               if( data['status'] == 'products' ){
+
                 this.Products.emit(  data['data'] );
 
                 this.products =  data['data'];
+
               }
             },
             error => console.log( error +'gabim' )

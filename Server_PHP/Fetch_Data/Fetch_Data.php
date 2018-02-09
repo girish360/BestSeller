@@ -10,14 +10,13 @@ class Fetch_Data extends connection {
 
     public function fetch_data_array( $result_fromDB ){
 
-        while( $result = $result_fromDB->fetch_assoc() ){
+        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
 
             $this->Data_array[] = $result;
         }
 
         return $this->Data_array;
     }
-
 
     public function json_data( $Status , $Array_data ){
 
@@ -26,11 +25,11 @@ class Fetch_Data extends connection {
         return $json;
     }
 
-
     public function fetch_data_array_dependet( $result_fromDB , $table_name_dependet , $column_depenendet , $id_dependet ){
+
         $nr = 0 ;
 
-        while( $result = $result_fromDB->fetch_assoc() ){
+        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
 
             $this->Data_array[$nr] = $result;
 
@@ -44,26 +43,27 @@ class Fetch_Data extends connection {
     }
 
     public function data_dependet( $table , $column , $id ){
+
         $this->dependet=[];
+
         $result_fromDB = self::select_dependet( $table, $column, $id); //select data dependet with where ....
 
-        while( $result = $result_fromDB->fetch_assoc() ){
+        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
 
             $this->dependet[] = $result;
         }
         return $this->dependet;
-
-
     }
 
     public function fetch_oneRow_dependet( $array_wishID , $table_name , $column , $table_name_dependet ,$column_dependet ,$id_dependet ){
+
         $nr = 0 ;
 
         foreach ( $array_wishID as $value ){
 
            $result = self::select_dependet( $table_name ,$column , $value );
 
-            while ( $row = $result->fetch_assoc() ) {
+            while ( $row = $result->fetch( PDO::FETCH_ASSOC)  ) {
 
                 $this->Data_array[$nr] = $row;
 
@@ -85,7 +85,7 @@ class Fetch_Data extends connection {
 
         $result_fromDB = self::select_dependet( $table_name , $column , $id ); //select data dependet with where ....
 
-        while( $row = $result_fromDB->fetch_assoc() ){
+        while( $row = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
 
             $this->dependet[] = $row;
         }

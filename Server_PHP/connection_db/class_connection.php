@@ -2,27 +2,31 @@
 class connection{ // start connection class ...
 
     private $host='localhost'; // host
+
     private $root='root'; // root
+
     private $dbpass='';  // databse password
+
     private $dbname='world_sell';  // databse name
+
+    private $db;
 
     public $data_array=[];
 
     public function __construct(){ //  constructor initalize database credencials.....................
 
-        if(!isset($this->db)){
+        try {
 
-            $conn=new mysqli($this->host,$this->root,$this->dbpass,$this->dbname);
+            $this->db = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->root, $this->dbpass);
 
-            if($conn->connect_error){
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                die('error in connection db'.$conn->connect_error);
+        }
+        catch (PDOException $e) {
 
-            }
-            else{
+            print "Error!: " . $e->getMessage() . "<br/>";
 
-                $this->db=$conn;
-            }
+            die();
 
         }
 
@@ -34,42 +38,32 @@ class connection{ // start connection class ...
 
         $query->execute();
 
-        $result = $query->get_result();
-
-        $query->close();
-
-        return $result;
+        return $query;
 
     }
 
     public function select_dependet( $table_name , $column ,$id){  // select data dependet from another table in database .........
 
-        $query = $this->db->prepare("SELECT * FROM `$table_name` WHERE `$column` = ? ");
+        $query = $this->db->prepare("SELECT * FROM `$table_name` WHERE `$column` = :id ");
 
-        $query->bind_param('i',$id);
+        $query->bindParam(':id', $id, PDO::PARAM_INT );
 
         $query->execute();
 
-        $result = $query->get_result();
-
-        $query->close();
-
-        return $result;
+        return $query;
     }
     public function select_limit( $table_name ,$start , $for_page ){ // select data from databse with limit
 
         $query = $this->db->prepare("SELECT * FROM `$table_name` LIMIT ".$start*$for_page." , ".$for_page."");
 
+
+
         $query->execute();
 
-        $result = $query->get_result();
-
-        $query->close();
-
-        return $result;
+        return $query;
     }
 
-    public function insert_query( $table_name , $array_data ){ // insert data in databse
+    public function insert_query( $table_name , $array_data ){ // insert data in databse with array data
 
         try {
 
@@ -77,11 +71,11 @@ class connection{ // start connection class ...
 
                 $columns = implode(",", array_keys($array_data));  // get columns ...
 
-                $values = implode("','", array_values($array_data)); // get values ....
+                $query = $this->db->prepare("insert into `$table_name`(".$columns.")values(:".implode(', :', array_keys($array_data)).")");
 
-                $this->db->query("insert into `$table_name`(".$columns.")values('$values')");
+                $query->execute($array_data);
 
-                return $values;
+                return $query;
             }
         }
         catch( Exception $e ){
@@ -91,58 +85,60 @@ class connection{ // start connection class ...
 
     }
 
-    public function delete_query( $table_name , $column , $id ){ // delete row from database ........
+    public function delete_query( $table_name , $column , $id ){ // delete row from database with id ........
 
-         $query = $this->db->prepare("DELETE FROM `$table_name` WHERE `$column`=? ");
+         $query = $this->db->prepare("DELETE FROM `$table_name` WHERE `$column`=:id ");
 
-         $query->bind_param('i',$id);
+         $query->bindParam(':id',$id , PDO::PARAM_INT);
 
          $query->execute();
 
-         $result = $query->get_result();
 
-        $query->close();
 
-        return $result;
+        return $query;
 
     }
 
-    public function update_query( $table_name , $column ,$id , $array_data ){  // update row in database .........
+    public function update_query( $table_name , $id , $array_data ){  // update row in database with array data .........
 
-        $stmt = $this->db->prepare("UPDATE `$table_name`
-            SET filmName = ?, 
-            filmDescription = ?, 
-            filmImage = ?,  
-            filmPrice = ?,  
-            filmReview = ?  
-            WHERE `$column` = ?");
+        try {
 
-        $stmt->bind_param('sssdii',
-            $_POST['filmName'],
-            $_POST['filmDescription'],
-            $_POST['filmImage'],
-            $_POST['filmPrice'],
-            $_POST['filmReview'],
-           $id);
-        $stmt->execute();
-        $stmt->close();
+            if (count($array_data) > 0) {
+
+                foreach ($array_data as $key => $value) {
+
+                    $value = "'$value'";
+                    $updates[] = "$key = $value";
+                }
+            }
+            $implodeArray = implode(', ', $updates );
+
+            $query = $this->db->prepare("UPDATE `$table_name` SET $implodeArray WHERE id =:id ");
+
+            $query->bindParam(':id', $id, PDO::PARAM_INT);
+
+            $query->execute();
+
+            return true;
+        }
+        catch(Exception $e){
+
+            return $e->getMessage();
+        }
+
     }
 
     public function search_query( $table_name , $column1 , $column2 , $search_verb ){  // search data in database .......
 
         $like ="%".$search_verb."%";
 
-        $query = $this->db->prepare("SELECT * from `$table_name` where `$column1` LIKE ?");
+        $query = $this->db->prepare("SELECT * from `$table_name` where `$column1` LIKE :search");
 
-        $query->bind_param('s' , $like );
+        $query->bindParam(':search' , $like , PDO::PARAM_INT );
 
         $query->execute();
 
-        $result = $query->get_result();
-
-        $query->close();
-
-        return $result;
+        return $query;
     }
 
 }

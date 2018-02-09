@@ -27,7 +27,7 @@ time, mark, audio, video {
     width: calc(100% - 50px);
     float: right;
 
-    transition: 0.5s;
+    transition: 0.1s;
 
 }
 

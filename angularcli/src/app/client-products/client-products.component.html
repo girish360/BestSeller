@@ -27,6 +27,8 @@
 
         <div class="width_products outer" *ngFor="let product of products"  >
 
+
+
           <div class="each_width_product" >
 
             <a href='#'>
@@ -58,7 +60,7 @@
 
               </span>
 
-             <a href="#">
+             <a href="#" (click)="product_details( product.id )">
                  <div class="image_product_primary  inner_large">
                      <img class=" img_primary_product{{product.id}}" src="../../assets/images/products_image/{{product.image}}">
                   </div>
@@ -164,7 +166,7 @@
                 </span>
 
                 <span matTooltip="See Details!">
-                    <a href="#">
+                    <a href="#" (click)="product_details( product.id )">
                         <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
                              <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
                              <div class="both_write ">

@@ -12,6 +12,7 @@ import { HttpService } from '../services/http.service';
 import { DataService } from '../services/data.service';
 
 
+
 declare  var $:any;
 
 @Component({
@@ -51,6 +52,8 @@ export class ClientProductsComponent implements OnInit {
     private Response;
 
     public status_in_wish;
+
+    public nr_products=0;
 
 
 
@@ -102,6 +105,15 @@ export class ClientProductsComponent implements OnInit {
 
         this.router.navigate(['/company',{ companyId: this.crypto.encryp_AES( id_company , this.crypto.secret_key_company_profile ) }]);
 
+    }
+
+    product_details( id_product ){
+
+        this.router.navigate(['/product_details',{ productId: this.crypto.encryp_AES( id_product , this.crypto.secret_key_product_profile ) }]);
+    }
+
+    change_nr(){
+        this.nr_products++;
     }
 
     ngOnInit() {
