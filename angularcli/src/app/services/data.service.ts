@@ -20,11 +20,27 @@ export class DataService {
 
       this.get_language();
 
-      this.get_productsFromServer();
+      this.get_category();
 
   }
 
-  public load(){
+
+  public language:object={};
+
+  public wishlist = [];
+
+  public products = [];
+
+  public pages:any;
+
+  public response_database;
+
+  public object = {};
+
+  public categorys = [];
+
+
+    public load(){
 
         this.object = {'type': 'default', 'number_click': 0};
 
@@ -49,19 +65,23 @@ export class DataService {
                 );
         });
 
-  }
+    }
 
-  public language:object={};
+    get_category(){
 
-  public wishlist = [];
+        this.httpservice.create_obj( 'category','category' );
 
-  public products = [];
+        this.httpservice.Http_Post()
+            .subscribe(
+                data => {
+                    if( data['status'] == 'category' ){
+                        this.categorys = data['data']
+                    }
+                },
+                error => console.log( error +'gabim' )
 
-  public pages:any;
-
-  public response_database;
-
-  public object = {};
+            );
+     }
 
 
   get_WishListFromServer(){ // take wish list from  server ............
@@ -88,6 +108,11 @@ export class DataService {
   update_wishList( new_wish ){
 
      this.wishlist = new_wish;
+  }
+
+  update_language( new_language ){
+
+        this.language = new_language;
   }
 
 

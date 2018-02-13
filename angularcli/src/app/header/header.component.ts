@@ -96,17 +96,19 @@
         this.Httpservices.Http_Post()
 
             .subscribe( language =>{
+
                     this.get_Language = language;
-                    this.update_language( language)
+
+                    this.update_language( language )
                 }
                 ,error=>(console.log( error +'gabim' ))
             );
 
     }
 
-    update_language(new_language){ // change language to services file that  make share language to all components  .....
+    update_language( new_language ){ // change language to services file that  make share language to all components  .....
 
-        this.dataservices.language= new_language;
+        this.dataservices.update_language( new_language );
 
     }
 

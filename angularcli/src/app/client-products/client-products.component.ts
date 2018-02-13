@@ -1,4 +1,4 @@
-import { Component, OnInit,Input , Output , EventEmitter , AfterContentInit } from '@angular/core';
+import { Component, OnInit,Input , Output , EventEmitter , DoCheck  } from '@angular/core';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx'
@@ -20,17 +20,28 @@ declare  var $:any;
 
 })
 
-export class ClientProductsComponent implements OnInit  {
+export class ClientProductsComponent implements OnInit,DoCheck {
 
     constructor( private router : Router, private crypto:EncryptDecryptService , private dataservices: DataService ,    private Httpservice :HttpService , private route: ActivatedRoute  ) {
 
-        this.wishList_products = this.dataservices.wishlist;
-
         this.get_Language = this.dataservices.language;
+
+        this.wishList_products = this.dataservices.wishlist;
 
         this.products = this.dataservices.products['products'];
 
         this.build_pages_link(this.dataservices.products['pages_details']);
+
+
+    }
+
+    ngDoCheck(){
+
+        this.get_Language = this.dataservices.language;
+
+        this.wishList_products = this.dataservices.wishlist;
+
+        this.products = this.dataservices.products['products'];
     }
 
     public  products = [] ;
@@ -346,17 +357,16 @@ export class ClientProductsComponent implements OnInit  {
 
             this.wishList_products.unshift( product_data ); // push wish product in wishList products
 
-            this.dataservices.wishlist= this.wishList_products ;  // change wish list to services to deliver this  chnage into header that tell number wishlist ....
-
             this.dataservices.update_wishList( this.wishList_products); // change wish list in services   that get this  when change component with router outlet
 
             this.Httpservice.create_obj( 'add_wishProduct', product_data.id ); //  create obj to change this in server
 
             this.Httpservice.Http_Post() // make request ......
+
                 .subscribe( //  take success
                     data => {
                         if( data['status'] == 'add_wishProduct' ){
-                            this.Response = data['data'] ,console.log(data['data'])
+                            this.Response = data['data']
                         }
                     },
                     error => console.log( error['data'] ) // take error .....

@@ -1,8 +1,10 @@
-import { Component, OnInit , AfterViewInit , Input, NgZone  } from '@angular/core';
+import { Component, OnInit , AfterViewInit , Input, NgZone ,DoCheck  } from '@angular/core';
 
 import { RouterModule, Router , } from '@angular/router';
 
 import { HttpService } from '../services/http.service';
+
+import { DataService } from '../services/data.service';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
@@ -11,17 +13,27 @@ import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
   templateUrl: './categorys-subscribes.component.html',
   styleUrls: ['./categorys-subscribes.component.css']
 })
-export class CategorysSubscribesComponent implements OnInit {
+export class CategorysSubscribesComponent implements OnInit , DoCheck {
 
-  constructor( private router:Router, private Httpservice : HttpService , private crypto: EncryptDecryptService) { }
+  constructor(  private dataservices:DataService , private router:Router, private Httpservice : HttpService , private crypto: EncryptDecryptService) {
 
 
+      this.get_Language = this.dataservices.language;
+
+      this.categorys = this.dataservices.categorys;
+
+  }
+
+  ngDoCheck(){
+
+    this.get_Language = this.dataservices.language;
+  }
 
   public categorys = [];
 
    public id_company:any;
 
-  @Input() get_Language = {};
+   public get_Language = {};
 
   private top_menus:object = [
     { icon:'home',id:'1',name:'Home'   },
@@ -88,18 +100,6 @@ export class CategorysSubscribesComponent implements OnInit {
 
   ngOnInit() {
 
-    this.Httpservice.create_obj( 'category','category' );
-
-    this.Httpservice.Http_Post()
-        .subscribe(
-            data => {
-              if( data['status'] == 'category' ){
-                this.categorys = data['data']
-              }
-            },
-            error => console.log( error +'gabim' )
-
-        );
   }
 
 }

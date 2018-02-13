@@ -2,25 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e14b9dbf-ee1a-4b7f-90da-30f0834a13a1" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/angularcli/src/app/more-header/more-header.component.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/angularcli/src/app/more-header/more-header.component.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/angularcli/src/app/more-header/more-header.component.spec.ts" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/angularcli/src/app/more-header/more-header.component.ts" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Http_Request/Products_Http.php" afterPath="$PROJECT_DIR$/Server_PHP/Http_Request/Products_Http.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Products/Products.php" afterPath="$PROJECT_DIR$/Server_PHP/Products/Products.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php" afterPath="$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/app.module.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/app.module.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/app.router.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/app.router.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/body/body.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/body/body.component.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/carusel/carusel.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/carusel/carusel.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/company/company.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/company/company.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/services/data.service.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/services/data.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/services/http.service.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/services/http.service.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/styles.css" afterPath="$PROJECT_DIR$/angularcli/src/styles.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,55 +45,11 @@
       <file leaf-file-name="header.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
+            <state relative-caret-position="204">
               <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding>
                 <element signature="e#2#83#0" expanded="true" />
-                <marker date="1518531343368" expanded="true" signature="35561:35588" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="data.service.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/services/data.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding>
-                <element signature="e#0#65#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="company.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/company/company.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="categorys-subscribes.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="94" column="21" lean-forward="true" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="body.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/body/body.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#83#0" expanded="true" />
+                <marker date="1518536873337" expanded="true" signature="35575:35602" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -104,8 +58,8 @@
       <file leaf-file-name="visitors.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
+            <state relative-caret-position="476">
+              <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
               <folding>
                 <element signature="e#72#168#0" expanded="true" />
               </folding>
@@ -113,104 +67,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Products.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Server_PHP/Products/Products.php">
+      <file leaf-file-name="data.service.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/services/data.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="374">
+              <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
               <folding>
-                <marker date="1518531530796" expanded="true" signature="2877:3196" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="2889:3092" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="2961:3088" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="2990:3082" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="3306:3625" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="3318:3521" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="3390:3517" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="3419:3511" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="4841:5164" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="4853:5060" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="4925:5056" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="4954:5050" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="5587:5862" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="5599:5807" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="5671:5803" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="5700:5797" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="6659:6982" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="6671:6878" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="6743:6874" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="6772:6868" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="7167:7495" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="7179:7391" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="7251:7387" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="7280:7381" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="8497:8776" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="8509:8721" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="8581:8717" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="8610:8711" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="9656:9990" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="9668:9886" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="9740:9882" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="9769:9876" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="11384:11707" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="11396:11603" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="11468:11599" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="11497:11593" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="11825:12148" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="11837:12044" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="11909:12040" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="11938:12034" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="12569:12892" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="12581:12788" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="12653:12784" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="12682:12778" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="13032:13355" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="13044:13251" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="13116:13247" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="13145:13241" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="15013:15336" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="15025:15232" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="15097:15228" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="15126:15222" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="15454:15777" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="15466:15673" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="15538:15669" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="15567:15663" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="16008:16331" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="16020:16227" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="16092:16223" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="16121:16217" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="16471:16794" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="16483:16690" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="16555:16686" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="16584:16680" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="19681:20004" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="19693:19900" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="19765:19896" ph="..." />
-                <marker date="1518531530796" expanded="true" signature="19794:19890" ph="..." />
+                <element signature="e#0#65#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.router.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.router.ts">
+      <file leaf-file-name="categorys-subscribes.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="42" column="14" lean-forward="true" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+            <state relative-caret-position="390">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
-                <element signature="e#0#52#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="152" column="8" lean-forward="true" selection-start-line="152" selection-start-column="8" selection-end-line="152" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#58#0" expanded="true" />
+                <element signature="e#0#92#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -219,12 +94,66 @@
       <file leaf-file-name="client-products.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="493">
+              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
               <folding>
-                <element signature="e#0#99#0" expanded="true" />
-                <marker date="1518531311697" expanded="true" signature="16575:16581" ph="{...}" />
+                <element signature="e#0#91#0" expanded="true" />
+                <marker date="1518538823334" expanded="true" signature="16592:16598" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wish-list.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wish-list.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1547">
+              <caret line="91" column="6" lean-forward="true" selection-start-line="91" selection-start-column="6" selection-end-line="91" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="visitors.component.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="visitors.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -233,9 +162,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>button_menu_right</find>
-      <find>menu_mini_navigation</find>
-      <find>under</find>
       <find>menu_left_inside</find>
       <find>menu_mobile</find>
       <find>menu_mobi</find>
@@ -263,6 +189,9 @@
       <find>outer</find>
       <find>pages_details</find>
       <find>return</find>
+      <find>width_category</find>
+      <find>catgowrite</find>
+      <find>writecategory</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -271,27 +200,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/angularcli/src/app/search/search.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/card/card.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/more-header/more-header.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/search/search.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/card/card.component.css" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/menu-mobile/menu-mobile.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/menu-mobile/menu-mobile.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/menu-mobile/menu-mobile.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/empty/empty.component.html" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css" />
         <option value="$PROJECT_DIR$/angularcli/src/JQuery/menu.js" />
         <option value="$PROJECT_DIR$/angularcli/src/app/app.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/jquery/menu.js" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/htpp-services/data-service.service.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/htpp-services/htpp-services.component.ts" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/services/encrypt-decrypt.service.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/company/company.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/product-details/product-details.component.ts" />
@@ -304,7 +228,6 @@
         <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.css" />
         <option value="$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php" />
         <option value="$PROJECT_DIR$/angularcli/src/app/body/body.component.css" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/carusel/carusel.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.html" />
         <option value="$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php" />
         <option value="$PROJECT_DIR$/Server_PHP/Http_Request/Products_Http.php" />
@@ -312,15 +235,21 @@
         <option value="$PROJECT_DIR$/angularcli/src/styles.css" />
         <option value="$PROJECT_DIR$/angularcli/src/app/company/company.component.html" />
         <option value="$PROJECT_DIR$/angularcli/src/app/services/resolve.service.ts" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.html" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/app.router.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/services/http.service.ts" />
+        <option value="$PROJECT_DIR$/Server_PHP/Products/Products.php" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/more-header/more-header.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/app.router.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/carusel/carusel.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.html" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.html" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/header/header.component.ts" />
-        <option value="$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.ts" />
-        <option value="$PROJECT_DIR$/Server_PHP/Products/Products.php" />
+        <option value="$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts" />
         <option value="$PROJECT_DIR$/angularcli/src/app/services/data.service.ts" />
       </list>
     </option>
@@ -634,32 +563,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="company" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bestseller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bestseller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angularcli" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="client-products" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -713,32 +616,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="carusel" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bestseller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bestseller" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="angularcli" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="body" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -953,12 +830,12 @@
       <workItem from="1518025708686" duration="27696000" />
       <workItem from="1518104081762" duration="9240000" />
       <workItem from="1518194852163" duration="15000" />
-      <workItem from="1518194871595" duration="73968000" />
+      <workItem from="1518194871595" duration="80940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1613713000" />
+    <option name="totallyTimeSpent" value="1620685000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -974,14 +851,14 @@
     <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25809062" sideWeight="0.4959631" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30825242" sideWeight="0.4959631" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.048543688" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23867314" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.031141868" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.031141868" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28236246" sideWeight="0.5040369" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.05074971" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1001,11 +878,11 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.01845444" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.031141868" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29935277" sideWeight="0.4959631" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33333334" sideWeight="0.4959631" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0040453076" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.048543688" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.048543688" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23867314" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1032,31 +909,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/singin-singup/singin-singup.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-96">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/filter.pipe.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/services/http.service.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/encrypt-decrypt.service.ts" />
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/product-details/product-details.component.spec.ts" />
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/product-details/product-details.component.ts" />
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/product-details/product-details.component.html" />
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/services/encrypt-decrypt.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1132,26 +984,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/body/body.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="910">
           <caret line="157" column="0" lean-forward="true" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/carusel/carusel.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1291,17 +1127,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="44" lean-forward="true" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#70#0" expanded="true" />
+            <element signature="e#0#73#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1334,38 +1160,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="152" column="8" lean-forward="true" selection-start-line="152" selection-start-column="8" selection-end-line="152" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#58#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.router.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="42" column="14" lean-forward="true" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/company/company.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="94" column="21" lean-forward="true" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1380,13 +1178,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/more-header/more-header.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-          <folding>
-            <element signature="e#72#168#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/more-header/more-header.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1467,32 +1271,138 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/more-header/more-header.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/carusel/carusel.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.router.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="13" lean-forward="true" selection-start-line="56" selection-start-column="13" selection-end-line="56" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="374" column="14" lean-forward="false" selection-start-line="374" selection-start-column="1" selection-end-line="374" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1309">
+          <caret line="43" column="49" lean-forward="false" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding>
+            <element signature="e#72#168#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/visitors/visitors.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="91" column="6" lean-forward="true" selection-start-line="91" selection-start-column="6" selection-end-line="91" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/wish-list/wish-list.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/header/header.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
+        <state relative-caret-position="204">
           <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding>
             <element signature="e#2#83#0" expanded="true" />
-            <marker date="1518531343368" expanded="true" signature="35561:35588" ph="{...}" />
+            <marker date="1518536873337" expanded="true" signature="35575:35602" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="173" column="0" lean-forward="true" selection-start-line="173" selection-start-column="0" selection-end-line="173" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/client-products/client-products.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="493">
+          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
-            <element signature="e#0#99#0" expanded="true" />
-            <marker date="1518531311697" expanded="true" signature="16575:16581" ph="{...}" />
+            <element signature="e#0#91#0" expanded="true" />
+            <marker date="1518538823334" expanded="true" signature="16592:16598" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/categorys-subscribes/categorys-subscribes.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#92#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/angularcli/src/app/services/data.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="374">
+          <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
           <folding>
             <element signature="e#0#65#0" expanded="true" />
           </folding>

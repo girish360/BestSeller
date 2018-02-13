@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterContentChecked } from '@angular/core';
+import { Component, OnInit,DoCheck } from '@angular/core';
 
 import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
@@ -29,7 +29,7 @@ import { DataService } from '../services/data.service';
     ])
   ]
 })
-export class WishListComponent implements OnInit,AfterContentChecked {
+export class WishListComponent implements OnInit,DoCheck {
 
   public wishList_products = [];
 
@@ -55,14 +55,17 @@ export class WishListComponent implements OnInit,AfterContentChecked {
 
   constructor( private dataservices : DataService, private Httpservices : HttpService ) {
 
-  }
-
-  ngAfterContentChecked(){
-
     this.wishList_products = this.dataservices.wishlist;
 
     this.get_Language = this.dataservices.language;
 
+  }
+
+  ngDoCheck(){
+
+    this.wishList_products = this.dataservices.wishlist;
+
+    this.get_Language = this.dataservices.language;
   }
 
   delete_from_wishList( All_wishList ){
