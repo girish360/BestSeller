@@ -91,12 +91,28 @@ import {
 } from '@angular/material';
 
 
-export function initConfiguration( configService: DataService): Function {
+export function initProducts( configService: DataService ): Function {
 
-  return () => configService.load(); // makes http request and returns Promise correctly
+  return () => configService.products_from_server(); // makes http request and returns Promise correctly
 
 }
 
+export function initLanguage ( configService: DataService ):Function {
+
+    return () => configService.language_from_server();
+}
+
+export function initCategory ( configService: DataService ):Function {
+
+  return () => configService.category_from_server();
+
+}
+
+export function initWishlist ( configService: DataService ):Function {
+
+  return () => configService.wishlist_from_server();
+
+}
 
 @NgModule({
   declarations: [
@@ -167,7 +183,22 @@ export function initConfiguration( configService: DataService): Function {
       DataService,
 
       { provide: APP_INITIALIZER,
-        useFactory: initConfiguration,
+        useFactory: initProducts,
+        deps: [DataService ,HttpService],
+        multi: true
+      },
+      { provide: APP_INITIALIZER,
+        useFactory: initLanguage,
+        deps: [DataService ,HttpService],
+        multi: true
+      },
+      { provide: APP_INITIALIZER,
+        useFactory: initCategory,
+        deps: [DataService ,HttpService],
+        multi: true
+      },
+      { provide: APP_INITIALIZER,
+        useFactory: initWishlist,
         deps: [DataService ,HttpService],
         multi: true
       },

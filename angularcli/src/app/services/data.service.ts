@@ -16,12 +16,6 @@ export class DataService {
 
   constructor( private httpservice : HttpService  ) {
 
-      this.get_WishListFromServer();
-
-      this.get_language();
-
-      this.get_category();
-
   }
 
 
@@ -40,16 +34,18 @@ export class DataService {
   public categorys = [];
 
 
-    public load(){
+  public products_from_server(){
 
         this.object = {'type': 'default', 'number_click': 0};
 
         this.httpservice.create_obj('products', this.object);
 
         return new Promise((resolve, reject) => {
+
             this.httpservice.Http_Post()
 
                 .subscribe(
+
                     data => {
 
                         if (data['status'] == 'products') {
@@ -64,94 +60,92 @@ export class DataService {
                     error => (error : any) =>  { reject(false); }
                 );
         });
+  }
 
-    }
 
-    get_category(){
+  category_from_server(){
 
         this.httpservice.create_obj( 'category','category' );
 
-        this.httpservice.Http_Post()
-            .subscribe(
-                data => {
-                    if( data['status'] == 'category' ){
-                        this.categorys = data['data']
-                    }
-                },
-                error => console.log( error +'gabim' )
+      return new Promise((resolve, reject) => {
 
-            );
-     }
+          this.httpservice.Http_Post()
+
+              .subscribe(
+                  data => {
+
+                      if (data['status'] == 'category') {
+
+                          this.categorys = data['data']
+
+                          resolve(true);
+                      }
+                  },
+
+                  error => {reject(false)}
+              );
+      });
+  }
 
 
-  get_WishListFromServer(){ // take wish list from  server ............
+  wishlist_from_server(){ // take wish list from  server ............
 
-    this.httpservice.create_obj( 'get_wishList', 'wish' );
+      this.httpservice.create_obj( 'get_wishList', 'wish' );
 
-    this.httpservice.Http_Post()
-        .subscribe(
-            data => {
-              if( data['status'] == 'get_wishList' ){
+      return new Promise((resolve, reject) => {
 
-                if( data['data'] !='false' ) {
+          this.httpservice.Http_Post()
 
-                    this.wishlist = data['data'];
-                }
-              }
-            },
-            error => console.log( error +'gabim' )
+              .subscribe(
+                  data => {
 
-        );
+                      if (data['status'] == 'get_wishList') {
 
+                          if (data['data'] != 'false') {
+
+                              this.wishlist = data['data'];
+
+                              resolve(true);
+                          }
+
+                      }
+
+                  },
+
+                  error => reject(false)
+              );
+      });
   }
 
   update_wishList( new_wish ){
 
-     this.wishlist = new_wish;
+      this.wishlist = new_wish;
   }
 
   update_language( new_language ){
 
-        this.language = new_language;
+      this.language = new_language;
   }
 
 
-  get_language(){  // method that get language from server ......
+  language_from_server(){  // method that get language from server ......
 
-    this.httpservice.create_obj('language','1'); // create objet that send to backend with http
+      return new Promise( ( resolve, reject ) => {
 
-    const lang  = this.httpservice.Http_Post(); // call method that make request .....
+          this.httpservice.create_obj('language', '1'); // create objet that send to backend with http
 
-    lang.subscribe( data => {
+          const lang = this.httpservice.Http_Post(); // call method that make request .....
 
-            this.language = data
-        }
+          lang.subscribe(data => {
 
-        ,error =>( console.log( error.status ) ) );
+                  this.language = data
 
-  }
+                   resolve(true);
 
-  get_productsFromServer(){
-
-    this.object = {'type':'default','number_click':0};
-
-    this.httpservice.create_obj( 'products', this.object);
-
-      const products_details_from_server = this.httpservice.Http_Post();
-
-      products_details_from_server.subscribe(
-
-            data => {
-
-              if( data['status'] == 'products' ){
-
-                  this.products =  data['data'];
               }
 
-            },
-
-            error => console.log( error +'gabim' )
-        );
+              , error => (  reject(true) ) );
+      });
 
   }
 

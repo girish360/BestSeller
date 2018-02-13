@@ -32,7 +32,7 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
         this.build_pages_link(this.dataservices.products['pages_details']);
 
-
+         alert(this.dataservices.products['pages_details'].total_number);
     }
 
     ngDoCheck(){
@@ -60,14 +60,39 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     public nr_products=0;
 
-    public object = {};
+    public data_click_page = {};
 
     public pages_link=[];
 
     click_pages( click_details ){
 
-         this.object ={ 'type':click_details.type_link ,'number_click':click_details.number_click }
+        this.data_click_page ={ 'type':click_details.type_link ,'number_click':click_details.page }
 
+        if( click_details.active != true ){ // check if is different from active page ...........
+
+            if ( click_details.icon_material == 'skip_next' ) {
+
+                alert('skip_next');
+
+            }
+            else if ( click_details.icon_material == 'fast_forward' ) {
+
+                alert('fast_forward');
+            }
+            else if ( click_details.icon_material =='skip_previous' ) {
+
+                alert('skip_previous');
+            }
+            else if ( click_details.icon_material == 'fast_rewind' ) {
+
+                alert('fast_rewind');
+
+            }else{
+
+
+            }
+
+        }
     }
 
     build_pages_link( pages_details ){
@@ -76,46 +101,47 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
         if( pages_details.number_click == 0 ){ // this get when page make first load .............
 
-            if( pages_details.total_number <= 9 ){ // check if number total is  bigger than 10 or  equals .....................
+            if( pages_details.total_number <= 10 ){ // check if number total is  bigger than 10 or  equals .....................
 
                 for( var i =1 ; i <= pages_details.total_number ; i++ ){
 
                     if( i == 1 ){
 
-                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false });
 
                     }else{
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast','icon':false  });
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'x','icon':false  });
                     }
                 }
 
-                if( pages_details.number_click+5 <= pages_details.total_number ){
-
-                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':true });
-
-                }else{
-
-                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':true });
-                }
                 return ;
             }
             else{
 
-                for( var i =1 ; i <= pages_details.number_click+6 ; i++ ){
+                for( var i =1 ; i <= pages_details.number_click+9 ; i++ ){
 
                     if( i==1 ){
 
-                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
                     }else{
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
                     }
                 }
-                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
 
-                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':true  });
+                if( pages_details.total_number-9 >= 5 ){
+
+                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast_forward' ,'icon':true });
+
+                }else{
+
+                     if( pages_details.total_number-9 > 0 ){
+
+                         this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'skip_next' ,'icon':true });
+                     }
+                }
 
                 return ;
             }
@@ -123,31 +149,31 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
             if( pages_details.number_click <= 3 ){ // check if pages is  smaller than 3 or equals ...........................
 
-                if( pages_details.total_number <= 9 ){
+                if( pages_details.total_number <= 10 ){
 
                     if( pages_details.number_click > 1 ){
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_back' ,'icon':true  });
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
                     }
                     for( var i =1 ; i <= pages_details.total_number ; i++ ){
 
                         if( i == pages_details.number_click ){
 
-                            this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                            this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
                         }else{
 
-                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
                         }
                     }
                     if( pages_details.number_click+5 <= pages_details.total_number ) {
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_forward' ,'icon':true  });
 
                     }else{
                         if(  pages_details.number_click < pages_details.total_number ){
 
-                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_next' ,'icon':true  });
 
                         }
                     }
@@ -161,11 +187,11 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
                             if( i == pages_details.number_click ){
 
-                                this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                                this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
                             }else{
 
-                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
                             }
 
                         }
@@ -173,53 +199,51 @@ export class ClientProductsComponent implements OnInit,DoCheck {
                     else{
                         if( pages_details.number_click == 2 ){
 
-                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
 
 
                             for( var i =1 ; i <= pages_details.number_click+4 ; i++ ){
 
                                 if( i == pages_details.number_click ){
 
-                                    this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                                    this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
                                 }else{
 
-                                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
                                 }
                             }
                         }
                         else{
                             if( pages_details.number_click == 3 ){
 
-                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
 
                                 for( var i =1 ; i <= pages_details.number_click+3 ; i++ ){
 
                                     if( i == pages_details.number_click ){
 
-                                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':false  });
+                                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link,'icon_material':'x' ,'icon':false  });
 
                                     }else{
 
-                                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':false  });
+                                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'x' ,'icon':false  });
                                     }
                                 }
                             }
                         }
                     }
 
-                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':false  });
-
-                    this.pages_link.push( {'page': pages_details.total_number ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':false  });
+                    this.pages_link.push( {'page': pages_details.total_number ,'active': false , 'type_link':pages_details.type_link,'icon_material':'x' ,'icon':false  });
 
 
                     if( pages_details.number_click+5 <= pages_details.total_number ){
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':true  });
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_forward' ,'icon':true  });
 
                     }else{
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step' ,'icon':true  });
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_next' ,'icon':true  });
                     }
 
                     return ;
@@ -233,53 +257,48 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
                     if( pages_details.number_click >= 5){
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_back' ,'icon':true  });
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_rewind' ,'icon':true  });
                     }
                     else{
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step_back' ,'icon':true  });
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
                     }
 
                     this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
-
-                    this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
 
                     for(  var i = pages_details.number_click-1 ; i <= pages_details.number_click+2 ; i++ ){
 
                         if( i == pages_details.number_click ){
 
-                            this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                            this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
                         }else{
-                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
                         }
                     }
-                    this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
 
                     this.pages_link.push( {'page': pages_details.total_number ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
                     if( pages_details.number_click+5 <= pages_details.total_number ){
 
-                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':true  });
+                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_forward' ,'icon':true  });
 
                     }else{
-                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step' ,'icon':true  });
+                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_next' ,'icon':true  });
                     }
                     return ;
                 }
                 else{
                     if( pages_details.number_click >= 5 ){
 
-                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':true  });
+                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_rewind' ,'icon':true  });
                     }
                     else{
 
-                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step' ,'icon':true  });
+                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
 
                     }
                     this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
-
-                    this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
 
                     if( pages_details.number_click+1 == pages_details.total_number ){
 
@@ -287,11 +306,11 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
                             if( i == pages_details.number_click ){
 
-                                this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                                this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
                             }else{
 
-                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
                             }
                         }
                     }else{
@@ -328,7 +347,7 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
                     if( pages_details.number_click != pages_details.total_number ){
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step_forward' ,'icon':true  });
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
 
                     }
 

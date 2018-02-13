@@ -7,20 +7,65 @@
 
             <div class="inside_option_products">
 
-                <div class="left_option_products">
+                <span class="left_option_products inline-block">
 
-                   <mat-icon>home</mat-icon>
+
+
+                    <button mat-button class="button_pagination_products">
+
+                          Page 1 of 50
+
+                    </button>
+
+
+
+                </span>
+
+                <span class="inner_option_products inline-block">
+
+                      <div class="pagination_products">
+
+
+                          <span class="page_products" *ngFor="let page of pages_link">
+
+                              <ng-container *ngIf="page.icon == false ; else notNumber">
+
+
+                                  <button mat-button class="button_pagination_products"  [ngClass]="{'active_products_page': page.active == true}" (click)=" click_pages(  page ) ">
+
+                                      {{page.page}}
+
+                                  </button>
+
+
+                              </ng-container>
+
+                              <ng-template #notNumber>
+
+                                  <button mat-button class="button_pagination_products" (click)=" click_pages(  page )">
+
+                                      <mat-icon>{{page.icon_material}}</mat-icon>
+
+                                  </button>
+
+                              </ng-template>
+
+
+
+                          </span>
+
+                      </div>
+                </span>
+
+                <span class="right_option_products inline-block">
+
                     <mat-icon>home</mat-icon>
-{{pages_link.length}}
 
-                </div>
-
-                <div class="right_option_products">
-                    <mat-icon>home</mat-icon>
-                </div>
+                </span>
 
             </div>
-        </div><br>
+
+        </div>
 
 
 

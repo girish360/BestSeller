@@ -4,7 +4,7 @@ class products extends Fetch_Data{
 
     public $all_products;
 
-    public $products_for_pages=12;
+    public $products_for_pages=4;
 
     public $products_limit;
 
@@ -38,13 +38,13 @@ class products extends Fetch_Data{
             }
             else{
 
-                 $result_limit = self::select_limit('products',0 ,$this->products_for_pages );
+                 $result_limit = self::select_limit('products',$details_products['number_click'] ,$this->products_for_pages );
 
                  $this->products_limit = self::fetch_data_array_dependet(  $result_limit , $tb_name_dep , $column_dep , $id );
 
                  self::getpages(  $this->count_row  );
 
-                 self::get_pages_details(  $this->total_pages ,0,'default');
+                 self::get_pages_details(  $this->total_pages ,$details_products['number_click'],'default');
 
                 return array('products'=>$this->products_limit , 'pages_details'=>  $this->pages_details );
             }

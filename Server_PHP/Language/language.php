@@ -19,8 +19,10 @@ class language extends Cookie {
                 $language['logout']='Your Session Expired';
                 $language['bodylogout']='Please login again!!';
                 $language['exitlogin']='Exit login';
-                $language['categorywrite']='Categorys';
-                $language['subscribewrite']='SUBSCRIPTIONS';
+                $language['category']='Categorys';
+                $language['subscribe']='Subscriptions';
+                $language['settings']='Settings';
+                $language['users']='User Panel';
                 $language['chat']='Chat Online';
                 $language['allkat']='All';
                 $language['emptycat']='Category empty';
@@ -50,8 +52,11 @@ class language extends Cookie {
                 $language['btngotologin']='Shkoni tek logimi';
                 $language['bodylogout']='Porta juaj e aksesit eshte mbyllur!!';
                 $language['exitlogin']='Ju lutem hyni persesi';
-                $language['categorywrite']='Kategorit';
-                $language['subscribewrite']='SUBSCRIPTIONS';
+                $language['category']='Kategorit';
+                $language['subscribe']='Ndjekesit';
+                $language['settings']='Regullimet';
+                $language['users']='Paneli Perdoruesit';
+
                 $language['chat']='Bisedo Online';
                 $language['allkat']='Total';
                 $language['emptycat']='Category Bosh';
