@@ -66,7 +66,7 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     click_pages( click_details ){
 
-        this.data_click_page ={ 'type':click_details.type_link ,'number_click':click_details.page }
+        this.data_click_page ={ 'type':click_details.type_link ,'number_click':click_details.page };
 
         if( click_details.active != true ){ // check if is different from active page ...........
 

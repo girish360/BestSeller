@@ -33,12 +33,12 @@ export class DataService {
 
   public categorys = [];
 
+  public send_data_products = {'type': 'default', 'number_click': 0};
+
 
   public products_from_server(){
 
-        this.object = {'type': 'default', 'number_click': 0};
-
-        this.httpservice.create_obj('products', this.object);
+        this.httpservice.create_obj('products', this.send_data_products);
 
         return new Promise((resolve, reject) => {
 
