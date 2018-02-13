@@ -1,2 +1,0 @@
-# BestSeller
- Management your business 
