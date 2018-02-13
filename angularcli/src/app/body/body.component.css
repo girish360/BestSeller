@@ -135,13 +135,7 @@ margin-top: 50px;
 
 @media only screen and (max-width: 700px){
 
-    .width_products{
 
-        display: inline-block;
-        width: 48.5%;
-        margin-left: 0px;
-
-    }
 
     .containere{
 
@@ -159,12 +153,5 @@ margin-top: 50px;
 
 @media only screen and (max-width: 500px){
 
-    .width_products{
 
-        display: block;
-        width: 97%;
-        margin-left: 0px;
-
-
-    }
 }

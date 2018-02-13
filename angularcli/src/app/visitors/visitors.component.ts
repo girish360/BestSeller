@@ -18,10 +18,9 @@ export class VisitorsComponent implements OnInit {
 
   constructor( private dataservices: DataService , private route:ActivatedRoute ,private Httpservice : HttpService ) {
 
-      this.dataservices.Language.subscribe( ( language:object ) => { this.get_Language = language } );
+    this.get_Language = this.dataservices.language;
 
   }
-
 
   public get_Language:object={};
 
@@ -31,8 +30,6 @@ export class VisitorsComponent implements OnInit {
   ngOnInit() {
 
     $(document).ready(function () {
-
-
       var activ_category=0;
       var on_hover_category = 0;
       var name=0;

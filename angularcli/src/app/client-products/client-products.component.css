@@ -83,6 +83,7 @@ margin-left: -8px;
     border-radius: 4px;
     border-color:#d6d6c2;
     background-color: white;
+    overflow: hidden;
 
 }
 
@@ -202,15 +203,12 @@ margin-left: -8px;
 .image_product_primary{
     max-width: 100%;
     height: 250px;
-    overflow: hidden;
-
 }
 
 .image_product_primary img{
     width: 100%;
     height:100%;
     position: relative;
-
 }
 
 
@@ -243,8 +241,6 @@ margin-left: -8px;
     position: -ms-sticky;
     position: -o-sticky;
     position: sticky;
-
-
     top: 37px;
 
 
@@ -365,6 +361,10 @@ margin-left: -8px;
     float: right;
 }
 
+
+.pages_link{
+    display: inline-block;
+}
 
 @media only screen and ( max-width: 1600px ) {
 

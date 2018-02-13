@@ -1,34 +1,55 @@
-import { Injectable ,EventEmitter } from '@angular/core';
-
-import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot  } from '@angular/router';
+import { Inject, Injectable ,EventEmitter } from '@angular/core';
 
 import { HttpService } from './http.service';
 
 import {Observable} from 'rxjs/Observable';
 
-interface  language {
+import { Router, Resolve, ActivatedRouteSnapshot,RouterStateSnapshot } from '@angular/router';
 
-}
+import 'rxjs/add/operator/map';
+
+import 'rxjs/Rx'
 
 @Injectable()
 
-export class DataService{
+export class DataService {
 
-  constructor(  private http: HttpService , private router: Router  ) {
+  constructor( private httpservice : HttpService  ) {
 
-    this.get_language(); // call method that get language from server ...
+      this.get_WishListFromServer();
 
-    this.get_WishListFromServer(); // call method to get wishList from server ......
+      this.get_language();
 
-    this.get_productsFromServer(); // call method to get products from server ........
+      this.get_productsFromServer();
 
   }
 
-  wishList_products:EventEmitter<any> = new EventEmitter;
+  public load(){
 
-  Language:EventEmitter<object> = new EventEmitter;
+        this.object = {'type': 'default', 'number_click': 0};
 
-  Products:EventEmitter<any> = new EventEmitter;
+        this.httpservice.create_obj('products', this.object);
+
+        return new Promise((resolve, reject) => {
+            this.httpservice.Http_Post()
+
+                .subscribe(
+                    data => {
+
+                        if (data['status'] == 'products') {
+
+                            this.products = data['data'];
+
+                            resolve(true);
+                        }
+
+                    },
+
+                    error => (error : any) =>  { reject(false); }
+                );
+        });
+
+  }
 
   public language:object={};
 
@@ -36,22 +57,26 @@ export class DataService{
 
   public products = [];
 
+  public pages:any;
+
+  public response_database;
+
+  public object = {};
+
 
   get_WishListFromServer(){ // take wish list from  server ............
 
-    this.http.create_obj( 'get_wishList', 'wish' );
+    this.httpservice.create_obj( 'get_wishList', 'wish' );
 
-    this.http.Http_Post()
+    this.httpservice.Http_Post()
         .subscribe(
             data => {
               if( data['status'] == 'get_wishList' ){
 
                 if( data['data'] !='false' ) {
 
-                  this.wishList_products.emit(data['data']);
-
-                  this.wishlist = data['data'];
-                }git add .
+                    this.wishlist = data['data'];
+                }
               }
             },
             error => console.log( error +'gabim' )
@@ -60,22 +85,21 @@ export class DataService{
 
   }
 
-  update_wishList(new_wish){
+  update_wishList( new_wish ){
 
-    this.wishlist=new_wish;
+     this.wishlist = new_wish;
   }
 
 
   get_language(){  // method that get language from server ......
 
-    this.http.create_obj('language','1'); // create objet that send to backend with http
+    this.httpservice.create_obj('language','1'); // create objet that send to backend with http
 
-    const lang  = this.http.Http_Post(); // call method that make request .....
+    const lang  = this.httpservice.Http_Post(); // call method that make request .....
 
     lang.subscribe( data => {
 
-          this.Language.emit(data) ,  this.language = data
-
+            this.language = data
         }
 
         ,error =>( console.log( error.status ) ) );
@@ -84,28 +108,27 @@ export class DataService{
 
   get_productsFromServer(){
 
-    this.http.create_obj( 'products','products' );
+    this.object = {'type':'default','number_click':0};
 
+    this.httpservice.create_obj( 'products', this.object);
 
-    this.http.Http_Post()
-        .subscribe(
+      const products_details_from_server = this.httpservice.Http_Post();
+
+      products_details_from_server.subscribe(
+
             data => {
 
               if( data['status'] == 'products' ){
 
-                this.Products.emit(  data['data'] );
-
-                this.products =  data['data'];
-
+                  this.products =  data['data'];
               }
+
             },
+
             error => console.log( error +'gabim' )
-
         );
+
   }
-
-
-
 
 
 

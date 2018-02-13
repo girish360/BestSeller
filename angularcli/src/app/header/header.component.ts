@@ -1,5 +1,5 @@
 
- import { Component, OnInit ,Input , Output , EventEmitter} from '@angular/core';
+ import { Component, OnInit ,Input , Output , EventEmitter } from '@angular/core';
 
  import { Injectable } from '@angular/core';
 
@@ -71,18 +71,15 @@
 
     private show_hide_search_in_wishList = false;
 
-
-
     public  filter_wish='';
 
     public array_data_insert ={'title':'klodia','description':'shitet','id_image':'1','id_category':'1','id_admin':'1','price':'800','quantity':'5','image':'klo.jpg'};
 
     constructor( private auth  : AuthService ,  private dataservices : DataService, private Httpservices : HttpService ) {
 
-        this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList } );
-
-
+        this.wishList_products = this.dataservices.wishlist;
     }
+
 
     public language_allow = [
 
@@ -109,7 +106,7 @@
 
     update_language(new_language){ // change language to services file that  make share language to all components  .....
 
-        this.dataservices.Language.emit(new_language);
+        this.dataservices.language= new_language;
 
     }
 

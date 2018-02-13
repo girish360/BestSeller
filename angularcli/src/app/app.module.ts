@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule , APP_INITIALIZER    } from '@angular/core';
 import { HttpModule } from "@angular/http";
 import {routes} from './app.router';
 import { AppComponent } from './app.component';
@@ -26,6 +26,7 @@ import { HttpService } from './services/http.service';
 import { DataService } from './services/data.service';
 import { FilterPipe } from './filter.pipe';
 import { EncryptDecryptService } from './services/encrypt-decrypt.service';
+
 
 import { AuthService } from './services/auth.service';
 
@@ -66,7 +67,11 @@ import {
 } from '@angular/material';
 
 
+export function initConfiguration( configService: DataService): Function {
 
+  return () => configService.load(); // makes http request and returns Promise correctly
+
+}
 
 
 @NgModule({
@@ -134,14 +139,24 @@ import {
 
   ],
   providers: [
+
+
       AppComponent ,
       HttpService ,
       VisitorsComponent ,
       DataService,
+
+      { provide: APP_INITIALIZER,
+        useFactory: initConfiguration,
+        deps: [DataService ,HttpService],
+        multi: true
+      },
+
       ClientProductsComponent,
       EncryptDecryptService,
       CaruselComponent,
-      AuthService
+      AuthService,
+
 
   ],
 

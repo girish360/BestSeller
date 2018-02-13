@@ -1,5 +1,5 @@
 <?php
-class connection{ // start connection class ...
+class connection { // start connection class ...
 
     private $host='localhost'; // host
 
@@ -56,8 +56,6 @@ class connection{ // start connection class ...
 
         $query = $this->db->prepare("SELECT * FROM `$table_name` LIMIT ".$start*$for_page." , ".$for_page."");
 
-
-
         $query->execute();
 
         return $query;
@@ -93,9 +91,7 @@ class connection{ // start connection class ...
 
          $query->execute();
 
-
-
-        return $query;
+         return $query;
 
     }
 

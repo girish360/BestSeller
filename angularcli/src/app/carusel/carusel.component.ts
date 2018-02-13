@@ -27,12 +27,7 @@ export class CaruselComponent implements OnInit {
       {src: '../../assets/images/products_image/b3.jpg' ,title:'bedri'},
       {src: '../../assets/images/products_image/klo.jpg' ,title:'klodian'},
       {src: '../../assets/images/products_image/klo.jpg' ,title:'gentian'},
-      {src: '../../assets/images/products_image/1234.jpg' ,title:'roland'},
-      {src: '../../assets/images/products_image/b3.jpg' ,title:'bedri'},
-      {src: '../../assets/images/products_image/klo.jpg' ,title:'klodian'},
-      {src: '../../assets/images/products_image/klo.jpg' ,title:'gentian'},
-      {src: '../../assets/images/products_image/1234.jpg' ,title:'roland'},
-      {src: '../../assets/images/products_image/b3.jpg' ,title:'bedri'},
+
     ];
 
     this.carouselTileOne = {

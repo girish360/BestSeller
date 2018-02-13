@@ -7,11 +7,11 @@ import 'rxjs/add/operator/toPromise';
 
 export class HttpService {
 
-  constructor( private http : Http ) { }
+  constructor( public http : Http ) { }
 
   path = '/api/bestseller/server_PHP/Http_Request/Route_Http.php';
 
-  private object = {};
+  public object = {};
 
   Http_Get(){
 

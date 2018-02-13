@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterContentChecked } from '@angular/core';
 
 import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
@@ -29,7 +29,7 @@ import { DataService } from '../services/data.service';
     ])
   ]
 })
-export class WishListComponent implements OnInit {
+export class WishListComponent implements OnInit,AfterContentChecked {
 
   public wishList_products = [];
 
@@ -55,13 +55,13 @@ export class WishListComponent implements OnInit {
 
   constructor( private dataservices : DataService, private Httpservices : HttpService ) {
 
+  }
+
+  ngAfterContentChecked(){
+
     this.wishList_products = this.dataservices.wishlist;
 
-    this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList } );
-
     this.get_Language = this.dataservices.language;
-
-    this.dataservices.Language.subscribe( ( language:object ) => { this.get_Language = language  } );
 
   }
 

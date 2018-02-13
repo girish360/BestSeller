@@ -1,17 +1,15 @@
-import { Component, OnInit,Input , Output , EventEmitter  } from '@angular/core';
+import { Component, OnInit,Input , Output , EventEmitter , AfterContentInit } from '@angular/core';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx'
 
-import { Routes, RouterModule , ActivatedRoute  ,Params , Data , Router} from '@angular/router';
+import { RouterStateSnapshot,ActivatedRouteSnapshot, ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
 import { HttpService } from '../services/http.service';
 
 import { DataService } from '../services/data.service';
-
-
 
 declare  var $:any;
 
@@ -22,26 +20,22 @@ declare  var $:any;
 
 })
 
-export class ClientProductsComponent implements OnInit {
+export class ClientProductsComponent implements OnInit  {
 
     constructor( private router : Router, private crypto:EncryptDecryptService , private dataservices: DataService ,    private Httpservice :HttpService , private route: ActivatedRoute  ) {
 
-        this.get_Language = this.dataservices.language;
-
-        this.dataservices.Language.subscribe( ( language:object ) => { this.get_Language = language  } );
-
         this.wishList_products = this.dataservices.wishlist;
 
-        this.dataservices.wishList_products.subscribe( ( wishList:any ) => { this.wishList_products = wishList  } );
+        this.get_Language = this.dataservices.language;
 
-        this.products = this.dataservices.products;
+        this.products = this.dataservices.products['products'];
 
-        this.dataservices.Products.subscribe( ( products:any ) => { this.products = products  } );
-
-
+        this.build_pages_link(this.dataservices.products['pages_details']);
     }
 
     public  products = [] ;
+
+    public products_detail:any;
 
     private wishList_products = [];
 
@@ -55,9 +49,286 @@ export class ClientProductsComponent implements OnInit {
 
     public nr_products=0;
 
+    public object = {};
+
+    public pages_link=[];
+
+    click_pages( click_details ){
+
+         this.object ={ 'type':click_details.type_link ,'number_click':click_details.number_click }
+
+    }
+
+    build_pages_link( pages_details ){
+
+        this.pages_link = [];
+
+        if( pages_details.number_click == 0 ){ // this get when page make first load .............
+
+            if( pages_details.total_number <= 9 ){ // check if number total is  bigger than 10 or  equals .....................
+
+                for( var i =1 ; i <= pages_details.total_number ; i++ ){
+
+                    if( i == 1 ){
+
+                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+
+                    }else{
+
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast','icon':false  });
+                    }
+                }
+
+                if( pages_details.number_click+5 <= pages_details.total_number ){
+
+                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':true });
+
+                }else{
+
+                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':true });
+                }
+                return ;
+            }
+            else{
+
+                for( var i =1 ; i <= pages_details.number_click+6 ; i++ ){
+
+                    if( i==1 ){
+
+                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+
+                    }else{
+
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                    }
+                }
+                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+
+                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':true  });
+
+                return ;
+            }
+        }else{   // get link for pages when user click on any pages to show ...............
+
+            if( pages_details.number_click <= 3 ){ // check if pages is  smaller than 3 or equals ...........................
+
+                if( pages_details.total_number <= 9 ){
+
+                    if( pages_details.number_click > 1 ){
+
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_back' ,'icon':true  });
+                    }
+                    for( var i =1 ; i <= pages_details.total_number ; i++ ){
+
+                        if( i == pages_details.number_click ){
+
+                            this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+
+                        }else{
+
+                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                        }
+                    }
+                    if( pages_details.number_click+5 <= pages_details.total_number ) {
+
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+
+                    }else{
+                        if(  pages_details.number_click < pages_details.total_number ){
+
+                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+
+                        }
+                    }
+                    return ;
+                }
+                else{
+
+                    if( pages_details.number_click == 1 ){
+
+                        for( var i =1 ; i <= pages_details.number_click+6 ; i++ ){
+
+                            if( i == pages_details.number_click ){
+
+                                this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+
+                            }else{
+
+                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                            }
+
+                        }
+                    }
+                    else{
+                        if( pages_details.number_click == 2 ){
+
+                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+
+
+                            for( var i =1 ; i <= pages_details.number_click+4 ; i++ ){
+
+                                if( i == pages_details.number_click ){
+
+                                    this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+
+                                }else{
+
+                                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                                }
+                            }
+                        }
+                        else{
+                            if( pages_details.number_click == 3 ){
+
+                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+
+                                for( var i =1 ; i <= pages_details.number_click+3 ; i++ ){
+
+                                    if( i == pages_details.number_click ){
+
+                                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':false  });
+
+                                    }else{
+
+                                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':false  });
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':false  });
+
+                    this.pages_link.push( {'page': pages_details.total_number ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast' ,'icon':false  });
+
+
+                    if( pages_details.number_click+5 <= pages_details.total_number ){
+
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':true  });
+
+                    }else{
+
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step' ,'icon':true  });
+                    }
+
+                    return ;
+
+                }
+
+            } // end number click is smaller than 3 or equals ................
+            else{ // here number click is bigger than 3 ................
+
+                if( pages_details.total_number > pages_details.number_click+2 ){
+
+                    if( pages_details.number_click >= 5){
+
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_back' ,'icon':true  });
+                    }
+                    else{
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step_back' ,'icon':true  });
+                    }
+
+                    this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+
+                    this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+
+                    for(  var i = pages_details.number_click-1 ; i <= pages_details.number_click+2 ; i++ ){
+
+                        if( i == pages_details.number_click ){
+
+                            this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+
+                        }else{
+                            this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+
+                        }
+                    }
+                    this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+
+                    this.pages_link.push( {'page': pages_details.total_number ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+
+                    if( pages_details.number_click+5 <= pages_details.total_number ){
+
+                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':true  });
+
+                    }else{
+                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step' ,'icon':true  });
+                    }
+                    return ;
+                }
+                else{
+                    if( pages_details.number_click >= 5 ){
+
+                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':true  });
+                    }
+                    else{
+
+                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step' ,'icon':true  });
+
+                    }
+                    this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+
+                    this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'...' ,'icon':true  });
+
+                    if( pages_details.number_click+1 == pages_details.total_number ){
+
+                        for( var i = pages_details.number_click-4 ; i <= pages_details.number_click ; i++ ){
+
+                            if( i == pages_details.number_click ){
+
+                                this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+
+                            }else{
+
+                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast' ,'icon':false  });
+                            }
+                        }
+                    }else{
+                        if( pages_details.number_click == pages_details.total_number  ){
+
+                            for( var i = pages_details.number_click-6 ; i <= pages_details.total_number ; i++ ){
+
+                                if( i ==  pages_details.number_click ){
+
+                                    this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+
+                                }else{
+
+                                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+                                }
+                            }
+                        }
+                        else{
+                            for( var i = pages_details.number_click-3 ; i <= pages_details.total_number ; i++ ){
+
+                                if( i ==  pages_details.number_click ){
+
+                                    this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+
+                                }else{
+
+                                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+                                }
+                            }
+
+                        }
+                    }
+
+
+                    if( pages_details.number_click != pages_details.total_number ){
+
+                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'step_forward' ,'icon':true  });
+
+                    }
+
+                    return ;
+                }
+            }
+        }
 
 
 
+    }
     add_wish_list( product_data ){  // function to add product in wishList
 
         this.status_in_wish = false; // status to find  if this  product is in wish......
@@ -75,7 +346,7 @@ export class ClientProductsComponent implements OnInit {
 
             this.wishList_products.unshift( product_data ); // push wish product in wishList products
 
-            this.dataservices.wishList_products.emit( this.wishList_products );  // change wish list to services to deliver this  chnage into header that tell number wishlist ....
+            this.dataservices.wishlist= this.wishList_products ;  // change wish list to services to deliver this  chnage into header that tell number wishlist ....
 
             this.dataservices.update_wishList( this.wishList_products); // change wish list in services   that get this  when change component with router outlet
 
@@ -117,6 +388,9 @@ export class ClientProductsComponent implements OnInit {
     }
 
     ngOnInit() {
+
+
+
 
         $(document).ready(function(){
 

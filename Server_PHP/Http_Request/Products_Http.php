@@ -2,19 +2,15 @@
 
 if( $status =='products' ){ //  request for products from frontend ........
 
-    $default='default';
+    $object_details = $_POST->value;
 
-    $start=0;
+    $array_data = $fetch_data->convert_to_array( $object_details );
 
-    $result_fromDB = $connection->select_all( $tabel='products' ); // get product from db .....
+    $result = $products->getproducts( $array_data );
+
+    echo $fetch_data->json_data('products',$result );
 
 
-    $tb_name_dep = 'adminat';
-    $column_dep='id';
-    $id='id_admin';
-
-    $res= $fetch_data->fetch_data_array_dependet( $result_fromDB , $tb_name_dep , $column_dep , $id );
-    echo $fetch_data->json_data('products',$res);
 }
 if( $status == 'add_wishProduct' ){ // request to add in wishList ........
 

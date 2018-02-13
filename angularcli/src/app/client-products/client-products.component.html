@@ -7,10 +7,12 @@
 
             <div class="inside_option_products">
 
-
                 <div class="left_option_products">
+
                    <mat-icon>home</mat-icon>
                     <mat-icon>home</mat-icon>
+{{pages_link.length}}
+
                 </div>
 
                 <div class="right_option_products">
@@ -18,14 +20,14 @@
                 </div>
 
             </div>
-        </div>
+        </div><br>
 
 
 
 
         <div class="all_prod" >
 
-        <div class="width_products outer" *ngFor="let product of products"  >
+        <div class="width_products " *ngFor="let product of products"  >
 
 
 
@@ -52,7 +54,7 @@
 
                        </div>
 
-                       <div class="image_profile_company">
+                       <div class="image_profile_company ">
                              <img  class="image_prof_admin" src="../../assets/images/products_image/{{company.imageprofile}}">
                         </div>
 
@@ -61,8 +63,8 @@
               </span>
 
              <a href="#" (click)="product_details( product.id )">
-                 <div class="image_product_primary  inner_large">
-                     <img class=" img_primary_product{{product.id}}" src="../../assets/images/products_image/{{product.image}}">
+                 <div class="image_product_primary  ">
+                     <img class="image_product img_primary_product{{product.id}}" src="../../assets/images/products_image/{{product.image}}">
                   </div>
              </a>
 
