@@ -18,7 +18,6 @@ export class DataService {
 
   }
 
-
   public language:object={};
 
   public wishlist = [];
@@ -33,12 +32,11 @@ export class DataService {
 
   public categorys = [];
 
-  public send_data_products = {'type': 'default', 'number_click': 0};
-
-
   public products_from_server(){
 
-        this.httpservice.create_obj('products', this.send_data_products);
+      this.object ={'type': 'default', 'number_click': 1};
+
+        this.httpservice.create_obj('products', this.object);
 
         return new Promise((resolve, reject) => {
 
@@ -53,6 +51,7 @@ export class DataService {
                             this.products = data['data'];
 
                             resolve(true);
+
                         }
 
                     },
@@ -97,22 +96,24 @@ export class DataService {
           this.httpservice.Http_Post()
 
               .subscribe(
+
                   data => {
 
                       if (data['status'] == 'get_wishList') {
+
+                          resolve(true);
 
                           if (data['data'] != 'false') {
 
                               this.wishlist = data['data'];
 
-                              resolve(true);
                           }
 
                       }
 
                   },
 
-                  error => reject(false)
+                  error => {reject(false)}
               );
       });
   }

@@ -32,7 +32,8 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
         this.build_pages_link(this.dataservices.products['pages_details']);
 
-         alert(this.dataservices.products['pages_details'].total_number);
+        this.pages_details = this.dataservices.products['pages_details'];
+
     }
 
     ngDoCheck(){
@@ -42,6 +43,8 @@ export class ClientProductsComponent implements OnInit,DoCheck {
         this.wishList_products = this.dataservices.wishlist;
 
         this.products = this.dataservices.products['products'];
+
+
     }
 
     public  products = [] ;
@@ -60,136 +63,129 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     public nr_products=0;
 
-    public data_click_page = {};
-
     public pages_link=[];
+
+    public pages_details;
+
+    public send_data_products={};
 
     click_pages( click_details ){
 
-        this.data_click_page ={ 'type':click_details.type_link ,'number_click':click_details.page };
+
 
         if( click_details.active != true ){ // check if is different from active page ...........
 
             if ( click_details.icon_material == 'skip_next' ) {
 
-                alert('skip_next');
+                this.send_data_products ={ 'type':click_details.type_link ,'number_click':this.pages_details.number_click+1 };
+
+                this.get_page_products();
 
             }
             else if ( click_details.icon_material == 'fast_forward' ) {
 
-                alert('fast_forward');
+                this.send_data_products ={ 'type':click_details.type_link ,'number_click':this.pages_details.number_click+5 };
+
+                this.get_page_products();
             }
             else if ( click_details.icon_material =='skip_previous' ) {
 
-                alert('skip_previous');
+                this.send_data_products ={ 'type':click_details.type_link ,'number_click':this.pages_details.number_click-1 };
+
+                this.get_page_products();
             }
             else if ( click_details.icon_material == 'fast_rewind' ) {
 
-                alert('fast_rewind');
+                this.send_data_products ={ 'type':click_details.type_link ,'number_click':this.pages_details.number_click-5 };
+
+                this.get_page_products();
 
             }else{
 
+                this.send_data_products ={ 'type':click_details.type_link ,'number_click':click_details.page };
 
+                this.get_page_products();
             }
 
         }
     }
 
-    build_pages_link( pages_details ){
+    get_page_products(){
 
-        this.pages_link = [];
 
-        if( pages_details.number_click == 0 ){ // this get when page make first load .............
 
-            if( pages_details.total_number <= 10 ){ // check if number total is  bigger than 10 or  equals .....................
+        this.Httpservice.create_obj('products', this.send_data_products);
 
-                for( var i =1 ; i <= pages_details.total_number ; i++ ){
+        this.Httpservice.Http_Post()
 
-                    if( i == 1 ){
+            .subscribe(
 
-                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false });
+                data => {
 
-                    }else{
+                    if (data['status'] == 'products') {
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'x','icon':false  });
+                        this.dataservices.products = data['data'];
+
+                        this.build_pages_link(data['data']['pages_details']);
+
+                        this.pages_details = data['data']['pages_details'];
+
                     }
-                }
 
-                return ;
-            }
-            else{
+                },
 
-                for( var i =1 ; i <= pages_details.number_click+9 ; i++ ){
+                error => (error : any) =>  { }
+            );
 
-                    if( i==1 ){
+    }
 
-                        this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+    build_pages_link( pages_details ){ // that create pages link for products ...............................................................................
 
-                    }else{
-
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
-                    }
-                }
-
-                if( pages_details.total_number-9 >= 5 ){
-
-                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'fast_forward' ,'icon':true });
-
-                }else{
-
-                     if( pages_details.total_number-9 > 0 ){
-
-                         this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link,'icon_material':'skip_next' ,'icon':true });
-                     }
-                }
-
-                return ;
-            }
-        }else{   // get link for pages when user click on any pages to show ...............
+        this.pages_link = []; // empty pages_link .........
 
             if( pages_details.number_click <= 3 ){ // check if pages is  smaller than 3 or equals ...........................
 
-                if( pages_details.total_number <= 10 ){
+                if( pages_details.total_number <= 8 ){  // check if total pages are smaller than 8  or equals
 
-                    if( pages_details.number_click > 1 ){
+                    if( pages_details.number_click > 1 ){ // check if number_click that more bigger than 1  to add skip_previouse  icon ......................
 
                         this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
                     }
-                    for( var i =1 ; i <= pages_details.total_number ; i++ ){
+                    for( var i =1 ; i <= pages_details.total_number ; i++ ){  // loop with number page
 
-                        if( i == pages_details.number_click ){
+                        if( i == pages_details.number_click ){ // check if  number_ click is equals with item in loop to add property active true .........
 
                             this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
-                        }else{
+                        }else{ // pages not active .................................................
 
                             this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
                         }
                     }
-                    if( pages_details.number_click+5 <= pages_details.total_number ) {
+                    if( pages_details.number_click+5 <= pages_details.total_number ) { // check if number click + 5 is more bigger or equals to add fast_forward icon  with 5 pages ...........
 
                         this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_forward' ,'icon':true  });
 
-                    }else{
+                    }else{ //  add skip_next icon with  one page  increment  ....................
                         if(  pages_details.number_click < pages_details.total_number ){
 
                             this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_next' ,'icon':true  });
 
                         }
                     }
-                    return ;
+                    return ;  // return pages_link that is a array with some objects inside ...........................................................
                 }
-                else{
+                else{  // here total_number pages are more bigger than 8  ...........................
 
-                    if( pages_details.number_click == 1 ){
+                    if( pages_details.number_click == 1 ){ // check if number click is equals with one .............................................
 
-                        for( var i =1 ; i <= pages_details.number_click+6 ; i++ ){
+                        for( var i =1 ; i <= pages_details.number_click+7 ; i++ ){ // loop with number page
 
-                            if( i == pages_details.number_click ){
+                            if( i == pages_details.number_click ){ // check if  number_ click is equals with item in loop to add property active true .........
 
                                 this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
-                            }else{
+                            }else{ // pages not active .................................................
 
                                 this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
                             }
@@ -197,12 +193,13 @@ export class ClientProductsComponent implements OnInit,DoCheck {
                         }
                     }
                     else{
-                        if( pages_details.number_click == 2 ){
+
+                        if( pages_details.number_click == 2 ){  // check if number click is equals with two .............................................
 
                             this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
 
 
-                            for( var i =1 ; i <= pages_details.number_click+4 ; i++ ){
+                            for( var i =1 ; i <= pages_details.number_click+5 ; i++ ){
 
                                 if( i == pages_details.number_click ){
 
@@ -219,7 +216,7 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
                                 this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
 
-                                for( var i =1 ; i <= pages_details.number_click+3 ; i++ ){
+                                for( var i =1 ; i <= pages_details.number_click+4 ; i++ ){
 
                                     if( i == pages_details.number_click ){
 
@@ -253,9 +250,9 @@ export class ClientProductsComponent implements OnInit,DoCheck {
             } // end number click is smaller than 3 or equals ................
             else{ // here number click is bigger than 3 ................
 
-                if( pages_details.total_number > pages_details.number_click+2 ){
+                if( pages_details.total_number > pages_details.number_click+3 ){
 
-                    if( pages_details.number_click >= 5){
+                    if( pages_details.number_click > 5){
 
                         this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_rewind' ,'icon':true  });
                     }
@@ -265,7 +262,7 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
                     this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
 
-                    for(  var i = pages_details.number_click-1 ; i <= pages_details.number_click+2 ; i++ ){
+                    for(  var i = pages_details.number_click-2 ; i <= pages_details.number_click+3 ; i++ ){
 
                         if( i == pages_details.number_click ){
 
@@ -289,76 +286,170 @@ export class ClientProductsComponent implements OnInit,DoCheck {
                     return ;
                 }
                 else{
-                    if( pages_details.number_click >= 5 ){
+                    if( pages_details.total_number >= 10 ) {
 
-                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'fast_rewind' ,'icon':true  });
-                    }
-                    else{
+                        if (pages_details.number_click > 5) {
 
-                        this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
+                            this.pages_link.push({'page': 1, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'fast_rewind', 'icon': true});
+                        }
+                        else {
 
-                    }
-                    this.pages_link.push( {'page': 1 ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+                            this.pages_link.push({'page': 1, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'skip_previous', 'icon': true});
 
-                    if( pages_details.number_click+1 == pages_details.total_number ){
+                        }
+                        this.pages_link.push({'page': 1, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
 
-                        for( var i = pages_details.number_click-4 ; i <= pages_details.number_click ; i++ ){
+                        if ( pages_details.number_click + 1 == pages_details.total_number ) {
 
-                            if( i == pages_details.number_click ){
+                            for (var i = pages_details.number_click - 5; i <= pages_details.total_number; i++) {
 
-                                this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+                                if (i == pages_details.number_click) {
+
+                                    this.pages_link.push({'page': i, 'active': true, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+
+                                } else {
+
+                                    this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false
+                                    });
+                                }
+                            }
+                        } else {
+                            if ( pages_details.number_click == pages_details.total_number ) {
+
+                                for (var i = pages_details.number_click - 7; i <= pages_details.total_number; i++) {
+
+                                    if (i == pages_details.number_click) {
+
+                                        this.pages_link.push({'page': i, 'active': true, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+
+                                    } else {
+
+                                        this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false
+                                        });
+                                    }
+                                }
+                            }
+                            else {
+
+                                if( pages_details.number_click+3 == pages_details.total_number ){
+
+                                    for ( var i = pages_details.number_click - 3; i <= pages_details.total_number; i++) {
+
+                                        if (i == pages_details.number_click) {
+
+                                            this.pages_link.push({'page': i, 'active': true, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+
+                                        } else {
+
+                                            this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+                                        }
+                                    }
+
+                                }
+                                else{
+                                    for ( var i = pages_details.number_click - 4; i <= pages_details.total_number; i++) {
+
+                                        if (i == pages_details.number_click) {
+
+                                            this.pages_link.push({'page': i, 'active': true, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+
+                                        } else {
+
+                                            this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+                                        }
+                                    }
+
+                                }
+
+                            }
+                        }
+
+                        if (pages_details.number_click != pages_details.total_number) {
+
+                            this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'skip_next', 'icon': true});
+
+                        }
+
+                        return;
+
+                    }else{
+
+                        if (pages_details.number_click > 5) {
+
+                            this.pages_link.push({'page': 1, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'fast_rewind', 'icon': true});
+                        }
+                        else {
+
+                            this.pages_link.push({'page': 1, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'skip_previous', 'icon': true});
+
+                        }
+                        this.pages_link.push({'page': 1, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+
+
+                        if( pages_details.total_number <= 8 ){
+
+                            for ( var i = 2; i <= pages_details.total_number; i++) {
+
+                                if (i == pages_details.number_click) {
+
+                                    this.pages_link.push({'page': i, 'active': true, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+
+                                } else {
+
+                                    this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+                                }
+                            }
+
+                        }else{
+
+                            if( pages_details.total_number != pages_details.number_click ){
+
+                                for ( var i = 3; i <= pages_details.total_number; i++) {
+
+                                    if (i == pages_details.number_click) {
+
+                                        this.pages_link.push({'page': i, 'active': true, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+
+                                    } else {
+
+                                        this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+                                    }
+                                }
 
                             }else{
 
-                                this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
-                            }
-                        }
-                    }else{
-                        if( pages_details.number_click == pages_details.total_number  ){
+                                for ( var i = 2; i <= pages_details.total_number; i++) {
 
-                            for( var i = pages_details.number_click-6 ; i <= pages_details.total_number ; i++ ){
+                                    if (i == pages_details.number_click) {
 
-                                if( i ==  pages_details.number_click ){
+                                        this.pages_link.push({'page': i, 'active': true, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
 
-                                    this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+                                    } else {
 
-                                }else{
-
-                                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
+                                        this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'x', 'icon': false});
+                                    }
                                 }
-                            }
-                        }
-                        else{
-                            for( var i = pages_details.number_click-3 ; i <= pages_details.total_number ; i++ ){
 
-                                if( i ==  pages_details.number_click ){
-
-                                    this.pages_link.push( {'page': i ,'active': true , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
-
-                                }else{
-
-                                    this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'x' ,'icon':false  });
-                                }
                             }
 
                         }
-                    }
 
 
-                    if( pages_details.number_click != pages_details.total_number ){
+                        if (pages_details.number_click != pages_details.total_number) {
 
-                        this.pages_link.push( {'page': i ,'active': false , 'type_link':pages_details.type_link ,'icon_material':'skip_previous' ,'icon':true  });
+                            this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'skip_next', 'icon': true});
+
+                        }
+
+                        return;
 
                     }
-
-                    return ;
                 }
             }
-        }
+
+    } // End function that build pages link ........................................................
 
 
-
-    }
     add_wish_list( product_data ){  // function to add product in wishList
 
         this.status_in_wish = false; // status to find  if this  product is in wish......
@@ -442,19 +533,20 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
 
 // mouse hover add wishlist active variable that make hearts small and bit .............................
-          $('.hover_all_wish').on('mouseenter',function(){
-              $(this).find('.wish_list').addClass('wish_list_hover') ;
+          $('body').on('mouseenter','.hover_all_wish',function(){
 
+              $(this).find('.wish_list').addClass('wish_list_hover') ;
               id_wish = $(this).attr('id');
               wish_list_active_pass=1;
               small_big=1;
+
           }); // ens .........................................
 
 
           // mouse leave from add wishlist into the products remove all variable that make hearts small and big .......................................
           $('body').on('mouseleave','.hover_all_wish',function(){
-              $(this).find('.wish_list').removeClass('wish_list_hover');
 
+              $(this).find('.wish_list').removeClass('wish_list_hover');
               id_wish = $(this).attr('id');
               small_big=0;
               wish_list_active_pass=0;
