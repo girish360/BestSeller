@@ -1,6 +1,21 @@
 
 /* begin css for container .........................................*/
+@keyframes MyAnimation {
+    0% {
+        position: relative;
+         opacity: 0;
+        top:30px;
+    }
+    100% {
+        position: relative;
+        opacity: 1;
+        top:0px;
+    }
+}
 
+.products-animation {
+    animation: MyAnimation 1s;
+}
 
 .pagination_containerleft{
     display: none;
@@ -221,17 +236,19 @@ margin-left: -8px;
 
     width:100%;
     z-index: 3 !important;
-    height: 35px;
+    height: 36px;
     background-color:#E6E6FA;
     margin-top: 8px;
-    border-bottom-right-radius: 5px ;
-    border-bottom-left-radius:5px ;
+
 
 
 }
 .inside_option_products{
     width: 100%;
-    margin:0px auto;
+    position: relative;
+    top:3px;
+
+
 
 }
 
@@ -242,7 +259,7 @@ margin-left: -8px;
     position: -ms-sticky;
     position: -o-sticky;
     position: sticky;
-    top: 37px;
+    top: 40px;
 
 
 
@@ -369,14 +386,22 @@ margin-left: -8px;
     min-width: 30px;
     height: 30px;
     background-color:transparent;
-    -webkit-box-shadow: 0px 3px 1px 0px rgba(158,156,158,1);
-    -moz-box-shadow: 0px 3px 1px 0px rgba(158,156,158,1);
-    box-shadow: 0px 3px 1px 0px rgba(158,156,158,1);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(173,166,173,1);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(173,166,173,1);
+    box-shadow: 0px 0px 3px 0px rgba(173,166,173,1);
 
-    margin-left: 5px;
+    margin-left: 0px;
 }
 .mat-button:hover{
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+}
+.button_pagination_products{
+    margin-left: 7px;
+}
+
+.mat-icon ,.write_page{
+    position: relative;
+    top:-3px;
 }
 .active_products_page{
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
@@ -421,13 +446,7 @@ margin-left: -8px;
 
 
     }
-    .option_products{
 
-
-        border-bottom-right-radius: 0px ;
-        border-bottom-left-radius:0px ;
-
-    }
 
 }
 

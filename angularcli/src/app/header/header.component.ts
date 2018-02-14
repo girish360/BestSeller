@@ -25,7 +25,6 @@
 
     styleUrls: ['./header.component.css'],
 
-
      animations: [
         trigger('wishList_animations', [
             transition('* => void', [

@@ -11,12 +11,27 @@ import { HttpService } from '../services/http.service';
 
 import { DataService } from '../services/data.service';
 
+import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
+
 declare  var $:any;
 
 @Component({
   selector: 'app-client-products',
   templateUrl: './client-products.component.html',
-  styleUrls: ['./client-products.component.css']
+  styleUrls: ['./client-products.component.css'],
+
+    animations: [
+        trigger('products_animations', [
+
+            transition('void => active', [
+                style({ height: '0', opacity: '0', transform: 'translateX(40px)', 'box-shadow': 'none' }),
+                sequence([
+                    animate(".1s ease", style({ height: '*', opacity: '.2', transform: 'translateX(20px)', 'box-shadow': 'none'  })),
+                    animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)'  }))
+                ])
+            ])
+        ])
+    ]
 
 })
 
@@ -42,9 +57,6 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
         this.wishList_products = this.dataservices.wishlist;
 
-        this.products = this.dataservices.products['products'];
-
-
     }
 
     public  products = [] ;
@@ -68,6 +80,8 @@ export class ClientProductsComponent implements OnInit,DoCheck {
     public pages_details;
 
     public send_data_products={};
+
+
 
     click_pages( click_details ){
 
@@ -122,9 +136,11 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
                 data => {
 
-                    if (data['status'] == 'products') {
+                    if ( data['status'] == 'products') {
 
                         this.dataservices.products = data['data'];
+
+                        this.products = data['data']['products'];
 
                         this.build_pages_link(data['data']['pages_details']);
 

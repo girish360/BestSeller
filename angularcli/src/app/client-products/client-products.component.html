@@ -11,10 +11,11 @@
 
 
 
-                    <button mat-button class="button_pagination_products">
+                    <button mat-button >
 
-                          {{get_Language.page_products + pages_details.number_click}} {{get_Language.total_page_products}} {{pages_details.total_number}}
-
+                          <div class="write_page">
+                              {{get_Language.page_products + pages_details.number_click}} {{get_Language.total_page_products}} {{pages_details.total_number}}
+                          </div>
                     </button>
 
 
@@ -33,7 +34,12 @@
 
                                   <button mat-button class="button_pagination_products"  [ngClass]="{'active_products_page': page.active == true}" (click)=" click_pages(  page ) ">
 
-                                      {{page.page}}
+                                      <div class="write_page">
+
+                                            {{page.page}}
+
+                                      </div>
+
 
                                   </button>
 
@@ -72,11 +78,9 @@
 
         <div class="all_prod" >
 
-        <div class="width_products " *ngFor="let product of products"  >
+        <div class="width_products  products-animation " *ngFor="let product of products"  >
 
-
-
-          <div class="each_width_product" >
+            <div class="each_width_product" >
 
             <a href='#'>
               <div class="title_products more_detail_product" >

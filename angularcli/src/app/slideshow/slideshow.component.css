@@ -2,9 +2,6 @@
 
 .slide_width{
 
-    border-radius: 3px;
-    border:1px solid;
-    border-color:#d6d6c2;
     margin: 0px auto;
 }
 
@@ -36,9 +33,9 @@ position: relative;
 .forward , .forward_fixed{
     position: absolute;
     right: 0px;
-    top: 1px;
+    top: 0px;
     width: 5px;
-    height: 298px;
+    height: 300px;
     background-color: #004080;
 
     display: inline-block;
@@ -46,24 +43,22 @@ position: relative;
 .forward_hover{
     position: absolute;
     right: 0px;
-    top: 1px;
+    top: 0px;
     width: 5px;
-    height: 298px;
+    height: 300px;
     transition: 0.5s;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+
     display: inline-block;
 
 }
 .backward ,.backward_fixed{
     position: absolute;
     left: 0px;
-    top: 1px;
+    top: 0px;
     width: 5px;
-    height: 298px;
+    height: 300px;
     background-color: #004080;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+
     display: inline-block;
 
 
@@ -72,12 +67,11 @@ position: relative;
 .backward_hover {
     position: absolute;
     left: 0px;
-    top: 1px;
+    top: 0px;
     width: 5px;
-    height: 298px;
+    height: 300px;
     transition: 0.5s;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+
     display: inline-block;
 
 
@@ -115,21 +109,6 @@ position: relative;
 
 }
 
-.forward_position:hover .red_forward ,.backward_position:hover .red_forward{
-    transition: 0.5s;
-    color: red;
-}
-
-.red_forward{
-    transition: 0.5s;
-    color:red;
-}
-.backward_hover:hover .red_forward{
-    background-color: #004080;
-}
-.forward_hover:hover .red_forward{
-    background-color: #004080;
-}
 
 .icon_backward {
 
@@ -153,7 +132,7 @@ position: relative;
 
 }
 .sliders:hover .backward{
-    transition: 0.5s;
+    transition: 0.2s;
     width: 50px;
     height: 100px;
     margin-top: 100px;
@@ -164,7 +143,7 @@ position: relative;
     box-shadow: 23px 0px 36px -10px rgba(0,0,0,0.75);
 }
 .sliders:hover .forward{
-    transition: 0.5s;
+    transition: 0.2s;
     width: 50px;
     height: 100px;
     opacity: 0.4;
@@ -175,8 +154,8 @@ position: relative;
 }
 
 .sliders:hover .backward_hover{
-    transition: 0.5s;
-    width: 8%;
+    transition: 0.4s;
+    width: 50px;
     height: 100px;
     margin-top: 100px;
 
@@ -184,8 +163,11 @@ position: relative;
 
 }
 .sliders:hover .forward_hover{
-    transition: 0.5s;
-    width: 8%;
+
+    transition: 0.4s;
+
+    width: 50px;
+
     height: 100px;
 
     margin-top: 100px;

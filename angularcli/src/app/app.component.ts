@@ -50,7 +50,7 @@ export class AppComponent implements OnInit{
 
                 }
 
-                if( scroll_top > 380 ){ // scroll for option_products ................
+                if( scroll_top >= 380 ){ // scroll for option_products ................
 
                     if( scroll_status == false ) {
 
