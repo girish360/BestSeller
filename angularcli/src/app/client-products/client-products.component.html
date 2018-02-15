@@ -1,249 +1,302 @@
 
+ <div class="component-animation"> <!--  this component is inside this div  ...................................................... -->
 
-        <app-slideshow></app-slideshow>
+     <app-slideshow></app-slideshow>
 
+     <div class="option_products ">  <!--  Options products pagination ,  select  ...................................................... -->
 
-        <div class="option_products ">
+         <div class="inside_option_products">
 
-            <div class="inside_option_products">
+             <span class="left_option_products inline-block">
 
-                <span class="left_option_products inline-block">
+                 <button mat-button >
 
+                     <div class="write_page">
+                         {{get_Language.page_products + pages_details.number_click}} {{get_Language.total_page_products}} {{pages_details.total_number}}
+                     </div>
 
+                 </button>
 
-                    <button mat-button >
+             </span>
 
-                          <div class="write_page">
-                              {{get_Language.page_products + pages_details.number_click}} {{get_Language.total_page_products}} {{pages_details.total_number}}
-                          </div>
-                    </button>
+             <span class="inner_option_products inline-block">
 
+                 <div class="pagination_products">
 
+                     <span class="page_products" *ngFor="let page of pages_link">
 
-                </span>
+                         <ng-container *ngIf="page.icon == false ; else notNumber">
 
-                <span class="inner_option_products inline-block">
+                             <button mat-button class="button_pagination_products"  [ngClass]="{'active_products_page': page.active == true}" (click)=" click_pages(  page ) ">
 
-                      <div class="pagination_products">
+                                 <div class="write_page">
 
+                                     {{page.page}}
 
-                          <span class="page_products" *ngFor="let page of pages_link">
+                                 </div>
 
-                              <ng-container *ngIf="page.icon == false ; else notNumber">
+                             </button>
 
+                         </ng-container>
 
-                                  <button mat-button class="button_pagination_products"  [ngClass]="{'active_products_page': page.active == true}" (click)=" click_pages(  page ) ">
+                         <ng-template #notNumber>
 
-                                      <div class="write_page">
+                             <button mat-button class="button_pagination_products" (click)=" click_pages(  page )">
 
-                                            {{page.page}}
+                                 <mat-icon>{{page.icon_material}}</mat-icon>
 
-                                      </div>
+                             </button>
 
+                         </ng-template>
 
-                                  </button>
+                     </span>
 
+                 </div>
 
-                              </ng-container>
+             </span>
 
-                              <ng-template #notNumber>
+             <span class="right_option_products inline-block">
 
-                                  <button mat-button class="button_pagination_products" (click)=" click_pages(  page )">
+                 <mat-icon>home</mat-icon>
 
-                                      <mat-icon>{{page.icon_material}}</mat-icon>
+             </span>
 
-                                  </button>
+         </div>
 
-                              </ng-template>
+     </div>
 
-
-
-                          </span>
-
-                      </div>
-                </span>
-
-                <span class="right_option_products inline-block">
-
-                    <mat-icon>home</mat-icon>
-
-                </span>
-
-            </div>
-
-        </div>
-
-
-
-
-        <div class="all_prod" >
+     <div class="all_prod"> <!--  start div with products ...................................................... -->
 
         <div class="width_products  products-animation " *ngFor="let product of products"  >
 
             <div class="each_width_product" >
 
-            <a href='#'>
-              <div class="title_products more_detail_product" >
-               {{product.title }}
-              </div>
-            </a>
-            <div class="dropdown_products">
-              <span class="glyphicon glyphicon-chevron-down"></span>
-            </div>
+                <a href='#'>
 
-            <div class="date_products">
-              <span class='glyphicon glyphicon-time'></span> {{product.date}}
-            </div>
+                    <div class="title_products more_detail_product" >
 
-              <span *ngFor="let company of product['adminat']">
+                        {{product.title }}
 
-                   <a (click)="encrypt_id(company.id)"  href="#">
+                    </div>
 
-                       <div class="own_img_product">
+                </a>
 
-                       </div>
+                <div class="dropdown_products">
 
-                       <div class="image_profile_company ">
-                             <img  class="image_prof_admin" src="../../assets/images/products_image/{{company.imageprofile}}">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+
+                </div>
+
+                <div class="date_products">
+
+                    <span class='glyphicon glyphicon-time'></span> {{product.date}}
+
+                </div>
+
+                <span *ngFor="let company of product['adminat']">
+
+                    <a (click)="encrypt_id(company.id)"  href="#">
+
+                        <div class="own_img_product">
+
                         </div>
 
-                   </a>
+                        <div class="image_profile_company ">
 
-              </span>
+                            <img  class="image_prof_admin" src="../../assets/images/products_image/{{company.imageprofile}}">
 
-             <a href="#" (click)="product_details( product.id )">
-                 <div class="image_product_primary  ">
-                     <img class="image_product img_primary_product{{product.id}}" src="../../assets/images/products_image/{{product.image}}">
-                  </div>
-             </a>
-
-            <a href="#" class="hover_all_wish" id="wish_list{{product.id}}" (click)="add_wish_list(product)">
-              <div class="wish_list">
-              </div>
-              <div class="about_wish notCloseDropdawnFavorite notClosepointerHeader" id="{{product.id}}">
-
-                  <div class="wish_list_write">
-
-                    <div class="plus_icon">{{get_Language.add_wishlist}}</div>
-
-                  </div>
-
-                  <div class="wish_list_icon"  >
-
-                      <ng-container *ngIf="wishList_products.length > 0; else  emtyWish" >
-
-                          {{ update_status_wish() }}
-
-                          <div *ngFor="let wishes of wishList_products">
-
-                              <ng-container *ngIf="wishes.id == product.id;">
-
-                                  {{ set_status_wish() }}
-
-                              </ng-container>
-
-                          </div>
-
-                          <ng-container *ngIf=" status_in_wish == true; else notinwish ">
-
-                              <div class="success_add_wish"  >
-
-                                  <img  src="../../assets/images/ok.png">
-
-                              </div>
-
-                          </ng-container>
-
-                          <ng-template #notinwish >
-
-                              <ng-container *ngIf=" status_in_wish == true; else noinwish ">
-
-                                  <div class="success_add_wish"  >
-
-                                      <img  src="../../assets/images/ok.png">
-
-                                  </div>
-
-                              </ng-container>
-                              <ng-template #noinwish>
-
-                              <div class="hearts_div notClosepointerHeader"  >
-
-                                  <img  src="../../assets/images/hearts.png">
-
-                              </div>
-                              </ng-template>
-
-                          </ng-template>
-
-                      </ng-container>
-
-                      <ng-template #emtyWish>
-
-                          <div class="hearts_div notClosepointerHeader">
-                              <img  src="../../assets/images/hearts.png">
-                          </div>
-
-                      </ng-template>
-
-                  </div>
-              </div>
-            </a>
-
-            <div class="footer_products">
-                <span matTooltip="Views!">
-                    <a href="#">
-                       <div class="button_footer_products">
-
-                          <span class="glyphicon glyphicon-eye-open icon_eye"></span>
-
-                          <div class="both_write ">
-                             12889
-                          </div>
-                       </div>
-                    </a>
-                </span>
-
-                <span matTooltip="Add to your card">
-                    <a href="#" >
-
-                        <div class="button_footer_products">
-                             <span class="glyphicon glyphicon-plus icon_eye"></span>
-                             <div class="both_write ">
-                                 Card
-                             </div>
                         </div>
+
                     </a>
+
                 </span>
 
-                <span matTooltip="See Details!">
-                    <a href="#" (click)="product_details( product.id )">
-                        <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
-                             <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
-                             <div class="both_write ">
-                                 More
-                              </div>
+                <a href="#" (click)="product_details( product.id )">
+
+                    <div class="image_product_primary  ">
+
+                        <img class="image_product img_primary_product{{product.id}}" src="../../assets/images/products_image/{{product.image}}">
+
+                    </div>
+
+                </a>
+
+                <a href="#" class="hover_all_wish" id="wish_list{{product.id}}" (click)="add_wish_list(product)">
+
+                    <div class="wish_list">
+
+                    </div>
+
+                    <div class="about_wish notCloseDropdawnFavorite notClosepointerHeader" id="{{product.id}}">
+
+                        <div class="wish_list_write">
+
+                            <div class="plus_icon">{{get_Language.add_wishlist}}</div>
+
                         </div>
-                    </a>
-                </span>
+
+                        <div class="wish_list_icon"  >
+
+                            <ng-container *ngIf="wishList_products.length > 0; else  emtyWish" >
+
+                                {{ update_status_wish() }}
+
+                                <div *ngFor="let wishes of wishList_products">
+
+                                    <ng-container *ngIf="wishes.id == product.id;">
+
+                                        {{ set_status_wish() }}
+
+                                    </ng-container>
+
+                                </div>
+
+                                <ng-container *ngIf=" status_in_wish == true; else notinwish ">
+
+                                    <div class="success_add_wish"  >
+
+                                        <img  src="../../assets/images/ok.png">
+
+                                    </div>
+
+                                </ng-container>
+
+                                <ng-template #notinwish >
+
+                                    <ng-container *ngIf=" status_in_wish == true; else noinwish ">
+
+                                        <div class="success_add_wish"  >
+
+                                            <img  src="../../assets/images/ok.png">
+
+                                        </div>
+
+                                    </ng-container>
+
+                                    <ng-template #noinwish>
+
+                                        <div class="hearts_div notClosepointerHeader"  >
+
+                                            <img  src="../../assets/images/hearts.png">
+
+                                        </div>
+
+                                    </ng-template>
+
+                                </ng-template>
+
+                            </ng-container>
+
+                            <ng-template #emtyWish>
+
+                                <div class="hearts_div notClosepointerHeader">
+
+                                    <img  src="../../assets/images/hearts.png">
+
+                                </div>
+
+                            </ng-template>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <div class="footer_products">
+
+                    <span matTooltip="Views!">
+
+                        <a href="#">
+
+                            <div class="button_footer_products">
+
+
+
+                                <span class="glyphicon glyphicon-eye-open icon_eye"></span>
+
+
+
+                                <div class="both_write ">
+
+                                    12889
+
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    </span>
+
+                    <span matTooltip="Add to your card">
+
+                        <a href="#" >
+
+                            <div class="button_footer_products">
+
+                                <span class="glyphicon glyphicon-plus icon_eye"></span>
+
+                                <div class="both_write ">
+
+                                    Card
+
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    </span>
+
+                    <span matTooltip="See Details!">
+
+                        <a href="#" (click)="product_details( product.id )">
+
+                            <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
+
+                                <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
+
+                                <div class="both_write ">
+
+                                    More
+
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    </span>
+
+                </div>
+
+                <div class="prise_products">
+
+                    Price:
+
+                    <div class="both_prise_products prise_primary">
+
+                        <del>$2500</del>
+
+                    </div>
+
+                    <div class="both_prise_products prise_secondary">
+
+                        $3500
+
+                    </div>
+
+                </div>
+
+                <div class="plus_height"></div>
             </div>
-          <div class="prise_products">
-
-              Price:
-
-              <div class="both_prise_products prise_primary">
-                <del>$2500</del>
-              </div>
-              <div class="both_prise_products prise_secondary">
-                $3500
-              </div>
-
-          </div>
-
-          <div class="plus_height"></div>
         </div>
-      </div>
-        </div>
+
+     </div>
+
+ </div>
 
       <style type="text/css">
           /* styles unrelated to zoom */
@@ -276,6 +329,8 @@
 
           .zoom img::selection { background-color: transparent; }
         </style>
+
+
 
 
 

@@ -32,6 +32,8 @@ export class DataService {
 
   public categorys = [];
 
+  public status_menu = false;
+
   public products_from_server(){
 
       this.object ={'type': 'default', 'number_click': 1};

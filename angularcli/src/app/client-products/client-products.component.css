@@ -1,6 +1,10 @@
 
 /* begin css for container .........................................*/
-@keyframes MyAnimation {
+
+* { border:0; margin:0; padding:0; }
+
+
+@keyframes Products_Animation {
     0% {
         position: relative;
          opacity: 0;
@@ -14,8 +18,10 @@
 }
 
 .products-animation {
-    animation: MyAnimation 1s;
+    animation: Products_Animation 1s;
 }
+
+
 
 .pagination_containerleft{
     display: none;

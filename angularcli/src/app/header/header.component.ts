@@ -294,6 +294,8 @@
 
     }
 
+
+
     ngOnInit() {
 
         $(document).ready(function () {

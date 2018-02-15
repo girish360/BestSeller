@@ -4,7 +4,7 @@ class products extends Fetch_Data{
 
     public $all_products;
 
-    public $products_for_page=4;
+    public $products_for_page=15;
 
     public $products_limit;
 
