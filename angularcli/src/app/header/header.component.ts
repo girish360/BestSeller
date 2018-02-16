@@ -294,6 +294,12 @@
 
     }
 
+     check_status_menu(){
+
+        this.dataservices.status_menu = !this.dataservices.status_menu;
+
+     }
+
 
 
     ngOnInit() {
@@ -955,15 +961,11 @@
 
                     $('.response_outer').addClass(' active_menu ');
 
-                    $('.width_products').addClass('width_products_open_menu');
-
                     $('.listcategory').hide();
 
                     $('.closelist').show();
 
-
-
-                        $('.menu_left , .under_menu_left').animate({
+                       $('.menu_left , .under_menu_left').animate({
 
                             left: "0px",
 
@@ -1066,8 +1068,6 @@
                          $('.containerleft').removeClass('containerleft_new_openmenu');
 
                          $('.response_inner').removeClass(' response_inner_new ');
-
-                         $('.width_products').removeClass('width_products_open_menu');
 
                      },200);
 
