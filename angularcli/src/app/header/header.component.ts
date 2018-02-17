@@ -1,5 +1,5 @@
 
- import { Component, OnInit ,Input , Output , EventEmitter } from '@angular/core';
+ import { Component, OnInit ,Input , Output , EventEmitter,DoCheck } from '@angular/core';
 
  import { Injectable } from '@angular/core';
 
@@ -46,9 +46,9 @@
 
  })
 
- export class HeaderComponent implements OnInit {
+ export class HeaderComponent implements OnInit ,DoCheck  {
 
-    @Input() get_Language = {'id':'1'};
+    public get_Language = {};
 
     public wishList_products = [];
 
@@ -77,7 +77,14 @@
     constructor( private auth  : AuthService ,  private dataservices : DataService, private Httpservices : HttpService ) {
 
         this.wishList_products = this.dataservices.wishlist;
+
+        this.get_Language = this.dataservices.language
     }
+
+    ngDoCheck(){
+        this.get_Language = this.dataservices.language;
+    }
+
 
 
     public language_allow = [
@@ -90,18 +97,7 @@
 
     choose_language( language ){  //  function for update language ..........
 
-        this.Httpservices.create_obj( 'changeLanguage', language );
-
-        this.Httpservices.Http_Post()
-
-            .subscribe( language =>{
-
-                    this.get_Language = language;
-
-                    this.update_language( language )
-                }
-                ,error=>(console.log( error +'gabim' ))
-            );
+      this.dataservices.Make_Request_InServer( 'changeLanguage', language );
 
     }
 
@@ -132,9 +128,9 @@
             this.selected_wishList.splice(this.selected_wishList[i] , this.selected_wishList.length);
         }
 
-        this.Httpservices.create_obj('delete_itemFromCookie', this.Array_wishID_delete_wishlist ); // delete from server
+        this.dataservices.create_object_request('delete_itemFromCookie', this.Array_wishID_delete_wishlist);
 
-        this.Httpservices.Http_Post()
+        this.Httpservices.Http_Post(this.dataservices.object_request)
 
             .subscribe(data => {
 
@@ -282,9 +278,10 @@
     }
 
     insert(){
-         this.Httpservices.create_obj('insert',this.array_data_insert);
 
-         this.Httpservices.Http_Post().subscribe( response => {
+        this.dataservices.create_object_request('insert',this.array_data_insert);
+
+        this.Httpservices.Http_Post(this.dataservices.object_request).subscribe( response => {
 
              if( response['status'] =='insert' ){
 

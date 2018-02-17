@@ -69,7 +69,7 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     public get_Language :object={};
 
-    private Response;
+    public Response:any;
 
     public status_in_wish;
 
@@ -84,8 +84,6 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
 
     click_pages( click_details ){
-
-
 
         if( click_details.active != true ){ // check if is different from active page ...........
 
@@ -126,33 +124,15 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     get_page_products(){
 
+       let response = this.dataservices.Make_Request_InServer( 'products', this.send_data_products );
 
+       response.then( products_details =>{
 
-        this.Httpservice.create_obj('products', this.send_data_products);
+             this.products =  products_details['products'];
 
-        this.Httpservice.Http_Post()
+             this.build_pages_link( products_details['pages_details']) ;
 
-            .subscribe(
-
-                data => {
-
-                    if ( data['status'] == 'products') {
-
-                        this.dataservices.products = data['data'];
-
-                        this.products = data['data']['products'];
-
-                        this.build_pages_link(data['data']['pages_details']);
-
-                        this.pages_details = data['data']['pages_details'];
-
-                    }
-
-                },
-
-                error => (error : any) =>  { }
-            );
-
+        });
     }
 
     build_pages_link( pages_details ){ // that create pages link for products ...............................................................................
@@ -450,7 +430,6 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
                         }
 
-
                         if (pages_details.number_click != pages_details.total_number) {
 
                             this.pages_link.push({'page': i, 'active': false, 'type_link': pages_details.type_link, 'icon_material': 'skip_next', 'icon': true});
@@ -458,7 +437,6 @@ export class ClientProductsComponent implements OnInit,DoCheck {
                         }
 
                         return;
-
                     }
                 }
             }
@@ -485,9 +463,10 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
             this.dataservices.update_wishList( this.wishList_products); // change wish list in services   that get this  when change component with router outlet
 
-            this.Httpservice.create_obj( 'add_wishProduct', product_data.id ); //  create obj to change this in server
 
-            this.Httpservice.Http_Post() // make request ......
+            this.dataservices.create_object_request( 'add_wishProduct', product_data.id );
+
+            this.Httpservice.Http_Post( this.dataservices.object_request) // make request ......
 
                 .subscribe( //  take success
                     data => {

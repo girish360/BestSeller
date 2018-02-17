@@ -93,24 +93,25 @@ import {
 
 export function initProducts( configService: DataService ): Function {
 
-  return () => configService.products_from_server(); // makes http request and returns Promise correctly
+  return () => configService.Make_Request_InServer( 'products' , { 'type': 'default', 'number_click': 1 } ); // makes http request and returns Promise correctly
 
 }
 
 export function initLanguage ( configService: DataService ):Function {
 
-    return () => configService.language_from_server();
+  return () => configService.Make_Request_InServer( 'language', '1' );
+
 }
 
 export function initCategory ( configService: DataService ):Function {
 
-  return () => configService.category_from_server();
+  return () => configService.Make_Request_InServer( 'category', 'category' );
 
 }
 
 export function initWishlist ( configService: DataService ):Function {
 
-  return () => configService.wishlist_from_server();
+  return () => configService.Make_Request_InServer( 'get_wishList', 'wish' );
 
 }
 

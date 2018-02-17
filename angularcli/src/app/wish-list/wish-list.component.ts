@@ -89,16 +89,18 @@ export class WishListComponent implements OnInit,DoCheck {
       this.selected_wishList.splice(this.selected_wishList[i] , this.selected_wishList.length);
     }
 
-    this.Httpservices.create_obj('delete_itemFromCookie', this.Array_wishID_delete_wishlist ); // delete from server
+    this.dataservices.create_object_request('delete_itemFromCookie', this.Array_wishID_delete_wishlist )
 
-    this.Httpservices.Http_Post()
+    this.Httpservices.Http_Post(this.dataservices.object_request)
 
         .subscribe(data => {
 
               if (data['status'] == 'delete_itemFromCookie') {
 
-                this.Response = data['data'] , console.log( data['data'])
+                this.Response = data['data'] ;
+
               }
+
             }
             , error => (console.log(error['data']))
         );

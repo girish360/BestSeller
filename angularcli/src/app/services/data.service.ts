@@ -24,100 +24,76 @@ export class DataService {
 
   public products = [];
 
+  public Response:any;
+
   public pages:any;
 
   public response_database;
 
-  public object = {};
+  public object_request = {};
 
   public categorys = [];
 
   public status_menu = false;
 
-  public products_from_server(){
+  public  create_object_request( status , value ) {
 
-      this.object ={'type': 'default', 'number_click': 1};
+      this.object_request = { status: status , value: value };
 
-        this.httpservice.create_obj('products', this.object);
-
-        return new Promise((resolve, reject) => {
-
-            this.httpservice.Http_Post()
-
-                .subscribe(
-
-                    data => {
-
-                        if (data['status'] == 'products') {
-
-                            this.products = data['data'];
-
-                            resolve(true);
-
-                        }
-
-                    },
-
-                    error => (error : any) =>  { reject(false); }
-                );
-        });
   }
 
+  public Make_Request_InServer(  status , value ){ // method that get response from http method  with promise ( resolve  and reject )
 
-  category_from_server(){
+    this.object_request = { status: status , value: value };
 
-        this.httpservice.create_obj( 'category','category' );
+    return new Promise( ( resolve , reject ) => {
 
-      return new Promise((resolve, reject) => {
+        this.httpservice.Http_Post( this.object_request )
 
-          this.httpservice.Http_Post()
+            .subscribe(
 
-              .subscribe(
-                  data => {
+                data => {
 
-                      if (data['status'] == 'category') {
+                    this.check_response( data );
 
-                          this.categorys = data['data']
+                    resolve( data['data'] );
 
-                          resolve(true);
-                      }
-                  },
+                },
 
-                  error => {reject(false)}
-              );
-      });
+                error => (error : any) =>  { reject( false ); }
+
+            );
+    });
+
   }
 
+    check_response( data ){
 
-  wishlist_from_server(){ // take wish list from  server ............
+      if ( data['status'] == 'products' ) {
 
-      this.httpservice.create_obj( 'get_wishList', 'wish' );
+          this.products = data['data'];
+      }
 
-      return new Promise((resolve, reject) => {
+      else if (data['status'] == 'category') {
 
-          this.httpservice.Http_Post()
+          this.categorys = data['data']
+      }
 
-              .subscribe(
+      else if (data['status'] == 'get_wishList') {
 
-                  data => {
+          if (data['data'] != 'false') {
 
-                      if (data['status'] == 'get_wishList') {
+              this.wishlist = data['data'];
 
-                          resolve(true);
+          }
+      }
 
-                          if (data['data'] != 'false') {
+      else if( data['status']=='language' ) {
 
-                              this.wishlist = data['data'];
+          this.language = data['data'];
 
-                          }
 
-                      }
-
-                  },
-
-                  error => {reject(false)}
-              );
-      });
+      }
   }
 
   update_wishList( new_wish ){
@@ -129,31 +105,6 @@ export class DataService {
 
       this.language = new_language;
   }
-
-
-  language_from_server(){  // method that get language from server ......
-
-      return new Promise( ( resolve, reject ) => {
-
-          this.httpservice.create_obj('language', '1'); // create objet that send to backend with http
-
-          const lang = this.httpservice.Http_Post(); // call method that make request .....
-
-          lang.subscribe(data => {
-
-                  this.language = data
-
-                   resolve(true);
-
-              }
-
-              , error => (  reject(true) ) );
-      });
-
-  }
-
-
-
 
 }
 
