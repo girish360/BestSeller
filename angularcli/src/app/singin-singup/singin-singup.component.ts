@@ -1,6 +1,10 @@
 import { Component, OnInit} from '@angular/core';
+
 import {FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+
 import {ErrorStateMatcher} from '@angular/material/core';
+
+import { DataService } from '../services/data.service';
 
 declare var $:any;
 
@@ -24,35 +28,44 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class SinginSingupComponent implements OnInit {
 
-  public client_account = true;
+    constructor( private dataservices : DataService ) {
 
-  public business_account = false;
+    }
 
-  public check_email_loading = false;
+    public login_property ={
 
-  public button_login:boolean;
+        'client_account':true ,
+        'business_account':false,
+        'check_email_loading':false,
+        'button_login':false,
+        'write_type_login':'Client login',
+        'click_login_button':false
 
-  public write_type_login = ' Client login';
+    };
 
-  public value_email;
+    public user_detail = {
 
-  public click_login_button=false;
+        'username':'',
+        'password':'',
+        'type_login':''
+
+    };
+
+
 
   emailFormControl = new FormControl('', [
+
     Validators.required,
     Validators.email,
+
   ]);
 
   matcher = new MyErrorStateMatcher();
-
-  constructor() { }
 
 
 
 
   ngOnInit() {
-
-
 
 
   }
@@ -61,23 +74,23 @@ export class SinginSingupComponent implements OnInit {
 
       if( type_account == 'client' ){
 
-         if( this.client_account != true ){
+         if( this.login_property.client_account != true ){
 
-           this.client_account = !this.client_account;
+           this.login_property.client_account = !this.login_property.client_account;
 
-           this.business_account = !this.business_account;
+           this.login_property.business_account = !this.login_property.business_account;
 
-           this.write_type_login = 'Client login';
+           this.login_property.write_type_login = 'Client login';
          }
          return;
       }
-      if( this.business_account != true ){
+      if( this.login_property.business_account != true ){
 
-        this.client_account = !this.client_account;
+        this.login_property.client_account = !this.login_property.client_account;
 
-        this.business_account = !this.business_account;
+        this.login_property.business_account = !this.login_property.business_account;
 
-        this.write_type_login = 'Business login';
+        this.login_property.write_type_login = 'Business login';
       }
   }
 
@@ -85,22 +98,28 @@ export class SinginSingupComponent implements OnInit {
 
     if( !this.emailFormControl.hasError('email') && !this.emailFormControl.hasError('required') ){
 
-        if(this.click_login_button == false){
-           this.button_login = false;
+        if(this.login_property.click_login_button == false){
+
+           this.login_property.button_login = false;
+
         }else{
-          this.button_login = true;
+
+          this.login_property.button_login = true;
+
         }
+
         return;
      }
-     this.button_login = true;
+     this.login_property.button_login = true;
   }
 
   get_email(email){
-alert(email.value);
-   this.click_login_button = true;
-   this.check_email_loading = true;
 
+         alert(email.value);
 
+         this.login_property.click_login_button = true;
+
+         this.login_property.check_email_loading = true;
 
   }
 

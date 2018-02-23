@@ -41,6 +41,13 @@ time, mark, audio, video {
     animation: component_Animation 1s;
 }
 
+.glyphicon{
+    font-size: 24px;
+    position: relative;
+    top:0px;
+
+}
+
 .response_outer{
 
     width: calc(100% - 50px);
@@ -57,6 +64,17 @@ time, mark, audio, video {
     margin: 0px auto;
 
 
+}
+.button{
+
+    background-color: cornflowerblue;
+
+
+}
+
+.button span{
+
+    color:white;
 }
 
 @media only screen and (max-width: 1050px) {
@@ -156,16 +174,30 @@ a{
 }
 
 
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
 
+    border-color: slategrey;
+
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+    background-color:slategrey ;
+}
 
 
 
 .mat-tab-label{
 
     width: 50%;
+
     max-height: 35px;
+
     background-color: white;
 }
+.label_tab{
+    position: relative;
+    top:-6px;
+}
+
 .mat-tab-label:hover,.mat-tab-label:hover span{
     color: #004080;
 }
@@ -213,6 +245,14 @@ input[name='search']:focus , input[name='search_wish']:focus{
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
 
+}
+
+.header_div{
+    background-color: white;
+}
+
+.body_div{
+    background-color: #F5F5F5;
 }
 
 

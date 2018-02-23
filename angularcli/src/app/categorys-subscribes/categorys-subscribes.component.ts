@@ -2,8 +2,6 @@ import { Component, OnInit , AfterViewInit , Input, NgZone ,DoCheck  } from '@an
 
 import { RouterModule, Router , } from '@angular/router';
 
-import { HttpService } from '../services/http.service';
-
 import { DataService } from '../services/data.service';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
@@ -15,7 +13,7 @@ import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 })
 export class CategorysSubscribesComponent implements OnInit , DoCheck {
 
-  constructor(  private dataservices:DataService , private router:Router, private Httpservice : HttpService , private crypto: EncryptDecryptService) {
+  constructor(  private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
 
 
       this.get_Language = this.dataservices.language;

@@ -5,7 +5,7 @@
 
         <div class="write_above_header">
 
-            <div class="left_above_header" (click)="insert()">
+            <div class="left_above_header" (click)="authe()">
 
                 BestSeller
 
@@ -369,14 +369,16 @@
 
                             <mat-tab>
 
-                                <ng-template mat-tab-label>
+                                <ng-template mat-tab-label class="hearts_div">
                                     <mat-icon>
                                         <span class="glyphicon glyphicon-globe"></span>
                                     </mat-icon>
-                                    Language
-                                </ng-template><br>
+                                    <div class="label_tab inline-block">
+                                        Language
+                                    </div>
+                                </ng-template>
 
-                                <div class="body_more">
+                                <div class="body_more body_div">
 
                                     <div class="choose" style="color:gray; text-align: left; position: relative; left: 10px;">
                                         <h2>{{get_Language.choselanguage}}</h2>
@@ -414,7 +416,7 @@
 
                                                             <mat-radio-group>
 
-                                                                <mat-radio-button color="primary" class="radiolang"  value="1" [checked]="current_language(language.id)"  >
+                                                                <mat-radio-button class="radiolang"  value="1" [checked]="current_language(language.id)"  >
 
                                                                 </mat-radio-button>
 
@@ -436,14 +438,16 @@
 
                             <mat-tab>
 
-                                <ng-template mat-tab-label>
+                                <ng-template mat-tab-label class="header_div">
                                     <mat-icon>
                                         <span class="glyphicon glyphicon-log-in"></span>
                                     </mat-icon>
+                                    <div class="label_tab inline-block">
                                     Sing In
-                                </ng-template><br>
+                                    </div>
+                                </ng-template>
 
-                                <div class="body_more">
+                                <div class="body_more body_div">
                                 shaba
 
                                 </div>
@@ -452,15 +456,17 @@
 
                             <mat-tab>
 
-                                <ng-template mat-tab-label>
+                                <ng-template mat-tab-label class="header_div">
                                     <mat-icon>
                                         <span class="glyphicon glyphicon-log-in"></span>
                                     </mat-icon>
+                                    <div class="label_tab inline-block">
                                     Sing In
+                                    </div>
 
-                                </ng-template><br>
+                                </ng-template>
 
-                                <div class="body_more">
+                                <div class="body_more body_div">
 
                                 gentian
 
@@ -470,16 +476,17 @@
 
                             <mat-tab>
 
-                                <ng-template mat-tab-label>
+                                <ng-template mat-tab-label class="header_div">
                                     <mat-icon>
                                         <span class="glyphicon glyphicon-log-in"></span>
                                     </mat-icon>
-
+                                    <div class="label_tab inline-block">
                                     Sing In
+                                    </div>
 
-                                </ng-template><br>
+                                </ng-template>
 
-                                <div class="body_more">
+                                <div class="body_more body_div">
 
                                 ashtru
 
@@ -502,7 +509,7 @@
 
                 <div class="dropcard notClosepointerHeader notCloseDropdawnCard">
 
-                    <div class="top_wish">
+                    <div class="top_wish  hearts_div">
                         <div class="width_height_top_wish">
                             <div class="all_top_div_wish">
                                  <span class="width_top_wish">
@@ -568,7 +575,7 @@
                         </div>
                     </div>
 
-                    <div class="body_wish body_cart">
+                    <div class="body_wish body_cart body_div">
 
 
 
@@ -578,7 +585,7 @@
 
                 <div class="dropfavority notCloseDropdawnFavorite notClosepointerHeader">
 
-                    <div class="top_wish">
+                    <div class="top_wish header_div">
                         <div class="width_height_top_wish">
                             <div class="all_top_div_wish">
                                  <span class="width_top_wish">
@@ -644,7 +651,7 @@
                         </div>
                     </div>
 
-                    <div class="body_wish">
+                    <div class="body_wish  body_div">
 
                         <div  *ngFor="let wish_product of wishList_products | filter: filter_wish "  [@wishList_animations]="active">
 

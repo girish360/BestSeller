@@ -3,13 +3,9 @@
 
  import { Injectable } from '@angular/core';
 
- import { HttpService } from '../services/http.service';
-
  import 'rxjs/add/observable/bindCallback';
 
  import { DataService } from '../services/data.service';
-
- import { AuthService } from '../services/auth.service';
 
  import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
@@ -48,7 +44,7 @@
 
  export class HeaderComponent implements OnInit ,DoCheck  {
 
-    public get_Language = {};
+    public get_Language:any = {};
 
     public wishList_products = [];
 
@@ -74,7 +70,7 @@
 
     public array_data_insert ={'title':'klodia','description':'shitet','id_image':'1','id_category':'1','id_admin':'1','price':'800','quantity':'5','image':'klo.jpg'};
 
-    constructor( private auth  : AuthService ,  private dataservices : DataService, private Httpservices : HttpService ) {
+    constructor( private dataservices : DataService) {
 
         this.wishList_products = this.dataservices.wishlist;
 
@@ -115,9 +111,10 @@
 
             var index = this.wishList_products.indexOf( this.selected_wishList[i] );
 
-            this.Array_wishID_delete_wishlist.push(this.selected_wishList[i].id);
+            this.Array_wishID_delete_wishlist.push( this.selected_wishList[i].id );
 
             if( index  > -1 ){
+
                 this.wishList_products.splice( index , 1 );
             }
 
@@ -125,22 +122,17 @@
 
         for( var i = 0 ; i < this.selected_wishList.length ; i ++ ){
 
-            this.selected_wishList.splice(this.selected_wishList[i] , this.selected_wishList.length);
+            this.selected_wishList.splice( this.selected_wishList[i] , this.selected_wishList.length );
         }
 
-        this.dataservices.create_object_request('delete_itemFromCookie', this.Array_wishID_delete_wishlist);
 
-        this.Httpservices.Http_Post(this.dataservices.object_request)
+        this.Response = this.dataservices.Make_Request_InServer('delete_itemFromCookie', this.Array_wishID_delete_wishlist);
 
-            .subscribe(data => {
+        this.Response.then( response =>{
 
-                    if (data['status'] == 'delete_itemFromCookie') {
+            this.Response = response;
 
-                        this.Response = data['data'] , console.log( data['data'])
-                    }
-                }
-                , error => (console.log(error['data']))
-            );
+        });
 
         this.check_button_deleteProducts_fromwishlist();
 
@@ -277,17 +269,16 @@
         return '';
     }
 
-    insert(){
 
-        this.dataservices.create_object_request('insert',this.array_data_insert);
+    authe(){
 
-        this.Httpservices.Http_Post(this.dataservices.object_request).subscribe( response => {
+        let response = this.dataservices.Make_Request_InServer( 'auth', 5 );
 
-             if( response['status'] =='insert' ){
+        response.then( token =>{
 
-                 console.log(response['data']);
-             }
-         });
+          console.log(token);
+
+        });
 
     }
 

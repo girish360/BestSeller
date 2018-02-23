@@ -207,7 +207,8 @@ export function initWishlist ( configService: DataService ):Function {
       ClientProductsComponent,
       EncryptDecryptService,
       CaruselComponent,
-      AuthService,
+      AuthService
+
 
 
   ],

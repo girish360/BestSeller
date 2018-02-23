@@ -1,10 +1,6 @@
 
-.glyphicon{
-    font-size: 20px;
-    color:gray;
-    position: relative;
-    top:2px;
-}
+
+
 .login{
     text-align: center;
     margin:0px auto;
@@ -45,6 +41,7 @@
 .icon_email{
     position: absolute;
     right: 0;
+    top:-1px;
 }
 .mat-input-container{
 
@@ -77,11 +74,12 @@
     color: red;
 }
 
-.user-category_icon{
+.user_icon{
 
     font-size: 85px;
     margin-left: 2px;
-    color:#E6E6FA;
+    color: #F5F5F5;
+
 }
 .write_login_register{
     display: inline-block;
@@ -98,10 +96,7 @@
 .mat-button{
     width: 100%;
 }
-.button_login{
-    background-color: cornflowerblue;
-    color:white;
-}
+
 .icon_button_login{
     position: relative;
     top:-4px;

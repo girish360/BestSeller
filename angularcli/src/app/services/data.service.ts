@@ -4,7 +4,9 @@ import { HttpService } from './http.service';
 
 import {Observable} from 'rxjs/Observable';
 
-import { Router, Resolve, ActivatedRouteSnapshot,RouterStateSnapshot } from '@angular/router';
+import { AuthService } from './auth.service';
+
+import {  Http, Response , Headers} from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
@@ -12,9 +14,11 @@ import 'rxjs/Rx'
 
 @Injectable()
 
-export class DataService {
+export class DataService  extends AuthService {
 
-  constructor( private httpservice : HttpService  ) {
+  constructor( private httpservice : HttpService , protected http:Http  ) {
+
+     super( http );
 
   }
 

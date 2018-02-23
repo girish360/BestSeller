@@ -21,7 +21,11 @@
     animation: Products_Animation 1s;
 }
 
+.glyphicon{
+    font-size: 20px;
+    
 
+}
 
 .pagination_containerleft{
     display: none;

@@ -130,6 +130,8 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
              this.products =  products_details['products'];
 
+             this.pages_details = products_details['pages_details'];
+
              this.build_pages_link( products_details['pages_details']) ;
 
         });

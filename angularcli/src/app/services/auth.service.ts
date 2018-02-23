@@ -2,18 +2,25 @@ import { Injectable } from '@angular/core';
 
 import { Router, CanActivate } from '@angular/router';
 
+import {  Http, Response , Headers} from '@angular/http';
+
+import { HttpService } from './http.service';
+
 @Injectable()
 
-export class AuthService {
+export class AuthService extends HttpService{
 
-  constructor( private router: Router ) {
+  protected router: Router;
 
-    this.canActivate();
+  constructor( protected http:Http ) {
+
+    super( http );
+
+    this.isActivate();
 
   }
 
-
-  canActivate() {
+ protected isActivate(){
 
     if ( localStorage.getItem('token') ) {
 
@@ -26,14 +33,16 @@ export class AuthService {
 
   }
 
-  clearToken(){
+ protected clearToken(){
 
     localStorage.removeItem('token');
+
+
 
   }
 
 
-  setToken(id_token ){
+  protected setToken( id_token ){
 
     localStorage.setItem('token', id_token);
 

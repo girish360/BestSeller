@@ -8,9 +8,11 @@ import {Observable} from "rxjs/Observable";
 
 export class HttpService {
 
-  constructor( public http : Http ) { }
+  constructor( protected http : Http ) {
 
-  path = '/api/bestseller/server_PHP/Http_Request/Route_Http.php';
+  }
+
+  private path = '/api/bestseller/server_PHP/Http_Request/Route_Http.php';
 
   Http_Get(){
 

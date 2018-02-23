@@ -13,30 +13,32 @@
                             <mat-icon>
                                 <span class="glyphicon glyphicon-log-in"></span>
                             </mat-icon>
-                            Sing In
+                            <div class="label_tab inline-block">
+                                Sing In
+                            </div>
                         </ng-template><br>
 
                         <div class="width_login">
 
                             <div class="user-icon center">
 
-                                <span class="glyphicon glyphicon-user user-category_icon"></span>
+                                <span class="glyphicon glyphicon-user user_icon"></span>
 
                             </div><br><br>
-                            {{write_type_login}}<br><br>
+                            {{login_property.write_type_login}}<br><br>
                             <mat-radio-group>
-                                <mat-radio-button class="green" value="1"  (click)="set_type_account('client')" [checked]="client_account">Client</mat-radio-button>
-                                <mat-radio-button class="green" value="2"  (click)="set_type_account('business')" [checked]="business_account" >Business</mat-radio-button>
+                                <mat-radio-button class="green" value="1"  (click)="set_type_account('client')" [checked]="login_property.client_account">Client</mat-radio-button>
+                                <mat-radio-button class="green" value="2"  (click)="set_type_account('business')" [checked]="login_property.business_account" >Business</mat-radio-button>
                             </mat-radio-group><br>
 
 
                                 <form class="example-form">
                                     <mat-form-field class="example-full-width">
-                                <mat-icon class="icon_email"> <span class="glyphicon glyphicon-user"></span> </mat-icon>
+                                <mat-icon class="icon_email"> <span class="glyphicon glyphicon-envelope"></span> </mat-icon>
 
                                 <input matInput
 
-                                       placeholder="Set Email "
+                                       placeholder="Set Email"
                                        name="name"
                                        [ngModel]="check_email()"
                                        [formControl]="emailFormControl"
@@ -50,12 +52,12 @@
                                     Email is <strong>required</strong>
                                 </mat-error>
                                     </mat-form-field>
-                                </form>
+                                </form><br>
 
 
 
-                            <button  (click)="get_email(email)" [disabled]="button_login" mat-button class=" button_login" >
-                                <span *ngIf="check_email_loading == false ; else loading">Next</span>
+                            <button  (click)="get_email(email)" [disabled]="login_property.button_login" mat-button class="button" >
+                                <span *ngIf="login_property.check_email_loading == false ; else loading">Next</span>
 
                                 <ng-template #loading>
                                     <mat-icon  class="icon_button_login">
@@ -74,7 +76,9 @@
                             <mat-icon>
                                 <span class="glyphicon glyphicon-user"></span>
                             </mat-icon>
-                            Sing Up
+                            <div class="label_tab inline-block">
+                                Sing Up
+                            </div>
                         </ng-template><br>
 
                         <div class="width_login">

@@ -11,11 +11,13 @@ if($_SERVER['HTTP_ORIGIN'] == "http://localhost:4200") { // check is request are
 }
 
 
+
+
 include  '../connection_db/class_connection.php'; // include connection with database and that have some method to access db ................
 
 include '../Fetch_Data/Fetch_Data.php'; // include fetch data file  ..............................
 
-include '../Auth_Register_user/Auth_Register_user.php'; // include Auth_register_user  to  access their account .........................
+include '../Auth/Auth_Register.php'; // include Auth_register_user  to  access their account .........................
 
 include '../Category_Subscribe_and_Products/Category_Subscribe.php'; // include category and subscribe  ...................................
 
@@ -43,6 +45,10 @@ if($_SERVER['REQUEST_METHOD']==='POST' ||  $_SERVER['REQUEST_METHOD']==='GET') {
         // include  Header http request post ...........
         include "Header_Http.php";
         // end
+
+        include  "Auth_Register_Http.php"; // include auth_register request ..........
+
+
         if( $status =='get_wishList'){
 
             $wishList = $cookie->get_cookie_unserialize( 'wishList' ,'wishlist' );
