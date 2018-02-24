@@ -94,7 +94,7 @@ class Fetch_Data extends connection {
 
     public function  convert_to_array( $data ){
 
-        foreach ($data as $key=>$value)
+        foreach ( $data as $key => $value )
         {
             if (is_object($value))
             {

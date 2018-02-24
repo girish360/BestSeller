@@ -36,92 +36,187 @@ export class SinginSingupComponent implements OnInit {
 
         'client_account':true ,
         'business_account':false,
-        'check_email_loading':false,
         'button_login':false,
         'write_type_login':'Client login',
-        'click_login_button':false
+        'click_login_button':false,
+        'write_button':'Next',
+        'steps':'1',
+        'loading':false,
+        'error':''
 
     };
 
-    public user_detail = {
+    public user_details_loginForm:any = {
 
         'username':'',
         'password':'',
-        'type_login':''
 
     };
 
+  public error_status = false;
+
+    public user_details:any = {};
+
+    email_FormControl_login = new FormControl('', [
+
+        Validators.required,
+
+    ]);
+
+    password_FormControl_login = new FormControl('', [
+
+        Validators.required,
+        Validators.minLength(6)
+
+    ]);
+
+    matcher = new MyErrorStateMatcher();
 
 
-  emailFormControl = new FormControl('', [
 
-    Validators.required,
-    Validators.email,
+    name(){
 
-  ]);
-
-  matcher = new MyErrorStateMatcher();
+    }
+    ngOnInit() {
 
 
+    }
 
+    set_type_account( type_account ){
 
-  ngOnInit() {
+        if( type_account == 'client' ){
 
+            if( this.login_property.client_account != true ){
 
-  }
+                this.login_property.client_account = !this.login_property.client_account;
 
-  set_type_account( type_account ){
+                this.login_property.business_account = !this.login_property.business_account;
 
-      if( type_account == 'client' ){
+                this.login_property.write_type_login = 'Client login';
+            }
+            return;
+        }
+        if( this.login_property.business_account != true ){
 
-         if( this.login_property.client_account != true ){
+            this.login_property.client_account = !this.login_property.client_account;
 
-           this.login_property.client_account = !this.login_property.client_account;
+            this.login_property.business_account = !this.login_property.business_account;
 
-           this.login_property.business_account = !this.login_property.business_account;
+            this.login_property.write_type_login = 'Business login';
+        }
+    }
 
-           this.login_property.write_type_login = 'Client login';
-         }
-         return;
-      }
-      if( this.login_property.business_account != true ){
+    check_form_login(){
 
-        this.login_property.client_account = !this.login_property.client_account;
+        if(this.login_property.steps == '1'){
 
-        this.login_property.business_account = !this.login_property.business_account;
+            if( !this.email_FormControl_login.hasError('required') ) {
 
-        this.login_property.write_type_login = 'Business login';
-      }
-  }
+                if (this.login_property.click_login_button == false) {
 
-  check_email(){
+                    this.login_property.button_login = false;
 
-    if( !this.emailFormControl.hasError('email') && !this.emailFormControl.hasError('required') ){
+                } else {
 
-        if(this.login_property.click_login_button == false){
+                    this.login_property.button_login = true;
 
-           this.login_property.button_login = false;
+                }
+
+                return;
+            }
 
         }else{
 
-          this.login_property.button_login = true;
+            if( !this.password_FormControl_login.hasError('minlength')  && !this.password_FormControl_login.hasError('required') ){
+
+                if( this.login_property.click_login_button == false ){
+
+                    this.login_property.button_login = false;
+
+                }else{
+
+                    this.login_property.button_login = true;
+
+                }
+
+                return;
+            }
 
         }
 
-        return;
-     }
-     this.login_property.button_login = true;
-  }
+        this.login_property.button_login = true;
+    }
 
-  get_email(email){
+    check_user(){
 
-         alert(email.value);
+        if(this.error_status != true) {
 
-         this.login_property.click_login_button = true;
+            if (this.login_property.steps == '1') {
 
-         this.login_property.check_email_loading = true;
+                //request from email .............
 
-  }
+                this.login_property.loading = true;
+
+                let response = this.dataservices.Make_Request_InServer("user_email", this.user_details_loginForm.username);
+
+                response.then(result => {
+
+                    if (result != 'false') {
+
+                        this.login_property.loading = false;
+
+                        this.user_details = result[0];
+
+                        this.login_property.steps = '2';
+
+                    } else {
+
+                        this.login_property.loading = false;
+
+                        $('.error').css({visibility: 'visible'}).animate({
+                            width: '100%'
+                        });
+
+                        this.error_status = true;
+                    }
+
+                });
+            }
+            else if (this.login_property.steps == '2') {
+
+                //request from pass with email ..................
+            }
+        }
+    }
+
+    hide_error(){
+
+        $('.error').animate({
+
+            width:'1%'
+
+        },function(){
+
+            $('.error').css( {visibility:'hidden' })
+
+        });
+    }
+    keypres(){
+
+         if(this.error_status == true){
+
+             this.hide_error();
+
+             this.error_status = false;
+
+         }
+
+    }
+    another_account(){
+
+        this.login_property.steps='1';
+
+    }
 
 
 

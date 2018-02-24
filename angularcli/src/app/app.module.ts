@@ -178,6 +178,7 @@ export function initWishlist ( configService: DataService ):Function {
   ],
   providers: [
 
+
       AppComponent ,
       HttpService ,
       VisitorsComponent ,

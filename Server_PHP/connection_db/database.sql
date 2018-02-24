@@ -2,9 +2,10 @@
 CREATE DATABASE IF NOT EXISTS world_sell;
 
 create table adminat (
+
   `id` int NOT NULL primary key AUTO_INCREMENT,
   `name_company` varchar(50),
-    `emai` varchar(150),
+    `email` varchar(150),
     `username` varchar(50),
     `password` varchar(50),
     `date`  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -33,11 +34,12 @@ create table users(
 `first_name` varchar(50),
 `last_name` varchar(50),
 `email`  varchar(100),
+`username`  varchar(100),
 `gener` varchar(5),
 `local` varchar(10),
 `picture` varchar(255),
 `link` varchar(255),
-`created` datetime not null,
+`created` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 `modified` datetime not null,
 `phone`  int(15),
 `password` varchar(50),
@@ -214,4 +216,8 @@ values('benz mercedez','shitet per arsye mos perdorimi','1','1','1','500','5' ,'
       ('Iphone 11 ','gjendje perfecte','7','3','1','1000','2','1234.jpg'),
       ('Iphone 12 ','gjendje perfecte','8','3','1','400','2','klo.jpg'),
       ('Iphone 13 ','gjendje perfecte','9','3','1','400','2','1234.jpg')
+
+insert into users ( first_name,last_name,username,email,gener,local,picture,phone,language)
+values('klodian','shaba','kshaba','klodian.tik@gmail.com','male','alabnia','klo.jpg','0683834233','albanian'),
+('Arjola','Shabani','Ashabani','Arjola.tik@gmail.com','female','Italy','b3.jpg','0683834235','Italy')
 
