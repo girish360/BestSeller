@@ -42,7 +42,7 @@ class connection { // start connection class ...
 
     }
 
-    public function select_query_dependet( $table_name , $array_where , $array_select ){  // select with array column and array where with || .........
+    public function select_query_dependet_or( $table_name , $array_where , $array_select ){  // select with array column and array where with || .........
 
         try {
 
@@ -51,6 +51,37 @@ class connection { // start connection class ...
                 foreach ($array_where as $key => $value) {
 
                     $Where[] = "$key =:$key ||";
+                }
+            }
+
+            $where_column = implode( $Where );
+
+            $result_Where_column = substr( $where_column, 0,strlen( $where_column )-2 ); // all columnd that are in where ........
+
+            $select_column = implode(',', $array_select); //  all column that should select in databse .............
+
+            $query = $this->db->prepare("SELECT $select_column FROM `$table_name` WHERE $result_Where_column "); // query ......
+
+            $query->execute( $array_where ); // execute with array  walue that are in where ..............
+
+            return $query; // return query ............
+        }
+        catch(Exception $e){
+
+            return $e->getMessage();
+        }
+
+    }
+
+    public function select_query_dependet_and( $table_name , $array_where , $array_select ){  // select with array column and array where with || .........
+
+        try {
+
+            if ( count($array_where) > 0 ) {
+
+                foreach ($array_where as $key => $value) {
+
+                    $Where[] = "$key =:$key &&";
                 }
             }
 

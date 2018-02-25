@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit , DoCheck} from '@angular/core';
 
 import {FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 
@@ -26,19 +26,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 
 
-export class SinginSingupComponent implements OnInit {
+export class SinginSingupComponent implements OnInit,DoCheck {
 
     constructor( private dataservices : DataService ) {
 
     }
 
-    public login_property ={
+    public login_property:any = {
 
         'client_account':true ,
         'business_account':false,
-        'button_login':false,
+        'button_login':true,
         'write_type_login':'Client login',
-        'click_login_button':false,
         'write_button':'Next',
         'steps':'1',
         'loading':false,
@@ -53,7 +52,7 @@ export class SinginSingupComponent implements OnInit {
 
     };
 
-  public error_status = false;
+    public error_status_from_server = false;
 
     public user_details:any = {};
 
@@ -72,13 +71,14 @@ export class SinginSingupComponent implements OnInit {
 
     matcher = new MyErrorStateMatcher();
 
-
-
-    name(){
-
-    }
     ngOnInit() {
 
+
+    }
+
+    ngDoCheck(){
+
+        this.check_form_login();
 
     }
 
@@ -106,13 +106,14 @@ export class SinginSingupComponent implements OnInit {
         }
     }
 
-    check_form_login(){
 
-        if(this.login_property.steps == '1'){
+     check_form_login(){
 
-            if( !this.email_FormControl_login.hasError('required') ) {
+        if( this.error_status_from_server != true ) {
 
-                if (this.login_property.click_login_button == false) {
+            if (this.login_property.steps == '1') {
+
+                if (!this.email_FormControl_login.hasError('required')) {
 
                     this.login_property.button_login = false;
 
@@ -120,44 +121,42 @@ export class SinginSingupComponent implements OnInit {
 
                     this.login_property.button_login = true;
 
+
                 }
 
-                return;
-            }
+            } else {
 
-        }else{
-
-            if( !this.password_FormControl_login.hasError('minlength')  && !this.password_FormControl_login.hasError('required') ){
-
-                if( this.login_property.click_login_button == false ){
+                if (!this.password_FormControl_login.hasError('minlength') && !this.password_FormControl_login.hasError('required')) {
 
                     this.login_property.button_login = false;
 
-                }else{
+                } else {
 
                     this.login_property.button_login = true;
 
+
                 }
 
-                return;
             }
+        }else{
 
+            this.login_property.button_login = true;
         }
+     }
 
-        this.login_property.button_login = true;
-    }
 
-    check_user(){
 
-        if(this.error_status != true) {
+    check_user(){  // method check user when user click button in login ................
 
-            if (this.login_property.steps == '1') {
+        if( this.error_status_from_server != true ) {
+
+            if (this.login_property.steps == '1') { // check email ore usrname in database
 
                 //request from email .............
 
                 this.login_property.loading = true;
 
-                let response = this.dataservices.Make_Request_InServer("user_email", this.user_details_loginForm.username);
+                let response = this.dataservices.Make_Request_InServer("check_email", this.user_details_loginForm.username);
 
                 response.then(result => {
 
@@ -173,21 +172,64 @@ export class SinginSingupComponent implements OnInit {
 
                         this.login_property.loading = false;
 
-                        $('.error').css({visibility: 'visible'}).animate({
-                            width: '100%'
-                        });
+                        this.show_error();
 
-                        this.error_status = true;
+                        this.login_property.button_login = true;
+
+                        this.error_status_from_server = true;
+
+                        this.login_property.error='This Email dont exists';
                     }
 
                 });
             }
-            else if (this.login_property.steps == '2') {
+            else if (this.login_property.steps == '2') { // check password with this email ore username that is seted before password
 
-                //request from pass with email ..................
+                this.login_property.loading = true;
+
+                let response = this.dataservices.Make_Request_InServer("check_password",
+                    { 'username':this.user_details_loginForm.username , 'password':this.user_details_loginForm.password } );
+
+                response.then(result => {
+
+                    if (result != 'false') {
+
+                        this.login_property.loading = false;
+
+                        this.user_details = result[0];
+
+                        this.login_property.steps = '2';
+
+                        console.log(result);
+
+                    } else {
+
+                        this.login_property.loading = false;
+
+                        this.show_error();
+
+                        this.login_property.button_login = true;
+
+                        this.error_status_from_server = true;
+
+                        this.login_property.error='Password isnot match with your email';
+                    }
+
+                });
             }
         }
     }
+    kot(){
+        let response = this.dataservices.Make_Request_InServer("kot","kot");
+
+        response.then(result => {
+
+            console.log(result);
+
+        });
+
+    }
+
 
     hide_error(){
 
@@ -201,17 +243,28 @@ export class SinginSingupComponent implements OnInit {
 
         });
     }
+
+    show_error(){
+
+        $('.error').css({visibility: 'visible'}).animate({
+
+            width: '100%'
+
+        });
+    }
+
     keypres(){
 
-         if(this.error_status == true){
+         if( this.error_status_from_server == true ){
 
              this.hide_error();
 
-             this.error_status = false;
-
+             this.error_status_from_server = false;
          }
 
+
     }
+
     another_account(){
 
         this.login_property.steps='1';

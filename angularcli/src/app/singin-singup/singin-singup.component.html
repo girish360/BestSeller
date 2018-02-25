@@ -63,13 +63,13 @@
 
                                        [(ngModel)]="user_details_loginForm.username"
 
-                                       [checked]="check_form_login()"
-
                                        [formControl]="email_FormControl_login"
 
                                        [errorStateMatcher]="matcher"
 
                                        (keypress)="keypres()"
+
+
 
                                 >
 
@@ -107,9 +107,9 @@
 
                                        [formControl]="password_FormControl_login"
 
-                                       [checked]="check_form_login()"
-
                                        [errorStateMatcher]="matcher"
+
+                                       (keypress)="keypres()"
 
 
                                 >
@@ -134,7 +134,7 @@
 
                     </ng-template><br>
 
-                    <button  (click)="check_user()" [disabled]="login_property.button_login " mat-button class="button" >
+                    <button  (click)="check_user()" [disabled]="login_property.button_login" mat-button class="button" >
 
                         <span *ngIf="login_property.loading == false ; else loading">{{login_property.write_button}}</span>
 
@@ -163,7 +163,8 @@
                     </ng-container>
 
                     <ng-template #forget_password>
-                        <a href="#" class="forget_email inline-block">
+
+                        <a href="#"  (click)="kot()" class="forget_email inline-block">
 
                             Forget Password?
 
@@ -221,7 +222,7 @@
 
             <div class="write_error">
 
-                 Server Error now dont
+                 {{login_property.error}}
 
             </div>
 

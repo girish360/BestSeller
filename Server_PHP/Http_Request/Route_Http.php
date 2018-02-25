@@ -1,4 +1,7 @@
 <?php
+
+
+
 // access-control http request  in server is only from this domain name http://localhost:4200.........................
 if($_SERVER['HTTP_ORIGIN'] == "http://localhost:4200") { // check is request are only from this domain name http://localhost:4200 , allow them to run .........
 
@@ -9,23 +12,12 @@ if($_SERVER['HTTP_ORIGIN'] == "http://localhost:4200") { // check is request are
     header('Content-Type: text/plain');
 
 }
+use server\files as ser;
 
 
 
+require_once ('../Server_files/Server_files.php');
 
-include  '../connection_db/class_connection.php'; // include connection with database and that have some method to access db ................
-
-include '../Fetch_Data/Fetch_Data.php'; // include fetch data file  ..............................
-
-include '../Auth/Auth_Register.php'; // include Auth_register_user  to  access their account .........................
-
-include '../Category_Subscribe_and_Products/Category_Subscribe.php'; // include category and subscribe  ...................................
-
-include '../Products/Products.php';  // include  products file .......................................
-
-include  '../Session_Cookie/Cookies.php'; // include cookie class ............
-
-include  '../Language/language.php'; // include language class..............
 
 
 
@@ -50,6 +42,8 @@ if($_SERVER['REQUEST_METHOD']==='POST' ||  $_SERVER['REQUEST_METHOD']==='GET') {
 
 
         if( $status =='get_wishList'){
+
+
 
             $wishList = $cookie->get_cookie_unserialize( 'wishList' ,'wishlist' );
 

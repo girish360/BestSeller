@@ -10,7 +10,9 @@ class Fetch_Data extends connection {
 
     public function fetch_data_array( $result_fromDB ){
 
-        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
+        $this->Data_array=array();
+
+        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC )  ){
 
             $this->Data_array[] = $result;
         }

@@ -1,6 +1,6 @@
 <?php
 
-if( $status =='auth'){
+if( $status =='auth' ){
 
     $id = $_POST->value;
 
@@ -10,32 +10,29 @@ if( $status =='auth'){
 
 }
 
-if( $status =='Register'){
+if( $status =='Register' ){
 
 
 }
 
-if( $status =='user_email'){
+if( $status =='check_email' ){
 
-    $email = $_POST->value;
+    $email_or_username = $_POST->value;
 
-    $result = $connection->select_query_dependet('users' , array("username"=>$email ,
-        "email"=>$email) , array("first_name"=>"first_name","username"=>"username", "email"=>"email","local"=>"local","picture"=>"picture",)
-    );
 
-    if( $result ->rowCount() > 0 ){
+    echo $auth_register->check_email($email_or_username);
 
-        $array_data = $fetch_data->fetch_data_array( $result );
+}
 
-    }
-    else{
-        $array_data='false';
-    }
+if( $status =='check_password' ){
 
-    echo $fetch_data->json_data('auth',$array_data );
+    $object_data = $_POST->value;
+
+    echo $auth_register->check_password($object_data);
 
 
 }
+
 
 
 ?>
