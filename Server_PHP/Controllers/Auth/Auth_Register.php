@@ -1,8 +1,9 @@
 <?php
+require '../JWT.php';
 
-include "JWT.php";
+use Firebase\JWT;
 
-class Auth_Register  extends \Firebase\JWT\JWT {
+class Auth_Register  extends Firebase\JWT\JWT {
 
     private $secret_key_auth = 'Auth_Generate_Token_Engrypto_20568294816';
 
@@ -78,6 +79,6 @@ class Auth_Register  extends \Firebase\JWT\JWT {
 
 }
 
-$auth_register = new Auth_Register;
+
 
 ?>

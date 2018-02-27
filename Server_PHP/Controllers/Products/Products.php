@@ -1,12 +1,14 @@
 <?php
 
-class products extends Fetch_Data{
+
+
+class Products extends Fetch_Data {
 
     public $all_products;
 
-    public $products_for_page=4;
+    public $products_for_page=20;
 
-    public $products_limit;
+    public $products_limit = array();
 
     public $pages_details;
 
@@ -14,11 +16,13 @@ class products extends Fetch_Data{
 
     public $count_row;
 
-    public function getproducts( $details_products ){  // get all products .....................................
+    public function getproducts( $object_details ){  // get all products .....................................
 
-        if( $details_products['type'] == 'default' ){
+        $array_data = self::convert_to_array( $object_details );
 
-            $result_fromDB = self::select_all( $tabel='products' ); // get product from db .....
+        if( $array_data['type'] == 'default' ){
+
+            $result_fromDB = self::select_all( $tabel = 'products' ); // get product from db .....
 
             $tb_name_dep = 'adminat';
 
@@ -37,7 +41,8 @@ class products extends Fetch_Data{
                 return $this->all_products;
             }
             else{
-                 $click = $details_products['number_click'];
+
+                 $click = $array_data['number_click'];
 
                  $result_limit = self::select_limit('products',$click-1,$this->products_for_page );
 
@@ -45,12 +50,13 @@ class products extends Fetch_Data{
 
                  self::getpages(  $this->count_row  );
 
-                 self::get_pages_details(  $this->total_pages ,$details_products['number_click'],'default');
+                 self::get_pages_details(  $this->total_pages , $array_data['number_click'] ,'default' );
 
-                 return array('products'=>$this->products_limit , 'pages_details'=>  $this->pages_details );
+                 return  self::json_data('products', array('products'=>$this->products_limit , 'pages_details'=>  $this->pages_details ) );
             }
         }
         else{
+
         }
     }
 
@@ -71,7 +77,7 @@ class products extends Fetch_Data{
 
 }
 
-$products = new products; // create object ..............................................................
+
 
 
 ?>

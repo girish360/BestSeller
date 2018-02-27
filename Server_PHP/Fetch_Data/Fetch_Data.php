@@ -1,5 +1,8 @@
 <?php
 
+
+include '../connection_db/class_connection.php';
+
 class Fetch_Data extends connection {
 
     public $Data_array = array();
@@ -31,6 +34,8 @@ class Fetch_Data extends connection {
 
         $nr = 0 ;
 
+        $this->Data_array = array();
+
         while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
 
             $this->Data_array[$nr] = $result;
@@ -60,6 +65,8 @@ class Fetch_Data extends connection {
     public function fetch_oneRow_dependet( $array_wishID , $table_name , $column , $table_name_dependet ,$column_dependet ,$id_dependet ){
 
         $nr = 0 ;
+
+        $this->Data_array = array();
 
         foreach ( $array_wishID as $value ){
 
@@ -96,6 +103,8 @@ class Fetch_Data extends connection {
 
     public function  convert_to_array( $data ){
 
+        $this->Data_array = array();
+
         foreach ( $data as $key => $value )
         {
             if (is_object($value))
@@ -116,7 +125,5 @@ class Fetch_Data extends connection {
     }
 
 }
-
-$fetch_data = new Fetch_Data(); // create obj ...............
 
 ?>

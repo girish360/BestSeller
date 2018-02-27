@@ -1,11 +1,36 @@
 <?php
 
-class language extends Cookie {
+class Language extends Cookie {
 
-    public $datauser;
+    public function get_language($lang){
 
-    public function languages( $lang ){
+        $language_in_coockie = self::check_cookie( 'language' ); //  call method check if have cookie  for language
+
+        if( $language_in_coockie != 'false' ){ // check if  exists cookie for language
+
+            $objct_language = self::object_language( $_COOKIE['language'] ); // call method to get language .......
+
+            return self::json_data('language' ,$objct_language );// return object with language  in frontend.........
+
+        }else{ // else if not exists cookie with language ..........
+
+            $objct_language = self::object_language( $lang ); // call method to get language .......
+
+            return self::json_data('language' ,$objct_language );// return object with language  in frontend.........
+        }
+    }
+
+    public function change_language( $new_language ){
+
+        $objct_language = self::object_language( $new_language ); // call method to get language .......
+
+        return self::json_data('language' ,$objct_language );// return object with language  in frontend.......
+    }
+
+    public function object_language( $lang ){
+
         $language=[];
+
         switch ( $lang ) {
             case '1':
                 $language['id']='1';
@@ -164,5 +189,7 @@ class language extends Cookie {
         return $language;
     }
 }
-$language = new language(); // declare obj .............................
+
+
+
 ?>

@@ -1,14 +1,5 @@
 <?php
 
-if( $status =='auth' ){
-
-    $id = $_POST->value;
-
-    $result = $auth_register->create_token($id);
-
-    echo $fetch_data->json_data('auth',$result );
-
-}
 
 if( $status =='Register' ){
 
@@ -17,22 +8,18 @@ if( $status =='Register' ){
 
 if( $status =='check_email' ){
 
-    $email_or_username = $_POST->value;
 
 
-    echo $auth_register->check_email($email_or_username);
+    echo  $Object['Auth_Register']->check_email($data_from_client);
 
 }
 
 if( $status =='check_password' ){
 
-    $object_data = $_POST->value;
 
-    echo $auth_register->check_password($object_data);
 
+    echo $Object['Auth_Register']->check_password($data_from_client);
 
 }
-
-
 
 ?>

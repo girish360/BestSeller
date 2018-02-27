@@ -1,21 +1,84 @@
 <?php
+namespace server\dir\files{
 
-namespace server\files ;
+    class Directorys_Files
+    {
+        private $root_dir = '../Controllers';
 
-    include '../connection_db/class_connection.php'; // include connection with database and that have some method to access db ................
+        public function get_directorys()
+        {
+            return self::dirToArray($this->root_dir);
+        }
 
-    include '../Fetch_Data/Fetch_Data.php'; // include fetch data file  ..............................
+        public function dirToArray($dir)
+        {
+            $this->result = [];
 
-    include '../Auth/Auth_Register.php'; // include Auth_register_user  to  access their account .........................
+            $scandir = scandir($dir);
 
-    include '../Category_Subscribe_and_Products/Category_Subscribe.php'; // include category and subscribe  ...................................
+            $result =[];
 
-    include '../Products/Products.php';  // include  products file .......................................
+            foreach ($scandir as $key => $value) {
 
-    include '../Session_Cookie/Cookies.php'; // include cookie class ............
+                if (!in_array($value, array(".", ".."))) {
 
-    include '../Language/language.php'; // include language class..............
+                    if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
 
+                        $result[$value] = self::dirToArray($dir . DIRECTORY_SEPARATOR . $value);
 
+                    } else {
+
+                        $result[] = $value;
+                    }
+                }
+            }
+
+            return $result;
+        }
+
+        public function get_root_dir()
+        {
+            return $this->root_dir;
+        }
+    }
+}
+
+namespace server\files\Controllers {
+
+    use Exception;
+
+    use server\dir\files as dir;
+
+    include '../Fetch_Data/Fetch_Data.php';
+
+    $object_directorys = new dir\Directorys_Files();
+
+    $directorys = $object_directorys->get_directorys();
+
+    $Object=[];
+
+    foreach ($directorys as $dir_name => $dir_value) {
+
+        foreach ($dir_value as $file_key => $file_name) {
+
+            $root_dir = $object_directorys->get_root_dir();
+
+            $dynamic_dir = $root_dir . '/' . $dir_name . '/';
+
+            $class_name = substr($file_name, 0, strlen($file_name) - 4);
+
+            if (file_exists($dynamic_dir . $class_name . '.php')) {
+
+                include $dynamic_dir . $class_name . '.php';
+
+                $Object[$class_name] = new $class_name;
+
+            } else {
+
+                throw new Exception('file name: ' . $file_name . ' not found');
+            }
+        }
+    }
+}
 
 ?>

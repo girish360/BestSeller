@@ -184,26 +184,26 @@ export function initWishlist ( configService: DataService ):Function {
       VisitorsComponent ,
       DataService,
 
-      { provide: APP_INITIALIZER,
-        useFactory: initProducts,
-        deps: [DataService ,HttpService],
-        multi: true
-      },
-      { provide: APP_INITIALIZER,
-        useFactory: initLanguage,
-        deps: [DataService ,HttpService],
-        multi: true
-      },
-      { provide: APP_INITIALIZER,
-        useFactory: initCategory,
-        deps: [DataService ,HttpService],
-        multi: true
-      },
-      { provide: APP_INITIALIZER,
-        useFactory: initWishlist,
-        deps: [DataService ,HttpService],
-        multi: true
-      },
+    { provide: APP_INITIALIZER,
+      useFactory: initProducts,
+      deps: [DataService ,HttpService],
+      multi: true
+    },
+    { provide: APP_INITIALIZER,
+      useFactory: initLanguage,
+      deps: [DataService ,HttpService],
+      multi: true
+    },
+    { provide: APP_INITIALIZER,
+      useFactory: initCategory,
+      deps: [DataService ,HttpService],
+      multi: true
+    },
+    { provide: APP_INITIALIZER,
+      useFactory: initWishlist,
+      deps: [DataService ,HttpService],
+      multi: true
+    },
 
       ClientProductsComponent,
       EncryptDecryptService,

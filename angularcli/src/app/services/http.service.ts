@@ -14,7 +14,22 @@ export class HttpService {
 
   private path = '/api/bestseller/server_PHP/Http_Request/Route_Http.php';
 
-  Http_Get(){
+
+
+  Http_Get( data ): Observable<any>{
+
+    const headers = new Headers();
+
+    let path_get = this.path + data ;
+
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    headers.append('Accept', 'text/plain');
+
+    return this.http.get( path_get, { headers:headers })
+
+        .map( ( Response ) => Response.json() );
+
 
   }
 

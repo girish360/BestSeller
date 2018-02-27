@@ -1,5 +1,7 @@
 <?php
-class connection { // start connection class ...
+
+
+class  connection { // start connection class ...
 
     private $host='localhost'; // host
 
@@ -201,6 +203,6 @@ class connection { // start connection class ...
 
 }
 
-$connection = new connection();  //  declare a object for this class ....
+
 
 ?>

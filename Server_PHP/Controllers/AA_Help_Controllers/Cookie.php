@@ -4,6 +4,14 @@
 
 class Cookie extends Fetch_Data{
 
+
+    public function add_wishlist( $id_prod ){
+
+        $result = self::set_cookie_serialize( 'wishList' , $id_prod ); //  call method that add one product  for wish list in cookie .....
+
+        return self::json_data('add_wishProduct' , $result );  // return result ......
+    }
+
     public function set_cookie( $name_cookie , $value )
     {
 
@@ -56,6 +64,7 @@ class Cookie extends Fetch_Data{
             } else {
 
                 self::put_coockie_serialize( $cookie_name , $set_data );
+
                 return array('true');
 
             }
@@ -123,12 +132,12 @@ class Cookie extends Fetch_Data{
                     }
                     self::put_coockie_serialize( $cookie_name, $array_from_cookie ); // call methot to set cookie .....
 
-                    return 'true'; // return true in frontend ........
+                    return self::json_data( 'delete_itemFromCookie' , 'true' ); // return result .....
                 }
-                return 'false'; // return false in frontend ........
+                return self::json_data( 'delete_itemFromCookie' , 'false' ); // return result .....
 
             }else {
-                return 'false'; // return false in frontend ........
+                return self::json_data( 'delete_itemFromCookie' , 'false' ); // return result .....
             }
 
         }catch( Exception $e  ){
@@ -140,6 +149,6 @@ class Cookie extends Fetch_Data{
 
 }
 
-$cookie = new Cookie(); //  declare obj .....
+
 
 ?>

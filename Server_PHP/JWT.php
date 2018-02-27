@@ -21,8 +21,7 @@ use \DateTime;
  */
 
 
-class JWT extends \Fetch_Data
-{
+class JWT extends \Fetch_Data{
 
     /**
      * When checking nbf, iat or expiration times,
@@ -379,3 +378,4 @@ class JWT extends \Fetch_Data
         return strlen($str);
     }
 }
+

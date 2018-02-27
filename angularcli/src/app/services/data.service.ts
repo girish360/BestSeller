@@ -20,7 +20,10 @@ export class DataService  extends AuthService {
 
      super( http );
 
+
   }
+
+
 
   public language:object={};
 
@@ -62,9 +65,11 @@ export class DataService  extends AuthService {
 
                     resolve( data['data'] );
 
+                  console.log(data['data'] );
+
                 },
 
-                error => (error : any) =>  { reject( false ); }
+                error => (error : any) =>  {  reject( false )  }
 
             );
     });
@@ -76,6 +81,7 @@ export class DataService  extends AuthService {
       if ( data['status'] == 'products' ) {
 
           this.products = data['data'];
+
       }
 
       else if (data['status'] == 'category') {
