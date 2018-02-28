@@ -14,4 +14,10 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
   }
 
+  check_chat(){
+
+    alert('dfg');
+
+  }
+
 }

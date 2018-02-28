@@ -67,7 +67,7 @@
 
      <div class="all_prod"> <!--  start div with products ...................................................... -->
 
-        <div class="width_products  products-animation " *ngFor="let product of products"  [ngClass]="{'width_products_open_menu':dataservices.status_menu}" >
+        <div class="width_products  products-animation " *ngFor="let product of products"  [ngClass]="{ 'width_products_open_menu':dataservices.status_menu || dataservices.status_chat }" >
 
             <div class="each_width_product" >
 

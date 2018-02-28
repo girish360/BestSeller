@@ -90,31 +90,6 @@ import {
   MatStepperModule,
 } from '@angular/material';
 
-
-export function initProducts( configService: DataService ): Function {
-
-  return () => configService.Make_Request_InServer( 'products' , { 'type': 'default', 'number_click': 1 } ); // makes http request and returns Promise correctly
-
-}
-
-export function initLanguage ( configService: DataService ):Function {
-
-  return () => configService.Make_Request_InServer( 'language', '1' );
-
-}
-
-export function initCategory ( configService: DataService ):Function {
-
-  return () => configService.Make_Request_InServer( 'category', 'category' );
-
-}
-
-export function initWishlist ( configService: DataService ):Function {
-
-  return () => configService.Make_Request_InServer( 'get_wishList', 'wish' );
-
-}
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -178,39 +153,14 @@ export function initWishlist ( configService: DataService ):Function {
   ],
   providers: [
 
-
       AppComponent ,
-      HttpService ,
-      VisitorsComponent ,
-      DataService,
-
-    { provide: APP_INITIALIZER,
-      useFactory: initProducts,
-      deps: [DataService ,HttpService],
-      multi: true
-    },
-    { provide: APP_INITIALIZER,
-      useFactory: initLanguage,
-      deps: [DataService ,HttpService],
-      multi: true
-    },
-    { provide: APP_INITIALIZER,
-      useFactory: initCategory,
-      deps: [DataService ,HttpService],
-      multi: true
-    },
-    { provide: APP_INITIALIZER,
-      useFactory: initWishlist,
-      deps: [DataService ,HttpService],
-      multi: true
-    },
-
-      ClientProductsComponent,
-      EncryptDecryptService,
-      CaruselComponent,
-      AuthService
-
-
+    HttpService ,
+    VisitorsComponent ,
+    DataService,
+    ClientProductsComponent,
+    EncryptDecryptService,
+    CaruselComponent,
+    AuthService
 
   ],
 

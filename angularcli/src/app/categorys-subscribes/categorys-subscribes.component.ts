@@ -20,6 +20,14 @@ export class CategorysSubscribesComponent implements OnInit , DoCheck {
 
       this.categorys = this.dataservices.categorys;
 
+    let category = this.dataservices.Make_Request_InServer( 'category', 'category' );
+
+    category.then(response =>{
+
+      this.categorys=response;
+
+    });
+
   }
 
   ngDoCheck(){
@@ -27,7 +35,7 @@ export class CategorysSubscribesComponent implements OnInit , DoCheck {
     this.get_Language = this.dataservices.language;
   }
 
-  public categorys = [];
+  public categorys:any = [];
 
    public id_company:any;
 

@@ -38,12 +38,12 @@ try {
 } catch(FacebookResponseException $e) {
  	echo 'Graph returned an error: ' . $e->getMessage();
   	
-  	header('location:index.php');
+  	header('location:index.html');
   	exit;
 } catch(FacebookSDKException $e) {
 	echo 'Facebook SDK returned an error: ' . $e->getMessage();
   	
-  	header('location:index.php');
+  	header('location:index.html');
   	exit;
 }
 

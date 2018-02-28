@@ -20,6 +20,18 @@ export class DataService  extends AuthService {
 
      super( http );
 
+      let language  = this.Make_Request_InServer( 'language', '1' );
+
+      language.then(response =>{
+
+          this.language=response;
+
+      });
+
+
+
+
+
 
   }
 
@@ -27,9 +39,9 @@ export class DataService  extends AuthService {
 
   public language:object={};
 
-  public wishlist = [];
+  public wishlist:any = [];
 
-  public products = [];
+  public products:any = [];
 
   public Response:any;
 
@@ -39,9 +51,11 @@ export class DataService  extends AuthService {
 
   public object_request = {};
 
-  public categorys = [];
+  public categorys:any = [];
 
   public status_menu = false;
+
+  public status_chat = false;
 
   public  create_object_request( status , value ) {
 
@@ -64,8 +78,6 @@ export class DataService  extends AuthService {
                     this.check_response( data );
 
                     resolve( data['data'] );
-
-                  console.log(data['data'] );
 
                 },
 

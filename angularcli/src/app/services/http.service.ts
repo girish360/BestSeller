@@ -12,7 +12,7 @@ export class HttpService {
 
   }
 
-  private path = '/api/bestseller/server_PHP/Http_Request/Route_Http.php';
+  private path = '/api/Http_Request/Route_Http.php';
 
 
 

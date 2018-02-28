@@ -1,5 +1,5 @@
 
-<div class="response_outer" >
+<div class="response_outer" [ngClass]="{'active_menu':dataservices.status_menu  ,'active_chat':dataservices.status_chat}">
 
     <div class="response_inner inner_top_header">
 
@@ -31,7 +31,7 @@
 
             <a href="#">
 
-                <div class="radius_category" id="laptopscreen" (click)="check_status_menu()" >
+                <div class="radius_category" id="laptopscreen" (click)="check_menu()" >
 
                      <span  matTooltip="Category">
 
@@ -58,7 +58,7 @@
 
     </div>
 
-    <div class="response_outer"  >
+    <div class="response_outer"  [ngClass]="{'active_menu':dataservices.status_menu  ,'active_chat':dataservices.status_chat}">
 
         <div class="response_inner bottom_header">
 
@@ -119,131 +119,42 @@
                          </div>
 
                      </span>
-                 </span>
-
-                <span class="right_header_pc">
-
-                     <div class="menu3" id="responselist">
-                         <a  href="#" class="listcategoryfind notClosepointerHeader">
-                             <div class="listcategory" id="iconmenu">
-                                  <span class="glyphicon glyphicon-th-large"></span>
-                             </div>
-                             <div class="listcategory closelist" id="iconmenu">
-                                  <span class="glyphicon glyphicon-log-out icon-list-remove"></span>
-                             </div>
-                         </a>
-
-                          <div class="write_icon_header"> Menu </div>
-
-                     </div>
-
-                     <div class="menu3" id="search">
-                         <a class="searchresponse" href="#">
-                             <span class="glyphicon glyphicon-search"></span>
-                         </a>
-                          <div class="write_icon_header"> Search </div>
-                     </div>
-
-                     <span matTooltip="Open login">
-
-                         <a routerLink="/login" >
-
-                             <div class="menu3 user-login" id="user-login">
-
-                                 <span class="glyphicon glyphicon-user gh-header">
-                                     <div class="number_event">
-                                         <div class="write_number write_hidden">
-                                             {{wishList_products.length}}
-                                         </div>
-                                     </div>
-
-                                 </span>
-
-                                 <div class="write_icon_header" >{{get_Language.sing}}</div>
-
-                             </div>
-
-                         </a>
-                     </span>
-
-                     <span matTooltip="Open wishlist">
-                         <a href="#">
-
-                             <div class="menu3 favority notCloseDropdawnFavorite notClosepointerHeader" id="favority" >
-
-                                 <ng-container *ngIf="wishList_products.length>0;else empty" >
-
-                                     <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
-                                         <div class="number_event">
-                                             <div class="write_number">
-                                                 {{wishList_products.length}}
-                                             </div>
-                                         </div>
-                                     </span>
-
-                                 </ng-container>
-
-                                 <ng-template #empty>
-
-                                     <span class="glyphicon glyphicon-heart gh-header">
-                                         <div class="number_event">
-                                             <div class="write_number">
-                                                 {{wishList_products.length}}
-                                             </div>
-                                         </div>
-                                     </span>
-                                 </ng-template>
-
-                                 <div class="write_icon_header"> {{get_Language.wish}} </div>
-                             </div>
-                         </a>
-                     </span>
-
-                     <span matTooltip="Open card">
-
-                         <a href="#" >
-
-                             <div class="menu3 card notClosepointerHeader notCloseDropdawnCard" id="card">
-
-                                 <span class="glyphicon glyphicon-shopping-cart gh-header">
-
-                                     <div class="number_event">
-
-                                         <div class="write_number">
-
-                                             {{card_products.length}}
-                                         </div>
-
-                                     </div>
-                                 </span>
-                                 <div class="write_icon_header" >{{get_Language.card}}</div>
-                             </div>
-
-                         </a>
-
-                     </span>
-
-                     <span matTooltip="Open language">
-
-                         <a href="#" >
-
-                             <div class="menu3 language notClosepointerHeader notCloseDropdawnLanguage" id="language">
-
-                                 <span class="glyphicon glyphicon-option-vertical gh-header">
-                                     <div class="number_event">
-                                         <div class="write_number write_hidden">
-                                             {{wishList_products.length}}
-                                         </div>
-                                     </div>
-                                 </span>
-                                 <div class="write_icon_header" >{{get_Language.more}}</div>
-                             </div>
-
-                         </a>
-
-                     </span>
 
                  </span>
+
+                <span class="button_right">
+
+                    <a  href="#" *ngFor=" let button of button_right" matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button)" >
+
+                        <div class="menu3 button{{button.id}} {{button.different_class}}">
+
+                            <span class="glyphicon {{button.icon}}">
+
+                                <div class="number_event">
+
+                                    <div class="write_number" *ngIf="button.id == 2">
+
+                                        {{wishList_products.length}}
+
+                                    </div>
+
+                                    <div class="write_number" *ngIf="button.id == 3">
+
+                                       {{cart.length}}
+
+                                    </div>
+
+                                </div>
+
+                            </span>
+
+                            <div class="write_icon_header write_icon_header{{button.id}}"> {{ get_Language[button.name]}} </div>
+
+                        </div>
+
+                    </a>
+
+                </span>
 
                 <span class="mobile_header">
 
@@ -251,11 +162,9 @@
                     <div class="menu3" id="">
                          <a  href="#" class="listcategoryfind notClosepointerHeader">
                              <div class="listcategory" id="iconmenu">
-                                  <span class="glyphicon glyphicon-th-large"></span>
+                                  <span class="glyphicon glyphicon-home"></span>
                              </div>
-                             <div class="listcategory closelist" id="iconmenu">
-                                  <span class="glyphicon glyphicon-log-out icon-list-remove"></span>
-                             </div>
+
                          </a>
 
                           <div class="write_icon_header"> Home </div>
@@ -276,7 +185,7 @@
                      <span matTooltip="Open wishlist">
                          <a routerLink="/wish" class="hide_menu">
 
-                             <div class="menu3  " id="favority" >
+                             <div class="menu3  " id="favority">
 
                                  <ng-container *ngIf="wishList_products.length>0;else empty" >
 
@@ -330,13 +239,14 @@
 
                      </span>
 
+
                      <span matTooltip="More option">
 
                          <a routerLink="/menu">
 
                              <div class="menu3 " >
 
-                                 <span class="glyphicon glyphicon-option-vertical gh-header">
+                                 <span class="glyphicon glyphicon-th-large">
                                      <div class="number_event">
                                          <div class="write_number write_hidden">
                                              {{wishList_products.length}}
@@ -363,7 +273,7 @@
                 </div>
 
                 <div class="languagefull">
-                    <div class="dropworld notClosepointerHeader notCloseDropdawnLanguage">
+                    <div class="dropmore notClosepointerHeader notCloseDropdawnLanguage">
 
                         <mat-tab-group>
 
@@ -371,7 +281,7 @@
 
                                 <ng-template mat-tab-label class="hearts_div">
                                     <mat-icon>
-                                        <span class="glyphicon glyphicon-globe"></span>
+                                        language
                                     </mat-icon>
                                     <div class="label_tab inline-block">
                                         Language
@@ -440,15 +350,16 @@
 
                                 <ng-template mat-tab-label class="header_div">
                                     <mat-icon>
-                                        <span class="glyphicon glyphicon-log-in"></span>
+                                      settings
                                     </mat-icon>
                                     <div class="label_tab inline-block">
-                                    Sing In
+                                    Setting
                                     </div>
                                 </ng-template>
 
                                 <div class="body_more body_div">
-                                shaba
+
+                                Setting content
 
                                 </div>
 
@@ -458,17 +369,17 @@
 
                                 <ng-template mat-tab-label class="header_div">
                                     <mat-icon>
-                                        <span class="glyphicon glyphicon-log-in"></span>
+                                        help
                                     </mat-icon>
                                     <div class="label_tab inline-block">
-                                    Sing In
+                                    Help
                                     </div>
 
                                 </ng-template>
 
                                 <div class="body_more body_div">
 
-                                gentian
+                                Help contenc
 
                                 </div>
 
@@ -478,17 +389,17 @@
 
                                 <ng-template mat-tab-label class="header_div">
                                     <mat-icon>
-                                        <span class="glyphicon glyphicon-log-in"></span>
+                                        feedback
                                     </mat-icon>
                                     <div class="label_tab inline-block">
-                                    Sing In
+                                    Feedback
                                     </div>
 
                                 </ng-template>
 
                                 <div class="body_more body_div">
 
-                                ashtru
+                                    Feedback
 
                                 </div>
 
@@ -510,8 +421,11 @@
                 <div class="dropcard notClosepointerHeader notCloseDropdawnCard">
 
                     <div class="top_wish  hearts_div">
+
                         <div class="width_height_top_wish">
+
                             <div class="all_top_div_wish">
+
                                  <span class="width_top_wish">
                                      {{get_Language.Wish_Write}}
                                  </span>
@@ -697,3 +611,26 @@
     </div>
 
 </nav>
+
+<div class="clickchat"> <!--  start the chat ................................................-->
+
+    <a href="#">
+
+        <div class="openchat" id="showchat" (click)="check_chat()">
+
+            <div class="imgopenchat">
+
+                <div class="pointerchat"></div>
+
+                <img src="../../assets/images/chat.png">
+
+                <div class="nrnotification" id="nrnotification">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </a>
+</div>
