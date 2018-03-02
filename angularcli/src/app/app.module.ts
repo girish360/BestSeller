@@ -1,60 +1,77 @@
+
+// services ......................................................................................
+
 import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule , APP_INITIALIZER    } from '@angular/core';
 
 import { HttpModule } from "@angular/http";
 
-import {routes} from './app.router';
-
-import { AppComponent } from './app.component';
-
-import { VisitorsComponent } from './visitors/visitors.component';
-
-import { SinginSingupComponent } from './singin-singup/singin-singup.component';
-
-import { HeaderComponent } from './header/header.component';
-
-import { CategorysSubscribesComponent } from './categorys-subscribes/categorys-subscribes.component';
-
-import { ClientProductsComponent } from './client-products/client-products.component';
-
-import { ChatComponent } from './chat/chat.component';
-
-import { SlideshowComponent } from './slideshow/slideshow.component';
-
-import { NotfoundComponent } from './notfound/notfound.component';
-
-import { CompanyComponent } from './company/company.component';
-
-import { BodyComponent } from './body/body.component';
-
-import { WishListComponent } from './wish-list/wish-list.component';
-
-import { SearchComponent } from './search/search.component';
-
-import { CardComponent } from './card/card.component';
-
-import { ProductDetailsComponent } from './product-details/product-details.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {routes} from './app.router';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { CaruselComponent } from './carusel/carusel.component';
-
 import { NgxCarouselModule } from 'ngx-carousel';
 
-import { HttpService } from './services/http.service';
+import 'hammerjs';
 
-import { DataService } from './services/data.service';
+import { HttpService } from './Shopping/services/http.service';
+
+import { DataService } from './Shopping/services/data.service';
 
 import { FilterPipe } from './filter.pipe';
 
-import { EncryptDecryptService } from './services/encrypt-decrypt.service';
+import { EncryptDecryptService } from './Shopping/services/encrypt-decrypt.service';
 
-import { AuthService } from './services/auth.service';
+import { AuthService } from './Shopping/services/auth.service';
 
-import 'hammerjs';
+import { SetRouterService } from './Shopping/services/set-router.service';
+
+// end services .....................................................................................
+
+
+// componets .....................................................
+
+import { AppComponent } from './app.component';
+
+import { ControllerComponent } from './Start/controller/controller.component';
+
+import { VisitorsComponent } from './Shopping/visitors/visitors.component';
+
+import { BusinessComponent } from './Business/business/business.component';
+
+import { SinginSingupComponent } from './Shopping/singin-singup/singin-singup.component';
+
+import { HeaderComponent } from './Shopping/header/header.component';
+
+import { CategorysSubscribesComponent } from './Shopping/categorys-subscribes/categorys-subscribes.component';
+
+import { ClientProductsComponent } from './Shopping/client-products/client-products.component';
+
+import { ChatComponent } from './Shopping/chat/chat.component';
+
+import { SlideshowComponent } from './Shopping/slideshow/slideshow.component';
+
+import { NotfoundComponent } from './Shopping/notfound/notfound.component';
+
+import { CompanyComponent } from './Shopping/company/company.component';
+
+import { BodyComponent } from './Shopping/body/body.component';
+
+import { WishListComponent } from './Shopping/wish-list/wish-list.component';
+
+import { SearchComponent } from './Shopping/search/search.component';
+
+import { CardComponent } from './Shopping/card/card.component';
+
+import { ProductDetailsComponent } from './Shopping/product-details/product-details.component';
+
+import { CaruselComponent } from './Shopping/carusel/carusel.component';
+
+// end components ............................................................................................
+
 
 import {
   MatAutocompleteModule,
@@ -90,6 +107,8 @@ import {
   MatStepperModule,
 } from '@angular/material';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +127,9 @@ import {
     WishListComponent,
     SearchComponent,
     CardComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ControllerComponent,
+    BusinessComponent
   ],
   imports: [
     BrowserModule,
@@ -153,14 +174,15 @@ import {
   ],
   providers: [
 
-      AppComponent ,
+    AppComponent ,
     HttpService ,
     VisitorsComponent ,
     DataService,
     ClientProductsComponent,
     EncryptDecryptService,
     CaruselComponent,
-    AuthService
+    AuthService,
+    SetRouterService
 
   ],
 

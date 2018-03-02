@@ -90,7 +90,9 @@
                      <div class="menu1">  <!-- Icon header   -->
 
                          <div class="icon_header">
-                             <a routerLink=""> B </a>
+
+                             <a (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
+
                          </div>
 
                          <div class="icon_header_write">
@@ -158,7 +160,7 @@
 
                 <span class="mobile_header">
 
-                    <a routerLink="" class="hide_menu">
+                    <a (click)="set_router( { path:'shopping' , data:false ,relative:false } )" class="hide_menu">
                     <div class="menu3" id="">
                          <a  href="#" class="listcategoryfind notClosepointerHeader">
                              <div class="listcategory" id="iconmenu">
@@ -171,7 +173,7 @@
 
                      </div>
                         </a>
-                     <a routerLink="/search">
+                     <a (click)="set_router( { path:'search' , data:false ,relative:true } )" >
                      <div class="menu3" id="">
                          <a class="searchresponse" href="#">
                              <span class="glyphicon glyphicon-search"></span>
@@ -183,7 +185,7 @@
 
 
                      <span matTooltip="Open wishlist">
-                         <a routerLink="/wish" class="hide_menu">
+                         <a (click)="set_router( { path:'wish' , data:false ,relative:true } )"  class="hide_menu">
 
                              <div class="menu3  " id="favority">
 
@@ -217,7 +219,7 @@
 
                      <span matTooltip="Open card">
 
-                         <a routerLink="/card"  class="hide_menu">
+                         <a (click)="set_router( { path:'card' , data:false ,relative:true } )"  class="hide_menu">
 
                              <div class="menu3 " id="card">
 
@@ -242,7 +244,7 @@
 
                      <span matTooltip="More option">
 
-                         <a routerLink="/menu">
+                         <a (click)="set_router( { path:'menu' , data:false ,relative:true } )">
 
                              <div class="menu3 " >
 
@@ -407,7 +409,7 @@
 
                         </mat-tab-group>
 
-                        <a routerLink="/more">
+                        <a href="#" >
 
                             <div class="see_all">
                                 Sell All
@@ -464,7 +466,7 @@
 
                                  </span>
 
-                                <a routerLink="/card">
+                                <a (click)="set_router( { path:'card' , data:false ,relative:true } )" >
 
                                     <span  matTooltip="See All" class="add_shopping_card_from_wish">
 
@@ -540,7 +542,7 @@
 
                                  </span>
 
-                                <a routerLink="/wish">
+                                <a (click)="set_router( { path:'wish' , data:false ,relative:true } )" >
 
                                     <span  matTooltip="See All" class="add_shopping_card_from_wish">
 

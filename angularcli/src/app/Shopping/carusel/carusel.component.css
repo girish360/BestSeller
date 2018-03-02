@@ -50,7 +50,7 @@
     bottom: 0;
     left: -10px;
     background-color: whitesmoke;
-    transition: 0.5s;
+    transition: 0.2s;
 
 }
 
@@ -61,7 +61,7 @@
     bottom: 0;
     right: -10px;
     background-color: whitesmoke;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 .rightRs:hover .icon-mat{
     color:red;
@@ -69,9 +69,9 @@
 
 .carpusel_company:hover .leftRs{
     left: 0px;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 .carpusel_company:hover .rightRs{
     right: 0px;
-    transition: 0.5s;
+    transition: 0.2s;
 }

@@ -23,8 +23,6 @@ export class EncryptDecryptService {
 
   public encryp_AES( data , key){
 
-    console.log('enc');
-
     return this.data_encription =  crypto.AES.encrypt( `${ data }` , key );
 
   }

@@ -102,24 +102,8 @@ class Language extends Cookie {
                 $language['total_page_products']="Nga";
 
                 break;
-            case 'Germany':
-                $language['wellcome']='Mirsevini';
-                $language['choselanguage']='Zgjidhni gjuhen tuaj';
-                $language['seemorelanguage']='Shikoni me shume';
-                $language['searchproducts']='Kerkoni produkte ose kompani....';
-                $language['imgactivlanguage']='germany.png';
-                $language['chooselanguage']=$lang;
 
-                break;
-            case 'Greece':
-                $language['wellcome']='Mirsevini';
-                $language['choselanguage']='Zgjidhni gjuhen tuaj';
-                $language['seemorelanguage']='Shikoni me shume';
-                $language['searchproducts']='Kerkoni produkte ose kompani....';
-                $language['imgactivlanguage']='greece.png';
-                $language['chooselanguage']=$lang;
 
-                break;
             case '3':
                 $language['id']='3';
                 $language['wellcome']='Mirsevini';
@@ -144,43 +128,8 @@ class Language extends Cookie {
 
 
                 break;
-            case 'Turkey':
-                $language['wellcome']='Mirsevini';
-                $language['choselanguage']='Zgjidhni gjuhen tuaj';
-                $language['seemorelanguage']='Shikoni me shume';
-                $language['searchproducts']='Kerkoni produkte ose kompani....';
-                $language['imgactivlanguage']='turkey.png';
-                $language['chooselanguage']=$lang;
 
-                break;
-            case 'Canada':
-                $language['wellcome']='Mirsevini';
-                $language['choselanguage']='Zgjidhni gjuhen tuaj';
-                $language['seemorelanguage']='Shikoni me shume';
-                $language['searchproducts']='Kerkoni produkte ose kompani....';
-                $language['imgactivlanguage']='canada.png';
-                $language['chooselanguage']=$lang;
 
-                break;
-            case 'France':
-                $language['wellcome']='Mirsevini';
-                $language['choselanguage']='Zgjidhni gjuhen tuaj';
-                $language['seemorelanguage']='Shikoni me shume';
-                $language['searchproducts']='Kerkoni produkte ose kompani....';
-                $language['imgactivlanguage']='france.png';
-                $language['chooselanguage']=$lang;
-
-                break;
-
-            case 'Spanish':
-                $language['wellcome']='Mirsevini';
-                $language['choselanguage']='Zgjidhni gjuhen tuaj';
-                $language['seemorelanguage']='Shikoni me shume';
-                $language['searchproducts']='Kerkoni produkte ose kompani....';
-                $language['imgactivlanguage']='spain.png';
-                $language['chooselanguage']=$lang;
-
-                break;
 
         }
 

@@ -32,8 +32,8 @@ export class CaruselComponent implements OnInit {
 
     this.carouselTileOne = {
       grid: { xs: 2, sm: 3, md: 4, lg: 4, all: 0 },
-      speed: 400,
-      interval: 2000,
+      speed: 200,
+      interval: 8000,
       point: {
         visible: true,
         pointStyles: `

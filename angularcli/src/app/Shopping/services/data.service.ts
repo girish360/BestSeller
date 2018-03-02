@@ -14,7 +14,7 @@ import 'rxjs/Rx'
 
 @Injectable()
 
-export class DataService  extends AuthService {
+export class DataService extends AuthService {
 
   constructor( private httpservice : HttpService , protected http:Http  ) {
 

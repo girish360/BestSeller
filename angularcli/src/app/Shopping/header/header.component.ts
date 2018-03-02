@@ -11,6 +11,8 @@
 
  import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
+ import { SetRouterService } from '../services/set-router.service';
+
  import {Observable} from 'rxjs/Rx';
 
  declare var $:any;
@@ -101,15 +103,13 @@
 
      ];
 
-    public array_data_insert ={'title':'klodia','description':'shitet','id_image':'1','id_category':'1','id_admin':'1','price':'800','quantity':'5','image':'klo.jpg'};
-
-    constructor( private router :Router , private dataservices : DataService) {
+     constructor( private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
 
         this.wishList_products = this.dataservices.wishlist;
 
         this.get_Language = this.dataservices.language;
 
-        Observable.interval(5 * 2).subscribe(x => {
+        Observable.interval(5 * 2).subscribe( x => {
 
             this.find_position(this.property_button.pointer);
 
@@ -147,7 +147,7 @@
 
                 if (button.id == 1) {
 
-                    this.router.navigate(['/login']);
+                   this.set_router( { path:'login' , data:false , relative:true } );
 
                 } else {
 
@@ -166,6 +166,12 @@
 
     }
 
+    public  set_router( data ){
+
+        this.setRouter.set_router( data , this.route ); // set router .....
+
+    }
+
     public find_position(id){
 
          $(function(){
@@ -174,7 +180,7 @@
 
              if(id == 2){
 
-                 $('.treguesi').css({"margin-left": left.left + 15, "background-color": "white"});
+                 $('.treguesi').css({"margin-left": left.left + 12, "background-color": "white"});
              }
              else if( id ==3 ){
 
@@ -189,10 +195,9 @@
 
     public show_dropdown_button( dropdown_class, body_inside , id ){
 
-
         $('.treguesi').css({display: 'none'});
 
-        $('.' + body_inside).css({top: '15px'});
+        $('.'+body_inside).css({top: '15px'});
 
         $('.' + dropdown_class).css({top: '30px', opacity: '0.1'}); //  css style...
 

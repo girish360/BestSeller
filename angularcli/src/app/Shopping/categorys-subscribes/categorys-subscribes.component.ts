@@ -1,10 +1,12 @@
 import { Component, OnInit , AfterViewInit , Input, NgZone ,DoCheck  } from '@angular/core';
 
-import { RouterModule, Router , } from '@angular/router';
+import { RouterModule, Router , ActivatedRoute } from '@angular/router';
 
 import { DataService } from '../services/data.service';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
+
+import { SetRouterService } from '../services/set-router.service';
 
 @Component({
   selector: 'app-categorys-subscribes',
@@ -13,12 +15,11 @@ import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 })
 export class CategorysSubscribesComponent implements OnInit , DoCheck {
 
-  constructor(  private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
+  constructor( private setRouter :SetRouterService , private route:ActivatedRoute , private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
 
+    this.get_Language = this.dataservices.language;
 
-      this.get_Language = this.dataservices.language;
-
-      this.categorys = this.dataservices.categorys;
+    this.categorys = this.dataservices.categorys;
 
     let category = this.dataservices.Make_Request_InServer( 'category', 'category' );
 
@@ -75,7 +76,7 @@ export class CategorysSubscribesComponent implements OnInit , DoCheck {
 
     if( id_top_menu == '1'){
 
-      this.router.navigate([`/`]);
+      this.set_router( { path:'shopping' , data:false ,relative:false } );
 
       return;
     }
@@ -95,16 +96,27 @@ export class CategorysSubscribesComponent implements OnInit , DoCheck {
 
   }
 
-  encrypt_id( id_company ){
+  public set_router( data ){
 
-    this.router.navigate(['/company',{ companyId: this.crypto.encryp_AES( id_company , this.crypto.secret_key_company_profile ) }]);
+     this.setRouter.set_router( data , this.route );
 
   }
 
+  check_subscribes( company ){
 
+    let encryp_id = this.crypto.encryp_AES( company.id , this.crypto.secret_key_company_profile );
 
+    this.router.navigate([ company.name ,encryp_id.toString()],
+        {
+          relativeTo: this.route
+        }
+    );
 
-  ngOnInit() {
+    this.set_router( { path:company.name , data:company.id , relative:true } );
+
+  }
+
+  ngOnInit(){
 
   }
 

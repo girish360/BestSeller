@@ -502,11 +502,19 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     product_details( id_product ){
 
-        this.router.navigate(['/product_details',{ productId: this.crypto.encryp_AES( id_product , this.crypto.secret_key_product_profile ) }]);
+        this.router.navigate(['./product_details',
+
+            { productId: this.crypto.encryp_AES( id_product , this.crypto.secret_key_product_profile ) }],
+
+            { relativeTo: this.route }
+
+        );
     }
 
     change_nr(){
+
         this.nr_products++;
+
     }
 
     ngOnInit() {

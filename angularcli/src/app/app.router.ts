@@ -2,45 +2,46 @@ import { ModuleWithProviders } from '@angular/core';
 
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent} from './app.component';
+import { ControllerComponent } from './Start/controller/controller.component';
 
-import { SinginSingupComponent } from './singin-singup/singin-singup.component';
+import { BusinessComponent } from './Business/business/business.component';
 
-import { NotfoundComponent } from './notfound/notfound.component';
+import { SinginSingupComponent } from './Shopping/singin-singup/singin-singup.component';
 
-import { VisitorsComponent } from './visitors/visitors.component';
+import { NotfoundComponent } from './Shopping/notfound/notfound.component';
 
-import { CompanyComponent } from './company/company.component';
+import { VisitorsComponent } from './Shopping/visitors/visitors.component';
 
-import { ClientProductsComponent } from './client-products/client-products.component';
+import { CompanyComponent } from './Shopping/company/company.component';
 
-import { WishListComponent } from './wish-list/wish-list.component';
+import { ClientProductsComponent } from './Shopping/client-products/client-products.component';
 
-import { SearchComponent } from './search/search.component';
+import { WishListComponent } from './Shopping/wish-list/wish-list.component';
 
-import { CardComponent } from './card/card.component';
+import { SearchComponent } from './Shopping/search/search.component';
 
-import { ChatComponent } from './chat/chat.component';
+import { CardComponent } from './Shopping/card/card.component';
 
-import { CategorysSubscribesComponent } from './categorys-subscribes/categorys-subscribes.component';
+import { ChatComponent } from './Shopping/chat/chat.component';
 
-import { DataService } from './services/data.service';
+import { CategorysSubscribesComponent } from './Shopping/categorys-subscribes/categorys-subscribes.component';
 
-import { BodyComponent } from './body/body.component';
-
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsComponent } from './Shopping/product-details/product-details.component';
 
 export const router: Routes = [
     {
-        path: '', component: VisitorsComponent,
+        path: '', component: ControllerComponent,
+    },
+
+    {
+        path: 'shopping', component: VisitorsComponent,
 
         children: [
             {
                 path: '', component: ClientProductsComponent,
-
             },
             {
-                path: 'company', component: CompanyComponent
+                path: ':name/:name', component: CompanyComponent
             },
             {
                 path: 'login', component: SinginSingupComponent
@@ -62,23 +63,19 @@ export const router: Routes = [
             },
             {
                 path :'product_details' , component : ProductDetailsComponent
-            },
-
+            }
         ]
     },
-
     {
-        path: 'bussines', component: CompanyComponent
-    },
+        path: 'business', component: BusinessComponent,
 
-    {
-        path:'company',component: CompanyComponent
+        children:[
 
+        ]
     },
     {
         path:'**',component: NotfoundComponent
     }
-
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

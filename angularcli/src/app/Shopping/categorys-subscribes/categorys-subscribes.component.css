@@ -206,7 +206,7 @@ mat-icon{
     height: 100vh;
     overflow-x: auto;
     opacity: 0.1;
-    background: url("../../assets/images/under_login.jpg") no-repeat;
+    background: url("../../../assets/images/under_login.jpg") no-repeat;
 }
 
 .fixed_category{
