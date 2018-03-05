@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input , Output , EventEmitter   } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, DoCheck} from '@angular/core';
 
 import { VisitorsComponent } from '../visitors/visitors.component';
 
@@ -15,10 +15,17 @@ import { DataService } from '../services/data.service';
 export class BodyComponent implements OnInit {
 
 
-  constructor( private dataservices : DataService ) { }
+  constructor( private dataservices : DataService ) {
 
-  ngOnInit() {
 
   }
+
+
+
+  ngOnInit(){
+
+  }
+
+
 
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit , Input } from '@angular/core';
+import { Component, OnInit , Input ,OnDestroy } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-company',
@@ -11,7 +12,7 @@ import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
 })
 
-export class CompanyComponent implements OnInit {
+export class CompanyComponent implements OnInit , OnDestroy {
 
     public get_Language:object;
 
@@ -19,10 +20,12 @@ export class CompanyComponent implements OnInit {
 
     private id:any;
 
+    private subscription : Subscription;
+
 
     constructor( private crypto : EncryptDecryptService , private route: ActivatedRoute , private router: Router  ) {
 
-        this.route.params.subscribe( params => {
+        this.subscription = this.route.params.subscribe( params => {
 
             this.company_id = crypto.decrypt_AES( params['name'] , crypto.secret_key_company_profile );
 
@@ -30,11 +33,13 @@ export class CompanyComponent implements OnInit {
 
     }
 
-
-
     ngOnInit() {
 
+    }
 
+    ngOnDestroy():void{
+
+        this.subscription.unsubscribe();
 
     }
 

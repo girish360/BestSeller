@@ -17,30 +17,26 @@ export class CategorysSubscribesComponent implements OnInit , DoCheck {
 
   constructor( private setRouter :SetRouterService , private route:ActivatedRoute , private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
 
-    this.get_Language = this.dataservices.language;
-
-    this.categorys = this.dataservices.categorys;
-
     let category = this.dataservices.Make_Request_InServer( 'category', 'category' );
 
-    category.then(response =>{
+     category.then(response =>{
 
-      this.categorys=response;
+        this.categorys = response;
 
-    });
+     });
 
   }
 
   ngDoCheck(){
 
-    this.get_Language = this.dataservices.language;
+
   }
 
   public categorys:any = [];
 
-   public id_company:any;
+  public id_company:any;
 
-   public get_Language = {};
+  
 
   private top_menus:object = [
     { icon:'home',id:'1',name:'Home'   },

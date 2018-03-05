@@ -28,16 +28,10 @@ export class DataService extends AuthService {
 
       });
 
-
-
-
-
-
   }
+  public body_loader=false;
 
-
-
-  public language:object={};
+  public language:any={};
 
   public wishlist:any = [];
 
@@ -71,19 +65,19 @@ export class DataService extends AuthService {
 
         this.httpservice.Http_Post( this.object_request )
 
-            .subscribe(
+        .subscribe(
 
-                data => {
+            data => {
 
-                    this.check_response( data );
+                this.check_response( data );
 
-                    resolve( data['data'] );
+                resolve( data['data'] );
 
-                },
+            },
 
-                error => (error : any) =>  {  reject( false )  }
+            error => (error : any) =>  {  reject( false )  }
 
-            );
+        );
     });
 
   }
@@ -116,6 +110,12 @@ export class DataService extends AuthService {
 
 
       }
+  }
+
+  update_loader( new_poperty ){
+
+         this.body_loader = new_poperty;
+
   }
 
   update_wishList( new_wish ){

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnDestroy } from '@angular/core';
 
 import { NgxCarousel ,NgxCarouselStore } from 'ngx-carousel';
+import {observableToBeFn} from "rxjs/testing/TestScheduler";
 
 declare var $:any;
 
@@ -9,7 +10,7 @@ declare var $:any;
   templateUrl: './slideshow.component.html',
   styleUrls: ['./slideshow.component.css']
 })
-export class SlideshowComponent implements OnInit {
+export class SlideshowComponent implements OnInit ,OnDestroy {
 
 
   public carouselOne: NgxCarousel;
@@ -72,9 +73,17 @@ export class SlideshowComponent implements OnInit {
     }
 
   }
+  ngOnDestroy():void{
+
+    this.carouselOne = { grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0}};
+
+     this.images_slide=[];
 
 
-     public myfunc(event: Event) {
+  }
+
+
+     public myfunc( event: Event) {
           // carouselLoad will trigger this funnction when your load value reaches
           // it is helps to load the data by parts to increase the performance of the app
          // must use feature to all carousel

@@ -1,7 +1,5 @@
 
- <div class="component-animation"> <!--  this component is inside this div  ...................................................... -->
-
-     <app-slideshow></app-slideshow>
+ <div class="component-animation" *ngIf="!dataservices.body_loader"> <!--  this component is inside this div  ...................................................... -->
 
      <div class="option_products ">  <!--  Options products pagination ,  select  ...................................................... -->
 
@@ -12,7 +10,7 @@
                  <button mat-button >
 
                      <div class="write_page">
-                         {{get_Language.page_products + pages_details.number_click}} {{get_Language.total_page_products}} {{pages_details.total_number}}
+                         {{dataservices.language.page_products + pages_details.number_click}} {{dataservices.language.total_page_products}} {{pages_details.total_number}}
                      </div>
 
                  </button>
@@ -121,7 +119,7 @@
 
                 </a>
 
-                <a href="#" class="hover_all_wish" id="wish_list{{product.id}}" (click)="add_wish_list(product)">
+                <a href="#"  (mouseleave)="mouseLeave_wish( product )"  (mouseenter) ="mouseHover_wish( product )"  class="hover_all_wish" id="wish_list{{product.id}}" (click)="add_wish_list(product)">
 
                     <div class="wish_list">
 
@@ -131,7 +129,7 @@
 
                         <div class="wish_list_write">
 
-                            <div class="plus_icon">{{get_Language.add_wishlist}}</div>
+                            <div class="plus_icon">{{dataservices.language.add_wishlist}}</div>
 
                         </div>
 
@@ -153,9 +151,9 @@
 
                                 <ng-container *ngIf=" status_in_wish == true; else notinwish ">
 
-                                    <div class="success_add_wish"  >
+                                    <div class="hearts_div" >
 
-                                        <img  src="../../assets/images/ok.png">
+                                        <mat-icon>favorite</mat-icon>
 
                                     </div>
 
@@ -165,9 +163,9 @@
 
                                     <ng-container *ngIf=" status_in_wish == true; else noinwish ">
 
-                                        <div class="success_add_wish"  >
+                                        <div class="hearts_div"  >
 
-                                            <img  src="../../assets/images/ok.png">
+                                            <mat-icon>favorite</mat-icon>
 
                                         </div>
 
@@ -177,7 +175,13 @@
 
                                         <div class="hearts_div notClosepointerHeader"  >
 
-                                            <img  src="../../assets/images/hearts.png">
+                                            <mat-icon>favorite_border</mat-icon>
+
+                                        </div>
+
+                                        <div class="hearts_div_hover notClosepointerHeader"  >
+
+                                            <mat-icon>favorite</mat-icon>
 
                                         </div>
 
@@ -191,7 +195,13 @@
 
                                 <div class="hearts_div notClosepointerHeader">
 
-                                    <img  src="../../assets/images/hearts.png">
+                                    <mat-icon>favorite_border</mat-icon>
+
+                                </div>
+
+                                <div class="hearts_div_hover notClosepointerHeader"  >
+
+                                    <mat-icon>favorite</mat-icon>
 
                                 </div>
 

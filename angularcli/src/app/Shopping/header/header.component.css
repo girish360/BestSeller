@@ -28,7 +28,13 @@ a{
     display: inline-block;
 }
 
+.active_wish_list{
+    color:red;
+}
 
+.selected-color-button{
+    color:white;
+}
 
 /* Begin css for header profile user here ....................................................................................................*/
 .navigation{

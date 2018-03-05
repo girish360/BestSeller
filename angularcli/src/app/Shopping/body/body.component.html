@@ -5,11 +5,26 @@
 
          <div class="containerleft">
 
+             <div *ngIf="dataservices.body_loader" >
+
+                 <div  class="loading_body">
+
+                     <mat-spinner [diameter]="30"  class="loading center">
+
+                     </mat-spinner>
+
+                 </div>
+
+             </div>
+
+
              <router-outlet>
 
-                 <!-- body  -->
+                     <!-- body  -->
 
              </router-outlet>
+
+
 
          </div>
 

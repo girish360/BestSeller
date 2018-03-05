@@ -50,9 +50,7 @@
 
  export class HeaderComponent implements OnInit ,DoCheck  {
 
-    public get_Language:any = {};
-
-    public wishList_products:any = [];
+     public wishList_products:any = [];
 
     public cart = [];
 
@@ -75,6 +73,8 @@
     private show_hide_search_in_wishList = false;
 
     public  filter_wish='';
+
+    public selectedIndex;
 
      public property_button:any = { active:0 , disabled:false ,pointer:1 };
 
@@ -105,31 +105,32 @@
 
      constructor( private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
 
-        this.wishList_products = this.dataservices.wishlist;
-
-        this.get_Language = this.dataservices.language;
-
-        Observable.interval(5 * 2).subscribe( x => {
+         Observable.interval(5 * 2).subscribe( x => {
 
             this.find_position(this.property_button.pointer);
 
-        });
+         });
 
         let wishlist = this.dataservices.Make_Request_InServer( 'get_wishList', 'wish' );
 
-        wishlist.then(response =>{
+        wishlist.then( response =>{
 
-            this.wishList_products=response;
+             if( response['status']!='false'){
 
+                 this.wishList_products = response;
+
+             }
         });
     }
 
     ngDoCheck(){
 
-        this.get_Language = this.dataservices.language;
+
     }
 
-     public check_button( button ){
+     public check_button( button , i ){
+
+        this.selectedIndex = i;
 
         if( this.property_button.disabled == false ) {
 
@@ -161,6 +162,8 @@
                 this.hide_dropdown_button(button.dropdown_class, button.dropdown_body);
 
                 this.property_button.active = 0;
+
+                this.selectedIndex='empty';
             }
         }
 
@@ -207,7 +210,7 @@
 
             opacity: 1
 
-        }, 300, function () { //  function after effect ............
+        }, 200, function () { //  function after effect ............
 
             $('.treguesi').css({display: 'block'}); // show pionter......
 
@@ -223,7 +226,7 @@
 
             top: '0'
 
-        }, 400);
+        }, 300);
 
     }
 
@@ -243,7 +246,7 @@
 
             opacity: '0.1',
 
-        }, 300, function () { //  function after effect ............
+        }, 200, function () { //  function after effect ............
 
             $('.' + dropdown_class).hide();
 
@@ -253,7 +256,7 @@
 
             top: '15'
 
-        }, 400);
+        }, 300);
 
     }
 
@@ -656,7 +659,7 @@
 
     current_language(id_language){
 
-        if( this.get_Language.id == id_language ){
+        if( this.dataservices.language.id == id_language ){
 
             return true;
         }
@@ -727,13 +730,13 @@
 
 
 
-            function give_bgcolor_icon_header(all, single, status, removewrite) {  // effect when click icon header ........
+            function give_bgcolor_icon_header( all, single, status, removewrite) {  // effect when click icon header ........
 
                 $('.' + all).css({backgroundColor: '', borderTop: ''});
 
                 $('.write_icon_header').css('visibility', 'visible');
 
-                if (status == 0) {
+                if ( status == 0 ) {
 
                     $('.' + single).find('.glyphicon').css({
 

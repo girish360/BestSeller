@@ -2,6 +2,8 @@ import { Component, OnInit,Input , Output , EventEmitter , DoCheck  } from '@ang
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx'
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/observable/interval';
 
 import { RouterStateSnapshot,ActivatedRouteSnapshot, ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
@@ -39,13 +41,11 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     constructor( private router : Router, private crypto:EncryptDecryptService , private dataservices: DataService ,    private Httpservice :HttpService , private route: ActivatedRoute  ) {
 
-        this.get_Language = this.dataservices.language;
-
-        this.wishList_products = this.dataservices.wishlist;
+        this.dataservices.update_loader(true);
 
         let response = this.dataservices.Make_Request_InServer( 'products' , { 'type': 'default', 'number_click': 1 } );
 
-        response.then(response =>{
+        response.then( response => {
 
             this.pages_details = this.dataservices.products['pages_details'];
 
@@ -53,16 +53,22 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
             this.products = this.dataservices.products['products'];
 
+            this.dataservices.update_loader(false);
+
         });
+
     }
 
     ngDoCheck(){
 
-        this.get_Language = this.dataservices.language;
-
         this.wishList_products = this.dataservices.wishlist;
+    }
+
+    ngOnInit() {
 
     }
+
+    public loader = false;
 
     public  products:any = [] ;
 
@@ -71,8 +77,6 @@ export class ClientProductsComponent implements OnInit,DoCheck {
     private wishList_products:any = [];
 
     public productInWish = false;
-
-    public get_Language :object={};
 
     public Response:any;
 
@@ -85,6 +89,17 @@ export class ClientProductsComponent implements OnInit,DoCheck {
     public pages_details:any={};
 
     public send_data_products={};
+
+    private wish_hover_property = {
+
+         wish_list_active_pass:0,
+
+         empty_full:0,
+
+         id_wish:0
+    };
+
+    my_timer_wish: Subscription;
 
 
 
@@ -129,6 +144,8 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     get_page_products(){
 
+        this.dataservices.update_loader(true);
+
        let response = this.dataservices.Make_Request_InServer( 'products', this.send_data_products );
 
        response.then( products_details =>{
@@ -138,6 +155,8 @@ export class ClientProductsComponent implements OnInit,DoCheck {
              this.pages_details = products_details['pages_details'];
 
              this.build_pages_link( products_details['pages_details']) ;
+
+             this.dataservices.update_loader(false);
 
         });
     }
@@ -516,119 +535,98 @@ export class ClientProductsComponent implements OnInit,DoCheck {
         this.nr_products++;
 
     }
+    mouseHover_wish( product ){
 
-    ngOnInit() {
+        $('.wish_list'+product.id).find('.wish_list').addClass('wish_list_hover');
 
-        $(document).ready(function(){
+        this.wish_hover_property.wish_list_active_pass=1;
 
-            var wish_list_active_pass=0; //  make this variable active  when mouse is hover in wishlist  ..........................
+        this.wish_hover_property.empty_full=1;
 
-            var small_big=0;  //  make this variable small ore big every time ........
+        this.check_wish_icon( product );
 
-            var id_wish=0; // get id products where mouse is hover .................................................................
+        this.onStartInterval_wish(product);
 
-            // setInterval call function every time that is located in this function  .............
-            setInterval(function(){
+    }
 
-                wish_list(wish_list_active_pass,small_big,id_wish);
+    mouseLeave_wish( product ){
 
+        $('.wish_list'+product.id).find('.wish_list').removeClass('wish_list_hover');
 
-            },100);
+        this.wish_hover_property.empty_full=0;
 
-            setInterval(function(){
+        this.wish_hover_property.wish_list_active_pass=0;
 
-                small_big=change_value(small_big);
+        this.ondestroyInterval_wish();
 
+        this.check_wish_icon( product );
 
-            },500);
-            // end ............
+    }
 
+    check_wish_icon(  product ){
 
-            // mouse hover add wishlist active variable that make hearts small and bit .............................
-            $('body').on('mouseenter','.hover_all_wish',function(){
+        this.status_in_wish = false; // status to find  if this  product is in wish......
 
-                $(this).find('.wish_list').addClass('wish_list_hover') ;
+        for ( var i =  0 ; i < this.wishList_products.length ; i++ ){ // loop wish list with product ...
 
-                id_wish = $(this).attr('id');
+            if( this.wishList_products[i].id == product.id ){ // if product .id is equals with one product.id in wish status should be true ...
 
-                wish_list_active_pass=1;
+                this.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
 
-                small_big=1;
+            }
+        }
 
-            }); // ens .........................................
+        if( this.status_in_wish != true ) { // check if status is not equals with true  to  add this prod in wish ....
 
+            if( this.wish_hover_property.wish_list_active_pass == 1 ){
 
-          // mouse leave from add wishlist into the products remove all variable that make hearts small and big .......................................
-            $('body').on('mouseleave','.hover_all_wish',function(){
+                if( this.wish_hover_property.empty_full == 1 ){
 
-                $(this).find('.wish_list').removeClass('wish_list_hover');
+                    $('#'+product.id).find('.hearts_div').addClass('hide_border_heart') ;
 
-                id_wish = $(this).attr('id');
-
-                small_big=0;
-
-                wish_list_active_pass=0;
-
-            }); // end .....................................................
-
-            // function change number value   of small_big value  every 0.5 sec ....................
-
-            function change_value(value){
-
-                if(value=='1'){
-
-                    var val = 0;
-
-                    return val;
-                }
-                if(value=='0'){
-
-                    var val = 1;
-
-                    return 1;
-                }
-            } // end .......................................
-
-
-            function wish_list(active_pasive_wish_hover , small_big ,id){
-
-                var width = $(window).width();
-
-                if(width<=800){
+                    $('#'+product.id).find('.hearts_div_hover').addClass('show_full_heart');
 
                 }else{
 
-                    if(active_pasive_wish_hover=='1'){
+                    $('#'+product.id).find('.hearts_div').removeClass('hide_border_heart') ;
 
-                        if(small_big=='1'){
-
-                            $('#'+id).find('.hearts_div').addClass('wish_list_icon_hover') ;
-
-                        }else{
-
-                            $('#'+id).find('.hearts_div').removeClass('wish_list_icon_hover') ;
-                        }
-
-                    }
-                    else{
-                        $('#'+id).find('.hearts_div').removeClass('wish_list_icon_hover') ;
-
-                    }
-
+                    $('#'+product.id).find('.hearts_div_hover').removeClass('show_full_heart');
                 }
-            } // end ......................................................
 
+            }
+            else{
 
-            $('.click_up').click(function(){
+                $('#'+product.id).find('.hearts_div').removeClass('hide_border_heart') ;
 
-                $('body').animate({
-                    scrollTop:'0px'
-                });
+                $('#'+product.id).find('.hearts_div_hover').removeClass('show_full_heart');
 
-            });
+            }
+        }
+    }
 
+    onStartInterval_wish( product ) {
 
+        this.my_timer_wish = Observable.interval(500).subscribe(val => {
+
+            if(this.wish_hover_property.empty_full == 1){
+
+                this.wish_hover_property.empty_full = 0;
+
+            }else{
+
+                this.wish_hover_property.empty_full = 1;
+            }
+
+            this.check_wish_icon(  product );
         });
     }
+
+    ondestroyInterval_wish(){
+
+        this.my_timer_wish.unsubscribe();
+    }
+
+
+
 
 }

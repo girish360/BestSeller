@@ -105,7 +105,7 @@
 
                          <div class="search notCloseDropdawnSearch">
 
-                             <input type="text" class="kerkim" id="kerkim" name="search" placeholder="{{get_Language.searchproducts}}">
+                             <input type="text" class="kerkim" id="kerkim" name="search" placeholder="{{dataservices.language.searchproducts}}">
 
                              <a href="#">
                                  <div class="iconsearch">
@@ -126,11 +126,11 @@
 
                 <span class="button_right">
 
-                    <a  href="#" *ngFor=" let button of button_right" matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button)" >
+                    <a  href="#" *ngFor=" let button of button_right; let i = index" matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button ,i)" >
 
                         <div class="menu3 button{{button.id}} {{button.different_class}}">
 
-                            <span class="glyphicon {{button.icon}}">
+                            <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && wishList_products.length > 0 ,'selected-color-button' : i==selectedIndex }">
 
                                 <div class="number_event">
 
@@ -150,7 +150,7 @@
 
                             </span>
 
-                            <div class="write_icon_header write_icon_header{{button.id}}"> {{ get_Language[button.name]}} </div>
+                            <div class="write_icon_header write_icon_header{{button.id}}"> {{ dataservices.language[button.name]}} </div>
 
                         </div>
 
@@ -212,7 +212,7 @@
                                      </span>
                                  </ng-template>
 
-                                 <div class="write_icon_header"> {{get_Language.wish}} </div>
+                                 <div class="write_icon_header"> {{dataservices.language.wish}} </div>
                              </div>
                          </a>
                      </span>
@@ -234,7 +234,7 @@
 
                                      </div>
                                  </span>
-                                 <div class="write_icon_header" >{{get_Language.card}}</div>
+                                 <div class="write_icon_header" >{{dataservices.language.card}}</div>
                              </div>
 
                          </a>
@@ -255,7 +255,7 @@
                                          </div>
                                      </div>
                                  </span>
-                                 <div class="write_icon_header" >{{get_Language.more}}</div>
+                                 <div class="write_icon_header" >{{dataservices.language.more}}</div>
                              </div>
 
                          </a>
@@ -293,16 +293,16 @@
                                 <div class="body_more body_div">
 
                                     <div class="choose" style="color:gray; text-align: left; position: relative; left: 10px;">
-                                        <h2>{{get_Language.choselanguage}}</h2>
+                                        <h2>{{dataservices.language.choselanguage}}</h2>
                                     </div>
                                     <div class="typelanguage"><br>
                                         <div class="activelanguage">
 
                                             <div class="imgactiv">
-                                                <img src="../../assets/images/{{get_Language.Active_language_image}}">
+                                                <img src="../../assets/images/{{dataservices.language.Active_language_image}}">
                                             </div>
                                             <div class="writeactivlanguage">
-                                                <h2>{{get_Language.Active_language}}</h2>
+                                                <h2>{{dataservices.language.Active_language}}</h2>
                                             </div>
                                             <div class="iconactive">
                                                 <img class="radiolang" src="../../assets/images/ok.png">
@@ -429,7 +429,7 @@
                             <div class="all_top_div_wish">
 
                                  <span class="width_top_wish">
-                                     {{get_Language.Wish_Write}}
+                                     {{dataservices.language.Wish_Write}}
                                  </span>
 
                                 <span  matTooltip="Search" class="search_icon_from_wish">
@@ -505,7 +505,7 @@
                         <div class="width_height_top_wish">
                             <div class="all_top_div_wish">
                                  <span class="width_top_wish">
-                                     {{get_Language.Wish_Write}}
+                                     {{dataservices.language.Wish_Write}}
                                  </span>
 
                                 <span  matTooltip="Search" class="search_icon_from_wish">
