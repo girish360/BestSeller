@@ -27,8 +27,21 @@ export class DataService extends AuthService {
           this.language=response;
 
       });
+      let wishlist = this.Make_Request_InServer( 'get_wishList', 'wish' );
+
+      wishlist.then( response =>{
+
+          if( response!= 'false' ){
+
+              this.wishlist = response;
+
+          }
+      });
 
   }
+  public Header_property:any = {
+      selectedIndex:'empty'
+  };
   public body_loader=false;
 
   public language:any={};

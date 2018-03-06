@@ -182,7 +182,8 @@ import {
     EncryptDecryptService,
     CaruselComponent,
     AuthService,
-    SetRouterService
+    SetRouterService,
+    HeaderComponent
 
   ],
 

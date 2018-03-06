@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Renderer ,ElementRef ,AfterViewInit } from '@angular/core';
 
 declare var $:any;
 
@@ -8,15 +8,17 @@ import { HttpService } from '../services/http.service';
 
 import { DataService } from '../services/data.service';
 
+
+
 @Component({
   selector: 'app-visitors',
   templateUrl: './visitors.component.html',
   styleUrls: ['./visitors.component.css']
 
 })
-export class VisitorsComponent implements OnInit {
+export class VisitorsComponent implements OnInit , AfterViewInit {
 
-  constructor( private dataservices: DataService , private route:ActivatedRoute ,private Httpservice : HttpService ) {
+  constructor(  private elementRef : ElementRef, private renderer : Renderer,  private dataservices: DataService  ) {
 
     this.get_Language = this.dataservices.language;
 
@@ -27,6 +29,45 @@ export class VisitorsComponent implements OnInit {
   private wishList_products = [];
 
   public innerWidth;
+
+  ngAfterViewInit() {
+
+    this.renderer.listen(this.elementRef.nativeElement, 'click', (event) => {
+
+      if ( event.target.closest('.notCloseDropdawnLanguage') == null) {
+
+        $('.dropmore').hide();
+
+      }
+
+      if ( event.target.closest('.notCloseDropdawnFavorite') == null ) {
+
+        $('.dropfavority').hide();
+
+      }
+
+      if ( event.target.closest('.notCloseDropdawnSearch') == null) {
+
+        $('.dropdown_search').hide();
+      }
+
+      if ( event.target.closest('.notCloseDropdawnCard') == null ) {
+
+        $('.dropcard').hide();
+
+      }
+
+      if (event.target.closest('.notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard') == null ) {
+
+        $('.treguesi').css({display: 'none'});
+
+        this.dataservices.Header_property.selectedIndex = 'empty';
+
+        $('.write_icon_header').css('visibility', 'visible');
+      }
+
+    })
+  }
 
   ngOnInit() {
 

@@ -91,7 +91,7 @@
 
                          <div class="icon_header">
 
-                             <a (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
+                             <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
 
                          </div>
 
@@ -130,11 +130,11 @@
 
                         <div class="menu3 button{{button.id}} {{button.different_class}}">
 
-                            <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && wishList_products.length > 0 ,'selected-color-button' : i==selectedIndex }">
+                            <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && wishList_products.length > 0 ,'selected-color-button' : i== dataservices.Header_property.selectedIndex }">
 
                                 <div class="number_event">
 
-                                    <div class="write_number" *ngIf="button.id == 2">
+                                    <div class="write_number"  *ngIf="button.id == 2">
 
                                         {{wishList_products.length}}
 
@@ -142,7 +142,7 @@
 
                                     <div class="write_number" *ngIf="button.id == 3">
 
-                                       {{cart.length}}
+                                       {{cart_products.length}}
 
                                     </div>
 
@@ -536,7 +536,7 @@
 
                                 <span  matTooltip="Add to Cart" class="add_shopping_card_from_wish">
 
-                                     <button mat-icon-button class="btn-deleteFromwish" >
+                                     <button mat-icon-button class="btn-deleteFromwish"  (click)="from_wish_to_cart( selected_wishList )" >
                                          <mat-icon>shopping cart</mat-icon>
                                      </button>
 

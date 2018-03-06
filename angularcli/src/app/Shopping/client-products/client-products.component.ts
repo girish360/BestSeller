@@ -1,4 +1,4 @@
-import { Component, OnInit,Input , Output , EventEmitter , DoCheck  } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, DoCheck,  ChangeDetectorRef } from '@angular/core';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx'
@@ -18,6 +18,7 @@ import {  trigger, sequence, transition, animate, style, state } from '@angular/
 declare  var $:any;
 
 @Component({
+
   selector: 'app-client-products',
   templateUrl: './client-products.component.html',
   styleUrls: ['./client-products.component.css'],
@@ -37,11 +38,51 @@ declare  var $:any;
 
 })
 
-export class ClientProductsComponent implements OnInit,DoCheck {
 
-    constructor( private router : Router, private crypto:EncryptDecryptService , private dataservices: DataService ,    private Httpservice :HttpService , private route: ActivatedRoute  ) {
+
+export class ClientProductsComponent implements OnInit,DoCheck  {
+
+    public loader = false;
+
+    public  products:any = [] ;
+
+    public products_detail:any;
+
+    private wishList_products:any = [];
+
+    public productInWish = false;
+
+    public Response:any;
+
+    public status_in_wish=false;
+
+    public nr_products=0;
+
+    public pages_link:any=[];
+
+    public pages_details:any={};
+
+    public send_data_products={};
+
+
+    public property_products = {
+
+        hover_wish_list:false,
+
+        empty_full:0,
+
+        index_product:'empty'
+
+    };
+
+    my_timer_wish: Subscription ;
+
+    constructor(private cdr:  ChangeDetectorRef, private router : Router, private crypto:EncryptDecryptService , private dataservices: DataService ,    private Httpservice :HttpService , private route: ActivatedRoute  ) {
 
         this.dataservices.update_loader(true);
+
+        this.wishList_products = this.dataservices.wishlist;
+
 
         let response = this.dataservices.Make_Request_InServer( 'products' , { 'type': 'default', 'number_click': 1 } );
 
@@ -66,41 +107,8 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     ngOnInit() {
 
+
     }
-
-    public loader = false;
-
-    public  products:any = [] ;
-
-    public products_detail:any;
-
-    private wishList_products:any = [];
-
-    public productInWish = false;
-
-    public Response:any;
-
-    public status_in_wish;
-
-    public nr_products=0;
-
-    public pages_link:any=[];
-
-    public pages_details:any={};
-
-    public send_data_products={};
-
-    private wish_hover_property = {
-
-         wish_list_active_pass:0,
-
-         empty_full:0,
-
-         id_wish:0
-    };
-
-    my_timer_wish: Subscription;
-
 
 
     click_pages( click_details ){
@@ -485,6 +493,8 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
         if( this.status_in_wish != true ){ // check if status is not equals with true  to  add this prod in wish ....
 
+            this.ondestroyInterval_wish();
+
             this.wishList_products.unshift( product_data ); // push wish product in wishList products
 
             this.dataservices.update_wishList( this.wishList_products); // change wish list in services   that get this  when change component with router outlet
@@ -495,6 +505,7 @@ export class ClientProductsComponent implements OnInit,DoCheck {
             this.Httpservice.Http_Post( this.dataservices.object_request) // make request ......
 
                 .subscribe( //  take success
+
                     data => {
                         if( data['status'] == 'add_wishProduct' ){
                             this.Response = data['data']
@@ -506,11 +517,18 @@ export class ClientProductsComponent implements OnInit,DoCheck {
         }
     }
 
-    set_status_wish(){
-         this.status_in_wish=true;
-    }
-    update_status_wish(){
-        this.status_in_wish=false;
+    check_wish(product){
+
+        this.status_in_wish = false;
+
+        for ( let i = 0 ; i < this.wishList_products.length ; i++){
+
+            if( this.wishList_products[i].id ==  product.id ){
+
+                this.status_in_wish = true;
+            }
+        }
+        return this.status_in_wish;
     }
 
     encrypt_id( id_company ){
@@ -535,13 +553,11 @@ export class ClientProductsComponent implements OnInit,DoCheck {
         this.nr_products++;
 
     }
-    mouseHover_wish( product ){
+    mouseHover_wish( product , i ){
 
-        $('.wish_list'+product.id).find('.wish_list').addClass('wish_list_hover');
+        this.property_products.index_product = i;
 
-        this.wish_hover_property.wish_list_active_pass=1;
-
-        this.wish_hover_property.empty_full=1;
+        this.property_products.empty_full=1;
 
         this.check_wish_icon( product );
 
@@ -551,11 +567,9 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     mouseLeave_wish( product ){
 
-        $('.wish_list'+product.id).find('.wish_list').removeClass('wish_list_hover');
+        this.property_products.index_product = 'empty';
 
-        this.wish_hover_property.empty_full=0;
-
-        this.wish_hover_property.wish_list_active_pass=0;
+        this.property_products.empty_full=0;
 
         this.ondestroyInterval_wish();
 
@@ -563,7 +577,7 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
     }
 
-    check_wish_icon(  product ){
+    check_wish_icon( product ){
 
         this.status_in_wish = false; // status to find  if this  product is in wish......
 
@@ -578,46 +592,32 @@ export class ClientProductsComponent implements OnInit,DoCheck {
 
         if( this.status_in_wish != true ) { // check if status is not equals with true  to  add this prod in wish ....
 
-            if( this.wish_hover_property.wish_list_active_pass == 1 ){
 
-                if( this.wish_hover_property.empty_full == 1 ){
+            if( this.property_products.empty_full == 1 ){
 
-                    $('#'+product.id).find('.hearts_div').addClass('hide_border_heart') ;
+                this.property_products.hover_wish_list = true;
 
-                    $('#'+product.id).find('.hearts_div_hover').addClass('show_full_heart');
+            }else{
 
-                }else{
-
-                    $('#'+product.id).find('.hearts_div').removeClass('hide_border_heart') ;
-
-                    $('#'+product.id).find('.hearts_div_hover').removeClass('show_full_heart');
-                }
-
-            }
-            else{
-
-                $('#'+product.id).find('.hearts_div').removeClass('hide_border_heart') ;
-
-                $('#'+product.id).find('.hearts_div_hover').removeClass('show_full_heart');
-
+                this.property_products.hover_wish_list = false;
             }
         }
     }
 
     onStartInterval_wish( product ) {
 
-        this.my_timer_wish = Observable.interval(500).subscribe(val => {
+        this.my_timer_wish = Observable.interval(500).subscribe( val => {
 
-            if(this.wish_hover_property.empty_full == 1){
+            if(this.property_products.empty_full == 1){
 
-                this.wish_hover_property.empty_full = 0;
+                this.property_products.empty_full = 0;
 
             }else{
 
-                this.wish_hover_property.empty_full = 1;
+                this.property_products.empty_full = 1;
             }
 
-            this.check_wish_icon(  product );
+            this.check_wish_icon( product );
         });
     }
 

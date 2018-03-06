@@ -1,6 +1,7 @@
 
  <div class="component-animation" *ngIf="!dataservices.body_loader"> <!--  this component is inside this div  ...................................................... -->
 
+
      <div class="option_products ">  <!--  Options products pagination ,  select  ...................................................... -->
 
          <div class="inside_option_products">
@@ -65,7 +66,7 @@
 
      <div class="all_prod"> <!--  start div with products ...................................................... -->
 
-        <div class="width_products  products-animation " *ngFor="let product of products"  [ngClass]="{ 'width_products_open_menu':dataservices.status_menu || dataservices.status_chat }" >
+        <div class="width_products  products-animation " *ngFor="let product of products ; let i = index"  [ngClass]="{ 'width_products_open_menu':dataservices.status_menu || dataservices.status_chat }" >
 
             <div class="each_width_product" >
 
@@ -119,9 +120,9 @@
 
                 </a>
 
-                <a href="#"  (mouseleave)="mouseLeave_wish( product )"  (mouseenter) ="mouseHover_wish( product )"  class="hover_all_wish" id="wish_list{{product.id}}" (click)="add_wish_list(product)">
+                <a href="#"  (mouseleave)="mouseLeave_wish( product )"  (mouseenter) ="mouseHover_wish( product ,i )"  class="hover_all_wish" id="wish_list{{product.id}}" (click)="add_wish_list(product)">
 
-                    <div class="wish_list">
+                    <div class="wish_list" [ngClass]="{'wish_list_hover': property_products.index_product == i }">
 
                     </div>
 
@@ -133,79 +134,37 @@
 
                         </div>
 
-                        <div class="wish_list_icon"  >
+                        <div class="wish_list_icon">
 
-                            <ng-container *ngIf="wishList_products.length > 0; else  emtyWish" >
+                            <button mat-mini-fab class="button_heart"  >
 
-                                {{ update_status_wish() }}
+                                <div *ngIf="wishList_products.length > 0; else  emtyWish " >
 
-                                <div *ngFor="let wishes of wishList_products">
-
-                                    <ng-container *ngIf="wishes.id == product.id;">
-
-                                        {{ set_status_wish() }}
-
-                                    </ng-container>
-
-                                </div>
-
-                                <ng-container *ngIf=" status_in_wish == true; else notinwish ">
-
-                                    <div class="hearts_div" >
+                                    <div *ngIf="check_wish(product) ; else notinwish">
 
                                         <mat-icon>favorite</mat-icon>
 
                                     </div>
 
-                                </ng-container>
+                                    <ng-template #notinwish >
 
-                                <ng-template #notinwish >
+                                        <mat-icon  [ngClass]="{'hide_border_heart'  : property_products.hover_wish_list && property_products.index_product == i } ">favorite_border</mat-icon>
 
-                                    <ng-container *ngIf=" status_in_wish == true; else noinwish ">
-
-                                        <div class="hearts_div"  >
-
-                                            <mat-icon>favorite</mat-icon>
-
-                                        </div>
-
-                                    </ng-container>
-
-                                    <ng-template #noinwish>
-
-                                        <div class="hearts_div notClosepointerHeader"  >
-
-                                            <mat-icon>favorite_border</mat-icon>
-
-                                        </div>
-
-                                        <div class="hearts_div_hover notClosepointerHeader"  >
-
-                                            <mat-icon>favorite</mat-icon>
-
-                                        </div>
+                                        <mat-icon class="hearts_div_hover" [ngClass]="{'show_full_heart'  : property_products.hover_wish_list && property_products.index_product == i } ">favorite</mat-icon>
 
                                     </ng-template>
 
+                                </div>
+
+                                <ng-template #emtyWish>
+
+                                    <mat-icon  [ngClass]="{'hide_border_heart'  : property_products.hover_wish_list && property_products.index_product == i } ">favorite_border</mat-icon>
+
+                                    <mat-icon class="hearts_div_hover" [ngClass]="{'show_full_heart'  : property_products.hover_wish_list && property_products.index_product == i } ">favorite</mat-icon>
+
                                 </ng-template>
 
-                            </ng-container>
-
-                            <ng-template #emtyWish>
-
-                                <div class="hearts_div notClosepointerHeader">
-
-                                    <mat-icon>favorite_border</mat-icon>
-
-                                </div>
-
-                                <div class="hearts_div_hover notClosepointerHeader"  >
-
-                                    <mat-icon>favorite</mat-icon>
-
-                                </div>
-
-                            </ng-template>
+                            </button>
 
                         </div>
 

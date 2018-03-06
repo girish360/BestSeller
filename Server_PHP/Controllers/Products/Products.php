@@ -38,7 +38,7 @@ class Products extends Fetch_Data {
 
                 $this->all_products = $result;
 
-                return $this->all_products;
+                return  self::json_data('products', array('products'=>$this->all_products , 'pages_details'=>  $this->pages_details ) );
             }
             else{
 

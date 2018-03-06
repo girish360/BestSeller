@@ -1,5 +1,5 @@
 
- import { Component, OnInit ,Input , Output , EventEmitter,DoCheck } from '@angular/core';
+ import { Component, OnInit ,Input , Output , EventEmitter,DoCheck ,AfterViewInit   } from '@angular/core';
 
  import { Injectable } from '@angular/core';
 
@@ -45,14 +45,13 @@
             ])
         ])
     ]
-
  })
 
- export class HeaderComponent implements OnInit ,DoCheck  {
+ export class HeaderComponent implements OnInit ,DoCheck ,AfterViewInit  {
 
      public wishList_products:any = [];
 
-    public cart = [];
+    public cart_products:any = [];
 
     private card_products = [];
 
@@ -111,26 +110,23 @@
 
          });
 
-        let wishlist = this.dataservices.Make_Request_InServer( 'get_wishList', 'wish' );
 
-        wishlist.then( response =>{
-
-             if( response['status']!='false'){
-
-                 this.wishList_products = response;
-
-             }
-        });
+         this.wishList_products = this.dataservices.wishlist;
     }
 
     ngDoCheck(){
 
-
+       this.wishList_products = this.dataservices.wishlist;
     }
+
+     ngAfterViewInit() {
+
+     }
+
 
      public check_button( button , i ){
 
-        this.selectedIndex = i;
+        this.dataservices.Header_property.selectedIndex = i;
 
         if( this.property_button.disabled == false ) {
 
@@ -163,10 +159,14 @@
 
                 this.property_button.active = 0;
 
-                this.selectedIndex='empty';
+                this.dataservices.Header_property.selectedIndex = 'empty';
             }
         }
 
+    }
+
+    update_selectedIndex(){
+         this.selectedIndex = 'empty';
     }
 
     public  set_router( data ){
@@ -631,6 +631,11 @@
         this.check_selectedAll_checkbox_wish();
     }
 
+    from_wish_to_cart( selected_wish ){
+
+
+    }
+
     check_button_deleteProducts_fromwishlist(){
 
         if( this.selected_wishList.length > 0 ){
@@ -689,74 +694,7 @@
 
      ngOnInit() {
 
-        $(document).ready(function () {
 
-            $('body').on('click', function (e) { // click in bady and close some div element................
-
-                e.preventDefault();
-
-                var width = $(window).width();
-
-                if ($(e.target).closest('.notCloseDropdawnLanguage').length == 0) {
-
-                    $('.dropmore').hide();
-
-                }
-
-                if ($(e.target).closest('.notCloseDropdawnFavorite').length == 0) {
-
-                    $('.dropfavority').hide();
-
-
-                }
-                if ($(e.target).closest('.notCloseDropdawnSearch').length == 0) {
-
-                    $('.dropdown_search').hide();
-                }
-                if ($(e.target).closest('.notCloseDropdawnCard').length == 0) {
-
-                    $('.dropcard').hide();
-
-                }
-
-                if ($(e.target).closest('.notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard').length == 0) {
-                    $('.treguesi').css({display: 'none'});
-
-                    give_bgcolor_icon_header('menu3', 'card', 1, 'write_icon_header');
-
-                }
-
-            });
-
-
-
-            function give_bgcolor_icon_header( all, single, status, removewrite) {  // effect when click icon header ........
-
-                $('.' + all).css({backgroundColor: '', borderTop: ''});
-
-                $('.write_icon_header').css('visibility', 'visible');
-
-                if ( status == 0 ) {
-
-                    $('.' + single).find('.glyphicon').css({
-
-                        marginTop: '40px',
-
-                        borderRadius: '100px'
-
-                    }).animate({backgroundColor: "green"}, 50, function () {
-
-                        $('.' + single).find('.glyphicon').animate({backgroundColor: "#E6E6FA", marginTop: '0px'}, 200);
-
-                    }); // change bg color when click on icon in header
-
-                    $(removewrite).css('visibility', 'hidden'); // remove write below icon in header
-
-                }
-
-            } // end
-
-        });
-    }
+     }
 
  }

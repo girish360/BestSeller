@@ -35,6 +35,9 @@ a{
 .selected-color-button{
     color:white;
 }
+.selected-color-write{
+    color: gray;
+}
 
 /* Begin css for header profile user here ....................................................................................................*/
 .navigation{
