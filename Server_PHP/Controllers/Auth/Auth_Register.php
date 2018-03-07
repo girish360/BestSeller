@@ -5,16 +5,22 @@ use Firebase\JWT;
 
 class Auth_Register  extends Firebase\JWT\JWT {
 
-    private $secret_key_auth = 'Auth_Generate_Token_Engrypto_20568294816';
+    private $secret_key_auth = '65757.,/[]Auth_Generate_Token_Engrypto_20568294816';
 
     private $Token_details = array();
 
     private $token;
 
+    private $table_name ='users';
+
+
+
     public function check_email( $email_or_username ){
 
-        $result = self::select_query_dependet_or('users' , array("username"=>$email_or_username ,
-            "email"=>$email_or_username) , array("first_name"=>"first_name", "email"=>"email", "picture"=>"picture",)
+        $result = self::select_dependet_or( $this->table_name ,
+
+            array("username"=>$email_or_username ,
+            "email"=>$email_or_username) , array("first_name", "email", "picture")
         );
 
         if( $result ->rowCount() > 0 ){
@@ -34,9 +40,10 @@ class Auth_Register  extends Firebase\JWT\JWT {
 
         $array_data = self::convert_to_array( $object_data );
 
-        $result = self::select_query_dependet_and('users' ,
+        $result = self::select_dependet_and( $this->table_name ,
+
             array( "password"=>$array_data['password'] , "email"=>$array_data['username'] ) ,
-            array("id"=>"id", "first_name"=>"first_name", "last_name"=>"last_name","username"=>"username", "email"=>"email","local"=>"local","picture"=>"picture")
+            array("id", "first_name", "last_name","username", "email","local","picture")
         );
 
         if( $result ->rowCount() > 0 ){

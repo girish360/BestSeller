@@ -1,48 +1,9 @@
 <?php
 
-
-
 class Cookie extends Fetch_Data{
 
 
-    public function add_wishlist( $id_prod ){
-
-        $result = self::set_cookie_serialize( 'wishList' , $id_prod ); //  call method that add one product  for wish list in cookie .....
-
-        return self::json_data('add_wishProduct' , $result );  // return result ......
-    }
-
-    public function set_cookie( $name_cookie , $value )
-    {
-
-        setcookie( $name_cookie , $value, time() + ((3600*60)*24)*30, '/'); // set cookie ..////////
-
-        return array('set');
-
-
-    }
-
-    public function remove_cookie( $name_cookie ){
-
-        setcookie( $name_cookie, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
-
-        return array('remove');
-    }
-
-    public function check_cookie( $name_cookie ){
-
-        if( isset( $_COOKIE[$name_cookie] ) ){
-
-            return 'true';
-
-        }
-        else{
-
-            return 'false';
-        }
-    }
-
-    public function set_cookie_serialize( $cookie_name , $id_product ){
+    public function set_cookie( $cookie_name , $id_product ){
 
         try {
             $set_data = array( $id_product );
@@ -55,17 +16,17 @@ class Cookie extends Fetch_Data{
 
                     array_push( $data_exists, $id_product );
 
-                    self::put_coockie_serialize( $cookie_name, $data_exists );
+                    self::save_coockie( $cookie_name, $data_exists );
 
-                    return 'true';
+                    return self::json_data('add_wishProduct' , 'true' );  // return result ......
                 }
                 return 'false';
 
             } else {
 
-                self::put_coockie_serialize( $cookie_name , $set_data );
+                self::save_coockie( $cookie_name , $set_data );
 
-                return array('true');
+                return self::json_data('add_wishProduct' , 'true' );  // return result ......
 
             }
         }catch( Exception $e ){
@@ -75,42 +36,52 @@ class Cookie extends Fetch_Data{
 
     }
 
-    public function put_coockie_serialize( $cookie_name , $data_array ){
+    public function save_coockie( $cookie_name , $data_array ){
 
 
         setcookie( $cookie_name, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
 
-        setcookie( $cookie_name , json_encode( $data_array ) , time() + ((3600*60)*24)*30, '/'); // set cookie ..////////
+        setcookie( $cookie_name , json_encode( $data_array ) , time() + ( (3600*60)*24)*30, '/'); // set cookie ..////////
 
 
     }
 
-    public function get_cookie_unserialize( $cookie_name , $status ){
+    public function remove_cookie( $name_cookie ){
+
+        setcookie( $name_cookie, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
+
+        return self::json_data('remove_cookie' , 'true' );  // return result ......
+    }
+
+    public function check_cookie( $name_cookie ){
+
+        if( isset( $_COOKIE[$name_cookie] ) ){
+
+            return self::json_data('check_cookie' , 'true' );  // return result ......
+        }
+        else{
+            return self::json_data('check_cookie' , 'false' );  // return result ......
+        }
+    }
+
+    public function get_cookie( $cookie_name  ){
 
         if( isset($_COOKIE[$cookie_name]) ) {
 
-           $array_wishID_forWishList =  json_decode( $_COOKIE[$cookie_name] ) ;
+           $array_id_inCookie =  json_decode( $_COOKIE[$cookie_name] ) ;
 
-           if( $status == 'wishlist' ){
+          return $array_id_inCookie;
 
-               $wish_List = self::fetch_oneRow_dependet( $array_wishID_forWishList , 'products' , 'id' , 'adminat' ,'id' ,'id_admin');
-           }
-           if($status == 'cardlist'){
-
-           }
-
-            return  $wish_List;
-
-        }else{
+        }
+        else{
 
             return 'false';
         }
     }
 
-    public function delete_item_fromCookie( $cookie_name , $Array_selected ) // delete
+    public function delete_item_InCookie( $cookie_name , $Array_selected ) // delete
     {
         try {
-
             if ( isset ( $_COOKIE[$cookie_name] ) ) { // check if exist this cookie .................
 
                 $array_from_cookie = json_decode( $_COOKIE[$cookie_name] ); // take  array data from cookie stock .............
@@ -130,7 +101,7 @@ class Cookie extends Fetch_Data{
                             $nr++; // ascending  number in variable ........
                         }
                     }
-                    self::put_coockie_serialize( $cookie_name, $array_from_cookie ); // call methot to set cookie .....
+                    self::save_coockie( $cookie_name, $array_from_cookie ); // call methot to set cookie .....
 
                     return self::json_data( 'delete_itemFromCookie' , 'true' ); // return result .....
                 }

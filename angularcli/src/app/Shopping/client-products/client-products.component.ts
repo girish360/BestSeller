@@ -95,7 +95,6 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
             this.products = this.dataservices.products['products'];
 
             this.dataservices.update_loader(false);
-
         });
 
     }

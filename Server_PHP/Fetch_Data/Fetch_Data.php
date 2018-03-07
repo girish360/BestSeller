@@ -1,6 +1,5 @@
 <?php
 
-
 include '../connection_db/class_connection.php';
 
 class Fetch_Data extends connection {
@@ -30,30 +29,33 @@ class Fetch_Data extends connection {
         return $json;
     }
 
-    public function fetch_data_array_dependet( $result_fromDB , $table_name_dependet , $column_depenendet , $id_dependet ){
+    public function fetch_data_array_dependet( $result_fromDB , $select_dependet , $array_dependet ){
 
         $nr = 0 ;
 
         $this->Data_array = array();
 
-        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
+        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC )  ){
 
-            $this->Data_array[$nr] = $result;
+            $this->Data_array[ $nr ] = $result;
 
-            $this->Data_dependet_array = self::data_dependet( $table_name_dependet , $column_depenendet , $result[$id_dependet] );
+            $array_where = array( $array_dependet['column_dependet']=>$result[$array_dependet['column']] );
 
-            $this->Data_array[$nr][$table_name_dependet]= $this->Data_dependet_array;
+            $this->Data_dependet_array = self::data_dependet( $array_dependet['table_name'] , $array_where , $select_dependet );
+
+            $this->Data_array[ $nr ][ $array_dependet['table_name'] ]= $this->Data_dependet_array;
 
             $nr++;
         }
+
         return $this->Data_array; //  return array
     }
 
-    public function data_dependet( $table , $column , $id ){
+    public function data_dependet( $table_name , $array_where , $array_select ){
 
         $this->dependet=[];
 
-        $result_fromDB = self::select_dependet( $table, $column, $id); //select data dependet with where ....
+        $result_fromDB = self::select_dependet_or( $table_name , $array_where , $array_select ); //select data dependet with where ....
 
         while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
 
@@ -62,23 +64,33 @@ class Fetch_Data extends connection {
         return $this->dependet;
     }
 
-    public function fetch_oneRow_dependet( $array_wishID , $table_name , $column , $table_name_dependet ,$column_dependet ,$id_dependet ){
+    public function fetch_data_dependet_cookie( $array_ID , $array_table , $array_table_dependet ){
 
-        $nr = 0 ;
+        $nr = 0;
 
         $this->Data_array = array();
 
-        foreach ( $array_wishID as $value ){
+        foreach ( $array_ID as $value ){
 
-           $result = self::select_dependet( $table_name ,$column , $value );
+            $array_where = array( $array_table['column'] => $value );
 
-            while ( $row = $result->fetch( PDO::FETCH_ASSOC)  ) {
+           $result = self::select_dependet_or(  $array_table['table_name'], $array_where, $array_table['array_select'] );
+
+            while ( $row = $result->fetch( PDO::FETCH_ASSOC )  ) {
 
                 $this->Data_array[$nr] = $row;
 
-                $this->Data_dependet_array = self::oneRow_dependet( $table_name_dependet , $column_dependet , $row[$id_dependet] );
+                $where_dependet = array( $array_table_dependet['column_dependet'] => $row[ $array_table_dependet['column'] ]);
 
-                $this->Data_array[$nr][$table_name_dependet] = $this->Data_dependet_array;
+                $this->Data_dependet_array = self::data_dependet(
+
+                    $array_table_dependet['table_name'],
+                    $where_dependet,
+                    $array_table_dependet['array_select_dependet']
+
+                );
+
+                $this->Data_array[$nr][$array_table_dependet['table_name']] = $this->Data_dependet_array;
 
             }
             $nr++;
@@ -88,17 +100,27 @@ class Fetch_Data extends connection {
 
     }
 
-    public function oneRow_dependet(  $table_name , $column , $id  ){
+    public function fetch_data_cookie( $array_ID , $array_table ){
+        $nr = 0;
 
-        $this->dependet=[];
+        $this->Data_array = array();
 
-        $result_fromDB = self::select_dependet( $table_name , $column , $id ); //select data dependet with where ....
+        foreach ( $array_ID as $value ){
 
-        while( $row = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
+            $array_where = array( $array_table['column'] => $value );
 
-            $this->dependet[] = $row;
+            $result = self::select_dependet_or(  $array_table['table_name'], $array_where, $array_table['array_select'] );
+
+            while ( $row = $result->fetch( PDO::FETCH_ASSOC )  ) {
+
+                $this->Data_array[$nr] = $row;
+
+            }
+            $nr++;
         }
-        return $this->dependet;
+
+        return $this->Data_array; //  return array
+
     }
 
     public function  convert_to_array( $data ){

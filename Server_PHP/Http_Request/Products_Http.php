@@ -12,7 +12,7 @@ if( $status == 'add_wishProduct' ){ // request to add in wishList ........
 
 
 
-     echo $Object['Cookie']->add_wishlist($data_from_client);
+     echo $Object['Cookie']->set_cookie( 'wishList' , $data_from_client );
 
 
 }
