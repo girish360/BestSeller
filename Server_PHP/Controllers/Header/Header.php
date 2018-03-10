@@ -3,42 +3,34 @@
 
 class Header extends Cookie {
 
-
-
-
     public function get_wishlist(){
 
         $array_id_wish_in_cookie = self::get_cookie( 'wishList'  );
 
-        $array_select = array(
+        $select_and_tables = array(  // array with t6ables and respective columns
 
-            'table_name'=>'products' ,
-
-            'array_select' => array(
-
-                'id','title','id_image','id_category','id_admin','price','quantity','date','image'
+            //table
+            "product"=>array(
+                // columns table
+                'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.image','product.date'
+            ),
+            // table
+            "company"=>array(
+                //colums table
+                'company.id','company.name','company.image'
             )
-
-            , 'column'=>'id'
-
+            // more table and columns ............
         );
 
-        $array_select_dependet = array(
+        $result = self::fetch_data_cookie( $select_and_tables, $array_id_wish_in_cookie ); // ffetch data
 
-            'table_name'=>'adminat',
+        return self::json_data( 'get_wishList' , $result ); // return json data ...........
 
-            'array_select_dependet' => array(
+    }
 
-                'id','name_company','date','imageprofile' ,'city','state'
-            )
-            , 'column'=>'id_admin'
+    public function add_in_cart( $array_Id ){
 
-            ,'column_dependet'=>'id'
-        );
 
-        $result = self::fetch_data_dependet_cookie( $array_id_wish_in_cookie , $array_select , $array_select_dependet);
-
-        return self::json_data( 'get_wishList' , $result );
 
     }
 

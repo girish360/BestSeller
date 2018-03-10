@@ -29,6 +29,10 @@ import { AuthService } from './Shopping/services/auth.service';
 
 import { SetRouterService } from './Shopping/services/set-router.service';
 
+import { DeviceDetectorModule } from 'ngx-device-detector';
+
+import { HeaderService } from './Shopping/header/header.service';
+
 // end services .....................................................................................
 
 
@@ -169,7 +173,8 @@ import {
     MatTooltipModule,
     MatStepperModule,
     ReactiveFormsModule,
-    NgxCarouselModule
+    NgxCarouselModule,
+    DeviceDetectorModule.forRoot()
 
   ],
   providers: [
@@ -183,7 +188,7 @@ import {
     CaruselComponent,
     AuthService,
     SetRouterService,
-    HeaderComponent
+    HeaderService
 
   ],
 

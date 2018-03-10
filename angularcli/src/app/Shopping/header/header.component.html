@@ -1,19 +1,25 @@
 
-<div class="response_outer" [ngClass]="{'active_menu':dataservices.status_menu  ,'active_chat':dataservices.status_chat}">
+<div class="header">
 
-    <div class="response_inner inner_top_header">
+    <div class="response_outer top_header"  [ngClass]="{'active_menu':dataservices.status_menu  ,'active_chat':dataservices.status_chat}">
 
-        <div class="write_above_header">
+        <div class="response_inner ">
 
-            <div class="left_above_header" (click)="authe()">
+            <!--  start bottom header ...........................................-->
 
-                BestSeller
+            <div class="write_top_header">
 
-            </div>
+                <div class="left_top_header" (click)="authe()">
 
-            <div class="right_above_header">
+                    BestSeller
 
-                The Best App to Management your Business
+                   </div>
+
+                <div class="right_top_header">
+
+                    The Best App to Management your Business
+
+                </div>
 
             </div>
 
@@ -21,17 +27,15 @@
 
     </div>
 
-</div>
+    <div class="response_outer bottom_header "  [ngClass]="{'active_menu':dataservices.status_menu  ,'active_chat':dataservices.status_chat}">
 
-<nav class="navigation " >
+        <div class="top_menu">  <!-- this is open category  -->
 
-    <div class="top_menu">  <!-- this is open category  -->
+            <div class="herewrite">
 
-        <div class="herewrite">
+                <a href="#">
 
-            <a href="#">
-
-                <div class="radius_category" id="laptopscreen" (click)="check_menu()" >
+                    <div class="radius_category" id="laptopscreen" (click)="check_menu()" >
 
                      <span  matTooltip="Category">
 
@@ -51,98 +55,86 @@
                          </div>
                      </span>
 
-                </div>
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="response_outer"  [ngClass]="{'active_menu':dataservices.status_menu  ,'active_chat':dataservices.status_chat}">
-
-        <div class="response_inner bottom_header">
-
-            <div class="kerkimresponse" style="display: none;">
-
-                <div class="exitsearch1">
-                    <a href="#"><img class="imggback" src="../../assets/images/back_white.png">
-                    </a>
-                </div>
-                <input type="text"  name="respondesearch" class="searchinputresp" placeholder="search">
-
-                <div class="exitsearch">
-
-                    <a href="#">
-                        <div class="exit"><a href="#"><img src="../../assets/images/close1.png"></a></div>
-
-                    </a>
-
-                    <div class="searchimg"><a href="#"><img  src="../../assets/images/search.png"></a></div>
-
-                </div>
+                    </div>
+                </a>
 
             </div>
 
-            <div class="pcheader"> <!-- start header  -->
+        </div>
 
-                <span class="lefte">  <!-- start left header  -->
+        <div class="response_inner ">
 
-                     <div class="menu1">  <!-- Icon header   -->
+            <!--  start bottom header ...........................................-->
 
-                         <div class="icon_header">
+            <span class="bottom_header_desktop">
 
-                             <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
+                <span class="bottom_header_left">  <!-- start left header  -->
 
-                         </div>
+                    <div class="menu1">  <!-- Icon header   -->
 
-                         <div class="icon_header_write">
-                             <a routerLink=""> Bestseller </a>
-                         </div>
+                        <div class="icon_header">
 
-                     </div>
+                            <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
 
-                     <span matTooltip="Search product and company">
+                        </div>
 
-                         <div class="search notCloseDropdawnSearch">
+                        <div class="icon_header_write">
+                            <a routerLink=""> Bestseller </a>
+                        </div>
 
-                             <input type="text" class="kerkim" id="kerkim" name="search" placeholder="{{dataservices.language.searchproducts}}">
+                    </div>
 
-                             <a href="#">
-                                 <div class="iconsearch">
-                                     <div class="imgsearch">
-                                         <span class="glyphicon glyphicon-search"></span>
-                                     </div>
-                                     <div class="imgsearchexit">
-                                         <span class="glyphicon glyphicon-remove-sign"></span>
-                                     </div>
-                                 </div>
-                             </a>
+                    <span matTooltip="Search product and company">
 
-                         </div>
+                        <div class="search notCloseDropdawnSearch">
 
-                     </span>
+                            <input type="text" class="kerkim" id="kerkim" name="search" placeholder="{{dataservices.language.searchproducts}}">
 
-                 </span>
+                            <a href="#">
 
-                <span class="button_right">
+                                <div class="iconsearch">
+
+                                    <div class="imgsearch">
+
+                                        <span class="glyphicon glyphicon-search"></span>
+
+                                    </div>
+
+                                    <div class="imgsearchexit">
+
+                                        <span class="glyphicon glyphicon-remove-sign"></span>
+
+                                    </div>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                    </span>
+
+                </span>
+
+                <span class="bottom_header_right">
 
                     <a  href="#" *ngFor=" let button of button_right; let i = index" matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button ,i)" >
 
                         <div class="menu3 button{{button.id}} {{button.different_class}}">
 
-                            <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && wishList_products.length > 0 ,'selected-color-button' : i== dataservices.Header_property.selectedIndex }">
+                            <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && header.wish_properties.wishList.length > 0 ,'selected-color-button' : i== dataservices.Header_property.selectedIndex }">
 
                                 <div class="number_event">
 
                                     <div class="write_number"  *ngIf="button.id == 2">
 
-                                        {{wishList_products.length}}
+                                        {{header.wish_properties.wishList.length}}
 
                                     </div>
 
                                     <div class="write_number" *ngIf="button.id == 3">
 
-                                       {{cart_products.length}}
+                                       {{header.cart_properties.cartList.length}}
 
                                     </div>
 
@@ -158,461 +150,416 @@
 
                 </span>
 
-                <span class="mobile_header">
+            </span>
 
-                    <a (click)="set_router( { path:'shopping' , data:false ,relative:false } )" class="hide_menu">
+            <span class="bottom_header_mobile">
+
+                <a (click)="set_router( { path:'shopping' , data:false ,relative:false } )" class="hide_menu">
+
                     <div class="menu3" id="">
+
                          <a  href="#" class="listcategoryfind notClosepointerHeader">
+
                              <div class="listcategory" id="iconmenu">
+
                                   <span class="glyphicon glyphicon-home"></span>
+
                              </div>
 
                          </a>
 
                           <div class="write_icon_header"> Home </div>
 
-                     </div>
-                        </a>
-                     <a (click)="set_router( { path:'search' , data:false ,relative:true } )" >
+                    </div>
+                </a>
+
+                <a (click)="set_router( { path:'search' , data:false ,relative:true } )" >
+
                      <div class="menu3" id="">
+
                          <a class="searchresponse" href="#">
+
                              <span class="glyphicon glyphicon-search"></span>
+
                          </a>
+
                           <div class="write_icon_header"> Search </div>
+
                      </div>
-                     </a>
 
+                </a>
 
+                <span matTooltip="Open wishlist">
 
-                     <span matTooltip="Open wishlist">
-                         <a (click)="set_router( { path:'wish' , data:false ,relative:true } )"  class="hide_menu">
+                    <a (click)="set_router( { path:'wish' , data:false ,relative:true } )"  class="hide_menu">
 
-                             <div class="menu3  " id="favority">
+                        <div class="menu3  " id="favority">
 
-                                 <ng-container *ngIf="wishList_products.length>0;else empty" >
+                            <ng-container *ngIf="header.wish_properties.wishList.length>0;else empty" >
 
-                                     <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
-                                         <div class="number_event">
-                                             <div class="write_number">
-                                                 {{wishList_products.length}}
-                                             </div>
-                                         </div>
-                                     </span>
+                                <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
 
-                                 </ng-container>
+                                    <div class="number_event">
 
-                                 <ng-template #empty>
+                                        <div class="write_number">
 
-                                     <span class="glyphicon glyphicon-heart gh-header">
-                                         <div class="number_event">
-                                             <div class="write_number">
-                                                 {{wishList_products.length}}
-                                             </div>
-                                         </div>
-                                     </span>
-                                 </ng-template>
+                                            {{header.wish_properties.wishList.length}}
 
-                                 <div class="write_icon_header"> {{dataservices.language.wish}} </div>
-                             </div>
-                         </a>
-                     </span>
+                                        </div>
 
-                     <span matTooltip="Open card">
+                                    </div>
 
-                         <a (click)="set_router( { path:'card' , data:false ,relative:true } )"  class="hide_menu">
+                                </span>
 
-                             <div class="menu3 " id="card">
+                            </ng-container>
 
-                                 <span class="glyphicon glyphicon-shopping-cart gh-header">
+                            <ng-template #empty>
 
-                                     <div class="number_event">
+                                <span class="glyphicon glyphicon-heart gh-header">
 
-                                         <div class="write_number">
+                                    <div class="number_event">
 
-                                             {{card_products.length}}
-                                         </div>
+                                        <div class="write_number">
 
-                                     </div>
-                                 </span>
-                                 <div class="write_icon_header" >{{dataservices.language.card}}</div>
-                             </div>
+                                            {{header.wish_properties.wishList.length}}
 
-                         </a>
+                                        </div>
 
-                     </span>
+                                    </div>
 
+                                </span>
 
-                     <span matTooltip="More option">
+                            </ng-template>
 
-                         <a (click)="set_router( { path:'menu' , data:false ,relative:true } )">
+                            <div class="write_icon_header"> {{dataservices.language.wish}} </div>
 
-                             <div class="menu3 " >
+                        </div>
 
-                                 <span class="glyphicon glyphicon-th-large">
-                                     <div class="number_event">
-                                         <div class="write_number write_hidden">
-                                             {{wishList_products.length}}
-                                         </div>
-                                     </div>
-                                 </span>
-                                 <div class="write_icon_header" >{{dataservices.language.more}}</div>
-                             </div>
-
-                         </a>
-
-                     </span>
+                    </a>
 
                 </span>
 
-                <div class="dropdown_search notCloseDropdawnSearch" >
-                    sdg
 
-                    <div class="body_search_header">
-                        Search in header
-                    </div>
-                    <br><br><br><br><br><br><br><br><br><br>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                </div>
+                <span matTooltip="Open card">
 
-                <div class="languagefull">
-                    <div class="dropmore notClosepointerHeader notCloseDropdawnLanguage">
+                    <a (click)="set_router( { path:'card' , data:false ,relative:true } )"  class="hide_menu">
 
-                        <mat-tab-group>
+                        <div class="menu3 " id="card">
 
-                            <mat-tab>
+                            <span class="glyphicon glyphicon-shopping-cart gh-header">
 
-                                <ng-template mat-tab-label class="hearts_div">
-                                    <mat-icon>
-                                        language
-                                    </mat-icon>
-                                    <div class="label_tab inline-block">
-                                        Language
-                                    </div>
-                                </ng-template>
+                                <div class="number_event">
 
-                                <div class="body_more body_div">
+                                    <div class="write_number">
 
-                                    <div class="choose" style="color:gray; text-align: left; position: relative; left: 10px;">
-                                        <h2>{{dataservices.language.choselanguage}}</h2>
-                                    </div>
-                                    <div class="typelanguage"><br>
-                                        <div class="activelanguage">
-
-                                            <div class="imgactiv">
-                                                <img src="../../assets/images/{{dataservices.language.Active_language_image}}">
-                                            </div>
-                                            <div class="writeactivlanguage">
-                                                <h2>{{dataservices.language.Active_language}}</h2>
-                                            </div>
-                                            <div class="iconactive">
-                                                <img class="radiolang" src="../../assets/images/ok.png">
-                                            </div>
-
-                                        </div>
-
-                                        <div class="alllanguages" *ngFor="let language of language_allow">
-                                            <a >
-
-                                                <div class="albanian " (click)="choose_language(language.id)"  >
-                                                    <div class="positionlang">
-
-                                                        <div class="centerlang">
-                                                            <div class="iconlang">
-                                                                <img  src="../../assets/images/{{language.image}}">
-                                                            </div>
-                                                            <div class="writelang">
-                                                                <h2>{{language.name}}</h2>
-                                                            </div>
-                                                        </div>
-                                                        <div class="leftlang">
-
-                                                            <mat-radio-group>
-
-                                                                <mat-radio-button class="radiolang"  value="1" [checked]="current_language(language.id)"  >
-
-                                                                </mat-radio-button>
-
-                                                            </mat-radio-group>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
+                                        {{header.cart_properties.cartList.length}}
 
                                     </div>
 
                                 </div>
-                            </mat-tab>
 
+                            </span>
 
-
-                            <mat-tab>
-
-                                <ng-template mat-tab-label class="header_div">
-                                    <mat-icon>
-                                      settings
-                                    </mat-icon>
-                                    <div class="label_tab inline-block">
-                                    Setting
-                                    </div>
-                                </ng-template>
-
-                                <div class="body_more body_div">
-
-                                Setting content
-
-                                </div>
-
-                            </mat-tab>
-
-                            <mat-tab>
-
-                                <ng-template mat-tab-label class="header_div">
-                                    <mat-icon>
-                                        help
-                                    </mat-icon>
-                                    <div class="label_tab inline-block">
-                                    Help
-                                    </div>
-
-                                </ng-template>
-
-                                <div class="body_more body_div">
-
-                                Help contenc
-
-                                </div>
-
-                            </mat-tab>
-
-                            <mat-tab>
-
-                                <ng-template mat-tab-label class="header_div">
-                                    <mat-icon>
-                                        feedback
-                                    </mat-icon>
-                                    <div class="label_tab inline-block">
-                                    Feedback
-                                    </div>
-
-                                </ng-template>
-
-                                <div class="body_more body_div">
-
-                                    Feedback
-
-                                </div>
-
-                            </mat-tab>
-
-                        </mat-tab-group>
-
-                        <a href="#" >
-
-                            <div class="see_all">
-                                Sell All
-                            </div>
-
-                        </a>
-
-                    </div>
-                </div>
-
-                <div class="dropcard notClosepointerHeader notCloseDropdawnCard">
-
-                    <div class="top_wish  hearts_div">
-
-                        <div class="width_height_top_wish">
-
-                            <div class="all_top_div_wish">
-
-                                 <span class="width_top_wish">
-                                     {{dataservices.language.Wish_Write}}
-                                 </span>
-
-                                <span  matTooltip="Search" class="search_icon_from_wish">
-
-                                     <button mat-icon-button class="btn-deleteFromwish"  (click)="show_hide_search_in_wishlist()">
-
-                                         <mat-icon class="notCloseDropdawnFavorite" *ngIf="show_hide_search_in_wishList == false">search</mat-icon>
-
-                                         <mat-icon class="notCloseDropdawnFavorite" *ngIf="show_hide_search_in_wishList == true">close</mat-icon>
-
-                                     </button>
-
-                                 </span>
-
-                                <span class="search_from_wish">
-
-                                     <input type="text" [(ngModel)]="filter_wish" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="check_show_hide_search_in_wishlist()">
-
-                                 </span>
-
-                                <span  matTooltip="Delete" class="delete_from_wish">
-
-                                     <button mat-icon-button class="btn-deleteFromwish" [disabled]="button_delete" (click)="delete_from_wishList( selected_wishList )" >
-                                         <mat-icon>delete</mat-icon>
-                                     </button>
-
-                                 </span>
-
-                                <span  matTooltip="Add to Cart" class="add_shopping_card_from_wish">
-
-                                     <button mat-icon-button class="btn-deleteFromwish" >
-                                         <mat-icon>shopping cart</mat-icon>
-                                     </button>
-
-                                 </span>
-
-                                <a (click)="set_router( { path:'card' , data:false ,relative:true } )" >
-
-                                    <span  matTooltip="See All" class="add_shopping_card_from_wish">
-
-                                        <button mat-icon-button class="btn-deleteFromwish" >
-                                            <mat-icon>remove_red_eye</mat-icon>
-                                        </button>
-
-                                    </span>
-                                </a>
-
-                                <span  matTooltip="Select all" class=" selected_all_wishlist">
-                                     <button mat-icon-button class="btn-deleteFromwish" >
-                                         <mat-icon>
-                                             <mat-checkbox color="primary" class="select_all_wishlist"
-                                                           [checked]="selectedAll_value_wishlist"
-                                                           (click)="selectedAll_wishList()">
-                                             </mat-checkbox>
-                                         </mat-icon>
-                                     </button>
-                                 </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="body_wish body_cart body_div">
-
-
-
-                    </div>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                </div>
-
-                <div class="dropfavority notCloseDropdawnFavorite notClosepointerHeader">
-
-                    <div class="top_wish header_div">
-                        <div class="width_height_top_wish">
-                            <div class="all_top_div_wish">
-                                 <span class="width_top_wish">
-                                     {{dataservices.language.Wish_Write}}
-                                 </span>
-
-                                <span  matTooltip="Search" class="search_icon_from_wish">
-
-                                     <button mat-icon-button class="btn-deleteFromwish"  (click)="show_hide_search_in_wishlist()">
-
-                                         <mat-icon class="notCloseDropdawnFavorite" *ngIf="show_hide_search_in_wishList == false">search</mat-icon>
-
-                                         <mat-icon class="notCloseDropdawnFavorite" *ngIf="show_hide_search_in_wishList == true">close</mat-icon>
-
-                                     </button>
-
-                                 </span>
-
-                                <span class="search_from_wish">
-
-                                     <input type="text" [(ngModel)]="filter_wish" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="check_show_hide_search_in_wishlist()">
-
-                                 </span>
-
-                                <span  matTooltip="Delete" class="delete_from_wish">
-
-                                     <button mat-icon-button class="btn-deleteFromwish" [disabled]="button_delete" (click)="delete_from_wishList( selected_wishList )" >
-                                         <mat-icon>delete</mat-icon>
-                                     </button>
-
-                                 </span>
-
-                                <span  matTooltip="Add to Cart" class="add_shopping_card_from_wish">
-
-                                     <button mat-icon-button class="btn-deleteFromwish"  (click)="from_wish_to_cart( selected_wishList )" >
-                                         <mat-icon>shopping cart</mat-icon>
-                                     </button>
-
-                                 </span>
-
-                                <a (click)="set_router( { path:'wish' , data:false ,relative:true } )" >
-
-                                    <span  matTooltip="See All" class="add_shopping_card_from_wish">
-
-                                        <button mat-icon-button class="btn-deleteFromwish" >
-                                            <mat-icon>remove_red_eye</mat-icon>
-                                        </button>
-
-                                    </span>
-                                </a>
-
-                                <span  matTooltip="Select all" class=" selected_all_wishlist">
-                                     <button mat-icon-button class="btn-deleteFromwish" >
-                                         <mat-icon>
-                                             <mat-checkbox color="primary" class=" select_all_wishlist"
-                                                           [checked]="selectedAll_value_wishlist"
-                                                           (click)="selectedAll_wishList()">
-                                             </mat-checkbox>
-                                         </mat-icon>
-                                     </button>
-                                 </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="body_wish  body_div">
-
-                        <div  *ngFor="let wish_product of wishList_products | filter: filter_wish "  [@wishList_animations]="active">
-
-                            <button mat-button class="width_body_wish" [ngClass]="getStyle_wish( wish_product )">
-
-                                <div class="width_each_wishlist">
-
-                                    <div class="wish_image" >
-
-                                        <img  src="../../assets/images/products_image/{{wish_product.image}}">
-
-                                    </div>
-
-                                    <div class="title">
-                                        {{wish_product.title}}
-                                    </div>
-
-                                    <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
-                                        <span  matTooltip="select">
-                                             <mat-checkbox  color="primary" [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
-
-                                             </mat-checkbox>
-                                         </span>
-
-                                    </div>
-
-                                </div>
-
-                            </button>
+                            <div class="write_icon_header" >{{dataservices.language.card}}</div>
 
                         </div>
 
-                    </div>
+                    </a>
+
+                </span>
+
+                <span matTooltip="More option">
+
+                    <a (click)="set_router( { path:'menu' , data:false ,relative:true } )">
+
+                        <div class="menu3 " >
+
+                            <span class="glyphicon glyphicon-th-large">
+
+                                <div class="number_event">
+
+                                    <div class="write_number write_hidden">
+
+                                        {{header.wish_properties.wishList.length}}
+
+                                    </div>
+
+                                </div>
+
+                            </span>
+
+                            <div class="write_icon_header" >{{dataservices.language.more}}</div>
+
+                        </div>
+
+                    </a>
+
+                </span>
+
+            </span>
+
+            <!--  start dropdown header ..................................................................-->
+
+            <div class="dropdown_search notCloseDropdawnSearch" >
+
+                sdg
+
+                <div class="body_search_header">
+
+                    Search in header
 
                 </div>
 
-                <div class="treguesi notCloseDropdawnFavorite notClosepointerHeader notCloseDropdawnCard notCloseDropdawnLanguage"></div>
+                <br><br><br><br><br><br><br><br><br><br>
+
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
             </div>
+
+            <div class="dropmore notClosepointerHeader notCloseDropdawnLanguage">
+                <mat-tab-group>
+                    <mat-tab>
+                        <ng-template mat-tab-label class="header_div">
+                            <mat-icon>
+                                language
+                            </mat-icon>
+                            <div class="label_tab inline-block">
+                                Language
+                            </div>
+                        </ng-template>
+                        <div class="body_more body_div">
+                            <div class="choose" style="color:gray; text-align: left; position: relative; left: 10px;">
+                                <h2>{{dataservices.language.choselanguage}}</h2>
+                            </div>
+                            <div class="typelanguage"><br>
+                                <div class="activelanguage">
+                                    <div class="imgactiv">
+                                        <img src="../../assets/images/{{dataservices.language.Active_language_image}}">
+                                    </div>
+                                    <div class="writeactivlanguage">
+                                        <h2>{{dataservices.language.Active_language}}</h2>
+                                    </div>
+                                    <div class="iconactive">
+                                        <img class="radiolang" src="../../assets/images/ok.png">
+                                    </div>
+                                </div>
+                                <div class="alllanguages" *ngFor="let language of language_allow">
+                                    <a >
+                                        <div class="albanian " (click)="choose_language(language.id)"  >
+                                            <div class="positionlang">
+                                                <div class="centerlang">
+                                                    <div class="iconlang">
+                                                        <img  src="../../assets/images/{{language.image}}">
+                                                    </div>
+                                                    <div class="writelang">
+                                                        <h2>{{language.name}}</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="leftlang">
+                                                    <mat-radio-group>
+                                                        <mat-radio-button class="radiolang"  value="1" [checked]="current_language(language.id)"  >
+                                                        </mat-radio-button>
+                                                    </mat-radio-group>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label class="header_div">
+                            <mat-icon>
+                                settings
+                            </mat-icon>
+                            <div class="label_tab inline-block">
+                                Setting
+                            </div>
+                        </ng-template>
+                        <div class="body_more body_div">
+                            Setting content
+                        </div>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label class="header_div">
+                            <mat-icon>
+                                help
+                            </mat-icon>
+                            <div class="label_tab inline-block">
+                                Help
+                            </div>
+                        </ng-template>
+                        <div class="body_more body_div">
+                            Help contenc
+                        </div>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label class="header_div">
+                            <mat-icon>
+                                feedback
+                            </mat-icon>
+                            <div class="label_tab inline-block">
+                                Feedback
+                            </div>
+                        </ng-template>
+                        <div class="body_more body_div">
+                            Feedback
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+                <a href="#" >
+                    <div class="see_all">
+                        Sell All
+                    </div>
+                </a>
+            </div>
+
+            <div class="dropcard notClosepointerHeader notCloseDropdawnCard">
+                <div class=" header_div">
+                    <div class="width_height_top_wish">
+                        <div class="all_top_div_wish">
+                            <span class="width_top_wish">
+                                {{dataservices.language.Wish_Write}}
+                            </span>
+                            <span  matTooltip="Search" class="search_icon_from_wish">
+                                <button mat-icon-button class="btn-deleteFromwish"  (click)="show_hide_search_in_wishlist()">
+                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.cart_properties.icon_search == false">search</mat-icon>
+                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.cart_properties.icon_search == true">close</mat-icon>
+                                </button>
+                            </span>
+                            <span class="search_from_wish">
+                                <input type="text" [(ngModel)]="filter_cart" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="check_show_hide_search_in_wishlist()">
+                            </span>
+                            <span  matTooltip="Delete" class="delete_from_wish">
+                                <button mat-icon-button class="btn-deleteFromwish " [ngClass]="{'no-drop' : header.cart_properties.button }" [disabled]=" header.cart_properties.button " (click)="delete_from_wishList( header.wish_properties.selected )" >
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </span>
+                            <span  matTooltip="Add to Cart" class="add_shopping_card_from_wish">
+                                <button mat-icon-button class="btn-deleteFromwish" [ngClass]="{'no-drop' :  header.cart_properties.button  }" [disabled]=" header.cart_properties.button " (click)="from_wish_to_cart( header.wish_properties.selected )" >
+                                    <mat-icon>shopping cart</mat-icon>
+                                </button>
+                            </span>
+                            <a (click)="set_router( { path:'wish' , data:false ,relative:true } )" >
+                                <span  matTooltip="See All" class="add_shopping_card_from_wish">
+                                    <button mat-icon-button class="btn-deleteFromwish" >
+                                        <mat-icon>remove_red_eye</mat-icon>
+                                    </button>
+                                </span>
+                            </a>
+                            <span  matTooltip="Select all" class=" selected_all_wishlist">
+                                <button mat-icon-button class="btn-deleteFromwish" >
+                                    <mat-icon>
+                                        <mat-checkbox color="primary" class=" select_all_wishlist"
+                                                      [checked]=""
+                                                      (click)="selecteAll_cartList()">
+                                        </mat-checkbox>
+                                    </mat-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="body_div body_cart">
+                    <ng-container *ngIf="header.cart_properties.cartList.length > 0 ; else  emptycart">
+
+                        <div  *ngFor="let cart_product of header.cart_properties.cartList | filter: filter_wish "  [@wishList_animations]="active">
+                               {{cart_product}}
+                        </div>
+
+
+                    </ng-container >
+
+                    <ng-template #emptycart>
+
+                        your Cart is empty
+
+                    </ng-template>
+                </div>
+
+            </div>
+
+            <div class="dropfavority notCloseDropdawnFavorite notClosepointerHeader">
+                <div class="header_div">
+                    <div class="width_height_top_wish">
+                        <div class="all_top_div_wish">
+                            <span class="width_top_wish">
+                                {{dataservices.language.Wish_Write}}
+                            </span>
+                            <span  matTooltip="Search" class="search_icon_from_wish">
+                                <button mat-icon-button class="btn-deleteFromwish"  (click)="show_hide_search_in_wishlist()">
+                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.wish_properties.icon_search == false">search</mat-icon>
+                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.wish_properties.icon_search == true">close</mat-icon>
+                                </button>
+                            </span>
+                            <span class="search_from_wish">
+                                <input type="text" [(ngModel)]="filter_wish" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="check_show_hide_search_in_wishlist()">
+                            </span>
+                            <span  matTooltip="Delete" class="delete_from_wish">
+                                <button mat-icon-button class="btn-deleteFromwish " [ngClass]="{'no-drop' : header.wish_properties.button }" [disabled]="header.wish_properties.button" (click)="delete_from_wishList( header.wish_properties.selected )" >
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </span>
+                            <span  matTooltip="Add to Cart" class="add_shopping_card_from_wish">
+                                <button mat-icon-button class="btn-deleteFromwish" [ngClass]="{'no-drop' : header.wish_properties.button }" [disabled]="header.wish_properties.button" (click)="from_wish_to_cart( header.wish_properties.selected )" >
+                                    <mat-icon>shopping cart</mat-icon>
+                                </button>
+                            </span>
+                            <a (click)="set_router( { path:'wish' , data:false ,relative:true } )" >
+                                <span  matTooltip="See All" class="add_shopping_card_from_wish">
+                                    <button mat-icon-button class="btn-deleteFromwish" >
+                                        <mat-icon>remove_red_eye</mat-icon>
+                                    </button>
+                                </span>
+                            </a>
+                            <span  matTooltip="Select all" class=" selected_all_wishlist">
+                                <button mat-icon-button class="btn-deleteFromwish" >
+                                    <mat-icon>
+                                        <mat-checkbox color="primary" class=" select_all_wishlist"
+                                                      [checked]="header.wish_properties.wishList.length == header.wish_properties.selected.length &&  header.wish_properties.selected.length > 0 "
+                                                      (click)="selecteAll_wishList()">
+                                        </mat-checkbox>
+                                    </mat-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="body_div  body_wish">
+                    <ng-container *ngIf="header.wish_properties.wishList.length > 0 ; else  emptywish">
+                        <div  *ngFor="let wish_product of header.wish_properties.wishList | filter: filter_wish "  [@wishList_animations]="active">
+                            <button mat-button class="width_body_wish" [ngClass]="getStyle_wish( wish_product )">
+                                <div class="width_each_wishlist">
+                                    <div class="wish_image" >
+                                        <img  src="../../assets/images/products_image/{{wish_product.product_image}}">
+                                    </div>
+                                    <div class="title">
+                                        {{wish_product.product_title}}
+                                    </div>
+                                    <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
+                                        <span  matTooltip="select">
+                                            <mat-checkbox  color="primary" [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
+                                            </mat-checkbox>
+                                        </span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                    </ng-container >
+                    <ng-template #emptywish>
+                        your WishList is empty
+                    </ng-template>
+                </div>
+            </div>
+
+            <div class="treguesi notCloseDropdawnFavorite notClosepointerHeader notCloseDropdawnCard notCloseDropdawnLanguage"></div>
 
         </div>
 
     </div>
 
-</nav>
+</div> <!-- end header ............................. -->
 
 <div class="clickchat"> <!--  start the chat ................................................-->
 

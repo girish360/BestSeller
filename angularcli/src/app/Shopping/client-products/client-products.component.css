@@ -100,7 +100,7 @@ margin-left: -8px;
 
     display: inline-block;
     margin-left: 8px;
-    margin-top: 8px;
+    margin-top: 3px;
     position: relative;
     left: 5px;
     border:1px solid;
@@ -249,17 +249,17 @@ margin-left: -8px;
     z-index: 3 !important;
     height: 36px;
     background-color:#E6E6FA;
-    margin-top: 8px;
+
 
 
 
 }
 .inside_option_products{
+
     width: 100%;
     position: relative;
-    top:3px;
-
-
+    top: 50%;
+    transform: translateY(-50%);
 
 }
 

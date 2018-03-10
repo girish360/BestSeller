@@ -46,6 +46,94 @@ class  connection { // start connection class ...
 
     }
 
+    public function select_join_limit( $array_select_tables ,$where ,$limit ){  // select data with join tables
+        $Tables = array(); // tables array
+        $Columns = array();  // Columns array
+        $fetch = array(); // tables with columns
+
+        foreach ( $array_select_tables as $table => $columns ) { // loop tables
+
+            $Tables[]=$table; // build array with tabel name .............
+
+            foreach ( $columns as $column ){ // loop column
+
+                $nr_point=0;
+
+                for($i = 0 ; $i < strlen($column) ; $i++ ){  // loop string column
+
+                    if( $column[$i] == '.' ){
+                        break;
+                    }
+
+                    $nr_point++;
+                }
+
+                $column_string = substr($column, $nr_point+1,strlen($column)); // get only column name ,because it was together with table name ...............
+
+                $Columns[] = $column." as ". $table ."_".$column_string; //build array with select columns
+
+                $fetch[$table][] = $table ."_".$column_string; // array with tables and the respective columns
+            }
+
+        }
+
+        $Columns = implode(',', $Columns); // get select columns from array .....................
+
+        $Tables = implode(',', $Tables); // get table name from array ........
+
+        $query = $this->db->prepare("SELECT $Columns FROM $Tables WHERE $where LIMIT $limit  "); // prepare query
+
+        $query->execute(); // execute query ...............
+
+        return  array( 'query'=>$query , 'fetch'=>$fetch ); // return query and tables and the respective columns
+
+    }
+
+    public function select_join( $array_select_tables ,$where ){  // select data with join tables
+        $Tables = array(); // tables array
+        $Columns = array();  // Columns array
+        $fetch = array(); // tables with columns
+
+        foreach ( $array_select_tables as $table => $columns ) { // loop tables
+
+            $Tables[]=$table; // build array with tabel name .............
+
+            foreach ( $columns as $column ){ // loop column
+
+                $nr_point=0;
+
+                for($i = 0 ; $i < strlen($column) ; $i++ ){  // loop string column
+
+                    if( $column[$i] == '.' ){
+                        break;
+                    }
+
+                    $nr_point++;
+                }
+
+                $column_string = substr($column, $nr_point+1,strlen($column)); // get only column name ,because it was together with table name ...............
+
+                $Columns[] = $column." as ". $table ."_".$column_string; //build array with select columns
+
+                $fetch[$table][] = $table ."_".$column_string; // array with tables and the respective columns
+            }
+
+        }
+
+        $Columns = implode(',', $Columns); // get select columns from array .....................
+
+        $Tables = implode(',', $Tables); // get table name from array ........
+
+        $query = $this->db->prepare("SELECT $Columns FROM $Tables WHERE $where  "); // prepare query
+
+        $query->execute(); // execute query ...............
+
+        return  array( 'query'=>$query , 'fetch'=>$fetch ); // return query and tables and the respective columns
+
+    }
+
+
+
     public  function count( $table_name ){
 
         $query = $this->db->prepare( "SELECT COUNT(*) FROM `$table_name`");
@@ -164,17 +252,18 @@ class  connection { // start connection class ...
 
         $where_columns = self::where_columns_or( $array_where_columns );
 
-         $query = $this->db->prepare("DELETE FROM `$table_name` WHERE $where_columns " );
+        $query = $this->db->prepare("DELETE FROM `$table_name` WHERE $where_columns " );
 
-         $query->execute( $array_where_columns );
+        $query->execute( $array_where_columns );
 
-         return $query;
+        return $query;
 
     }
 
     public function update_query( $table_name  , $array_data , $array_where_columns ){  // update row in database with array data .........
 
         try {
+            $updates = array();
 
             if ( count( $array_data ) > 0 ) {
 
@@ -192,9 +281,9 @@ class  connection { // start connection class ...
 
             $query = $this->db->prepare(" UPDATE `$table_name` SET $set WHERE $where " );
 
-            $query->execute( $array_data );
+            $query->execute( $array_where_columns );
 
-            return true;
+            return $query->rowCount();
         }
         catch( Exception $e ){
 

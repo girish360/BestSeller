@@ -12,9 +12,9 @@ class Products extends Fetch_Data {
 
     public $total_pages;
 
-    private $table_name = 'products';
+    private $table_name = 'product';
 
-    private $products_columns = array('id','title','id_image','id_category','id_admin','price','quantity','date','image');
+    private $products_columns = array('id','title','image_id','category_id','company_id','price','quantity','date','image');
 
     public function getproducts( $object_details ){  // get all products .....................................
 
@@ -24,27 +24,17 @@ class Products extends Fetch_Data {
 
             $count = self::count( $this->table_name );
 
-            $tb_name_dep = 'adminat';
-
-            $column_dep='id';
-
-            $id='id_admin';
-
             if( $count  <= $this->products_for_page ){
 
                 $result_fromDB = self::select_all( $this->table_name , $this->products_columns ); // get product from db .....
 
-                $result = self::fetch_data_array_dependet(
+                $this->all_products  = self::fetch_data_array_dependet(
                     $result_fromDB ,
-
-                    $tb_name_dep ,
-
-                    $column_dep ,
-
-                    $id
+                    array('id','name','date','image' ,'city','state'),
+                    array('column'=>'company_id','table_name'=>'company','column_dependet'=>'id')
                 );
 
-                $this->all_products = $result;
+
 
                 return  self::json_data(
 
@@ -57,28 +47,45 @@ class Products extends Fetch_Data {
 
                 $click = $array_data['number_click'];
 
-                $result_fromDB = self::select_limit(
-                    $this->table_name,
-                    $this->products_columns ,
-                    $click-1 ,
-                    $this->products_for_page
+                $select_and_tables = array(  // array with t6ables and respective columns
+
+                    //table
+                    "product"=>array(
+                        // columns table
+                        'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.image','product.date'
+                    ),
+                    // table
+                    "company"=>array(
+                        //colums table
+                        'company.id','company.name','company.image'
+                    )
+                    // more table and columns ............
                 );
 
-                $this->products_limit = self::fetch_data_array_dependet(
+                $where = ' product.company_id = company.id';
 
-                    $result_fromDB ,
-                    array('id','name_company','date','imageprofile' ,'city','state'),
-                    array('column'=>'id_admin','table_name'=>'adminat','column_dependet'=>'id')
-                );
+                $limit = --$array_data['number_click']*$this->products_for_page.','.$this->products_for_page;
 
-                self::getpages(  $count );
+                $res = self::select_join_limit( $select_and_tables ,$where ,$limit );
 
-                self::get_pages_details( $this->total_pages , $array_data['number_click'] , 'default' );
+                if( $res['query']->rowCount() >= 1 ){
 
-                return  self::json_data(
-                    $this->table_name,
-                    array('products'=>$this->products_limit , 'pages_details'=>  $this->pages_details )
-                );
+                    $this->products_limit  = self::fetch_data_join( $res );
+
+                    self::getpages(  $count );
+
+                    self::get_pages_details( $this->total_pages , ++$array_data['number_click'] , 'default' );
+
+                    return  self::json_data(
+
+                        $this->table_name,
+
+                        array('products'=>$this->products_limit , 'pages_details'=>  $this->pages_details )
+                    );
+
+                }else{
+                       // category
+                }
             }
         }
         else{ // category products ...............................................................................

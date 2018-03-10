@@ -9,6 +9,8 @@ import { RouterStateSnapshot,ActivatedRouteSnapshot, ActivatedRoute  ,Params , D
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
+import { HeaderService } from '../header/header.service';
+
 import { HttpService } from '../services/http.service';
 
 import { DataService } from '../services/data.service';
@@ -48,10 +50,6 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
     public products_detail:any;
 
-    private wishList_products:any = [];
-
-    public productInWish = false;
-
     public Response:any;
 
     public status_in_wish=false;
@@ -64,12 +62,11 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
     public send_data_products={};
 
-
-    public property_products = {
+    public product_properties = {
 
         hover_wish_list:false,
 
-        empty_full:0,
+        icon_wish:0,
 
         index_product:'empty'
 
@@ -77,31 +74,27 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
     my_timer_wish: Subscription ;
 
-    constructor(private cdr:  ChangeDetectorRef, private router : Router, private crypto:EncryptDecryptService , private dataservices: DataService ,    private Httpservice :HttpService , private route: ActivatedRoute  ) {
+    constructor( private header :HeaderService,  private cdr:  ChangeDetectorRef, private router : Router, private crypto:EncryptDecryptService , private dataservices: DataService ,    private Httpservice :HttpService , private route: ActivatedRoute  ) {
 
         this.dataservices.update_loader(true);
-
-        this.wishList_products = this.dataservices.wishlist;
-
 
         let response = this.dataservices.Make_Request_InServer( 'products' , { 'type': 'default', 'number_click': 1 } );
 
         response.then( response => {
 
-            this.pages_details = this.dataservices.products['pages_details'];
+            this.products = response['products'];
 
-            this.build_pages_link(this.dataservices.products['pages_details']);
-
-            this.products = this.dataservices.products['products'];
+            this.build_pages_link( response['pages_details']);
 
             this.dataservices.update_loader(false);
+
         });
 
     }
 
     ngDoCheck(){
 
-        this.wishList_products = this.dataservices.wishlist;
+
     }
 
     ngOnInit() {
@@ -109,10 +102,11 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
     }
 
-
     click_pages( click_details ){
 
         if( click_details.active != true ){ // check if is different from active page ...........
+
+
 
             if ( click_details.icon_material == 'skip_next' ) {
 
@@ -151,7 +145,7 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
     get_page_products(){
 
-        this.dataservices.update_loader(true);
+
 
        let response = this.dataservices.Make_Request_InServer( 'products', this.send_data_products );
 
@@ -159,11 +153,11 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
              this.products =  products_details['products'];
 
-             this.pages_details = products_details['pages_details'];
+           this.pages_details = products_details['pages_details'];
 
              this.build_pages_link( products_details['pages_details']) ;
 
-             this.dataservices.update_loader(false);
+
 
         });
     }
@@ -477,13 +471,13 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
     } // End function that build pages link ........................................................
 
 
-    add_wish_list( product_data ){  // function to add product in wishList
+    add_wish_list( product ){  // function to add product in wishList
 
         this.status_in_wish = false; // status to find  if this  product is in wish......
 
-        for ( var i =  0 ; i<this.wishList_products.length ; i++ ){ // loop wish list with product ...
+        for ( var i =  0 ; i < this.header.wish_properties.wishList.length ; i++ ){ // loop wish list with product ...
 
-            if( this.wishList_products[i].id == product_data.id ){ // if product .id is equals with one product.id in wish status should be true ...
+            if( this.header.wish_properties.wishList[i].product_id == product.product_id ){ // if product .id is equals with one product.id in wish status should be true ...
 
                 this.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
 
@@ -494,12 +488,9 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
             this.ondestroyInterval_wish();
 
-            this.wishList_products.unshift( product_data ); // push wish product in wishList products
+            this.header.wish_properties.wishList.unshift( product ); // push wish product in wishList products
 
-            this.dataservices.update_wishList( this.wishList_products); // change wish list in services   that get this  when change component with router outlet
-
-
-            this.dataservices.create_object_request( 'add_wishProduct', product_data.id );
+            this.dataservices.create_object_request( 'add_wishProduct', product.product_id );
 
             this.Httpservice.Http_Post( this.dataservices.object_request) // make request ......
 
@@ -516,13 +507,13 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
         }
     }
 
-    check_wish(product){
+    check_wish( product ){
 
         this.status_in_wish = false;
 
-        for ( let i = 0 ; i < this.wishList_products.length ; i++){
+        for ( let i = 0 ; i < this.header.wish_properties.wishList.length ; i++){
 
-            if( this.wishList_products[i].id ==  product.id ){
+            if( this.header.wish_properties.wishList[i].product_id ==  product.product_id ){
 
                 this.status_in_wish = true;
             }
@@ -547,28 +538,24 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
         );
     }
 
-    change_nr(){
 
-        this.nr_products++;
-
-    }
     mouseHover_wish( product , i ){
 
-        this.property_products.index_product = i;
+        this.product_properties.index_product = i;
 
-        this.property_products.empty_full=1;
+        this.product_properties.icon_wish=1;
 
         this.check_wish_icon( product );
 
-        this.onStartInterval_wish(product);
+        this.onStartInterval_wish( product );
 
     }
 
     mouseLeave_wish( product ){
 
-        this.property_products.index_product = 'empty';
+        this.product_properties.index_product = 'empty';
 
-        this.property_products.empty_full=0;
+        this.product_properties.icon_wish=0;
 
         this.ondestroyInterval_wish();
 
@@ -580,9 +567,9 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
         this.status_in_wish = false; // status to find  if this  product is in wish......
 
-        for ( var i =  0 ; i < this.wishList_products.length ; i++ ){ // loop wish list with product ...
+        for ( var i =  0 ; i < this.header.wish_properties.wishList.length ; i++ ){ // loop wish list with product ...
 
-            if( this.wishList_products[i].id == product.id ){ // if product .id is equals with one product.id in wish status should be true ...
+            if( this.header.wish_properties.wishList[i].id == product.product_id ){ // if product .id is equals with one product.id in wish status should be true ...
 
                 this.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
 
@@ -592,13 +579,13 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
         if( this.status_in_wish != true ) { // check if status is not equals with true  to  add this prod in wish ....
 
 
-            if( this.property_products.empty_full == 1 ){
+            if( this.product_properties.icon_wish == 1 ){
 
-                this.property_products.hover_wish_list = true;
+                this.product_properties.hover_wish_list = true;
 
             }else{
 
-                this.property_products.hover_wish_list = false;
+                this.product_properties.hover_wish_list = false;
             }
         }
     }
@@ -607,13 +594,13 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
         this.my_timer_wish = Observable.interval(500).subscribe( val => {
 
-            if(this.property_products.empty_full == 1){
+            if(this.product_properties.icon_wish == 1){
 
-                this.property_products.empty_full = 0;
+                this.product_properties.icon_wish = 0;
 
             }else{
 
-                this.property_products.empty_full = 1;
+                this.product_properties.icon_wish = 1;
             }
 
             this.check_wish_icon( product );

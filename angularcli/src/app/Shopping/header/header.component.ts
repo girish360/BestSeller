@@ -7,6 +7,12 @@
 
  import { DataService } from '../services/data.service';
 
+ import { DeviceDetectorService } from 'ngx-device-detector';
+
+ import { HttpService } from '../services/http.service';
+
+ import { HeaderService } from './header.service';
+
  import { RouterStateSnapshot,ActivatedRouteSnapshot, ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
  import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
@@ -49,33 +55,15 @@
 
  export class HeaderComponent implements OnInit ,DoCheck ,AfterViewInit  {
 
-     public wishList_products:any = [];
+     private Response;
 
-    public cart_products:any = [];
+     public active = 'active';
 
-    private card_products = [];
+     deviceInfo = null;
 
-    private Response;
 
-    public selected_wishList=[];
+     public button_properties:any = { active:0 , disabled:false , pointer:1 };
 
-    public active = 'active';
-
-    public toggle_checked_wishList=false;
-
-    public button_delete=true;
-
-    public  selectedAll_value_wishlist = false;
-
-    public Array_wishID_delete_wishlist = [];
-
-    private show_hide_search_in_wishList = false;
-
-    public  filter_wish='';
-
-    public selectedIndex;
-
-     public property_button:any = { active:0 , disabled:false ,pointer:1 };
 
      public language_allow = [
 
@@ -85,7 +73,8 @@
 
      ];
 
-     public button_right = [
+
+    public button_right = [
 
          { id:1 , name:'sing' ,mat_tooltip:'User Panel', different_class:'',
              icon :'glyphicon-user gh-header'
@@ -100,47 +89,57 @@
              icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'body_more'
          }
 
-     ];
+    ];
 
-     constructor( private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
+
+    constructor( private header : HeaderService, private HttpService :HttpService , private deviceService: DeviceDetectorService, private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
 
          Observable.interval(5 * 2).subscribe( x => {
 
-            this.find_position(this.property_button.pointer);
+            this.find_position(this.button_properties.pointer);
 
          });
 
 
-         this.wishList_products = this.dataservices.wishlist;
+         this.get_device_info();
+
+
     }
+
 
     ngDoCheck(){
 
-       this.wishList_products = this.dataservices.wishlist;
+
     }
 
-     ngAfterViewInit() {
+    ngAfterViewInit() {
 
-     }
+    }
+
+    public get_device_info() {
+
+        this.deviceInfo = this.deviceService.getDeviceInfo();
+
+    }
 
 
-     public check_button( button , i ){
+    public check_button( button , i ){
 
         this.dataservices.Header_property.selectedIndex = i;
 
-        if( this.property_button.disabled == false ) {
+        if( this.button_properties.disabled == false ) {
 
-            this.property_button.disabled = true;
+            this.button_properties.disabled = true;
 
             setTimeout(()=>{    //<<<---    using ()=> syntax
 
-                this.property_button.disabled = false;
+                this.button_properties.disabled = false;
 
             },300);
 
-            if (this.property_button.active != button.id) {
+            if (this.button_properties.active != button.id) {
 
-                this.property_button.active = button.id;
+                this.button_properties.active = button.id;
 
                 if (button.id == 1) {
 
@@ -150,14 +149,14 @@
 
                     this.show_dropdown_button( button.dropdown_class, button.dropdown_body, button.id);
 
-                    this.property_button.pointer = button.id;
+                    this.button_properties.pointer = button.id;
                 }
 
             } else {
 
                 this.hide_dropdown_button(button.dropdown_class, button.dropdown_body);
 
-                this.property_button.active = 0;
+                this.button_properties.active = 0;
 
                 this.dataservices.Header_property.selectedIndex = 'empty';
             }
@@ -165,9 +164,7 @@
 
     }
 
-    update_selectedIndex(){
-         this.selectedIndex = 'empty';
-    }
+
 
     public  set_router( data ){
 
@@ -518,30 +515,30 @@
 
     }
 
-    delete_from_wishList( All_wishList ){
+    delete_from_wishList(  ){
 
-        this.filter_wish='';
+        this.header.wish_properties.filter_wish='';
 
-        for( var i = 0 ; i < this.selected_wishList.length ; i++ ) { // remove from wish list products that are in selected
+        for( var i = 0 ; i < this.header.wish_properties.selected.length ; i++ ) { // remove from wish list products that are in selected
 
-            var index = this.wishList_products.indexOf( this.selected_wishList[i] );
+            var index = this.header.wish_properties.wishList.indexOf( this.header.wish_properties.selected[i] );
 
-            this.Array_wishID_delete_wishlist.push( this.selected_wishList[i].id );
+            this.header.wish_properties.array_wishId.push( this.header.wish_properties.selected[i].product_id );
 
             if( index  > -1 ){
 
-                this.wishList_products.splice( index , 1 );
+                this.header.wish_properties.wishList.splice( index , 1 );
             }
 
         }
 
-        for( var i = 0 ; i < this.selected_wishList.length ; i ++ ){
+        for( var i = 0 ; i < this.header.wish_properties.selected.length ; i ++ ){
 
-            this.selected_wishList.splice( this.selected_wishList[i] , this.selected_wishList.length );
+            this.header.wish_properties.selected.splice( this.header.wish_properties.selected[i] , this.header.wish_properties.selected.length );
         }
 
 
-        this.Response = this.dataservices.Make_Request_InServer('delete_itemFromCookie', this.Array_wishID_delete_wishlist);
+        this.Response = this.dataservices.Make_Request_InServer('delete_itemFromCookie', this.header.wish_properties.array_wishId);
 
         this.Response.then( response =>{
 
@@ -551,34 +548,34 @@
 
         this.check_button_deleteProducts_fromwishlist();
 
-        this.check_selectedAll_checkbox_wish();
 
-        this.Array_wishID_delete_wishlist = []; // empty ....
+
+        this.header.wish_properties.array_wishId = []; // empty ....
     }
 
 
     toggle_select_wish( item_wish ){
 
-        var index = this.selected_wishList.indexOf( item_wish );
+        var index = this.header.wish_properties.selected.indexOf( item_wish );
 
         if( index > -1 ){
 
-            this.selected_wishList.splice(index,1);
+            this.header.wish_properties.selected.splice(index,1);
 
         }else{
 
-            this.selected_wishList.push(item_wish);
+            this.header.wish_properties.selected.push(item_wish);
         }
 
         this.check_button_deleteProducts_fromwishlist();
 
-        this.check_selectedAll_checkbox_wish();
+
 
     }
 
     check_selected_wish( item_wish ){
 
-        if( this.selected_wishList.indexOf( item_wish ) > -1 ) {
+        if( this.header.wish_properties.selected.indexOf( item_wish ) > -1 ) {
 
             return true;
 
@@ -590,7 +587,7 @@
 
     getStyle_wish( item_wish ){
 
-        if( this.selected_wishList.indexOf( item_wish ) > -1 ) {
+        if( this.header.wish_properties.selected.indexOf( item_wish ) > -1 ) {
 
             return 'selected_wish';
 
@@ -601,66 +598,93 @@
 
     }
 
-    selectedAll_wishList( ){
+    selecteAll_wishList( ){
 
-        if( this.selectedAll_value_wishlist == true ){ // check if  are all wish list  selected  .........
+        if( this.header.wish_properties.selectedAll == true ){ // check if  are all wish list  selected  .........
 
-            for( var i = 0 ; i < this.selected_wishList.length ; i ++ ){
+            for( var i = 0 ; i < this.header.wish_properties.selected.length ; i ++ ){
 
-                this.selected_wishList.splice(this.selected_wishList[i] , this.selected_wishList.length);
+                this.header.wish_properties.selected.splice(this.header.wish_properties.selected[i] , this.header.wish_properties.selected.length);
             }
 
-            this.check_selectedAll_checkbox_wish();
-
+            this.header.wish_properties.selectedAll = false;
             return;
         }
 
-        for( var i = 0 ; i < this.wishList_products.length ; i ++ ){
+        for( var i = 0 ; i < this.header.wish_properties.wishList.length ; i ++ ){
 
-            if( this.selected_wishList.indexOf(this.wishList_products[i]) > -1 ){
+            if( this.header.wish_properties.selected.indexOf(this.header.wish_properties.wishList[i]) > -1 ){
 
                 continue // exist in selected_wishlist next .....
 
             }
 
-            this.selected_wishList.push( this.wishList_products[i] ); // push in selected_wishlist
+            this.header.wish_properties.selected.push( this.header.wish_properties.wishList[i] ); // push in selected_wishlist
         }
+
+        this.header.wish_properties.selectedAll = true;
 
         this.check_button_deleteProducts_fromwishlist();
 
-        this.check_selectedAll_checkbox_wish();
-    }
-
-    from_wish_to_cart( selected_wish ){
-
+        return;
 
     }
+
+     selecteAll_cartList(){
+
+     }
+
+     add_from_wish_to_cart( selected_wish ){
+
+         this.header.cart_properties.array_cartId = [];
+
+         for( let i = 0 ; i  < selected_wish.length  ; i++  ){
+
+             this.header.cart_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
+
+             this.header.cart_properties.cartList.unshift( selected_wish[i] ); // push wish product in wishList products
+
+             this.header.cart_properties.array_cartId.push( selected_wish[i].product_id );
+
+         }
+
+         this.delete_from_wishList();
+
+         this.dataservices.update_cartList(   this.header.cart_properties.cartList ); // change wish list in services   that get this  when change component with router outlet
+
+         this.dataservices.create_object_request( 'add_cartProducts', this.header.cart_properties.array_cartId  );
+
+         this.HttpService.Http_Post( this.dataservices.object_request) // make request ......
+
+             .subscribe( //  take success
+
+                 data => {
+
+                     if( data['status'] == 'add_wishProduct' ){
+
+                         this.Response = data['data']
+                     }
+                 },
+                 error => console.log( error['data'] ) // take error .....
+
+             );
+
+     }
 
     check_button_deleteProducts_fromwishlist(){
 
-        if( this.selected_wishList.length > 0 ){
+        if( this.header.wish_properties.selected.length > 0 ){
 
-            this.button_delete = false;
-
-            return;
-        }
-
-        this.button_delete = true;
-
-    }
-
-    check_selectedAll_checkbox_wish(){
-
-        if( this.wishList_products.length == this.selected_wishList.length &&  this.selected_wishList.length > 0  ){
-
-            this.selectedAll_value_wishlist = true;
+            this.header.wish_properties.button = false;
 
             return;
         }
 
-        this.selectedAll_value_wishlist = false;
+        this.header.wish_properties.button = true;
 
     }
+
+
 
     current_language(id_language){
 
@@ -674,14 +698,14 @@
 
     show_hide_search_in_wishlist(){
 
-        return this.show_hide_search_in_wishList = !this.show_hide_search_in_wishList
+        return this.header.wish_properties.icon_search = !this.header.wish_properties.icon_search
 
     }
 
 
     check_show_hide_search_in_wishlist(){
 
-        if(this.show_hide_search_in_wishList == true){
+        if( this.header.wish_properties.icon_search == true ){
 
             return 'show_search_in_wishlist';
         }

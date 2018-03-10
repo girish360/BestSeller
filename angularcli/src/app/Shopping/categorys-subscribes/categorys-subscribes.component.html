@@ -66,7 +66,7 @@
                                         </div>
 
                                         <div class="namecate">
-                                            <div class="namecategory" >{{category.name_category}}</div>
+                                            <div class="namecategory" >{{category.name}}</div>
                                         </div>
 
                                         <div class="imgnc">
@@ -81,9 +81,9 @@
 
                         <div  class=" subcategory sub{{category.id}}">
 
-                        <ng-container   *ngIf="category['allcategory_item'].length>0; else notFirst">
+                        <ng-container   *ngIf="category['sub_category'].length>0; else notFirst">
 
-                            <div  *ngFor="let subcategory of category['allcategory_item']" >
+                            <div  *ngFor="let subcategory of category['sub_category']" >
 
                                 <button  mat-button class="button_menu" >
 
@@ -98,7 +98,7 @@
                                             </div>
 
                                             <div class="namecate">
-                                                <div class="namecategory" >{{subcategory.name_category}}</div>
+                                                <div class="namecategory" >{{subcategory.name}}</div>
                                             </div>
 
 

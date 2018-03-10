@@ -8,13 +8,7 @@
 
              <span class="left_option_products inline-block">
 
-                 <button mat-button >
 
-                     <div class="write_page">
-                         {{dataservices.language.page_products + pages_details.number_click}} {{dataservices.language.total_page_products}} {{pages_details.total_number}}
-                     </div>
-
-                 </button>
 
              </span>
 
@@ -74,7 +68,7 @@
 
                     <div class="title_products more_detail_product" >
 
-                        {{product.title }}
+                        {{product.product_title }}
 
                     </div>
 
@@ -88,13 +82,13 @@
 
                 <div class="date_products">
 
-                    <span class='glyphicon glyphicon-time'></span> {{product.date}}
+                    <span class='glyphicon glyphicon-time'></span> {{product.product_date}}
 
                 </div>
 
-                <span *ngFor="let company of product['adminat']">
 
-                    <a (click)="encrypt_id(company.id)"  href="#">
+
+                    <a (click)="encrypt_id(product['company'].company_id)"  href="#">
 
                         <div class="own_img_product">
 
@@ -102,31 +96,31 @@
 
                         <div class="image_profile_company ">
 
-                            <img  class="image_prof_admin" src="../../assets/images/products_image/{{company.imageprofile}}">
+                            <img  class="image_prof_admin" src="../../assets/images/products_image/{{product['company'].company_image}}">
 
                         </div>
 
                     </a>
 
-                </span>
 
-                <a href="#" (click)="product_details( product.id )">
+
+                <a href="#" (click)="product_details( product.product_id )">
 
                     <div class="image_product_primary  ">
 
-                        <img class="image_product img_primary_product{{product.id}}" src="../../assets/images/products_image/{{product.image}}">
+                        <img class="image_product img_primary_product{{product.product_id}}" src="../../assets/images/products_image/{{product.product_image}}">
 
                     </div>
 
                 </a>
 
-                <a href="#"  (mouseleave)="mouseLeave_wish( product )"  (mouseenter) ="mouseHover_wish( product ,i )"  class="hover_all_wish" id="wish_list{{product.id}}" (click)="add_wish_list(product)">
+                <a href="#"  (mouseleave)="mouseLeave_wish( product )"  (mouseenter) ="mouseHover_wish( product ,i )"  class="hover_all_wish" id="wish_list{{product.product_id}}" (click)="add_wish_list(product)">
 
-                    <div class="wish_list" [ngClass]="{'wish_list_hover': property_products.index_product == i }">
+                    <div class="wish_list" [ngClass]="{'wish_list_hover': product_properties.index_product == i }">
 
                     </div>
 
-                    <div class="about_wish notCloseDropdawnFavorite notClosepointerHeader" id="{{product.id}}">
+                    <div class="about_wish notCloseDropdawnFavorite notClosepointerHeader" id="{{product.product_id}}">
 
                         <div class="wish_list_write">
 
@@ -138,7 +132,7 @@
 
                             <button mat-mini-fab class="button_heart"  >
 
-                                <div *ngIf="wishList_products.length > 0; else  emtyWish " >
+                                <div *ngIf="header.wish_properties.wishList.length > 0; else  emtyWish " >
 
                                     <div *ngIf="check_wish(product) ; else notinwish">
 
@@ -148,9 +142,9 @@
 
                                     <ng-template #notinwish >
 
-                                        <mat-icon  [ngClass]="{'hide_border_heart'  : property_products.hover_wish_list && property_products.index_product == i } ">favorite_border</mat-icon>
+                                        <mat-icon  [ngClass]="{'hide_border_heart'  : product_properties.hover_wish_list && product_properties.index_product == i } ">favorite_border</mat-icon>
 
-                                        <mat-icon class="hearts_div_hover" [ngClass]="{'show_full_heart'  : property_products.hover_wish_list && property_products.index_product == i } ">favorite</mat-icon>
+                                        <mat-icon class="hearts_div_hover" [ngClass]="{'show_full_heart'  : product_properties.hover_wish_list && product_properties.index_product == i } ">favorite</mat-icon>
 
                                     </ng-template>
 
@@ -158,9 +152,9 @@
 
                                 <ng-template #emtyWish>
 
-                                    <mat-icon  [ngClass]="{'hide_border_heart'  : property_products.hover_wish_list && property_products.index_product == i } ">favorite_border</mat-icon>
+                                    <mat-icon  [ngClass]="{'hide_border_heart'  : product_properties.hover_wish_list && product_properties.index_product == i } ">favorite_border</mat-icon>
 
-                                    <mat-icon class="hearts_div_hover" [ngClass]="{'show_full_heart'  : property_products.hover_wish_list && property_products.index_product == i } ">favorite</mat-icon>
+                                    <mat-icon class="hearts_div_hover" [ngClass]="{'show_full_heart'  : product_properties.hover_wish_list && product_properties.index_product == i } ">favorite</mat-icon>
 
                                 </ng-template>
 
@@ -209,7 +203,7 @@
 
                                 <div class="both_write ">
 
-                                    Card
+                                    Cart
 
                                 </div>
 
@@ -221,7 +215,7 @@
 
                     <span matTooltip="See Details!">
 
-                        <a href="#" (click)="product_details( product.id )">
+                        <a href="#" (click)="product_details( product.product_id )">
 
                             <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
 

@@ -57,10 +57,10 @@ class Cookie extends Fetch_Data{
 
         if( isset( $_COOKIE[$name_cookie] ) ){
 
-            return self::json_data('check_cookie' , 'true' );  // return result ......
+            return 'true'; // return result ......
         }
         else{
-            return self::json_data('check_cookie' , 'false' );  // return result ......
+            return 'false' ;  // return result ......
         }
     }
 
@@ -70,7 +70,7 @@ class Cookie extends Fetch_Data{
 
            $array_id_inCookie =  json_decode( $_COOKIE[$cookie_name] ) ;
 
-          return $array_id_inCookie;
+           return $array_id_inCookie;
 
         }
         else{

@@ -22,6 +22,8 @@ time, mark, audio, video {
     color:gray;
 }
 
+
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 @keyframes component_Animation {
@@ -39,6 +41,9 @@ time, mark, audio, video {
 a{
     text-decoration: none;
 }
+
+
+
 .component-animation {
     animation: component_Animation 1s;
 }
@@ -71,7 +76,6 @@ a{
 
     background-color: cornflowerblue;
 
-
 }
 
 .button span{
@@ -96,8 +100,6 @@ a{
 
 
     }
-
-
 
 }
 
@@ -255,6 +257,12 @@ input[name='search']:focus , input[name='search_wish']:focus{
 
 .body_div{
     background-color: #F5F5F5;
+    width: 100%;
+    height:calc( 100% - 40px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    top: 15px;
 }
 
 

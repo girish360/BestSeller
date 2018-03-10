@@ -6,11 +6,11 @@ class Category_Subscribe extends Fetch_Data
     public  $category;
     public $sub_category = Array();
 
-    private $select_columns = array('id','name_category','language','image');
+    private $select_columns = array('id','name','image');
 
-    private $table_name='categorytype';
+    private $table_name='category';
 
-    private $table_name_dependet = 'allcategory_item';
+
 
     public function redukto($word, $limit = '20')
     {
@@ -37,9 +37,9 @@ class Category_Subscribe extends Fetch_Data
 
             $category_result,
 
-            array('id','name_category','image'),
+            array('id','name','image'),
 
-            array('column_dependet'=>'id_categorytype','table_name'=>'allcategory_item','column'=>'id')
+            array('column_dependet'=>'category_id','table_name'=>'sub_category','column'=>'id')
 
         );
 

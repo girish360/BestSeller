@@ -2,13 +2,13 @@
 
 class Language extends Cookie {
 
-    public function get_language($lang){
+    public function get_language( $lang ){
 
         $language_in_coockie = self::check_cookie( 'language' ); //  call method check if have cookie  for language
 
         if( $language_in_coockie != 'false' ){ // check if  exists cookie for language
 
-            $objct_language = self::object_language( $_COOKIE['language'] ); // call method to get language .......
+            $objct_language = self::object_language( json_decode($_COOKIE['language'] )); // call method to get language .......
 
             return self::json_data('language' ,$objct_language );// return object with language  in frontend.........
 
@@ -57,7 +57,7 @@ class Language extends Cookie {
                 $language['Active_language_image']="england.png";
                 $language['sing']="Sing In";
                 $language['wish']="WishList";
-                $language['card']="Card";
+                $language['card']="Cart";
                 $language['more']="More";
                 $language['User']="User";
                 $language['login_register']="Login/Register";
@@ -133,7 +133,7 @@ class Language extends Cookie {
 
         }
 
-        self::set_cookie( 'language', $lang ); //save language in cookie .............
+        self::save_coockie( 'language', $lang ); //save language in cookie .............
 
         return $language;
     }

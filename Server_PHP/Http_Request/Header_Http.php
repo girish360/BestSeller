@@ -22,4 +22,11 @@ if( $status =='get_wishList'){
 
     echo $Object['Header']->get_wishlist();
 }
+
+if( $status == 'add_cartProducts' ){
+
+
+    echo $Object['Header']->add_in_cart( $data_from_client );
+
+}
 ?>

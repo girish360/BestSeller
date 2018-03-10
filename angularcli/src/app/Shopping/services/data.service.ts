@@ -1,4 +1,4 @@
-import { Inject, Injectable ,EventEmitter } from '@angular/core';
+import { Inject, Injectable ,EventEmitter ,OnInit } from '@angular/core';
 
 import { HttpService } from './http.service';
 
@@ -14,7 +14,7 @@ import 'rxjs/Rx'
 
 @Injectable()
 
-export class DataService extends AuthService {
+export class DataService extends AuthService implements OnInit{
 
   constructor( private httpservice : HttpService , protected http:Http  ) {
 
@@ -27,34 +27,28 @@ export class DataService extends AuthService {
           this.language=response;
 
       });
-      let wishlist = this.Make_Request_InServer( 'get_wishList', 'wish' );
 
-      wishlist.then( response =>{
-
-          if( response!= 'false' ){
-
-              this.wishlist = response;
-
-          }
-      });
 
   }
+  ngOnInit(){
+
+  }
+
   public Header_property:any = {
       selectedIndex:'empty'
   };
+
   public body_loader=false;
 
   public language:any={};
 
-  public wishlist:any = [];
+  public cartList:any = [] ;
 
   public products:any = [];
 
   public Response:any;
 
   public pages:any;
-
-  public response_database;
 
   public object_request = {};
 
@@ -108,19 +102,15 @@ export class DataService extends AuthService {
           this.categorys = data['data']
       }
 
-      else if (data['status'] == 'get_wishList') {
-
-          if (data['data'] != 'false') {
-
-              this.wishlist = data['data'];
-
-          }
-      }
-
       else if( data['status']=='language' ) {
 
           this.language = data['data'];
 
+
+      }
+      else if( data['status']=='cartList' ) {
+
+          this.cartList = data['data'];
 
       }
   }
@@ -131,14 +121,14 @@ export class DataService extends AuthService {
 
   }
 
-  update_wishList( new_wish ){
-
-      this.wishlist = new_wish;
-  }
-
   update_language( new_language ){
 
       this.language = new_language;
+  }
+
+  update_cartList( new_cartList ){
+
+      this.cartList = new_cartList;
   }
 
 }

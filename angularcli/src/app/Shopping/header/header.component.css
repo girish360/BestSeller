@@ -1,7 +1,10 @@
 /* Styles go here */
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+}
 
-
-
+.no-drop {cursor: no-drop;}
 
 .menu3:hover span , .menu3:hover .write_icon_header{
 
@@ -40,25 +43,24 @@ a{
 }
 
 /* Begin css for header profile user here ....................................................................................................*/
-.navigation{
-    position: absolute;
-    top:60px;
+.header{
+    position: relative;
     z-index: 4 !important;
     width: 100%;
-    height: 40px;
+    height: 100px;
     border-bottom: 1px solid;
     color: lightgray;
     background-color:#E6E6FA;
 }
-.fixed_navigation{
+.fixed_header{
     position: fixed;
-    top:0px;
+    top:-60px;
 }
 
-.lefte{
+.bottom_header_left{
     float: left;
 }
-.button_right{
+.bottom_header_right{
 
     float: right;
 
@@ -205,7 +207,8 @@ a{
     position: absolute;
     color:white;
     width: 250px;
-    height: 40px;
+
+    left: 0;
 }
 .position_icon_ctegory{
 
@@ -311,35 +314,29 @@ a{
 
 
 .bottom_header {
+
     z-index:  2 !important;
-
     height: 40px;
-
-
 }
-.inner_top_header{
 
-    height: 60px;
-}
-.above_space_header{
-
+.top_header{
 
     height: 60px;
 
-
 }
-.write_above_header{
+
+.write_top_header{
     position: relative;
     top: 15px;
 
 }
-.right_above_header{
+.right_top_header{
     display: inline-block;
     float: right;
     font-size: 18px;
 
 }
-.left_above_header{
+.left_top_header{
     display: inline-block;
     font-size: 18px;
 }
@@ -430,20 +427,11 @@ a{
     display: inline-block;
     width: 70px;
     height: 40px;
-
-    position: relative;
-    text-align: right;
-    top: 0px;
     text-align: center;
-    border-top: 2px solid;
-    border-color: #E6E6FA;
     overflow: hidden;
-
-    border-radius: 5px;
-
-
 }
-.mobile_header{
+
+.bottom_header_mobile{
     display: none;
     width: 100%;
 }
@@ -654,16 +642,7 @@ g
     transition: 0.5s;
 
 }
-.kerkimresponse{
-    z-index: 1 !important;
-    display: inline-block;
-    width: 100%;
-    height: 28px;
-    position: relative;
-    top: 10px;
-    background-color:white;
-    border-radius: 3px;
-}
+
 
 
 html>/**/body .searchinputresp, x:-moz-any-link {
@@ -708,10 +687,7 @@ html>/**/body .kerkim, x:-moz-any-link {
     border-color:white;
     color:white;
 }
-.exitsearch1 img{
-    position: relative;
-    top: 2px;
-}
+
 
 .kerkimresponse{
     z-index: 1 !important;
@@ -762,22 +738,7 @@ html>/**/body .kerkim, x:-moz-any-link {
 }
 
 
-.exitsearch{
-    z-index: 2 !important;
-    display: inline-block;
 
-    width: 9%;
-    height: 28px;
-    background-color:#708090 ;
-    position: relative;
-
-    top: 0px;
-    font-size: 23px;
-    border-bottom-right-radius:3px;
-    border-top-right-radius: 3px;
-
-
-}
 input[name='respondesearch']:focus{
     outline: none;
 
@@ -792,63 +753,6 @@ input[name='respondesearch']:focus{
 .see_all:hover{
     background-color: #004080;
     color:white;
-}
-
-
-
-.exitsearch1{
-    display: inline-block;
-    z-index: 2 !important;
-    display: inline-block;
-
-    width: 9%;
-    height: 28px;
-    background-color:#708090;
-    position: relative;
-    border-bottom-left-radius: 3px;
-    border-top-left-radius: 3px;
-    top: -2px;
-    font-size: 23px;
-
-
-}
-
-.exitsearch:hover{
-    opacity: 0.8;
-}
-.exitsearch img{
-    position: relative;
-    top: 2px;
-
-}
-.exitsearch a{
-    text-decoration: none;
-}
-.exitsearch img :hover{
-    background-color: red;
-}
-.exit ,.searchimg{
-    position: relative;
-    left:0px;
-    margin-top:2px;
-    color:white;
-}
-.exit img{
-    position: relative;
-    top: 0px;
-}
-.exit{
-    display: none;
-}
-.searchimg img {
-    position: relative;
-    top: 0px;
-}
-.moreprofile{
-    display: inline-block;
-    position: relative;
-    top: 0px;
-    left: 20px;
 }
 
 
@@ -980,17 +884,7 @@ input[name='respondesearch']:focus{
 
 }
 
-.body_wish{
-    width: 100%;
-    height:calc( 100% - 40px);
 
-    overflow-y: auto;
-    overflow-x: hidden;
-    position: relative;
-    top: 15px;
-
-
-}
 .typelanguage ,.body_cart ,.body_search_header{
     position: relative;
 }
@@ -1212,7 +1106,7 @@ input[type='radio'] {
         margin-top:-5px;
 
     }
-    .button_right{
+    .bottom_header_right{
         float: none;
 
     }
@@ -1308,10 +1202,10 @@ input[type='radio'] {
 
     }
 
-    .button_right{
+    .bottom_header_right{
         display: none;
     }
-    .mobile_header{
+    .bottom_header_mobile{
         display:block;
     }
 

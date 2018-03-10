@@ -11,7 +11,7 @@ export class FilterPipe implements PipeTransform {
 
     return wishList_products.filter( function( wish_product  ){
 
-         return wish_product.title.toLowerCase().includes(value.toLowerCase());
+         return wish_product.product_title.toLowerCase().includes(value.toLowerCase());
 
     })
   }

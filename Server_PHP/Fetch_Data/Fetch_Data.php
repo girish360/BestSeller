@@ -12,7 +12,7 @@ class Fetch_Data extends connection {
 
     public function fetch_data_array( $result_fromDB ){
 
-        $this->Data_array=array();
+        $this->Data_array=[];
 
         while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC )  ){
 
@@ -33,9 +33,9 @@ class Fetch_Data extends connection {
 
         $nr = 0 ;
 
-        $this->Data_array = array();
+        $this->Data_array = [];
 
-        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC )  ){
+        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC ) ) {
 
             $this->Data_array[ $nr ] = $result;
 
@@ -57,70 +57,71 @@ class Fetch_Data extends connection {
 
         $result_fromDB = self::select_dependet_or( $table_name , $array_where , $array_select ); //select data dependet with where ....
 
-        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC)  ){
+        $result= $result_fromDB->fetchAll(PDO::FETCH_ASSOC );
 
-            $this->dependet[] = $result;
-        }
+        $this->dependet = $result;
+
         return $this->dependet;
     }
 
-    public function fetch_data_dependet_cookie( $array_ID , $array_table , $array_table_dependet ){
-
+    public function fetch_data_cookie( $array_tables, $array_ID  ){
         $nr = 0;
 
-        $this->Data_array = array();
+        $this->Data_array =[];
 
-        foreach ( $array_ID as $value ){
+        foreach ($array_ID as $id) {
 
-            $array_where = array( $array_table['column'] => $value );
+            $where = 'product.id="'.$id.'" AND product.company_id = company.id';
 
-           $result = self::select_dependet_or(  $array_table['table_name'], $array_where, $array_table['array_select'] );
+            $res = self::select_join( $array_tables , $where );
 
-            while ( $row = $result->fetch( PDO::FETCH_ASSOC )  ) {
+            if( $res['query']->rowCount() >= 1 ){
 
-                $this->Data_array[$nr] = $row;
+                $array_data = self::fetch_data_join( $res );
 
-                $where_dependet = array( $array_table_dependet['column_dependet'] => $row[ $array_table_dependet['column'] ]);
+                foreach ( $array_data as $key => $value) {
 
-                $this->Data_dependet_array = self::data_dependet(
+                    array_push( $this->Data_array , $value);
 
-                    $array_table_dependet['table_name'],
-                    $where_dependet,
-                    $array_table_dependet['array_select_dependet']
-
-                );
-
-                $this->Data_array[$nr][$array_table_dependet['table_name']] = $this->Data_dependet_array;
-
+                }
             }
-            $nr++;
+
         }
 
         return $this->Data_array; //  return array
 
     }
 
-    public function fetch_data_cookie( $array_ID , $array_table ){
-        $nr = 0;
+    public function fetch_data_join( $array_query ){
 
-        $this->Data_array = array();
+        $row_nr = 0;
 
-        foreach ( $array_ID as $value ){
+        $output = array();
 
-            $array_where = array( $array_table['column'] => $value );
+        while ($row = $array_query['query']->fetch( PDO::FETCH_ASSOC ) ) {
 
-            $result = self::select_dependet_or(  $array_table['table_name'], $array_where, $array_table['array_select'] );
+            $table_nr = 0;
 
-            while ( $row = $result->fetch( PDO::FETCH_ASSOC )  ) {
+            foreach ( $array_query['fetch'] as $table => $columns ) {
 
-                $this->Data_array[$nr] = $row;
+                $table_nr++;
 
+                foreach ( $columns as $key_column => $column ) {
+
+                    if( $table_nr > 1 ){
+
+                        $output[$row_nr][$table][$column] = $row[$column];
+
+                    }else{
+
+                        $output[$row_nr][$column] = $row[$column];
+                    }
+                }
             }
-            $nr++;
+
+            $row_nr++;
         }
-
-        return $this->Data_array; //  return array
-
+        return $output;  // return array ...........
     }
 
     public function  convert_to_array( $data ){
