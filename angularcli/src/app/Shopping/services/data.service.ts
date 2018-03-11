@@ -48,8 +48,6 @@ export class DataService extends AuthService implements OnInit{
 
   public Response:any;
 
-  public pages:any;
-
   public object_request = {};
 
   public categorys:any = [];

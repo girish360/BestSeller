@@ -55,12 +55,9 @@
 
  export class HeaderComponent implements OnInit ,DoCheck ,AfterViewInit  {
 
-     private Response;
-
      public active = 'active';
 
      deviceInfo = null;
-
 
      public button_properties:any = { active:0 , disabled:false , pointer:1 };
 
@@ -515,206 +512,15 @@
 
     }
 
-    delete_from_wishList(  ){
+     current_language(id_language){
 
-        this.header.wish_properties.filter_wish='';
+         if( this.dataservices.language.id == id_language ){
 
-        for( var i = 0 ; i < this.header.wish_properties.selected.length ; i++ ) { // remove from wish list products that are in selected
-
-            var index = this.header.wish_properties.wishList.indexOf( this.header.wish_properties.selected[i] );
-
-            this.header.wish_properties.array_wishId.push( this.header.wish_properties.selected[i].product_id );
-
-            if( index  > -1 ){
-
-                this.header.wish_properties.wishList.splice( index , 1 );
-            }
-
-        }
-
-        for( var i = 0 ; i < this.header.wish_properties.selected.length ; i ++ ){
-
-            this.header.wish_properties.selected.splice( this.header.wish_properties.selected[i] , this.header.wish_properties.selected.length );
-        }
-
-
-        this.Response = this.dataservices.Make_Request_InServer('delete_itemFromCookie', this.header.wish_properties.array_wishId);
-
-        this.Response.then( response =>{
-
-            this.Response = response;
-
-        });
-
-        this.check_button_deleteProducts_fromwishlist();
-
-
-
-        this.header.wish_properties.array_wishId = []; // empty ....
-    }
-
-
-    toggle_select_wish( item_wish ){
-
-        var index = this.header.wish_properties.selected.indexOf( item_wish );
-
-        if( index > -1 ){
-
-            this.header.wish_properties.selected.splice(index,1);
-
-        }else{
-
-            this.header.wish_properties.selected.push(item_wish);
-        }
-
-        this.check_button_deleteProducts_fromwishlist();
-
-
-
-    }
-
-    check_selected_wish( item_wish ){
-
-        if( this.header.wish_properties.selected.indexOf( item_wish ) > -1 ) {
-
-            return true;
-
-        }else{
-
-            return false;
-        }
-    }
-
-    getStyle_wish( item_wish ){
-
-        if( this.header.wish_properties.selected.indexOf( item_wish ) > -1 ) {
-
-            return 'selected_wish';
-
-        }else{
-
-            return '';
-        }
-
-    }
-
-    selecteAll_wishList( ){
-
-        if( this.header.wish_properties.selectedAll == true ){ // check if  are all wish list  selected  .........
-
-            for( var i = 0 ; i < this.header.wish_properties.selected.length ; i ++ ){
-
-                this.header.wish_properties.selected.splice(this.header.wish_properties.selected[i] , this.header.wish_properties.selected.length);
-            }
-
-            this.header.wish_properties.selectedAll = false;
-            return;
-        }
-
-        for( var i = 0 ; i < this.header.wish_properties.wishList.length ; i ++ ){
-
-            if( this.header.wish_properties.selected.indexOf(this.header.wish_properties.wishList[i]) > -1 ){
-
-                continue // exist in selected_wishlist next .....
-
-            }
-
-            this.header.wish_properties.selected.push( this.header.wish_properties.wishList[i] ); // push in selected_wishlist
-        }
-
-        this.header.wish_properties.selectedAll = true;
-
-        this.check_button_deleteProducts_fromwishlist();
-
-        return;
-
-    }
-
-     selecteAll_cartList(){
-
-     }
-
-     add_from_wish_to_cart( selected_wish ){
-
-         this.header.cart_properties.array_cartId = [];
-
-         for( let i = 0 ; i  < selected_wish.length  ; i++  ){
-
-             this.header.cart_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
-
-             this.header.cart_properties.cartList.unshift( selected_wish[i] ); // push wish product in wishList products
-
-             this.header.cart_properties.array_cartId.push( selected_wish[i].product_id );
-
+             return true;
          }
 
-         this.delete_from_wishList();
-
-         this.dataservices.update_cartList(   this.header.cart_properties.cartList ); // change wish list in services   that get this  when change component with router outlet
-
-         this.dataservices.create_object_request( 'add_cartProducts', this.header.cart_properties.array_cartId  );
-
-         this.HttpService.Http_Post( this.dataservices.object_request) // make request ......
-
-             .subscribe( //  take success
-
-                 data => {
-
-                     if( data['status'] == 'add_wishProduct' ){
-
-                         this.Response = data['data']
-                     }
-                 },
-                 error => console.log( error['data'] ) // take error .....
-
-             );
-
+         return false;
      }
-
-    check_button_deleteProducts_fromwishlist(){
-
-        if( this.header.wish_properties.selected.length > 0 ){
-
-            this.header.wish_properties.button = false;
-
-            return;
-        }
-
-        this.header.wish_properties.button = true;
-
-    }
-
-
-
-    current_language(id_language){
-
-        if( this.dataservices.language.id == id_language ){
-
-            return true;
-        }
-
-        return false;
-    }
-
-    show_hide_search_in_wishlist(){
-
-        return this.header.wish_properties.icon_search = !this.header.wish_properties.icon_search
-
-    }
-
-
-    check_show_hide_search_in_wishlist(){
-
-        if( this.header.wish_properties.icon_search == true ){
-
-            return 'show_search_in_wishlist';
-        }
-
-        return '';
-    }
-
-
-
 
      ngOnInit() {
 

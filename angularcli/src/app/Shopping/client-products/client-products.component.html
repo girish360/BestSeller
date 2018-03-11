@@ -114,7 +114,7 @@
 
                 </a>
 
-                <a href="#"  (mouseleave)="mouseLeave_wish( product )"  (mouseenter) ="mouseHover_wish( product ,i )"  class="hover_all_wish" id="wish_list{{product.product_id}}" (click)="add_wish_list(product)">
+                <a href="#"  (mouseleave)="mouseLeave_wish( product )"  (mouseenter) ="mouseHover_wish( product ,i )"  class="hover_all_wish" id="wish_list{{product.product_id}}" (click)="header.add_wish_list( product )">
 
                     <div class="wish_list" [ngClass]="{'wish_list_hover': product_properties.index_product == i }">
 
@@ -134,7 +134,7 @@
 
                                 <div *ngIf="header.wish_properties.wishList.length > 0; else  emtyWish " >
 
-                                    <div *ngIf="check_wish(product) ; else notinwish">
+                                    <div *ngIf="check_wish( product ) ; else notinwish">
 
                                         <mat-icon>favorite</mat-icon>
 
@@ -193,13 +193,19 @@
 
                     </span>
 
-                    <span matTooltip="Add to your card">
+                    <span matTooltip="Add to your card" (click)="header.add_cart_list( product )">
 
-                        <a href="#" >
+                        <a href="#"  >
 
                             <div class="button_footer_products">
 
-                                <span class="glyphicon glyphicon-plus icon_eye"></span>
+                                <span class="glyphicon glyphicon-plus icon_eye" *ngIf="!check_cart( product ) ; else incart "></span>
+
+                                <ng-template  #incart>
+
+                                     <span class="glyphicon glyphicon glyphicon-ok icon_eye"></span>
+
+                                </ng-template>
 
                                 <div class="both_write ">
 

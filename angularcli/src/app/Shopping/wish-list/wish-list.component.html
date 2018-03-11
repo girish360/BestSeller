@@ -2,15 +2,16 @@
  <div class="wishlist_component ">
 
    <div class="top_wish">
+
      <div class="width_height_top_wish">
 
          <span  matTooltip="Search" class="search_icon_from_wish">
 
-          <button mat-icon-button class="btn-deleteFromwish"  (click)="show_hide_search_in_wishlist()">
+          <button mat-icon-button class="btn-deleteFromwish"  (click)="header.show_hide_search_in_wishlist()">
 
-            <mat-icon class="notCloseDropdawnFavorite" *ngIf="show_hide_search_in_wishList == false">search</mat-icon>
+            <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.wish_properties.icon_search == false">search</mat-icon>
 
-            <mat-icon class="notCloseDropdawnFavorite" *ngIf="show_hide_search_in_wishList == true">close</mat-icon>
+            <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.wish_properties.icon_search == true">close</mat-icon>
 
           </button>
 
@@ -18,13 +19,13 @@
 
         <span class="search_from_wish">
 
-          <input type="text" [(ngModel)]="filter_wish" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="check_show_hide_search_in_wishlist()">
+          <input type="text" [(ngModel)]="filter_wish" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="header.check_show_hide_search_in_wishlist()">
 
         </span>
 
         <span  matTooltip="Delete" class="delete_from_wish">
 
-          <button mat-icon-button class="btn-deleteFromwish" [disabled]="button_delete" (click)="delete_from_wishList( selected_wishList )" >
+          <button mat-icon-button class="btn-deleteFromwish" [ngClass]="{'no-drop' : header.wish_properties.button }" [disabled]="header.wish_properties.button"  (click)="header.delete_from_wishList( selected_wishList )" >
             <mat-icon>delete</mat-icon>
           </button>
 
@@ -32,7 +33,7 @@
 
         <span  matTooltip="Add to Cart" class="add_shopping_card_from_wish">
 
-          <button mat-icon-button class="btn-deleteFromwish" >
+          <button mat-icon-button class="btn-deleteFromwish" [ngClass]="{'no-drop' : header.wish_properties.button }" [disabled]="header.wish_properties.button" (click)="header.from_wish_to_cart( header.wish_properties.selected )">
             <mat-icon>shopping cart</mat-icon>
           </button>
 
@@ -44,8 +45,8 @@
           <button mat-icon-button class="btn-deleteFromwish" >
             <mat-icon>
               <mat-checkbox color="primary" class=" select_all_wishlist"
-                            [checked]="selectedAll_value_wishlist"
-                            (click)="selectedAll_wishList()">
+                            [checked]="header.wish_properties.wishList.length == header.wish_properties.selected.length &&  header.wish_properties.selected.length > 0"
+                            (click)="header.selecteAll_wishList()">
               </mat-checkbox>
             </mat-icon>
           </button>
@@ -56,9 +57,9 @@
 
   <div class="body_wishlist">
 
-    <div  *ngFor="let wish_product of wishList_products | filter: filter_wish "  [@wishList_animations]="active">
+    <div  *ngFor="let wish_product of header.wish_properties.wishList | filter: filter_wish "  [@wishList_animations]="active">
 
-      <button mat-button class="width_body_wish" [ngClass]="getStyle_wish( wish_product )">
+      <button mat-button class="width_body_wish" [ngClass]="header.getStyle_wish( wish_product )">
 
         <div class="width_each_wishlist">
 
@@ -74,7 +75,7 @@
 
           <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
             <span  matTooltip="select">
-              <mat-checkbox  color="primary" [checked]="check_selected_wish( wish_product )" (click)="toggle_select_wish( wish_product )">
+              <mat-checkbox  color="primary" [checked]="header.check_selected_wish( wish_product )" (click)="header.toggle_select_wish( wish_product )">
 
               </mat-checkbox>
             </span>

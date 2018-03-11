@@ -508,7 +508,7 @@ a{
     margin-top: 33px;
     left: 0px;
     display: none;
-    z-index: 1 !important;
+    z-index: 0 !important;
 
 
 }
@@ -807,7 +807,7 @@ input[name='respondesearch']:focus{
 
 
 .dropcard{
-    z-index: 10 !important;
+
     position: relative;
     width: 600px;
     left: 292px;
@@ -849,7 +849,7 @@ input[name='respondesearch']:focus{
     transition: 1s;
 }
 .dropfavority{
-    z-index: 10 !important;
+
     position: relative;
     width: 600px;
     left: 292px;

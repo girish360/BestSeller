@@ -27,19 +27,22 @@ export class AppComponent implements OnInit{
 
             });
 
-            $(window).scroll(function () {
+            $(window).scroll(function (e) {
 
                 var scroll_top = $(this).scrollTop();
 
 
                 if ( scroll_top >= 60  ) {
+
                     $('.header').addClass('fixed_header');
                     $('.menu_left ,.under_menu_left').addClass('fixed_category');
                     $('.icon_header_write').addClass('new_icon_header_write');
 
                     $('.dropdown_search').addClass('down_dropwdown_search');
                     top_scroll = scroll_top;
+
                 } else {
+
                     $('.header').removeClass('fixed_header');
                     $('.menu_left , .under_menu_left').removeClass('fixed_category');
                     $('.icon_header_write').removeClass('new_icon_header_write');
@@ -47,7 +50,6 @@ export class AppComponent implements OnInit{
 
 
                     top_scroll = scroll_top;
-
                 }
 
                 if( scroll_top >= 380 ){ // scroll for option_products ................
@@ -61,17 +63,17 @@ export class AppComponent implements OnInit{
 
                     scroll_status = true;
 
-                    }else{
-                        if( scroll_status == true ) {
+                }else{
+                    if( scroll_status == true ) {
 
-                            $('.option_products').hide().slideDown();
+                        $('.option_products').hide().slideDown();
 
 
-                            $('.option_products').removeClass('option_products_fixed_show');
-                        }
-
-                        scroll_status = false;
+                        $('.option_products').removeClass('option_products_fixed_show');
                     }
+
+                    scroll_status = false;
+                }
 
 
             });

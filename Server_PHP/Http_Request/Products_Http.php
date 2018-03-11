@@ -12,10 +12,20 @@ if( $status == 'add_wishProduct' ){ // request to add in wishList ........
 
 
 
-     echo $Object['Cookie']->set_cookie( 'wishList' , $data_from_client );
+     echo $Object['Header']->add_wish_cookie($status,  $data_from_client );
 
 
 }
+
+if( $status == 'add_cartProduct' ){ // request to add in wishList ........
+
+
+
+    echo $Object['Header']->add_cart_cookie( $status, $data_from_client );
+
+
+}
+
 
 
 

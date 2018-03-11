@@ -3,46 +3,19 @@
 class Cookie extends Fetch_Data{
 
 
-    public function set_cookie( $cookie_name , $id_product ){
-
-        try {
-            $set_data = array( $id_product );
-
-            if( isset( $_COOKIE[$cookie_name] ) ) {
-
-                $data_exists = json_decode( $_COOKIE[$cookie_name] );
-
-                if( is_array( $data_exists ) ) {
-
-                    array_push( $data_exists, $id_product );
-
-                    self::save_coockie( $cookie_name, $data_exists );
-
-                    return self::json_data('add_wishProduct' , 'true' );  // return result ......
-                }
-                return 'false';
-
-            } else {
-
-                self::save_coockie( $cookie_name , $set_data );
-
-                return self::json_data('add_wishProduct' , 'true' );  // return result ......
-
-            }
-        }catch( Exception $e ){
-
-            return $e->getMessage();
-        }
-
-    }
-
     public function save_coockie( $cookie_name , $data_array ){
 
+        try{
+            setcookie( $cookie_name, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
 
-        setcookie( $cookie_name, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
+            setcookie( $cookie_name , json_encode( $data_array ) , time() + ( (3600*60)*24)*30, '/'); // set cookie ..////////
 
-        setcookie( $cookie_name , json_encode( $data_array ) , time() + ( (3600*60)*24)*30, '/'); // set cookie ..////////
+           return 'true';
 
+        }catch(Exception $e){
+
+            return 'false';
+        }
 
     }
 
@@ -79,7 +52,7 @@ class Cookie extends Fetch_Data{
         }
     }
 
-    public function delete_item_InCookie( $cookie_name , $Array_selected ) // delete
+    public function delete_items_in_Cookie( $cookie_name , $Array_selected, $status ) // delete
     {
         try {
             if ( isset ( $_COOKIE[$cookie_name] ) ) { // check if exist this cookie .................
@@ -101,14 +74,19 @@ class Cookie extends Fetch_Data{
                             $nr++; // ascending  number in variable ........
                         }
                     }
-                    self::save_coockie( $cookie_name, $array_from_cookie ); // call methot to set cookie .....
+                    if( count($array_from_cookie) > 0 ){
 
-                    return self::json_data( 'delete_itemFromCookie' , 'true' ); // return result .....
+                        $result = self::save_coockie( $cookie_name, $array_from_cookie ); // call methot to set cookie .....
+
+                        return self::json_data( $status , $result ); // return result .....
+                    }
+
+                     return self::remove_cookie( $cookie_name ); // call methot to remove cookie .....
                 }
-                return self::json_data( 'delete_itemFromCookie' , 'false' ); // return result .....
+                return self::json_data( $status , 'false' ); // return result .....
 
             }else {
-                return self::json_data( 'delete_itemFromCookie' , 'false' ); // return result .....
+                return self::json_data( $status , 'false' ); // return result .....
             }
 
         }catch( Exception $e  ){

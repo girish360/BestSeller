@@ -3,36 +3,111 @@
 
 class Header extends Cookie {
 
-    public function get_wishlist(){
+    public function get_wishlist_cartList(){
 
-        $array_id_wish_in_cookie = self::get_cookie( 'wishList'  );
+        $result_from_wishList = self::get_cookie( 'wishList'  );
 
-        $select_and_tables = array(  // array with t6ables and respective columns
+        $result_from_cartList = self::get_cookie( 'cartList'  );
 
-            //table
-            "product"=>array(
-                // columns table
-                'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.image','product.date'
-            ),
-            // table
-            "company"=>array(
-                //colums table
-                'company.id','company.name','company.image'
-            )
-            // more table and columns ............
-        );
+        $wishList_from_databse = [];
 
-        $result = self::fetch_data_cookie( $select_and_tables, $array_id_wish_in_cookie ); // ffetch data
+        $cartList_from_databse = [];
 
-        return self::json_data( 'get_wishList' , $result ); // return json data ...........
+        if( $result_from_wishList != 'false' ){
+
+            $select_and_tables = array(  // array with t6ables and respective columns
+
+                //table
+                "product"=>array(
+                    // columns table
+                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.image','product.date'
+                ),
+                // table
+                "company"=>array(
+                    //colums table
+                    'company.id','company.name','company.image'
+                )
+                // more table and columns ............
+            );
+
+            $wishList_from_databse = self::fetch_data_cookie( $select_and_tables, $result_from_wishList ); // ffetch data
+
+
+        }
+        if( $result_from_cartList != 'false' ){
+
+            $select_and_tables = array(  // array with t6ables and respective columns
+
+                //table
+                "product"=>array(
+                    // columns table
+                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.image','product.date'
+                ),
+                // table
+                "company"=>array(
+                    //colums table
+                    'company.id','company.name','company.image'
+                )
+                // more table and columns ............
+            );
+
+            $cartList_from_databse = self::fetch_data_cookie( $select_and_tables, $result_from_cartList ); // ffetch data
+        }
+
+        if( $result_from_cartList != 'false' || $result_from_wishList != 'false' ){
+
+            $result = array('wishList'=>$wishList_from_databse ,'cartList'=> $cartList_from_databse);
+
+            return self::json_data( 'get_wishlist_cartList' , $result ); // return json data ...........
+        }
+
+        return self::json_data( 'get_wishlist_cartList' , 'false' ); // return json data ...........
+    }
+
+    public function  get_cartList(){
+
+
+   }
+
+    public function add_cart_cookie( $status , $data ){
+
+        if( is_array($data) ){
+
+
+            $result = self::save_coockie('cartList' , $data);
+
+            return self::json_data($status , $result );  // return result ......
+
+        }
+
+        $array_data = self::convert_to_array($data);
+
+        $result = self::save_coockie('cartList' , $array_data );
+
+        return self::json_data($status , $result );  // return result ......
 
     }
 
-    public function add_in_cart( $array_Id ){
+    public function add_wish_cookie( $status, $data  ){
+
+        if( is_array($data) ){
 
 
+            $result = self::save_coockie('wishList' , $data);
+
+            return self::json_data($status , $result );  // return result ......
+
+        }
+
+        $array_data = self::convert_to_array($data);
+
+        $result = self::save_coockie('wishList' , $array_data);
+
+        return self::json_data($status , $result );  // return result ......
 
     }
+
+
 
 }
 

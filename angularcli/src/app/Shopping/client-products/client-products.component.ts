@@ -48,13 +48,9 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
 
     public  products:any = [] ;
 
-    public products_detail:any;
-
     public Response:any;
 
-    public status_in_wish=false;
-
-    public nr_products=0;
+    public status_in_wish = false;
 
     public pages_link:any=[];
 
@@ -471,55 +467,34 @@ export class ClientProductsComponent implements OnInit,DoCheck  {
     } // End function that build pages link ........................................................
 
 
-    add_wish_list( product ){  // function to add product in wishList
-
-        this.status_in_wish = false; // status to find  if this  product is in wish......
-
-        for ( var i =  0 ; i < this.header.wish_properties.wishList.length ; i++ ){ // loop wish list with product ...
-
-            if( this.header.wish_properties.wishList[i].product_id == product.product_id ){ // if product .id is equals with one product.id in wish status should be true ...
-
-                this.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
-
-            }
-        }
-
-        if( this.status_in_wish != true ){ // check if status is not equals with true  to  add this prod in wish ....
-
-            this.ondestroyInterval_wish();
-
-            this.header.wish_properties.wishList.unshift( product ); // push wish product in wishList products
-
-            this.dataservices.create_object_request( 'add_wishProduct', product.product_id );
-
-            this.Httpservice.Http_Post( this.dataservices.object_request) // make request ......
-
-                .subscribe( //  take success
-
-                    data => {
-                        if( data['status'] == 'add_wishProduct' ){
-                            this.Response = data['data']
-                        }
-                    },
-                    error => console.log( error['data'] ) // take error .....
-
-                );
-        }
-    }
-
     check_wish( product ){
 
-        this.status_in_wish = false;
+        this.header.wish_properties.status_in_wish = false;
 
         for ( let i = 0 ; i < this.header.wish_properties.wishList.length ; i++){
 
             if( this.header.wish_properties.wishList[i].product_id ==  product.product_id ){
 
-                this.status_in_wish = true;
+                this.header.wish_properties.status_in_wish = true;
             }
         }
-        return this.status_in_wish;
+        return   this.header.wish_properties.status_in_wish;
     }
+
+    check_cart( product ){
+
+        this.header.cart_properties.status_in_cart = false;
+
+        for ( let i = 0 ; i < this.header.cart_properties.cartList.length ; i++){
+
+            if( this.header.cart_properties.cartList[i].product_id ==  product.product_id ){
+
+                this.header.cart_properties.status_in_cart = true;
+            }
+        }
+        return  this.header.cart_properties.status_in_cart;
+    }
+
 
     encrypt_id( id_company ){
 

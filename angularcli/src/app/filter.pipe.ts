@@ -1,18 +1,23 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+
+
 @Pipe({
   name: 'filter'
 })
+
 export class FilterPipe implements PipeTransform {
 
-  transform( wishList_products: any, value: any ): any {
+  transform( wishList: any, value: any ): any {
 
-    if ( value === undefined || value.length == 0 ) return wishList_products;
+    if ( value === undefined || value.length == 0 ) return wishList;
 
-    return wishList_products.filter( function( wish_product  ){
+    return wishList.filter( function( wish_prod ){
 
-         return wish_product.product_title.toLowerCase().includes(value.toLowerCase());
+         return wish_prod.product_title.toLowerCase().includes(value.toLowerCase());
 
     })
   }
+
 }
+

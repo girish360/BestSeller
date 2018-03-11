@@ -12,21 +12,27 @@ if( $status == 'changeLanguage' ){ // change lang  ......
 
 }
 
-if( $status == 'delete_itemFromCookie' ){ // delete item from cookie
+if( $status == 'delete_items_in_wish' ){ // delete item from cookie
 
-    echo $Object['Cookie'] ->delete_item_InCookie( 'wishList' , $data_from_client ); // call method that do delete from cookie
+    echo $Object['Cookie'] ->delete_items_in_Cookie( 'wishList' , $data_from_client ,$status ); // call method that do delete from cookie
 
 }
 
-if( $status =='get_wishList'){
+if( $status == 'delete_items_in_cart' ){ // delete item from cookie
 
-    echo $Object['Header']->get_wishlist();
+    echo $Object['Cookie'] ->delete_items_in_Cookie( 'cartList' , $data_from_client ,$status ); // call method that do delete from cookie
+
+}
+
+if( $status =='get_wishList_cartList'){
+
+    echo $Object['Header']->get_wishlist_cartList();
 }
 
 if( $status == 'add_cartProducts' ){
 
 
-    echo $Object['Header']->add_in_cart( $data_from_client );
+    echo $Object['Header']->add_cart_cookie(  $status, $data_from_client );
 
 }
 ?>
