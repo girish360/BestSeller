@@ -13,6 +13,8 @@
 
  import { HeaderService } from './header.service';
 
+ import { Subscription } from 'rxjs/Subscription';
+
  import { RouterStateSnapshot,ActivatedRouteSnapshot, ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
  import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
@@ -55,12 +57,13 @@
 
  export class HeaderComponent implements OnInit ,DoCheck ,AfterViewInit  {
 
+     private Response;
+
      public active = 'active';
 
      deviceInfo = null;
 
-     public button_properties:any = { active:0 , disabled:false , pointer:1 };
-
+     timer_pointer_dropdown : Subscription;
 
      public language_allow = [
 
@@ -70,8 +73,7 @@
 
      ];
 
-
-    public button_right = [
+     public button_right = [
 
          { id:1 , name:'sing' ,mat_tooltip:'User Panel', different_class:'',
              icon :'glyphicon-user gh-header'
@@ -83,7 +85,7 @@
              icon :'glyphicon-shopping-cart gh-header' , dropdown_class:'dropcard' ,dropdown_body:'body_cart'
          },
          { id:4 , name:'more' ,mat_tooltip:'More Options',  different_class:'notClosepointerHeader notCloseDropdawnLanguage',
-             icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'body_more'
+             icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'mat-tab-body-wrapper'
          }
 
     ];
@@ -91,18 +93,16 @@
 
     constructor( private header : HeaderService, private HttpService :HttpService , private deviceService: DeviceDetectorService, private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
 
-         Observable.interval(5 * 2).subscribe( x => {
+        this.timer_pointer_dropdown =  Observable.interval(5 * 2).subscribe( x => {
 
-            this.find_position(this.button_properties.pointer);
+            this.find_position( this.header.button_properties.pointer );
 
-         });
+        });
 
 
          this.get_device_info();
 
-
     }
-
 
     ngDoCheck(){
 
@@ -120,23 +120,25 @@
     }
 
 
+
+
     public check_button( button , i ){
 
-        this.dataservices.Header_property.selectedIndex = i;
+        this.header.button_properties.selectedIndex = i;
 
-        if( this.button_properties.disabled == false ) {
+        if( this.header.button_properties.disabled == false ) {
 
-            this.button_properties.disabled = true;
+            this.header.button_properties.disabled = true;
 
             setTimeout(()=>{    //<<<---    using ()=> syntax
 
-                this.button_properties.disabled = false;
+                this.header.button_properties.disabled = false;
 
             },300);
 
-            if (this.button_properties.active != button.id) {
+            if (this.header.button_properties.active != button.id) {
 
-                this.button_properties.active = button.id;
+                this.header.button_properties.active = button.id;
 
                 if (button.id == 1) {
 
@@ -146,16 +148,16 @@
 
                     this.show_dropdown_button( button.dropdown_class, button.dropdown_body, button.id);
 
-                    this.button_properties.pointer = button.id;
+                    this.header.button_properties.pointer = button.id;
                 }
 
             } else {
 
                 this.hide_dropdown_button(button.dropdown_class, button.dropdown_body);
 
-                this.button_properties.active = 0;
+                this.header.button_properties.active = 0;
 
-                this.dataservices.Header_property.selectedIndex = 'empty';
+                this.header.button_properties.selectedIndex = 'empty';
             }
         }
 
@@ -175,7 +177,7 @@
 
              var left=  $('.button'+id).find('.glyphicon').offset();
 
-             if(id == 2){
+             if( id == 2 ){
 
                  $('.treguesi').css({"margin-left": left.left + 12, "background-color": "white"});
              }
@@ -194,7 +196,7 @@
 
         $('.treguesi').css({display: 'none'});
 
-        $('.'+body_inside).css({top: '15px'});
+        $('.'+body_inside).css({ top: '15px'});
 
         $('.' + dropdown_class).css({top: '30px', opacity: '0.1'}); //  css style...
 
@@ -220,7 +222,7 @@
 
             top: '0'
 
-        }, 300);
+        }, 400);
 
     }
 
@@ -250,7 +252,7 @@
 
             top: '15'
 
-        }, 300);
+        }, 400);
 
     }
 
@@ -512,15 +514,206 @@
 
     }
 
-     current_language(id_language){
+    delete_from_wishList(  ){
 
-         if( this.dataservices.language.id == id_language ){
+        this.header.wish_properties.filter_wish='';
 
-             return true;
+        for( var i = 0 ; i < this.header.wish_properties.selected.length ; i++ ) { // remove from wish list products that are in selected
+
+            var index = this.header.wish_properties.wishList.indexOf( this.header.wish_properties.selected[i] );
+
+            this.header.wish_properties.array_wishId.push( this.header.wish_properties.selected[i].product_id );
+
+            if( index  > -1 ){
+
+                this.header.wish_properties.wishList.splice( index , 1 );
+            }
+
+        }
+
+        for( var i = 0 ; i < this.header.wish_properties.selected.length ; i ++ ){
+
+            this.header.wish_properties.selected.splice( this.header.wish_properties.selected[i] , this.header.wish_properties.selected.length );
+        }
+
+
+        this.Response = this.dataservices.Make_Request_InServer('delete_itemFromCookie', this.header.wish_properties.array_wishId);
+
+        this.Response.then( response =>{
+
+            this.Response = response;
+
+        });
+
+        this.check_button_deleteProducts_fromwishlist();
+
+
+
+        this.header.wish_properties.array_wishId = []; // empty ....
+    }
+
+
+    toggle_select_wish( item_wish ){
+
+        var index = this.header.wish_properties.selected.indexOf( item_wish );
+
+        if( index > -1 ){
+
+            this.header.wish_properties.selected.splice(index,1);
+
+        }else{
+
+            this.header.wish_properties.selected.push(item_wish);
+        }
+
+        this.check_button_deleteProducts_fromwishlist();
+
+
+
+    }
+
+    check_selected_wish( item_wish ){
+
+        if( this.header.wish_properties.selected.indexOf( item_wish ) > -1 ) {
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+    }
+
+    getStyle_wish( item_wish ){
+
+        if( this.header.wish_properties.selected.indexOf( item_wish ) > -1 ) {
+
+            return 'selected_wish';
+
+        }else{
+
+            return '';
+        }
+
+    }
+
+    selecteAll_wishList( ){
+
+        if( this.header.wish_properties.selectedAll == true ){ // check if  are all wish list  selected  .........
+
+            for( var i = 0 ; i < this.header.wish_properties.selected.length ; i ++ ){
+
+                this.header.wish_properties.selected.splice(this.header.wish_properties.selected[i] , this.header.wish_properties.selected.length);
+            }
+
+            this.header.wish_properties.selectedAll = false;
+            return;
+        }
+
+        for( var i = 0 ; i < this.header.wish_properties.wishList.length ; i ++ ){
+
+            if( this.header.wish_properties.selected.indexOf(this.header.wish_properties.wishList[i]) > -1 ){
+
+                continue // exist in selected_wishlist next .....
+
+            }
+
+            this.header.wish_properties.selected.push( this.header.wish_properties.wishList[i] ); // push in selected_wishlist
+        }
+
+        this.header.wish_properties.selectedAll = true;
+
+        this.check_button_deleteProducts_fromwishlist();
+
+        return;
+
+    }
+
+     selecteAll_cartList(){
+
+     }
+
+     add_from_wish_to_cart( selected_wish ){
+
+         this.header.cart_properties.array_cartId = [];
+
+         for( let i = 0 ; i  < selected_wish.length  ; i++  ){
+
+             this.header.cart_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
+
+             this.header.cart_properties.cartList.unshift( selected_wish[i] ); // push wish product in wishList products
+
+             this.header.cart_properties.array_cartId.push( selected_wish[i].product_id );
+
          }
 
-         return false;
+         this.delete_from_wishList();
+
+         this.dataservices.update_cartList(   this.header.cart_properties.cartList ); // change wish list in services   that get this  when change component with router outlet
+
+         this.dataservices.create_object_request( 'add_cartProducts', this.header.cart_properties.array_cartId  );
+
+         this.HttpService.Http_Post( this.dataservices.object_request) // make request ......
+
+             .subscribe( //  take success
+
+                 data => {
+
+                     if( data['status'] == 'add_wishProduct' ){
+
+                         this.Response = data['data']
+                     }
+                 },
+                 error => console.log( error['data'] ) // take error .....
+
+             );
+
      }
+
+    check_button_deleteProducts_fromwishlist(){
+
+        if( this.header.wish_properties.selected.length > 0 ){
+
+            this.header.wish_properties.button = false;
+
+            return;
+        }
+
+        this.header.wish_properties.button = true;
+
+    }
+
+
+
+    current_language(id_language){
+
+        if( this.dataservices.language.id == id_language ){
+
+            return true;
+        }
+
+        return false;
+    }
+
+    show_hide_search_in_wishlist(){
+
+        return this.header.wish_properties.icon_search = !this.header.wish_properties.icon_search
+
+    }
+
+
+    check_show_hide_search_in_wishlist(){
+
+        if( this.header.wish_properties.icon_search == true ){
+
+            return 'show_search_in_wishlist';
+        }
+
+        return '';
+    }
+
+
+
 
      ngOnInit() {
 

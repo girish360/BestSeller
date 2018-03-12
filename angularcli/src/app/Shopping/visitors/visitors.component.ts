@@ -8,6 +8,7 @@ import { HttpService } from '../services/http.service';
 
 import { DataService } from '../services/data.service';
 
+import { HeaderService } from '../header/header.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { DataService } from '../services/data.service';
 })
 export class VisitorsComponent implements OnInit , AfterViewInit {
 
-  constructor(  private elementRef : ElementRef, private renderer : Renderer,  private dataservices: DataService  ) {
+  constructor( private header :HeaderService ,  private elementRef : ElementRef, private renderer : Renderer,  private dataservices: DataService  ) {
 
     this.get_Language = this.dataservices.language;
 
@@ -57,11 +58,11 @@ export class VisitorsComponent implements OnInit , AfterViewInit {
 
       }
 
-      if (event.target.closest('.notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard') == null ) {
+      if ( event.target.closest(' .notCloseDropdawnSearch, .notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard' ) == null ) {
 
         $('.treguesi').css({display: 'none'});
 
-        this.dataservices.Header_property.selectedIndex = 'empty';
+        this.header.refresh_button_properties();
 
         $('.write_icon_header').css('visibility', 'visible');
       }

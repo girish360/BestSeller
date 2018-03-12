@@ -21,11 +21,7 @@ export class HeaderService implements OnInit {
 
         this.cart_properties.cartList = response['cartList'];
 
-        console.log(response);
-
       }
-
-
     });
   }
 
@@ -64,9 +60,18 @@ export class HeaderService implements OnInit {
 
   };
 
+  public button_properties:any = { active:0 , disabled:false , pointer:1 , selectedIndex:'empty' };
+
+
   update_wishList( new_wishlist ){
 
     this.wish_properties.wishList = new_wishlist;
+
+  }
+
+  refresh_button_properties(){
+
+    this.button_properties = { active:0 , disabled:false , pointer:1 , selectedIndex:'empty' };
 
   }
 
@@ -146,8 +151,6 @@ export class HeaderService implements OnInit {
                 if( data['status'] == 'add_cartProduct' ){
 
                   this.Response = data['data'];
-
-                  console.log(data['data']);
 
                 }
 

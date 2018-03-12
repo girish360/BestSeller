@@ -50,7 +50,7 @@
 
              <span class="right_option_products inline-block">
 
-                 <mat-icon>home</mat-icon>
+
 
              </span>
 
@@ -114,13 +114,13 @@
 
                 </a>
 
-                <a href="#"  (mouseleave)="mouseLeave_wish( product )"  (mouseenter) ="mouseHover_wish( product ,i )"  class="hover_all_wish" id="wish_list{{product.product_id}}" (click)="header.add_wish_list( product )">
+                <a href="#" class="hover_all_wish notCloseDropdawnFavorite notCloseDropdawnCard"  (mouseleave)="mouseLeave_wish( product )"  (mouseenter) ="mouseHover_wish( product ,i )"  id="wish_list{{product.product_id}}" (click)="header.add_wish_list( product )">
 
                     <div class="wish_list" [ngClass]="{'wish_list_hover': product_properties.index_product == i }">
 
                     </div>
 
-                    <div class="about_wish notCloseDropdawnFavorite notClosepointerHeader" id="{{product.product_id}}">
+                    <div class="about_wish" id="{{product.product_id}}">
 
                         <div class="wish_list_write">
 
@@ -142,9 +142,9 @@
 
                                     <ng-template #notinwish >
 
-                                        <mat-icon  [ngClass]="{'hide_border_heart'  : product_properties.hover_wish_list && product_properties.index_product == i } ">favorite_border</mat-icon>
+                                        <mat-icon class="notCloseDropdawnFavorite notCloseDropdawnCard"  [ngClass]="{'hide_border_heart'  : product_properties.hover_wish_list && product_properties.index_product == i } ">favorite_border</mat-icon>
 
-                                        <mat-icon class="hearts_div_hover" [ngClass]="{'show_full_heart'  : product_properties.hover_wish_list && product_properties.index_product == i } ">favorite</mat-icon>
+                                        <mat-icon class="hearts_div_hover notCloseDropdawnFavorite notCloseDropdawnCard" [ngClass]="{'show_full_heart'  : product_properties.hover_wish_list && product_properties.index_product == i } ">favorite</mat-icon>
 
                                     </ng-template>
 
@@ -193,17 +193,17 @@
 
                     </span>
 
-                    <span matTooltip="Add to your card" (click)="header.add_cart_list( product )">
+                    <span matTooltip="Add to your card"  class="notCloseDropdawnCard notCloseDropdawnFavorite " (click)="header.add_cart_list( product )">
 
                         <a href="#"  >
 
                             <div class="button_footer_products">
 
-                                <span class="glyphicon glyphicon-plus icon_eye" *ngIf="!check_cart( product ) ; else incart "></span>
+                                <span class="glyphicon glyphicon-plus icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" *ngIf="!check_cart( product ) ; else incart "></span>
 
                                 <ng-template  #incart>
 
-                                     <span class="glyphicon glyphicon glyphicon-ok icon_eye"></span>
+                                     <span class="glyphicon glyphicon glyphicon-ok icon_eye notCloseDropdawnCard notCloseDropdawnFavorite"></span>
 
                                 </ng-template>
 

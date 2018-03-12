@@ -53,8 +53,6 @@ class Language extends Cookie {
                 $language['emptycat']='Category empty';
                 $language['add_wishlist']='WishList';
                 $language['header']="EN";
-                $language['Active_language']="English";
-                $language['Active_language_image']="england.png";
                 $language['sing']="Sing In";
                 $language['wish']="WishList";
                 $language['card']="Cart";
@@ -88,8 +86,6 @@ class Language extends Cookie {
                 $language['emptycat']='Category Bosh';
                 $language['add_wishlist']='Preferencat';
                 $language['header']="AL";
-                $language['Active_language']="Albania";
-                $language['Active_language_image']="albania.png";
                 $language['sing']="Hyni";
                 $language['wish']="Preferencat";
                 $language['card']="Karta";
@@ -125,6 +121,7 @@ class Language extends Cookie {
                 $language['chat']="Chat Live it";
                 $language['emptycat']='Category Bosh it';
                 $language['Wish_Write']="Wish Products it";
+
 
 
                 break;

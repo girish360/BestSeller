@@ -253,16 +253,18 @@ input[name='search']:focus , input[name='search_wish']:focus{
 
 .header_div{
     background-color: white;
+    height: 40px;
+    width: 100%;
 }
 
-.body_div{
+.body_div {
     background-color: #F5F5F5;
     width: 100%;
     height:calc( 100% - 40px);
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
-    top: 15px;
+
 }
 
 

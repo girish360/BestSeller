@@ -122,7 +122,7 @@
 
                         <div class="menu3 button{{button.id}} {{button.different_class}}">
 
-                            <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && header.wish_properties.wishList.length > 0 ,'selected-color-button' : i== dataservices.Header_property.selectedIndex }">
+                            <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && header.wish_properties.wishList.length > 0 ,'selected-color-button' : i==header.button_properties.selectedIndex }">
 
                                 <div class="number_event">
 
@@ -317,35 +317,33 @@
             </div>
 
             <div class="dropmore notClosepointerHeader notCloseDropdawnLanguage">
+
                 <mat-tab-group>
+
                     <mat-tab>
-                        <ng-template mat-tab-label class="header_div">
+
+                        <ng-template mat-tab-label >
+
                             <mat-icon>
                                 language
                             </mat-icon>
+
                             <div class="label_tab inline-block">
                                 Language
                             </div>
+
                         </ng-template>
-                        <div class="body_more body_div">
+
+                        <div class="body_div body_more">
+
                             <div class="choose" style="color:gray; text-align: left; position: relative; left: 10px;">
                                 <h2>{{dataservices.language.choselanguage}}</h2>
                             </div>
                             <div class="typelanguage"><br>
-                                <div class="activelanguage">
-                                    <div class="imgactiv">
-                                        <img src="../../assets/images/{{dataservices.language.Active_language_image}}">
-                                    </div>
-                                    <div class="writeactivlanguage">
-                                        <h2>{{dataservices.language.Active_language}}</h2>
-                                    </div>
-                                    <div class="iconactive">
-                                        <img class="radiolang" src="../../assets/images/ok.png">
-                                    </div>
-                                </div>
+
                                 <div class="alllanguages" *ngFor="let language of language_allow">
                                     <a >
-                                        <div class="albanian " (click)="choose_language(language.id)"  >
+                                        <div class="all_languages " (click)="choose_language(language.id)"  >
                                             <div class="positionlang">
                                                 <div class="centerlang">
                                                     <div class="iconlang">
@@ -354,7 +352,9 @@
                                                     <div class="writelang">
                                                         <h2>{{language.name}}</h2>
                                                     </div>
+
                                                 </div>
+
                                                 <div class="leftlang">
                                                     <mat-radio-group>
                                                         <mat-radio-button class="radiolang"  value="1" [checked]="current_language(language.id)"  >
@@ -366,10 +366,15 @@
                                     </a>
                                 </div>
                             </div>
+
+
                         </div>
+
                     </mat-tab>
+
                     <mat-tab>
-                        <ng-template mat-tab-label class="header_div">
+
+                        <ng-template mat-tab-label class="">
                             <mat-icon>
                                 settings
                             </mat-icon>
@@ -377,12 +382,19 @@
                                 Setting
                             </div>
                         </ng-template>
-                        <div class="body_more body_div">
+
+                        <div class="body_div body_more">
+
                             Setting content
+
+
+
                         </div>
                     </mat-tab>
+
                     <mat-tab>
-                        <ng-template mat-tab-label class="header_div">
+
+                        <ng-template mat-tab-label class="">
                             <mat-icon>
                                 help
                             </mat-icon>
@@ -390,12 +402,15 @@
                                 Help
                             </div>
                         </ng-template>
-                        <div class="body_more body_div">
+                        <div class=" body_div body_more">
                             Help contenc
+
                         </div>
                     </mat-tab>
+
                     <mat-tab>
-                        <ng-template mat-tab-label class="header_div">
+
+                        <ng-template mat-tab-label class="">
                             <mat-icon>
                                 feedback
                             </mat-icon>
@@ -403,11 +418,15 @@
                                 Feedback
                             </div>
                         </ng-template>
-                        <div class="body_more body_div">
+
+                        <div class="body_div body_more">
                             Feedback
+
                         </div>
                     </mat-tab>
+
                 </mat-tab-group>
+
                 <a href="#" >
                     <div class="see_all">
                         Sell All
@@ -424,8 +443,8 @@
                             </span>
                             <span  matTooltip="Search" class="search_icon_from_wish">
                                 <button mat-icon-button class="btn-deleteFromwish"  (click)="header.show_hide_search_in_cartlist()">
-                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.cart_properties.icon_search == false">search</mat-icon>
-                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.cart_properties.icon_search == true">close</mat-icon>
+                                    <mat-icon class="notCloseDropdawnCard" *ngIf="header.cart_properties.icon_search == false">search</mat-icon>
+                                    <mat-icon class="notCloseDropdawnCard" *ngIf="header.cart_properties.icon_search == true">close</mat-icon>
                                 </button>
                             </span>
                             <span class="search_from_wish">
@@ -481,6 +500,8 @@
                             </button>
 
                         </div>
+
+
 
 
                     </ng-container >
@@ -597,3 +618,6 @@
 
     </a>
 </div>
+
+
+
