@@ -61,6 +61,7 @@ class Language extends Cookie {
                 $language['login_register']="Login/Register";
                 $language['chat']="Chat Live";
                 $language['Wish_Write']="Wish Products";
+                $language['Cart_Write']="Cart Products";
                 $language['page_products']="Page";
                 $language['total_page_products']="Of";
 
@@ -94,6 +95,7 @@ class Language extends Cookie {
                 $language['login_register']="Hyni/Regjistrohu";
                 $language['chat']="Komunikim Live";
                 $language['Wish_Write']="Produktet e Preferuara";
+                $language['Cart_Write']="Preduktet ne kart";
                 $language['page_products']="Faqa";
                 $language['total_page_products']="Nga";
 
@@ -121,6 +123,7 @@ class Language extends Cookie {
                 $language['chat']="Chat Live it";
                 $language['emptycat']='Category Bosh it';
                 $language['Wish_Write']="Wish Products it";
+                $language['Cart_Write']="Preduktet ne kart";
 
 
 

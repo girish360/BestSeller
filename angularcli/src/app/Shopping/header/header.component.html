@@ -439,7 +439,7 @@
                     <div class="width_height_top_wish">
                         <div class="all_top_div_wish">
                             <span class="width_top_wish">
-                                {{dataservices.language.Wish_Write}}
+                                {{dataservices.language.Cart_Write}}
                             </span>
                             <span  matTooltip="Search" class="search_icon_from_wish">
                                 <button mat-icon-button class="btn-deleteFromwish"  (click)="header.show_hide_search_in_cartlist()">
@@ -453,6 +453,12 @@
                             <span  matTooltip="Delete" class="delete_from_wish">
                                 <button mat-icon-button class="btn-deleteFromwish " [ngClass]="{'no-drop' : header.cart_properties.button }" [disabled]=" header.cart_properties.button " (click)="header.delete_from_cartList( header.cart_properties.selected )" >
                                     <mat-icon>delete</mat-icon>
+                                </button>
+                            </span>
+
+                            <span  matTooltip="Add to Wish" class="add_shopping_card_from_wish">
+                                <button mat-icon-button class="btn-deleteFromwish" [ngClass]="{'no-drop' : header.cart_properties.button }" [disabled]="header.cart_properties.button"  >
+                                    <mat-icon>favorite</mat-icon>
                                 </button>
                             </span>
 

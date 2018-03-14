@@ -9,21 +9,21 @@ import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 import { SetRouterService } from '../services/set-router.service';
 
 @Component({
-  selector: 'app-categorys-subscribes',
-  templateUrl: './categorys-subscribes.component.html',
-  styleUrls: ['./categorys-subscribes.component.css']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
 })
-export class CategorysSubscribesComponent implements OnInit , DoCheck {
+export class MenuComponent implements OnInit, DoCheck  {
 
   constructor( private setRouter :SetRouterService , private route:ActivatedRoute , private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
 
     let category = this.dataservices.Make_Request_InServer( 'category', 'category' );
 
-     category.then(response =>{
+    category.then(response =>{
 
-        this.categorys = response;
+      this.categorys = response;
 
-     });
+    });
 
   }
 
@@ -36,7 +36,7 @@ export class CategorysSubscribesComponent implements OnInit , DoCheck {
 
   public id_company:any;
 
-  
+
 
   private top_menus:object = [
     { icon:'home',id:'1',name:'Home'   },
@@ -94,7 +94,7 @@ export class CategorysSubscribesComponent implements OnInit , DoCheck {
 
   public set_router( data ){
 
-     this.setRouter.set_router( data , this.route );
+    this.setRouter.set_router( data , this.route );
 
   }
 

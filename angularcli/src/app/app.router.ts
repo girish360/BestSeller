@@ -14,8 +14,6 @@ import { VisitorsComponent } from './Shopping/visitors/visitors.component';
 
 import { CompanyComponent } from './Shopping/company/company.component';
 
-import { ClientProductsComponent } from './Shopping/client-products/client-products.component';
-
 import { WishListComponent } from './Shopping/wish-list/wish-list.component';
 
 import { SearchComponent } from './Shopping/search/search.component';
@@ -24,9 +22,11 @@ import { CardComponent } from './Shopping/card/card.component';
 
 import { ChatComponent } from './Shopping/chat/chat.component';
 
-import { CategorysSubscribesComponent } from './Shopping/categorys-subscribes/categorys-subscribes.component';
+import { MenuComponent } from './Shopping/menu/menu.component';
 
 import { ProductDetailsComponent } from './Shopping/product-details/product-details.component';
+
+import { ProductsComponent } from './Shopping/products/products.component';
 
 export const router: Routes = [
     {
@@ -38,7 +38,7 @@ export const router: Routes = [
 
         children: [
             {
-                path: '', component: ClientProductsComponent,
+                path: '', component: ProductsComponent,
             },
             {
                 path: ':name/:name', component: CompanyComponent
@@ -59,7 +59,7 @@ export const router: Routes = [
                 path: 'chat', component: ChatComponent
             },
             {
-                path: 'menu', component: CategorysSubscribesComponent
+                path: 'menu', component: MenuComponent
             },
             {
                 path :'product_details' , component : ProductDetailsComponent

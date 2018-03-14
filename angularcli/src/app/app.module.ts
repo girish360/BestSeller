@@ -50,10 +50,6 @@ import { SinginSingupComponent } from './Shopping/singin-singup/singin-singup.co
 
 import { HeaderComponent } from './Shopping/header/header.component';
 
-import { CategorysSubscribesComponent } from './Shopping/categorys-subscribes/categorys-subscribes.component';
-
-import { ClientProductsComponent } from './Shopping/client-products/client-products.component';
-
 import { ChatComponent } from './Shopping/chat/chat.component';
 
 import { SlideshowComponent } from './Shopping/slideshow/slideshow.component';
@@ -73,6 +69,10 @@ import { CardComponent } from './Shopping/card/card.component';
 import { ProductDetailsComponent } from './Shopping/product-details/product-details.component';
 
 import { CaruselComponent } from './Shopping/carusel/carusel.component';
+
+import { MenuComponent } from './Shopping/menu/menu.component';
+
+import { ProductsComponent } from './Shopping/products/products.component';
 
 // end components ............................................................................................
 
@@ -110,6 +110,8 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { CategoriesComponent } from './Shopping/categories/categories.component';
+
 
 
 
@@ -119,8 +121,6 @@ import {
     VisitorsComponent,
     SinginSingupComponent,
     HeaderComponent,
-    CategorysSubscribesComponent,
-    ClientProductsComponent,
     ChatComponent,
     SlideshowComponent,
     NotfoundComponent,
@@ -133,7 +133,11 @@ import {
     CardComponent,
     ProductDetailsComponent,
     ControllerComponent,
-    BusinessComponent
+    BusinessComponent,
+    MenuComponent,
+    ProductsComponent,
+    CategoriesComponent
+
   ],
   imports: [
     BrowserModule,
@@ -183,7 +187,6 @@ import {
     HttpService ,
     VisitorsComponent ,
     DataService,
-    ClientProductsComponent,
     EncryptDecryptService,
     CaruselComponent,
     AuthService,
