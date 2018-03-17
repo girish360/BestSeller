@@ -388,15 +388,15 @@
 
      show_chat(){ /// function show show element  for chat  when user click  on the chat call this function  and open div for chat with animate  ........................
 
-         $('.bodychat').animate({
+         $('.chat').animate({
 
-             height:"86vh",
+             height:"400px",
 
-             bottom:"0px",
+             bottom:"70px",
 
              width : '250px',
 
-             borderTopLeftRadius: "3px",
+             borderRadius: "3px",
 
              borderColor: '#d6d6c2',
 
@@ -406,71 +406,66 @@
 
              $('.pointerchat').css("visibility","visible");
 
-             $('.pasiv_activ_bodychat').show();
+             $('.pasiv_activ_chat').show();
 
          });
 
-         $('.response_outer').removeClass('exit_menu');
+         $('.body_chat').css({top: '25px', opacity: '0.1'});
 
-         $('.response_outer').addClass('active_chat  ');
+         $('.body_chat').animate({
+
+             top: '0',
+
+             opacity: 1
+
+         }, 500);
+
 
      } //..................................................end
 
      hide_chat(){ // function for hide chat when user click close chat   , then call this for close ...............................
 
-         $('.bodychat').animate({
+         $('.chat').animate({
 
          height:"60px",
 
          position:'fixed',
 
+             bottom:"5px",
+
          width : '60px',
 
-         borderTopLeftRadius: "100px",
+         borderRadius: "100px",
 
-         right:'-1px',
-
-         display:'inline-block',
-
-         borderColor: 'darkolivegreen',
+             borderColor: 'darkolivegreen',
 
          borderWidth : '1px',
 
          },200,function(){
 
-             $('.pasiv_activ_bodychat').hide();
+             $('.pasiv_activ_chat').hide();
 
          });
 
          $('.pointerchat').css("visibility","hidden");
 
-         $('.response_outer').removeClass(' exit_menu , active_chat  ');
-
-         $('.response_outer').addClass(' exit_chat ');
-
      } //.....................................end
 
      check_menu(){
 
-         if( this.dataservices.status_menu == true ){
+         if( this.header.status_menu == true ){
 
              this.hide_menu();
 
-             this.dataservices.status_menu = !this.dataservices.status_menu;
+             this.header.status_menu = !this.header.status_menu;
 
              return;
 
          }
 
-         if(this.dataservices.status_chat == true ){
-
-             this.hide_chat();
-
-             this.dataservices.status_chat = !this.dataservices.status_chat;
-         }
          this.show_menu();
 
-         this.dataservices.status_menu = !this.dataservices.status_menu;
+         this.header.status_menu = !this.header.status_menu;
 
          return;
 
@@ -478,26 +473,19 @@
 
      check_chat(){
 
-         if( this.dataservices.status_chat== true ){
+         if( this.header.status_chat == true ){
 
              this.hide_chat();
 
-             this.dataservices.status_chat = !this.dataservices.status_chat;
+             this.header.status_chat = !this.header.status_chat;
 
              return;
 
          }
 
-         if( this.dataservices.status_menu == true ){
-
-             this.hide_menu();
-
-             this.dataservices.status_menu = !this.dataservices.status_menu;
-         }
-
          this.show_chat();
 
-         this.dataservices.status_chat = !this.dataservices.status_chat;
+         this.header.status_chat = !this.header.status_chat;
 
          return;
      }

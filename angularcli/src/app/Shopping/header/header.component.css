@@ -427,24 +427,24 @@ a{
     text-decoration: none;
 }
 
-.clickchat a{
-    text-decoration: none;
-}
-.clickchat{
-    z-index: 2 !important;
-}
-.openchat{
+
+.checkchat{
     z-index: 2 !important;
     position: fixed;
     width: 60px;
     height: 60px;
-    border-top-left-radius: 100px;
-    background-color:#708090;
+    border-radius: 100px;
     color:white;
-    bottom: 0px;
-    right: -1px;
+    bottom: 5px;
+    right: 10px;
     display: inline-block;
+    background-color:transparent;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+}
 
+.checkchat:hover{
+
+    -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
 }
 
 .pointerchat{
@@ -680,35 +680,22 @@ html>/**/body .kerkim, x:-moz-any-link {
 
 
 }
-.nrnotification , .nrnotification_card{
+.notification {
     position: absolute;
-    display: inline-block;
-    width: 17px;
-    height: 17px;
+    width: 20px;
+    height: 20px;
     background-color: red;
     border-radius: 50px;
-    margin-left: -10px;
-    margin-top: -5px;
     font-size: 13px;
     border:2px solid;
     border-color:white;
 
-}
-
-.nrnotification_favority_first ,.nrnotification_card_first{
-    display: none;
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    background-color: red;
-    border-radius: 50px;
-    margin-left: -10px;
-    margin-top: -5px;
-    font-size: 13px;
-    border:2px solid;
-    border-color:white;
+    margin-left: 10px;
+    margin-top: -7px;
 
 }
+
+
 .count_number_favorite{
     position: relative;
     top:-1px;
@@ -1247,26 +1234,6 @@ input[type='radio'] {
         -webkit-transition:0.1s;
         -moz-transition:0.1s;
         width: calc(100% - 250px);
-    }
-
-
-    .active_chat{
-
-        float: left;
-        right: 0;
-        left: 0;
-        transition:0.1s;
-        -webkit-transition:0.1s;
-        -moz-transition:0.1s;
-        width: calc(100% - 200px);
-
-
-    }
-    .exit_menu{
-        float: right;
-    }
-    .exit_chat{
-        float: left;
     }
 
 

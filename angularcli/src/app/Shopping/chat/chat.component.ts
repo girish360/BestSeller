@@ -16,7 +16,7 @@ export class ChatComponent implements OnInit {
 
   check_chat(){
 
-    alert('dfg');
+
 
   }
 

@@ -1,13 +1,11 @@
 
-<div class="component-animation" *ngIf="!dataservices.body_loader"> <!--  this component is inside this div  ...................................................... -->
+<div class="component-animation"> <!--  this component is inside this div  ...................................................... -->
 
-
-  <div class="option_products ">  <!--  Options products pagination ,  select  ...................................................... -->
+    <div class="option_products ">  <!--  Options products pagination ,  select  ...................................................... -->
 
     <div class="inside_option_products">
 
              <span class="left_option_products inline-block">
-
 
 
              </span>
@@ -60,7 +58,7 @@
 
   <div class="all_prod"> <!--  start div with products ...................................................... -->
 
-    <div class="width_products  products-animation " *ngFor="let product of products ; let i = index"  [ngClass]="{ 'width_products_open_menu':dataservices.status_menu || dataservices.status_chat }" >
+    <div class="width_products  products-animation " *ngFor="let product of products ; let i = index"  [ngClass]="{ 'width_products_open_menu':header.status_menu  }" >
 
       <div class="each_width_product" >
 

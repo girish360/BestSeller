@@ -141,6 +141,8 @@ export class ProductsComponent implements OnInit,DoCheck  {
 
     let response = this.dataservices.Make_Request_InServer( 'products', this.send_data_products );
 
+    this.dataservices.body_loader = true;
+
     response.then( products_details =>{
 
       this.products =  products_details['products'];
@@ -149,7 +151,7 @@ export class ProductsComponent implements OnInit,DoCheck  {
 
       this.build_pages_link( products_details['pages_details']) ;
 
-
+      this.dataservices.body_loader = false;
 
     });
   }

@@ -1,15 +1,5 @@
 
 
-.loading_body{
-
-
-    width: 50px;
-    margin:0px auto;
-
-
-}
-
-
 .containere{
     height: auto;
     margin-top: 5px;
@@ -24,7 +14,7 @@
     float: left;
     display: inline-block;
     width: calc(100% - 320px);
-
+    height: calc( 100vh - 100px ); /* Minimum height for modern browsers */
 
 
 }
@@ -69,25 +59,6 @@
         width: calc(100% - 250px);
     }
 
-
-    .active_chat{
-
-        float: left;
-        right: 0;
-        left: 0;
-        transition:0.1s;
-        -webkit-transition:0.1s;
-        -moz-transition:0.1s;
-        width: calc(100% - 200px);
-
-
-    }
-    .exit_menu{
-        float: right;
-    }
-    .exit_chat{
-        float: left;
-    }
 }
 @media only screen and (max-width: 1200px){
 

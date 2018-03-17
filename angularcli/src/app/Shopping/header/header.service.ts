@@ -31,6 +31,9 @@ export class HeaderService implements OnInit {
 
   private Response :any;
 
+  public status_menu = false;
+
+  public status_chat = false;
 
   public cart_properties:any = {
 

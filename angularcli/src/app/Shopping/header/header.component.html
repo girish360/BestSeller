@@ -1,7 +1,7 @@
 
 <div class="header">
 
-    <div class="response_outer top_header"  [ngClass]="{'active_menu':dataservices.status_menu  ,'active_chat':dataservices.status_chat}">
+    <div class="response_outer top_header"  [ngClass]="{'active_menu':header.status_menu}">
 
         <div class="response_inner ">
 
@@ -27,7 +27,7 @@
 
     </div>
 
-    <div class="response_outer bottom_header "  [ngClass]="{'active_menu':dataservices.status_menu  ,'active_chat':dataservices.status_chat}">
+    <div class="response_outer bottom_header "  [ngClass]="{'active_menu':header.status_menu }">
 
         <div class="top_menu">  <!-- this is open category  -->
 
@@ -602,28 +602,22 @@
 
 </div> <!-- end header ............................. -->
 
-<div class="clickchat"> <!--  start the chat ................................................-->
 
-    <a href="#">
 
-        <div class="openchat" id="showchat" (click)="check_chat()">
+<button mat-fab class="checkchat button-f" id="showchat" (click)="check_chat()">
 
-            <div class="imgopenchat">
 
-                <div class="pointerchat"></div>
 
-                <img src="../../assets/images/chat.png">
+    <div class="notification" *ngIf="!header.status_chat">
 
-                <div class="nrnotification" id="nrnotification">
+    </div>
 
-                </div>
+    <mat-icon *ngIf="!header.status_chat">chat</mat-icon>
 
-            </div>
+    <mat-icon *ngIf="header.status_chat">close</mat-icon>
 
-        </div>
+</button>
 
-    </a>
-</div>
 
 
 

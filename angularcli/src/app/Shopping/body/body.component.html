@@ -1,5 +1,5 @@
 
- <div class="response_outer containere" [ngClass]="{'active_menu':dataservices.status_menu ,'active_chat':dataservices.status_chat}">  <!-- container for products .....................................-->
+ <div class="response_outer containere" [ngClass]="{'active_menu':header.status_menu }">  <!-- container for products .....................................-->
 
      <div class="response_inner">
 
@@ -7,7 +7,7 @@
 
              <div *ngIf="dataservices.body_loader" >
 
-                 <div  class="loading_body">
+                 <div  class="loading-mat-spinner">
 
                      <mat-spinner [diameter]="30"  class="loading center">
 
@@ -32,14 +32,6 @@
                  <div class="icon_go_up">
 
                      <a href="#"><img class="click_up" src="../../assets/images/up.png"></a>
-
-                 </div>
-
-             </div>
-
-             <div class="pagination_profucts">
-
-                 <div class="pagin_number">
 
                  </div>
 

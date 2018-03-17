@@ -267,7 +267,15 @@ input[name='search']:focus , input[name='search_wish']:focus{
 
 }
 
+.loading-mat-spinner{
+    width: 3%;
+    height: 3%;
+    position:absolute;
+    top:48.5%;
+    left: 48.5% ;
+    z-index: 10 !important;
 
+}
 
 
 
