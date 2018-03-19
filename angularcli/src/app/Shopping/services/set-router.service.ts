@@ -18,6 +18,8 @@ export class SetRouterService extends EncryptDecryptService{
 
   }
 
+
+
   public set_router( data , route  ) {
 
       if ( data.data == false ) { // router without any data in url ..... ...........................
@@ -41,7 +43,7 @@ export class SetRouterService extends EncryptDecryptService{
 
       // router with data in url ..........................................
 
-      let encryp_id = this.encryp_AES( data.data , this.secret_key_company_profile );
+      let encryp_id = this.encryp_AES( data.data , this.secret_key_encrypt_id );
 
       if(data.relative == true){
 

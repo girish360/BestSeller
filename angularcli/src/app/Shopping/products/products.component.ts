@@ -15,6 +15,8 @@ import { HttpService } from '../services/http.service';
 
 import { DataService } from '../services/data.service';
 
+import { SetRouterService } from '../services/set-router.service';
+
 import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
 declare  var $:any;
@@ -66,7 +68,16 @@ export class ProductsComponent implements OnInit,DoCheck  {
 
   my_timer_wish: Subscription ;
 
-  constructor( private header :HeaderService,  private cdr:  ChangeDetectorRef, private router : Router, private crypto:EncryptDecryptService , private dataservices: DataService ,    private Httpservice :HttpService , private route: ActivatedRoute  ) {
+  constructor(
+      private setRouter: SetRouterService,
+      private header :HeaderService,
+      private cdr:  ChangeDetectorRef,
+      private router : Router,
+      private crypto:EncryptDecryptService ,
+      private dataservices: DataService ,
+      private Httpservice :HttpService ,
+      private route: ActivatedRoute
+  ) {
 
     this.dataservices.update_loader(true);
 
@@ -91,6 +102,12 @@ export class ProductsComponent implements OnInit,DoCheck  {
 
   ngOnInit() {
 
+
+  }
+
+  public  set_router( data ){
+
+    this.setRouter.set_router( data , this.route ); // set router .....
 
   }
 
@@ -492,25 +509,6 @@ export class ProductsComponent implements OnInit,DoCheck  {
     }
     return  this.header.cart_properties.status_in_cart;
   }
-
-
-  encrypt_id( id_company ){
-
-    this.router.navigate(['/company',{ companyId: this.crypto.encryp_AES( id_company , this.crypto.secret_key_company_profile ) }]);
-
-  }
-
-  product_details( id_product ){
-
-    this.router.navigate(['./product_details',
-
-          { productId: this.crypto.encryp_AES( id_product , this.crypto.secret_key_product_profile ) }],
-
-        { relativeTo: this.route }
-
-    );
-  }
-
 
   mouseHover_wish( product , i ){
 

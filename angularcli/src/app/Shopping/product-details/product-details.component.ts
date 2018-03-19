@@ -18,7 +18,7 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe( params => {
 
 
-      this.product_id = crypto.decrypt_AES( params['productId'] , crypto.secret_key_product_profile )
+      this.product_id = crypto.decrypt_AES( params['name'] , crypto.secret_key_encrypt_id )
 
 
     } );

@@ -62,7 +62,7 @@ export const router: Routes = [
                 path: 'menu', component: MenuComponent
             },
             {
-                path :'product_details' , component : ProductDetailsComponent
+                path :':name/:name/:name' , component : ProductDetailsComponent
             }
         ]
     },

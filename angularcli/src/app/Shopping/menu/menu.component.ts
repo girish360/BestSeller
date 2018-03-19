@@ -100,14 +100,6 @@ export class MenuComponent implements OnInit, DoCheck  {
 
   check_subscribes( company ){
 
-    let encryp_id = this.crypto.encryp_AES( company.id , this.crypto.secret_key_company_profile );
-
-    this.router.navigate([ company.name ,encryp_id.toString()],
-        {
-          relativeTo: this.route
-        }
-    );
-
     this.set_router( { path:company.name , data:company.id , relative:true } );
 
   }

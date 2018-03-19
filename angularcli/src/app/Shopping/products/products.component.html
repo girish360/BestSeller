@@ -64,7 +64,7 @@
 
         <a href='#'>
 
-          <div class="title_products more_detail_product" >
+          <div class="title_products more_detail_product" (click)="set_router({ path:product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:true })">
 
             {{product.product_title }}
 
@@ -86,7 +86,7 @@
 
 
 
-        <a (click)="encrypt_id(product['company'].company_id)"  href="#">
+        <a (click)="set_router({ path:product['company'].company_name , data: product['company'].company_id , relative:true })"  href="#">
 
           <div class="own_img_product">
 
@@ -102,7 +102,7 @@
 
 
 
-        <a href="#" (click)="product_details( product.product_id )">
+        <a href="#" (click)="set_router({ path:product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:true })">
 
           <div class="image_product_primary  ">
 
@@ -219,7 +219,7 @@
 
           <span matTooltip="See Details!">
 
-                        <a href="#" (click)="product_details( product.product_id )">
+                        <a href="#" (click)="set_router({ path:product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:true })">
 
                             <div class="button_footer_products more_detail_product" id="<?php echo $result_all_products['id'] ?>">
 

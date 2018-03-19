@@ -27,7 +27,7 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
         this.subscription = this.route.params.subscribe( params => {
 
-            this.company_id = crypto.decrypt_AES( params['name'] , crypto.secret_key_company_profile );
+            this.company_id = crypto.decrypt_AES( params['name'] , crypto.secret_key_encrypt_id );
 
         });
 

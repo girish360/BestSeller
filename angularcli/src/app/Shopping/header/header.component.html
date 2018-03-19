@@ -507,7 +507,7 @@
 
                                 <div class="width_each_wishlist">
 
-                                    <div class="wish_image" >
+                                    <div class="wish_image"  (click)="set_router({ path:cart_product['company'].company_name+'/'+cart_product.product_title , data:cart_product.product_id , relative:true })">
 
                                         <img  src="../../assets/images/products_image/{{cart_product.product_image}}">
 
@@ -545,7 +545,8 @@
 
                                     <div  class="cart_item seller">
 
-                                        Seller: {{ cart_product['company'].company_name }}
+                                        Seller:
+                                        <span (click)="set_router({ path:cart_product['company'].company_name , data: cart_product['company'].company_id , relative:true })">{{ cart_product['company'].company_name }}</span>
 
                                     </div>
 
