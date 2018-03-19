@@ -14,7 +14,7 @@ class Products extends Fetch_Data {
 
     private $table_name = 'product';
 
-    private $products_columns = array('id','title','image_id','category_id','company_id','price','quantity','date','image');
+    private $products_columns = array('id','title','image_id','category_id','company_id','price','quantity','unit_stock','date','image');
 
     public function getproducts( $object_details ){  // get all products .....................................
 

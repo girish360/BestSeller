@@ -439,7 +439,7 @@ a{
     right: 10px;
     display: inline-block;
     background-color:transparent;
-    box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+
 }
 
 .checkchat:hover{
@@ -719,9 +719,7 @@ input[name='respondesearch']:focus{
     color:white;
 }
 
-.body_more{
-    height: 295px;
-}
+
 
 
 /* End css for header profile user here ....................................................................................................*/
@@ -729,20 +727,15 @@ input[name='respondesearch']:focus{
 /* dropdown list language ...............*/
 .dropmore{
 
-    position: relative;
-    width: 600px;
-    left: 292px;
-    height:350px;
+    position: absolute;
+    width: 500px;
+    top:100px;
+    height:auto;
     background-color: white;
-    float: right;
     display: none;
-    opacity: 0.1;
-
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-
-
 
 }
 
@@ -768,14 +761,12 @@ input[name='respondesearch']:focus{
 
 .dropcard{
 
-    position: relative;
+    position: absolute;
     width: 600px;
-    left: 292px;
-    height:350px;
+    top:100px;
+    height:auto;
     background-color: white;
-    float: right;
     display: none;
-    opacity: 0.1;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -785,15 +776,11 @@ input[name='respondesearch']:focus{
 }
 .dropdown_search{
 
-    position: relative;
-    width: 448px;
-    max-height: 400px;
-    float: left;
-    left: 35px;
-    height: auto;
-    overflow-y: auto;
+    position: absolute;
+    width: 400px;
+    top:100px;
+    height:auto;
     background-color: white;
-
     display: none;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -810,17 +797,46 @@ input[name='respondesearch']:focus{
 }
 .dropfavority{
 
-    position: relative;
-    width: 600px;
-    left: 292px;
-    height:350px;
+    position: absolute;
+    width: 400px;
+    top:100px;
+    height:auto;
     background-color: white;
-    float: right;
     display: none;
-    opacity: 0.1;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+}
+.bottom_cart{
+    width: 100%;
+    height: 100px;
+    background-color: white;
+
+}
+
+.inside_bottom_cart{
+    height: 100%;
+    width: 98%;
+    margin: auto;
+    margin-top: 2px;
+}
+.body_cart ,.body_wish {
+    max-height: 400px;
+    min-height: 80px;
+}
+
+.body_more{
+
+
+    min-height: 80px;
+    max-height: 400px;
+
+}
+
+.write_checkout,.checkout ,.button_checkout{
+    height: 30%;
+
+
 }
 
 
@@ -845,11 +861,9 @@ input[name='respondesearch']:focus{
 }
 
 
-.typelanguage ,.body_cart ,.body_search_header ,.body_more{
-    position: relative;
-}
 
-.width_each_wishlist {
+
+.width_each_wishlist  {
 
     height: 100%;
     width: 98%;
@@ -860,6 +874,8 @@ input[name='respondesearch']:focus{
     bottom: 0;
     margin: auto;
 }
+
+
 .width_body_wish{
     width: 100%;
     height: 80px;
@@ -869,9 +885,7 @@ input[name='respondesearch']:focus{
 
 
 }
-.width_body_wish:hover ,.mat-button:hover{
-    background-color: transparent;
-}
+
 
 .width_top_wish ,.delete_from_wish{
     display: inline;
@@ -880,11 +894,7 @@ input[name='respondesearch']:focus{
 .select_all_wishlist{
     position: relative;
     top:-6px;
-
-
 }
-
-
 
 .mat-checkbox-inner-container {
     border-color: red;
@@ -910,13 +920,17 @@ input[name='respondesearch']:focus{
     width: 100%;
     height: 100%;
 }
-.title{
+.title ,.price , .quantity ,.seller ,.total_item_price{
     float: left;
+}
+
+.cart_item{
+    margin-left: 10px;
 }
 .check_checkbox_wish{
     display: inline-block;
     float: right;
-    margin-top: 20px;
+    margin-top: 0;
     margin-right: 10px;
 }
 
@@ -946,6 +960,11 @@ input[name='respondesearch']:focus{
     border-right: 10px;
 
 
+}
+
+.kl{
+    height: 100px;
+    width: 100%;
 }
 .morelang a {
     color:gray;
@@ -977,12 +996,7 @@ input[name='respondesearch']:focus{
     top: 4px;
     left: 5px;
 }
-.all_languages input{
-    position: relative;
-    top: 3px;
 
-
-}
 .positionlang {
     position: relative;
     left: 10px;
@@ -1010,6 +1024,7 @@ input[type='radio'] {
 .choose h2{
     position: relative;
     top: 8px;
+
 }
 
 .morelanguageclick{

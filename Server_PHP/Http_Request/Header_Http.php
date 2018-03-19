@@ -35,4 +35,10 @@ if( $status == 'add_cartProducts' ){
     echo $Object['Header']->add_cart_cookie(  $status, $data_from_client );
 
 }
+
+if( $status == 'update_quantity_cartList' ){
+
+    echo $Object['Header']->update_cartList( $status , $data_from_client );
+
+}
 ?>

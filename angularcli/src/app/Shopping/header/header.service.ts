@@ -19,9 +19,13 @@ export class HeaderService implements OnInit {
 
         this.wish_properties.wishList = response['wishList'];
 
-        this.cart_properties.cartList = response['cartList'];
+        this.set_quantity_in_cartList( response['cookie_cartList'] , response['cartList'] );
+
+        this.total_items_and_price();
 
       }
+
+      console.log( response ) ;
     });
   }
 
@@ -43,10 +47,13 @@ export class HeaderService implements OnInit {
     filter_cart: '',
     selectedAll : false,
     cartList : [],
+    cartCookie : [],
     wish_to_cart : [],
     add_in_server : false,
     selected : [] ,
-    status_in_cart:false
+    status_in_cart:false,
+    total_price : 0,
+    total_items : 0
 
   };
 
@@ -78,6 +85,88 @@ export class HeaderService implements OnInit {
 
   }
 
+  total_items_and_price(){
+
+    let total_price = 0;
+
+    let total_items = 0;
+
+    for( let i = 0 ; i < this.cart_properties.cartList.length ; i++ ){
+
+      total_price += parseInt(this.cart_properties.cartList[i].product_price)*parseInt(this.cart_properties.cartList[i].product_quantity);
+
+      total_items += parseInt(this.cart_properties.cartList[i].product_quantity);
+
+    }
+
+    this.cart_properties.total_price = total_price;
+
+    this.cart_properties.total_items = total_items;
+
+  }
+
+  update_quantity_cartList( event , cart_product){
+
+    let total_price = 0;
+
+    let total_items = 0;
+
+    for( let i = 0 ; i < this.cart_properties.cartList.length ; i++ ){
+
+      total_price += parseInt(this.cart_properties.cartList[i].product_price)*parseInt(this.cart_properties.cartList[i].product_quantity);
+
+      total_items += parseInt(this.cart_properties.cartList[i].product_quantity);
+
+    }
+
+    this.cart_properties.total_price = total_price;
+
+    this.cart_properties.total_items = total_items;
+
+    let update_quantity = [{ "id":cart_product.product_id , "quantity": event.target.value }];
+
+    this.dataservices.create_object_request( 'update_quantity_cartList', update_quantity );
+
+    this.HttpService.Http_Post( this.dataservices.object_request) // make request ......
+
+        .subscribe( //  take success
+
+            data => {
+
+              if( data['status'] == 'update_quantity_cartList' ){
+
+                this.Response = data['data'];
+
+                console.log(data['data']);
+
+              }
+
+            },
+            error => console.log( error['data'] ) // take error .....
+
+        );
+  }
+
+  set_quantity_in_cartList( cartList_in_cookie ,cartList ){
+
+    for( let i = 0 ; i < cartList.length ; i++ ){
+
+      for( let j = 0 ; j < cartList_in_cookie.length ; j++ ){
+
+        if( cartList_in_cookie[j].id == cartList[i].product_id ){
+
+          cartList[i].product_quantity =  cartList_in_cookie[j].quantity ;
+
+        }
+
+      }
+
+    }
+
+    this.cart_properties.cartList = cartList;
+
+  }
+
   add_wish_list( product ){  // function to add product in wishList
 
     this.wish_properties.status_in_wish = false; // status to find  if this  product is in wish......
@@ -91,12 +180,12 @@ export class HeaderService implements OnInit {
         this.wish_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
 
       }
-      this.wish_properties.array_wishId.push( this.wish_properties.wishList[i].product_id );
+      this.wish_properties.array_wishId.push( {'id':this.wish_properties.wishList[i].product_id , 'quantity':this.wish_properties.wishList[i].product_quantity });
     }
 
     if( this.wish_properties.status_in_wish != true ){ // check if status is not equals with true  to  add this prod in wish ....
 
-      this.wish_properties.array_wishId.unshift( product.product_id );
+      this.wish_properties.array_wishId.unshift( {'id': product.product_id ,'quantity':product.product_quantity} );
 
       this.wish_properties.wishList.unshift( product ); // push wish product in wishList products
 
@@ -134,12 +223,13 @@ export class HeaderService implements OnInit {
         this.cart_properties.status_in_cart = true; //  true status that tell you  that this prod is in wishlist ...
 
       }
-      this.cart_properties.array_cartId.push( this.cart_properties.cartList[i].product_id );
+      this.cart_properties.array_cartId.push( {'id':this.cart_properties.cartList[i].product_id , 'quantity':this.cart_properties.cartList[i].product_quantity } );
+
     }
 
     if( this.cart_properties.status_in_cart != true ){ // check if status is not equals with true  to  add this prod in wish ....
 
-      this.cart_properties.array_cartId.unshift( product.product_id );
+      this.cart_properties.array_cartId.unshift({'id': product.product_id ,'quantity':product.product_quantity} );
 
       this.cart_properties.cartList.unshift( product ); // push wish product in wishList products
 
@@ -240,6 +330,8 @@ export class HeaderService implements OnInit {
 
 
     this.cart_properties.array_cartId = []; // empty ....
+
+    this.total_items_and_price();
   }
 
 

@@ -67,25 +67,24 @@ class Fetch_Data extends connection {
     public function fetch_data_cookie( $array_tables, $array_ID  ){
         $nr = 0;
 
-        $this->Data_array =[];
+        $this->Data_array = [];
 
-        foreach ($array_ID as $id) {
+        foreach ( $array_ID as $array_key => $array ) {
 
-            $where = 'product.id="'.$id.'" AND product.company_id = company.id';
+            $where = 'product.id="'.$array->id.'" AND product.company_id = company.id';
 
-            $res = self::select_join( $array_tables , $where );
+            $res = self::select_join( $array_tables, $where );
 
-            if( $res['query']->rowCount() >= 1 ){
+            if ( $res['query']->rowCount() >= 1 ) {
 
                 $array_data = self::fetch_data_join( $res );
 
-                foreach ( $array_data as $key => $value) {
+                foreach ( $array_data as $key => $value ) {
 
-                    array_push( $this->Data_array , $value);
+                    array_push( $this->Data_array, $value );
 
                 }
             }
-
         }
 
         return $this->Data_array; //  return array

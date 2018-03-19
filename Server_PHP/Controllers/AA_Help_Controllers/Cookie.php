@@ -67,7 +67,7 @@ class Cookie extends Fetch_Data{
 
                         foreach ( $array_from_cookie as $key_in_cookie => $value_in_cookie ){ // loop array id that are in wishlist ........
 
-                            if( $value_in_selected == $value_in_cookie ){ // check  if  this value in selected  is  equals  wish one value in wish list
+                            if( $value_in_selected == $value_in_cookie->id ){ // check  if  this value in selected  is  equals  wish one value in wish list
 
                                 array_splice( $array_from_cookie , $nr,1 ); // remove item .....
                             }
@@ -93,6 +93,35 @@ class Cookie extends Fetch_Data{
 
             return $e->getMessage();
         }
+    }
+
+    public function update_array( $cookie_name , $array_data ){
+
+        try{
+
+            $array_from_cookie = self::get_cookie($cookie_name);
+
+            foreach ( $array_from_cookie as $array_key => $array_value ) {
+
+                foreach ( $array_data as $key => $vlaue ) {
+
+                    if ( $array_value->id == $vlaue->id ) {
+
+                        $array_value->quantity = $vlaue->quantity;
+                    }
+                }
+            }
+
+            self::save_coockie($cookie_name, $array_from_cookie);
+
+            return 'true';
+        }
+        catch( Exception $e ){
+
+            return 'false';
+
+        }
+
     }
 
 

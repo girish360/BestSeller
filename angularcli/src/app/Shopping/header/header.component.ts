@@ -1,5 +1,5 @@
 
- import { Component, OnInit ,Input , Output , EventEmitter,DoCheck ,AfterViewInit   } from '@angular/core';
+ import { Component, OnInit ,Input , Output , EventEmitter,DoCheck ,AfterViewInit  ,ElementRef, Renderer } from '@angular/core';
 
  import { Injectable } from '@angular/core';
 
@@ -73,6 +73,7 @@
 
      ];
 
+
      public button_right = [
 
          { id:1 , name:'sing' ,mat_tooltip:'User Panel', different_class:'',
@@ -91,7 +92,7 @@
     ];
 
 
-    constructor( private header : HeaderService, private HttpService :HttpService , private deviceService: DeviceDetectorService, private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
+    constructor(  private renderer : Renderer , private el : ElementRef, private header : HeaderService, private HttpService :HttpService , private deviceService: DeviceDetectorService, private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
 
         this.timer_pointer_dropdown =  Observable.interval(5 * 2).subscribe( x => {
 
@@ -100,7 +101,8 @@
         });
 
 
-         this.get_device_info();
+
+        this.get_device_info();
 
     }
 
@@ -122,7 +124,7 @@
 
 
 
-    public check_button( button , i ){
+    public check_button( button , i  ,event ){
 
         this.header.button_properties.selectedIndex = i;
 
@@ -146,6 +148,8 @@
 
                 } else {
 
+                    this.find_position_dropdown(event,button.dropdown_class );
+
                     this.show_dropdown_button( button.dropdown_class, button.dropdown_body, button.id);
 
                     this.header.button_properties.pointer = button.id;
@@ -153,7 +157,7 @@
 
             } else {
 
-                this.hide_dropdown_button(button.dropdown_class, button.dropdown_body);
+                this.hide_dropdown_button( button.dropdown_class, button.dropdown_body );
 
                 this.header.button_properties.active = 0;
 
@@ -192,17 +196,27 @@
          });
     }
 
+    public find_position_dropdown( event , dropdown_Class  ){
+
+        let left  = event.clientX;
+
+        $( '.'+dropdown_Class ).css({ right: 100% - left-30 });
+
+    }
+
+
+
     public show_dropdown_button( dropdown_class, body_inside , id ){
 
         $('.treguesi').css({display: 'none'});
 
         $('.'+body_inside).css({ top: '15px'});
 
-        $('.' + dropdown_class).css({top: '30px', opacity: '0.1'}); //  css style...
+        $('.' + dropdown_class).css({top: '130px', opacity: '0.1'}); //  css style...
 
         $('.' + dropdown_class).show().animate({ // animation effect show dropdown header......
 
-            top: '2',
+            top: '100px',
 
             opacity: 1
 
@@ -234,11 +248,11 @@
 
         $('.' + body_inside).css({top: '0px'});
 
-        $('.' + dropdown_class).css({top: '30px', opacity: '1'}); // css style...
+        $('.' + dropdown_class).css({top: '100px', opacity: '1'}); // css style...
 
         $('.' + dropdown_class).animate({ // animation effect hide dropdown header......
 
-            top: '30',
+            top: '130',
 
             opacity: '0.1',
 
@@ -501,6 +515,8 @@
         this.dataservices.update_language( new_language );
 
     }
+
+
 
     delete_from_wishList(  ){
 

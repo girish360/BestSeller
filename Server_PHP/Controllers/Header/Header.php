@@ -20,7 +20,7 @@ class Header extends Cookie {
                 //table
                 "product"=>array(
                     // columns table
-                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.image','product.date'
+                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.unit_stock','product.image','product.date'
                 ),
                 // table
                 "company"=>array(
@@ -41,7 +41,7 @@ class Header extends Cookie {
                 //table
                 "product"=>array(
                     // columns table
-                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.image','product.date'
+                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.unit_stock','product.image','product.date'
                 ),
                 // table
                 "company"=>array(
@@ -56,7 +56,7 @@ class Header extends Cookie {
 
         if( $result_from_cartList != 'false' || $result_from_wishList != 'false' ){
 
-            $result = array('wishList'=>$wishList_from_databse ,'cartList'=> $cartList_from_databse);
+            $result = array('wishList'=>$wishList_from_databse ,'cartList'=> $cartList_from_databse ,'cookie_cartList'=>$result_from_cartList);
 
             return self::json_data( 'get_wishlist_cartList' , $result ); // return json data ...........
         }
@@ -76,7 +76,7 @@ class Header extends Cookie {
 
             $result = self::save_coockie('cartList' , $data);
 
-            return self::json_data($status , $result );  // return result ......
+            return self::json_data( $status , $result );  // return result ......
 
         }
 
@@ -84,7 +84,7 @@ class Header extends Cookie {
 
         $result = self::save_coockie('cartList' , $array_data );
 
-        return self::json_data($status , $result );  // return result ......
+        return self::json_data( $status , $result );  // return result ......
 
     }
 
@@ -104,6 +104,23 @@ class Header extends Cookie {
         $result = self::save_coockie('wishList' , $array_data);
 
         return self::json_data($status , $result );  // return result ......
+
+    }
+    public function update_cartList( $status , $array_quantity ){
+
+        if( is_array( $array_quantity ) ){
+
+            $result = self::update_array( 'cartList',$array_quantity);
+
+            return self::json_data( $status , $result );  // return result ......
+
+        }
+
+        $array_data = self::convert_to_array($array_quantity);
+
+        $result = self::update_array( 'cartList',$array_data);
+
+        return self::json_data( $status , $result );  // return result ......
 
     }
 

@@ -89,7 +89,8 @@ create table product(
   `category_id` int(11),
   `company_id` int(11),
   `price` varchar(50),
-  `quantity` int(11),
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `unit_stock` int(11),
   `date`  TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP ,
   `image` varchar(250)
 
@@ -209,7 +210,7 @@ insert into company (name,email,username,password,phone_number,image,street_adre
 
 insert into follower (company_id,user_id)values('4','1'),('5','1'),('6','1');
 
-insert into product ( title , description , image_id , category_id , company_id , price , quantity , image )
+insert into product ( title , description , image_id , category_id , company_id , price , unit_stock , image )
 values('benz mercedez','shitet per arsye mos perdorimi','1','1','1','500','5' ,'1.jpg'),
       ('Iphone 5 ','gjendje perfecte','2','1','1','400','2','2.jpg'),
       ('Iphone 6 ','gjendje perfecte','3','1','1','550','7','3.jpg'),
