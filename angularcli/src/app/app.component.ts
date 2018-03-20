@@ -8,13 +8,10 @@ declare var $:any;
 
 })
 
-
 export class AppComponent implements OnInit{
 
-
-
-
     ngOnInit(){
+
         $(document).ready(function() {
 
             var top_scroll = 0;
@@ -31,23 +28,16 @@ export class AppComponent implements OnInit{
 
                 var scroll_top = $(this).scrollTop();
 
-
                 if ( scroll_top >= 60  ) {
 
-                    $('.header').addClass('fixed_header');
-                    $('.menu_left ,.under_menu_left').addClass('fixed_category');
                     $('.icon_header_write').addClass('new_icon_header_write');
 
-                    $('.dropdown_search').addClass('down_dropwdown_search');
                     top_scroll = scroll_top;
 
                 } else {
 
-                    $('.header').removeClass('fixed_header');
-                    $('.menu_left , .under_menu_left').removeClass('fixed_category');
-                    $('.icon_header_write').removeClass('new_icon_header_write');
-                    $('.dropdown_search').removeClass('down_dropwdown_search');
 
+                    $('.icon_header_write').removeClass('new_icon_header_write');
 
                     top_scroll = scroll_top;
                 }

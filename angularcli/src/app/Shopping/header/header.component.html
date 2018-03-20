@@ -1,32 +1,6 @@
 
 <div class="header">
 
-    <div class="response_outer top_header"  [ngClass]="{'active_menu':header.status_menu}">
-
-        <div class="response_inner ">
-
-            <!--  start bottom header ...........................................-->
-
-            <div class="write_top_header">
-
-                <div class="left_top_header" (click)="authe()">
-
-                    BestSeller
-
-                   </div>
-
-                <div class="right_top_header">
-
-                    The Best App to Management your Business
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
     <div class="response_outer bottom_header "  [ngClass]="{'active_menu':header.status_menu }">
 
         <div class="top_menu">  <!-- this is open category  -->
@@ -88,7 +62,7 @@
 
                         <div class="search notCloseDropdawnSearch">
 
-                            <input type="text" class="kerkim" id="kerkim" name="search" placeholder="{{dataservices.language.searchproducts}}">
+                            <input type="text" class="kerkim"  name="search" placeholder="{{dataservices.language.searchproducts}}">
 
                             <a href="#">
 

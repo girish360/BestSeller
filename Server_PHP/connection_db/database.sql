@@ -80,7 +80,7 @@ create table category(
 
 
 
-create table product(
+create table producte(
 
   `id` int not null primary key AUTO_INCREMENT,
   `title` varchar(100),
@@ -91,6 +91,8 @@ create table product(
   `price` varchar(50),
   `quantity` int(11) NOT NULL DEFAULT 1,
   `unit_stock` int(11),
+  `in_wishList` ENUM('false', 'true') NOT NULL DEFAULT 'false',
+  `in_cartList` ENUM('false', 'true') NOT NULL DEFAULT 'false',
   `date`  TIMESTAMP not null DEFAULT CURRENT_TIMESTAMP ,
   `image` varchar(250)
 

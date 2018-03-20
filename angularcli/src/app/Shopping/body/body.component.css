@@ -2,11 +2,9 @@
 
 .containere{
     height: auto;
-    margin-top: 5px;
+    margin-top: 50px;
+
 }
-
-
-
 
 .containerleft{
 
@@ -15,8 +13,6 @@
     display: inline-block;
     width: calc(100% - 320px);
     height: calc( 100vh - 100px ); /* Minimum height for modern browsers */
-
-
 }
 
 

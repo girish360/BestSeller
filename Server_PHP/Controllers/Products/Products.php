@@ -4,7 +4,7 @@ class Products extends Fetch_Data {
 
     public $all_products;
 
-    public $products_for_page=20;
+    public $products_for_page=30;
 
     public $products_limit = array();
 
@@ -14,7 +14,7 @@ class Products extends Fetch_Data {
 
     private $table_name = 'product';
 
-    private $products_columns = array('id','title','image_id','category_id','company_id','price','quantity','unit_stock','date','image');
+    private $products_columns = array('id','title','image_id','category_id','company_id','price','quantity','unit_stock','date','image' ,'in_cartList' ,'in_wishList');
 
     public function getproducts( $object_details ){  // get all products .....................................
 
@@ -52,7 +52,7 @@ class Products extends Fetch_Data {
                     //table
                     "product"=>array(
                         // columns table
-                        'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.image','product.date'
+                        'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.image','product.date','product.in_cartList' ,'product.in_wishList'
                     ),
                     // table
                     "company"=>array(

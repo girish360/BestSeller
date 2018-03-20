@@ -20,7 +20,7 @@ class Header extends Cookie {
                 //table
                 "product"=>array(
                     // columns table
-                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.unit_stock','product.image','product.date'
+                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.unit_stock','product.image','product.date','product.in_cartList' ,'product.in_wishList'
                 ),
                 // table
                 "company"=>array(
@@ -41,7 +41,7 @@ class Header extends Cookie {
                 //table
                 "product"=>array(
                     // columns table
-                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.unit_stock','product.image','product.date'
+                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.unit_stock','product.image','product.date','product.in_cartList' ,'product.in_wishList'
                 ),
                 // table
                 "company"=>array(

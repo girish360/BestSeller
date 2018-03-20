@@ -52,7 +52,9 @@ export class DataService extends AuthService implements OnInit{
 
   public categorys:any = [];
 
+  public status_menu = false;
 
+  public status_chat = false;
 
   public  create_object_request( status , value ) {
 

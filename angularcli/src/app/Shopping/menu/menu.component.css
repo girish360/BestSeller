@@ -89,10 +89,10 @@ a{
 .menu_left{
 
     z-index: 3 !important;
-    position: absolute;
+    position: fixed;
     left: -250px;
     width: 300px;
-    top: 100px;
+    top: 40px;
     height: 95vh;
     overflow-x: hidden;
     overflow-y:overlay ;
@@ -199,22 +199,17 @@ mat-icon{
 .under_menu_left{
 
     z-index:2 !important;
-    position: absolute;
+    position: fixed;
     left: -250px;
     width: 300px;
-    top: 100px;
+    top: 40px;
     height: 100vh;
     overflow-x: auto;
     opacity: 0.1;
     background: url("../../../assets/images/under_login.jpg") no-repeat;
 }
 
-.fixed_category{
 
-    position: fixed;
-    top:40px;
-
-}
 
 
 

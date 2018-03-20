@@ -1,18 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,OnDestroy } from '@angular/core';
 
 import { NgxCarousel ,NgxCarouselStore } from 'ngx-carousel';
+
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-carusel',
   templateUrl: './carusel.component.html',
   styleUrls: ['./carusel.component.css']
 })
-export class CaruselComponent implements OnInit {
+export class CaruselComponent implements OnInit ,OnDestroy {
 
   constructor() { }
 
   public carouselTileOneItems: Array<any> = [];
   public carouselTileOne: NgxCarousel;
+
+  carousel = Subscription;
+
+  ngOnDestroy() {
+
+  }
 
   ngOnInit() {
 
@@ -33,7 +41,7 @@ export class CaruselComponent implements OnInit {
     this.carouselTileOne = {
       grid: { xs: 2, sm: 3, md: 4, lg: 4, all: 0 },
       speed: 200,
-      interval: 8000,
+      interval: 2000,
       point: {
         visible: true,
         pointStyles: `
@@ -65,6 +73,7 @@ export class CaruselComponent implements OnInit {
       loop: true,
       touch: true,
       easing: 'ease',
+      custom: 'banner',
       animation: 'lazy'
     };
 

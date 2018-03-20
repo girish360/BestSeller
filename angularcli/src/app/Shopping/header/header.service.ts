@@ -25,7 +25,7 @@ export class HeaderService implements OnInit {
 
       }
 
-      console.log( response ) ;
+
     });
   }
 
@@ -169,6 +169,8 @@ export class HeaderService implements OnInit {
 
   add_wish_list( product ){  // function to add product in wishList
 
+
+
     this.wish_properties.status_in_wish = false; // status to find  if this  product is in wish......
 
     this.wish_properties.array_wishId = [];
@@ -179,7 +181,12 @@ export class HeaderService implements OnInit {
 
         this.wish_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
 
+        this.wish_properties.wishList[i].product_in_wishList = 'true';
+
+        alert(product.product_id);
+
       }
+
       this.wish_properties.array_wishId.push( {'id':this.wish_properties.wishList[i].product_id , 'quantity':this.wish_properties.wishList[i].product_quantity });
     }
 
@@ -232,6 +239,8 @@ export class HeaderService implements OnInit {
       this.cart_properties.array_cartId.unshift({'id': product.product_id ,'quantity':product.product_quantity} );
 
       this.cart_properties.cartList.unshift( product ); // push wish product in wishList products
+
+      this.total_items_and_price();
 
       this.dataservices.create_object_request( 'add_cartProduct', this.cart_properties.array_cartId );
 
@@ -524,6 +533,8 @@ export class HeaderService implements OnInit {
 
         this.cart_properties.array_cartId.push(this.cart_properties.cartList[i].product_id);
       }
+
+      this.total_items_and_price();
 
       this.dataservices.update_cartList(this.cart_properties.cartList); // change wish list in services   that get this  when change component with router outlet
 

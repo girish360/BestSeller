@@ -94,14 +94,6 @@
 
     constructor(  private renderer : Renderer , private el : ElementRef, private header : HeaderService, private HttpService :HttpService , private deviceService: DeviceDetectorService, private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
 
-        this.timer_pointer_dropdown =  Observable.interval(5 * 2).subscribe( x => {
-
-            this.find_position( this.header.button_properties.pointer );
-
-        });
-
-
-
         this.get_device_info();
 
     }
@@ -120,6 +112,8 @@
         this.deviceInfo = this.deviceService.getDeviceInfo();
 
     }
+
+
 
 
 
@@ -148,14 +142,20 @@
 
                 } else {
 
+
+
                     this.find_position_dropdown(event,button.dropdown_class );
 
                     this.show_dropdown_button( button.dropdown_class, button.dropdown_body, button.id);
 
                     this.header.button_properties.pointer = button.id;
+
+                    this.find_position( this.header.button_properties.pointer );
                 }
 
             } else {
+
+
 
                 this.hide_dropdown_button( button.dropdown_class, button.dropdown_body );
 
@@ -212,15 +212,15 @@
 
         $('.'+body_inside).css({ top: '15px'});
 
-        $('.' + dropdown_class).css({top: '130px', opacity: '0.1'}); //  css style...
+        $('.' + dropdown_class).css({top: '70px', opacity: '0.1'}); //  css style...
 
         $('.' + dropdown_class).show().animate({ // animation effect show dropdown header......
 
-            top: '100px',
+            top: '40px',
 
             opacity: 1
 
-        }, 200, function () { //  function after effect ............
+        }, 100, function () { //  function after effect ............
 
             $('.treguesi').css({display: 'block'}); // show pionter......
 
@@ -236,7 +236,7 @@
 
             top: '0'
 
-        }, 400);
+        }, 200);
 
     }
 
@@ -248,15 +248,15 @@
 
         $('.' + body_inside).css({top: '0px'});
 
-        $('.' + dropdown_class).css({top: '100px', opacity: '1'}); // css style...
+        $('.' + dropdown_class).css({top: '40px', opacity: '1'}); // css style...
 
         $('.' + dropdown_class).animate({ // animation effect hide dropdown header......
 
-            top: '130',
+            top: '70',
 
             opacity: '0.1',
 
-        }, 200, function () { //  function after effect ............
+        }, 100, function () { //  function after effect ............
 
             $('.' + dropdown_class).hide();
 
@@ -266,7 +266,7 @@
 
             top: '15'
 
-        }, 400);
+        }, 200);
 
     }
 
@@ -309,7 +309,7 @@
 
              borderBottomRightRadius: "0px",
 
-         }, 200, function () {
+         }, 100, function () {
 
              $('.all_show_multiple_open').show();
 
@@ -323,7 +323,7 @@
 
              opacity: 1
 
-         }, 500);
+         }, 300);
 
          $('.all_show_multiple').hide();
 
@@ -362,7 +362,7 @@
 
              borderBottomLeftRadius:"0px"
 
-         },200,function(){
+         },100,function(){
 
              $('.all_show_multiple').show();
 
@@ -394,7 +394,7 @@
 
              opacity:1
 
-         },500,function(){
+         },300,function(){
 
          });
 
@@ -652,8 +652,6 @@
          }
 
          this.delete_from_wishList();
-
-         this.dataservices.update_cartList(   this.header.cart_properties.cartList ); // change wish list in services   that get this  when change component with router outlet
 
          this.dataservices.create_object_request( 'add_cartProducts', this.header.cart_properties.array_cartId  );
 

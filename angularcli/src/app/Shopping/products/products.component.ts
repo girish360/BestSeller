@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter, DoCheck,  ChangeDetectorRef } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, DoCheck,  ChangeDetectorRef , OnDestroy ,ChangeDetectionStrategy} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx'
@@ -25,6 +25,7 @@ declare  var $:any;
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default,
 
   animations: [
     trigger('products_animations', [
@@ -39,12 +40,12 @@ declare  var $:any;
     ])
   ]
 })
-export class ProductsComponent implements OnInit,DoCheck  {
+export class ProductsComponent implements OnInit,DoCheck ,OnDestroy   {
 
 
   public loader = false;
 
-  public  products:any = [] ;
+  public  products:any = [];
 
   public Response:any;
 
@@ -66,7 +67,13 @@ export class ProductsComponent implements OnInit,DoCheck  {
 
   };
 
+
+
   my_timer_wish: Subscription ;
+
+  my_products :Subscription;
+
+
 
   constructor(
       private setRouter: SetRouterService,
@@ -81,17 +88,35 @@ export class ProductsComponent implements OnInit,DoCheck  {
 
     this.dataservices.update_loader(true);
 
-    let response = this.dataservices.Make_Request_InServer( 'products' , { 'type': 'default', 'number_click': 1 } );
+    this.dataservices.create_object_request( 'products', { 'type': 'default', 'number_click': 1 }  );
 
-    response.then( response => {
+    this.my_products = this.Httpservice.Http_Post( this.dataservices.object_request ) // make request ......
 
-      this.products = response['products'];
+        .subscribe( //  take success
 
-      this.build_pages_link( response['pages_details']);
+            data => {
 
-      this.dataservices.update_loader(false);
+              if ( data['status'] == 'product' ) {
 
-    });
+                this.products = data['data']['products'];
+
+                this.build_pages_link( data['data']['pages_details']);
+
+                this.dataservices.update_loader(false);
+
+              }
+            },
+            error => console.log( error['data'] ) // take error .....
+
+        );
+
+
+
+  }
+
+  ngOnDestroy(){
+
+
 
   }
 
@@ -154,23 +179,29 @@ export class ProductsComponent implements OnInit,DoCheck  {
 
   get_page_products(){
 
-
-
-    let response = this.dataservices.Make_Request_InServer( 'products', this.send_data_products );
-
     this.dataservices.body_loader = true;
 
-    response.then( products_details =>{
+    this.dataservices.create_object_request( 'products', this.send_data_products  );
 
-      this.products =  products_details['products'];
+    this.my_products = this.Httpservice.Http_Post( this.dataservices.object_request ) // make request ......
 
-      this.pages_details = products_details['pages_details'];
+        .subscribe( //  take success
 
-      this.build_pages_link( products_details['pages_details']) ;
+            data => {
 
-      this.dataservices.body_loader = false;
+              if ( data['status'] == 'product' ) {
 
-    });
+                this.products = data['data']['products'];
+
+                this.build_pages_link( data['data']['pages_details']);
+
+                this.dataservices.update_loader(false);
+
+              }
+            },
+            error => console.log( error['data'] ) // take error .....
+
+        );
   }
 
   build_pages_link( pages_details ){ // that create pages link for products ...............................................................................
@@ -510,29 +541,6 @@ export class ProductsComponent implements OnInit,DoCheck  {
     return  this.header.cart_properties.status_in_cart;
   }
 
-  mouseHover_wish( product , i ){
-
-    this.product_properties.index_product = i;
-
-    this.product_properties.icon_wish=1;
-
-    this.check_wish_icon( product );
-
-    this.onStartInterval_wish( product );
-
-  }
-
-  mouseLeave_wish( product ){
-
-    this.product_properties.index_product = 'empty';
-
-    this.product_properties.icon_wish=0;
-
-    this.ondestroyInterval_wish();
-
-    this.check_wish_icon( product );
-
-  }
 
   check_wish_icon( product ){
 
@@ -561,27 +569,9 @@ export class ProductsComponent implements OnInit,DoCheck  {
     }
   }
 
-  onStartInterval_wish( product ) {
 
-    this.my_timer_wish = Observable.interval(500).subscribe( val => {
 
-      if(this.product_properties.icon_wish == 1){
 
-        this.product_properties.icon_wish = 0;
-
-      }else{
-
-        this.product_properties.icon_wish = 1;
-      }
-
-      this.check_wish_icon( product );
-    });
-  }
-
-  ondestroyInterval_wish(){
-
-    this.my_timer_wish.unsubscribe();
-  }
 
 
 
