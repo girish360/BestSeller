@@ -45,7 +45,7 @@ a{
 
 
 .component-animation {
-    animation: component_Animation 1s;
+    animation: component_Animation 0.3s;
 }
 
 .glyphicon  {
@@ -60,7 +60,7 @@ a{
     width: calc(100% - 50px);
     float: right;
 
-    transition: 0.1s;
+
 
 }
 
@@ -94,7 +94,7 @@ a{
 
         width: 100%;
 
-        transition: 0.5s;
+
 
     }
 

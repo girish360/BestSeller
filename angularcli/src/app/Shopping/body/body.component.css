@@ -37,10 +37,6 @@
     .containerleft_new_openmenu{
         width:100%;
     }
-    .containerright_new_openmenu{
-
-        display: none;
-    }
 
 }
 @media only screen and ( min-width: 1200px ){
@@ -49,10 +45,8 @@
         float: right;
         right: 0;
         left: 0;
-        transition:0.1s;
-        -webkit-transition:0.1s;
-        -moz-transition:0.1s;
         width: calc(100% - 250px);
+
     }
 
 }
@@ -91,8 +85,6 @@
     .response_outer {
 
         width: 100%;
-
-        transition: 0.5s;
 
     }
 

@@ -6,6 +6,8 @@ import { DataService } from '../services/data.service';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
+import { ProductService } from '../products/product.service'; // ProductServices extend HeaderServices that cartList and  wishList ...........
+
 import { SetRouterService } from '../services/set-router.service';
 
 @Component({
@@ -13,9 +15,10 @@ import { SetRouterService } from '../services/set-router.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
+
 export class MenuComponent implements OnInit, DoCheck  {
 
-  constructor( private setRouter :SetRouterService , private route:ActivatedRoute , private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
+  constructor( private productsService:ProductService ,  private setRouter :SetRouterService , private route:ActivatedRoute , private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
 
     let category = this.dataservices.Make_Request_InServer( 'category', 'category' );
 

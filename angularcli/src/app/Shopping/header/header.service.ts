@@ -2,14 +2,19 @@ import { Injectable,OnInit } from '@angular/core';
 
 import { DataService } from '../services/data.service';
 
-import { HttpService } from '../services/http.service';
+
+import 'rxjs/add/observable/interval';
+
+
 
 
 @Injectable()
 
-export class HeaderService implements OnInit {
+export class HeaderService  implements OnInit {
 
-  constructor( private HttpService :HttpService ,   private dataservices : DataService ) {
+  constructor(  protected dataservices : DataService ) {
+
+
 
     let wishlist_and_cartList = this.dataservices.Make_Request_InServer( 'get_wishList_cartList', 'wish' );
 
@@ -26,7 +31,13 @@ export class HeaderService implements OnInit {
       }
 
 
+
+
     });
+
+
+
+
   }
 
   ngOnInit(){
@@ -127,7 +138,7 @@ export class HeaderService implements OnInit {
 
     this.dataservices.create_object_request( 'update_quantity_cartList', update_quantity );
 
-    this.HttpService.Http_Post( this.dataservices.object_request) // make request ......
+    this.dataservices.Http_Post( this.dataservices.object_request) // make request ......
 
         .subscribe( //  take success
 
@@ -169,8 +180,6 @@ export class HeaderService implements OnInit {
 
   add_wish_list( product ){  // function to add product in wishList
 
-
-
     this.wish_properties.status_in_wish = false; // status to find  if this  product is in wish......
 
     this.wish_properties.array_wishId = [];
@@ -180,10 +189,6 @@ export class HeaderService implements OnInit {
       if( this.wish_properties.wishList[i].product_id == product.product_id ){ // if product .id is equals with one product.id in wish status should be true ...
 
         this.wish_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
-
-        this.wish_properties.wishList[i].product_in_wishList = 'true';
-
-        alert(product.product_id);
 
       }
 
@@ -198,7 +203,7 @@ export class HeaderService implements OnInit {
 
       this.dataservices.create_object_request( 'add_wishProduct', this.wish_properties.array_wishId );
 
-      this.HttpService.Http_Post( this.dataservices.object_request) // make request ......
+      this.dataservices.Http_Post( this.dataservices.object_request) // make request ......
 
           .subscribe( //  take success
 
@@ -236,7 +241,7 @@ export class HeaderService implements OnInit {
 
     if( this.cart_properties.status_in_cart != true ){ // check if status is not equals with true  to  add this prod in wish ....
 
-      this.cart_properties.array_cartId.unshift({'id': product.product_id ,'quantity':product.product_quantity} );
+      this.cart_properties.array_cartId.unshift( {'id': product.product_id ,'quantity':product.product_quantity} );
 
       this.cart_properties.cartList.unshift( product ); // push wish product in wishList products
 
@@ -244,7 +249,7 @@ export class HeaderService implements OnInit {
 
       this.dataservices.create_object_request( 'add_cartProduct', this.cart_properties.array_cartId );
 
-      this.HttpService.Http_Post( this.dataservices.object_request ) // make request ......
+      this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
 
           .subscribe( //  take success
 
@@ -263,9 +268,11 @@ export class HeaderService implements OnInit {
     }
   }
 
+
+
   delete_from_wishList( ){
 
-  this.wish_properties.filter_wish='';
+    this.wish_properties.filter_wish='';
 
   this.wish_properties.array_wishId = [];
 
@@ -287,6 +294,8 @@ export class HeaderService implements OnInit {
 
     this.wish_properties.selected.splice( this.wish_properties.selected[i] , this.wish_properties.selected.length );
   }
+
+
 
 
   this.Response = this.dataservices.Make_Request_InServer('delete_items_in_wish', this.wish_properties.array_wishId);
@@ -540,7 +549,7 @@ export class HeaderService implements OnInit {
 
       this.dataservices.create_object_request('add_cartProducts', this.cart_properties.array_cartId);
 
-      this.HttpService.Http_Post(this.dataservices.object_request) // make request ......
+      this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
 
           .subscribe( //  take success
 

@@ -1,17 +1,10 @@
-import {Component, OnInit, Input, Output, EventEmitter, DoCheck,  ChangeDetectorRef , OnDestroy ,ChangeDetectionStrategy} from '@angular/core';
-import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Observable';
+import {Component, OnInit, Input, Output, EventEmitter, DoCheck,  ChangeDetectorRef , OnDestroy } from '@angular/core';
+
 import 'rxjs/Rx'
-import { Subscription } from 'rxjs/Subscription';
+
 import 'rxjs/add/observable/interval';
 
-import { RouterStateSnapshot,ActivatedRouteSnapshot, ActivatedRoute  ,Params , Data , Router} from '@angular/router';
-
-import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
-
-import { HeaderService } from '../header/header.service';
-
-import { HttpService } from '../services/http.service';
+import {  ActivatedRoute  } from '@angular/router';
 
 import { DataService } from '../services/data.service';
 
@@ -19,13 +12,14 @@ import { SetRouterService } from '../services/set-router.service';
 
 import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
-declare  var $:any;
+import { Subscription } from 'rxjs/Subscription';
+
+import { ProductService } from './product.service'; // ProductServices extend HeaderServices that cartList and  wishList ....................
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default,
 
   animations: [
     trigger('products_animations', [
@@ -40,12 +34,7 @@ declare  var $:any;
     ])
   ]
 })
-export class ProductsComponent implements OnInit,DoCheck ,OnDestroy   {
-
-
-  public loader = false;
-
-  public  products:any = [];
+export class ProductsComponent   implements OnInit  {
 
   public Response:any;
 
@@ -67,30 +56,24 @@ export class ProductsComponent implements OnInit,DoCheck ,OnDestroy   {
 
   };
 
-
-
-  my_timer_wish: Subscription ;
-
   my_products :Subscription;
 
 
-
   constructor(
+
+      private productsService : ProductService,
       private setRouter: SetRouterService,
-      private header :HeaderService,
-      private cdr:  ChangeDetectorRef,
-      private router : Router,
-      private crypto:EncryptDecryptService ,
       private dataservices: DataService ,
-      private Httpservice :HttpService ,
       private route: ActivatedRoute
+
   ) {
+
 
     this.dataservices.update_loader(true);
 
     this.dataservices.create_object_request( 'products', { 'type': 'default', 'number_click': 1 }  );
 
-    this.my_products = this.Httpservice.Http_Post( this.dataservices.object_request ) // make request ......
+    this.my_products = this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
 
         .subscribe( //  take success
 
@@ -98,9 +81,11 @@ export class ProductsComponent implements OnInit,DoCheck ,OnDestroy   {
 
               if ( data['status'] == 'product' ) {
 
-                this.products = data['data']['products'];
+                this.productsService.products = data['data']['products'];
 
                 this.build_pages_link( data['data']['pages_details']);
+
+                this.productsService.checked_products_inCart_and_inWish();
 
                 this.dataservices.update_loader(false);
 
@@ -111,22 +96,11 @@ export class ProductsComponent implements OnInit,DoCheck ,OnDestroy   {
         );
 
 
-
   }
 
-  ngOnDestroy(){
 
 
-
-  }
-
-  ngDoCheck(){
-
-
-  }
-
-  ngOnInit() {
-
+  ngOnInit(){
 
   }
 
@@ -183,7 +157,7 @@ export class ProductsComponent implements OnInit,DoCheck ,OnDestroy   {
 
     this.dataservices.create_object_request( 'products', this.send_data_products  );
 
-    this.my_products = this.Httpservice.Http_Post( this.dataservices.object_request ) // make request ......
+    this.my_products = this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
 
         .subscribe( //  take success
 
@@ -191,7 +165,7 @@ export class ProductsComponent implements OnInit,DoCheck ,OnDestroy   {
 
               if ( data['status'] == 'product' ) {
 
-                this.products = data['data']['products'];
+                this.productsService.products = data['data']['products'];
 
                 this.build_pages_link( data['data']['pages_details']);
 
@@ -511,68 +485,5 @@ export class ProductsComponent implements OnInit,DoCheck ,OnDestroy   {
     }
 
   } // End function that build pages link ........................................................
-
-
-  check_wish( product ){
-
-    this.header.wish_properties.status_in_wish = false;
-
-    for ( let i = 0 ; i < this.header.wish_properties.wishList.length ; i++){
-
-      if( this.header.wish_properties.wishList[i].product_id ==  product.product_id ){
-
-        this.header.wish_properties.status_in_wish = true;
-      }
-    }
-    return   this.header.wish_properties.status_in_wish;
-  }
-
-  check_cart( product ){
-
-    this.header.cart_properties.status_in_cart = false;
-
-    for ( let i = 0 ; i < this.header.cart_properties.cartList.length ; i++){
-
-      if( this.header.cart_properties.cartList[i].product_id ==  product.product_id ){
-
-        this.header.cart_properties.status_in_cart = true;
-      }
-    }
-    return  this.header.cart_properties.status_in_cart;
-  }
-
-
-  check_wish_icon( product ){
-
-    this.status_in_wish = false; // status to find  if this  product is in wish......
-
-    for ( var i =  0 ; i < this.header.wish_properties.wishList.length ; i++ ){ // loop wish list with product ...
-
-      if( this.header.wish_properties.wishList[i].id == product.product_id ){ // if product .id is equals with one product.id in wish status should be true ...
-
-        this.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
-
-      }
-    }
-
-    if( this.status_in_wish != true ) { // check if status is not equals with true  to  add this prod in wish ....
-
-
-      if( this.product_properties.icon_wish == 1 ){
-
-        this.product_properties.hover_wish_list = true;
-
-      }else{
-
-        this.product_properties.hover_wish_list = false;
-      }
-    }
-  }
-
-
-
-
-
-
 
 }

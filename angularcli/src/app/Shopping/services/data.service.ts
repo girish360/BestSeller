@@ -42,19 +42,13 @@ export class DataService extends AuthService implements OnInit{
 
   public language:any={};
 
-  public cartList:any = [] ;
-
-  public products:any = [];
-
   public Response:any;
 
   public object_request = {};
 
-  public categorys:any = [];
 
-  public status_menu = false;
 
-  public status_chat = false;
+
 
   public  create_object_request( status , value ) {
 
@@ -89,28 +83,17 @@ export class DataService extends AuthService implements OnInit{
 
     check_response( data ){
 
-      if ( data['status'] == 'products' ) {
 
-          this.products = data['data'];
 
-      }
 
-      else if (data['status'] == 'category') {
 
-          this.categorys = data['data']
-      }
-
-      else if( data['status']=='language' ) {
+       if( data['status']=='language' ) {
 
           this.language = data['data'];
 
 
       }
-      else if( data['status']=='cartList' ) {
 
-          this.cartList = data['data'];
-
-      }
   }
 
   update_loader( new_poperty ){
@@ -124,10 +107,7 @@ export class DataService extends AuthService implements OnInit{
       this.language = new_language;
   }
 
-  update_cartList( new_cartList ){
 
-      this.cartList = new_cartList;
-  }
 
 }
 

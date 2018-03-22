@@ -1,7 +1,7 @@
 
 <div class="header">
 
-    <div class="response_outer bottom_header "  [ngClass]="{'active_menu':header.status_menu }">
+    <div class="response_outer bottom_header "  [ngClass]="{'active_menu':productsService.status_menu }">
 
         <div class="top_menu">  <!-- this is open category  -->
 
@@ -9,24 +9,22 @@
 
                 <a href="#">
 
-                    <div class="radius_category" id="laptopscreen" (click)="check_menu()" >
+                    <div class="radius_category" id="laptopscreen" (click)="check_menu()" [ngClass]="{'open_menu':productsService.status_menu }">
 
                      <span  matTooltip="Category">
 
                          <div class="position_icon_ctegory">
 
-                             <div class="listcategory" >
+                             <div class="listcategory">
 
-                                 <span class="glyphicon glyphicon-th-large"></span>
+                                 <span *ngIf="!productsService.status_menu" class="glyphicon glyphicon-th-large"></span>
 
-                             </div>
-
-                             <div class="listcategory closelist" >
-
-                                 <span class="glyphicon glyphicon-log-out icon-list-remove"></span>
+                                 <span *ngIf="productsService.status_menu" class="glyphicon glyphicon-log-out icon-list-remove"></span>
 
                              </div>
+
                          </div>
+
                      </span>
 
                     </div>
@@ -96,19 +94,19 @@
 
                         <div class="menu3 button{{button.id}} {{button.different_class}}">
 
-                            <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && header.wish_properties.wishList.length > 0 ,'selected-color-button' : i==header.button_properties.selectedIndex }">
+                            <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && productsService.wish_properties.wishList.length > 0 ,'selected-color-button' : i==productsService.button_properties.selectedIndex }">
 
                                 <div class="number_event">
 
                                     <div class="write_number"  *ngIf="button.id == 2">
 
-                                        {{header.wish_properties.wishList.length}}
+                                        {{productsService.wish_properties.wishList.length}}
 
                                     </div>
 
                                     <div class="write_number" *ngIf="button.id == 3">
 
-                                       {{header.cart_properties.cartList.length}}
+                                       {{productsService.cart_properties.cartList.length}}
 
                                     </div>
 
@@ -169,7 +167,7 @@
 
                         <div class="menu3  " id="favority">
 
-                            <ng-container *ngIf="header.wish_properties.wishList.length>0;else empty" >
+                            <ng-container *ngIf="productsService.wish_properties.wishList.length>0;else empty" >
 
                                 <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
 
@@ -177,7 +175,7 @@
 
                                         <div class="write_number">
 
-                                            {{header.wish_properties.wishList.length}}
+                                            {{productsService.wish_properties.wishList.length}}
 
                                         </div>
 
@@ -195,7 +193,7 @@
 
                                         <div class="write_number">
 
-                                            {{header.wish_properties.wishList.length}}
+                                            {{productsService.wish_properties.wishList.length}}
 
                                         </div>
 
@@ -226,7 +224,7 @@
 
                                     <div class="write_number">
 
-                                        {{header.cart_properties.cartList.length}}
+                                        {{productsService.cart_properties.cartList.length}}
 
                                     </div>
 
@@ -254,7 +252,7 @@
 
                                     <div class="write_number write_hidden">
 
-                                        {{header.wish_properties.wishList.length}}
+                                        {{productsService.wish_properties.wishList.length}}
 
                                     </div>
 
@@ -423,7 +421,7 @@
                 </a>
             </div>
 
-            <div class="dropcard notClosepointerHeader notCloseDropdawnCard">
+            <div class="dropcard notClosepointerHeader notCloseDropdawnCard" [ngClass]="{'show_dropcard':drop_Card}">
                 <div class=" header_div">
                     <div class="width_height_top_wish">
                         <div class="all_top_div_wish">
@@ -431,22 +429,22 @@
                                 {{dataservices.language.Cart_Write}}
                             </span>
                             <span  matTooltip="Search" class="search_icon_from_wish">
-                                <button mat-icon-button class="btn-deleteFromwish"  (click)="header.show_hide_search_in_cartlist()">
-                                    <mat-icon class="notCloseDropdawnCard" *ngIf="header.cart_properties.icon_search == false">search</mat-icon>
-                                    <mat-icon class="notCloseDropdawnCard" *ngIf="header.cart_properties.icon_search == true">close</mat-icon>
+                                <button mat-icon-button class="btn-deleteFromwish"  (click)="productsService.show_hide_search_in_cartlist()">
+                                    <mat-icon class="notCloseDropdawnCard" *ngIf="productsService.cart_properties.icon_search == false">search</mat-icon>
+                                    <mat-icon class="notCloseDropdawnCard" *ngIf="productsService.cart_properties.icon_search == true">close</mat-icon>
                                 </button>
                             </span>
                             <span class="search_from_wish">
-                                <input type="text" [(ngModel)]="filter_cart" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="header.check_show_hide_search_in_cartlist()">
+                                <input type="text" [(ngModel)]="filter_cart" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="productsService.check_show_hide_search_in_cartlist()">
                             </span>
                             <span  matTooltip="Delete" class="delete_from_wish">
-                                <button mat-icon-button class="btn-deleteFromwish " [ngClass]="{'no-drop' : header.cart_properties.button }" [disabled]=" header.cart_properties.button " (click)="header.delete_from_cartList( header.cart_properties.selected )" >
+                                <button mat-icon-button class="btn-deleteFromwish " [ngClass]="{'no-drop' : productsService.cart_properties.button }" [disabled]=" productsService.cart_properties.button " (click)="productsService.check_delete_from_cartList()" >
                                     <mat-icon>delete</mat-icon>
                                 </button>
                             </span>
 
                             <span  matTooltip="Add to Wish" class="add_shopping_card_from_wish">
-                                <button mat-icon-button class="btn-deleteFromwish" [ngClass]="{'no-drop' : header.cart_properties.button }" [disabled]="header.cart_properties.button"  >
+                                <button mat-icon-button class="btn-deleteFromwish" [ngClass]="{'no-drop' : productsService.cart_properties.button }" [disabled]="productsService.cart_properties.button"  >
                                     <mat-icon>favorite</mat-icon>
                                 </button>
                             </span>
@@ -462,8 +460,8 @@
                                 <button mat-icon-button class="btn-deleteFromwish" >
                                     <mat-icon>
                                         <mat-checkbox color="primary" class=" select_all_wishlist"
-                                                      [checked]="header.cart_properties.cartList.length == header.cart_properties.selected.length && header.cart_properties.selected.length > 0 "
-                                                      (click)="header.selecteAll_cartList()">
+                                                      [checked]="productsService.cart_properties.cartList.length == productsService.cart_properties.selected.length && productsService.cart_properties.selected.length > 0 "
+                                                      (click)="productsService.selecteAll_cartList()">
                                         </mat-checkbox>
                                     </mat-icon>
                                 </button>
@@ -473,11 +471,11 @@
                 </div>
                 <div class="body_div body_cart">
 
-                    <ng-container *ngIf="header.cart_properties.cartList.length > 0 ; else  emptycart">
+                    <ng-container *ngIf="productsService.cart_properties.cartList.length > 0 ; else  emptycart">
 
-                        <div  *ngFor="let cart_product of header.cart_properties.cartList  | filter: filter_cart "  [@wishList_animations]="active">
+                        <div  *ngFor="let cart_product of productsService.cart_properties.cartList  | filter: filter_cart "  [@wishList_animations]="active">
 
-                            <button mat-button class="width_body_wish" [ngClass]="header.getStyle_cart( cart_product )">
+                            <button mat-button class="width_body_wish" [ngClass]="productsService.getStyle_cart( cart_product )">
 
                                 <div class="width_each_wishlist">
 
@@ -503,7 +501,7 @@
 
                                         Quantity:
 
-                                        <select  [(ngModel)]="cart_product.product_quantity" (change)="header.update_quantity_cartList( $event , cart_product )" >
+                                        <select  [(ngModel)]="cart_product.product_quantity" (change)="productsService.update_quantity_cartList( $event , cart_product )" >
 
                                             <option>1</option>
 
@@ -534,7 +532,7 @@
 
                                         <span  matTooltip="select">
 
-                                            <mat-checkbox  color="primary" [checked]="header.check_selected_cart( cart_product )" (click)="header.toggle_select_cart( cart_product )">
+                                            <mat-checkbox  color="primary" [checked]="productsService.check_selected_cart( cart_product )" (click)="productsService.toggle_select_cart( cart_product )">
 
                                             </mat-checkbox>
 
@@ -569,13 +567,13 @@
 
                             <span>
 
-                                Total_item: {{header.cart_properties.total_items}}
+                                Total_item: {{productsService.cart_properties.total_items}}
 
                             </span>
 
                             <span>
 
-                                Total_price: ${{header.cart_properties.total_price}}
+                                Total_price: ${{productsService.cart_properties.total_price}}
 
                             </span>
 
@@ -611,21 +609,21 @@
                                 {{dataservices.language.Wish_Write}}
                             </span>
                             <span  matTooltip="Search" class="search_icon_from_wish">
-                                <button mat-icon-button class="btn-deleteFromwish"  (click)="header.show_hide_search_in_wishlist()">
-                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.wish_properties.icon_search == false">search</mat-icon>
-                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="header.wish_properties.icon_search == true">close</mat-icon>
+                                <button mat-icon-button class="btn-deleteFromwish"  (click)="productsService.show_hide_search_in_wishlist()">
+                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="productsService.wish_properties.icon_search == false">search</mat-icon>
+                                    <mat-icon class="notCloseDropdawnFavorite" *ngIf="productsService.wish_properties.icon_search == true">close</mat-icon>
                                 </button>
                             </span>
                             <span class="search_from_wish">
-                                <input type="text" [(ngModel)]="filter_wish" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="header.check_show_hide_search_in_wishlist()">
+                                <input type="text" [(ngModel)]="filter_wish" placeholder="Serach Wishlist" name="search_wish" class="search_wishlist" [ngClass]="productsService.check_show_hide_search_in_wishlist()">
                             </span>
                             <span  matTooltip="Delete" class="delete_from_wish">
-                                <button mat-icon-button class="btn-deleteFromwish " [ngClass]="{'no-drop' : header.wish_properties.button }" [disabled]="header.wish_properties.button" (click)="header.delete_from_wishList( header.wish_properties.selected )" >
+                                <button mat-icon-button class="btn-deleteFromwish " [ngClass]="{'no-drop' : productsService.wish_properties.button }" [disabled]="productsService.wish_properties.button" (click)="productsService.check_delete_from_wishList()" >
                                     <mat-icon>delete</mat-icon>
                                 </button>
                             </span>
                             <span  matTooltip="Add to Cart" class="add_shopping_card_from_wish">
-                                <button mat-icon-button class="btn-deleteFromwish" [ngClass]="{'no-drop' : header.wish_properties.button }" [disabled]="header.wish_properties.button" (click)="header.add_from_wish_to_cart( header.wish_properties.selected )" >
+                                <button mat-icon-button class="btn-deleteFromwish" [ngClass]="{'no-drop' : productsService.wish_properties.button }" [disabled]="productsService.wish_properties.button" (click)="productsService.add_from_wish_to_cart( productsService.wish_properties.selected )" >
                                     <mat-icon>shopping cart</mat-icon>
                                 </button>
                             </span>
@@ -640,8 +638,8 @@
                                 <button mat-icon-button class="btn-deleteFromwish" >
                                     <mat-icon>
                                         <mat-checkbox color="primary" class=" select_all_wishlist"
-                                                      [checked]="header.wish_properties.wishList.length == header.wish_properties.selected.length &&  header.wish_properties.selected.length > 0 "
-                                                      (click)="header.selecteAll_wishList()">
+                                                      [checked]="productsService.wish_properties.wishList.length == productsService.wish_properties.selected.length &&  productsService.wish_properties.selected.length > 0 "
+                                                      (click)="productsService.selecteAll_wishList()">
                                         </mat-checkbox>
                                     </mat-icon>
                                 </button>
@@ -650,9 +648,9 @@
                     </div>
                 </div>
                 <div class="body_div  body_wish">
-                    <ng-container *ngIf="header.wish_properties.wishList.length > 0 ; else  emptywish">
-                        <div  *ngFor="let wish_product of header.wish_properties.wishList | filter: filter_wish "  [@wishList_animations]="active">
-                            <button mat-button class="width_body_wish" [ngClass]="header.getStyle_wish( wish_product )">
+                    <ng-container *ngIf="productsService.wish_properties.wishList.length > 0 ; else  emptywish">
+                        <div  *ngFor="let wish_product of productsService.wish_properties.wishList | filter: filter_wish "  [@wishList_animations]="active">
+                            <button mat-button class="width_body_wish" [ngClass]="productsService.getStyle_wish( wish_product )">
                                 <div class="width_each_wishlist">
                                     <div class="wish_image" >
                                         <img  src="../../assets/images/products_image/{{wish_product.product_image}}">
@@ -665,7 +663,7 @@
 
                                     <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
                                         <span  matTooltip="select">
-                                            <mat-checkbox  color="primary" [checked]="header.check_selected_wish( wish_product )" (click)="header.toggle_select_wish( wish_product )">
+                                            <mat-checkbox  color="primary" [checked]="productsService.check_selected_wish( wish_product )" (click)="productsService.toggle_select_wish( wish_product )">
                                             </mat-checkbox>
                                         </span>
                                     </div>
@@ -693,13 +691,13 @@
 
 
 
-    <div class="notification" *ngIf="!header.status_chat">
+    <div class="notification" *ngIf="!productsService.status_chat">
 
     </div>
 
-    <mat-icon *ngIf="!header.status_chat">chat</mat-icon>
+    <mat-icon *ngIf="!productsService.status_chat">chat</mat-icon>
 
-    <mat-icon *ngIf="header.status_chat">close</mat-icon>
+    <mat-icon *ngIf="productsService.status_chat">close</mat-icon>
 
 </button>
 

@@ -4,7 +4,7 @@ import { VisitorsComponent } from '../visitors/visitors.component';
 
 import { DataService } from '../services/data.service';
 
-import { HeaderService } from '../header/header.service';
+import { ProductService } from '../products/product.service';
 
 @Component({
   selector: 'app-body',
@@ -16,7 +16,7 @@ import { HeaderService } from '../header/header.service';
 export class BodyComponent implements OnInit {
 
 
-  constructor( private header : HeaderService , private dataservices : DataService ) {
+  constructor( private productsService : ProductService , private dataservices : DataService ) {
 
 
   }

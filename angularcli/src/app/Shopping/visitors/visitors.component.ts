@@ -2,13 +2,11 @@ import { Component, OnInit,Renderer ,ElementRef ,AfterViewInit } from '@angular/
 
 declare var $:any;
 
-import { Routes, RouterModule , ActivatedRoute  ,Params , Data , Router} from '@angular/router';
-
-import { HttpService } from '../services/http.service';
-
 import { DataService } from '../services/data.service';
 
-import { HeaderService } from '../header/header.service';
+
+
+import { ProductService } from '../products/product.service'; // ProductServices extend HeaderServices that cartList and  wishList ....................
 
 
 @Component({
@@ -19,7 +17,7 @@ import { HeaderService } from '../header/header.service';
 })
 export class VisitorsComponent implements OnInit , AfterViewInit {
 
-  constructor( private header :HeaderService ,  private elementRef : ElementRef, private renderer : Renderer,  private dataservices: DataService  ) {
+  constructor( private productsService :ProductService ,  private elementRef : ElementRef, private renderer : Renderer,  private dataservices: DataService  ) {
 
     this.get_Language = this.dataservices.language;
 
@@ -62,7 +60,7 @@ export class VisitorsComponent implements OnInit , AfterViewInit {
 
         $('.treguesi').css({display: 'none'});
 
-        this.header.refresh_button_properties();
+        this.productsService.refresh_button_properties();
 
         $('.write_icon_header').css('visibility', 'visible');
       }

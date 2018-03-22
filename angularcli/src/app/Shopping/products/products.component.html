@@ -58,7 +58,7 @@
 
   <div class="all_prod"> <!--  start div with products ...................................................... -->
 
-      <div class="width_products  products-animation " *ngFor="let product of products ; let i = index"  [ngClass]="{ 'width_products_open_menu':header.status_menu  }" >
+      <div class="width_products  products-animation " *ngFor="let product of productsService.products ; let i = index"  [ngClass]="{ 'width_products_open_menu':productsService.status_menu  }" >
 
           <span class="each_width_product" >
 
@@ -78,13 +78,13 @@
 
               </div>
 
-              <button  (click)=" header.add_wish_list( product ) "  mat-button class="wish_list  notCloseDropdawnFavorite notCloseDropdawnCard">
+              <button  (click)="product.product_in_wishList='true'; productsService.add_wish_list( product )" mat-button class="wish_list  notCloseDropdawnFavorite notCloseDropdawnCard">
 
                   <span class="write_add_wish">{{dataservices.language.add_wishlist}}</span>
 
-                  <mat-icon *ngIf="!product.product_in_wishList == false " class="notCloseDropdawnFavorite notCloseDropdawnCard">favorite_border</mat-icon>
+                  <mat-icon *ngIf="product.product_in_wishList == 'false' " class="notCloseDropdawnFavorite notCloseDropdawnCard">favorite_border</mat-icon>
 
-                  <mat-icon  *ngIf="product.product_in_wishList == false " class="hearts_div_hover notCloseDropdawnFavorite notCloseDropdawnCard">favorite</mat-icon>
+                  <mat-icon  *ngIf="product.product_in_wishList == 'true' " class="hearts_div_hover notCloseDropdawnFavorite notCloseDropdawnCard">favorite</mat-icon>
 
               </button>
 
@@ -106,11 +106,13 @@
 
                    </span>
 
-                  <span matTooltip="Add to your card"  class="notCloseDropdawnCard notCloseDropdawnFavorite " (click)="header.add_cart_list( product )">
+                  <span matTooltip="Add to your card"  class="notCloseDropdawnCard notCloseDropdawnFavorite " (click)="product.product_in_cartList='true'; productsService.add_cart_list( product )">
 
                       <div class="button_footer_products">
 
-                          <span class="glyphicon glyphicon-plus icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" ></span>
+                          <span *ngIf="product.product_in_cartList=='false'" class="glyphicon glyphicon-plus icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" ></span>
+
+                          <span *ngIf="product.product_in_cartList=='true'" class="glyphicon glyphicon-ok icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" ></span>
 
                           <div class="both_write ">
 

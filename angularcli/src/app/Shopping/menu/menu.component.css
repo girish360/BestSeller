@@ -20,12 +20,16 @@ a{
     text-align: center;
 }
 .width_menu_left{
+
     width: 100%;
 
     height: auto;
 
-    position: relative;
 }
+
+
+
+
 .button_menu{
     width: 100%;
     height: 32px;
@@ -86,14 +90,26 @@ a{
 
 
 }
+.under_menu_left{
+
+    z-index:2 !important;
+    position: fixed;
+    left: -250px;
+    width: 300px;
+    top: 40px;
+    height: 100vh;
+    overflow-x: auto;
+    opacity: 0.1;
+    background: url("../../../assets/images/under_login.jpg") no-repeat;
+}
 .menu_left{
 
     z-index: 3 !important;
     position: fixed;
     left: -250px;
     width: 300px;
-    top: 40px;
-    height: 95vh;
+    margin-top: 40px;
+    height: 100vh;
     overflow-x: hidden;
     overflow-y:overlay ;
     word-wrap: break-word;
@@ -107,7 +123,15 @@ a{
 
 
 .menu_left_open::-webkit-scrollbar{
+
     display: block;
+
+}
+.menu_left_open{
+
+    left: 0;
+    width: 250px;
+    transition: 0.2s;
 }
 .img_subscriptions{
     width: 150%;
@@ -136,11 +160,21 @@ a{
     }
 }
 .menu_left_inside{
+
     float: left;
     width: calc( 100% - 50px );
-    display: none;
+
+    position: relative;
+
+display: none;
+
+
 
 }
+
+
+
+
 .width_menu_right{
     width: 100%;
 
@@ -190,27 +224,13 @@ mat-icon{
     width: 50px;
     height: 100%;
 }
-.hide_mini_category{
+.hide_menu_right{
+    display: none;
+}
+.open_left_inside{
     display: block;
     width: 100%;
 }
-
-
-.under_menu_left{
-
-    z-index:2 !important;
-    position: fixed;
-    left: -250px;
-    width: 300px;
-    top: 40px;
-    height: 100vh;
-    overflow-x: auto;
-    opacity: 0.1;
-    background: url("../../../assets/images/under_login.jpg") no-repeat;
-}
-
-
-
 
 
 

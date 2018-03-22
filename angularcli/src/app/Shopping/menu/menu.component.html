@@ -1,12 +1,12 @@
 
 
-<div class="under_menu_left "></div>
+<div class="under_menu_left " [ngClass]="{'menu_left_open': productsService.status_menu }"></div>
 
-<div class="menu_left">
+<div class="menu_left" [ngClass]="{'menu_left_open': productsService.status_menu }">
 
-  <div class="width_menu_left">
+  <div class="width_menu_left" >
 
-    <div class="menu_left_inside">
+    <div class="menu_left_inside" [ngClass]="{'open_left_inside': productsService.status_menu }">
       <!--  show all category type -->
       <div class="top_in_menu border_bottom" >
 
@@ -297,11 +297,12 @@
         </button>
 
       </div>
+      <br><br><br>
 
     </div>
 
 
-    <div class="menu_right_inside">
+    <div class="menu_right_inside" [ngClass]="{'hide_menu_right' : productsService.status_menu }">
 
       <div class="width_menu_right border_bottom  ">
 
@@ -309,21 +310,19 @@
 
           <div class="button_menu_right " *ngFor="let top_menu of top_menus" (click)="click_top_menu(top_menu.id)">
 
-                            <span matTooltip="{{top_menu.name}}">
+            <span matTooltip="{{top_menu.name}}">
 
-                                <a   href="#" class="menu_mini_navigation menu_mini_navigation{{top_menu.id}}" id="{{top_menu.id}}">
+              <a   href="#" class="menu_mini_navigation menu_mini_navigation{{top_menu.id}}" id="{{top_menu.id}}">
 
-                                    <button mat-mini-fab class="button-fab-menu-right" >
+                <button mat-mini-fab class="button-fab-menu-right" >
 
-                                        <mat-icon >{{top_menu.icon}}</mat-icon>
+                  <mat-icon >{{top_menu.icon}}</mat-icon>
 
-                                    </button>
+                </button>
 
-                                </a>
+              </a>
 
-
-
-                            </span>
+            </span>
 
           </div>
 
@@ -443,6 +442,7 @@
         </div>
 
       </div>
+      <br><br><br>
 
     </div>
 

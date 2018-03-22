@@ -9,9 +9,7 @@
 
  import { DeviceDetectorService } from 'ngx-device-detector';
 
- import { HttpService } from '../services/http.service';
-
- import { HeaderService } from './header.service';
+ import { ProductService } from '../products/product.service'; // ProductServices extend HeaderServices that cartList and  wishList ....................
 
  import { Subscription } from 'rxjs/Subscription';
 
@@ -20,8 +18,6 @@
  import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
  import { SetRouterService } from '../services/set-router.service';
-
- import {Observable} from 'rxjs/Rx';
 
  declare var $:any;
 
@@ -61,6 +57,8 @@
 
      public active = 'active';
 
+     drop_Card = false;
+
      deviceInfo = null;
 
      timer_pointer_dropdown : Subscription;
@@ -77,13 +75,13 @@
      public button_right = [
 
          { id:1 , name:'sing' ,mat_tooltip:'User Panel', different_class:'',
-             icon :'glyphicon-user gh-header'
+             icon :'glyphicon-user gh-productsService'
          },
          { id:2 , name:'wish' , mat_tooltip:'WishList',  different_class:' notCloseDropdawnFavorite notClosepointerHeader',
              icon :'glyphicon-heart' , dropdown_class:'dropfavority' ,dropdown_body:'body_wish'
          },
          { id:3 , name:'card' ,mat_tooltip:'Your Cart',  different_class:'notClosepointerHeader notCloseDropdawnCard',
-             icon :'glyphicon-shopping-cart gh-header' , dropdown_class:'dropcard' ,dropdown_body:'body_cart'
+             icon :'glyphicon-shopping-cart gh-productsService' , dropdown_class:'dropcard' ,dropdown_body:'body_cart'
          },
          { id:4 , name:'more' ,mat_tooltip:'More Options',  different_class:'notClosepointerHeader notCloseDropdawnLanguage',
              icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'mat-tab-body-wrapper'
@@ -92,7 +90,7 @@
     ];
 
 
-    constructor(  private renderer : Renderer , private el : ElementRef, private header : HeaderService, private HttpService :HttpService , private deviceService: DeviceDetectorService, private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
+    constructor(  private renderer : Renderer , private el : ElementRef, private productsService : ProductService,  private deviceService: DeviceDetectorService, private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
 
         this.get_device_info();
 
@@ -114,27 +112,23 @@
     }
 
 
+     public check_button( button , i  ,event ){
 
+        this.productsService.button_properties.selectedIndex = i;
 
+        if( this.productsService.button_properties.disabled == false ) {
 
-
-    public check_button( button , i  ,event ){
-
-        this.header.button_properties.selectedIndex = i;
-
-        if( this.header.button_properties.disabled == false ) {
-
-            this.header.button_properties.disabled = true;
+            this.productsService.button_properties.disabled = true;
 
             setTimeout(()=>{    //<<<---    using ()=> syntax
 
-                this.header.button_properties.disabled = false;
+                this.productsService.button_properties.disabled = false;
 
             },300);
 
-            if (this.header.button_properties.active != button.id) {
+            if (this.productsService.button_properties.active != button.id) {
 
-                this.header.button_properties.active = button.id;
+                this.productsService.button_properties.active = button.id;
 
                 if (button.id == 1) {
 
@@ -142,26 +136,26 @@
 
                 } else {
 
-
-
                     this.find_position_dropdown(event,button.dropdown_class );
 
-                    this.show_dropdown_button( button.dropdown_class, button.dropdown_body, button.id);
 
-                    this.header.button_properties.pointer = button.id;
 
-                    this.find_position( this.header.button_properties.pointer );
+                    this.show_dropdown_button(button.dropdown_class, button.dropdown_body , button.id);
+
+                    this.productsService.button_properties.pointer = button.id;
+
+                    this.find_position( this.productsService.button_properties.pointer );
                 }
 
             } else {
 
 
 
-                this.hide_dropdown_button( button.dropdown_class, button.dropdown_body );
+                this.hide_dropdown_button( button.dropdown_class, button.dropdown_body  );
 
-                this.header.button_properties.active = 0;
+                this.productsService.button_properties.active = 0;
 
-                this.header.button_properties.selectedIndex = 'empty';
+                this.productsService.button_properties.selectedIndex = 'empty';
             }
         }
 
@@ -214,7 +208,7 @@
 
         $('.' + dropdown_class).css({top: '70px', opacity: '0.1'}); //  css style...
 
-        $('.' + dropdown_class).show().animate({ // animation effect show dropdown header......
+        $('.' + dropdown_class).show().animate({ // animation effect show dropdown productsService......
 
             top: '40px',
 
@@ -224,9 +218,9 @@
 
             $('.treguesi').css({display: 'block'}); // show pionter......
 
-            $('.write_icon_header').css('visibility', 'visible');
+            $('.write_icon_productsService').css('visibility', 'visible');
 
-            $('.write_icon_header'+id).css('visibility', 'hidden'); // remove write below icon in header
+            $('.write_icon_header'+id).css('visibility', 'hidden'); // remove write below icon in productsService
 
             $('.treguesi').css({display: 'block'});
 
@@ -250,7 +244,7 @@
 
         $('.' + dropdown_class).css({top: '40px', opacity: '1'}); // css style...
 
-        $('.' + dropdown_class).animate({ // animation effect hide dropdown header......
+        $('.' + dropdown_class).animate({ // animation effect hide dropdown productsService......
 
             top: '70',
 
@@ -270,135 +264,6 @@
 
     }
 
-
-
-
-    public  show_menu(){ //  function for show category menu and subsribe  when user click show menu call this function for show with animate ............................
-
-         $('.response_outer').removeClass(' exit_chat ');
-
-         $('.menu_right_inside').hide();
-
-         $('.menu_left_inside').addClass('hide_mini_category');
-
-         $('.menu_left').addClass('menu_left_open');
-
-         $('.containerright').addClass('containerright_new_openmenu');
-
-         $('.containerleft').addClass('containerleft_new_openmenu');
-
-         $('.response_outer').addClass(' active_menu ');
-
-         $('.listcategory').hide();
-
-         $('.closelist').show();
-
-         $('.menu_left , .under_menu_left').animate({
-
-             left: "0px",
-
-             width: '250px'
-
-         }, 50);
-
-         $('.radius_category').animate({
-
-             left: "200px",
-
-             borderTopRightRadius: "0px",
-
-             borderBottomRightRadius: "0px",
-
-         }, 100, function () {
-
-             $('.all_show_multiple_open').show();
-
-         });
-
-         $('.width_menu_left').css({top: '25px', opacity: '0.1'});
-
-         $('.width_menu_left').animate({
-
-             top: '0',
-
-             opacity: 1
-
-         }, 300);
-
-         $('.all_show_multiple').hide();
-
-
-    } // ............................................ end
-
-     public  hide_menu( ){ // function for hide category menu when user click for close it  call this function with animate ...........................
-
-         $('.menu_right_inside').show();
-
-         $('.menu_left_inside').removeClass('hide_mini_category');
-
-         $('.menu_left').removeClass('menu_left_open');
-
-         $('.listcategory').css("display","block");
-
-         $('.closelist').css("display","none");
-
-         $('.menu_left , .under_menu_left ,.searchsubscribe ,.loadersubscribe').animate({
-
-             left:"-250px",
-
-             width:'300px'
-
-         },50);
-
-         $('.radius_category').animate({
-
-             left:"0px",
-
-             borderTopRightRadius:"100px",
-
-             borderBottomRightRadius:"100px",
-
-             borderTopLeftRadius:"0px",
-
-             borderBottomLeftRadius:"0px"
-
-         },100,function(){
-
-             $('.all_show_multiple').show();
-
-
-         });
-
-         $('.all_show_multiple_open').hide();
-
-
-         $('.response_outer').addClass('exit_menu');
-
-         $('.response_outer').removeClass(' active_menu  ');
-
-         setTimeout(function(){
-
-             $('.containerright').removeClass('containerright_new_openmenu');
-
-             $('.containerleft').removeClass('containerleft_new_openmenu');
-
-             $('.response_inner').removeClass(' response_inner_new ');
-
-         },200);
-
-         $('.width_menu_left').css({top:'25px' ,opacity:'0.1'});
-
-         $('.width_menu_left').animate({
-
-             top:'0',
-
-             opacity:1
-
-         },300,function(){
-
-         });
-
-     } // ........................................................end
 
      show_chat(){ /// function show show element  for chat  when user click  on the chat call this function  and open div for chat with animate  ........................
 
@@ -467,19 +332,19 @@
 
      check_menu(){
 
-         if( this.header.status_menu == true ){
+         if( this.productsService.status_menu == true ){
 
-             this.hide_menu();
 
-             this.header.status_menu = !this.header.status_menu;
+
+             this.productsService.status_menu = !this.productsService.status_menu;
 
              return;
 
          }
 
-         this.show_menu();
 
-         this.header.status_menu = !this.header.status_menu;
+
+         this.productsService.status_menu = !this.productsService.status_menu;
 
          return;
 
@@ -487,11 +352,11 @@
 
      check_chat(){
 
-         if( this.header.status_chat == true ){
+         if( this.productsService.status_chat == true ){
 
              this.hide_chat();
 
-             this.header.status_chat = !this.header.status_chat;
+             this.productsService.status_chat = !this.productsService.status_chat;
 
              return;
 
@@ -499,7 +364,7 @@
 
          this.show_chat();
 
-         this.header.status_chat = !this.header.status_chat;
+         this.productsService.status_chat = !this.productsService.status_chat;
 
          return;
      }
@@ -518,30 +383,30 @@
 
 
 
-    delete_from_wishList(  ){
+    delete_from_wishList( ){
 
-        this.header.wish_properties.filter_wish='';
+        this.productsService.wish_properties.filter_wish='';
 
-        for( var i = 0 ; i < this.header.wish_properties.selected.length ; i++ ) { // remove from wish list products that are in selected
+        for( var i = 0 ; i < this.productsService.wish_properties.selected.length ; i++ ) { // remove from wish list products that are in selected
 
-            var index = this.header.wish_properties.wishList.indexOf( this.header.wish_properties.selected[i] );
+            var index = this.productsService.wish_properties.wishList.indexOf( this.productsService.wish_properties.selected[i] );
 
-            this.header.wish_properties.array_wishId.push( this.header.wish_properties.selected[i].product_id );
+            this.productsService.wish_properties.array_wishId.push( this.productsService.wish_properties.selected[i].product_id );
 
             if( index  > -1 ){
 
-                this.header.wish_properties.wishList.splice( index , 1 );
+                this.productsService.wish_properties.wishList.splice( index , 1 );
             }
 
         }
 
-        for( var i = 0 ; i < this.header.wish_properties.selected.length ; i ++ ){
+        for( var i = 0 ; i < this.productsService.wish_properties.selected.length ; i ++ ){
 
-            this.header.wish_properties.selected.splice( this.header.wish_properties.selected[i] , this.header.wish_properties.selected.length );
+            this.productsService.wish_properties.selected.splice( this.productsService.wish_properties.selected[i] , this.productsService.wish_properties.selected.length );
         }
 
 
-        this.Response = this.dataservices.Make_Request_InServer('delete_itemFromCookie', this.header.wish_properties.array_wishId);
+        this.Response = this.dataservices.Make_Request_InServer('delete_itemFromCookie', this.productsService.wish_properties.array_wishId);
 
         this.Response.then( response =>{
 
@@ -553,21 +418,21 @@
 
 
 
-        this.header.wish_properties.array_wishId = []; // empty ....
+        this.productsService.wish_properties.array_wishId = []; // empty ....
     }
 
 
     toggle_select_wish( item_wish ){
 
-        var index = this.header.wish_properties.selected.indexOf( item_wish );
+        var index = this.productsService.wish_properties.selected.indexOf( item_wish );
 
         if( index > -1 ){
 
-            this.header.wish_properties.selected.splice(index,1);
+            this.productsService.wish_properties.selected.splice(index,1);
 
         }else{
 
-            this.header.wish_properties.selected.push(item_wish);
+            this.productsService.wish_properties.selected.push(item_wish);
         }
 
         this.check_button_deleteProducts_fromwishlist();
@@ -578,7 +443,7 @@
 
     check_selected_wish( item_wish ){
 
-        if( this.header.wish_properties.selected.indexOf( item_wish ) > -1 ) {
+        if( this.productsService.wish_properties.selected.indexOf( item_wish ) > -1 ) {
 
             return true;
 
@@ -590,7 +455,7 @@
 
     getStyle_wish( item_wish ){
 
-        if( this.header.wish_properties.selected.indexOf( item_wish ) > -1 ) {
+        if( this.productsService.wish_properties.selected.indexOf( item_wish ) > -1 ) {
 
             return 'selected_wish';
 
@@ -603,29 +468,29 @@
 
     selecteAll_wishList( ){
 
-        if( this.header.wish_properties.selectedAll == true ){ // check if  are all wish list  selected  .........
+        if( this.productsService.wish_properties.selectedAll == true ){ // check if  are all wish list  selected  .........
 
-            for( var i = 0 ; i < this.header.wish_properties.selected.length ; i ++ ){
+            for( var i = 0 ; i < this.productsService.wish_properties.selected.length ; i ++ ){
 
-                this.header.wish_properties.selected.splice(this.header.wish_properties.selected[i] , this.header.wish_properties.selected.length);
+                this.productsService.wish_properties.selected.splice(this.productsService.wish_properties.selected[i] , this.productsService.wish_properties.selected.length);
             }
 
-            this.header.wish_properties.selectedAll = false;
+            this.productsService.wish_properties.selectedAll = false;
             return;
         }
 
-        for( var i = 0 ; i < this.header.wish_properties.wishList.length ; i ++ ){
+        for( var i = 0 ; i < this.productsService.wish_properties.wishList.length ; i ++ ){
 
-            if( this.header.wish_properties.selected.indexOf(this.header.wish_properties.wishList[i]) > -1 ){
+            if( this.productsService.wish_properties.selected.indexOf(this.productsService.wish_properties.wishList[i]) > -1 ){
 
                 continue // exist in selected_wishlist next .....
 
             }
 
-            this.header.wish_properties.selected.push( this.header.wish_properties.wishList[i] ); // push in selected_wishlist
+            this.productsService.wish_properties.selected.push( this.productsService.wish_properties.wishList[i] ); // push in selected_wishlist
         }
 
-        this.header.wish_properties.selectedAll = true;
+        this.productsService.wish_properties.selectedAll = true;
 
         this.check_button_deleteProducts_fromwishlist();
 
@@ -639,23 +504,23 @@
 
      add_from_wish_to_cart( selected_wish ){
 
-         this.header.cart_properties.array_cartId = [];
+         this.productsService.cart_properties.array_cartId = [];
 
          for( let i = 0 ; i  < selected_wish.length  ; i++  ){
 
-             this.header.cart_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
+             this.productsService.cart_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
 
-             this.header.cart_properties.cartList.unshift( selected_wish[i] ); // push wish product in wishList products
+             this.productsService.cart_properties.cartList.unshift( selected_wish[i] ); // push wish product in wishList products
 
-             this.header.cart_properties.array_cartId.push( selected_wish[i].product_id );
+             this.productsService.cart_properties.array_cartId.push( selected_wish[i].product_id );
 
          }
 
          this.delete_from_wishList();
 
-         this.dataservices.create_object_request( 'add_cartProducts', this.header.cart_properties.array_cartId  );
+         this.dataservices.create_object_request( 'add_cartProducts', this.productsService.cart_properties.array_cartId  );
 
-         this.HttpService.Http_Post( this.dataservices.object_request) // make request ......
+         this.dataservices.Http_Post( this.dataservices.object_request) // make request ......
 
              .subscribe( //  take success
 
@@ -674,14 +539,14 @@
 
     check_button_deleteProducts_fromwishlist(){
 
-        if( this.header.wish_properties.selected.length > 0 ){
+        if( this.productsService.wish_properties.selected.length > 0 ){
 
-            this.header.wish_properties.button = false;
+            this.productsService.wish_properties.button = false;
 
             return;
         }
 
-        this.header.wish_properties.button = true;
+        this.productsService.wish_properties.button = true;
 
     }
 
@@ -699,14 +564,14 @@
 
     show_hide_search_in_wishlist(){
 
-        return this.header.wish_properties.icon_search = !this.header.wish_properties.icon_search
+        return this.productsService.wish_properties.icon_search = !this.productsService.wish_properties.icon_search
 
     }
 
 
     check_show_hide_search_in_wishlist(){
 
-        if( this.header.wish_properties.icon_search == true ){
+        if( this.productsService.wish_properties.icon_search == true ){
 
             return 'show_search_in_wishlist';
         }

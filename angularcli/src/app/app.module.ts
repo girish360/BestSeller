@@ -33,6 +33,8 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 
 import { HeaderService } from './Shopping/header/header.service';
 
+import { ProductService } from './Shopping/products/product.service';
+
 // end services .....................................................................................
 
 
@@ -70,9 +72,11 @@ import { ProductDetailsComponent } from './Shopping/product-details/product-deta
 
 import { CaruselComponent } from './Shopping/carusel/carusel.component';
 
-import { MenuComponent } from './Shopping/menu/menu.component';
+import { MenuComponent } from './Shopping/menu/menu.component'; //  menu  left  in shopping
 
-import { ProductsComponent } from './Shopping/products/products.component';
+import { ProductsComponent } from './Shopping/products/products.component'; // show products for a category
+
+import { CategoriesComponent } from './Shopping/categories/categories.component'; // show categories with some products
 
 // end components ............................................................................................
 
@@ -110,10 +114,6 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
-import { CategoriesComponent } from './Shopping/categories/categories.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -185,13 +185,13 @@ import { CategoriesComponent } from './Shopping/categories/categories.component'
 
     AppComponent ,
     HttpService ,
-    VisitorsComponent ,
     DataService,
     EncryptDecryptService,
-    CaruselComponent,
     AuthService,
     SetRouterService,
-    HeaderService
+    HeaderService,
+    ProductService
+
 
   ],
 
