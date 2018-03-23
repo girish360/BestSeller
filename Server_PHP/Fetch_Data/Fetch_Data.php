@@ -92,35 +92,48 @@ class Fetch_Data extends connection {
     }
 
     public function fetch_data_join( $array_query ){
-
-        $row_nr = 0;
-
+        $this->Data_array = [];
         $output = array();
-
+        $tmp = array();
+        $first_table='';
         while ($row = $array_query['query']->fetch( PDO::FETCH_ASSOC ) ) {
-
             $table_nr = 0;
 
             foreach ( $array_query['fetch'] as $table => $columns ) {
-
                 $table_nr++;
 
-                foreach ( $columns as $key_column => $column ) {
+                if( $table_nr == 1 ){
 
-                    if( $table_nr > 1 ){
+                    $first_table = $table;
+                }
+                if( in_array( $row[$first_table.'_id'], $tmp ) ){
 
-                        $output[$row_nr][$table][$column] = $row[$column];
+                    foreach ( $columns as $key_column => $column ) {
 
-                    }else{
+                        if( $table_nr > 1 ){
 
-                        $output[$row_nr][$column] = $row[$column];
+                            $output[$row[$first_table.'_id']][$table][$row[$table.'_id']][$column] = $row[$column];
+                        }
                     }
                 }
-            }
+                else{
 
-            $row_nr++;
+                    foreach ( $columns as $key_column => $column ) {
+
+                        if( $table_nr > 1 ){
+
+                            $output[$row[$first_table.'_id']][$table][$row[$table.'_id']][$column] = $row[$column];
+                        }else{
+                            $output[$row[$first_table.'_id']][$column] = $row[$column];
+
+                            array_push( $tmp, $row[$first_table.'_id'] );
+                        }
+                    }
+                }
+
+            }
         }
-        return $output;  // return array ...........
+        return  $output;  // return array ...........
     }
 
     public function  convert_to_array( $data ){

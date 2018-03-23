@@ -9,7 +9,7 @@ import { DataService } from '../services/data.service';
 
 export class ProductService extends HeaderService {
 
-  public  products:any = [];
+  public products:any = [];
 
 
   constructor(

@@ -16,7 +16,7 @@ export class HttpService {
 
 
 
-  Http_Get( data ): Observable<any>{
+  Http_Get( data ): Observable<any[]>{
 
     const headers = new Headers();
 
@@ -33,7 +33,7 @@ export class HttpService {
 
   }
 
-  Http_Post( data ): Observable<any>{  // method that make popst request in server  and return response...........
+  Http_Post( data ): Observable<any[]>{  // method that make popst request in server  and return response...........
 
     const headers = new Headers();
 

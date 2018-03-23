@@ -8,16 +8,18 @@ class Products extends Fetch_Data {
 
     public $products_limit = array();
 
-    public $pages_details;
+    public $pages_details = array();
 
     public $total_pages;
+
+    private $product_details = array();
 
     private $table_name = 'product';
 
     private $products_columns = array('id','title','image_id','category_id','company_id','price','quantity','unit_stock','date','image' ,'in_cartList' ,'in_wishList');
 
     public function getproducts( $object_details ){  // get all products .....................................
-
+        $this->products_limit = [];
         $array_data = self::convert_to_array( $object_details ); // object to array
 
         if( $array_data['type'] == 'default' ){ // home page products ...................................... .....
@@ -70,7 +72,12 @@ class Products extends Fetch_Data {
 
                 if( $res['query']->rowCount() >= 1 ){
 
-                    $this->products_limit  = self::fetch_data_join( $res );
+                    $data  = self::fetch_data_join( $res );
+
+                    foreach ( $data as $ket => $value ){
+
+                        $this->products_limit[] = $value;
+                    }
 
                     self::getpages(  $count );
 
@@ -91,6 +98,82 @@ class Products extends Fetch_Data {
         else{ // category products ...............................................................................
 
         }
+    }
+
+    public function get_product_details( $status , $product_id ){
+
+        $select_and_tables = array(  // array with t6ables and respective columns
+
+            //table
+            "product"=>array(
+                // columns table
+                'product.id','product.title','product.company_id'
+            ),
+            // table
+
+            "company"=>array(
+                //colums table
+                'company.id','company.name'
+            ),
+             //  table
+            "image_product"=>array(
+                //columns table
+                'image_product.id','image_product.image','image_product.product_id'
+            )
+            // more table and columns ............
+        );
+
+        $where = 'product.company_id = company.id  AND image_product.product_id = product.id AND product.id = "'.$product_id.'"';
+
+        $query = self::select_join( $select_and_tables , $where );
+
+        if( $query['query']->rowCount() > 0 ) {
+
+            $this->product_details = self::fetch_data_join( $query );
+
+            return  self::json_data(
+
+                $status,
+
+                array('product'=> $this->product_details)
+            );
+
+
+        }else { //  dont have image in image_products this product ............
+
+            $select_and_tables = array(  // array with t6ables and respective columns
+
+                //table
+                "product" => array(
+                    // columns table
+                    'product.id', 'product.title', 'product.company_id'
+                ),
+                // table
+
+                "company" => array(
+                    //colums table
+                    'company.id', 'company.name'
+                ),
+                // more table and columns ............
+            );
+
+            $where = 'product.company_id = company.id  AND product.id = "'.$product_id.'"';
+
+            $query = self::select_join($select_and_tables, $where);
+
+            if ($query['query']->rowCount() > 0) {
+
+                $this->product_details = self::fetch_data_join( $query );
+
+                return  self::json_data(
+
+                    $status,
+
+                    array('product'=> $this->product_details)
+                );
+            }
+        }
+
     }
 
     public function get_pages_details( $total_number , $number_click , $type_link ){
