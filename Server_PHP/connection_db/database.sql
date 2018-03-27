@@ -11,6 +11,7 @@ create table company (
     `date`  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `activ_pasiv` int NOT NULL DEFAULT 0,
     `phone_number` int(15),
+    `shipping` varchar(250),
     `image_slide_id` int(11),
     `type` varchar(10),
     `confirm_account` int(11),
@@ -80,7 +81,7 @@ create table category(
 
 
 
-create table producte(
+create table product(
 
   `id` int not null primary key AUTO_INCREMENT,
   `title` varchar(100),
@@ -199,15 +200,15 @@ insert into sub_category(name,image,category_id)values('Vetura','tractor.png','1
                                                                           ('biycles','tractor.png','6');
 
 
-insert into company (name,email,username,password,phone_number,image,street_adress,city,state,language)values
-  ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian'),
-  ('New Phone here','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian'),
-    ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian'),
-  ('New Car and old Car','ele@gmail.com','newklodian','klodian12','0683834233','car.png','jordan misja','tirane','albanian','albanian'),
-    ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian'),
-  ('New Phone here','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian'),
-    ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian'),
-  ('New Phone here','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian');
+insert into company (name,email,username,password,phone_number,image,street_adress,city,state,language,shipping)values
+  ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','World'),
+  ('New Phone here','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian','Albania'),
+    ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','Albania'),
+  ('New Car and old Car','ele@gmail.com','newklodian','klodian12','0683834233','car.png','jordan misja','tirane','albanian','albanian','Albania'),
+    ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','Albania'),
+  ('New Phone here','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian','Albania'),
+    ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','Albania'),
+  ('New Phone here','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian','Albania');
 
 
 insert into follower (company_id,user_id)values('4','1'),('5','1'),('6','1');
@@ -215,13 +216,13 @@ insert into follower (company_id,user_id)values('4','1'),('5','1'),('6','1');
 insert into product ( title , description , image_id , category_id , company_id , price , unit_stock , image )
 values('benz mercedez','shitet per arsye mos perdorimi','1','1','1','500','5' ,'1.jpg'),
       ('Iphone 5 ','gjendje perfecte','2','1','1','400','2','2.jpg'),
-      ('Iphone 6 ','gjendje perfecte','3','1','1','550','7','3.jpg'),
-      ('Iphone 8 ','gjendje perfecte','4','2','1','400','2','4.jpg'),
-      ('Iphone 9 ','gjendje perfecte','5','2','1','200','2','5.jpg'),
+      ('Iphone 6 ','gjendje perfecte','3','1','2','550','7','3.jpg'),
+      ('Iphone 8 ','gjendje perfecte','4','2','3','400','2','4.jpg'),
+      ('Iphone 9 ','gjendje perfecte','5','2','4','200','2','5.jpg'),
       ('Iphone 10 ','gjendje perfecte','6','2','1','800','10','2.jpg'),
-      ('Iphone 11 ','gjendje perfecte','7','3','1','1000','2','3.jpg'),
-      ('Iphone 12 ','gjendje perfecte','8','3','1','400','2','1.jpg'),
-      ('Iphone 13 ','gjendje perfecte','9','3','1','400','2','5.jpg');
+      ('Iphone 11 ','gjendje perfecte','7','3','2','1000','2','3.jpg'),
+      ('Iphone 12 ','gjendje perfecte','8','3','3','400','2','1.jpg'),
+      ('Iphone 13 ','gjendje perfecte','9','3','5','400','2','5.jpg');
 
 insert into user ( first_name,last_name,username,email,gener,local,picture,phone,language)
 values('klodian','shaba','kshaba','klodian.tik@gmail.com','male','alabnia','klo.jpg','0683834233','albanian'),

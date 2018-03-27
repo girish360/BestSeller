@@ -65,30 +65,32 @@ class Fetch_Data extends connection {
     }
 
     public function fetch_data_cookie( $array_tables, $array_ID  ){
-        $nr = 0;
 
         $this->Data_array = [];
+        $where='';
 
         foreach ( $array_ID as $array_key => $array ) {
 
-            $where = 'product.id="'.$array->id.'" AND product.company_id = company.id';
+            $where.= 'product.id='.$array->id.' AND product.company_id = company.id OR ';
 
-            $res = self::select_join( $array_tables, $where );
-
-            if ( $res['query']->rowCount() >= 1 ) {
-
-                $array_data = self::fetch_data_join( $res );
-
-                foreach ( $array_data as $key => $value ) {
-
-                    array_push( $this->Data_array, $value );
-
-                }
-            }
         }
 
-        return $this->Data_array; //  return array
+        $where = substr($where , 0 , strlen($where)-3);
 
+        $res = self::select_join( $array_tables, $where );
+
+        if ( $res['query']->rowCount() >= 1 ) {
+
+            $data  = self::fetch_data_join_one( $res );
+
+            foreach ( $data as $ket => $value ){
+
+                $this->Data_array[] = $value;
+            }
+
+        }
+
+        return   $this->Data_array ;
     }
 
     public function fetch_data_join( $array_query ){
@@ -123,6 +125,51 @@ class Fetch_Data extends connection {
                         if( $table_nr > 1 ){
 
                             $output[$row[$first_table.'_id']][$table][$row[$table.'_id']][$column] = $row[$column];
+                        }else{
+                            $output[$row[$first_table.'_id']][$column] = $row[$column];
+
+                            array_push( $tmp, $row[$first_table.'_id'] );
+                        }
+                    }
+                }
+
+            }
+        }
+        return  $output;  // return array ...........
+    }
+
+    public function fetch_data_join_one( $array_query ){
+        $this->Data_array = [];
+        $output = array();
+        $tmp = array();
+        $first_table='';
+        while ($row = $array_query['query']->fetch( PDO::FETCH_ASSOC ) ) {
+            $table_nr = 0;
+
+            foreach ( $array_query['fetch'] as $table => $columns ) {
+                $table_nr++;
+
+                if( $table_nr == 1 ){
+
+                    $first_table = $table;
+                }
+                if( in_array( $row[$first_table.'_id'], $tmp ) ){
+
+                    foreach ( $columns as $key_column => $column ) {
+
+                        if( $table_nr > 1 ){
+
+                            $output[$row[$first_table.'_id']][$table][$column] = $row[$column];
+                        }
+                    }
+                }
+                else{
+
+                    foreach ( $columns as $key_column => $column ) {
+
+                        if( $table_nr > 1 ){
+
+                            $output[$row[$first_table.'_id']][$table][$column] = $row[$column];
                         }else{
                             $output[$row[$first_table.'_id']][$column] = $row[$column];
 

@@ -1,7 +1,7 @@
 
 <div class="header">
 
-    <div class="response_outer bottom_header "  [ngClass]="{'active_menu':productsService.status_menu }">
+    <div class="response_outer bottom_header "  [ngClass]="{'active_menu':productsService.menu_subject.getValue()}">
 
         <div class="top_menu">  <!-- this is open category  -->
 
@@ -9,7 +9,7 @@
 
                 <a href="#">
 
-                    <div class="radius_category" id="laptopscreen" (click)="check_menu()" [ngClass]="{'open_menu':productsService.status_menu }">
+                    <div class="radius_category" id="laptopscreen" (click)="check_menu()" [ngClass]="{'open_menu':productsService.menu_subject.getValue() }">
 
                      <span  matTooltip="Category">
 
@@ -60,7 +60,7 @@
 
                         <div class="search notCloseDropdawnSearch">
 
-                            <input type="text" class="kerkim"  name="search" placeholder="{{dataservices.language.searchproducts}}">
+                            <input type="text" class="kerkim"  name="search" [(ngModel)]="typing_search" placeholder="{{dataservices.language.searchproducts}}">
 
                             <a href="#">
 
@@ -82,6 +82,11 @@
 
                             </a>
 
+                            {{typing_search}}
+
+                            {{ productsService.menu | async }}
+
+
                         </div>
 
                     </span>
@@ -90,7 +95,7 @@
 
                 <span class="bottom_header_right">
 
-                    <a  href="#" *ngFor=" let button of button_right; let i = index" matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button ,i , $event)" >
+                         <a  href="#" *ngFor=" let button of button_right  ; let i = index " matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button ,i , $event)" >
 
                         <div class="menu3 button{{button.id}} {{button.different_class}}">
 
@@ -119,6 +124,7 @@
                         </div>
 
                     </a>
+
 
                 </span>
 

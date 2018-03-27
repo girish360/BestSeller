@@ -22,12 +22,16 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
     private subscription : Subscription;
 
+    cryp :any;
+
 
     constructor( private crypto : EncryptDecryptService , private route: ActivatedRoute , private router: Router  ) {
 
         this.subscription = this.route.params.subscribe( params => {
 
             this.company_id = crypto.decrypt_AES( params['name'] , crypto.secret_key_encrypt_id );
+
+            this.cryp = crypto.encryp_AES(1,crypto.secret_key_encrypt_id);
 
         });
 

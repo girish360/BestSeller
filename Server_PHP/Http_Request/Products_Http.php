@@ -29,8 +29,9 @@ if( $status == 'add_cartProduct' ){ // request to add in wishList ........
 if( $status == 'product_details' ){ // request to add in wishList ........
 
 
+    $decrypted = $Object['Crypto']->decrypt_in_server($data_from_client);
 
-    echo $Object['Products']->get_product_details( $status , $data_from_client );
+    echo $Object['Products']->get_product_details( $status ,  $decrypted);
 
 
 }

@@ -202,6 +202,8 @@ a{
     border-bottom-right-radius: 0;
 
 
+
+
 }
 
 .top_menu{
@@ -341,13 +343,13 @@ a{
 
     display: inline-block;
     width: 0px;
-    transition: 1s;
+    transition: 0.3s;
     visibility: hidden;
 
 }
 .new_icon_header_write{
     width: 105px;
-    transition:1s;
+    transition:0.3s;
     visibility: visible;
 }
 
@@ -1227,6 +1229,8 @@ input[type='radio'] {
         left: 0;
 
         width: calc(100% - 250px);
+
+
     }
 
 

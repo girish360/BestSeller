@@ -73,7 +73,6 @@ class Header extends Cookie {
 
         if( is_array($data) ){
 
-
             $result = self::save_coockie('cartList' , $data);
 
             return self::json_data( $status , $result );  // return result ......

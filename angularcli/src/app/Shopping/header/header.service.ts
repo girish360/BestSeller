@@ -1,9 +1,19 @@
-import { Injectable,OnInit } from '@angular/core';
+import { Injectable,OnInit,ChangeDetectorRef,Input, } from '@angular/core';
 
 import { DataService } from '../services/data.service';
 
+import{BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/observable/interval';
+
+import {Observable} from 'rxjs/Observable';
+
+import{Subject} from 'rxjs/Subject';
+
+
+
+
+import 'rxjs/Rx';
 
 
 
@@ -12,9 +22,7 @@ import 'rxjs/add/observable/interval';
 
 export class HeaderService  implements OnInit {
 
-  constructor(  protected dataservices : DataService ) {
-
-
+  constructor( protected dataservices : DataService ) {
 
     let wishlist_and_cartList = this.dataservices.Make_Request_InServer( 'get_wishList_cartList', 'wish' );
 
@@ -24,21 +32,32 @@ export class HeaderService  implements OnInit {
 
         this.wish_properties.wishList = response['wishList'];
 
+        this.subject.next( response['cartList'] );
+
+        this.menu_subject.next( false );
+
         this.set_quantity_in_cartList( response['cookie_cartList'] , response['cartList'] );
 
         this.total_items_and_price();
 
       }
-
-
-
-
     });
 
-
-
-
   }
+
+
+  private subject = new Subject();
+
+
+
+
+  public menu_subject = new BehaviorSubject<boolean>(false);
+
+  status_menu = this.menu_subject.asObservable();
+
+  cart = this.subject.asObservable();
+
+
 
   ngOnInit(){
 
@@ -46,18 +65,16 @@ export class HeaderService  implements OnInit {
 
   private Response :any;
 
-  public status_menu = false;
-
   public status_chat = false;
 
-  public cart_properties:any = {
+  public cart_properties:any= {
 
     button:true,
     icon_search: false,
     array_cartId : [],
     filter_cart: '',
     selectedAll : false,
-    cartList : [],
+    cartList :this.subject.asObservable(),
     cartCookie : [],
     wish_to_cart : [],
     add_in_server : false,
@@ -148,8 +165,6 @@ export class HeaderService  implements OnInit {
 
                 this.Response = data['data'];
 
-                console.log(data['data']);
-
               }
 
             },
@@ -220,6 +235,7 @@ export class HeaderService  implements OnInit {
 
           );
       }
+
   }
 
   add_cart_list( product ){  // function to add product in wishList
@@ -243,6 +259,8 @@ export class HeaderService  implements OnInit {
 
       this.cart_properties.array_cartId.unshift( {'id': product.product_id ,'quantity':product.product_quantity} );
 
+      console.log( this.cart_properties.array_cartId);
+
       this.cart_properties.cartList.unshift( product ); // push wish product in wishList products
 
       this.total_items_and_price();
@@ -259,6 +277,8 @@ export class HeaderService  implements OnInit {
 
                   this.Response = data['data'];
 
+                  console.log(data['data']);
+
                 }
 
               },
@@ -266,6 +286,12 @@ export class HeaderService  implements OnInit {
 
           );
     }
+
+
+    this.subject.next(this.cart_properties.cartList);
+
+
+
   }
 
 
@@ -544,8 +570,6 @@ export class HeaderService  implements OnInit {
       }
 
       this.total_items_and_price();
-
-      this.dataservices.update_cartList(this.cart_properties.cartList); // change wish list in services   that get this  when change component with router outlet
 
       this.dataservices.create_object_request('add_cartProducts', this.cart_properties.array_cartId);
 

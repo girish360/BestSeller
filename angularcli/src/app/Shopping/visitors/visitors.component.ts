@@ -1,4 +1,4 @@
-import { Component, OnInit,Renderer ,ElementRef ,AfterViewInit } from '@angular/core';
+import { Component,DoCheck,OnInit,Renderer ,ElementRef ,AfterViewInit } from '@angular/core';
 
 declare var $:any;
 
@@ -15,13 +15,22 @@ import { ProductService } from '../products/product.service'; // ProductServices
   styleUrls: ['./visitors.component.css']
 
 })
-export class VisitorsComponent implements OnInit , AfterViewInit {
+export class VisitorsComponent implements OnInit ,DoCheck {
 
-  constructor( private productsService :ProductService ,  private elementRef : ElementRef, private renderer : Renderer,  private dataservices: DataService  ) {
+  constructor(
+      private productsService :ProductService ,
+      private elementRef : ElementRef,
+      private renderer : Renderer,
+      private dataservices: DataService
+  ) {
 
     this.get_Language = this.dataservices.language;
 
   }
+  ngDoCheck() {
+
+  }
+
 
   public get_Language:object={};
 

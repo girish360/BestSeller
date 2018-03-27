@@ -53,7 +53,7 @@ class Language extends Cookie {
                 $language['emptycat']='Category empty';
                 $language['add_wishlist']='WishList';
                 $language['header']="EN";
-                $language['sing']="Sing In";
+                $language['sign']="Sign In";
                 $language['wish']="WishList";
                 $language['card']="Cart";
                 $language['more']="More";
@@ -87,7 +87,7 @@ class Language extends Cookie {
                 $language['emptycat']='Category Bosh';
                 $language['add_wishlist']='Preferencat';
                 $language['header']="AL";
-                $language['sing']="Hyni";
+                $language['sign']="Hyni";
                 $language['wish']="Preferencat";
                 $language['card']="Karta";
                 $language['more']="Me shum";
@@ -112,7 +112,7 @@ class Language extends Cookie {
                 $language['chooselanguage']=$lang;
                 $language['Active_language']="Italy";
                 $language['Active_language_image']="italy.png";
-                $language['sing']="Sing In";
+                $language['sign']="Sign In";
                 $language['wish']="WishList";
                 $language['categorywrite']='Kategorit it';
                 $language['card']="Card";
@@ -128,8 +128,6 @@ class Language extends Cookie {
 
 
                 break;
-
-
 
         }
 

@@ -72,7 +72,7 @@ class Products extends Fetch_Data {
 
                 if( $res['query']->rowCount() >= 1 ){
 
-                    $data  = self::fetch_data_join( $res );
+                    $data  = self::fetch_data_join_one( $res );
 
                     foreach ( $data as $ket => $value ){
 
@@ -107,13 +107,13 @@ class Products extends Fetch_Data {
             //table
             "product"=>array(
                 // columns table
-                'product.id','product.title','product.company_id'
+                'product.id','product.title','product.company_id','product.image'
             ),
             // table
 
             "company"=>array(
                 //colums table
-                'company.id','company.name'
+                'company.id','company.name','company.shipping'
             ),
              //  table
             "image_product"=>array(
@@ -129,15 +129,39 @@ class Products extends Fetch_Data {
 
         if( $query['query']->rowCount() > 0 ) {
 
-            $this->product_details = self::fetch_data_join( $query );
+            $data = self::fetch_data_join( $query );
 
-            return  self::json_data(
+            $tmp_image = array();
+
+            $tmp_product = array();
+
+            $tmp_company = array();
+
+            foreach ( $data as $key => $value ){  // convert image into array .....................
+
+                foreach ( $value['image_product'] as $key_image => $image ){
+
+                    $tmp_image[] = $image;
+                }
+                foreach ( $value['company'] as $key_company => $company ){
+
+                    $tmp_company = $company;
+                }
+                $tmp_product['product'] = $value;
+
+                $tmp_product['product']['company'] = $tmp_company;
+
+                $tmp_product['product']['image_product'] = $tmp_image;
+            }//.....................
+
+            $this->product_details =  $tmp_product;
+
+            return  self::json_data( // return result into json .............................
 
                 $status,
 
-                array('product'=> $this->product_details)
+               $this->product_details
             );
-
 
         }else { //  dont have image in image_products this product ............
 
@@ -146,13 +170,13 @@ class Products extends Fetch_Data {
                 //table
                 "product" => array(
                     // columns table
-                    'product.id', 'product.title', 'product.company_id'
+                    'product.id', 'product.title', 'product.company_id','product.image'
                 ),
                 // table
 
                 "company" => array(
                     //colums table
-                    'company.id', 'company.name'
+                    'company.id', 'company.name','company.shipping'
                 ),
                 // more table and columns ............
             );
@@ -163,13 +187,37 @@ class Products extends Fetch_Data {
 
             if ($query['query']->rowCount() > 0) {
 
-                $this->product_details = self::fetch_data_join( $query );
+                $data = self::fetch_data_join( $query );
+
+                $tmp_image = array();
+
+                $tmp_product = array();
+
+                $tmp_company = array();
+
+                foreach ( $data as $key => $value ){  // convert image into array .....................
+
+                    foreach ( $value['company'] as $key_company => $company ){
+
+                        $tmp_company = $company;
+                    }
+
+                    $tmp_product['product'] = $value;
+
+                    $tmp_product['product']['company'] = $tmp_company;
+
+                    $tmp_product['product']['image_product'] = $tmp_image; //  empty image ........... length 0
+                }//.....................
+
+
+
+                $this->product_details =  $tmp_product;
 
                 return  self::json_data(
 
                     $status,
 
-                    array('product'=> $this->product_details)
+                    $this->product_details
                 );
             }
         }

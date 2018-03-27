@@ -28,19 +28,7 @@ export class AppComponent implements OnInit{
 
                 var scroll_top = $(this).scrollTop();
 
-                if ( scroll_top >= 60  ) {
 
-                    $('.icon_header_write').addClass('new_icon_header_write');
-
-                    top_scroll = scroll_top;
-
-                } else {
-
-
-                    $('.icon_header_write').removeClass('new_icon_header_write');
-
-                    top_scroll = scroll_top;
-                }
 
                 if( scroll_top >= 380 ){ // scroll for option_products ................
 
@@ -48,7 +36,7 @@ export class AppComponent implements OnInit{
 
                         $('.option_products').addClass('option_products_fixed_show');
 
-                        $('.option_products_fixed_show').hide().slideDown();
+                        $('.option_products_fixed_show').hide().slideDown('fast');
                     }
 
                     scroll_status = true;
@@ -56,7 +44,7 @@ export class AppComponent implements OnInit{
                 }else{
                     if( scroll_status == true ) {
 
-                        $('.option_products').hide().slideDown();
+                        $('.option_products').hide().slideDown('fast');
 
 
                         $('.option_products').removeClass('option_products_fixed_show');

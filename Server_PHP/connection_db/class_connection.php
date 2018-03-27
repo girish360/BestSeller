@@ -310,7 +310,7 @@ class  connection { // start connection class ...
 
         $select = self::select_columns($array_select);
 
-        $query = "SELECT $select FROM `$table_name` WHERE $where ";
+        $query = "SELECT $select FROM `$table_name` WHERE $where";
 
         $query = $this->db->prepare($query);
 
@@ -356,7 +356,7 @@ class  connection { // start connection class ...
 
         $result_Where_columns = substr( $where_columns, 0,strlen( $where_columns )-2 ); // all columnd that are in where ........
 
-        return $result_Where_columns ;
+        return $result_Where_columns;
 
     }
 

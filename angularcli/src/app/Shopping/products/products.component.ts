@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter, DoCheck,  ChangeDetectorRef , OnDestroy } from '@angular/core';
+import {Component, OnInit,OnChanges, Input, Output, EventEmitter, DoCheck,  ChangeDetectorRef , OnDestroy,ChangeDetectionStrategy } from '@angular/core';
 
 import 'rxjs/Rx'
 
@@ -20,6 +20,7 @@ import { ProductService } from './product.service'; // ProductServices extend He
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 
   animations: [
     trigger('products_animations', [
@@ -34,7 +35,9 @@ import { ProductService } from './product.service'; // ProductServices extend He
     ])
   ]
 })
-export class ProductsComponent   implements OnInit  {
+export class ProductsComponent   implements OnInit   {
+
+
 
   public Response:any;
 
@@ -64,10 +67,11 @@ export class ProductsComponent   implements OnInit  {
       private productsService : ProductService,
       private setRouter: SetRouterService,
       private dataservices: DataService ,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private cd : ChangeDetectorRef,
+
 
   ) {
-
 
     this.dataservices.update_loader(true);
 
@@ -89,6 +93,8 @@ export class ProductsComponent   implements OnInit  {
 
                 this.dataservices.update_loader(false);
 
+                this.cd.markForCheck();
+
               }
             },
             error => console.log( error['data'] ) // take error .....
@@ -96,6 +102,24 @@ export class ProductsComponent   implements OnInit  {
         );
 
 
+
+  }
+
+  co(){
+    console.log('ok');
+  }
+
+
+
+
+
+
+
+  index(index , item){
+
+    if(!item) return null;
+
+    return item.product_id;
   }
 
 
@@ -155,6 +179,8 @@ export class ProductsComponent   implements OnInit  {
 
     this.dataservices.body_loader = true;
 
+    this.my_products.unsubscribe();
+
     this.dataservices.create_object_request( 'products', this.send_data_products  );
 
     this.my_products = this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
@@ -170,6 +196,8 @@ export class ProductsComponent   implements OnInit  {
                 this.build_pages_link( data['data']['pages_details']);
 
                 this.dataservices.update_loader(false);
+
+                this.cd.markForCheck();
 
               }
             },

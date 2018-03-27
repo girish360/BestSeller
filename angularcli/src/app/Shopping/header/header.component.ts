@@ -1,5 +1,5 @@
 
- import { Component, OnInit ,Input , Output , EventEmitter,DoCheck ,AfterViewInit  ,ElementRef, Renderer } from '@angular/core';
+ import { Component, OnInit ,Input ,DoCheck,OnChanges,ChangeDetectorRef,ChangeDetectionStrategy, Output , EventEmitter  ,ElementRef, Renderer } from '@angular/core';
 
  import { Injectable } from '@angular/core';
 
@@ -19,6 +19,10 @@
 
  import { SetRouterService } from '../services/set-router.service';
 
+ import {Observable} from 'rxjs/Observable';
+
+ import 'rxjs/Rx';
+
  declare var $:any;
 
  @Injectable()
@@ -30,6 +34,8 @@
     templateUrl: './header.component.html' ,
 
     styleUrls: ['./header.component.css'],
+
+     changeDetection :ChangeDetectionStrategy.OnPush,
 
      animations: [
         trigger('wishList_animations', [
@@ -51,7 +57,7 @@
     ]
  })
 
- export class HeaderComponent implements OnInit ,DoCheck ,AfterViewInit  {
+ export class HeaderComponent implements OnInit   {
 
      private Response;
 
@@ -60,6 +66,8 @@
      drop_Card = false;
 
      deviceInfo = null;
+
+     public typing_search:any;
 
      timer_pointer_dropdown : Subscription;
 
@@ -74,7 +82,7 @@
 
      public button_right = [
 
-         { id:1 , name:'sing' ,mat_tooltip:'User Panel', different_class:'',
+         { id:1 , name:'sign' ,mat_tooltip:'User Panel', different_class:'',
              icon :'glyphicon-user gh-productsService'
          },
          { id:2 , name:'wish' , mat_tooltip:'WishList',  different_class:' notCloseDropdawnFavorite notClosepointerHeader',
@@ -90,19 +98,34 @@
     ];
 
 
-    constructor(  private renderer : Renderer , private el : ElementRef, private productsService : ProductService,  private deviceService: DeviceDetectorService, private dataservices : DataService , private route : ActivatedRoute , private setRouter :SetRouterService ) {
+    constructor(
+        private renderer : Renderer ,
+        private el : ElementRef,
+        private productsService : ProductService,
+        private deviceService: DeviceDetectorService,
+        private dataservices : DataService ,
+        private route : ActivatedRoute ,
+        private setRouter :SetRouterService,
+        private cd: ChangeDetectorRef
+
+
+
+    ) {
 
         this.get_device_info();
 
     }
 
-    ngDoCheck(){
+     ngOnInit() {
+
+     }
 
 
-    }
+     index(index , item){
 
-    ngAfterViewInit() {
+        if(!item) return null;
 
+        return item.id;
     }
 
     public get_device_info() {
@@ -332,19 +355,14 @@
 
      check_menu(){
 
-         if( this.productsService.status_menu == true ){
+         if( this.productsService.menu_subject.getValue() == false ){
 
-
-
-             this.productsService.status_menu = !this.productsService.status_menu;
+             this.productsService.menu_subject.next(true);
 
              return;
-
          }
 
-
-
-         this.productsService.status_menu = !this.productsService.status_menu;
+         this.productsService.menu_subject.next(false);
 
          return;
 
@@ -378,6 +396,8 @@
     update_language( new_language ){ // change language to services file that  make share language to all components  .....
 
         this.dataservices.update_language( new_language );
+
+        this.cd.markForCheck();
 
     }
 
@@ -582,9 +602,6 @@
 
 
 
-     ngOnInit() {
 
-
-     }
 
  }

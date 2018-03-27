@@ -1,4 +1,15 @@
-<p>
 
-  Fetch  product_details with id  ={{product_id}}
-</p>
+<div>
+  {{product_details.product_id}}
+</div>
+
+<div *ngFor="let image of product_details['image_product']" class="">
+
+{{image.image_product_image}}
+
+</div>
+<div>
+
+  {{ company.company_shipping }}
+
+</div>

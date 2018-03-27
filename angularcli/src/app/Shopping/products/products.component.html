@@ -1,8 +1,6 @@
 
 <div class="component-animation"> <!--  this component is inside this div  ...................................................... -->
 
-
-
     <div class="option_products ">  <!--  Options products pagination ,  select  ...................................................... -->
 
     <div class="inside_option_products">
@@ -16,7 +14,7 @@
 
                  <div class="pagination_products">
 
-                     <span class="page_products" *ngFor="let page of pages_link">
+                     <span class="page_products" *ngFor="let page of pages_link ">
 
                          <ng-container *ngIf="page.icon == false ; else notNumber">
 
@@ -58,7 +56,7 @@
 
   <div class="all_prod"> <!--  start div with products ...................................................... -->
 
-      <div class="width_products  products-animation " *ngFor="let product of productsService.products ; let i = index"  [ngClass]="{ 'width_products_open_menu':productsService.status_menu  }" >
+      <div class="width_products component-animation   " *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':productsService.status_menu | async  }" >
 
           <span class="each_width_product" >
 
@@ -108,7 +106,7 @@
 
                   <span matTooltip="Add to your card"  class="notCloseDropdawnCard notCloseDropdawnFavorite " (click)="product.product_in_cartList='true'; productsService.add_cart_list( product )">
 
-                      <div class="button_footer_products">
+                      <div class="button_footer_products">0
 
                           <span *ngIf="product.product_in_cartList=='false'" class="glyphicon glyphicon-plus icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" ></span>
 
@@ -152,43 +150,14 @@
 
           </span>
 
+
+
       </div>
 
   </div>
 
 </div>
 
-<style type="text/css">
-  /* styles unrelated to zoom */
-  * { border:0; margin:0; padding:0; }
-  p { position:absolute; top:3px; right:28px; color:white; font:bold 13px/1 sans-serif;}
-
-  /* these styles are for the demo, but are not required for the plugin */
-  .zoom {
-    display:inline-block;
-    position: relative;
-    width: 100%;
-
-  }
-
-  /* magnifying glass icon */
-  .zoom:after {
-    content:'';
-    display:block;
-    width:33px;
-    height:33px;
-    position:absolute;
-    top:0;
-    right:0;
-
-  }
-
-  .zoom img {
-    display: block;
-  }
-
-  .zoom img::selection { background-color: transparent; }
-</style>
 
 
 

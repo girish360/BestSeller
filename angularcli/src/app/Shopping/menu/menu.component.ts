@@ -1,4 +1,4 @@
-import { Component, OnInit , AfterViewInit , Input, NgZone ,DoCheck  } from '@angular/core';
+import { Component, OnInit , AfterViewInit , Input, NgZone ,DoCheck,ChangeDetectionStrategy ,ChangeDetectorRef } from '@angular/core';
 
 import { RouterModule, Router , ActivatedRoute } from '@angular/router';
 
@@ -10,15 +10,21 @@ import { ProductService } from '../products/product.service'; // ProductServices
 
 import { SetRouterService } from '../services/set-router.service';
 
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/Rx';
+
+import { AsyncPipe } from '@angular/common';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class MenuComponent implements OnInit, DoCheck  {
+export class MenuComponent implements OnInit  {
 
-  constructor( private productsService:ProductService ,  private setRouter :SetRouterService , private route:ActivatedRoute , private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
+  constructor( private cd :ChangeDetectorRef, private productsService:ProductService ,  private setRouter :SetRouterService , private route:ActivatedRoute , private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
 
     let category = this.dataservices.Make_Request_InServer( 'category', 'category' );
 
@@ -26,14 +32,17 @@ export class MenuComponent implements OnInit, DoCheck  {
 
       this.categorys = response;
 
+      this.cd.markForCheck();
+
+
+
     });
 
   }
 
-  ngDoCheck(){
 
 
-  }
+
 
   public categorys:any = [];
 

@@ -4,12 +4,15 @@ import { HeaderService } from '../header/header.service';
 
 import { DataService } from '../services/data.service';
 
+import{Observable} from 'rxjs/Observable';
+
 
 @Injectable()
 
 export class ProductService extends HeaderService {
 
   public products:any = [];
+
 
 
   constructor(

@@ -1,12 +1,12 @@
 
 
-<div class="under_menu_left " [ngClass]="{'menu_left_open': productsService.status_menu }"></div>
+<div class="under_menu_left " [ngClass]="{'menu_left_open':productsService.menu_subject.getValue() }"></div>
 
-<div class="menu_left" [ngClass]="{'menu_left_open': productsService.status_menu }">
+<div class="menu_left" [ngClass]="{'menu_left_open': productsService.menu_subject.getValue() }">
 
   <div class="width_menu_left" >
 
-    <div class="menu_left_inside" [ngClass]="{'open_left_inside': productsService.status_menu }">
+    <div class="menu_left_inside" [ngClass]="{'open_left_inside': productsService.status_menu | async  }">
       <!--  show all category type -->
       <div class="top_in_menu border_bottom" >
 
@@ -302,7 +302,7 @@
     </div>
 
 
-    <div class="menu_right_inside" [ngClass]="{'hide_menu_right' : productsService.status_menu }">
+    <div class="menu_right_inside" [ngClass]="{'hide_menu_right' : productsService.menu_subject.getValue()}">
 
       <div class="width_menu_right border_bottom  ">
 
