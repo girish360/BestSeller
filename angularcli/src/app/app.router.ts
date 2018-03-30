@@ -10,7 +10,9 @@ import { SinginSingupComponent } from './Shopping/singin-singup/singin-singup.co
 
 import { NotfoundComponent } from './Shopping/notfound/notfound.component';
 
-import { VisitorsComponent } from './Shopping/visitors/visitors.component';
+import { IndexComponent } from './Shopping/index/index.component';
+
+import { HomeComponent } from './Shopping/home/home.component';
 
 import { CompanyComponent } from './Shopping/company/company.component';
 
@@ -34,7 +36,7 @@ export const router: Routes = [
     },
 
     {
-        path: 'shopping', component: VisitorsComponent,
+        path: 'shopping', component: IndexComponent,
 
         children: [
             {

@@ -1,4 +1,4 @@
-import { Component, OnInit , OnDestroy } from '@angular/core';
+import { Component, OnInit , OnDestroy , ChangeDetectionStrategy} from '@angular/core';
 
 import { NgxCarousel ,NgxCarouselStore } from 'ngx-carousel';
 import {observableToBeFn} from "rxjs/testing/TestScheduler";
@@ -8,7 +8,8 @@ declare var $:any;
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
-  styleUrls: ['./slideshow.component.css']
+  styleUrls: ['./slideshow.component.css'],
+  changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class SlideshowComponent implements OnInit ,OnDestroy {
 
@@ -48,7 +49,7 @@ export class SlideshowComponent implements OnInit ,OnDestroy {
             overflow: auto;
             position: absolute;
             width: 100%;
-            bottom: 0px;
+            top: 0px;
             left: 0;
             box-sizing: border-box;
           }

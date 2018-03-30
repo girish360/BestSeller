@@ -1,15 +1,84 @@
+<div class="top_product">
 
-<div>
-  {{product_details.product_id}}
-</div>
-
-<div *ngFor="let image of product_details['image_product']" class="">
-
-{{image.image_product_image}}
+  {{product_details.product_title}}
 
 </div>
-<div>
 
-  {{ company.company_shipping }}
+<div class="product">
+
+  <div class="body_product">
+
+
+    <div class="bodyLeft_product inline-block">
+
+        <div class="product_details">
+
+
+            <img  src="../../assets/images/products_image/{{product_details.product_image}}" >
+        </div>
+
+
+            <div class="more_img">
+
+
+                    <ngx-carousel [inputs]="carouselTileOne" (carouselLoad)="carouselTileOneLoad()">
+
+                        <ngx-tile class="item" NgxCarouselItem *ngFor="let item of carouselTileOneItems; let i = index;">
+
+                            <div class="items_in_carousel ">
+
+                                <a href="#">
+
+                                    <div class="img_item border_bottom " >
+
+                                        <img src="{{item.src}}">
+
+                                    </div>
+
+                                </a>
+
+                            </div>
+
+                        </ngx-tile>
+
+                        <button mat-mini-fab NgxCarouselPrev class="leftRs">
+
+                            <mat-icon>skip_previous</mat-icon>
+
+                        </button>
+
+                        <button mat-mini-fab NgxCarouselNext class="rightRs">
+
+                            <mat-icon>skip_next</mat-icon>
+
+                        </button>
+
+                    </ngx-carousel>
+
+            </div>
+
+
+
+    </div>
+
+      <div class="bodyRight_product inline-block">
+
+
+      </div>
+
+  </div>
+
+    <div class="more_details">
+
+
+        more
+    </div>
+
 
 </div>
+
+
+
+
+
+

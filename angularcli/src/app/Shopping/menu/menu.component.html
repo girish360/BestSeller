@@ -2,7 +2,7 @@
 
 <div class="under_menu_left " [ngClass]="{'menu_left_open':productsService.menu_subject.getValue() }"></div>
 
-<div class="menu_left" [ngClass]="{'menu_left_open': productsService.menu_subject.getValue() }">
+<div class="menu_left" [ngClass]="{'menu_left_open': productsService.menu_subject.getValue() }" *ngIf="dataservices.status_language | async">
 
   <div class="width_menu_left" >
 

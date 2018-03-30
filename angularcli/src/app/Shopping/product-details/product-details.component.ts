@@ -8,6 +8,10 @@ import { DataService } from '../services/data.service';
 
 import { Subscription } from 'rxjs/Subscription';
 
+import { NgxCarousel ,NgxCarouselStore } from 'ngx-carousel';
+
+declare var $ :any;
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -16,6 +20,10 @@ import { Subscription } from 'rxjs/Subscription';
 export class ProductDetailsComponent implements OnInit , OnDestroy {
 
   public product_id:any;
+
+    public carouselTileOne: NgxCarousel;
+
+    public carouselTileOneItems: Array<any> = [];
 
   my_product: Subscription;
 
@@ -59,6 +67,74 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
   }
 
   ngOnInit() {
+
+      this.carouselTileOneItems = [
+          {src: '../../assets/images/products_image/klo.jpg' ,title:'klodian'},
+          {src: '../../assets/images/products_image/klo.jpg' ,title:'gentian'},
+          {src: '../../assets/images/products_image/1234.jpg' ,title:'roland'},
+          {src: '../../assets/images/products_image/b3.jpg' ,title:'bedri'},
+          {src: '../../assets/images/products_image/klo.jpg' ,title:'klodian'},
+          {src: '../../assets/images/products_image/klo.jpg' ,title:'gentian'},
+          {src: '../../assets/images/products_image/1234.jpg' ,title:'roland'},
+          {src: '../../assets/images/products_image/b3.jpg' ,title:'bedri'},
+
+
+
+      ];
+
+
+
+      this.carouselTileOne = {
+          grid: { xs: 1, sm: 1, md: 1, lg: 3, all: 0 },
+          speed: 500,
+          interval: 8000,
+          point: {
+              visible: false,
+          },
+          load: 1,
+          touch: true,
+          custom: 'banner',
+          animation: 'lazy'
+      };
+
+      $(function(){
+
+          var scroll_status = false;
+
+
+          $(window).scroll(function (e) {
+
+              var scroll_top = $(this).scrollTop();
+
+              if( scroll_top >= 400 ){ // scroll for option_products ................
+
+                  if( scroll_status == false ) {
+
+                      $('.top_product').addClass('new_top_product');
+
+                      $('.new_top_product').hide().slideDown('fast');
+
+                      $('.bodyRight_product').addClass('fixed_bodyRight_product');
+                  }
+
+                  scroll_status = true;
+
+              }else{
+                  if( scroll_status == true ) {
+
+                      $('.top_product').hide().slideDown('fast');
+
+
+                      $('.top_product').removeClass('new_top_product');
+
+                      $('.bodyRight_product').removeClass('fixed_bodyRight_product');
+                  }
+
+                  scroll_status = false;
+              }
+
+          });
+      });
   }
 
   ngOnDestroy(){

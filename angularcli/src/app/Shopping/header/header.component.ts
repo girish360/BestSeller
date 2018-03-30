@@ -13,15 +13,11 @@
 
  import { Subscription } from 'rxjs/Subscription';
 
- import { RouterStateSnapshot,ActivatedRouteSnapshot, ActivatedRoute  ,Params , Data , Router} from '@angular/router';
+ import {  ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
  import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
  import { SetRouterService } from '../services/set-router.service';
-
- import {Observable} from 'rxjs/Observable';
-
- import 'rxjs/Rx';
 
  declare var $:any;
 
@@ -241,7 +237,7 @@
 
             $('.treguesi').css({display: 'block'}); // show pionter......
 
-            $('.write_icon_productsService').css('visibility', 'visible');
+            $('.write_icon_header').css('visibility', 'visible');
 
             $('.write_icon_header'+id).css('visibility', 'hidden'); // remove write below icon in productsService
 
@@ -389,7 +385,24 @@
 
     choose_language( language ){  //  function for update language ..........
 
-      this.dataservices.Make_Request_InServer( 'changeLanguage', language );
+        this.dataservices.create_object_request( 'changeLanguage', language  );
+
+        this.dataservices.Http_Post( this.dataservices.object_request) // make request ......
+
+            .subscribe( //  take success
+
+                data => {
+
+                    if( data['status'] == 'language' ){
+
+                        this.dataservices.language = data['data'];
+
+                        this.dataservices.subject_language.next( true );
+                    }
+                },
+                error => console.log( error['data'] ) // take error .....
+
+            );
 
     }
 

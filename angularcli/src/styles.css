@@ -284,6 +284,9 @@ input[name='search']:focus , input[name='search_wish']:focus{
 }
 
 
+.tile[_ngcontent-c14]{  /*  carousel in product_details wioth image  */
+    height: 60px;
+}
 
 /* Begin css for category profile user here ....................................................................................................*/
 

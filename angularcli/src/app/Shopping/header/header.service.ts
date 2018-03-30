@@ -32,10 +32,6 @@ export class HeaderService  implements OnInit {
 
         this.wish_properties.wishList = response['wishList'];
 
-        this.subject.next( response['cartList'] );
-
-        this.menu_subject.next( false );
-
         this.set_quantity_in_cartList( response['cookie_cartList'] , response['cartList'] );
 
         this.total_items_and_price();
@@ -45,19 +41,13 @@ export class HeaderService  implements OnInit {
 
   }
 
+  private subject_products =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
 
-  private subject = new Subject();
-
-
-
+  public status_products = this.subject_products.asObservable();// identify if cartlist should change
 
   public menu_subject = new BehaviorSubject<boolean>(false);
 
   status_menu = this.menu_subject.asObservable();
-
-  cart = this.subject.asObservable();
-
-
 
   ngOnInit(){
 
@@ -74,7 +64,7 @@ export class HeaderService  implements OnInit {
     array_cartId : [],
     filter_cart: '',
     selectedAll : false,
-    cartList :this.subject.asObservable(),
+    cartList :[],
     cartCookie : [],
     wish_to_cart : [],
     add_in_server : false,
@@ -110,6 +100,8 @@ export class HeaderService  implements OnInit {
   refresh_button_properties(){
 
     this.button_properties = { active:0 , disabled:false , pointer:1 , selectedIndex:'empty' };
+
+    this.subject_products.next(true);
 
   }
 
@@ -216,6 +208,8 @@ export class HeaderService  implements OnInit {
 
       this.wish_properties.wishList.unshift( product ); // push wish product in wishList products
 
+      this.subject_products.next(true);
+
       this.dataservices.create_object_request( 'add_wishProduct', this.wish_properties.array_wishId );
 
       this.dataservices.Http_Post( this.dataservices.object_request) // make request ......
@@ -265,6 +259,8 @@ export class HeaderService  implements OnInit {
 
       this.total_items_and_price();
 
+      this.subject_products.next(true);
+
       this.dataservices.create_object_request( 'add_cartProduct', this.cart_properties.array_cartId );
 
       this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
@@ -286,15 +282,7 @@ export class HeaderService  implements OnInit {
 
           );
     }
-
-
-    this.subject.next(this.cart_properties.cartList);
-
-
-
   }
-
-
 
   delete_from_wishList( ){
 
@@ -321,7 +309,7 @@ export class HeaderService  implements OnInit {
     this.wish_properties.selected.splice( this.wish_properties.selected[i] , this.wish_properties.selected.length );
   }
 
-
+    this.subject_products.next(true);
 
 
   this.Response = this.dataservices.Make_Request_InServer('delete_items_in_wish', this.wish_properties.array_wishId);
@@ -360,6 +348,7 @@ export class HeaderService  implements OnInit {
       this.cart_properties.selected.splice( this.cart_properties.selected[i] , this.cart_properties.selected.length );
     }
 
+    this.subject_products.next(true);
 
     this.Response = this.dataservices.Make_Request_InServer('delete_items_in_cart', this.cart_properties.array_cartId);
 

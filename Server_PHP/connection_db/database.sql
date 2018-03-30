@@ -214,15 +214,14 @@ insert into company (name,email,username,password,phone_number,image,street_adre
 insert into follower (company_id,user_id)values('4','1'),('5','1'),('6','1');
 
 insert into product ( title , description , image_id , category_id , company_id , price , unit_stock , image )
-values('benz mercedez','shitet per arsye mos perdorimi','1','1','1','500','5' ,'1.jpg'),
-      ('Iphone 5 ','gjendje perfecte','2','1','1','400','2','2.jpg'),
-      ('Iphone 6 ','gjendje perfecte','3','1','2','550','7','3.jpg'),
-      ('Iphone 8 ','gjendje perfecte','4','2','3','400','2','4.jpg'),
-      ('Iphone 9 ','gjendje perfecte','5','2','4','200','2','5.jpg'),
-      ('Iphone 10 ','gjendje perfecte','6','2','1','800','10','2.jpg'),
-      ('Iphone 11 ','gjendje perfecte','7','3','2','1000','2','3.jpg'),
-      ('Iphone 12 ','gjendje perfecte','8','3','3','400','2','1.jpg'),
-      ('Iphone 13 ','gjendje perfecte','9','3','5','400','2','5.jpg');
+values('Benz mercedez','shitet per arsye mos perdorimi','1','1','1','500','5' ,'benz.jpg'),
+      ('Samsung s7 Edge 5 ','gjendje perfecte','2','1','1','400','2','s7.jpg');
+
+
+insert into image_product (product_id , image)
+ values('1','benz.jpg'),('1','benz1.jpg'),('1','benz2.jpg'),('1','benz3.jpg'),('1','ben4.jpg'),
+ ('2','s7.jpg'),('2','s71.jpg'),('2','s72.jpg'),('2','s73.jpg'),('2','s74.jpg');
+
 
 insert into user ( first_name,last_name,username,email,gener,local,picture,phone,language)
 values('klodian','shaba','kshaba','klodian.tik@gmail.com','male','alabnia','klo.jpg','0683834233','albanian'),

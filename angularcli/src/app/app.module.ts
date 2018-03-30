@@ -44,7 +44,9 @@ import { AppComponent } from './app.component';
 
 import { ControllerComponent } from './Start/controller/controller.component';
 
-import { VisitorsComponent } from './Shopping/visitors/visitors.component';
+import { IndexComponent } from './Shopping/index/index.component';
+
+import { HomeComponent } from './Shopping/home/home.component';
 
 import { BusinessComponent } from './Business/business/business.component';
 
@@ -77,6 +79,7 @@ import { MenuComponent } from './Shopping/menu/menu.component'; //  menu  left  
 import { ProductsComponent } from './Shopping/products/products.component'; // show products for a category
 
 import { CategoriesComponent } from './Shopping/categories/categories.component'; // show categories with some products
+
 
 // end components ............................................................................................
 
@@ -115,10 +118,12 @@ import {
   MatStepperModule,
 } from '@angular/material';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    VisitorsComponent,
     SinginSingupComponent,
     HeaderComponent,
     ChatComponent,
@@ -136,7 +141,10 @@ import {
     BusinessComponent,
     MenuComponent,
     ProductsComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    IndexComponent,
+    HomeComponent
+
 
   ],
   imports: [

@@ -2,8 +2,6 @@ import { Inject, Injectable ,EventEmitter ,OnInit } from '@angular/core';
 
 import { HttpService } from './http.service';
 
-import {Observable} from 'rxjs/Observable';
-
 import { AuthService } from './auth.service';
 
 import {  Http, Response , Headers} from '@angular/http';
@@ -11,6 +9,15 @@ import {  Http, Response , Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import 'rxjs/Rx'
+
+import{BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+import 'rxjs/add/observable/interval';
+
+import {Observable} from 'rxjs/Observable';
+
+import{Subject} from 'rxjs/Subject';
+
 
 @Injectable()
 
@@ -24,30 +31,33 @@ export class DataService extends AuthService implements OnInit{
 
       language.then(response =>{
 
-          this.language=response;
+          this.language = response;
 
       });
-
-
   }
   ngOnInit(){
 
   }
 
+ ; // identify if cartlist should change
+
+    public subject_language = new  BehaviorSubject<boolean>(true);
+
+     status_language = this.subject_language.asObservable();
+
   public Header_property:any = {
+
       selectedIndex:'empty'
+
   };
 
-  public body_loader=false;
+  public language :any =[];
 
-  public language:any={};
+  public body_loader=false;
 
   public Response:any;
 
   public object_request = {};
-
-
-
 
 
   public  create_object_request( status , value ) {
@@ -68,7 +78,6 @@ export class DataService extends AuthService implements OnInit{
 
             data => {
 
-                this.check_response( data );
 
                 resolve( data['data'] );
 
@@ -81,20 +90,7 @@ export class DataService extends AuthService implements OnInit{
 
   }
 
-    check_response( data ){
 
-
-
-
-
-       if( data['status']=='language' ) {
-
-          this.language = data['data'];
-
-
-      }
-
-  }
 
   update_loader( new_poperty ){
 

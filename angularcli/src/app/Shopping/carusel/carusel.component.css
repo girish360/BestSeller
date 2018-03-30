@@ -53,6 +53,9 @@
     transition: 0.2s;
 
 }
+.leftRs:hover ,.rightRs:hover{
+    -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
+}
 
 .rightRs {
     position: absolute;
@@ -63,9 +66,10 @@
     background-color: whitesmoke;
     transition: 0.2s;
 }
-.rightRs:hover .icon-mat{
+rightRs .icon-mat{
     color:red;
 }
+
 
 .carpusel_company:hover .leftRs{
     left: 0px;

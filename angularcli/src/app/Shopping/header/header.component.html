@@ -1,5 +1,5 @@
 
-<div class="header">
+<div class="header"  *ngIf="dataservices.status_language | async">
 
     <div class="response_outer bottom_header "  [ngClass]="{'active_menu':productsService.menu_subject.getValue()}">
 
@@ -17,9 +17,9 @@
 
                              <div class="listcategory">
 
-                                 <span *ngIf="!productsService.status_menu" class="glyphicon glyphicon-th-large"></span>
+                                 <span *ngIf="!productsService.menu_subject.getValue()" class="glyphicon glyphicon-th-large"></span>
 
-                                 <span *ngIf="productsService.status_menu" class="glyphicon glyphicon-log-out icon-list-remove"></span>
+                                 <span *ngIf="productsService.menu_subject.getValue()" class="glyphicon glyphicon-log-out icon-list-remove"></span>
 
                              </div>
 
@@ -84,7 +84,6 @@
 
                             {{typing_search}}
 
-                            {{ productsService.menu | async }}
 
 
                         </div>
@@ -95,7 +94,7 @@
 
                 <span class="bottom_header_right">
 
-                         <a  href="#" *ngFor=" let button of button_right  ; let i = index " matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button ,i , $event)" >
+                    <a  href="#" *ngFor=" let button of button_right  ; let i = index " matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button ,i , $event)" >
 
                         <div class="menu3 button{{button.id}} {{button.different_class}}">
 
@@ -109,7 +108,7 @@
 
                                     </div>
 
-                                    <div class="write_number" *ngIf="button.id == 3">
+                                    <div class="write_number" *ngIf="button.id == 3 ">
 
                                        {{productsService.cart_properties.cartList.length}}
 
@@ -320,7 +319,7 @@
 
                             </div><br>
 
-                            <ng-container  *ngFor="let language of language_allow">
+                            <ng-container  *ngFor=" let language of language_allow  ">
 
                                 <div class="all_languages " (click)="choose_language(language.id)"  >
 
@@ -475,11 +474,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="body_div body_cart">
+                <div class="body_div body_cart" *ngIf="productsService.status_products | async">
+
+
 
                     <ng-container *ngIf="productsService.cart_properties.cartList.length > 0 ; else  emptycart">
 
-                        <div  *ngFor="let cart_product of productsService.cart_properties.cartList  | filter: filter_cart "  [@wishList_animations]="active">
+                        <div  *ngFor="let cart_product of productsService.cart_properties.cartList | filter: filter_cart "  [@wishList_animations]="active">
 
                             <button mat-button class="width_body_wish" [ngClass]="productsService.getStyle_cart( cart_product )">
 
@@ -653,7 +654,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="body_div  body_wish">
+                <div class="body_div  body_wish" *ngIf="productsService.subject_products | async">
                     <ng-container *ngIf="productsService.wish_properties.wishList.length > 0 ; else  emptywish">
                         <div  *ngFor="let wish_product of productsService.wish_properties.wishList | filter: filter_wish "  [@wishList_animations]="active">
                             <button mat-button class="width_body_wish" [ngClass]="productsService.getStyle_wish( wish_product )">
@@ -706,6 +707,8 @@
     <mat-icon *ngIf="productsService.status_chat">close</mat-icon>
 
 </button>
+
+
 
 
 

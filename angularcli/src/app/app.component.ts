@@ -28,9 +28,16 @@ export class AppComponent implements OnInit{
 
                 var scroll_top = $(this).scrollTop();
 
+                if( scroll_top >= 200 ){
 
+                     $('.icon_header_write').addClass('new_icon_header_write');
 
-                if( scroll_top >= 380 ){ // scroll for option_products ................
+                 }else{
+
+                     $('.icon_header_write').removeClass('new_icon_header_write');
+                 }
+
+                if( scroll_top >= 200 ){ // scroll for option_products ................
 
                     if( scroll_status == false ) {
 

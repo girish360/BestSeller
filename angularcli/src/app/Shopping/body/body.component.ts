@@ -1,7 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter, DoCheck} from '@angular/core';
 
-import { VisitorsComponent } from '../visitors/visitors.component';
-
 import { DataService } from '../services/data.service';
 
 import { ProductService } from '../products/product.service';
@@ -9,8 +7,8 @@ import { ProductService } from '../products/product.service';
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css'],
-  providers : [ VisitorsComponent ]
+  styleUrls: ['./body.component.css']
+
 })
 
 export class BodyComponent implements OnInit {
@@ -21,12 +19,7 @@ export class BodyComponent implements OnInit {
 
   }
 
-
-
   ngOnInit(){
 
   }
-
-
-
 }

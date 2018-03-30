@@ -1,21 +1,17 @@
-import { Component,DoCheck,OnInit,Renderer ,ElementRef ,AfterViewInit } from '@angular/core';
+import {  Component,DoCheck,OnInit,Renderer ,ElementRef ,AfterViewInit} from '@angular/core';
 
 declare var $:any;
 
 import { DataService } from '../services/data.service';
 
-
-
 import { ProductService } from '../products/product.service'; // ProductServices extend HeaderServices that cartList and  wishList ....................
 
-
 @Component({
-  selector: 'app-visitors',
-  templateUrl: './visitors.component.html',
-  styleUrls: ['./visitors.component.css']
-
+  selector: 'app-index',
+  templateUrl: './index.component.html',
+  styleUrls: ['./index.component.css']
 })
-export class VisitorsComponent implements OnInit ,DoCheck {
+export class IndexComponent implements OnInit {
 
   constructor(
       private productsService :ProductService ,
@@ -283,7 +279,5 @@ export class VisitorsComponent implements OnInit ,DoCheck {
 
     }); // end document ready.................................................................................
   }
-
-
 
 }

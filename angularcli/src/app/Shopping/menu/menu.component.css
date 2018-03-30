@@ -131,6 +131,7 @@ a{
 
     left: 0;
     width: 250px;
+    transition: 0.3s;
 
 
 }
@@ -704,6 +705,7 @@ categorytype_new_background{
         overflow-x: hidden;
         overflow-y:hidden ;
         box-shadow: none;
+        display: none;
     }
 
     .under_menu_left {

@@ -4,6 +4,7 @@
     height: auto;
     margin-top: 50px;
 
+
 }
 
 .containerleft{
@@ -12,25 +13,26 @@
     float: left;
     display: inline-block;
     width: calc(100% - 320px);
-    height: calc( 100vh - 100px ); /* Minimum height for modern browsers */
+    min-height: calc( 100vh - 60px ); /* Minimum height for modern browsers */
+    height: auto;
+
 }
 
 
 .containerright{
     position: relative;
     width: 300px;
-    height: 93vh;
+    min-height: calc( 100vh - 60px ); /* Minimum height for modern browsers */
+    height: auto;
     display: inline-block;
-    margin-left: 10px;
-}
-.sponsorized_right{
+    float: right;
 
-    width: 99.5%;
-    height: 90%;
-    border:1px solid;
-    border-color:#d6d6c2;
+    -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+    -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+    box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
 
 }
+
 
 @media only screen and (max-width: 1400px){
 

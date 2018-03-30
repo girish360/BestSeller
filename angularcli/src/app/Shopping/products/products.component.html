@@ -1,5 +1,5 @@
 
-<div class="component-animation"> <!--  this component is inside this div  ...................................................... -->
+<div class="component-animation" *ngIf="dataservices.status_language | async"> <!--  this component is inside this div  ...................................................... -->
 
     <div class="option_products ">  <!--  Options products pagination ,  select  ...................................................... -->
 
@@ -54,9 +54,9 @@
 
   </div>
 
-  <div class="all_prod"> <!--  start div with products ...................................................... -->
+  <div class="all_prod" *ngIf="productsService.status_products  |  async "> <!--  start div with products ...................................................... -->
 
-      <div class="width_products component-animation   " *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':productsService.status_menu | async  }" >
+      <div class="width_products component-animation " *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':productsService.status_menu | async  }" >
 
           <span class="each_width_product" >
 
@@ -106,7 +106,7 @@
 
                   <span matTooltip="Add to your card"  class="notCloseDropdawnCard notCloseDropdawnFavorite " (click)="product.product_in_cartList='true'; productsService.add_cart_list( product )">
 
-                      <div class="button_footer_products">0
+                      <div class="button_footer_products">
 
                           <span *ngIf="product.product_in_cartList=='false'" class="glyphicon glyphicon-plus icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" ></span>
 

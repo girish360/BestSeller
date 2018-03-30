@@ -409,8 +409,8 @@
     .width_products{
 
         display: inline-block;
-        width: 48.5%;
-        margin-left: 0px;
+        width: 48%;
+
 
 
     }
@@ -423,8 +423,9 @@
     .width_products{
 
         display: block;
-        width: 97%;
+        width: 100%;
         margin-left: 0px;
+        margin-top: 10px;
 
 
     }
