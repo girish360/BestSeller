@@ -41,7 +41,7 @@ export class HeaderService  implements OnInit {
 
   }
 
-  private subject_products =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
+  public subject_products =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
 
   public status_products = this.subject_products.asObservable();// identify if cartlist should change
 

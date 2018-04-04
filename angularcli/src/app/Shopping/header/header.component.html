@@ -273,7 +273,10 @@
 
                 </span>
 
+
             </span>
+
+
 
             <!--  start dropdown header ..................................................................-->
 
@@ -689,6 +692,8 @@
         </div>
 
     </div>
+
+    <mat-progress-bar  mode="indeterminate" class="progress" *ngIf="dataservices.loading_progress | async"></mat-progress-bar>  <!--  progress bar -->
 
 </div> <!-- end header ............................. -->
 

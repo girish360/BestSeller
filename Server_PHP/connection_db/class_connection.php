@@ -1,7 +1,8 @@
 <?php
 
 
-class  connection { // start connection class ...
+
+class  connection  { // start connection class ...
 
     private $host='localhost'; // host
 
@@ -124,7 +125,7 @@ class  connection { // start connection class ...
 
         $Tables = implode(',', $Tables); // get table name from array ........
 
-        $query = $this->db->prepare("SELECT $Columns FROM $Tables WHERE $where  "); // prepare query
+        $query = $this->db->prepare("SELECT $Columns FROM $Tables WHERE $where "); // prepare query
 
         $query->execute(); // execute query ...............
 
@@ -147,15 +148,16 @@ class  connection { // start connection class ...
 
     public  function count_where( $table_name , $array_where ){
 
-        $where_columns = self::where_columns( $array_where );
+        $where_columns = self::where_columns_and( $array_where );
 
         $query = $this->db->prepare( "SELECT COUNT(*) FROM `$table_name` WHERE $where_columns ");
 
-        $query->execute();
+        $query->execute( $array_where );
 
         $count = $query->fetchColumn();
 
         return $count;
+
     }
 
     public function select_dependet_or( $table_name , $array_where , $array_select ){  // select with array column and array where with || .........

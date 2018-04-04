@@ -14,7 +14,7 @@
 
                  <div class="pagination_products">
 
-                     <span class="page_products" *ngFor="let page of pages_link ">
+                     <span class="page_products" *ngFor="let page of productsService.pages_link ">
 
                          <ng-container *ngIf="page.icon == false ; else notNumber">
 
@@ -60,7 +60,7 @@
 
           <span class="each_width_product" >
 
-              <div  class="title_products more_detail_product" (click)="set_router({ path:product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:true })">
+              <div  class="title_products more_detail_product" (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })">
 
                   {{product.product_title }}
 
@@ -70,7 +70,7 @@
 
               </div>
 
-              <div class="image_product_primary " (click)="set_router({ path:product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:true })">
+              <div class="image_product_primary " (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })">
 
                   <img class="image_product" src="../../assets/images/products_image/{{product.product_image}}">
 
@@ -124,7 +124,7 @@
 
                   <span matTooltip="See Details!">
 
-                      <div (click)="set_router({ path:product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:true })" class="button_footer_products" >
+                      <div (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })" class="button_footer_products" >
 
                           <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
 

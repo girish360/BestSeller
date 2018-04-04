@@ -35,30 +35,37 @@
     border-radius: 3px;
 
 
-    -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
 }
 
 
 .more_details{
     min-height: 300px;
     height:auto;
-    background-color: #004080;
+
 
     margin-top: 15px;
 
 }
-.product_details{
+.primary_image{
 
     width: 97%;
 
    height: 80%;
     margin: 0 auto;
-}
-.product_details img{
+
+    border-top-right-radius: 3px;
+    border-top-left-radius:3px;
+
     position: relative;
     top: 5px;
+
+}
+.no_multiple_img{
+    height: 97.5%;
+}
+
+.primary_image img{
+
     width: 100%;
     height: 100%;
     border-top-right-radius: 3px;
@@ -72,16 +79,38 @@
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
 
+
+
+}
+.bodyRight_option{
+    height: 50px;
 }
 
 .top_product{
 
     width:100%;
     z-index: 3 !important;
-    height: 70px;
-    font-size: 22px;
-    margin-top: 10px;
+    height: 50px;
 
+
+}
+.top_left{
+    width: 70px;
+    height: 100%;
+    background-color: #004080;
+}
+.top_right{
+    width: calc( 100% - 75px);
+    height: 100%;
+    float: right;
+    font-size: 21px;
+
+
+}
+
+.top_left img{
+    width: 100%;
+    height: 100%;
 }
 
 .new_top_product{
@@ -103,47 +132,34 @@
 
 
 
-.items_in_carousel{
 
-    height: 70px;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    border-radius: 5px;
 
-    margin-left: -8px;
-    margin-right: -8px;
+
+.image_slide{
+    height: 60px;
+    margin-left: -5px;
+    margin-right: -5px;
     margin-top: -2px;
+    background: transparent;
+    z-index: 5 !important;
 
 }
-
-
-
-
-
-.img_item{
-    height: 90%;
-    width: 95%;
-    margin:0px auto;
-
-
-
-}
-
-.img_item img{
+.image_slide img{
     width: 100%;
     height: 100%;
-
+    z-index: 4 !important;
 }
+
+
 
 .leftRs {
     position: absolute;
     margin: auto;
-    top: -45px;
-    bottom: 0;
+    bottom: 20px;
     left: -10px;
     background-color: whitesmoke;
     transition: 0.2s;
+
 
 }
 .leftRs:hover ,.rightRs:hover{
@@ -153,14 +169,13 @@
 .rightRs {
     position: absolute;
     margin: auto;
-    top: -45px;
-    bottom: 0;
+    bottom: 20px;
     right: -10px;
     background-color: whitesmoke;
     transition: 0.2s;
 }
 .rightRs .icon-mat{
-    color:red;
+    color:blue;
 }
 
 
@@ -173,8 +188,37 @@
     transition: 0.2s;
 }
 
-.item{
-   box-shadow: none;
+@media only screen and (max-width: 700px){
+
+  .bodyLeft_product{
+      width: 100%;
+  }
+    .bodyRight_product{
+        float: left;
+        width: 100%;
+    }
+
+    .leftRs{
+        left: 0;
+    }
+    .rightRs{
+
+        right: 0;
+
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
 
 

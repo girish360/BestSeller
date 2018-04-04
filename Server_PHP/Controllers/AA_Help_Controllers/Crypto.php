@@ -1,6 +1,8 @@
 <?php
 
-class Crypto{
+
+
+class Crypto  {
 
   private $key;
 

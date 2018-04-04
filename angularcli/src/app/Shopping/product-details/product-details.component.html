@@ -1,8 +1,20 @@
 <div class="top_product">
 
-  {{product_details.product_title}}
 
-</div>
+    <div class="top_left inline-block">
+
+        <img src="../../assets/images/products_image/{{product_details.product_image}}">
+
+    </div>
+
+    <div class="top_right inline-block">
+
+        {{product_details.product_title}} shite per arsy mos perdorimi tn shite per arsy mos perdorimi tnshite per arsy mos perdorimi tn
+
+    </div>
+
+
+</div><br>
 
 <div class="product">
 
@@ -11,33 +23,30 @@
 
     <div class="bodyLeft_product inline-block">
 
-        <div class="product_details">
+        <div class="primary_image" [ngClass]="{ 'no_multiple_img': carousel_image.length == 0 }">
 
+            <img  id="zoom_image" src="../../assets/images/products_image/{{product_details.product_image}}">
 
-            <img  src="../../assets/images/products_image/{{product_details.product_image}}" >
         </div>
 
 
-            <div class="more_img">
+            <div class="more_img" *ngIf="carousel_image.length > 0">
 
 
-                    <ngx-carousel [inputs]="carouselTileOne" (carouselLoad)="carouselTileOneLoad()">
+                    <ngx-carousel [inputs]="carouselTile" (carouselLoad)="carouselTileOneLoad()">
 
-                        <ngx-tile class="item" NgxCarouselItem *ngFor="let item of carouselTileOneItems; let i = index;">
+                        <ngx-tile  NgxCarouselItem *ngFor="let item of carousel_image; let i = index;" >
 
-                            <div class="items_in_carousel ">
+                           <a href="#">
 
-                                <a href="#">
+                               <div class="image_slide" (click)="show_image(item.image_product_image)">
 
-                                    <div class="img_item border_bottom " >
+                                   <img src="../../assets/images/products_image/{{item.image_product_image}}">
 
-                                        <img src="{{item.src}}">
 
-                                    </div>
 
-                                </a>
-
-                            </div>
+                               </div>
+                           </a>
 
                         </ngx-tile>
 
@@ -63,14 +72,65 @@
 
       <div class="bodyRight_product inline-block">
 
+          <div class="decsription bodyRight_option ">
+
+              Description: {{product_details.product_description}}
+
+          </div>
+
+          <div class="price bodyRight_option">
+
+          Price: {{product_details.product_price}}
+
+          </div>
+
+          <div class="shipping bodyRight_option">
+
+              Shipping : {{company.company_shipping}}
+
+          </div>
+
+          <div class="delivery bodyRight_option">
+
+              Delivery By: {{company.company_name}}
+
+          </div>
+
+          <div class="payments bodyRight_option">
+
+              Payments: Stripe
+
+          </div>
+
+          <div class="button_option">
+
+              <button mat-button class="button">
+
+                  <span>Continue Shopping</span>
+
+              </button>
+
+              <button mat-button class="button">
+
+                  <span>Buy it now</span>
+
+              </button>
+
+              <button mat-button class="button">
+
+                  <span>Add to cart</span>
+
+              </button>
+
+          </div>
+
+
 
       </div>
 
   </div>
 
     <div class="more_details">
-
-
         more
     </div>
 

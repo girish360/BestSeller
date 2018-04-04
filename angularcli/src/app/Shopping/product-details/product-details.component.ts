@@ -21,22 +21,35 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
 
   public product_id:any;
 
-    public carouselTileOne: NgxCarousel;
+  public carouselTile: NgxCarousel;
 
-    public carouselTileOneItems: Array<any> = [];
+  public carousel_image: Array<any> = [];
 
   my_product: Subscription;
+
+  primary_image = '';
 
   public company : any ={}; // company details for specific product ..................
 
   public product_images: any = []; // images for specific product .....................
+
+   public location:any;
 
 
     public product_details: any = {};
 
   constructor( private dataservices :DataService,  private crypto : EncryptDecryptService , private route: ActivatedRoute , private router: Router  ) {
 
-    this.route.params.subscribe( params => {
+
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+
+          });
+      } else {
+          alert("Geolocation is not supported by this browser.");
+      }
+
+      this.route.params.subscribe( params => {
 
         this.product_id = params['name'] ;
 
@@ -56,51 +69,46 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
 
                         this.company =  this.product_details['company'];
 
-                        this.dataservices.update_loader(false);
+                        setTimeout(()=>{
+                            this.dataservices.update_loader(false);
+                        },1000);
+
+                        this.carousel_image = this.product_details['image_product'];
+
+                        $(function() {
+
+                            $('.zoomImg').remove();
+
+                            $('.primary_image').zoom({ duration: 120, touch: true});
+                        });
+
                     }
                 },
                 error => console.log( error['data'] ) // take error .....
-
             );
-
-    });
+      });
   }
 
   ngOnInit() {
 
-      this.carouselTileOneItems = [
-          {src: '../../assets/images/products_image/klo.jpg' ,title:'klodian'},
-          {src: '../../assets/images/products_image/klo.jpg' ,title:'gentian'},
-          {src: '../../assets/images/products_image/1234.jpg' ,title:'roland'},
-          {src: '../../assets/images/products_image/b3.jpg' ,title:'bedri'},
-          {src: '../../assets/images/products_image/klo.jpg' ,title:'klodian'},
-          {src: '../../assets/images/products_image/klo.jpg' ,title:'gentian'},
-          {src: '../../assets/images/products_image/1234.jpg' ,title:'roland'},
-          {src: '../../assets/images/products_image/b3.jpg' ,title:'bedri'},
-
-
-
-      ];
-
-
-
-      this.carouselTileOne = {
-          grid: { xs: 1, sm: 1, md: 1, lg: 3, all: 0 },
-          speed: 500,
-          interval: 8000,
+      this.carouselTile = {
+          grid: {xs: 2, sm: 3, md: 3, lg: 3, all: 0},
+          slide: 2,
+          speed: 400,
+          animation: 'lazy',
           point: {
-              visible: false,
+              visible: false
           },
           load: 1,
           touch: true,
-          custom: 'banner',
-          animation: 'lazy'
+          easing: 'ease'
       };
 
       $(function(){
 
-          var scroll_status = false;
+          $('.primary_image').zoom({duration:120 ,touch:true});
 
+          var scroll_status = false;
 
           $(window).scroll(function (e) {
 
@@ -120,6 +128,7 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
                   scroll_status = true;
 
               }else{
+
                   if( scroll_status == true ) {
 
                       $('.top_product').hide().slideDown('fast');
@@ -138,7 +147,30 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
   }
 
   ngOnDestroy(){
+
       this.my_product.unsubscribe();
+
   }
+
+    carouselTileOneLoad(){
+
+    }
+
+  show_image( image ){ // chnage primary image......
+
+      this.product_details.product_image = image;
+
+      $(function() {
+
+          $('.zoomImg').remove();
+
+          $('.primary_image').zoom({ duration: 120, touch: true});
+      });
+
+
+
+  }
+
+
 
 }

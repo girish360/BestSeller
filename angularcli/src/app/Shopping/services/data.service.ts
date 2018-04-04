@@ -23,6 +23,30 @@ import{Subject} from 'rxjs/Subject';
 
 export class DataService extends AuthService implements OnInit{
 
+ // identify if cartlist should change
+
+    public subject_language = new  BehaviorSubject<boolean>(true);
+
+    status_language = this.subject_language.asObservable();
+
+    private subject_progress =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
+
+    public loading_progress = this.subject_progress.asObservable();// identify if cartlist should change
+
+    public Header_property:any = {
+
+        selectedIndex:'empty'
+
+    };
+
+    public language :any =[];
+
+    public Response:any;
+
+    public object_request = {};
+
+    public user_info : any;
+
   constructor( private httpservice : HttpService , protected http:Http  ) {
 
      super( http );
@@ -38,27 +62,6 @@ export class DataService extends AuthService implements OnInit{
   ngOnInit(){
 
   }
-
- ; // identify if cartlist should change
-
-    public subject_language = new  BehaviorSubject<boolean>(true);
-
-     status_language = this.subject_language.asObservable();
-
-  public Header_property:any = {
-
-      selectedIndex:'empty'
-
-  };
-
-  public language :any =[];
-
-  public body_loader=false;
-
-  public Response:any;
-
-  public object_request = {};
-
 
   public  create_object_request( status , value ) {
 
@@ -94,8 +97,7 @@ export class DataService extends AuthService implements OnInit{
 
   update_loader( new_poperty ){
 
-         this.body_loader = new_poperty;
-
+         this.subject_progress.next(new_poperty);
   }
 
   update_language( new_language ){

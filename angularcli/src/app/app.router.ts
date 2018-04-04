@@ -40,7 +40,10 @@ export const router: Routes = [
 
         children: [
             {
-                path: '', component: ProductsComponent,
+                path: '', component: HomeComponent,
+            },
+            {
+                path: 'products/:name/:id/:name', component: ProductsComponent
             },
             {
                 path: ':name/:name', component: CompanyComponent

@@ -273,19 +273,11 @@ input[name='search']:focus , input[name='search_wish']:focus{
 
 }
 
-.loading-mat-spinner{
-    width: 3%;
-    height: 3%;
-    position:absolute;
-    top:48.5%;
-    left: 48.5% ;
-    z-index: 10 !important;
 
-}
+.zoomImg{  /*  zoom image in product_details */
+    min-width: 150%;
+    min-height: 150%;
 
-
-.tile[_ngcontent-c14]{  /*  carousel in product_details wioth image  */
-    height: 60px;
 }
 
 /* Begin css for category profile user here ....................................................................................................*/

@@ -11,9 +11,8 @@ import { ProductService } from '../products/product.service'; // ProductServices
 import { SetRouterService } from '../services/set-router.service';
 
 import {Observable} from 'rxjs/Observable';
-import 'rxjs/Rx';
 
-import { AsyncPipe } from '@angular/common';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-menu',
@@ -22,7 +21,9 @@ import { AsyncPipe } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class MenuComponent implements OnInit  {
+
+
+export class MenuComponent  implements OnInit  {
 
   constructor( private cd :ChangeDetectorRef, private productsService:ProductService ,  private setRouter :SetRouterService , private route:ActivatedRoute , private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
 
@@ -34,21 +35,13 @@ export class MenuComponent implements OnInit  {
 
       this.cd.markForCheck();
 
-
-
     });
 
   }
 
-
-
-
-
   public categorys:any = [];
 
   public id_company:any;
-
-
 
   private top_menus:object = [
     { icon:'home',id:'1',name:'Home'   },
@@ -117,6 +110,12 @@ export class MenuComponent implements OnInit  {
   }
 
   ngOnInit(){
+
+  }
+
+  category_products( category ){
+
+    this.set_router( { path:'products/'+category.name+'/2' , data:category.id , relative:true } );
 
   }
 

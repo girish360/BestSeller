@@ -172,55 +172,95 @@ create table chat(
 
 
 insert into category( name,image )values
-                      ('vehicles','tractor.png'),
-                      ('Electronic','tractor.png'),
 
-                       ('Books','tractor.png'),
-
-
-                      ('Flats','tractor.png'),
-
-                      ('Agricultural Machinery','tractor.png'),
-
-                      ('programs','tractor.png');
+ ('Electronic','tractor.png'),
+ ('Fashion','tractor.png'),
+ ('Agricultural Machinery','tractor.png'),
+ ('Vehicles','tractor.png'),
+ ('Sporting','tractor.png');
 
 
+insert into sub_category(name,image,category_id)values
 
-insert into sub_category(name,image,category_id)values('Vetura','tractor.png','1'),
-                                                                          ('Fugona','tractor.png','1'),
-                                                                          ('Kamiona','tractor.png','2'),
-                                                                          ('Motociklet','tractor.png','2'),
-                                                                          ('Bicikleta','tractor.png','3'),
-                                                                          ('Vehicles','tractor.png','3'),
-                                                                          ('Fugona','tractor.png','4'),
-                                                                          ('Trucks','tractor.png','4'),
-                                                                          ('Motorbike','tractor.png','5'),
-                                                                          ('biycles','tractor.png','5'),
-                                                                          ('Motorbike','tractor.png','6'),
-                                                                          ('biycles','tractor.png','6');
+  ('Computers','tractor.png','1'),
+  ('Smartphone','tractor.png','1'),
+  ('Tv','tractor.png','1'),
+
+  ('Shoes','tractor.png','2'),
+  ('Watches','tractor.png','2'),
+
+  ('Tractors','tractor.png','3'),
+  ('Combines','tractor.png','3'),
+
+  ('Trucks','tractor.png','4'),
+  ('Buses','tractor.png','4'),
+  ('Vehicle','tractor.png','4'),
+
+  ('Golf','tractor.png','5'),
+  ('Balls','tractor.png','5');
+
+
+insert into product ( title , description , image_id , category_id , company_id , price , unit_stock , image )
+values
+('Laptop Hp Probvook 6560b','Gjendje perfekte  memory 500 Gb ram 8 Gb ','1','1','1','500','9' ,'pc.jpg'),
+('Samsung s7 Edge 5 ','S7 edge shitet per arsye mos perdorimi , eshte ne gjendje perferkte pothuajse i ri me kamere para dhe mbarap Rami 8GB memory 32gb ','2','2','1','500','2','s7.jpg'),
+('Lg smart Tv WebOs','I ri me internet me lan dhe wifi me nje alarmi programesh te ndryshme per perdoruesin  ','3','3','1','900','5' ,'tv.jpg'),
+
+('Runing Shoes',' te reja ','4','4','2','50','15' ,'sho.jpg'),
+('Watch',' E re nje vit garanci amerikone','5','5','2','420','1' ,'wa.jpg'),
+
+('Tractor John Deere Us',' e sa po ardhur nga USA','6','6','3','42220','1' ,'tra.jpg'),
+('Class 68 dominator ',' Germany combina 68s','7','7','3','25220','1' ,'co.jpg'),
+
+('Truck Man',' Germany Man year 2015','8','8','4','52220','1' ,'tru.jpg'),
+('Bus Man 2015 ',' Germany Bus ','9','9','4','62220','1' ,'bus.jpg'),
+('Benz mercedez','shitet per arsye mos perdorimi 4x4 viti prodhimit 2011 letrat e preme per 1 vit','10','10','4','50000','5' ,'benz.jpg'),
+
+('Golf Ball ',' Amazing Ball','11','11','5','150','5' ,'go.jpg'),
+('Ball ',' Ball ','12','12','5','120','5' ,'ba.jpg');
+
+
+
+
+insert into image_product (product_id , image)
+ values
+  ('1','pc.jpg'),('1','pc1.jpg'),('1','pc2.jpg'),('1','pc3.jpg'),('1','pc4.jpg'),('1','pc5.jpg'),('1','pc6.jpg'),('1','pc7.jpg'),('1','pc8.jpg'),('1','pc9.jpg'),
+
+  ('2','s7.jpg'),('2','s71.jpg'),('2','s72.jpg'),('2','s73.jpg'),('2','s74.jpg'),
+
+  ('3','tv.jpg'),('3','tv1.jpg'),('3','tv2.jpg'),('3','tv3.jpg'),('3','tv4.jpg'),
+
+  ('4','sho.jpg'),('4','sho1.jpg'),('4','sho2.jpg'),
+
+  ('5','wa.jpg'),('5','wa1.jpg'),('5','wa2.jpg'),('5','wa3.jpg'),('5','wa4.jpg'),
+
+  ('6','tra.jpg'),('6','tra1.jpg'),('6','tra2.jpg'),
+
+  ('7','co.jpg'),('7','co1.jpg'),('7','co2.jpg'),('7','co3.jpg'),('7','co4.jpg'),
+
+  ('8','tru.jpg'),('8','tru1.jpg'),('8','tru2.jpg'),
+
+  ('9','bus.jpg'),('9','bus1.jpg'),('9','bus2.jpg'),
+
+  ('10','benz.jpg'),('10','benz1.jpg'),('10','benz2.jpg'),('10','benz3.jpg'),('10','ben4.jpg'),
+
+  ('11','go.jpg'),('11','go1.jpg'),('11','go2.jpg'),
+
+  ('12','ba.jpg'),('12','ba1.jpg');
+
+
 
 
 insert into company (name,email,username,password,phone_number,image,street_adress,city,state,language,shipping)values
   ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','World'),
-  ('New Phone here','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian','Albania'),
-    ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','Albania'),
-  ('New Car and old Car','ele@gmail.com','newklodian','klodian12','0683834233','car.png','jordan misja','tirane','albanian','albanian','Albania'),
-    ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','Albania'),
-  ('New Phone here','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian','Albania'),
-    ('Elektronics','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','Albania'),
-  ('New Phone here','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian','Albania');
+  ('Fashion','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian','Albania'),
+    ('Agricultural Machinery','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','Albania'),
+  ('Vehicles','ele@gmail.com','eleklodian','klodian12','0683834233','klo.jpg','jordan misja','tirane','albanian','albanian','Albania'),
+  ('Sporting','ele@gmail.com','newklodian','klodian12','0683834233','1234.jpg','jordan misja','tirane','albanian','albanian','Albania');
+
 
 
 insert into follower (company_id,user_id)values('4','1'),('5','1'),('6','1');
-
-insert into product ( title , description , image_id , category_id , company_id , price , unit_stock , image )
-values('Benz mercedez','shitet per arsye mos perdorimi','1','1','1','500','5' ,'benz.jpg'),
-      ('Samsung s7 Edge 5 ','gjendje perfecte','2','1','1','400','2','s7.jpg');
-
-
-insert into image_product (product_id , image)
- values('1','benz.jpg'),('1','benz1.jpg'),('1','benz2.jpg'),('1','benz3.jpg'),('1','ben4.jpg'),
- ('2','s7.jpg'),('2','s71.jpg'),('2','s72.jpg'),('2','s73.jpg'),('2','s74.jpg');
 
 
 insert into user ( first_name,last_name,username,email,gener,local,picture,phone,language)

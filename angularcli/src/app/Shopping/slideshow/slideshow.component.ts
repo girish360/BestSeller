@@ -17,7 +17,7 @@ export class SlideshowComponent implements OnInit ,OnDestroy {
   public carouselOne: NgxCarousel;
 
   public images_slide = [
-    { src:'../../assets/images/products_image/1234.jpg' , title:'Category1'},
+    { src:'1234.jpg' , title:'Category1'},
     { src:'../../assets/images/products_image/klo.jpg' , title:'Category2'},
     { src:'../../assets/images/products_image/b3.jpg' , title:'Category3'},
     { src:'../../assets/images/products_image/1234.jpg' , title:'Category4'},

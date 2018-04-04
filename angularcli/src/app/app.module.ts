@@ -198,7 +198,8 @@ import {
     AuthService,
     SetRouterService,
     HeaderService,
-    ProductService
+    ProductService,
+    ProductsComponent
 
 
   ],

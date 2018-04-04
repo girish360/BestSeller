@@ -50,7 +50,7 @@
 
         <div *ngFor="let category of categorys">
 
-          <button  mat-button class="button_menu" >
+          <button  mat-button class="button_menu"  >
 
             <a   href="#" class="underline"  id="{{category.id}}">
 
@@ -85,9 +85,9 @@
 
               <div  *ngFor="let subcategory of category['sub_category']" >
 
-                <button  mat-button class="button_menu" >
+                <button  mat-button class="button_menu" (click)="category_products( subcategory )">
 
-                  <div class="subcat" id="{{subcategory.is}}">
+                  <div class="subcat" id="{{subcategory.id}}">
 
                     <div class="bordertypecat"></div>
 

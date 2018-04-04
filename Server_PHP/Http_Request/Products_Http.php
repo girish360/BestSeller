@@ -3,7 +3,6 @@
 if( $status =='products' ){ //  request for products from frontend ........
 
 
-
     echo $Object['Products']->getproducts( $data_from_client );
 
 }

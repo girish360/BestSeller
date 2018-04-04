@@ -4,10 +4,6 @@ import { Router } from '@angular/router';
 
 import { EncryptDecryptService } from './encrypt-decrypt.service';
 
-
-
-
-
 @Injectable()
 
 export class SetRouterService extends EncryptDecryptService{
