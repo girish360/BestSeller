@@ -4,30 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php" line="15" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e14b9dbf-ee1a-4b7f-90da-30f0834a13a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Controllers/Category_Subscribe_and_Products/Category_Subscribe.php" afterPath="$PROJECT_DIR$/Server_PHP/Controllers/Category_Subscribe_and_Products/Category_Subscribe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Controllers/Header/Header.php" afterPath="$PROJECT_DIR$/Server_PHP/Controllers/Header/Header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Controllers/Products/Products.php" afterPath="$PROJECT_DIR$/Server_PHP/Controllers/Products/Products.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Controllers/User_info/User_info.php" afterPath="$PROJECT_DIR$/Server_PHP/Controllers/User_info/User_info.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Fetch_Data/Fetch_Data.php" afterPath="$PROJECT_DIR$/Server_PHP/Fetch_Data/Fetch_Data.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Http_Request/Auth_Register_Http.php" afterPath="$PROJECT_DIR$/Server_PHP/Http_Request/Auth_Register_Http.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Http_Request/Category_Subscribe_Http.php" afterPath="$PROJECT_DIR$/Server_PHP/Http_Request/Category_Subscribe_Http.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Http_Request/Header_Http.php" afterPath="$PROJECT_DIR$/Server_PHP/Http_Request/Header_Http.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Http_Request/Products_Http.php" afterPath="$PROJECT_DIR$/Server_PHP/Http_Request/Products_Http.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php" afterPath="$PROJECT_DIR$/Server_PHP/Http_Request/Route_Http.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/Server_files/Server_files.php" afterPath="$PROJECT_DIR$/Server_PHP/Server_files/Server_files.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php" afterPath="$PROJECT_DIR$/Server_PHP/connection_db/class_connection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/Shopping/carusel/carusel.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/Shopping/carusel/carusel.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/Shopping/carusel/carusel.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/Shopping/carusel/carusel.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/Shopping/carusel/carusel.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/Shopping/carusel/carusel.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/Shopping/company/company.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/Shopping/company/company.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/Shopping/home/home.component.html" afterPath="$PROJECT_DIR$/angularcli/src/app/Shopping/home/home.component.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/Shopping/home/home.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/Shopping/home/home.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/Shopping/menu/menu.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/Shopping/menu/menu.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/Shopping/products/products.component.css" afterPath="$PROJECT_DIR$/angularcli/src/app/Shopping/products/products.component.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angularcli/src/app/Shopping/slideshow/slideshow.component.ts" afterPath="$PROJECT_DIR$/angularcli/src/app/Shopping/slideshow/slideshow.component.ts" />
-    </list>
+    <list default="true" id="e14b9dbf-ee1a-4b7f-90da-30f0834a13a1" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -1125,12 +1102,12 @@
       <workItem from="1521879972967" duration="63149000" />
       <workItem from="1522069424855" duration="85301000" />
       <workItem from="1522477588320" duration="87106000" />
-      <workItem from="1522909776445" duration="37014000" />
+      <workItem from="1522909776445" duration="37392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2574846000" />
+    <option name="totallyTimeSpent" value="2575224000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
