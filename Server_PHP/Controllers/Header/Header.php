@@ -1,7 +1,7 @@
 <?php
 
 
-class Header extends Cookie {
+class Header extends Cookie{
 
     public function get_wishlist_cartList(){
 

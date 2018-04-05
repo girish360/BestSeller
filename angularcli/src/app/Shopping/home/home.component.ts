@@ -13,11 +13,7 @@ export class HomeComponent implements OnInit {
       private dataservices : DataService
   )
   {
-    setTimeout(()=>{
 
-      this.dataservices.update_loader(false);
-
-    },1000);
   }
 
   ngOnInit() {

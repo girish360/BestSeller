@@ -3,7 +3,10 @@ import { Component, OnInit , Input ,OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
+
 import {Subscription} from "rxjs/Subscription";
+
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-company',
@@ -25,7 +28,7 @@ export class CompanyComponent implements OnInit , OnDestroy {
     cryp :any;
 
 
-    constructor( private crypto : EncryptDecryptService , private route: ActivatedRoute , private router: Router  ) {
+    constructor( private dataservices:DataService , private crypto : EncryptDecryptService , private route: ActivatedRoute , private router: Router  ) {
 
         this.subscription = this.route.params.subscribe( params => {
 
@@ -34,6 +37,13 @@ export class CompanyComponent implements OnInit , OnDestroy {
             this.cryp = crypto.encryp_AES(1,crypto.secret_key_encrypt_id);
 
         });
+
+        this.dataservices.update_loader(true);
+        setTimeout(()=>{
+
+            this.dataservices.update_loader(false);
+
+        },1000);
 
     }
 

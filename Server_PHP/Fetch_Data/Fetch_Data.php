@@ -10,6 +10,11 @@ class Fetch_Data extends connection {
 
     public $dependet = array();
 
+    public function __construct()
+    {
+        parent::__CONSTRUCT();
+    }
+
     public function fetch_data_array( $result_fromDB ){
 
         $this->Data_array=[];

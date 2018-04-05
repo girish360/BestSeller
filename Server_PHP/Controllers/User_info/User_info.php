@@ -2,7 +2,7 @@
 
 class User_info{
 
-   public function ip_info($ip = NULL, $purpose = "location", $deep_detect = TRUE) {
+   public function ip_info( $ip = NULL, $purpose = "location", $deep_detect = TRUE) {
         $output = NULL;
         if (filter_var($ip, FILTER_VALIDATE_IP) === FALSE) {
             $ip = $_SERVER["REMOTE_ADDR"];

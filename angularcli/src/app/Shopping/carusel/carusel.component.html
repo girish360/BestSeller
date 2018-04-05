@@ -1,44 +1,57 @@
 
+<div class="carousel_categories" *ngFor="let category of categories_products ">
 
-<div class="carpusel_company">
-<ngx-carousel [inputs]="carouselTileOne" (carouselLoad)="carouselTileOneLoad()">
+    <span class="name_category">  {{category.name}} </span>
 
-  <ngx-tile NgxCarouselItem *ngFor="let item of carouselTileOneItems; let i = index;">
+    <span class="see_all_category">
+
+        <a href="#" (click)="set_router( { path:'products/'+category.name+'/2' , data:category.id , relative:true })"> See All </a>
+
+    </span>
+
+    <ngx-carousel class="category" [inputs]="carousel_categories"
+
+                  (carouselLoad)="carouselTileOneLoad()"
+
+                  (onMove)="onmove_carousel( $event , category )"
+
+    >
+
+        <ngx-tile NgxCarouselItem *ngFor="let product of category['products']; let i = index;">
+
+            <div class="items_in_carousel ">
+
+                <a href="#">
+
+                    <div class="img_item border_bottom " >
+
+                        <img src="../../assets/images/products_image/{{product.product_image}}">
+
+                    </div>
+
+                </a>
+
+                <div class="content_carousel">
+
+                    {{product.product_title}}
+
+                </div>
+
+            </div>
+
+        </ngx-tile>
+
+        <button mat-mini-fab NgxCarouselPrev class="leftRs">
+            <mat-icon>skip_previous</mat-icon>
+        </button>
+
+        <button mat-mini-fab NgxCarouselNext class="rightRs">
+            <mat-icon>skip_next</mat-icon>
+        </button>
+
+    </ngx-carousel>
 
 
 
-    <div class="items_in_carousel ">
-
-      <a href="#">
-
-         <div class="img_item border_bottom " >
-
-             <img src="{{item.src}}">
-
-         </div>
-
-      </a>
-
-        <div class="content_carousel">
-
-            {{item.title}}
-
-        </div>
-
-    </div>
-
-
-
-  </ngx-tile>
-
-  <button mat-mini-fab NgxCarouselPrev class="leftRs">
-    <mat-icon>skip_previous</mat-icon>
-  </button>
-
-  <button mat-mini-fab NgxCarouselNext class="rightRs">
-      <mat-icon>skip_next</mat-icon>
-  </button>
-
-</ngx-carousel>
 </div>
 

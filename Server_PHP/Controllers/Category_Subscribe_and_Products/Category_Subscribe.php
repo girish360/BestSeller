@@ -1,16 +1,16 @@
 <?php
 // start class for category....................
 
+
 class Category_Subscribe extends Fetch_Data
 {
     public  $category;
+
     public $sub_category = Array();
 
     private $select_columns = array('id','name','image');
 
     private $table_name='category';
-
-
 
     public function redukto($word, $limit = '20')
     {

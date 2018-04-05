@@ -55,7 +55,7 @@ namespace server\files\Controllers {
 
     $directorys = $object_directorys->get_directorys();
 
-    $Object=[];
+    $Router=[];
 
     foreach ($directorys as $dir_name => $dir_value) {
 
@@ -65,13 +65,13 @@ namespace server\files\Controllers {
 
             $dynamic_dir = $root_dir . '/' . $dir_name . '/';
 
-            $class_name = substr($file_name, 0, strlen($file_name) - 4);
+            $class_name = substr( $file_name, 0, strlen($file_name) - 4 );
 
-            if (file_exists($dynamic_dir . $class_name . '.php')) {
+            if ( file_exists($dynamic_dir . $class_name . '.php' ) ) {
 
                 include $dynamic_dir . $class_name . '.php';
 
-                $Object[$class_name] = new $class_name;
+                $Router[$class_name] = new $class_name;
 
             } else {
 
@@ -79,6 +79,10 @@ namespace server\files\Controllers {
             }
         }
     }
+
+
 }
+
+
 
 ?>

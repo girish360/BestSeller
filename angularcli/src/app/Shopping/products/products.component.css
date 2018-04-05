@@ -113,9 +113,9 @@
 }
 
 .width_products:hover{
-    -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+    -webkit-box-shadow: 0px 1px 6px 0px rgba(105,81,105,1);
+    -moz-box-shadow: 0px 1px 6px 0px rgba(105,81,105,1);
+    box-shadow: 0px 1px 6px 0px rgba(105,81,105,1);
 }
 
 

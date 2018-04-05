@@ -8,21 +8,29 @@
     -moz-box-shadow: none;
     box-shadow: none;
     border-radius: 5px;
-    background-color:white;
+    background-color: white;
    margin-left: -5px;
     margin-right: -5px;
 
+}
+
+.items_in_carousel:hover{
+    -webkit-box-shadow: 0px 1px 8px 0px rgba(105,81,105,1);
+    -moz-box-shadow: 0px 1px 8px 0px rgba(105,81,105,1);
+    box-shadow: 0px 1px 8px 0px rgba(105,81,105,1);
 }
 
 .items_in_carousel:hover {
     background-color:white;
 }
 
-.carpusel_company{
+.carousel_categories{
 
     width: 100%;
 
 }
+
+
 
 .img_item{
     height: 60%;
@@ -66,16 +74,27 @@
     background-color: whitesmoke;
     transition: 0.2s;
 }
-rightRs .icon-mat{
+.rightRs .icon-mat{
     color:red;
 }
 
 
-.carpusel_company:hover .leftRs{
+.category:hover .leftRs{
     left: 0px;
     transition: 0.2s;
 }
-.carpusel_company:hover .rightRs{
+.category:hover .rightRs{
     right: 0px;
     transition: 0.2s;
+}
+
+.see_all_category a {
+
+    float: right;
+
+    font-size: 16px;
+    text-decoration: none;
+}
+.name_category{
+    font-size: 16px;
 }

@@ -46,7 +46,7 @@ export class MenuComponent  implements OnInit  {
   private top_menus:object = [
     { icon:'home',id:'1',name:'Home'   },
     { icon:'star rate',id:'2',name:'Expensive'  },
-    { 'icon':'today','id':'3','name':'Today'  },
+    { 'icon':'last_page','id':'3','name':'Lastest'  },
     { 'icon':'subscriptions','id':'4','name':'Subscriptions' },
     { 'icon':'whatshot','id':'5','name':'Trending'  },
     { 'icon':'history','id':'6','name':'History'  }

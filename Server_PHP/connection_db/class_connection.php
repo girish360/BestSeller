@@ -47,6 +47,30 @@ class  connection  { // start connection class ...
 
     }
 
+    public function select_limit( $table_name , $array_select ,$start , $for_page ){ // select data from databse with limit
+
+        $select_column = implode(',', $array_select); //  all column that should select in databse .............
+
+        $query = $this->db->prepare("SELECT $select_column FROM `$table_name` LIMIT ".$start*$for_page." , ".$for_page."");
+
+        $query->execute();
+
+        return $query;
+    }
+
+    public function select_limit_where( $table_name , $array_select , $array_where , $start , $for_page ){ // select data from databse with limit
+
+        $where_columns = self::where_columns_or( $array_where );
+
+        $select_column = self::select_columns( $array_select );
+
+        $query = $this->db->prepare("SELECT $select_column FROM `$table_name` WHERE $where_columns LIMIT ".$start*$for_page." , ".$for_page."");
+
+        $query->execute();
+
+        return $query;
+    }
+
     public function select_join_limit( $array_select_tables ,$where ,$limit ){  // select data with join tables
         $Tables = array(); // tables array
         $Columns = array();  // Columns array
@@ -201,32 +225,6 @@ class  connection  { // start connection class ...
         }
 
     }
-
-
-    public function select_limit( $table_name , $array_select ,$start , $for_page ){ // select data from databse with limit
-
-        $select_column = implode(',', $array_select); //  all column that should select in databse .............
-
-        $query = $this->db->prepare("SELECT $select_column FROM `$table_name` LIMIT ".$start*$for_page." , ".$for_page."");
-
-        $query->execute();
-
-        return $query;
-    }
-
-    public function select_limit_where( $table_name , $array_select , $array_where , $start , $for_page ){ // select data from databse with limit
-
-        $where_columns = self::where_columns_or( $array_where );
-
-        $select_column = self::select_columns( $array_select );
-
-        $query = $this->db->prepare("SELECT $select_column FROM `$table_name` WHERE $where_columns LIMIT ".$start*$for_page." , ".$for_page."");
-
-        $query->execute();
-
-        return $query;
-    }
-
 
     public function insert_query( $table_name , $array_data ){ // insert data in databse with array data
 

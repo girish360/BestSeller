@@ -12,6 +12,7 @@ if ( $_SERVER['HTTP_ORIGIN'] == "http://localhost:4200" ) { // check is request 
 
 include '../Server_files/Server_files.php'; // include all controllers dynamically that are in Controllers directory ...
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' || $_SERVER['REQUEST_METHOD'] === 'GET') { // chekc if request http is  GET or POST ...................
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') { // check if request is POST ........
@@ -40,6 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' || $_SERVER['REQUEST_METHOD'] === 'GET
 
         //end
 
+        // request for home page that have categories with dependet products ........
+
+        include  'Home_Http.php';
+
+       // end
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') { // check if request if Get

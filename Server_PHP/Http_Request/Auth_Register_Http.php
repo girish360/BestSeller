@@ -10,7 +10,7 @@ if( $status =='check_email' ){
 
 
 
-    echo  $Object['Auth_Register']->check_email($data_from_client);
+    echo  $Router['Auth_Register']->check_email($data_from_client);
 
 }
 
@@ -18,7 +18,7 @@ if( $status =='check_password' ){
 
 
 
-    echo $Object['Auth_Register']->check_password($data_from_client);
+    echo $Router['Auth_Register']->check_password($data_from_client);
 
 }
 

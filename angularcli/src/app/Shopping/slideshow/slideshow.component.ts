@@ -90,7 +90,9 @@ export class SlideshowComponent implements OnInit ,OnDestroy {
          // must use feature to all carousel
      }
 
-     public onmove_item_slide(data: NgxCarouselStore){
+     public onmove_item_slide( data: NgxCarouselStore ){
+
+      console.log(data);
 
      }
 
