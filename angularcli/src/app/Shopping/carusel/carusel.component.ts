@@ -179,7 +179,7 @@ export class CaruselComponent implements OnInit ,OnDestroy {
 
         this.categories_products[i].current_page = array_data.current_page;
 
-      }
+      } //
 
     }
 
