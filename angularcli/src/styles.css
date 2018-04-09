@@ -24,7 +24,15 @@ time, mark, audio, video {
 
 
 
+
+
+
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+
+
 
 @keyframes component_Animation {
     0% {

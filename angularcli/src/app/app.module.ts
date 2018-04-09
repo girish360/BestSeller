@@ -121,6 +121,7 @@ import {
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -143,7 +144,8 @@ import {
     ProductsComponent,
     CategoriesComponent,
     IndexComponent,
-    HomeComponent
+    HomeComponent,
+
 
 
   ],

@@ -34,7 +34,6 @@ export const router: Routes = [
     {
         path: '', component: ControllerComponent,
     },
-
     {
         path: 'shopping', component: IndexComponent,
 
