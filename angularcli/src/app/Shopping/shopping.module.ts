@@ -1,8 +1,6 @@
 
 import { NgModule     } from '@angular/core';
 
-
-
 import { CommonModule } from '@angular/common';
 
 import { ShareModule } from '../share/share.module';
@@ -21,8 +19,9 @@ import { HeaderService } from './header/header.service'; // header service
 
 import { ProductService } from './products/product.service'; // product service
 
-// end services .....................................................................................
+import { HomeService } from './home/home.service';
 
+// end services .....................................................................................
 
 // componets .....................................................
 
@@ -37,17 +36,14 @@ import { BodyComponent } from './body/body.component'; // body shopping
 import { MenuComponent } from './menu/menu.component'; //  menu  left  in shopping
 
 
-
 // end components ............................................................................................
 
 @NgModule({
 
   declarations: [
-
     IndexComponent,
     HeaderComponent,
     BodyComponent,
-
     MenuComponent,
     HomeComponent,
 
@@ -56,10 +52,8 @@ import { MenuComponent } from './menu/menu.component'; //  menu  left  in shoppi
   imports: [
     CommonModule,
     ShoppingRoutingModule,
-
     NgxCarouselModule,
     ShareModule,
-
     InfiniteScrollModule
 
   ],
@@ -67,12 +61,11 @@ import { MenuComponent } from './menu/menu.component'; //  menu  left  in shoppi
   providers: [
     DataService,
     HeaderService,
-    ProductService
+    ProductService,
+    HomeService
   ]
 
-
-
-
 })
+
 export class ShoppingModule { }
 

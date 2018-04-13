@@ -439,48 +439,7 @@ a{
 
 
 
-.checkchat{
-    z-index: 2 !important;
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    border-radius: 100px;
-    color:white;
-    bottom: 5px;
-    right: 10px;
-    display: inline-block;
-    background-color:#E6E6FA;
 
-}
-
-.checkchat:hover{
-
-    -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
-}
-
-.pointerchat{
-
-    width: 15px;
-    height: 15px;
-    background-color:#E6E6FA;
-
-    -webkit-transform:rotate(100deg);
-    -moz-transform: rotate(100deg);
-    -ms-transform: rotate(100deg);
-    -o-transform: rotate(100deg);
-    transform: rotate(100deg);
-    position: relative;
-    top: 0px;
-    left: -15px;
-    visibility: hidden;
-
-}
-
-.imgopenchat{
-    position: relative;
-    top: 12px;
-    left: 22px;
-}
 
 .treguesi{
     position: absolute;

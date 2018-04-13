@@ -14,6 +14,8 @@ import {  ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
 import { SetRouterService } from '../services/set-router.service';
 
+import { HomeService } from './home.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -26,13 +28,11 @@ export class HomeComponent implements OnInit {
 
   public carousel_categories: NgxCarousel;
 
-  public categories_products : any = [];
-
   carousel = Subscription;
 
-  public store_data_carousel :any = { current_page : 0  , total_categories : 0 , categories_for_page : 5 }; // inital  can change later ....
-
   constructor(
+
+      private homeservice : HomeService,
 
       private dataservices : DataService,
 
@@ -44,40 +44,47 @@ export class HomeComponent implements OnInit {
 
   )
   {
-    this.dataservices.update_loader(true);
 
-    this.dataservices.create_object_request( 'categories_products', this.store_data_carousel  );
-
-    this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
-
-        .subscribe( //  take success
-
-            data => {
-
-              if( data['status'] == 'categories_products' ){
-
-                this.categories_products = data['data']['categories'];
-
-                this.store_data_carousel = data['data']['store_data'];
-
-                this.cd.markForCheck();
+      if(   this.homeservice.categories_products.length  == 0) {
 
 
+          this.dataservices.update_loader(true);
 
-              }
-              setTimeout(()=>{
+          this.dataservices.create_object_request('categories_products', this.homeservice.store_data_carousel);
 
-                this.dataservices.update_loader(false);
+          this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
 
-              },1000);
+              .subscribe( //  take success
+
+                  data => {
+
+                      if (data['status'] == 'categories_products') {
+
+                          this.homeservice.categories_products = data['data']['categories'];
+
+                          this.homeservice.store_data_carousel = data['data']['store_data'];
+
+                          this.cd.markForCheck();
+
+                      }
+
+                      setTimeout(() => {
+
+                          this.dataservices.update_loader(false);
+
+                      }, 1000);
 
 
-            },
-            error => console.log( error['data'] ) // take error .....
+                  },
 
-        );
+                  error => console.log(error['data']) // take error .....
+
+              );
+      }
 
   }
+
+
 
   ngOnDestroy() {
 
@@ -134,7 +141,7 @@ export class HomeComponent implements OnInit {
 
   onmove_carousel( data_carousel : NgxCarouselStore , current_category ){
 
-    if( data_carousel.currentSlide + data_carousel.items  == data_carousel.itemLength
+      if( data_carousel.currentSlide + data_carousel.items  == data_carousel.itemLength
         && (current_category.current_page+1)*current_category.products_for_page < current_category.total_products
      ){
 
@@ -172,18 +179,18 @@ export class HomeComponent implements OnInit {
 
   public more_products( array_data , category_id ){
 
-    for ( let i = 0 ; i < this.categories_products.length ; i++ ){
+    for ( let i = 0 ; i < this.homeservice.categories_products.length ; i++ ){
 
-      if( category_id == this.categories_products[i].id ){
+      if( category_id == this.homeservice.categories_products[i].id ){
 
 
         for( let j = 0 ; j < array_data.products.length ; j++ ){
 
-          this.categories_products[i].products.push( array_data.products[j] );
+          this.homeservice.categories_products[i].products.push( array_data.products[j] );
 
         }
 
-        this.categories_products[i].current_page = array_data.current_page;
+        this.homeservice.categories_products[i].current_page = array_data.current_page;
 
       } //
 
@@ -195,14 +202,14 @@ export class HomeComponent implements OnInit {
 
   onScroll() {
 
-   if( (this.store_data_carousel.current_page+1)*this.store_data_carousel.categories_for_page < this.store_data_carousel.total_categories ) {
+      if( (this.homeservice.store_data_carousel.current_page+1)*this.homeservice.store_data_carousel.categories_for_page < this.homeservice.store_data_carousel.total_categories ) {
 
 
-     this.store_data_carousel.current_page = this.store_data_carousel.current_page + 1;
+     this.homeservice.store_data_carousel.current_page = this.homeservice.store_data_carousel.current_page + 1;
 
      this.dataservices.update_loader(true);
 
-     this.dataservices.create_object_request('categories_products', this.store_data_carousel);
+     this.dataservices.create_object_request('categories_products', this.homeservice.store_data_carousel);
 
      this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
 
@@ -214,7 +221,7 @@ export class HomeComponent implements OnInit {
 
                  let more_categories = data['data']['categories'];
 
-                 this.store_data_carousel = data['data']['store_data'];
+                 this.homeservice.store_data_carousel = data['data']['store_data'];
 
                  this.more_categories(more_categories);
 
@@ -229,9 +236,9 @@ export class HomeComponent implements OnInit {
 
   public more_categories( more_categories ){
 
-    for(let i = 0 ; i < more_categories.length ; i++ ){
+    for( let i = 0 ; i < more_categories.length ; i++ ){
 
-       this.categories_products.push(more_categories[i]);
+       this.homeservice.categories_products.push(more_categories[i]);
     }
 
     this.cd.markForCheck();
