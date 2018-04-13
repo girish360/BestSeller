@@ -58,99 +58,101 @@
 
       <div class="width_products component-animation " *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':productsService.status_menu | async  }" >
 
-          <span class="each_width_product" >
+          <div class="space">
 
-              <div  class="title_products more_detail_product" (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })">
+              <div class="width_each_product">
 
-                  {{product.product_title }}
+                  <div  class="title_products more_detail_product" (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })">
 
-                   <span class="glyphicon glyphicon-chevron-down"></span><br>
+                      {{product.product_title }}
 
-                   <div class=' glyphicon glyphicon-time'></div> {{product.product_date}}
+                      <span class="glyphicon glyphicon-chevron-down"></span><br>
 
-              </div>
+                      <div class=' glyphicon glyphicon-time'></div> {{product.product_date}}
 
-              <div class="image_product_primary " (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })">
+                  </div>
 
-                  <img class="image_product" src="../../assets/images/products_image/{{product.product_image}}">
+                  <div class="image_product_primary " (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })">
 
-              </div>
+                      <img class="image_product" src="../../assets/images/products_image/{{product.product_image}}">
 
-              <button  (click)="product.product_in_wishList='true'; productsService.add_wish_list( product )" mat-button class="wish_list  notCloseDropdawnFavorite notCloseDropdawnCard">
+                  </div>
 
-                  <span class="write_add_wish">{{dataservices.language.add_wishlist}}</span>
+                  <button  (click)="product.product_in_wishList='true'; productsService.add_wish_list( product )" mat-button class="wish_list  notCloseDropdawnFavorite notCloseDropdawnCard">
 
-                  <mat-icon *ngIf="product.product_in_wishList == 'false' " class="notCloseDropdawnFavorite notCloseDropdawnCard">favorite_border</mat-icon>
+                      <span class="write_add_wish">{{dataservices.language.add_wishlist}}</span>
 
-                  <mat-icon  *ngIf="product.product_in_wishList == 'true' " class="hearts_div_hover notCloseDropdawnFavorite notCloseDropdawnCard">favorite</mat-icon>
+                      <mat-icon *ngIf="product.product_in_wishList == 'false' " class="notCloseDropdawnFavorite notCloseDropdawnCard">favorite_border</mat-icon>
 
-              </button>
+                      <mat-icon  *ngIf="product.product_in_wishList == 'true' " class="hearts_div_hover notCloseDropdawnFavorite notCloseDropdawnCard">favorite</mat-icon>
 
-              <div class="footer_products">
+                  </button>
 
-                  <span matTooltip="Views!">
+                  <div class="footer_products">
 
-                      <div class="button_footer_products">
+                      <span matTooltip="Views!">
 
-                          <span class="glyphicon glyphicon-eye-open icon_eye"></span>
+                          <div class="button_footer_products">
 
-                          <div class="both_write ">
+                              <span class="glyphicon glyphicon-eye-open icon_eye"></span>
 
-                              12889
+                              <div class="both_write ">
 
-                          </div>
+                                  12889
 
-                      </div>
-
-                   </span>
-
-                  <span matTooltip="Add to your card"  class="notCloseDropdawnCard notCloseDropdawnFavorite " (click)="product.product_in_cartList='true'; productsService.add_cart_list( product )">
-
-                      <div class="button_footer_products">
-
-                          <span *ngIf="product.product_in_cartList=='false'" class="glyphicon glyphicon-plus icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" ></span>
-
-                          <span *ngIf="product.product_in_cartList=='true'" class="glyphicon glyphicon-ok icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" ></span>
-
-                          <div class="both_write ">
-
-                              Cart
+                              </div>
 
                           </div>
 
-                      </div>
+                      </span>
 
-                  </span>
+                      <span matTooltip="Add to your card"  class="notCloseDropdawnCard notCloseDropdawnFavorite " (click)="product.product_in_cartList='true'; productsService.add_cart_list( product )">
 
-                  <span matTooltip="See Details!">
+                          <div class="button_footer_products">
 
-                      <div (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })" class="button_footer_products" >
+                              <span *ngIf="product.product_in_cartList=='false'" class="glyphicon glyphicon-plus icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" ></span>
 
-                          <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
+                              <span *ngIf="product.product_in_cartList=='true'" class="glyphicon glyphicon-ok icon_eye notCloseDropdawnCard notCloseDropdawnFavorite" ></span>
 
-                          <div class="both_write ">
+                              <div class="both_write ">
 
-                              More
+                                  Cart
+
+                              </div>
 
                           </div>
 
-                      </div>
+                      </span>
 
-                  </span>
+                      <span matTooltip="See Details!">
+
+                          <div (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })" class="button_footer_products" >
+
+                              <span class=" glyphicon glyphicon-option-horizontal icon_eye"></span>
+
+                              <div class="both_write ">
+
+                                  More
+
+                              </div>
+
+                          </div>
+
+                      </span>
+
+                  </div>
+
+                  <div class="prise_products">
+
+                      Price:<del>$2500</del> $3500
+
+                  </div>
+
+                  <div class="plus_height"></div>
 
               </div>
 
-              <div class="prise_products">
-
-                  Price:<del>$2500</del> $3500
-
-              </div>
-
-              <div class="plus_height"></div>
-
-          </span>
-
-
+          </div>
 
       </div>
 

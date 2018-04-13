@@ -14,7 +14,7 @@ import { ProductService } from '../products/product.service'; // ProductServices
 export class IndexComponent implements OnInit {
 
   constructor(
-      private productsService :ProductService ,
+      private productsService :ProductService,
       private elementRef : ElementRef,
       private renderer : Renderer,
       private dataservices: DataService
@@ -26,6 +26,8 @@ export class IndexComponent implements OnInit {
   ngDoCheck() {
 
   }
+
+
 
 
   public get_Language:object={};

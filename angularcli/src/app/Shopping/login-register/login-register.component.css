@@ -1,6 +1,5 @@
 
 
-
 .login{
     text-align: center;
     margin:0px auto;
@@ -45,7 +44,7 @@
 }
 .mat-input-container{
 
-     min-width: 100%;
+    min-width: 100%;
 }
 
 .image_user{

@@ -104,7 +104,7 @@ a{
 }
 .menu_left{
 
-    z-index: 3 !important;
+    z-index: 2 !important;
     position: fixed;
     left: -250px;
     width: 300px;
@@ -721,6 +721,10 @@ categorytype_new_background{
 
     .width_menu_right{
         display: none;
+    }
+
+    .change_inner_body{
+        width: 100%;
     }
 
 

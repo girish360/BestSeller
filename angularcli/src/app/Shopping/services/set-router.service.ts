@@ -39,7 +39,7 @@ export class SetRouterService extends EncryptDecryptService{
 
       // router with data in url ..........................................
 
-      let encryp_id = this.encryp_AES( data.data , this.secret_key_encrypt_id );
+      let encryp_id = this.encryp_AES( data.data );
 
       if(data.relative == true){
 

@@ -91,28 +91,44 @@
 }
 
 .all_prod{
-    margin-left: -8px;
-    overflow: hidden;
+    width: 101%;
+    position: relative;
+    left:-0.5%;
+}
+
+.width_products {
+
+    display: inline-block;
+    margin-top: 12px;
 
 }
 
-.width_products{
-
-    display: inline-block;
-    margin-left: 8px;
-    margin-top: 3px;
-    position: relative;
-    left: 5px;
-    border:1px solid;
+.space{
+    width: 96%;
+    margin: 0 auto;
+    display: block;
+    background-color: white;
     border:1px solid;
     border-radius: 4px;
     border-color:#d6d6c2;
-    background-color: white;
-    overflow: hidden;
+}
+
+.width_each_product{
+
+    position: relative;
+
+    width: 94%;
+
+    margin: 0 auto;
+
+    display: block;
+
 
 }
 
-.width_products:hover{
+
+
+.space:hover{
     -webkit-box-shadow: 0px 1px 6px 0px rgba(105,81,105,1);
     -moz-box-shadow: 0px 1px 6px 0px rgba(105,81,105,1);
     box-shadow: 0px 1px 6px 0px rgba(105,81,105,1);
@@ -199,13 +215,7 @@
     text-decoration: none;
 }
 
-.each_width_product{
-    width: 94%;
 
-    margin-left: 8px;
-    display: inline-block;
-
-}
 
 .both_write{
     display: inline-block;
@@ -251,10 +261,8 @@
     height: 36px;
     background-color:#E6E6FA;
 
-
-
-
 }
+
 .inside_option_products{
 
     width: 100%;
@@ -273,21 +281,18 @@
     position: sticky;
     top: 40px;
 
-
-
 }
 .page_products{
     display: inline-block;
 }
 
 .wish_list{
+
     position: absolute;
-    width: 94%;
+    width: 100%;
     height: 30px;
-    background-color: red;
-    opacity: 1;
     margin-top: -30px;
-    border-radius: 0px;
+
 }
 
 .wish_list .mat-icon{
@@ -295,8 +300,6 @@
     position: relative;
     top:-4px;
 }
-
-
 
 .own_img_product{
     position: absolute;
@@ -365,9 +368,7 @@
 .mat-button:hover{
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
 }
-.button_pagination_products{
-    margin-left: 7px;
-}
+
 
 .mat-icon ,.write_page{
     position: relative;
@@ -385,17 +386,18 @@
 
 
     .width_products{
-        width: 24%;
+        width: 25%;
     }
     .width_products_open_menu {
-        width: 32%;
+        width: 33.3333333%;
     }
 
 }
+
 @media only screen and ( max-width: 1400px ) {
 
     .width_products{
-        width: 32%;
+        width: 33.3333333%;
     }
 
 }
@@ -408,9 +410,8 @@
 
     .width_products{
 
-        display: inline-block;
-        width: 48%;
 
+        width: 50%;
 
 
     }
@@ -422,12 +423,16 @@
 
     .width_products{
 
-        display: block;
         width: 100%;
-        margin-left: 0px;
-        margin-top: 10px;
+    }
+    .all_prod{
+        width: 100%;
+        position: relative;
+        left:0;
+    }
 
-
+    .space {
+        width: 100%;
     }
 }
 

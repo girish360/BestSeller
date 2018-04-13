@@ -23,16 +23,7 @@ time, mark, audio, video {
 }
 
 
-
-
-
-
-
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
-
-
-
 
 @keyframes component_Animation {
     0% {
@@ -64,22 +55,16 @@ a{
 }
 
 .response_outer{
-
     width: calc(100% - 50px);
     float: right;
-
-
-
 }
 
 .response_inner{
-
     width:90% ;
-
-    margin: 0px auto;
-
+    margin: 0 auto;
 
 }
+
 .button{
 
     background-color: cornflowerblue;
@@ -102,16 +87,11 @@ a{
 
         width: 100%;
 
-
-
     }
 
-    .response_inner{
+    .response_inner {
 
-        width:99% ;
-        margin: 0px auto;
-
-
+        width: 95%;
     }
 
 }
@@ -190,17 +170,15 @@ a{
     color:darkslategrey;
 }
 
-
 .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
 
     border-color: slategrey;
 
 }
+
 .mat-radio-button.mat-accent .mat-radio-inner-circle{
     background-color:slategrey ;
 }
-
-
 
 .mat-tab-label{
 
@@ -210,6 +188,7 @@ a{
 
     background-color: white;
 }
+
 .label_tab{
     position: relative;
     top:-6px;

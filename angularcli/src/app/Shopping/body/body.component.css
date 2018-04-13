@@ -15,7 +15,6 @@
     width: calc(100% - 320px);
     min-height: calc( 100vh - 60px ); /* Minimum height for modern browsers */
     height: auto;
-
 }
 
 
@@ -40,6 +39,7 @@
         width:100%;
     }
 
+
 }
 @media only screen and ( min-width: 1200px ){
 
@@ -55,15 +55,6 @@
 }
 @media only screen and (max-width: 1200px){
 
-
-
-    .response_inner{
-        width: 100%;
-    }
-
-    .gjeresia{
-        width: 99%;
-    }
     .containerright{
         display: none;
     }
@@ -74,7 +65,6 @@
 
 
 }
-
 @media only screen and(min-width: 1050px){
     .kerkimresponse{
         display: none;
@@ -83,34 +73,17 @@
         display: block;
     }
 }
-@media only screen and (max-width: 1050px) {
 
-    .response_outer {
 
+@media only screen and (max-width: 700px) {
+
+    .change_inner_body{
         width: 100%;
-
-    }
-
-    .response_inner{
-
-        width:99.5% ;
-        margin: 0px auto;
-
-
     }
 
 }
 
-@media only screen and (max-width: 700px){
 
 
 
 
-
-
-}
-
-@media only screen and (max-width: 500px){
-
-
-}

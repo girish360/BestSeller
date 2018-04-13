@@ -1,6 +1,5 @@
+
 import { Pipe, PipeTransform } from '@angular/core';
-
-
 
 @Pipe({
   name: 'filter'
@@ -14,10 +13,10 @@ export class FilterPipe implements PipeTransform {
 
     return wishList.filter( function( wish_prod ){
 
-         return wish_prod.product_title.toLowerCase().includes(value.toLowerCase());
+      return wish_prod.product_title.toLowerCase().includes(value.toLowerCase());
 
     })
+
   }
 
 }
-

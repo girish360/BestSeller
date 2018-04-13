@@ -2,10 +2,14 @@
 
 /* Styles go here */
 
+.header{
+    height: 40px;
+}
+
 .progress{
 
     position: relative;
-    top: -2px;
+    top: -5px;
 }
 
 mat-progress-bar.progress .mat-progress-bar-fill::after {
@@ -66,10 +70,10 @@ a{
 }
 
 
-.bottom_header_left{
+.header_left{
     float: left;
 }
-.bottom_header_right{
+.header_right{
 
     float: right;
 
@@ -328,14 +332,6 @@ a{
 }
 
 
-.bottom_header {
-
-    z-index:  2 !important;
-    height: 40px;
-}
-
-
-
 .menu1 {
     display: inline-block;
     width: auto;
@@ -394,15 +390,40 @@ a{
     top:3px;
     left: -4px;
 }
-.menu3 {
+
+.button_right_pc{
+
     display: inline-block;
     width: 70px;
     height: 40px;
     text-align: center;
     overflow: hidden;
+
+
+}
+.button_right_pc a{
+    color:white;
+    text-decoration: none;
 }
 
-.bottom_header_mobile{
+.button_mobile{
+
+    float: left;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+
+
+
+}
+
+.button_mobile a{
+
+    color:white;
+    text-decoration: none;
+}
+
+.header_mobile{
     display: none;
     width: 100%;
 }
@@ -415,10 +436,7 @@ a{
     top: -6px;
     z-index: 10 !important;
 }
-.menu3 a{
-    color:white;
-    text-decoration: none;
-}
+
 
 
 .checkchat{
@@ -948,11 +966,6 @@ input[type='radio'] {
     display: none;
 }
 
-
-
-
-
-
 @media only screen and(min-width: 1050px){
     .kerkimresponse{
         display: none;
@@ -983,14 +996,7 @@ input[type='radio'] {
 
     }
 
-    .menu3{
 
-        position: relative;
-        top: 0px;
-        text-align: center;
-        width: 13%;
-
-    }
 
     .dropcard , .dropmore ,.dropfavority{
 
@@ -998,10 +1004,7 @@ input[type='radio'] {
         margin-top:-5px;
 
     }
-    .bottom_header_right{
-        float: none;
 
-    }
     #search{
         display: inline-block;
     }
@@ -1032,26 +1035,13 @@ input[type='radio'] {
         display: none;
     }
 
-
-
 }
+
 @media only screen and (max-width: 800px){
-
-    .menu3{
-
-
-        text-align: center;
-        width: 13%;
-
-
-    }
-
 
     .photouser{
         width: 27px;
-
         height: 0px;
-
         border-color:white;
         position: relative;
         top:0px;
@@ -1067,21 +1057,10 @@ input[type='radio'] {
         box-shadow: none;
     }
 
-
-
-
-
-
-
 }
+
+
 @media only screen and (max-width: 700px){
-    .width_products{
-        display: inline-block;
-        width: 48.5%;
-        margin-left: 0px;
-
-
-    }
 
     .dropcard ,.dropmore ,.dropfavority{
 
@@ -1093,80 +1072,49 @@ input[type='radio'] {
         margin-top:-5px;
 
     }
+    .inner_mobile{
+        width: 100%;
 
-    .bottom_header_right{
+    }
+
+    .header_right{
         display: none;
     }
-    .bottom_header_mobile{
+    .header_mobile{
         display:block;
     }
 
-    .menu3{
-        text-align: center;
-        width: 19.1%;
-    }
+
     .menu1{
         display: none;
     }
     .right_above_header{
         display: none;
     }
-
-
-
 }
+
 @media only screen and (max-width: 570px){
-
-
-
 
     .photouser{
         width: 27px;
-
         height: 0px;
-
         border-color:white;
         position: relative;
         top:0px;
-
-    }
-
-
-
-
-
-
-
-
-}
-@media only screen and (max-width: 500px){
-    .width_products{
-        display: block;
-        width: 97%;
-        margin-left: 0px;
-
-
     }
 }
+
 
 @media only screen and (max-width: 350px){
-    .menu3{
 
-        text-align: center;
-        width: 18%;
-    }
 }
+
 @media only screen and (min-width: 1200px){
 
     .active_menu {
         float: right;
         right: 0;
         left: 0;
-
         width: calc(100% - 250px);
-
-
     }
-
-
 }

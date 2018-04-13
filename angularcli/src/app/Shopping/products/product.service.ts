@@ -102,7 +102,7 @@ export class ProductService extends HeaderService {
 
   check_pages( click_details ){
 
-    click_details.type_link = this.crypto.encryp_AES( click_details.type_link , this.crypto.secret_key_encrypt_id );
+    click_details.type_link = this.crypto.encryp_AES( click_details.type_link );
 
     if( click_details.active != true ){ // check if is different from active page ...........
 

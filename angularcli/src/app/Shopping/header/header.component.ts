@@ -116,6 +116,11 @@
 
      }
 
+     check_body(boolean){ // change width inner body
+
+         this.dataservices.change_inner = boolean;
+     }
+
 
      index(index , item){
 

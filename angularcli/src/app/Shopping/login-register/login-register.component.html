@@ -1,0 +1,233 @@
+<div class="all_screen_login component-animation">
+
+  <div class="login">
+
+    <mat-tab-group>
+
+      <mat-tab>  <!-- tab sing in ..............................................................................-->
+
+        <ng-template mat-tab-label>  <!-- tab label sing in ..............................................................................-->
+
+          <mat-icon>
+
+            <span class="glyphicon glyphicon-log-in"></span>
+
+          </mat-icon>
+
+          <div class="label_tab inline-block">
+
+            Sing In
+
+          </div>
+
+        </ng-template>
+
+        <div class="login_loading">
+
+        </div>
+        <br>
+
+
+        <div class="width_login"> <!-- container sing in ..............................................................................-->
+
+          <div class="user-icon center">
+
+            <span  *ngIf="login_property.steps == 1 " class="glyphicon glyphicon-user user_icon"></span>
+
+            <img *ngIf="login_property.steps == 2 " src="../../assets/images/products_image/{{user_details.picture}}">
+
+          </div><br><br>
+
+          <ng-container *ngIf=" login_property.steps == 1; else step2 ">
+
+            {{login_property.write_type_login}}<br><br>
+
+            <mat-radio-group>
+
+              <mat-radio-button class="green" value="1"  (click)="set_type_account('client')" [checked]="login_property.client_account">Client</mat-radio-button>
+
+              <mat-radio-button class="green" value="2"  (click)="set_type_account('business')" [checked]="login_property.business_account" >Business</mat-radio-button>
+
+            </mat-radio-group><br>
+
+            <form class="example-form"  >
+
+              <mat-form-field class="example-full-width">
+
+                <mat-icon class="icon_email"> <span class="glyphicon glyphicon-envelope"></span> </mat-icon>
+
+                <input matInput
+
+                       placeholder="Set Email or Username"
+
+                       [(ngModel)]="user_details_loginForm.username"
+
+                       [formControl]="email_FormControl_login"
+
+                       [errorStateMatcher]="matcher"
+
+                       (keypress)="keypres()"
+
+
+
+                >
+
+                <mat-hint>Errors appear instantly!</mat-hint>
+
+                <mat-error *ngIf="email_FormControl_login.hasError('required')">
+
+                  Email is <strong>required</strong>
+
+                </mat-error>
+
+              </mat-form-field>
+
+            </form>
+
+          </ng-container>
+
+          <ng-template #step2>
+
+            Hi {{user_details.first_name}} <br><br>
+
+            {{user_details.email}}
+
+            <form class="example-form" >
+
+              <mat-form-field class="example-full-width">
+
+                <mat-icon  class="icon_email"> vpn_key </mat-icon>
+
+                <input matInput
+
+                       placeholder="Set Password"
+
+                       [(ngModel)]="user_details_loginForm.password"
+
+                       [formControl]="password_FormControl_login"
+
+                       [errorStateMatcher]="matcher"
+
+                       (keypress)="keypres()"
+
+
+                >
+
+                <mat-hint>Errors appear instantly!</mat-hint>
+
+                <mat-error *ngIf="password_FormControl_login.hasError('minlength') && !password_FormControl_login.hasError('required')">
+
+                  Please enter more than 6 charcters
+
+                </mat-error>
+
+                <mat-error *ngIf="password_FormControl_login.hasError('required')">
+
+                  Password is <strong>required</strong>
+
+                </mat-error>
+
+              </mat-form-field>
+
+            </form>
+
+          </ng-template><br>
+
+          <button  (click)="check_user()" [disabled]="login_property.button_login" mat-button class="button" >
+
+            <span *ngIf="login_property.loading == false ; else loading">{{login_property.write_button}}</span>
+
+            <ng-template #loading>
+
+              <mat-icon  class="icon_button_login">
+
+                <mat-spinner [diameter]="30"  class="loading center">
+
+                </mat-spinner>
+
+              </mat-icon>
+
+            </ng-template>
+
+          </button><br><br>
+
+          <ng-container  *ngIf="login_property.steps == 1;else forget_password ">
+
+            <a href="#" class="forget_email inline-block">
+
+              Forget Email?
+
+            </a>
+
+          </ng-container>
+
+          <ng-template #forget_password>
+
+            <a href="#"  (click)="kot()" class="forget_email inline-block">
+
+              Forget Password?
+
+            </a>
+
+            <a href="#" (click)="another_account()" class="another_account inline-block">
+
+              <mat-icon> keyboard_arrow_left </mat-icon>
+
+            </a>
+
+          </ng-template >
+
+
+        </div><!-- end container sing in ..............................................................................-->
+
+      </mat-tab> <!-- end tab sing in ..............................................................................-->
+
+      <mat-tab>
+
+        <ng-template mat-tab-label>
+
+          <mat-icon>
+
+            <span class="glyphicon glyphicon-user"></span>
+
+          </mat-icon>
+
+          <div class="label_tab inline-block">
+
+            Sing Up
+
+          </div>
+
+        </ng-template>
+
+        <div class="login_loading" [ngClass]="{'login_loading_show' : login_property.loading == true }">
+
+        </div>
+
+        <br>
+
+        <div class="width_login">
+
+          ckemi
+
+        </div>
+
+      </mat-tab>
+
+
+    </mat-tab-group>
+
+    <div class="error">
+
+      <div class="write_error">
+
+        {{login_property.error}}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+

@@ -47,6 +47,8 @@ export class DataService extends AuthService implements OnInit{
 
     public user_info : any;
 
+    public change_inner = false;
+
   constructor( private httpservice : HttpService , protected http:Http  ) {
 
      super( http );

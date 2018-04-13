@@ -1,7 +1,7 @@
 
 <div class="header"  *ngIf="dataservices.status_language | async">
 
-    <div class="response_outer bottom_header "  [ngClass]="{'active_menu':productsService.menu_subject.getValue()}">
+    <div class="response_outer  "  [ngClass]="{'active_menu':productsService.menu_subject.getValue()}">
 
         <div class="top_menu">  <!-- this is open category  -->
 
@@ -34,13 +34,13 @@
 
         </div>
 
-        <div class="response_inner ">
+        <div class="response_inner  inner_mobile ">
 
             <!--  start bottom header ...........................................-->
 
-            <span class="bottom_header_desktop">
 
-                <span class="bottom_header_left">  <!-- start left header  -->
+
+                <span class="header_left">  <!-- start left header  -->
 
                     <div class="menu1">  <!-- Icon header   -->
 
@@ -92,11 +92,11 @@
 
                 </span>
 
-                <span class="bottom_header_right">
+                <span class="header_right">
 
                     <a  href="#" *ngFor=" let button of button_right  ; let i = index " matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button ,i , $event)" >
 
-                        <div class="menu3 button{{button.id}} {{button.different_class}}">
+                        <div class="button_right_pc button{{button.id}} {{button.different_class}}">
 
                             <span  class="glyphicon {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && productsService.wish_properties.wishList.length > 0 ,'selected-color-button' : i==productsService.button_properties.selectedIndex }">
 
@@ -127,154 +127,123 @@
 
                 </span>
 
-            </span>
 
-            <span class="bottom_header_mobile">
+            <span class="header_mobile">
 
-                <a (click)="set_router( { path:'shopping' , data:false ,relative:false } )" class="hide_menu">
+                <div class="button_mobile" (click)="set_router( { path:'shopping' , data:false ,relative:false } , check_body(false) )">
 
-                    <div class="menu3" id="">
+                    <div class="listcategoryfind notClosepointerHeader">
 
-                         <a  href="#" class="listcategoryfind notClosepointerHeader">
+                        <div class="listcategory" id="iconmenu">
 
-                             <div class="listcategory" id="iconmenu">
+                            <span class="glyphicon glyphicon-home"></span>
 
-                                  <span class="glyphicon glyphicon-home"></span>
-
-                             </div>
-
-                         </a>
-
-                          <div class="write_icon_header"> Home </div>
+                        </div>
 
                     </div>
-                </a>
 
-                <a (click)="set_router( { path:'search' , data:false ,relative:true } )" >
+                    <div class="write_icon_header"> Home </div>
 
-                     <div class="menu3" id="">
+                </div>
 
-                         <a class="searchresponse" href="#">
 
-                             <span class="glyphicon glyphicon-search"></span>
+                <div class="button_mobile" (click)="set_router( { path:'search' , data:false ,relative:true }, check_body(false) )" >
 
-                         </a>
+                    <a class="searchresponse" href="#">
 
-                          <div class="write_icon_header"> Search </div>
-
-                     </div>
-
-                </a>
-
-                <span matTooltip="Open wishlist">
-
-                    <a (click)="set_router( { path:'wish' , data:false ,relative:true } )"  class="hide_menu">
-
-                        <div class="menu3  " id="favority">
-
-                            <ng-container *ngIf="productsService.wish_properties.wishList.length>0;else empty" >
-
-                                <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
-
-                                    <div class="number_event">
-
-                                        <div class="write_number">
-
-                                            {{productsService.wish_properties.wishList.length}}
-
-                                        </div>
-
-                                    </div>
-
-                                </span>
-
-                            </ng-container>
-
-                            <ng-template #empty>
-
-                                <span class="glyphicon glyphicon-heart gh-header">
-
-                                    <div class="number_event">
-
-                                        <div class="write_number">
-
-                                            {{productsService.wish_properties.wishList.length}}
-
-                                        </div>
-
-                                    </div>
-
-                                </span>
-
-                            </ng-template>
-
-                            <div class="write_icon_header"> {{dataservices.language.wish}} </div>
-
-                        </div>
+                        <span class="glyphicon glyphicon-search"></span>
 
                     </a>
 
-                </span>
+                    <div class="write_icon_header"> Search </div>
 
+                </div>
 
-                <span matTooltip="Open card">
+                <div class="button_mobile " (click)="set_router( { path:'wish' , data:false ,relative:true } , check_body(true) )"   >
 
-                    <a (click)="set_router( { path:'card' , data:false ,relative:true } )"  class="hide_menu">
+                    <ng-container *ngIf="productsService.wish_properties.wishList.length>0;else empty" >
 
-                        <div class="menu3 " id="card">
+                        <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
 
-                            <span class="glyphicon glyphicon-shopping-cart gh-header">
+                            <div class="number_event">
 
-                                <div class="number_event">
+                                <div class="write_number">
 
-                                    <div class="write_number">
-
-                                        {{productsService.cart_properties.cartList.length}}
-
-                                    </div>
+                                    {{productsService.wish_properties.wishList.length}}
 
                                 </div>
 
-                            </span>
+                            </div>
 
-                            <div class="write_icon_header" >{{dataservices.language.card}}</div>
+                        </span>
 
-                        </div>
+                    </ng-container>
 
-                    </a>
+                    <ng-template #empty>
 
-                </span>
+                        <span class="glyphicon glyphicon-heart gh-header">
 
-                <span matTooltip="More option">
+                            <div class="number_event">
 
-                    <a (click)="set_router( { path:'menu' , data:false ,relative:true } )">
+                                <div class="write_number">
 
-                        <div class="menu3 " >
-
-                            <span class="glyphicon glyphicon-th-large">
-
-                                <div class="number_event">
-
-                                    <div class="write_number write_hidden">
-
-                                        {{productsService.wish_properties.wishList.length}}
-
-                                    </div>
+                                    {{productsService.wish_properties.wishList.length}}
 
                                 </div>
 
-                            </span>
+                            </div>
 
-                            <div class="write_icon_header" >{{dataservices.language.more}}</div>
+                        </span>
+
+                    </ng-template>
+
+                    <div class="write_icon_header"> {{dataservices.language.wish}} </div>
+
+                </div>
+
+
+
+                <div class="button_mobile " (click)="set_router( { path:'card' , data:false ,relative:true } , check_body(false))" >
+
+                    <span class="glyphicon glyphicon-shopping-cart gh-header">
+
+                        <div class="number_event">
+
+                            <div class="write_number">
+
+                                {{productsService.cart_properties.cartList.length}}
+
+                            </div>
 
                         </div>
 
-                    </a>
+                    </span>
 
-                </span>
+                    <div class="write_icon_header" >{{dataservices.language.card}}</div>
 
+                </div>
 
-            </span>
+                <div class="button_mobile" (click)="set_router( { path:'menu' , data:false ,relative:true }, check_body(true) )">
+
+                    <span class="glyphicon glyphicon-th-large">
+
+                        <div class="number_event">
+
+                            <div class="write_number write_hidden">
+
+                                {{productsService.wish_properties.wishList.length}}
+
+                            </div>
+
+                        </div>
+
+                    </span>
+
+                    <div class="write_icon_header" >{{dataservices.language.more}}</div>
+
+                </div>
+
+            </span>  <!-- end header modile  -->
 
 
 

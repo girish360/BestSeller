@@ -19,6 +19,7 @@ export class AppComponent implements OnInit{
             var scroll_status = false;
 
             $('body').click('a',function(e) {
+
                 e.preventDefault();
 
 
@@ -64,13 +65,21 @@ export class AppComponent implements OnInit{
             });
 
              $('.body_wish').scroll(function(){
+
                  var topscroll = $(this).scrollTop();
+
                  if(topscroll > 10 ){
+
                       $('.top_wish').addClass('border_bottom');
+
                  }else{
+
                      $('.top_wish').removeClass('border_bottom');
+
                  }
+
              });
+
         });
     }
 }

@@ -10,8 +10,8 @@ class Crypto  {
 
   public function __construct(){
 
-      $this->key = pack("H*", "0123456789abcdef0123456789abcdef");
-      $this->iv =  pack("H*", "abcdef9876543210abcdef9876543210");
+      $this->key = pack("H*", "551512955e5010f51c4ea7f0c885fbaa");
+      $this->iv =  pack("H*", "9323a060b68764eb57732335e30728ea");
   }
 
   public function encrypt_in_server(){

@@ -5,37 +5,51 @@ import * as crypto from 'crypto-js';
 @Injectable()
 export class EncryptDecryptService {
 
-  constructor() { }
+  constructor() {
+     let hash_key =  this.hash(this.key);
+
+     let hash_iv =  this.hash(this.iv);
+
+     this.hash_key = hash_key;
+
+     this.hash_iv = hash_iv;
+
+
+  }
 
   private data_encription:any;
 
   private data_decription:any;
 
-  private  key = crypto.enc.Hex.parse("0123456789abcdef0123456789abcdef");
-  private iv =  crypto.enc.Hex.parse("abcdef9876543210abcdef9876543210");
+  private key ='.0!?best_seller!secretkey95,KSWEB.';
 
-  public secret_key_encrypt_id = 'KSweb_company_id-profile_12837';
+  private iv ='.0!?best_seller!ivkey95,KSWEB.';
 
-  public secret_key_product_profile = 'KSweb_product_id-profile_12837';
+  private hash_key : any;
 
-  public hash(  data ){
+  private hash_iv : any;
 
-    return crypto.MD5(data);
+  private  secret_key = crypto.enc.Hex.parse("551512955e5010f51c4ea7f0c885fbaa");
 
-  }
+  private secret_iv =  crypto.enc.Hex.parse("9323a060b68764eb57732335e30728ea");
 
-  public encryp_AES( data , key ){
+  public hash( data ){
 
-     this.data_encription =  crypto.AES.encrypt( `${ data }` , this.key ,{iv:this.iv});
-
-     return this.data_encription = this.data_encription.ciphertext.toString(crypto.enc.Base64);
-
+    return crypto.MD5( data );
 
   }
 
-  public decrypt_AES( data , key ){
+  public encryp_AES( data  ){
 
-    var bytes  = crypto.AES.decrypt( data.toString(), key,{iv:this.iv} );
+    this.data_encription =  crypto.AES.encrypt( `${ data }` , this.secret_key ,{iv:this.secret_iv});
+
+    return this.data_encription = this.data_encription.ciphertext.toString(crypto.enc.Base64);
+
+  }
+
+  public decrypt_AES( data  ){
+
+    var bytes  = crypto.AES.decrypt( data.toString(), this.secret_key,{iv:this.secret_iv} );
 
     return this.data_decription =  bytes.toString(crypto.enc.Utf8);
 

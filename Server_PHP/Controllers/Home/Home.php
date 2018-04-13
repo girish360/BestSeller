@@ -38,7 +38,14 @@ class Home extends Fetch_Data {
 
         $array_data = self::convert_to_array( $data_object );
 
-        $count = self::count('sub_category');
+        if( $array_data['total_categories'] == 0 ){ //  first call................................
+
+            $count = self::count('sub_category');
+
+        }else{ // called more than one time and  number total_categories exist  come from client ..................................
+
+            $count = $array_data['total_categories'];
+        }
 
         if( $count  >= 5 ){
 
@@ -57,8 +64,9 @@ class Home extends Fetch_Data {
 
              $result [] = $category;
          }
+         $store_data = array( "current_page"=> $array_data['current_page']  , "total_categories"=>$count  , "categories_for_page"=> $this->category_for_load);
 
-        return self::json_data( $status ,  $result );
+        return self::json_data( $status , array("categories" => $result  , "store_data" => $store_data) );
     }
 
 
@@ -86,7 +94,11 @@ class Home extends Fetch_Data {
 
                    $this->categories_products[$category['id']]['products'] = $this->products;
 
-                   $this->categories_products[$category['id']]['current_page'] = $array_data['current_page'];
+                   $this->categories_products[$category['id']]['total_products'] = $count;
+
+                   $this->categories_products[$category['id']]['products_for_page'] = $this->products_for_category;
+
+                   $this->categories_products[$category['id']]['current_page'] = 0;
                }
            }
        }

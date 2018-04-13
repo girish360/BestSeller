@@ -1,6 +1,7 @@
 import { Component, OnInit , OnDestroy , ChangeDetectionStrategy} from '@angular/core';
 
 import { NgxCarousel ,NgxCarouselStore } from 'ngx-carousel';
+
 import {observableToBeFn} from "rxjs/testing/TestScheduler";
 
 declare var $:any;
@@ -18,16 +19,12 @@ export class SlideshowComponent implements OnInit ,OnDestroy {
 
   public images_slide = [
     { src:'1234.jpg' , title:'Category1'},
-    { src:'../../assets/images/products_image/klo.jpg' , title:'Category2'},
-    { src:'../../assets/images/products_image/b3.jpg' , title:'Category3'},
-    { src:'../../assets/images/products_image/1234.jpg' , title:'Category4'},
-    { src:'../../assets/images/products_image/1234.jpg' , title:'Category5'},
-    { src:'../../assets/images/products_image/1234.jpg' , title:'Category6'},
-    { src:'../../assets/images/products_image/1234.jpg' , title:'Category7'},
-    { src:'../../assets/images/products_image/1234.jpg' , title:'Category8'},
-    { src:'../../assets/images/products_image/1234.jpg' , title:'Category9'},
-    { src:'../../assets/images/products_image/1234.jpg' , title:'Category10'},
-    { src:'../../assets/images/products_image/1234.jpg' , title:'Category11'},
+    { src:'klo.jpg' , title:'Category2'},
+    { src:'b3.jpg' , title:'Category3'},
+    { src:'1234.jpg' , title:'Category4'},
+    { src:'1234.jpg' , title:'Category5'},
+    { src:'1234.jpg' , title:'Category6'}
+
   ];
 
   ngOnInit() {
@@ -92,7 +89,7 @@ export class SlideshowComponent implements OnInit ,OnDestroy {
 
      public onmove_item_slide( data: NgxCarouselStore ){
 
-      console.log(data);
+
 
      }
 
