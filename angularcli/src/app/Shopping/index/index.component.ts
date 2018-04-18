@@ -38,7 +38,7 @@ export class IndexComponent implements OnInit {
 
   ngAfterViewInit() {
 
-    this.renderer.listen(this.elementRef.nativeElement, 'click', (event) => {
+    this.renderer.listen( this.elementRef.nativeElement, 'click', (event) => {
 
       if ( event.target.closest('.notCloseDropdawnLanguage') == null) {
 

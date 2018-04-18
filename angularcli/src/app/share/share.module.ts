@@ -38,11 +38,8 @@ import {
     MatSelectModule,
     MatTabsModule,
     MatTooltipModule,
-
     FilterPipe,
-
     FormsModule,
-
     ReactiveFormsModule
   ],
 

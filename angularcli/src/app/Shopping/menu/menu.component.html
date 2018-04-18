@@ -10,7 +10,7 @@
       <!--  show all category type -->
       <div class="top_in_menu border_bottom" >
 
-        <button  mat-button class="button_menu"  *ngFor="let top_menu of top_menus" (click)=" click_top_menu( top_menu.id )">
+        <button  mat-button class="button_menu"  *ngFor="let top_menu of top_menus" (click)=" click_top_menu( top_menu.id ) ; dataservices.update_body(false)">
 
           <a   href="#" class="menu_navigation menu_navigation{{top_menu.id}}" id="{{top_menu.id}}" >
 

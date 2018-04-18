@@ -12,7 +12,6 @@ create table company (
     `activ_pasiv` int NOT NULL DEFAULT 0,
     `phone_number` int(15),
     `shipping` varchar(250),
-    `image_slide_id` int(11),
     `type` varchar(10),
     `confirm_account` int(11),
     `image` varchar(250),
@@ -62,7 +61,7 @@ create table image_slide_company(
 
 create table category_company(
    `id` int not null primary key AUTO_INCREMENT,
-   `name` varchar(100),
+   `category_id` int(11),
    `company_id` int(11)
 );
 create table sub_category(
@@ -267,3 +266,7 @@ insert into user ( first_name,last_name,username,email,gener,local,picture,phone
 values('klodian','shaba','kshaba','klodian.tik@gmail.com','male','alabnia','klo.jpg','0683834233','albanian'),
 ('Arjola','Shabani','Ashabani','Arjola.tik@gmail.com','female','Italy','b3.jpg','0683834235','Italy')
 
+
+insert into category_company ( category_id , company_id )
+values('1','1'),('2','1'),('3','1'),('4','1'),('5','1'),('6','1'),('7','1'),
+('1','2'),('2','2'),('3','2'),('4','2'),('5','2'),('6','2'),('7','2'),('8','2'),('9','2'),('10','2'),('11','2'),('12','2');

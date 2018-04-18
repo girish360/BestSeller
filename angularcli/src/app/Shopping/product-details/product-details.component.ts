@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { NgxCarousel ,NgxCarouselStore } from 'ngx-carousel';
 
+import { ScrollbarService } from '../../share/scrollbar.service';
+
 declare var $ :any;
 
 @Component({
@@ -38,7 +40,15 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
 
     public product_details: any = {};
 
-  constructor( private dataservices :DataService,  private crypto : EncryptDecryptService , private route: ActivatedRoute , private router: Router  ) {
+  constructor(
+      private scroll :ScrollbarService ,
+      private dataservices :DataService,
+      private crypto : EncryptDecryptService ,
+      private route: ActivatedRoute ,
+      private router: Router
+  )
+  {
+
 
 
       if (navigator.geolocation) {
@@ -64,6 +74,8 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
                 data => {
 
                     if ( data['status'] == 'product_details' ) {
+
+                        this.scroll.window(0,0);
 
                         this.product_details = data['data']['product'];
 
@@ -92,7 +104,7 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
   ngOnInit() {
 
       this.carouselTile = {
-          grid: {xs: 2, sm: 3, md: 3, lg: 3, all: 0},
+          grid: {xs: 3, sm: 3, md: 3, lg: 3, all: 0},
           slide: 2,
           speed: 400,
           animation: 'lazy',

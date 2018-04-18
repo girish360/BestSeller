@@ -24,7 +24,7 @@ class Home extends Fetch_Data {
 
     private $where;
 
-    private $products_for_category = 20;
+    private $products_for_category = 10;
 
     private $category_for_load = 5;
 

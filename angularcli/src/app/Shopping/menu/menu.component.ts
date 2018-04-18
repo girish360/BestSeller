@@ -25,7 +25,16 @@ import 'rxjs/Rx';
 
 export class MenuComponent  implements OnInit  {
 
-  constructor( private cd :ChangeDetectorRef, private productsService:ProductService ,  private setRouter :SetRouterService , private route:ActivatedRoute , private dataservices:DataService , private router:Router , private crypto: EncryptDecryptService) {
+  constructor(
+      private cd :ChangeDetectorRef,
+      private productsService:ProductService ,
+      private setRouter :SetRouterService ,
+      private route:ActivatedRoute ,
+      private dataservices:DataService ,
+      private router:Router ,
+      private crypto: EncryptDecryptService
+  )
+  {
 
     let category = this.dataservices.Make_Request_InServer( 'category', 'category' );
 
@@ -72,6 +81,8 @@ export class MenuComponent  implements OnInit  {
 
 
   ];
+
+
 
   click_top_menu( id_top_menu ){
 

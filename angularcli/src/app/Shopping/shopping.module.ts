@@ -21,6 +21,8 @@ import { ProductService } from './products/product.service'; // product service
 
 import { HomeService } from './home/home.service';
 
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 // end services .....................................................................................
 
 // componets .....................................................
@@ -33,7 +35,8 @@ import { HeaderComponent } from './header/header.component'; // header shopping
 
 import { BodyComponent } from './body/body.component'; // body shopping
 
-import { MenuComponent } from './menu/menu.component'; //  menu  left  in shopping
+import { MenuComponent } from './menu/menu.component';
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component'; //  menu  left  in shopping
 
 
 // end components ............................................................................................
@@ -46,6 +49,7 @@ import { MenuComponent } from './menu/menu.component'; //  menu  left  in shoppi
     BodyComponent,
     MenuComponent,
     HomeComponent,
+    SubscriptionsComponent,
 
   ],
 
@@ -54,7 +58,8 @@ import { MenuComponent } from './menu/menu.component'; //  menu  left  in shoppi
     ShoppingRoutingModule,
     NgxCarouselModule,
     ShareModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    MatPaginatorModule
 
   ],
 

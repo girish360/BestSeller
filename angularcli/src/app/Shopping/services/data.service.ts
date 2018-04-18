@@ -107,6 +107,11 @@ export class DataService extends AuthService implements OnInit{
       this.language = new_language;
   }
 
+  update_body( boolean ){
+
+      this.change_inner = boolean;
+  }
+
 
 
 }

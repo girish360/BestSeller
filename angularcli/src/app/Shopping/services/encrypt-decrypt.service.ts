@@ -3,9 +3,11 @@ import { Injectable } from '@angular/core';
 import * as crypto from 'crypto-js';
 
 @Injectable()
+
 export class EncryptDecryptService {
 
   constructor() {
+
      let hash_key =  this.hash(this.key);
 
      let hash_iv =  this.hash(this.iv);
@@ -49,7 +51,7 @@ export class EncryptDecryptService {
 
   public decrypt_AES( data  ){
 
-    var bytes  = crypto.AES.decrypt( data.toString(), this.secret_key,{iv:this.secret_iv} );
+    let bytes  = crypto.AES.decrypt( data.toString(), this.secret_key,{iv:this.secret_iv} );
 
     return this.data_decription =  bytes.toString(crypto.enc.Utf8);
 

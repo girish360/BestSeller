@@ -10,6 +10,8 @@ import { Subscription} from 'rxjs/Subscription';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
+import { ScrollbarService } from '../../share/scrollbar.service';
+
 
 @Injectable()
 
@@ -28,6 +30,8 @@ export class ProductService extends HeaderService {
 
 
   constructor(
+
+      private scroll : ScrollbarService,
 
       protected dataservices: DataService,
       private crypto : EncryptDecryptService
@@ -100,7 +104,7 @@ export class ProductService extends HeaderService {
     this.checked_products_inCart_and_inWish();
   }
 
-  check_pages( click_details ){
+  check_pages( click_details  ){
 
     click_details.type_link = this.crypto.encryp_AES( click_details.type_link );
 
@@ -178,6 +182,9 @@ export class ProductService extends HeaderService {
                   this.subject_products.next(true);
 
                 }
+
+                this.scroll.window( 0, 0); // call function window to move scroll top
+
                 setTimeout(() => {
                   this.dataservices.update_loader(false);
                 }, 1000)

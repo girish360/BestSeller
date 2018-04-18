@@ -4,12 +4,13 @@
      <ngx-carousel class="sliders"
                 [inputs]="carouselOne"
                 (carouselLoad)="myfunc($event)"
-                   (onMove)="onmove_item_slide($event)">
+                   (onMove)="onmove_item_slide($event)"
+                 >
 
 
        <ngx-item NgxCarouselItem   *ngFor="let slide of images_slide" >
 
-             <img   src="../../assets/images/products_image/{{slide.src}}">
+             <img   src="../../assets/images/company/{{slide.src}}">
 
             <ngx-tile>
               <div>
@@ -57,17 +58,7 @@
                 </div>
 
            </a>
-
-
-
-
-    </ngx-carousel>
-
-
-
-
-
-
+     </ngx-carousel>
 
 </div>
 

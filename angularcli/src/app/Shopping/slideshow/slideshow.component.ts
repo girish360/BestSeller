@@ -18,12 +18,12 @@ export class SlideshowComponent implements OnInit ,OnDestroy {
   public carouselOne: NgxCarousel;
 
   public images_slide = [
-    { src:'1234.jpg' , title:'Category1'},
-    { src:'klo.jpg' , title:'Category2'},
-    { src:'b3.jpg' , title:'Category3'},
-    { src:'1234.jpg' , title:'Category4'},
-    { src:'1234.jpg' , title:'Category5'},
-    { src:'1234.jpg' , title:'Category6'}
+
+    { src:'1.jpg' , title:'Category1'},
+    { src:'2.jpg' , title:'Category2'},
+    { src:'1.jpg' , title:'Category3'},
+    { src:'2.jpg' , title:'Category4'},
+    { src:'1.jpg' , title:'Category5'}
 
   ];
 
@@ -31,8 +31,8 @@ export class SlideshowComponent implements OnInit ,OnDestroy {
 
     this.carouselOne = {
       grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
-      slide: 2,
-      speed: 1000,
+      slide: 1,
+      speed: 500,
       interval: 4000,
       point: {
         visible: true,
@@ -64,21 +64,22 @@ export class SlideshowComponent implements OnInit ,OnDestroy {
           }
         `
       },
-      load: 2,
+      load: 1,
       touch: true,
       loop: true,
-      custom: 'banner'
+      easing: 'ease'
+
     }
 
   }
   ngOnDestroy():void{
 
-    this.carouselOne = { grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0}};
 
-     this.images_slide=[];
 
 
   }
+
+
 
 
      public myfunc( event: Event) {

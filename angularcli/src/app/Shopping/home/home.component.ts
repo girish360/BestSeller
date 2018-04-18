@@ -16,6 +16,9 @@ import { SetRouterService } from '../services/set-router.service';
 
 import { HomeService } from './home.service';
 
+import { ScrollbarService } from '../../share/scrollbar.service';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -32,6 +35,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
 
+      private scroll : ScrollbarService,
+
       private homeservice : HomeService,
 
       private dataservices : DataService,
@@ -45,8 +50,11 @@ export class HomeComponent implements OnInit {
   )
   {
 
-      if(   this.homeservice.categories_products.length  == 0) {
+      this.scroll.window(0,0);
 
+      this.dataservices.update_loader(true);
+
+      if(   this.homeservice.categories_products.length  == 0) {
 
           this.dataservices.update_loader(true);
 
@@ -81,6 +89,7 @@ export class HomeComponent implements OnInit {
 
               );
       }
+      this.dataservices.update_loader(false);
 
   }
 
@@ -93,11 +102,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.carousel_categories = {
-      grid: { xs: 2, sm: 3, md: 4, lg: 4, all: 0 },
+      grid: { xs: 2, sm: 3, md: 4, lg: 5, all: 0 },
+
       speed: 500,
-      interval: 8000,
-      point: {
-        visible: true,
+        point: {
+        visible: false,
         pointStyles: `
           .ngxcarouselPoint {
             list-style-type: none;
@@ -127,8 +136,10 @@ export class HomeComponent implements OnInit {
       },
       load: 2,
       touch: true,
-      custom: 'banner',
-      animation: 'lazy'
+        animation:'lazy'
+
+
+
     };
 
   }
@@ -142,7 +153,7 @@ export class HomeComponent implements OnInit {
   onmove_carousel( data_carousel : NgxCarouselStore , current_category ){
 
       if( data_carousel.currentSlide + data_carousel.items  == data_carousel.itemLength
-        && (current_category.current_page+1)*current_category.products_for_page < current_category.total_products
+        && current_category.current_page < 1
      ){
 
       this.dataservices.update_loader(true);
@@ -234,7 +245,12 @@ export class HomeComponent implements OnInit {
    }
   }
 
+
+
+
   public more_categories( more_categories ){
+
+
 
     for( let i = 0 ; i < more_categories.length ; i++ ){
 
@@ -248,6 +264,7 @@ export class HomeComponent implements OnInit {
       this.dataservices.update_loader(false);
 
     },1000);
+
 
   }
 

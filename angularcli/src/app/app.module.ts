@@ -21,6 +21,8 @@ import { EncryptDecryptService } from './Shopping/services/encrypt-decrypt.servi
 
 import { ControllerService } from './Start/controller.service';
 
+import { ScrollbarService } from './share/scrollbar.service';
+
 // end services .....................................................................................
 
 // componets .....................................................
@@ -32,8 +34,6 @@ import { ControllerComponent } from './Start/controller/controller.component';
 import { NotfoundComponent } from './Shopping/notfound/notfound.component';
 
 import { SetRouterService } from './Shopping/services/set-router.service';
-
-
 
 // end components ............................................................................................
 
@@ -74,7 +74,9 @@ import { SetRouterService } from './Shopping/services/set-router.service';
 
     EncryptDecryptService,
 
-    ControllerService
+    ControllerService,
+
+    ScrollbarService
 
   ],
 

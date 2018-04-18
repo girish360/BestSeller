@@ -18,6 +18,8 @@ import { ProductService } from './product.service';
 
 import {until} from "selenium-webdriver";
 
+
+
 import alertIsPresent = until.alertIsPresent; // ProductServices extend HeaderServices that cartList and  wishList ....................
 
 @Component({
@@ -40,8 +42,6 @@ import alertIsPresent = until.alertIsPresent; // ProductServices extend HeaderSe
   ]
 })
 export class ProductsComponent   implements OnInit   {
-
-
 
   public Response:any;
 
@@ -127,7 +127,9 @@ export class ProductsComponent   implements OnInit   {
     });
   }
 
-  index(index , item){
+
+
+  index( index , item ){
 
     if(!item) return null;
 
@@ -146,9 +148,16 @@ export class ProductsComponent   implements OnInit   {
 
 
 
-  click_pages( click_details ){
+  click_pages( click_details  ){
 
-    this.productsService.check_pages( click_details );
+     this.productsService.check_pages( click_details  );
+
+
+
+
+
+
+
 
   }
 

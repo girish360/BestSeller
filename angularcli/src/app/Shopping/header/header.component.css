@@ -4,6 +4,7 @@
 
 .header{
     height: 40px;
+    z-index: 5 !important;
 }
 
 .progress{
@@ -822,10 +823,11 @@ html>/**/body .kerkim, x:-moz-any-link {
     margin-left: 10px;
 }
 .check_checkbox_wish{
-    display: inline-block;
-    float: right;
-    margin-top: 0;
-    margin-right: 10px;
+
+    position: absolute;
+    top: 2px;
+    right: 5px;
+
 }
 
 .lang a{

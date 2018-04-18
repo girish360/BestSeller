@@ -8,7 +8,10 @@
 
     <div class="carousel_categories" *ngFor="let category of homeservice.categories_products ">
 
-        <span class="name_category">  {{category.name}} </span>
+
+
+
+        <span class="name_category" >  {{category.name}}  </span>
 
         <span class="see_all_category">
 
@@ -26,7 +29,7 @@
 
             <ngx-tile NgxCarouselItem *ngFor="let product of category['products']; let i = index;">
 
-                <div class="items_in_carousel ">
+                <div class="items_in_carousel" >
 
                     <a href="#">
 
@@ -66,9 +69,12 @@
 
         </ngx-carousel>
 
-
+       <br>
 
     </div>
+
+
+
 
 </div>
 
