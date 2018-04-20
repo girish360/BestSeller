@@ -13,21 +13,25 @@
 
                     <div class="radius_category" id="laptopscreen" (click)="check_menu()" [ngClass]="{'open_menu':productsService.menu_subject.getValue() }">
 
-                     <span  matTooltip="Category">
 
-                         <div class="position_icon_ctegory">
 
-                             <div class="listcategory">
 
-                                 <span *ngIf="!productsService.menu_subject.getValue()" class="glyphicon glyphicon-th-large"></span>
 
-                                 <span *ngIf="productsService.menu_subject.getValue()" class="glyphicon glyphicon-log-out icon-list-remove"></span>
+                             <button mat-button class="listcategory">
 
-                             </div>
 
-                         </div>
 
-                     </span>
+                                 <mat-icon *ngIf="!productsService.menu_subject.getValue()" >view_list</mat-icon>
+
+                                 <mat-icon *ngIf="productsService.menu_subject.getValue()" >exit_to_app</mat-icon>
+
+
+
+                             </button>
+
+
+
+
 
                     </div>
                 </a>

@@ -135,12 +135,7 @@
 }
 
 
-.pagination_profucts{
-    width: 100%;
-    position: relative;
-    top:4px;
-    left: -2px;
-}
+
 
 .glyphicon{
     display: inline-block;
@@ -254,14 +249,9 @@
     top:-4px;
 }
 
-.option_products{
 
-    width:100%;
-    z-index: 3 !important;
-    height: 36px;
-    background-color:#E6E6FA;
 
-}
+
 
 .inside_option_products{
 
@@ -272,18 +262,10 @@
 
 }
 
-
-.option_products_fixed_show{
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -ms-sticky;
-    position: -o-sticky;
-    position: sticky;
-    top: 40px;
-
-}
 .page_products{
     display: inline-block;
+    background-color:#E6E6FA;
+
 }
 
 .wish_list{

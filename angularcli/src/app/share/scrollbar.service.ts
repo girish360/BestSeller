@@ -13,7 +13,7 @@ export class ScrollbarService {
 
   }
 
-  public window( x ,y ){
+  public window( x ,y ){ //move windows scroll
 
        window.scrollTo( x , y );
   }
@@ -24,7 +24,7 @@ export class ScrollbarService {
 
   }
 
-  public window_scroll(){
+  public window_scroll(){ //
 
     let doc = document.documentElement;
 

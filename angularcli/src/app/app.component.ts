@@ -42,9 +42,9 @@ export class AppComponent implements OnInit{
 
                     if( scroll_status == false ) {
 
-                        $('.option_products').addClass('option_products_fixed_show');
+                        $('.sticky').addClass('sticky_fixed');
 
-                        $('.option_products_fixed_show').hide().slideDown('fast');
+                        $('.sticky').hide().slideDown('fast');
                     }
 
                     scroll_status = true;
@@ -52,10 +52,10 @@ export class AppComponent implements OnInit{
                 }else{
                     if( scroll_status == true ) {
 
-                        $('.option_products').hide().slideDown('fast');
+                        $('.sticky').hide().slideDown('fast');
 
 
-                        $('.option_products').removeClass('option_products_fixed_show');
+                        $('.sticky').removeClass('sticky_fixed');
                     }
 
                     scroll_status = false;

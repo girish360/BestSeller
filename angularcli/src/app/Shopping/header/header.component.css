@@ -2,6 +2,8 @@
 
 /* Styles go here */
 
+
+
 .header{
     height: 40px;
     z-index: 5 !important;
@@ -201,14 +203,25 @@ a{
 .radius_category{
     width: 50px;
     height: 40px;
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
     position: absolute;
     top: 0px;
     display: inline-block;
     z-index: 2!important;
     border-top:2px solid;
     color: gray;
+}
+
+.listcategory .mat-icon{
+    font-size: 30px;
+    position: relative;
+    top:-4px;
+    left: -6px;
+
+}
+.listcategory{
+
+    min-width: 50px;
+    max-width: 50px;
 }
 .open_menu{
 
@@ -230,17 +243,7 @@ a{
 
     left: 0;
 }
-.position_icon_ctegory{
 
-
-    position: relative;
-    top: 5px;
-
-    width: 50%;
-    margin: 0px auto;
-
-
-}
 
 
 /*    here is css for popup when sesioni doesn't  ezists automatik system doing logout*/

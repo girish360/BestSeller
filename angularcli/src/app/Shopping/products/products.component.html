@@ -1,58 +1,65 @@
 
 <div class="component-animation" *ngIf="dataservices.status_language | async"> <!--  this component is inside this div  ...................................................... -->
 
-    <div class="option_products ">  <!--  Options products pagination ,  select  ...................................................... -->
+    <div class="sticky">
 
-    <div class="inside_option_products">
+        <div class="sticky_options ">  <!--  Options products pagination ,  select  ...................................................... -->
 
-             <span class="left_option_products inline-block">
+            <div class="inside_option_products">
+
+                <span class="left_option_products inline-block">
+
+                </span>
+
+                <span class="inner_option_products inline-block">
 
 
-             </span>
+                    <div class="pagination_products">
 
-      <span class="inner_option_products inline-block">
+                        <span class="page_products" *ngFor="let page of productsService.pages_link ">
 
-                 <div class="pagination_products">
+                            <ng-container *ngIf="page.icon == false ; else notNumber">
 
-                     <span class="page_products" *ngFor="let page of productsService.pages_link ">
+                                <button mat-button class="button_pagination_products"  [ngClass]="{'active_products_page': page.active == true}" (click)=" click_pages(  page  ) ">
 
-                         <ng-container *ngIf="page.icon == false ; else notNumber">
+                                    <div class="write_page">
 
-                             <button mat-button class="button_pagination_products"  [ngClass]="{'active_products_page': page.active == true}" (click)=" click_pages(  page  ) ">
+                                        {{page.page}}
 
-                                 <div class="write_page">
+                                    </div>
 
-                                     {{page.page}}
+                                </button>
 
-                                 </div>
+                            </ng-container>
 
-                             </button>
+                            <ng-template #notNumber>
 
-                         </ng-container>
+                                <button mat-button class="button_pagination_products" (click)=" click_pages(  page )">
 
-                         <ng-template #notNumber>
+                                    <mat-icon>{{page.icon_material}}</mat-icon>
 
-                             <button mat-button class="button_pagination_products" (click)=" click_pages(  page )">
+                                </button>
 
-                                 <mat-icon>{{page.icon_material}}</mat-icon>
+                            </ng-template>
 
-                             </button>
+                        </span>
 
-                         </ng-template>
+                    </div>
 
-                     </span>
+                </span>
 
-                 </div>
+                <span class="right_option_products inline-block">
 
-             </span>
+                </span>
 
-      <span class="right_option_products inline-block">
+            </div>
 
-      </span>
+        </div>
 
+        <div class="sticky_opacity">
+
+        </div>
     </div>
-
-  </div>
 
 
     <div class="all_prod" *ngIf="productsService.status_products  |  async "> <!--  start div with products ...................................................... -->

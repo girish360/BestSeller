@@ -30,6 +30,8 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
     private id:any;
 
+
+
     private subscription : Subscription;
 
     cryp :any;
@@ -106,7 +108,7 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
         });
 
-        this.renderer.listen('window', 'scroll', (evt) => {
+        this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
 
             let scroll = this.scroll.window_scroll();
 
@@ -115,12 +117,23 @@ export class CompanyComponent implements OnInit , OnDestroy {
             this.top_slide.opacity =   ( 300 - scroll.top  ) / 300 ;
 
             if( scroll.top >= 80 ){
+
                 this.button_slide_css.status=true;
+
             }else{
+
                 this.button_slide_css.status=false;
             }
 
-        });
+            if( scroll.top >= 400 ){
+
+                $('.sticky_company').slideDown('fast');
+
+            }else{
+                $('.sticky_company').hide();
+            }
+
+        }); // end scroll event .............................................................................
 
         this.dataservices.update_loader(true);
 
