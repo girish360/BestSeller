@@ -1,4 +1,4 @@
-<app-header>   </app-header>
+<app-header >   </app-header>
 
 <div class="menu_pc">
 
@@ -10,7 +10,15 @@
 <app-body>   </app-body>
 
 
+<div class="scroll_top" (click)="go_top()" [ngClass]="{'show_scroll_top': status_scroll_up }">
 
+  <button mat-mini-fab color="primary" class="button">
+
+      <mat-icon>expand_less</mat-icon>
+
+  </button>
+
+</div>
 
 
 

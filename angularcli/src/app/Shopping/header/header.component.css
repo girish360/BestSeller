@@ -200,51 +200,26 @@ a{
     color:gray;
     display: none;
 }
-.radius_category{
-    width: 50px;
-    height: 40px;
-    position: absolute;
-    top: 0px;
-    display: inline-block;
-    z-index: 2!important;
-    border-top:2px solid;
-    color: gray;
-}
 
-.listcategory .mat-icon{
+.check_menu .mat-icon{
     font-size: 30px;
     position: relative;
     top:-4px;
     left: -6px;
 
 }
-.listcategory{
-
+.check_menu{
     min-width: 50px;
     max-width: 50px;
+    border-top:2px solid;
+    position: absolute;
+    left: 0;
+    color: gray;
 }
 .open_menu{
 
     -webkit-transform: translateX(200px);
-
-    border-top-right-radius: 0;
-
-    border-bottom-right-radius: 0;
-
-
-
-
 }
-
-.top_menu{
-    position: absolute;
-    color:white;
-    width: 250px;
-
-    left: 0;
-}
-
-
 
 /*    here is css for popup when sesioni doesn't  ezists automatik system doing logout*/
 .writeloader ,.imgpreloader{
@@ -347,14 +322,11 @@ a{
 
 }
 .icon_header{
-    display: inline-block;
     width: 30px;
     height: 100%;
 }
 .icon_header_write{
-
-    display: inline-block;
-    width: 0px;
+    width: 0;
     transition: 0.3s;
     visibility: hidden;
 
@@ -369,11 +341,7 @@ a{
     color: white;
 
 }
-.menu1 a{
-    text-decoration: none;
-    position: relative;
-    font-size: 18px;
-}
+
 .card ,.favority , .language{
     position: relative;
     top: -1px;
@@ -995,7 +963,7 @@ input[type='radio'] {
         box-shadow: none;
     }
 
-    .radius_category{
+    .check_menu{
         display: none;
     }
 
@@ -1041,7 +1009,7 @@ input[type='radio'] {
 
     }
 
-    .header_right{
+    .header_right ,.header_left{
         display: none;
     }
     .header_mobile{
@@ -1049,9 +1017,7 @@ input[type='radio'] {
     }
 
 
-    .menu1{
-        display: none;
-    }
+
     .right_above_header{
         display: none;
     }

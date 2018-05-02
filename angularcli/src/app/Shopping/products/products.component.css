@@ -241,17 +241,12 @@
     position: relative;
 }
 
-
 .write_add_wish{
 
     color: white;
     position: relative;
     top:-4px;
 }
-
-
-
-
 
 .inside_option_products{
 
@@ -262,10 +257,25 @@
 
 }
 
-.page_products{
+.outer_page_products{
     display: inline-block;
-    background-color:#E6E6FA;
+    width: 50px;
 
+
+}
+.inner_page_products{
+
+    width: 85%;
+    height: inherit;
+    margin: 0 auto;
+
+}
+
+.mat-button.button_pagination_products {
+    min-width: 5px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
 }
 
 .wish_list{
@@ -302,8 +312,6 @@
     margin-left: 50px;
 }
 
-
-
 .button_heart .mat-icon , .button_heart .mat-icon{
     color:red;
     position: relative;
@@ -322,21 +330,12 @@
 
 .color_hearts_first{
     display: inline-block; width: 20px ;height: 18px; background-color: #708090; position: absolute; margin-left: -22px; margin-top:3px; z-index: 2 !important;
-
-
 }
+
 .color_hearts_build{
     display: inline-block; width: 20px ;height: 18px; background-color: red; position: absolute; margin-left: -22px; margin-top:3px; z-index: 2 !important;
-
-
 }
-.left_option_products{
-    float: left;
-}
-.right_option_products{
-    float: right;
 
-}
 .mat-button{
     min-width: 30px;
     height: 30px;
@@ -373,8 +372,8 @@
     .width_products_open_menu {
         width: 33.3333333%;
     }
-
 }
+
 
 @media only screen and ( max-width: 1400px ) {
 
@@ -392,10 +391,11 @@
 
     .width_products{
 
-
         width: 50%;
 
-
+    }
+    .outer_page_products{
+        width: 10%;
     }
 
 

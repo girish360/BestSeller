@@ -21,11 +21,15 @@
               <div class="width_category">
 
                 <div class="imgsubscribe">
+
                   <mat-icon>{{top_menu.icon}}</mat-icon>
+
                 </div>
 
                 <div class="namecate">
+
                   <div class="namecategory" >{{top_menu.name}}</div>
+
                 </div>
 
 
@@ -41,11 +45,17 @@
       <div class="category_in_menu border_bottom">
 
         <div class="width_category">
+
           <div class="writecategory on_hover_category" id="on_hover_category">
+
             <div class="catgowrite">
+
               {{dataservices.language.category}}
+
             </div>
+
           </div>
+
         </div>
 
         <div *ngFor="let category of categorys">
@@ -62,19 +72,27 @@
 
 
                   <div class="imgsubscribe">
+
                     <img class="" src="../../assets/images/{{category.image}}">
+
                   </div>
 
                   <div class="namecate">
+
                     <div class="namecategory" >{{category.name}}</div>
+
                   </div>
 
                   <div class="imgnc">
+
                     <img class="moresubcategory" src="../../assets/images/morecat.png"><img  class="exitsubcategory" src="../../assets/images/closesubcat.png">
+
                   </div>
+
                 </div>
 
               </div>
+
             </a >
 
           </button>
@@ -94,25 +112,28 @@
                     <div class="width_sub_category">
 
                       <div class="imgsubscribe">
+
                         <img src="../../assets/images/{{subcategory.image}}">
+
                       </div>
 
                       <div class="namecate">
+
                         <div class="namecategory" >{{subcategory.name}}</div>
+
                       </div>
-
-
 
                     </div>
 
                   </div>
+
                 </button>
+
               </div>
 
             </ng-container>
 
             <ng-template  #notFirst>
-
 
               <button  mat-button class="button_menu" >
 
@@ -123,33 +144,45 @@
                   <div class="width_category">
 
                     <div class="imgsubscribe">
+
                       <img src="../../assets/images/not.png">
+
                     </div>
 
                     <div class="namecate">
+
                       <div class="namecategory" >{{dataservices.language.emptycat}}</div>
+
                     </div>
 
                   </div>
+
                 </div>
+
               </button>
 
-
             </ng-template>
-          </div>
-        </div>
 
+          </div>
+
+        </div>
 
       </div>
 
       <div class="subscriptions_in_menu border_bottom">
 
         <div class="width_category">
+
           <div class="writecategory on_hover_category" id="on_hover_category">
+
             <div class="catgowrite">
+
               {{dataservices.language.subscribe}}
+
             </div>
+
           </div>
+
         </div>
 
         <button  mat-button class="button_menu"  *ngFor="let subscription of subscriptions; let i = index">
@@ -162,18 +195,22 @@
 
               <div class="width_category">
 
-
                 <div class="imgsubscribe">
+
                   <img  src="../../assets/images/products_image/{{subscription.icon}}">
+
                 </div>
 
                 <div class="namecate">
+
                   <div class="namecategory" >{{subscription.name}}</div>
+
                 </div>
 
               </div>
 
             </div>
+
           </a >
 
         </button>
@@ -183,13 +220,18 @@
       <div class="setting_in_menu border_bottom">
 
         <div class="width_category">
-          <div class="writecategory on_hover_category" id="on_hover_category">
-            <div class="catgowrite">
-              {{dataservices.language.settings}}
-            </div>
-          </div>
-        </div>
 
+          <div class="writecategory on_hover_category" id="on_hover_category">
+
+            <div class="catgowrite">
+
+              {{dataservices.language.settings}}
+
+            </div>
+
+          </div>
+
+        </div>
 
         <button  mat-button class="button_menu"  *ngFor="let setting of settings">
 
@@ -201,37 +243,43 @@
 
               <div class="width_category">
 
-
                 <div class="imgsubscribe">
+
                   <mat-icon>{{setting.icon}}</mat-icon>
 
                 </div>
 
                 <div class="namecate">
-                  <div class="namecategory" href="#">{{setting.name}}</div>
-                </div>
 
+                  <div class="namecategory" href="#">{{setting.name}}</div>
+
+                </div>
 
               </div>
 
             </div>
+
           </a >
 
         </button>
-
 
       </div>
 
       <div class="users_in_menu border_bottom">
 
         <div class="width_category">
-          <div class="writecategory on_hover_category" id="on_hover_category">
-            <div class="catgowrite">
-              {{dataservices.language.users}}
-            </div>
-          </div>
-        </div>
 
+          <div class="writecategory on_hover_category" id="on_hover_category">
+
+            <div class="catgowrite">
+
+              {{dataservices.language.users}}
+
+            </div>
+
+          </div>
+
+        </div>
 
         <button  mat-button class="button_menu"  *ngFor="let account of user">
 
@@ -245,17 +293,21 @@
 
 
                 <div class="imgsubscribe">
+
                   <mat-icon>{{account.icon}}</mat-icon>
+
                 </div>
 
                 <div class="namecate">
-                  <div class="namecategory" href="#">{{account.name}}</div>
-                </div>
 
+                  <div class="namecategory" href="#">{{account.name}}</div>
+
+                </div>
 
               </div>
 
             </div>
+
           </a >
 
         </button>
@@ -264,13 +316,18 @@
 
       <div class="copyright_in_menu border_bottom">
 
-
         <div class="width_category">
+
           <div class="writecategory on_hover_category" id="on_hover_category">
+
             <div class="catgowrite">
+
               CopyRight
+
             </div>
+
           </div>
+
         </div>
 
         <button [disabled]="true" mat-button class="button_menu">
@@ -281,26 +338,29 @@
 
             <div class="width_category">
 
-
               <div class="imgsubscribe">
+
                 <mat-icon>copyright</mat-icon>
+
               </div>
 
               <div class="namecate">
-                <div class="namecategory" href="#">Copyright by KloShaba</div>
-              </div>
 
+                <div class="namecategory" href="#">Copyright by KloShaba</div>
+
+              </div>
 
             </div>
 
           </div>
+
         </button>
 
       </div>
+
       <br><br><br>
 
     </div>
-
 
     <div class="menu_right_inside" [ngClass]="{'hide_menu_right' : productsService.menu_subject.getValue()}">
 
@@ -335,113 +395,121 @@
 
           <div class="button_menu_right " *ngFor="let category of categorys">
 
-                            <span matTooltip="{{category.name_category}}">
+            <span matTooltip="{{category.name_category}}">
 
-                                <button mat-mini-fab class="button-fab-menu-right" >
+              <button mat-mini-fab class="button-fab-menu-right" >
 
-                                    <mat-icon ><img src="../../assets/images/{{category.image}}"></mat-icon>
+                <mat-icon ><img src="../../assets/images/{{category.image}}"></mat-icon>
 
-                                </button>
+              </button>
 
-                            </span>
+            </span>
 
           </div>
 
         </div>
 
       </div>
+
       <div class="width_menu_right border_bottom  ">
 
         <div class="subscriptions_mini_menu">
 
           <div class="button_menu_right " *ngFor="let subscription of subscriptions">
 
-                            <span matTooltip="{{subscription.name}}">
+            <span matTooltip="{{subscription.name}}">
 
-                                <a (click)="check_subscribes( subscription )" class="menu_mini_navigation menu_mini_navigation{{subscription.id}}" id="{{subscription.id}}" >
+              <a (click)="check_subscribes( subscription )" class="menu_mini_navigation menu_mini_navigation{{subscription.id}}" id="{{subscription.id}}" >
 
-                                    <button mat-mini-fab class="button-fab-menu-right" >
+                <button mat-mini-fab class="button-fab-menu-right" >
 
-                                        <mat-icon > <img class="img_subscriptions" src="../../assets/images/products_image/{{subscription.icon}}"></mat-icon>
+                  <mat-icon > <img class="img_subscriptions" src="../../assets/images/products_image/{{subscription.icon}}"></mat-icon>
 
-                                    </button>
-                                </a>
+                </button>
+              </a>
 
-                            </span>
+            </span>
 
           </div>
 
         </div>
 
       </div>
+
       <div class="width_menu_right border_bottom  ">
 
         <div class="settings_mini_menu">
 
           <div class="button_menu_right " *ngFor="let setting of settings">
 
-                            <span matTooltip="{{setting.name}}">
-                                <a class="menu_mini_navigation menu_mini_navigation{{setting.id}}" id="{{setting.id}}">
+            <span matTooltip="{{setting.name}}">
 
-                                    <button mat-mini-fab class="button-fab-menu-right" >
+              <a class="menu_mini_navigation menu_mini_navigation{{setting.id}}" id="{{setting.id}}">
 
-                                        <mat-icon >{{setting.icon}}</mat-icon>
+                <button mat-mini-fab class="button-fab-menu-right" >
 
-                                    </button>
-                                </a>
+                  <mat-icon >{{setting.icon}}</mat-icon>
 
-                            </span>
+                </button>
+
+              </a>
+
+            </span>
 
           </div>
 
         </div>
 
       </div>
+
       <div class="width_menu_right border_bottom  ">
 
         <div class="user_mini_menu">
 
           <div class="button_menu_right " *ngFor="let identity of user">
 
-                            <span matTooltip="{{identity.name}}">
+            <span matTooltip="{{identity.name}}">
 
-                                <a class="menu_mini_navigation menu_mini_navigation{{identity.id}}" id="{{identity.id}}">
+              <a class="menu_mini_navigation menu_mini_navigation{{identity.id}}" id="{{identity.id}}">
 
-                                    <button mat-mini-fab class="button-fab-menu-right" >
+                <button mat-mini-fab class="button-fab-menu-right" >
 
-                                        <mat-icon> {{identity.icon}} </mat-icon>
+                  <mat-icon> {{identity.icon}} </mat-icon>
 
-                                    </button>
-                                </a>
+                </button>
 
-                            </span>
+              </a>
+
+            </span>
 
           </div>
 
         </div>
 
       </div>
+
       <div class="width_menu_right border_bottom  ">
 
         <div class="copyright_mini_menu">
 
           <div class="button_menu_right ">
 
-                            <span matTooltip="KloShaba">
+            <span matTooltip="KloShaba">
 
-                                <button mat-mini-fab class="button-fab-menu-right" >
+              <button mat-mini-fab class="button-fab-menu-right" >
 
-                                    <mat-icon>copyright</mat-icon>
+                <mat-icon>copyright</mat-icon>
 
-                                </button>
+              </button>
 
-                            </span>
+            </span>
 
           </div>
 
         </div>
 
       </div>
+
       <br><br><br>
 
     </div>

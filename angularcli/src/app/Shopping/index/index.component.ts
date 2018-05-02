@@ -6,6 +6,8 @@ import { DataService } from '../services/data.service';
 
 import { ProductService } from '../products/product.service'; // ProductServices extend HeaderServices that cartList and  wishList ....................
 
+import { ScrollbarService } from '../../share/scrollbar.service';
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -13,7 +15,10 @@ import { ProductService } from '../products/product.service'; // ProductServices
 })
 export class IndexComponent implements OnInit {
 
+  public status_scroll_up:any= false;
+
   constructor(
+      private scroll : ScrollbarService,
       private productsService :ProductService,
       private elementRef : ElementRef,
       private renderer : Renderer,
@@ -22,14 +27,32 @@ export class IndexComponent implements OnInit {
 
     this.get_Language = this.dataservices.language;
 
+    this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
+
+      let scroll = this.scroll.window_scroll();
+
+       if( scroll.top >= 50 ){
+
+         this.status_scroll_up = true;
+
+
+       }else{
+
+         this.status_scroll_up = false;
+       }
+
+
+    });
+
   }
   ngDoCheck() {
 
   }
+  go_top(){
 
+    this.scroll.window_animate(0,0);
 
-
-
+  }
   public get_Language:object={};
 
   private wishList_products = [];

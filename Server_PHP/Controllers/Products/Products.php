@@ -5,7 +5,7 @@
     {
         public $products = array();
 
-        public $products_for_page = 50;
+        public $products_for_page = 40;
 
         public $pages_details = array();
 

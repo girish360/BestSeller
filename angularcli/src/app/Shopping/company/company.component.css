@@ -2,47 +2,41 @@
 
 
 
-.sticky_company {
-    display: none;
-    width:inherit;
-    height: 40px;
-    z-index: 3;
-    position: -webkit-sticky;
-    position: -moz-sticky;
-    position: -ms-sticky;
-    position: -o-sticky;
-    position: sticky;
-    top :40px;
 
-    background-color: #DB7093;
-
-
-}
-
-.company_category{
+.company_right{
     float: right;
+}
+.company_left{
+    width: 50%;
+    height: 100%;
+
 }
 .company_img{
     width: 50px;
-    height: 100%;
-    background-color: #004080;
+    height: inherit;
+    float: left;
 }
 
-.company_img img{
-    width: 100%;
-    height: 100%;
-}
+
 .company_name{
     height: 100%;
-    background-color: #004080;
-
+    width: auto;
+    margin-left: 5px;
+    margin-top: 10px;
 }
 
-
-
+.slide_title{
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 110px;
+}
+.slide_button{
+    color: honeydew;
+    min-width: 150px;
+}
 
 .categories{
-
     position: absolute;
     width: 100%;
     height: 40px;
@@ -52,27 +46,20 @@
 }
 
 .categories_opacity{
-
     opacity: 0.3;
     position: absolute;
     width: 100%;
     height: 40px;
     background-color: rosybrown;
     margin-top: -40px;
-
     z-index: 1;
 }
 
 .category{
-
     width: 100px;
-
     height: 100%;
-
     color:white;
-
     text-align: center;
-
     display: inline-block;
 }
 
@@ -93,7 +80,6 @@
 }
 
 .items_in_carousel {
-
     height: 40px;
     text-align: center;
     margin-left: -15px;
@@ -101,7 +87,6 @@
 }
 
 .items_in_carousel:hover{
-
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
 
 }
@@ -115,14 +100,12 @@ a{
 /*  slide shoe css */
 
 .glyphicon{
-
     font-size: 15px;
 }
 
 
 
 .sliders {
-
     width: 100%;
     height: 100%;
     border-radius: 3px;
@@ -134,20 +117,16 @@ a{
     background-color: #004080;
 }
 ngx-item ,.company_slide {
-
     width: 100%;
-
     height: 300px;
 
 }
 
 
 .morecompany{
-
     width:inherit;
     position: relative;
     height: 1500px;
-
     z-index: 1 ;
 }
 
@@ -158,7 +137,6 @@ ngx-item img {
     pointer-events: none
 }
 ngx-tile div {
-
     position: relative;
     color: white;
 }
@@ -170,8 +148,6 @@ ngx-tile div {
     top: 0;
     width: 5px;
     height: 300px;
-
-
     display: inline-block;
     -webkit-box-shadow: -28px 2px 36px -10px rgba(0,0,0,0.75);
     -moz-box-shadow: -28px 2px 36px -10px rgba(0,0,0,0.75);
@@ -186,9 +162,7 @@ ngx-tile div {
     width: 5px;
     height: 300px;
     transition: 0.5s;
-
     display: inline-block;
-
     z-index: 2;
 
 }
@@ -198,8 +172,6 @@ ngx-tile div {
     top: 0;
     width: 5px;
     height: 300px;
-
-
     display: inline-block;
     -webkit-box-shadow: 23px 0 36px -10px rgba(0,0,0,0.75);
     -moz-box-shadow: 23px 0 36px -10px rgba(0,0,0,0.75);
@@ -225,34 +197,23 @@ ngx-tile div {
     transform: translate(-50%,-50%);
     width: 47px;
     height: 47px;
-    background-color: #004080;
-    border-radius: 150px;
-    border:2px solid;
-    border-style: dotted;
-    color: green;
+    opacity: 0.9;
 
 }
-.backward_position:hover , .forward_position:hover{
-    transition: 0.5s;
-    background-color: green;
-}
 
-.backward_position:hover .icon_backward  ,.forward_position:hover .icon_forward{
-    transition: 0.5s;
-    color: white;
-}
 
 .icon_backward {
-
     position: relative;
     top:-7px;
     left: -2px;
+    color: white;
 
 }
 .icon_forward{
     position: relative;
     top:-7px;
     left: 2px;
+    color: white;
 }
 
 .write_slider{
@@ -293,7 +254,6 @@ ngx-tile div {
 
 
 @media only screen and (max-width: 1050px) {
-
 
     .backward_position,.forward_position ,.forward_fixed ,.backward_fixed , .forward, .backward {
         display: none;

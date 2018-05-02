@@ -13,14 +13,19 @@ export class ScrollbarService {
 
   }
 
-  public window( x ,y ){ //move windows scroll
+  public window( x , y ){ //move windows scroll
 
-       window.scrollTo( x , y );
+       window.scrollTo(  x , y  );
   }
 
-  public element(target){
+  public element( target ){
 
     target.scrollIntoView({ behavior:"smooth" });
+
+  }
+  public window_animate( x , y ){
+
+    window.scrollTo( {left: x , top:y , behavior: 'smooth' } );
 
   }
 
@@ -38,7 +43,7 @@ export class ScrollbarService {
 
   }
 
-  public  element_scroll(event){
+  public  element_scroll( event ){
 
     let left = event.srcElement.scrollLeft;
 

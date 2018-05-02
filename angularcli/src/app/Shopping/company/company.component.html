@@ -1,54 +1,64 @@
 
- <div class="sticky_company body">
+ <div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': sticky_company }">
 
+      <div class="sticky_options">
 
+          <div  class="company_left inline-block">
 
-       <div  class="company_img inline-block">
-                <img  src="../../assets/images/company/1.jpg">
-       </div>
+              <div class="company_img inline-block ">
 
-       <div class="company_name inline-block">
+                  <img class="full"  src="../../assets/images/company/1.jpg">
 
-         Elektronics
+              </div>
 
-       </div>
+              <div class="company_name inline-block title_text  ">
 
-      <div class="company_category inline-block">
+                  Elektronics
 
-        <mat-icon>view_module</mat-icon>
+              </div>
+
+          </div>
+
+          <div class="company_right inline-block">
+
+              <mat-icon>view_module</mat-icon>
+
+          </div>
 
       </div>
 
+     <div class="sticky_opacity">
+
+     </div>
+
   </div>
 
+ <div class="company_slide component-animation" [ngStyle]=" top_slide ">
 
-  <div class="company_slide component-animation" [ngStyle]=" top_slide ">
-
-
-
-      <ngx-carousel class="sliders"
-                    [inputs]="carouselOne"
-                    (carouselLoad)="myfunc($event)"
-                    (onMove)="onmove_item_slide($event)"
+     <ngx-carousel class="sliders" [inputs]="comapny_slide"
+                   (carouselLoad)="myfunc($event)"
+                   (onMove)="onmove_item_slide($event)"
       >
 
-
-        <ngx-item NgxCarouselItem   *ngFor="let slide of images_slide" >
+         <ngx-item NgxCarouselItem   *ngFor="let slide of images_slide; let i = index" >
 
           <img   src="../../assets/images/company/{{slide.src}}">
 
-          <ngx-tile>
-            <div>
-              {{slide.title}}
-            </div>
+            <div class="slide_title">
 
-          </ngx-tile>
+                <button mat-raised-button  class="slide_button button " color="primary" >
+
+                    <span>
+                         {{slide.title}}
+                    </span>
+
+                </button>
+
+            </div>
 
         </ngx-item>
 
-
-
-        <a    NgxCarouselPrev >
+          <a    NgxCarouselPrev >
 
           <div class="forward" [ngStyle]="button_slide_css.status && button_slide_css">
 
@@ -59,13 +69,23 @@
           </div>
 
           <div class="forward_hover" [ngStyle]="button_slide_css.status && button_slide_css">
-            <button mat-mini-fab class=" mat-fab forward_position" >
-              <mat-icon> <span class="glyphicon glyphicon-forward icon_forward"></span></mat-icon>
+
+            <button mat-mini-fab color="primary" class=" mat-fab forward_position" >
+
+              <mat-icon>
+
+                  <span class="glyphicon glyphicon-forward icon_forward"></span>
+
+              </mat-icon>
+
             </button>
+
           </div>
 
         </a>
+
         <a NgxCarouselNext>
+
           <div class="backward" [ngStyle]="button_slide_css.status && button_slide_css">
 
           </div>
@@ -76,73 +96,65 @@
 
           <div class="backward_hover" [ngStyle]="button_slide_css.status && button_slide_css">
 
-            <button mat-mini-fab class=" backward_position" >
+            <button mat-mini-fab color="primary" class=" backward_position" >
+
               <mat-icon> <span class="glyphicon glyphicon-backward icon_backward "></span></mat-icon>
+
             </button>
 
           </div>
 
         </a>
+
       </ngx-carousel>
 
-
-
-  </div>
+ </div>
 
   <div class="categories_opacity">
 
-   </div>
+  </div>
 
 
   <ngx-carousel class="categories" [inputs]="carousel_category"
 
                 (carouselLoad)="carouselTileOneLoad()"
-
                 (onMove)="onmove_carousel( $event )"
 
   >
+      <ngx-tile NgxCarouselItem *ngFor="let category of  category_items; let i = index;">
 
-    <ngx-tile NgxCarouselItem *ngFor="let category of  category_items; let i = index;">
+          <a href="#">
 
-      <a href="#">
+              <div class="items_in_carousel">
 
-      <div class="items_in_carousel">
+                  <mat-icon>home</mat-icon>
 
-        <mat-icon>home</mat-icon>
+                  <div class="content_carousel">
 
+                      {{category.title}}
 
-        <div class="content_carousel">
+                  </div>
 
-          {{category.title}}
+              </div>
 
-        </div>
+          </a>
 
-      </div>
+      </ngx-tile>
 
-      </a>
-
-
-    </ngx-tile>
-
-    <div NgxCarouselPrev ></div><div  NgxCarouselNext ></div>
+      <div NgxCarouselPrev ></div><div  NgxCarouselNext ></div>
 
   </ngx-carousel>
 
-
-
   <div class="morecompany body" >
 
-
-    klodian shaba <br>
-    klodian shaba <br>
-    klodian shaba <br>klodian shaba <br>klodian shaba <br>
-    klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
-    klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
-    klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
-    klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
-    klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
-
-
+      klodian shaba <br>
+      klodian shaba <br>
+      klodian shaba <br>klodian shaba <br>klodian shaba <br>
+      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
+      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
+      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
+      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
+      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
 
   </div>
 

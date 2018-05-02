@@ -2,101 +2,71 @@
 
 
 <div class="header"  *ngIf="dataservices.status_language | async">
-
+    <!-- start outer header full width  ......................  -->
     <div class="response_outer  "  [ngClass]="{'active_menu':productsService.menu_subject.getValue()}">
 
-        <div class="top_menu">  <!-- this is open category  -->
-
-            <div class="herewrite">
-
-                <a href="#">
-
-                    <div class="radius_category" id="laptopscreen" (click)="check_menu()" [ngClass]="{'open_menu':productsService.menu_subject.getValue() }">
 
 
+            <button mat-button class="check_menu " (click)="check_menu()" [ngClass]="{'open_menu':productsService.menu_subject.getValue() }">
 
+                <mat-icon *ngIf="!productsService.menu_subject.getValue()" >view_list</mat-icon>
 
+                <mat-icon *ngIf="productsService.menu_subject.getValue()" >exit_to_app</mat-icon>
 
-                             <button mat-button class="listcategory">
+            </button>
 
 
 
-                                 <mat-icon *ngIf="!productsService.menu_subject.getValue()" >view_list</mat-icon>
+        <div class="response_inner  inner_mobile "> <!-- start inner header ................... -->
 
-                                 <mat-icon *ngIf="productsService.menu_subject.getValue()" >exit_to_app</mat-icon>
+            <span class="header_left">  <!-- start left header .................................... -->
 
+                <div class="icon_header inline-block">
 
+                    <a href="#" class="title_text" (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
 
-                             </button>
+                </div>
 
+                <div class="icon_header_write inline-block">
 
+                    <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" class="title_text"> Bestseller </a>
 
-
-
-                    </div>
-                </a>
-
-            </div>
-
-        </div>
-
-        <div class="response_inner  inner_mobile ">
-
-            <!--  start bottom header ...........................................-->
+                </div>
 
 
+                <span matTooltip="Search product and company">
 
-                <span class="header_left">  <!-- start left header  -->
+                    <div class="search notCloseDropdawnSearch">
 
-                    <div class="menu1">  <!-- Icon header   -->
+                        <input type="text" class="kerkim"  name="search" [(ngModel)]="typing_search" placeholder="{{dataservices.language.searchproducts}}">
 
-                        <div class="icon_header">
+                        <a href="#">
 
-                            <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
+                            <div class="iconsearch">
 
-                        </div>
+                                <div class="imgsearch">
 
-                        <div class="icon_header_write">
-                            <a routerLink=""> Bestseller </a>
-                        </div>
-
-                    </div>
-
-                    <span matTooltip="Search product and company">
-
-                        <div class="search notCloseDropdawnSearch">
-
-                            <input type="text" class="kerkim"  name="search" [(ngModel)]="typing_search" placeholder="{{dataservices.language.searchproducts}}">
-
-                            <a href="#">
-
-                                <div class="iconsearch">
-
-                                    <div class="imgsearch">
-
-                                        <span class="glyphicon glyphicon-search"></span>
-
-                                    </div>
-
-                                    <div class="imgsearchexit">
-
-                                        <span class="glyphicon glyphicon-remove-sign"></span>
-
-                                    </div>
+                                    <span class="glyphicon glyphicon-search"></span>
 
                                 </div>
 
-                            </a>
+                                <div class="imgsearchexit">
 
-                            {{typing_search}}
+                                    <span class="glyphicon glyphicon-remove-sign"></span>
 
+                                </div>
 
+                            </div>
 
-                        </div>
+                        </a>
 
-                    </span>
+                        {{typing_search}}
+
+                    </div>
 
                 </span>
+
+            </span> <!-- end left header ..................................... -->
 
                 <span class="header_right">
 
@@ -138,13 +108,9 @@
 
                 <div class="button_mobile" (click)="set_router( { path:'shopping' , data:false ,relative:false } , check_body(false) )">
 
-                    <div class="listcategoryfind notClosepointerHeader">
+                    <div>
 
-                        <div class="listcategory" id="iconmenu">
-
-                            <span class="glyphicon glyphicon-home"></span>
-
-                        </div>
+                        <span class="glyphicon glyphicon-home"></span>
 
                     </div>
 
