@@ -1,5 +1,14 @@
 
+.process_spinner{
 
+    width: 50px;
+    margin: 0 auto;
+
+}
+.spinner{
+    position: relative;
+    left: 9px;
+}
 
 .containere{
     height: auto;

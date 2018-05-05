@@ -1,7 +1,5 @@
 
 
-
-
 import { Component, OnInit ,OnDestroy , ChangeDetectionStrategy ,ChangeDetectorRef } from '@angular/core';
 
 import { NgxCarousel ,NgxCarouselStore } from 'ngx-carousel';
@@ -58,7 +56,7 @@ export class HomeComponent implements OnInit {
 
           this.dataservices.update_loader(true);
 
-          this.dataservices.create_object_request('categories_products', this.homeservice.store_data_carousel);
+          this.dataservices.create_object_request( 'categories_products', this.homeservice.store_data_carousel);
 
           this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
 
@@ -149,16 +147,20 @@ export class HomeComponent implements OnInit {
   }
 
 
-
   onmove_carousel( data_carousel : NgxCarouselStore , current_category ){
 
       if( data_carousel.currentSlide + data_carousel.items  == data_carousel.itemLength
-        && current_category.current_page < 1
+
+        && current_category.current_page_products < 1
      ){
 
       this.dataservices.update_loader(true);
 
-      this.dataservices.create_object_request( 'more_products', { current_page : current_category.current_page+1 , category :current_category.id }  );
+      this.homeservice.store_data_carousel.category_id = current_category.id;
+
+      this.homeservice.store_data_carousel.current_page_products = current_category.current_page_products+1;
+
+      this.dataservices.create_object_request( 'more_products',  this.homeservice.store_data_carousel  );
 
       this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
 
@@ -168,7 +170,9 @@ export class HomeComponent implements OnInit {
 
                 if( data['status'] == 'more_products' ){
 
-                  this.more_products(data['data'] , current_category.id );
+                  this.more_products( data['data'] , current_category.id );
+
+
 
                 }
                 setTimeout(()=>{
@@ -201,7 +205,7 @@ export class HomeComponent implements OnInit {
 
         }
 
-        this.homeservice.categories_products[i].current_page = array_data.current_page;
+        this.homeservice.categories_products[i].current_page_products = array_data.current_page_products;
 
       } //
 
@@ -213,36 +217,36 @@ export class HomeComponent implements OnInit {
 
   onScroll() {
 
-      if( (this.homeservice.store_data_carousel.current_page+1)*this.homeservice.store_data_carousel.categories_for_page < this.homeservice.store_data_carousel.total_categories ) {
+      if( (this.homeservice.store_data_carousel.current_page_categories+1)*this.homeservice.store_data_carousel.categories_for_page < this.homeservice.store_data_carousel.total_categories ) {
 
+          this.homeservice.store_data_carousel.current_page_products = 0;
 
-     this.homeservice.store_data_carousel.current_page = this.homeservice.store_data_carousel.current_page + 1;
+          this.homeservice.store_data_carousel.current_page_categories = this.homeservice.store_data_carousel.current_page_categories + 1;
 
-     this.dataservices.update_loader(true);
+          this.dataservices.update_loader(true);
 
-     this.dataservices.create_object_request('categories_products', this.homeservice.store_data_carousel);
+          this.dataservices.create_object_request('categories_products', this.homeservice.store_data_carousel);
 
-     this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
+          this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
 
-         .subscribe( //  take success
+              .subscribe( //  take success
 
-             data => {
+                  data => {
 
-               if (data['status'] == 'categories_products') {
+                      if (data['status'] == 'categories_products') {
 
-                 let more_categories = data['data']['categories'];
+                          let more_categories = data['data']['categories'];
 
-                 this.homeservice.store_data_carousel = data['data']['store_data'];
+                          this.homeservice.store_data_carousel = data['data']['store_data'];
 
-                 this.more_categories(more_categories);
+                          this.more_categories( more_categories );
+                      }
 
-               }
+                  },
+                  error => console.log(error['data']) // take error .....
 
-             },
-             error => console.log(error['data']) // take error .....
-
-         );
-   }
+              );
+      }
   }
 
 

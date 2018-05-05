@@ -46,6 +46,19 @@ class  connection  { // start connection class ...
         return $query;
 
     }
+    public function select_all_where( $table_name , $array_select , $array_where ){ // select all data from databse ......
+
+        $select_columns = self::select_columns( $array_select );
+
+        $where_columns = self::where_columns_and( $array_where );
+
+        $query = $this->db->prepare("SELECT $select_columns FROM `$table_name` WHERE $where_columns");
+
+        $query->execute( $array_where );
+
+        return $query;
+
+    }
 
     public function select_limit( $table_name , $array_select ,$start , $for_page ){ // select data from databse with limit
 
@@ -87,6 +100,7 @@ class  connection  { // start connection class ...
                 for($i = 0 ; $i < strlen($column) ; $i++ ){  // loop string column
 
                     if( $column[$i] == '.' ){
+
                         break;
                     }
 
@@ -106,7 +120,7 @@ class  connection  { // start connection class ...
 
         $Tables = implode(',', $Tables); // get table name from array ........
 
-        $query = $this->db->prepare("SELECT $Columns FROM $Tables WHERE $where LIMIT $limit  "); // prepare query
+        $query = $this->db->prepare("SELECT $Columns FROM $Tables WHERE $where LIMIT $limit "); // prepare query
 
         $query->execute(); // execute query ...............
 
@@ -127,7 +141,7 @@ class  connection  { // start connection class ...
 
                 $nr_point=0;
 
-                for($i = 0 ; $i < strlen($column) ; $i++ ){  // loop string column
+                for( $i = 0 ; $i < strlen($column) ; $i++ ){  // loop string column
 
                     if( $column[$i] == '.' ){
                         break;

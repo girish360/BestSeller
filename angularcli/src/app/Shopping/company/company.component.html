@@ -11,17 +11,29 @@
 
               </div>
 
-              <div class="company_name inline-block title_text  ">
+              <div class="company_name inline-block   ">
 
-                  Elektronics
+                  <div class="title_text">
+                      Elektronics
+                  </div>
+
+                  <div>
+                      500 Subscribe
+                  </div>
 
               </div>
 
           </div>
 
-          <div class="company_right inline-block">
+          <div class="company_right inline-block ">
 
-              <mat-icon>view_module</mat-icon>
+              <button mat-button class="button_category">
+
+                  <mat-icon>view_module</mat-icon>
+
+              </button>
+
+
 
           </div>
 
@@ -145,21 +157,83 @@
 
   </ngx-carousel>
 
-  <div class="morecompany body" >
+  <div class="morecompany body">
 
-      klodian shaba <br>
-      klodian shaba <br>
-      klodian shaba <br>klodian shaba <br>klodian shaba <br>
-      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
-      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
-      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
-      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
-      klodian shaba <br>klodian shaba <br>klodian shaba <br>klodian shaba <br>
+      <div class="company_option full_width">
+
+          <div class="inner_company_option full_width">
+
+              <div class="company_profile_img inline-block">
+
+                  <img class="full" src="../../assets/images/company/1.jpg">
+
+              </div>
+
+
+              <div class="company_nav inline-block">
+
+                  <div class="company_nav_top full_width half_height  border_bottom">
+
+                      <div class="inner_company_nav">
+
+                          <div class="company_name title_text">
+
+                              Elektronics
+
+                          </div>
+
+                      </div>
+
+                  </div>
+
+                  <div class="company_nav_bottom full_width half_height">
+
+                      <div class="inner_company_nav inline-block">
+
+                          <span (click)="set_router({path:'about',data:false,relative:true})" > about </span>
+
+                          <span (click)="set_router({ path:'home',data:false,relative:true } )" > home </span>
+
+                          <span (click)="set_router({path:'search',data:false,relative:true})" > search </span>
+
+                      </div>
+
+                      <div class="right_company_nav_bottom full_height inline-block">
+
+                          <input type="text" class="input_search input_search_company  "  name="company_search" [(ngModel)]="typing_search" placeholder="Search products">
+
+                          <div class="icon_search half_height">
+                              k
+                          </div>
+
+                     </div>
+
+                  </div>
+
+              </div>
+
+          </div>
+
+      </div><br>
+
+      <div class="company_router">
+
+          <router-outlet>
+
+
+          </router-outlet>
+
+      </div>
 
   </div>
 
 
 
+ <input type="text" class="input_search input_search_company  "  name="company_search" [(ngModel)]="typing_search" placeholder="Search products">
+
+ <div class="icon_search ">
+     k
+ </div>
 
 
 

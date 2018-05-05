@@ -20,7 +20,7 @@ const routes: Routes = [
 
       { path: 'products/:name/:id/:name', loadChildren :'./products/products.module#ProductsModule' },
 
-      { path: ':name/:name',  loadChildren :'./company/company.module#CompanyModule' },
+      { path: ':name/:name',  loadChildren :'./company/company.module#CompanyModule'},
 
       { path: 'login', loadChildren : './login-register/login-register.module#LoginRegisterModule'},
 

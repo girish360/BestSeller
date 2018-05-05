@@ -182,7 +182,6 @@ class Fetch_Data extends connection {
                         }
                     }
                 }
-
             }
         }
         return  $output;  // return array ...........

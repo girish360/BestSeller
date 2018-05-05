@@ -59,10 +59,12 @@ create table image_slide_company(
 
 
 
-create table category_company(
+create table company_category(
    `id` int not null primary key AUTO_INCREMENT,
    `category_id` int(11),
-   `company_id` int(11)
+   `company_id` int(11),
+   `slide_image` varchar(250)
+
 );
 create table sub_category(
    `id` int not null primary key AUTO_INCREMENT,
@@ -205,18 +207,22 @@ values
 ('Samsung s7 Edge 5 ','S7 edge shitet per arsye mos perdorimi , eshte ne gjendje perferkte pothuajse i ri me kamere para dhe mbarap Rami 8GB memory 32gb ','2','2','1','500','2','s7.jpg'),
 ('Lg smart Tv WebOs','I ri me internet me lan dhe wifi me nje alarmi programesh te ndryshme per perdoruesin  ','3','3','1','900','5' ,'tv.jpg'),
 
-('Runing Shoes',' te reja ','4','4','2','50','15' ,'sho.jpg'),
-('Watch',' E re nje vit garanci amerikone','5','5','2','420','1' ,'wa.jpg'),
+('Runing Shoes',' te reja ','4','4','1','50','15' ,'sho.jpg'),
+('Watch',' E re nje vit garanci amerikone','5','5','1','420','1' ,'wa.jpg'),
 
-('Tractor John Deere Us',' e sa po ardhur nga USA','6','6','3','42220','1' ,'tra.jpg'),
-('Class 68 dominator ',' Germany combina 68s','7','7','3','25220','1' ,'co.jpg'),
+('Tractor John Deere Us',' e sa po ardhur nga USA','6','6','1','42220','1' ,'tra.jpg'),
+('Class 68 dominator ',' Germany combina 68s','7','7','1','25220','1' ,'co.jpg'),
 
-('Truck Man',' Germany Man year 2015','8','8','4','52220','1' ,'tru.jpg'),
-('Bus Man 2015 ',' Germany Bus ','9','9','4','62220','1' ,'bus.jpg'),
-('Benz mercedez','shitet per arsye mos perdorimi 4x4 viti prodhimit 2011 letrat e preme per 1 vit','10','10','4','50000','5' ,'benz.jpg'),
+('Truck Man',' Germany Man year 2015','8','8','2','52220','1' ,'tru.jpg'),
+('Bus Man 2015 ',' Germany Bus ','9','9','2','62220','1' ,'bus.jpg'),
+('Benz mercedez','shitet per arsye mos perdorimi 4x4 viti prodhimit 2011 letrat e preme per 1 vit','10','10','2','50000','5' ,'benz.jpg'),
 
-('Golf Ball ',' Amazing Ball','11','11','5','150','5' ,'go.jpg'),
-('Ball ',' Ball ','12','12','5','120','5' ,'ba.jpg');
+('Golf Ball ',' Amazing Ball','11','11','2','150','5' ,'go.jpg'),
+('Ball ',' Ball ','12','12','2','120','5' ,'ba.jpg'),
+
+('Laptop Hp Probvook 6560b','Gjendje perfekte  memory 500 Gb ram 8 Gb ','1','1','2','500','9' ,'pc.jpg'),
+('Samsung s7 Edge 5 ','S7 edge shitet per arsye mos perdorimi , eshte ne gjendje perferkte pothuajse i ri me kamere para dhe mbarap Rami 8GB memory 32gb ','2','2','2','500','2','s7.jpg'),
+('Lg smart Tv WebOs','I ri me internet me lan dhe wifi me nje alarmi programesh te ndryshme per perdoruesin  ','3','3','2','900','5' ,'tv.jpg');
 
 
 
@@ -267,6 +273,6 @@ values('klodian','shaba','kshaba','klodian.tik@gmail.com','male','alabnia','klo.
 ('Arjola','Shabani','Ashabani','Arjola.tik@gmail.com','female','Italy','b3.jpg','0683834235','Italy')
 
 
-insert into category_company ( category_id , company_id )
+insert into company_category ( category_id , company_id )
 values('1','1'),('2','1'),('3','1'),('4','1'),('5','1'),('6','1'),('7','1'),
 ('1','2'),('2','2'),('3','2'),('4','2'),('5','2'),('6','2'),('7','2'),('8','2'),('9','2'),('10','2'),('11','2'),('12','2');

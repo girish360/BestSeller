@@ -1,4 +1,4 @@
-import { Component, OnInit , Input ,OnDestroy ,Renderer } from '@angular/core';
+import { Component, OnInit , Input ,OnDestroy ,Renderer,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -12,6 +12,9 @@ import { ScrollbarService } from '../../share/scrollbar.service';
 
 import { DataService } from '../services/data.service';
 
+import { CompanyService } from './company.service';
+
+import { SetRouterService } from '../services/set-router.service';
 
 
 declare var $:any;
@@ -20,6 +23,8 @@ declare var $:any;
   selector: 'app-company',
   templateUrl: './company.component.html',
   styleUrls: ['./company.component.css'],
+    changeDetection: ChangeDetectionStrategy.OnPush
+
 
 })
 
@@ -27,8 +32,6 @@ declare var $:any;
 export class CompanyComponent implements OnInit , OnDestroy {
 
     public get_Language:object;
-
-    private company_id:any;
 
     private id:any;
 
@@ -101,26 +104,20 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
     ];
 
-
-
     constructor(
+        private company: CompanyService,
+        private setRouter : SetRouterService,
         private scroll :ScrollbarService,
         private dataservices:DataService ,
         private crypto : EncryptDecryptService ,
         private route: ActivatedRoute ,
         private router: Router ,
         private renderer : Renderer,
+        private cd :ChangeDetectorRef,
     ) {
 
-        this.scroll.window(0,0);
-
-        this.subscription = this.route.params.subscribe( params => {
-
-            this.company_id = crypto.decrypt_AES( params['name']  );
 
 
-
-        });
 
         this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
 
@@ -152,6 +149,7 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
                 $('.company_sticky').hide();
             }
+            this.cd.markForCheck();
 
         }); // end scroll event .............................................................................
 
@@ -255,18 +253,18 @@ export class CompanyComponent implements OnInit , OnDestroy {
         }
     }
 
-    ngOnDestroy():void{
 
-        this.subscription.unsubscribe();
-
-
-
-    }
     carouselTileOneLoad(ev){
 
     }
 
     onmove_carousel(ev){
+
+    }
+
+    public  set_router( data ){
+
+        this.setRouter.set_router( data , this.route ); // set router .....
 
     }
 

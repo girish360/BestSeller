@@ -18,10 +18,15 @@ export class AppComponent implements OnInit{
 
             var scroll_status = false;
 
+            $(window).on('beforeunload', function(){
+
+                $(window).scrollTop(0);
+
+            });
+
             $('body').click('a',function(e) {
 
                 e.preventDefault();
-
 
             });
 
@@ -53,6 +58,7 @@ export class AppComponent implements OnInit{
                     if( scroll_status == true ) {
 
                         $('.products_sticky').hide().slideDown('fast');
+
 
                         $('.products_sticky').removeClass('sticky_fixed');
                     }

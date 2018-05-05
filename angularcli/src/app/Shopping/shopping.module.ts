@@ -36,6 +36,7 @@ import { HeaderComponent } from './header/header.component'; // header shopping
 import { BodyComponent } from './body/body.component'; // body shopping
 
 import { MenuComponent } from './menu/menu.component';
+
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component'; //  menu  left  in shopping
 
 

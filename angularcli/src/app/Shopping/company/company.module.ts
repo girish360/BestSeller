@@ -15,25 +15,50 @@ import 'hammerjs';
 
 import { ShareModule } from '../../share/share.module';
 
+import { SearchComponent } from './search/search.component';
+
+import { AboutComponent } from './about/about.component';
+
+import { HomeComponent } from './home/home.component';
+
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
+import { CompanyService } from './company.service';
+
+
 @NgModule({
 
   imports: [
 
-    CommonModule,
+      CommonModule,
 
-    CompanyRoutingModule,
+      CompanyRoutingModule,
 
-    NgxCarouselModule,
+      NgxCarouselModule,
 
-    ShareModule
+      ShareModule,
+
+      InfiniteScrollModule
 
   ],
 
-  declarations: [
+    declarations: [
 
-      CompanyComponent,
-      SlideshowComponent
-  ]
+        CompanyComponent,
+
+        SlideshowComponent,
+
+        SearchComponent,
+
+        AboutComponent,
+
+        HomeComponent
+  ],
+    providers: [
+
+
+        CompanyService
+    ]
 
 })
 export class CompanyModule { }

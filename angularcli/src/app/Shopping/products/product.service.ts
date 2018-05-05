@@ -42,6 +42,9 @@ export class ProductService extends HeaderService {
 
     super(  dataservices );
 
+
+
+
   }
 
   checked_products_inCart_and_inWish(){

@@ -1,4 +1,7 @@
-import {Component, OnInit,OnChanges, Input, Output, EventEmitter, DoCheck,  ChangeDetectorRef , OnDestroy,ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component, OnInit, OnChanges, Input, Output, EventEmitter, DoCheck, ChangeDetectorRef, OnDestroy,
+  ChangeDetectionStrategy, AfterViewInit
+} from '@angular/core';
 
 import 'rxjs/Rx'
 
@@ -17,6 +20,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { ProductService } from './product.service';
 
 import {until} from "selenium-webdriver";
+
+import { ScrollbarService } from '../../share/scrollbar.service';
 
 
 
@@ -41,7 +46,7 @@ import alertIsPresent = until.alertIsPresent; // ProductServices extend HeaderSe
     ])
   ]
 })
-export class ProductsComponent   implements OnInit   {
+export class ProductsComponent   implements OnInit , AfterViewInit  {
 
   public Response:any;
 
@@ -66,7 +71,7 @@ export class ProductsComponent   implements OnInit   {
   my_products :Subscription;
 
   constructor(
-
+      private scroll:ScrollbarService,
       private productsService : ProductService,
       private setRouter: SetRouterService,
       private dataservices: DataService ,
@@ -74,7 +79,6 @@ export class ProductsComponent   implements OnInit   {
       private cd : ChangeDetectorRef,
 
   ) {
-
 
 
     this.route.params.subscribe( params => {
@@ -127,7 +131,12 @@ export class ProductsComponent   implements OnInit   {
     });
   }
 
+ngAfterViewInit(){
+    setTimeout(()=>{
+      this.scroll.window(0,0);
+    },2000);
 
+}
 
   index( index , item ){
 

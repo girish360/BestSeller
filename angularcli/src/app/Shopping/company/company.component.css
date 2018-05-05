@@ -1,11 +1,17 @@
 
 
 
-
-
 .company_right{
     float: right;
+    height: 100%;
+
 }
+.button_category{
+    background: transparent;
+    height: 100%;
+    min-width: 30px;
+}
+
 .company_left{
     width: 50%;
     height: 100%;
@@ -21,8 +27,7 @@
 .company_name{
     height: 100%;
     width: auto;
-    margin-left: 5px;
-    margin-top: 10px;
+    margin-top: 1px;
 }
 
 .slide_title{
@@ -126,7 +131,7 @@ ngx-item ,.company_slide {
 .morecompany{
     width:inherit;
     position: relative;
-    height: 1500px;
+    height: auto;
     z-index: 1 ;
 }
 
@@ -217,6 +222,7 @@ ngx-tile div {
 }
 
 .write_slider{
+
     position: relative;
     margin-top: -50px;
     margin-left: -100px;
@@ -225,6 +231,7 @@ ngx-tile div {
 
 }
 .sliders:hover .backward{
+
     transition: 0.2s;
     width: 50px;
     height: 100px;
@@ -234,6 +241,7 @@ ngx-tile div {
 
 }
 .sliders:hover .forward{
+
     transition: 0.2s;
     width: 50px;
     height: 100px;
@@ -241,6 +249,61 @@ ngx-tile div {
     margin-top: 100px;
 
 }
+.company_option{
+
+    height: 80px;
+
+}
+.inner_company_option{
+
+    height: 80%;
+    position: relative;
+    top: 10%;
+
+}
+.company_profile_img{
+
+    border-radius: 100px;
+    width: calc( 80*0.8px );
+    height: 100%;
+    float: left;
+
+}
+.company_profile_img img{
+
+    border-radius: 100px;
+}
+
+.company_nav{
+    width: calc(100% - 80*0.8px );
+    float: right;
+    height: 100%;
+
+}
+.inner_company_nav{
+    margin-left: 10px;
+}
+.company_name{
+   position: relative;
+    top: 5px;
+}
+.right_company_nav_bottom{
+    float: right;
+
+
+}
+input[name='company_search']:focus {
+
+    outline: none;
+
+    background-color: floralwhite;
+
+    width: 300px;
+
+    transition:0.5s;
+}
+
+
 
 .sliders:hover .backward_hover ,.sliders:hover .forward_hover{
     transition: 0.4s;
