@@ -15,16 +15,33 @@ include '../Server_files/Server_files.php'; // include all controllers dynamical
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' || $_SERVER['REQUEST_METHOD'] === 'GET') { // chekc if request http is  GET or POST ...................
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') { // check if request is POST ........
+    if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) { // check if request is POST ........
 
-        $postdata = file_get_contents("php://input");
+        $postdata = file_get_contents("php://input"); // catch data from client.....................
 
-        $_POST = json_decode($postdata);
+        $crypto = new Crypto();
+
+        $string_object = $crypto->decrypt_in_server( $postdata );
+
+        $end_object=0;
+
+        for( $i = 0 ; $i < strlen( $string_object ); $i++ ){ // loop string object
+
+            if(  $string_object[$i] == '}' ){ // find end number string object...................
+
+                $end_object = $i; // end _String varibale equals with end number string object
+
+            } // end if
+
+        } // end loop
+
+        $end_object = ++$end_object;
+
+        $_POST = json_decode( substr( $string_object , 0 , $end_object) );
 
         $status = $_POST->status; // status from client to identify  what should do server ...........
 
         $data_from_client = $_POST->value; // data from client json or only one variable dependet from request...
-
 
         // include products http request post ......
         require 'Products_Http.php';

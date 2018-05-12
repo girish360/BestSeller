@@ -3,20 +3,18 @@
 
      <div class="response_inner "  [ngClass]="{'change_inner_body':dataservices.change_inner}">
 
-         <div class="containerleft">
-
-
+         <div class="containerleft"> <!--  left container here is router-outlet that can set different component with router-->
 
              <router-outlet>
-
-                      <!-- body  -->
-
+                 <!-- body  -->
              </router-outlet>
 
-             <div class="process_spinner">
+             <div class="process_spinner" *ngIf="dataservices.loading_spinner | async">
 
                  <span class="spinner">
+
                       <mat-spinner diameter="30" ></mat-spinner>
+
                  </span>
 
                  <span class="write_spinner">Loading</span>
@@ -26,8 +24,6 @@
          </div>
 
          <div class="containerright" >
-
-
 
          </div>
 

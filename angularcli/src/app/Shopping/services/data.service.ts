@@ -18,7 +18,6 @@ import {Observable} from 'rxjs/Observable';
 
 import{Subject} from 'rxjs/Subject';
 
-
 @Injectable()
 
 export class DataService extends AuthService implements OnInit{
@@ -29,9 +28,14 @@ export class DataService extends AuthService implements OnInit{
 
     status_language = this.subject_language.asObservable();
 
-    private subject_progress =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
+    private subject_progress =  new BehaviorSubject<boolean>(true); // loading page
 
-    public loading_progress = this.subject_progress.asObservable();// identify if cartlist should change
+    public loading_progress = this.subject_progress.asObservable();// loading page
+
+    private subject_spinner =  new BehaviorSubject<boolean>(false); //loading products
+
+    public loading_spinner = this.subject_spinner.asObservable();// loading products
+
 
     public Header_property:any = {
 
@@ -95,11 +99,14 @@ export class DataService extends AuthService implements OnInit{
 
   }
 
-
-
   update_loader( new_poperty ){
 
-         this.subject_progress.next(new_poperty);
+         this.subject_progress.next( new_poperty );
+  }
+
+  update_spinner( new_poperty ){
+
+      this.subject_spinner.next( new_poperty );
   }
 
   update_language( new_language ){

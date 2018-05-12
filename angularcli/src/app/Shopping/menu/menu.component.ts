@@ -62,10 +62,10 @@ export class MenuComponent  implements OnInit  {
   ];
 
   private subscriptions:object = [
-    { 'icon':'klo.jpg','id':'7','name':'Electronics' },
-    { 'icon':'1234.jpg','id':'8','name':'Phone' },
-    { 'icon':'b3.jpg','id':'9','name':'Samsung' },
-    { 'icon':'klo.jpg','id':'10','name':'T-shirt' }
+    { 'icon':'klo.jpg','id':'1','name':'Electronics' },
+    { 'icon':'1234.jpg','id':'2','name':'Phone' },
+    { 'icon':'b3.jpg','id':'3','name':'Samsung' },
+    { 'icon':'klo.jpg','id':'4','name':'T-shirt' }
   ];
 
   private settings:object = [

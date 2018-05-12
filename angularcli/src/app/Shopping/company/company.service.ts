@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 
+import{BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+
+
 @Injectable()
 
 export class CompanyService {
-
-  public company_id:any;
 
   public categories_products : any = [];
 
@@ -23,6 +25,10 @@ export class CompanyService {
     category_id:false
 
   }; // inital  can change later ....
+
+  public categories_products_async =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
+
+  public status_categories_products = this.categories_products_async.asObservable();// identify if cartlist should change
 
   constructor() {
 

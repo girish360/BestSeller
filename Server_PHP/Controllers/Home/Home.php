@@ -5,13 +5,13 @@ class Home extends Fetch_Data {
 
     private $table;
 
-    private $select_and_tables ;
+    private $select_and_tables;
 
     private $where;
 
     private $products_for_category = 10;
 
-    private $category_for_load = 5;
+    private $category_for_load = 10;
 
     private $Categories = array();
 
@@ -19,19 +19,28 @@ class Home extends Fetch_Data {
 
     private $categories_products = array();
 
-    public function get_categories ( $status , $data_object  ){
+    public function get_categories ( $status , $data_object ){
 
         $array_data = self::convert_to_array( $data_object );
 
+        $company_id_encrypted =  $array_data['company_id'];
+
+        if( $array_data['company_id'] != false ){
+
+            $company_id = self::decrypt_in_server( $array_data['company_id'] );
+
+            $array_data['company_id'] = $company_id;
+        }
+
         if ( $array_data['total_categories'] == 0 ) { //  first call................................
 
-            if( $array_data['company_id'] == false ){
+            if( $array_data['company_id'] != false ){
 
-                $count = self::count( $this->table ='sub_category' );
+                $count = self::count_where($this->table ='company_category' ,array( "company_id" =>  $array_data['company_id'] ));
 
             }else{
 
-                $count = self::count_where( $this->table ='company_category' ,array( "company_id" => $array_data['company_id'] ) );
+                $count = self::count($this->table ='sub_category');
             }
 
         } else { // called more than one time and  number total_categories exist come from client ..................................
@@ -93,7 +102,7 @@ class Home extends Fetch_Data {
                 $result[] = $category;
             }
 
-            $store_data = array( "current_page_products" => $array_data['current_page_products'], "current_page_categories" => $array_data['current_page_categories'], "total_categories" => $count, "categories_for_page" => $this->category_for_load , "company_id" => $array_data['company_id'] ,"category_id"=>false );
+            $store_data = array( "current_page_products" => $array_data['current_page_products'], "current_page_categories" => $array_data['current_page_categories'], "total_categories" => $count, "categories_for_page" => $this->category_for_load , "company_id" => $company_id_encrypted,"category_id"=>false );
 
             return self::json_data( $status, array( "categories" => $result, "store_data" => $store_data) );
         }
@@ -154,7 +163,6 @@ class Home extends Fetch_Data {
                 $this->categories_products[$category[$category_id_name]]['products_for_page'] = $this->products_for_category;
 
                 $this->categories_products[$category[$category_id_name]]['current_page_products'] = 0;
-
             }
        }
     }
@@ -208,6 +216,10 @@ class Home extends Fetch_Data {
             $this->where = 'product.company_id = company.id AND product.category_id = "' . $data_array['category_id'] . '"';
 
         }else{
+
+            $company_id = self::decrypt_in_server( $data_array['company_id'] );
+
+            $data_array['company_id'] = $company_id;
 
             $this->where = 'product.company_id = company.id AND  product.company_id = "' .$data_array['company_id']. '" AND product.category_id = "' . $data_array['category_id']. '"';
         }

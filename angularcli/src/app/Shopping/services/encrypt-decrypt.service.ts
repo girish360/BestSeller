@@ -15,8 +15,6 @@ export class EncryptDecryptService {
      this.hash_key = hash_key;
 
      this.hash_iv = hash_iv;
-
-
   }
 
   private data_encription:any;
@@ -49,12 +47,14 @@ export class EncryptDecryptService {
 
   }
 
-  public decrypt_AES( data  ){
+  public decrypt_AES( data ){
 
     let bytes  = crypto.AES.decrypt( data.toString(), this.secret_key,{iv:this.secret_iv} );
 
     return this.data_decription =  bytes.toString(crypto.enc.Utf8);
 
   }
+
+
 
 }

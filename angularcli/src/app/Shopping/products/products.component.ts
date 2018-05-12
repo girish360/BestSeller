@@ -115,6 +115,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
                     this.productsService.build_pages_link(this.productsService.pages_details);
 
                   }
+
                   this.cd.markForCheck();
 
                   setTimeout(() => {

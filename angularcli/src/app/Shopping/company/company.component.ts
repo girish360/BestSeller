@@ -1,4 +1,4 @@
-import { Component, OnInit , Input ,OnDestroy ,Renderer,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit ,ViewChild, ElementRef, Input ,OnDestroy ,Renderer,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -17,6 +17,7 @@ import { CompanyService } from './company.service';
 import { SetRouterService } from '../services/set-router.service';
 
 
+
 declare var $:any;
 
 @Component({
@@ -29,23 +30,23 @@ declare var $:any;
 })
 
 
-export class CompanyComponent implements OnInit , OnDestroy {
+export class CompanyComponent implements OnInit {
 
-    public get_Language:object;
+    @ViewChild("focusInput") el: ElementRef;
 
-    private id:any;
+    public get_Language: object;
 
-    public sticky_company:any=false;
+    public focus_input_search: any = false;
 
-    private subscription : Subscription;
+    public sticky_company: any = false;
 
-    cryp :any;
+    private subscription: Subscription;
 
     private _timeoutslide: number;
 
-   private klo :Subscription;
+    private klo: Subscription;
 
-    public button_slide_css:any = {
+    public button_slide_css: any = {
 
         transition: '0.2s',
 
@@ -57,31 +58,31 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
         marginTop: '100px',
 
-        status:false
+        status: false
     };
 
-    public top_slide:any = {'top':0 , 'opacity':1};
+    public top_slide: any = {'top': 0, 'opacity': 1};
 
     public carousel_category: NgxCarousel;
 
     public category_items = [
 
-        { src:'1234.jpg' , title:'Category1'},
-        { src:'klo.jpg' , title:'Category2'},
-        { src:'b3.jpg' , title:'Category3'},
-        { src:'1234.jpg' , title:'Category4'},
-        { src:'1234.jpg' , title:'Category5'},
-        { src:'1234.jpg' , title:'Category1'},
-        { src:'1234.jpg' , title:'Category5'},
-        { src:'1234.jpg' , title:'Category1'},
-        { src:'1234.jpg' , title:'Category1'},
-        { src:'klo.jpg' , title:'Category2'},
-        { src:'b3.jpg' , title:'Category3'},
-        { src:'1234.jpg' , title:'Category4'},
-        { src:'1234.jpg' , title:'Category5'},
-        { src:'1234.jpg' , title:'Category1'},
-        { src:'1234.jpg' , title:'Category5'},
-        { src:'1234.jpg' , title:'Category1'},
+        {src: '1234.jpg', title: 'Category1'},
+        {src: 'klo.jpg', title: 'Category2'},
+        {src: 'b3.jpg', title: 'Category3'},
+        {src: '1234.jpg', title: 'Category4'},
+        {src: '1234.jpg', title: 'Category5'},
+        {src: '1234.jpg', title: 'Category1'},
+        {src: '1234.jpg', title: 'Category5'},
+        {src: '1234.jpg', title: 'Category1'},
+        {src: '1234.jpg', title: 'Category1'},
+        {src: 'klo.jpg', title: 'Category2'},
+        {src: 'b3.jpg', title: 'Category3'},
+        {src: '1234.jpg', title: 'Category4'},
+        {src: '1234.jpg', title: 'Category5'},
+        {src: '1234.jpg', title: 'Category1'},
+        {src: '1234.jpg', title: 'Category5'},
+        {src: '1234.jpg', title: 'Category1'},
 
 
     ];
@@ -90,60 +91,129 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
     public images_slide = [
 
-        {id:1, src:'1.jpg' , title:'Category1'},
-        {id:2, src:'2.jpg' , title:'Category2'},
-        { id:3,src:'1.jpg' , title:'Category3'},
-        {id:4, src:'2.jpg' , title:'Category4'},
-        {id:5, src:'1.jpg' , title:'Category5'},
-        {id:1, src:'1.jpg' , title:'Category6'},
-        {id:2, src:'2.jpg' , title:'Category7'},
-        { id:3,src:'1.jpg' , title:'Category8'},
-        {id:4, src:'2.jpg' , title:'Category9'},
-        {id:5, src:'1.jpg' , title:'Category10'},
+        {id: 1, src: '1.jpg', title: 'Category1'},
+        {id: 2, src: '2.jpg', title: 'Category2'},
+        {id: 3, src: '1.jpg', title: 'Category3'},
+        {id: 4, src: '2.jpg', title: 'Category4'},
+        {id: 5, src: '1.jpg', title: 'Category5'},
+        {id: 1, src: '1.jpg', title: 'Category6'},
+        {id: 2, src: '2.jpg', title: 'Category7'},
+        {id: 3, src: '1.jpg', title: 'Category8'},
+        {id: 4, src: '2.jpg', title: 'Category9'},
+        {id: 5, src: '1.jpg', title: 'Category10'},
 
 
     ];
 
-    constructor(
-        private company: CompanyService,
-        private setRouter : SetRouterService,
-        private scroll :ScrollbarService,
-        private dataservices:DataService ,
-        private crypto : EncryptDecryptService ,
-        private route: ActivatedRoute ,
-        private router: Router ,
-        private renderer : Renderer,
-        private cd :ChangeDetectorRef,
+    constructor(private company: CompanyService,
+                private setRouter: SetRouterService,
+                private scroll: ScrollbarService,
+                private dataservices: DataService,
+                private crypto: EncryptDecryptService,
+                private route: ActivatedRoute,
+                private router: Router,
+                private renderer: Renderer,
+                private cd: ChangeDetectorRef
     ) {
 
+        this.route.params.subscribe( params => {
+
+            let id = params['name'];
+
+            this.scroll.window(0, 0);
+
+            this.dataservices.update_loader(true);
+
+            if (this.company.categories_products.length == 0 || this.company.store_data_carousel.company_id != id) {
+
+                this.company.store_data_carousel = {
+
+                    current_page_products: 0,
+
+                    current_page_categories: 0,
+
+                    total_categories: 0,
+
+                    categories_for_page: 5,
+
+                    company_id: id,
+
+                    category_id: false,
 
 
+                }; // inital  can change later ....
+
+
+                let en = this.crypto.encryp_AES(JSON.stringify(this.company.store_data_carousel));
+
+                this.dataservices.create_object_request('categories_products', this.company.store_data_carousel);
+
+                this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
+
+                    .subscribe( //  take success
+
+                        data => {
+
+                            if (data['status'] == 'categories_products') {
+
+                                this.company.categories_products = data['data']['categories'];
+
+                                this.company.store_data_carousel = data['data']['store_data'];
+
+                                this.cd.markForCheck();
+
+                                this.company.categories_products_async.next(true);
+
+                            }
+
+                            setTimeout(() => {
+
+                                this.dataservices.update_loader(false);
+
+                            }, 1000);
+
+                        },
+
+                        error => console.log(error['data']) // take error .....
+
+                    );
+            }else{
+                setTimeout(() => {
+
+                    this.dataservices.update_loader(false);
+
+                }, 1000);
+            }
+
+
+
+        });
 
         this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
 
             let scroll = this.scroll.window_scroll();
 
-            this.top_slide.top = scroll.top/1.5 + 'px';
+            this.top_slide.top = scroll.top / 1.5 + 'px';
 
-            this.top_slide.opacity =   ( 300 - scroll.top  ) / 300 ;
+            this.top_slide.opacity = ( 300 - scroll.top  ) / 300;
 
-            if( scroll.top >= 80 ){
+            if (scroll.top >= 80) {
 
-                this.button_slide_css.status=true;
+                this.button_slide_css.status = true;
 
-            }else{
+            } else {
 
-                this.button_slide_css.status=false;
+                this.button_slide_css.status = false;
             }
 
-            if( scroll.top >= 400 ){
+            if (scroll.top >= 400) {
 
                 $('.company_sticky').slideDown('fast');
 
                 this.sticky_company = true;
 
 
-            }else{
+            } else {
 
                 this.sticky_company = false;
 
@@ -155,15 +225,31 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
         this.dataservices.update_loader(true);
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
             this.dataservices.update_loader(false);
 
-        },1000);
+        }, 1000);
 
         this.on_move_company_slide();
 
     }
+
+    focus_search_function() {
+
+        this.focus_input_search = !this.focus_input_search;
+
+    }
+
+
+    check_focus() {
+
+        this.el.nativeElement.focus();
+
+
+    }
+
+
 
     ngOnInit() {
 
@@ -254,21 +340,21 @@ export class CompanyComponent implements OnInit , OnDestroy {
     }
 
 
-    carouselTileOneLoad(ev){
+    carouselTileOneLoad(ev) {
 
     }
 
-    onmove_carousel(ev){
+    onmove_carousel(ev) {
 
     }
 
-    public  set_router( data ){
+    public  set_router(data) {
 
-        this.setRouter.set_router( data , this.route ); // set router .....
+        this.setRouter.set_router(data, this.route); // set router .....
 
     }
 
-    public myfunc( event: Event) {
+    public myfunc(event: Event) {
         // carouselLoad will trigger this funnction when your load value reaches
         // it is helps to load the data by parts to increase the performance of the app
         // must use feature to all carousel
@@ -276,33 +362,24 @@ export class CompanyComponent implements OnInit , OnDestroy {
 
     }
 
-    public onmove_item_slide( data: NgxCarouselStore ){
+    public onmove_item_slide(data: NgxCarouselStore) {
 
         this.on_move_company_slide();
 
     }
 
-    public on_move_company_slide(){
+    public on_move_company_slide() {
 
-        $('.slide_title').css( { top:'30px' , opacity:0.1 ,display:'none' } );
+        $('.slide_title').css({top: '30px', opacity: 0.1, display: 'none'});
 
-        clearTimeout( this._timeoutslide );
+        clearTimeout(this._timeoutslide);
 
-        this._timeoutslide = setTimeout( () => {
+        this._timeoutslide = setTimeout(() => {
 
-            $('.slide_title').css( { display:'block' } ).animate( {
-
+            $('.slide_title').css({display: 'block'}).animate({
                 top:0,
-
                 opacity:0.9
-
-            } ,200 );
-
-        } ,500 );
-
+            })
+        },300);
     }
-
-
-
-
 }

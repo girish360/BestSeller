@@ -21,7 +21,9 @@ import { ProductService } from './products/product.service'; // product service
 
 import { HomeService } from './home/home.service';
 
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
 
 // end services .....................................................................................
 
@@ -61,6 +63,7 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
     ShareModule,
     InfiniteScrollModule,
     MatPaginatorModule
+
 
   ],
 

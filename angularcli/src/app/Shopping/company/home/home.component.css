@@ -3,10 +3,7 @@
 .items_in_carousel{
 
     height: 200px;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: white;
     margin-left: -5px;
     margin-right: -5px;

@@ -1,4 +1,4 @@
-<div class="home"
+<div class="home"  *ngIf="company.status_categories_products | async"
      infiniteScroll
      [infiniteScrollDistance]="0"
      [infiniteScrollThrottle]="50"
@@ -6,7 +6,7 @@
 
   <div class="carousel_categories" *ngFor="let category of company.categories_products ">
 
-    <div *ngIf="category['products'].length > 0 ">
+    <div >
 
       <span class="name_category" >  {{category.sub_category_name}}  </span>
 
@@ -28,7 +28,7 @@
 
       <ngx-tile NgxCarouselItem *ngFor="let product of category['products']; let i = index;">
 
-        <div class="items_in_carousel" >
+        <div class="items_in_carousel box-shadow" >
 
           <a href="#">
 

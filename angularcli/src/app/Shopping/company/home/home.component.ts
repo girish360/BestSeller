@@ -44,51 +44,6 @@ export class HomeComponent implements OnInit {
   )
   {
 
-    this.scroll.window(0,0);
-
-    this.dataservices.update_loader(true);
-
-    if( this.company.categories_products.length  == 0) {
-
-      this.dataservices.update_loader(true);
-
-      this.company.store_data_carousel.company_id = 2;
-
-      this.dataservices.create_object_request('categories_products', this.company.store_data_carousel);
-
-      this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
-
-          .subscribe( //  take success
-
-              data => {
-
-                if (data['status'] == 'categories_products') {
-
-                  this.company.categories_products = data['data']['categories'];
-
-                  this.company.store_data_carousel = data['data']['store_data'];
-
-                  console.log(data['data']);
-
-                  this.cd.markForCheck();
-
-                }
-
-                setTimeout(() => {
-
-                  this.dataservices.update_loader(false);
-
-                }, 1000);
-
-
-              },
-
-              error => console.log(error['data']) // take error .....
-
-          );
-    }
-    this.dataservices.update_loader(false);
-
   }
 
 
@@ -168,6 +123,7 @@ export class HomeComponent implements OnInit {
                   this.more_products( data['data'] , current_category.sub_category_id );
 
                 }
+
                 setTimeout(()=>{
 
                   this.dataservices.update_loader(false);
@@ -216,7 +172,7 @@ export class HomeComponent implements OnInit {
 
       this.company.store_data_carousel.current_page_categories = this.company.store_data_carousel.current_page_categories + 1;
 
-      this.dataservices.update_loader(true);
+      this.dataservices.update_spinner(true);
 
       this.dataservices.create_object_request('categories_products', this.company.store_data_carousel);
 
@@ -259,7 +215,7 @@ export class HomeComponent implements OnInit {
 
     setTimeout(()=>{
 
-      this.dataservices.update_loader(false);
+      this.dataservices.update_spinner(false);
 
     },1000);
 

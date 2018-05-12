@@ -1,8 +1,9 @@
 <?php
 
+include '../Crypto/Crypto.php';
 
 
-class  connection  { // start connection class ...
+class connection extends Crypto { // start connection class ...
 
     private $host='localhost'; // host
 
@@ -17,6 +18,8 @@ class  connection  { // start connection class ...
     public $data_array=[];
 
     public function __construct(){ //  constructor initalize database credencials.....................
+
+        parent::__construct();  // inital parent constructor , in  Crypto class......................
 
         try {
 

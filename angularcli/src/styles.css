@@ -43,34 +43,63 @@ a{
     text-decoration: none;
 }
 
-.input_search{
+.outer_search{
     width: 200px;
+    height: 100%;
+    display: inline-block;
+    border:none;
+    border-bottom: 1px solid;
+    border-color: lightgray;
+    transition:0.5s;
+}
+
+.new_outer_search {
+
+    width: 300px;
+    background-color: floralwhite;
+
+    transition:0.5s;
+}
+.new_outer_search .input_search{
+    background-color: floralwhite;
+
+    transition:0.5s;
+}
+
+.input_search{
+    width: calc(100% - 40px);
     height: 100%;
     position: relative;
     background-color: #E6E6FA;
     display: inline-block;
-    border:none;
-    border-bottom: 1px solid;
-    color: lightgray;
-    border-color: lightgray;
+    border: none;
+    padding: 7px 7px;
     transition:0.5s;
 
 }
+.input_search:focus {
 
-.icon_search{
-
-position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 35px;
-
-
+    outline: none;
 }
 
-input[name='search'] ,input[name='company_search']  {
+.icon_search{
+    width: 40px;
+    float: right;
+    display: inline-block;
+}
+
+input[name='search'] {
+
     padding-left: 7px;
 
     padding-right: 35px;
+
+}
+
+
+input[name='company_search'] {
+
+
 
 }
 
@@ -99,9 +128,14 @@ input[name='search']:focus , input[name='search_wish']:focus{
 .full{
     width: 100%;
     height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    padding: 0;
 }
+
 .full_width{
     width: 100%;
+    min-width: 100%;
 }
 .full_height{
     height: 100%;
@@ -290,10 +324,7 @@ mat-checkbox.mat-checked.green{
 }
 
 
-.tile{
 
-    border-radius: 3px;
-}
 
 .inner_large{
     overflow: hidden;
@@ -377,6 +408,12 @@ mat-checkbox.mat-checked.green{
     z-index: 1 ;
     height: 100%;
 
+}
+
+.box-shadow{
+    -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+    -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
+    box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
 }
 
 

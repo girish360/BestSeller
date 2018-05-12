@@ -3,7 +3,7 @@
 <div class="home"
      infiniteScroll
      [infiniteScrollDistance]="0"
-     [infiniteScrollThrottle]="50"
+     [infiniteScrollThrottle]="150"
      (scrolled)="onScroll()" >
 
     <div class="carousel_categories" *ngFor="let category of homeservice.categories_products ">
@@ -25,9 +25,9 @@
 
         >
 
-            <ngx-tile NgxCarouselItem *ngFor="let product of category['products']; let i = index;">
+            <ngx-tile NgxCarouselItem *ngFor="let product of category['products']; let i = index;" >
 
-                <div class="items_in_carousel" >
+                <div class="items_in_carousel box-shadow" >
 
                     <a href="#">
 
@@ -49,8 +49,6 @@
                             price: {{product.product_price}}
                         </div>
 
-
-
                     </div>
 
                 </div>
@@ -71,10 +69,8 @@
 
     </div>
 
-
-
-
 </div>
+
 
 
 

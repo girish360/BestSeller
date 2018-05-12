@@ -37,9 +37,9 @@
                 // more table and columns ............
             );
             // sdfsdfsdsdfsd
-            $crypto = new Crypto();
 
-            $decrypted = $crypto->decrypt_in_server($array_data['type']);
+
+            $decrypted = self::decrypt_in_server($array_data['type']);
 
             $array_data['type'] = $decrypted;
 
@@ -53,7 +53,7 @@
 
                 if ($count <= $this->products_for_page) {
 
-                    return self::all_products($select_and_tables, $where);
+                    return self::all_products( $select_and_tables, $where );
 
                 } else {
 
@@ -69,7 +69,7 @@
 
         }
 
-        public function all_products($select_and_tables, $where)
+        public function all_products($select_and_tables, $where )
         {
 
             $res = self::select_join($select_and_tables, $where);
@@ -85,7 +85,7 @@
 
                 $this->table_name,
 
-                array('products' => $this->products, 'pages_details' => 'null')
+                array('products' => $this->products, 'pages_details' => 'null' )
             );
 
         }
@@ -117,8 +117,10 @@
 
         }
 
-        public function get_product_details($status, $product_id)
+        public function get_product_details( $status, $product_id )
         {
+
+            $product_id = self::decrypt_in_server($product_id);
 
             $select_and_tables = array(  // array with t6ables and respective columns
 
@@ -143,7 +145,7 @@
 
             $where = 'product.company_id = company.id  AND image_product.product_id = product.id AND product.id = "' . $product_id . '"';
 
-            $query = self::select_join($select_and_tables, $where);
+            $query = self::select_join( $select_and_tables, $where );
 
             if ($query['query']->rowCount() > 0) { //  withs multiple image
 

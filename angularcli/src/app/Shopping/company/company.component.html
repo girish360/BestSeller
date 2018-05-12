@@ -1,5 +1,5 @@
 
- <div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': sticky_company }">
+<div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': sticky_company }">
 
       <div class="sticky_options">
 
@@ -32,8 +32,6 @@
                   <mat-icon>view_module</mat-icon>
 
               </button>
-
-
 
           </div>
 
@@ -198,12 +196,20 @@
 
                       </div>
 
-                      <div class="right_company_nav_bottom full_height inline-block">
+                      <div class="outer_search right_company_nav_bottom " [ngClass]="{'new_outer_search':focus_input_search}">
 
-                          <input type="text" class="input_search input_search_company  "  name="company_search" [(ngModel)]="typing_search" placeholder="Search products">
+                          <input type="text" #focusInput (focus)="focus_search_function()" (focusout)="focus_search_function()" class="input_search input_search_company"  name="company_search" [(ngModel)]="typing_search" placeholder="Search products">
 
-                          <div class="icon_search half_height">
-                              k
+                          <div class="icon_search full_height" (click)="check_focus()">
+
+                               <button mat-button class="search_button" >
+
+                                   <mat-icon *ngIf="!focus_input_search  ">search</mat-icon>
+
+                                   <mat-icon *ngIf="focus_input_search  ">clear</mat-icon>
+
+                               </button>
+
                           </div>
 
                      </div>
@@ -229,11 +235,6 @@
 
 
 
- <input type="text" class="input_search input_search_company  "  name="company_search" [(ngModel)]="typing_search" placeholder="Search products">
-
- <div class="icon_search ">
-     k
- </div>
 
 
 

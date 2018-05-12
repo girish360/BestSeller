@@ -57,9 +57,9 @@ namespace server\files\Controllers {
 
     $Router=[];
 
-    foreach ($directorys as $dir_name => $dir_value) {
+    foreach ( $directorys as $dir_name => $dir_value ) {
 
-        foreach ($dir_value as $file_key => $file_name) {
+        foreach ( $dir_value as $file_key => $file_name ) {
 
             $root_dir = $object_directorys->get_root_dir();
 
