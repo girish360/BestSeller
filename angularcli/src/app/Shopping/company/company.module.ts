@@ -25,6 +25,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { CompanyService } from './company.service';
 
+import { CategoriesComponent } from './categories/categories.component'; // company categories ........
+
 
 @NgModule({
 
@@ -52,7 +54,11 @@ import { CompanyService } from './company.service';
 
         AboutComponent,
 
-        HomeComponent
+        HomeComponent,
+
+        CategoriesComponent,
+
+
   ],
     providers: [
 

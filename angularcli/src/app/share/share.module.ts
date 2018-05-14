@@ -7,6 +7,8 @@ import { FilterPipe } from '../filter.pipe';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { ProductsComponent } from '../Shopping/products/products.component'; // show products for a category
+
 import {
 
   MatButtonModule,
@@ -24,7 +26,21 @@ import {
 
 @NgModule({
 
-  imports: [CommonModule],
+  imports: [
+      CommonModule,
+
+    MatButtonModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatTooltipModule,
+
+  ],
 
   exports :[
 
@@ -40,12 +56,16 @@ import {
     MatTooltipModule,
     FilterPipe,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+
+
   ],
 
   declarations: [
 
-    FilterPipe
+    FilterPipe,
+    ProductsComponent
 
   ],
 

@@ -12,19 +12,16 @@
 
       <span class="see_all_category">
 
-            <a href="#" (click)="set_router( { path:'products/'+category.sub_category_name+'/2' , data:category.id , relative:true })"> See All </a>
+            <a href="#" (click)="set_router( { path:'products' , data:category.sub_category_id, relative:true })"> See All </a>
 
       </span>
 
-
-
-    <ngx-carousel class="category" [inputs]="carousel_categories"
+      <ngx-carousel class="category" [inputs]="carousel_categories"
 
                   (carouselLoad)="carouselTileOneLoad()"
 
                   (onMove)="onmove_carousel( $event , category )"
-
-    >
+      >
 
       <ngx-tile NgxCarouselItem *ngFor="let product of category['products']; let i = index;">
 

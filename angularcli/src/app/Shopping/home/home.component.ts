@@ -72,8 +72,6 @@ export class HomeComponent implements OnInit {
 
                           this.cd.markForCheck();
 
-                          console.log(data['data']);
-
                       }
 
                       setTimeout(() => {

@@ -16,16 +16,13 @@ import { CompanyService } from './company.service';
 
 import { SetRouterService } from '../services/set-router.service';
 
-
-
 declare var $:any;
 
 @Component({
-  selector: 'app-company',
-  templateUrl: './company.component.html',
-  styleUrls: ['./company.component.css'],
+    selector: 'app-company',
+    templateUrl: './company.component.html',
+    styleUrls: ['./company.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush
-
 
 })
 
@@ -34,17 +31,9 @@ export class CompanyComponent implements OnInit {
 
     @ViewChild("focusInput") el: ElementRef;
 
-    public get_Language: object;
 
-    public focus_input_search: any = false;
-
-    public sticky_company: any = false;
-
-    private subscription: Subscription;
 
     private _timeoutslide: number;
-
-    private klo: Subscription;
 
     public button_slide_css: any = {
 
@@ -93,16 +82,27 @@ export class CompanyComponent implements OnInit {
 
         {id: 1, src: '1.jpg', title: 'Category1'},
         {id: 2, src: '2.jpg', title: 'Category2'},
-        {id: 3, src: '1.jpg', title: 'Category3'},
-        {id: 4, src: '2.jpg', title: 'Category4'},
-        {id: 5, src: '1.jpg', title: 'Category5'},
-        {id: 1, src: '1.jpg', title: 'Category6'},
-        {id: 2, src: '2.jpg', title: 'Category7'},
-        {id: 3, src: '1.jpg', title: 'Category8'},
-        {id: 4, src: '2.jpg', title: 'Category9'},
-        {id: 5, src: '1.jpg', title: 'Category10'},
 
+    ];
 
+    public company_nav:any = [
+
+        {id:0 , name:'Home', icon:'home' ,
+            router:{
+                path:'home',data:false,relative:true
+            }
+        },
+        {id:1 , name:'Categories', icon:'view_module',
+            router:{
+                path:'categories',data:false,relative:true
+            }
+        },
+
+        {id:2 , name:'About', icon:'info',
+            router:{
+                path:'about',data:false,relative:true
+            }
+        }
     ];
 
     constructor(private company: CompanyService,
@@ -124,7 +124,7 @@ export class CompanyComponent implements OnInit {
 
             this.dataservices.update_loader(true);
 
-            if (this.company.categories_products.length == 0 || this.company.store_data_carousel.company_id != id) {
+            if ( this.company.categories_products.length == 0 || this.company.store_data_carousel.company_id != id) {
 
                 this.company.store_data_carousel = {
 
@@ -185,8 +185,6 @@ export class CompanyComponent implements OnInit {
                 }, 1000);
             }
 
-
-
         });
 
         this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
@@ -210,12 +208,12 @@ export class CompanyComponent implements OnInit {
 
                 $('.company_sticky').slideDown('fast');
 
-                this.sticky_company = true;
+                this.company.company_properties.sticky_company = true;
 
 
             } else {
 
-                this.sticky_company = false;
+                this.company.company_properties.sticky_company = false;
 
                 $('.company_sticky').hide();
             }
@@ -235,21 +233,40 @@ export class CompanyComponent implements OnInit {
 
     }
 
-    focus_search_function() {
+    focus_search_function() { // focus in search
 
-        this.focus_input_search = !this.focus_input_search;
+        this.company.company_properties.focus_input_search = !this.company.company_properties.focus_input_search;
 
     }
-
 
     check_focus() {
 
         this.el.nativeElement.focus();
 
+    }
+
+    hover_nav(){ // enter hover navvv........................
+
+        this.company.company_properties.tmp_nav_active = this.company.company_properties.company_nav_active;
+
+        this.company.company_properties.company_nav_active = -1 ;
+    }
+
+    leave_hover_nav(){ // leave from hover navvvvvvvvvvvv..............
+
+        if( this.company.company_properties.tmp_nav_active != -1 ) {
+
+            this.company.company_properties.company_nav_active = this.company.company_properties.tmp_nav_active;
+        }
 
     }
 
+    change_active_nav( nav_index ){ // click on nav, change active nav..................
 
+        this.company.company_properties.tmp_nav_active = -1;
+
+        this.company.company_properties.company_nav_active = nav_index;
+    }
 
     ngOnInit() {
 

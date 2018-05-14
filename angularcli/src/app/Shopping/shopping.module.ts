@@ -42,6 +42,8 @@ import { MenuComponent } from './menu/menu.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component'; //  menu  left  in shopping
 
 
+
+
 // end components ............................................................................................
 
 @NgModule({
@@ -52,7 +54,8 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
     BodyComponent,
     MenuComponent,
     HomeComponent,
-    SubscriptionsComponent,
+    SubscriptionsComponent
+
 
   ],
 

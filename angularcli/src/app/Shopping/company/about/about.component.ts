@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CompanyService } from '../company.service';
+
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  constructor( private company:CompanyService) {
+
+    this.company.company_properties.company_nav_active = 2;
+
+  }
 
   ngOnInit() {
+
   }
 
 }

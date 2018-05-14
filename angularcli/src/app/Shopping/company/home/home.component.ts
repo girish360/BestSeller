@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
 
   )
   {
+    this.company.company_properties.company_nav_active = 0;
 
   }
 

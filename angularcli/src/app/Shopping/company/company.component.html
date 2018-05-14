@@ -1,5 +1,5 @@
 
-<div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': sticky_company }">
+<div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': company.company_properties.sticky_company }">
 
       <div class="sticky_options">
 
@@ -186,17 +186,25 @@
 
                   <div class="company_nav_bottom full_width half_height">
 
-                      <div class="inner_company_nav inline-block">
+                      <div class="inner_company_nav full_height inline-block">
 
-                          <span (click)="set_router({path:'about',data:false,relative:true})" > about </span>
+                          <button mat-button class="nav_button"
+                                  *ngFor="let nav of company_nav; let i = index"
+                                  (click)="set_router( nav.router , change_active_nav(i)  )"
+                                  [ngClass]="{'company_nav_active':company.company_properties.company_nav_active == i }"
+                                  (mouseenter)="hover_nav()"
+                                  (mouseleave)="leave_hover_nav()"
+                          >
 
-                          <span (click)="set_router({ path:'home',data:false,relative:true } )" > home </span>
+                              <span> {{nav.name}} </span>
 
-                          <span (click)="set_router({path:'search',data:false,relative:true})" > search </span>
+                              <mat-icon>{{nav.icon}}</mat-icon>
+
+                          </button>
 
                       </div>
 
-                      <div class="outer_search right_company_nav_bottom " [ngClass]="{'new_outer_search':focus_input_search}">
+                      <div class="outer_search right_company_nav_bottom " [ngClass]="{'new_outer_search':company.company_properties.focus_input_search}">
 
                           <input type="text" #focusInput (focus)="focus_search_function()" (focusout)="focus_search_function()" class="input_search input_search_company"  name="company_search" [(ngModel)]="typing_search" placeholder="Search products">
 
@@ -204,9 +212,9 @@
 
                                <button mat-button class="search_button" >
 
-                                   <mat-icon *ngIf="!focus_input_search  ">search</mat-icon>
+                                   <mat-icon *ngIf="!company.company_properties.focus_input_search  ">search</mat-icon>
 
-                                   <mat-icon *ngIf="focus_input_search  ">clear</mat-icon>
+                                   <mat-icon *ngIf="company.company_properties.focus_input_search  ">clear</mat-icon>
 
                                </button>
 

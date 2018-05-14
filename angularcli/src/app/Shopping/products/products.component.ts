@@ -87,7 +87,6 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
        let type_products = params['name'];
 
-
       this.dataservices.create_object_request( 'products', {'type': type_products , 'number_click': 1 } );
 
       this.my_products = this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
@@ -123,6 +122,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
                     this.dataservices.update_loader(false);
 
                   }, 1000);
+                  console.log(data['data']);
 
                 }
               },

@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 
 import { MenuComponent } from './menu/menu.component';
 
+import { ProductsComponent } from './products/products.component'; // show products for a category
+
 const routes: Routes = [
 
   {
@@ -18,7 +20,7 @@ const routes: Routes = [
 
       { path: '', component: HomeComponent },
 
-      { path: 'products/:name/:id/:name', loadChildren :'./products/products.module#ProductsModule' },
+      { path: 'products/:name/:id/:name', component:ProductsComponent },
 
       { path: ':name/:name',  loadChildren :'./company/company.module#CompanyModule'},
 
