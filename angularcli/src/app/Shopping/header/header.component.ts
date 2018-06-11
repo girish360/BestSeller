@@ -63,6 +63,8 @@
 
      deviceInfo = null;
 
+     public quantity_products:any='1';
+
      public typing_search:any;
 
      timer_pointer_dropdown : Subscription;

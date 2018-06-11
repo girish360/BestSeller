@@ -14,8 +14,6 @@ export class SetRouterService extends EncryptDecryptService{
 
   }
 
-
-
   public set_router( data , route  ) {
 
       if ( data.data == false ) { // router without any data in url ..... ...........................
@@ -27,7 +25,6 @@ export class SetRouterService extends EncryptDecryptService{
               {
                 relativeTo: route
               }
-
           );
 
         }else{

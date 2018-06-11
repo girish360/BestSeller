@@ -58,6 +58,8 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
   public send_data_products={};
 
+  public selected_for_page :any  = 2; // default is set 40 products for page .......................
+
   public product_properties = {
 
     hover_wish_list:false,
@@ -80,14 +82,15 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
   ) {
 
-
     this.route.params.subscribe( params => {
 
-      this.dataservices.update_loader(true);
+      this.scroll.window(0, 0);
 
-       let type_products = params['name'];
+      this.dataservices.update_loader( true );
 
-      this.dataservices.create_object_request( 'products', {'type': type_products , 'number_click': 1 } );
+      let category_id = params['name'];
+
+      this.dataservices.create_object_request( 'products', {'type_products':this.productsService.type_products, 'category_id': category_id , 'number_click': 1 } );
 
       this.my_products = this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
 
@@ -133,11 +136,15 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
   }
 
 ngAfterViewInit(){
-    setTimeout(()=>{
-      this.scroll.window(0,0);
-    },2000);
+
 
 }
+
+  change_products_for_page(){
+
+
+
+  }
 
   index( index , item ){
 

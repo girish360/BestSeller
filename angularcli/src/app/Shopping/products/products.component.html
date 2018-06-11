@@ -1,7 +1,7 @@
 
 <div class="component-animation" *ngIf="dataservices.status_language | async"> <!--  this component is inside this div  ...................................................... -->
 
-    <div class="sticky  products_sticky">
+    <div class="sticky " [ngClass]="{'products_sticky':productsService.type_products == 'default'}">
 
         <div class="sticky_options ">  <!--  Options products pagination ,  select  ...................................................... -->
 
@@ -38,6 +38,28 @@
                     </div>
 
                 </div>
+
+                <mat-form-field style="width:50px;  position: relative;top:5px;">
+
+                    <mat-select placeholder="For page" [(value)]="selected_for_page" (change)="change_products_for_page()">
+
+                        <mat-option [value]="1">
+                        20
+                        </mat-option>
+                        <mat-option [value]="2">
+                            40
+                        </mat-option>
+                        <mat-option [value]="3">
+                            60
+                        </mat-option>
+                        <mat-option [value]="4">
+                            80
+                        </mat-option>
+
+                    </mat-select>
+
+                </mat-form-field>
+
 
             </div>
 

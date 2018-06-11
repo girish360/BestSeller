@@ -447,17 +447,26 @@
 
                                         Quantity:
 
-                                        <select  [(ngModel)]="cart_product.product_quantity" (change)="productsService.update_quantity_cartList( $event , cart_product )" >
+                                        <mat-form-field style="width:40px;">
 
-                                            <option>1</option>
+                                            <mat-select  [(value)]="cart_product.product_quantity" (change)="productsService.update_quantity_cartList( $event , cart_product )">
 
-                                            <option>2</option>
+                                                <mat-option [value]="'1'">
+                                                    1
+                                                </mat-option>
+                                                <mat-option [value]="'2'">
+                                                    2
+                                                </mat-option>
+                                                <mat-option [value]="'3'">
+                                                    3
+                                                </mat-option>
+                                                <mat-option [value]="'4'">
+                                                    4
+                                                </mat-option>
 
-                                            <option>3</option>
+                                            </mat-select>
 
-                                            <option>4</option>
-
-                                        </select>
+                                        </mat-form-field>
 
                                     </div>
 

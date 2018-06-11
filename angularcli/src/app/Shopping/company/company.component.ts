@@ -1,4 +1,4 @@
-import { Component, OnInit ,ViewChild, ElementRef, Input ,OnDestroy ,Renderer,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit ,OnDestroy,ViewChild, ElementRef, Input ,OnDestroy ,Renderer,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -16,6 +16,8 @@ import { CompanyService } from './company.service';
 
 import { SetRouterService } from '../services/set-router.service';
 
+import { ProductService } from '../products/product.service';
+
 declare var $:any;
 
 @Component({
@@ -27,11 +29,9 @@ declare var $:any;
 })
 
 
-export class CompanyComponent implements OnInit {
+export class CompanyComponent implements OnInit, OnDestroy {
 
     @ViewChild("focusInput") el: ElementRef;
-
-
 
     private _timeoutslide: number;
 
@@ -105,26 +105,30 @@ export class CompanyComponent implements OnInit {
         }
     ];
 
-    constructor(private company: CompanyService,
-                private setRouter: SetRouterService,
-                private scroll: ScrollbarService,
-                private dataservices: DataService,
-                private crypto: EncryptDecryptService,
-                private route: ActivatedRoute,
-                private router: Router,
-                private renderer: Renderer,
-                private cd: ChangeDetectorRef
+    constructor(
+        private products :ProductService,
+        private company: CompanyService,
+        private setRouter: SetRouterService,
+        private scroll: ScrollbarService,
+        private dataservices: DataService,
+        private crypto: EncryptDecryptService,
+        private route: ActivatedRoute,
+        private router: Router,
+        private renderer: Renderer,
+        private cd: ChangeDetectorRef
     ) {
 
         this.route.params.subscribe( params => {
 
-            let id = params['name'];
+            let company_id = params['name'];
+
+            this.products.type_products = company_id;
 
             this.scroll.window(0, 0);
 
             this.dataservices.update_loader(true);
 
-            if ( this.company.categories_products.length == 0 || this.company.store_data_carousel.company_id != id) {
+            if ( this.company.categories_products.length == 0 || this.company.store_data_carousel.company_id != company_id) {
 
                 this.company.store_data_carousel = {
 
@@ -136,7 +140,7 @@ export class CompanyComponent implements OnInit {
 
                     categories_for_page: 5,
 
-                    company_id: id,
+                    company_id: company_id,
 
                     category_id: false,
 
@@ -231,6 +235,10 @@ export class CompanyComponent implements OnInit {
 
         this.on_move_company_slide();
 
+    }
+
+    ngOnDestroy(){
+        this.products.type_products='default'; // when company component destroied type_products should be default ...
     }
 
     focus_search_function() { // focus in search
