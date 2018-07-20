@@ -101,6 +101,7 @@ export class IndexComponent implements OnInit {
   ngOnInit() {
 
     $(document).ready(function () {
+
       var activ_category=0;
       var on_hover_category = 0;
       var name=0;
@@ -112,7 +113,7 @@ export class IndexComponent implements OnInit {
       var active_category=0;
       var nrclick_category='fillimi';
       var menu_status=0;
-      var Server_path_http='http://localhost/bestseller/Server_PHP/Http_Request/Route_Http.php'; //  path where go requests .. ..
+      var Server_path_http='http://localhost/bestseller/Core_Php/http/Route.php'; //  path where go requests .. ..
       var Data = ''; // data is to send data in server .........
       var Status = ''; // status is for identify  what kind of http is requests post or get
       var Response;  // response from server ....

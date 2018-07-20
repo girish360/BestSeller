@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import {  Http, Response , Headers} from '@angular/http';
+import {  Http, Response , Headers ,URLSearchParams } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
@@ -20,37 +20,46 @@ export class HttpService extends EncryptDecryptService {
 
   }
 
-  private path = '/api/Http_Request/Route_Http.php';
+  private path = '/BestSellerApi';
 
-  Http_Get( data ): Observable<any[]>{
+  Http_Get( uri , data ): Observable<any[]>{ // get method  wating for two parameters key string and data object....
 
     const headers = new Headers();
-
-    let path_get = this.path + data;
 
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
     headers.append('Accept', 'text/plain');
 
-    return this.http.get( path_get, { headers:headers })
+    let params = new URLSearchParams();
+
+    let body = '';
+
+    if( data != false ){
+
+       body = this.encrypt_object( JSON.stringify( data ) );
+
+    }
+
+    params.append( uri , body  );
+
+    return this.http.get( this.path, { search:params ,headers:headers } )
 
         .map( ( Response ) => Response.json() );
-
 
   }
 
 
-  Http_Post( data ): Observable<any[]>{  // method that make popst request in server  and return response...........
+  Http_Post( uri , data ): Observable<any[]>{  // method that make popst request in server  and return response...........
 
     const headers = new Headers();
 
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    headers.append( 'Content-Type', 'application/x-www-form-urlencoded' );
 
     headers.append('Accept', 'text/plain');
 
     const body = this.encrypt_object( JSON.stringify( data ) ); //  call method encrypt data
 
-    return this.http.post( this.path, body, { headers:headers } ) // send request
+    return this.http.post( this.path+'/'+uri, body, { headers:headers } ) // send request
 
         .map( ( Response ) => Response.json() ); // get response
 

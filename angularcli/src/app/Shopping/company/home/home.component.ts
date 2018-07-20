@@ -107,11 +107,11 @@ export class HomeComponent implements OnInit {
 
       this.dataservices.update_loader(true);
 
-      this.company.store_data_carousel.category_id = current_category.sub_category_id;
+      this.company.company_data_carousel.category_id = current_category.sub_category_id;
 
-      this.company.store_data_carousel.current_page_products = current_category.current_page_products+1;
+      this.company.company_data_carousel.current_page_products = current_category.current_page_products+1;
 
-      this.dataservices.create_object_request( 'more_products',  this.company.store_data_carousel  );
+      this.dataservices.create_object_request( 'more_products',  this.company.company_data_carousel  );
 
       this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
 
@@ -167,15 +167,15 @@ export class HomeComponent implements OnInit {
 
   onScroll() {
 
-    if( (this.company.store_data_carousel.current_page_categories+1)*this.company.store_data_carousel.categories_for_page < this.company.store_data_carousel.total_categories ) {
+    if( (this.company.company_data_carousel.current_page_categories+1)*this.company.company_data_carousel.categories_for_page < this.company.company_data_carousel.total_categories ) {
 
-      this.company.store_data_carousel.current_page_products = 0;
+      this.company.company_data_carousel.current_page_products = 0;
 
-      this.company.store_data_carousel.current_page_categories = this.company.store_data_carousel.current_page_categories + 1;
+      this.company.company_data_carousel.current_page_categories = this.company.company_data_carousel.current_page_categories + 1;
 
       this.dataservices.update_spinner(true);
 
-      this.dataservices.create_object_request('categories_products', this.company.store_data_carousel);
+      this.dataservices.create_object_request('categories_products', this.company.company_data_carousel);
 
       this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
 
@@ -187,7 +187,7 @@ export class HomeComponent implements OnInit {
 
                   let more_categories = data['data']['categories'];
 
-                  this.company.store_data_carousel = data['data']['store_data'];
+                  this.company.company_data_carousel = data['data']['store_data'];
 
                   this.more_categories( more_categories );
 

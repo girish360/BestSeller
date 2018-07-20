@@ -21,7 +21,7 @@ export class EncryptDecryptService {
 
   private data_decription:any;
 
-  private  hash( data ){
+  public  hash( data ){
 
     return crypto.MD5( data );
 

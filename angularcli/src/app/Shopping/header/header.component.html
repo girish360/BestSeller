@@ -19,13 +19,13 @@
 
                 <div class="icon_header inline-block">
 
-                    <a href="#" class="title_text" (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
+                    <a href="javascript:void(0)" class="title_text" (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
 
                 </div>
 
                 <div class="icon_header_write inline-block">
 
-                    <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" class="title_text"> Bestseller </a>
+                    <a href="javascript:void(0)" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" class="title_text"> Bestseller </a>
 
                 </div>
 
@@ -65,7 +65,7 @@
 
                 <span class="header_right">
 
-                    <a  [routerLink]=""  *ngFor=" let button of button_right  ; let i = index " matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button ,i , $event)" >
+                    <a  href="javascript:void(0)" *ngFor=" let button of button_right  ; let i = index " matTooltip="{{button.mat_tooltip}}"  (click)="check_button(button ,i , $event)" >
 
                         <div class="button_right_pc button{{button.id}} {{button.different_class}}">
 

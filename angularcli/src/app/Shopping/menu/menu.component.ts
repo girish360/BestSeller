@@ -36,15 +36,23 @@ export class MenuComponent  implements OnInit  {
   )
   {
 
-    let category = this.dataservices.Make_Request_InServer( 'category', 'category' );
+    this.dataservices.Http_Get( 'menu', false ) // make request ......
 
-    category.then(response =>{
+        .subscribe( //  take success
 
-      this.categorys = response;
+            data => {
 
-      this.cd.markForCheck();
+              this.categorys = data['data'];
 
-    });
+              this.cd.markForCheck();
+
+
+
+            },
+
+            error => console.log(error['data']) // take error .....
+
+        );
 
   }
 

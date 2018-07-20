@@ -1,9 +1,9 @@
 {
-  "/api": {
+  "/BestSellerApi": {
     "target": "http://[::1]:8080",
     "secure": false,
     "pathRewrite": {
-      "^/api": ""
+      "^/BestSellerApi": ""
     },
     "logLevel": "debug"
   }

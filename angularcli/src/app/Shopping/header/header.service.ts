@@ -24,22 +24,35 @@ export class HeaderService  implements OnInit {
 
   constructor( protected dataservices : DataService ) {
 
-    let wishlist_and_cartList = this.dataservices.Make_Request_InServer( 'get_wishList_cartList', 'wish' );
+    this.dataservices.Http_Get( 'wishList_cartList', false ) // make request ......
 
-    wishlist_and_cartList.then( response =>{
+        .subscribe( //  take success
 
-      if( response != 'false' ){
+            data => {
 
-        this.wish_properties.wishList = response['wishList'];
+              if( data['data'] != 'false' ){
 
-        this.set_quantity_in_cartList( response['cookie_cartList'] , response['cartList'] );
+                this.wish_properties.wishList = data['data']['wishList'];
 
-        this.total_items_and_price();
+                console.log( this.wish_properties.wishList);
 
-      }
-    });
+                this.set_quantity_in_cartList( data['data']['cookie_cartList'] , data['data']['cartList'] );
+
+                this.total_items_and_price();
+
+              }
+
+            },
+
+            error => console.log(error['data']) // take error .....
+
+        );
+
+
 
   }
+
+
 
   public subject_products =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
 
@@ -210,21 +223,17 @@ export class HeaderService  implements OnInit {
 
       this.subject_products.next(true);
 
-      this.dataservices.create_object_request( 'add_wishProduct', this.wish_properties.array_wishId );
+      console.log(JSON.stringify( this.wish_properties.array_wishId ));
 
-      this.dataservices.Http_Post( this.dataservices.object_request) // make request ......
+      this.dataservices.Http_Post('addInWishList', this.wish_properties.array_wishId ) // make request ......
 
           .subscribe( //  take success
 
               data => {
 
-                if( data['status'] == 'add_wishProduct' ){
+                this.Response = data['data'];
 
-                  this.Response = data['data'];
-
-                }
-
-              },
+                },
               error => console.log( error['data'] ) // take error .....
 
           );

@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
 
             });
 
-            $('body').click('a',function(e) {
+            $('body').click('a',function(e){
 
                 e.preventDefault();
 

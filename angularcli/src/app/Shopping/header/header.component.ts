@@ -78,6 +78,8 @@
      ];
 
 
+
+
      public button_right = [
 
          { id:1 , name:'sign' ,mat_tooltip:'User Panel', different_class:'',
@@ -97,6 +99,7 @@
 
 
     constructor(
+
         private renderer : Renderer ,
         private el : ElementRef,
         private productsService : ProductService,
@@ -106,11 +109,21 @@
         private setRouter :SetRouterService,
         private cd: ChangeDetectorRef
 
-
-
     ) {
 
         this.get_device_info();
+
+        this.dataservices.Http_Get( 'language', false )
+
+            .subscribe( //  take success
+
+                data => {
+
+                    this.dataservices.language = data['data'];
+
+                    this.cd.markForCheck();
+                }
+            );
 
     }
 

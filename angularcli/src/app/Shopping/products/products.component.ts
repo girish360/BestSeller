@@ -90,9 +90,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
       let category_id = params['name'];
 
-      this.dataservices.create_object_request( 'products', {'type_products':this.productsService.type_products, 'category_id': category_id , 'number_click': 1 } );
-
-      this.my_products = this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
+      this.my_products = this.dataservices.Http_Post('products', [{'type_products':this.productsService.type_products, 'category_id': category_id , 'number_click': 1 }]) // make request ......
 
           .subscribe( //  take success
 
@@ -100,9 +98,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
                 this.productsService.pages_link = [];
 
-                if ( data['status'] == 'product') {
-
-                  if( data['data']['products'].length > 0 ){
+                if( data['data']['products'].length > 0 ){
 
                     this.productsService.products = data['data']['products'];
 
@@ -125,9 +121,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
                     this.dataservices.update_loader(false);
 
                   }, 1000);
-                  console.log(data['data']);
 
-                }
               },
               error => console.log(error['data']) // take error .....
 

@@ -54,25 +54,20 @@ export class HomeComponent implements OnInit {
 
       if(   this.homeservice.categories_products.length  == 0) {
 
-          this.dataservices.update_loader(true);
+          this.dataservices.update_loader( true );
 
-          this.dataservices.create_object_request( 'categories_products', this.homeservice.store_data_carousel);
-
-          this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
+          this.dataservices.Http_Post( 'categories_products', this.homeservice.store_data_carousel ) // make request ......
 
               .subscribe( //  take success
 
                   data => {
 
-                      if (data['status'] == 'categories_products') {
+                      this.homeservice.categories_products = data['data']['categories'];
 
-                          this.homeservice.categories_products = data['data']['categories'];
+                      this.homeservice.store_data_carousel = data['data']['store_data'];
 
-                          this.homeservice.store_data_carousel = data['data']['store_data'];
+                      this.cd.markForCheck();
 
-                          this.cd.markForCheck();
-
-                      }
 
                       setTimeout(() => {
 

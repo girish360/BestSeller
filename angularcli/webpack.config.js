@@ -402,8 +402,8 @@ module.exports = {
     }),
     new NamedLazyChunksWebpackPlugin(),
     new HtmlWebpackPlugin({
-      "template": "./src\\index.html",
-      "filename": "./index.html",
+      "template": "./src\\index.php",
+      "filename": "./index.php",
       "hash": false,
       "inject": true,
       "compile": true,

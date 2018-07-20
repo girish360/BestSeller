@@ -1,4 +1,4 @@
-import { Component, OnInit ,OnDestroy,ViewChild, ElementRef, Input ,OnDestroy ,Renderer,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit ,OnDestroy,ViewChild, ElementRef, Input  ,Renderer,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -28,8 +28,7 @@ declare var $:any;
 
 })
 
-
-export class CompanyComponent implements OnInit, OnDestroy {
+export class CompanyComponent implements OnInit {
 
     @ViewChild("focusInput") el: ElementRef;
 
@@ -126,11 +125,11 @@ export class CompanyComponent implements OnInit, OnDestroy {
 
             this.scroll.window(0, 0);
 
-            this.dataservices.update_loader(true);
+            this.dataservices.update_loader( true );
 
-            if ( this.company.categories_products.length == 0 || this.company.store_data_carousel.company_id != company_id) {
+            if ( this.company.categories_products.length == 0 || this.company.company_data_carousel.company_id != company_id) {
 
-                this.company.store_data_carousel = {
+                this.company.company_data_carousel = {
 
                     current_page_products: 0,
 
@@ -148,21 +147,23 @@ export class CompanyComponent implements OnInit, OnDestroy {
                 }; // inital  can change later ....
 
 
-                let en = this.crypto.encryp_AES(JSON.stringify(this.company.store_data_carousel));
+                let en = this.crypto.encryp_AES( JSON.stringify( this.company.company_data_carousel ) );
 
-                this.dataservices.create_object_request('categories_products', this.company.store_data_carousel);
+                this.dataservices.create_object_request( 'categories_products', this.company.company_data_carousel );
 
-                this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
+                this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
 
                     .subscribe( //  take success
 
                         data => {
 
-                            if (data['status'] == 'categories_products') {
+                            if ( data['status'] == 'categories_products' ) {
 
                                 this.company.categories_products = data['data']['categories'];
 
-                                this.company.store_data_carousel = data['data']['store_data'];
+                                this.company.company_data_carousel = data['data']['store_data'];
+
+                                this.company.company_info = data['data']['company_info'];
 
                                 this.cd.markForCheck();
 
@@ -238,6 +239,7 @@ export class CompanyComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(){
+
         this.products.type_products='default'; // when company component destroied type_products should be default ...
     }
 

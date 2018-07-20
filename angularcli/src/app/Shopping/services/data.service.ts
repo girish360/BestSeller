@@ -57,23 +57,12 @@ export class DataService extends AuthService implements OnInit{
 
      super( http );
 
-      let language  = this.Make_Request_InServer( 'language', '1' );
-
-      language.then(response =>{
-
-          this.language = response;
-
-      });
   }
   ngOnInit(){
 
   }
 
-  public  create_object_request( status , value ) {
 
-      this.object_request = { status: status , value: value };
-
-  }
 
   public Make_Request_InServer(  status , value ){ // method that get response from http method  with promise ( resolve  and reject )
 
