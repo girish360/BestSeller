@@ -13,10 +13,7 @@ export class HomeService {
     'total_categories':0,
     'categories_for_page':5,
     'company_id':false,
-    'category_id':false,
-    'sdfgsdf':'sdffds',
-    'sdgfcbxb':'xxxbc'
-
+    'category_id':false
 
   }; // inital  can change later ....
 

@@ -1,5 +1,7 @@
 <?php
 
+use server\services\crypto\Crypto as crypto;
+
 class Route {
 
     public static $params;  // params come from client ...........
@@ -17,25 +19,34 @@ class Route {
 
         self::getMethod();
 
+        self::getURI();
+
         if( self::$httpMethod == 'GET' ){
 
-            self::getURI();
+            self::checkUri( $uri , $action  );
 
-            self::checkUri( $uri , $action );
+        }
+        else if( $uri == self::$uri ){
+
+            self::exeption('Request Method come ' . self::$httpMethod . ' from client , it must be ' .self::$httpMethod. ' in Route ' );
 
         }
     }
 
     public static function post( $uri , $action ){ // params come from Routes ...........
 
-        self::getMethod();
+        self::getMethod();  // get method request in server
 
-        if( self::$httpMethod == 'POST' ){
+        self::getURI(); // get uri in server .......
 
-            self::getURI();
+        if( self::$httpMethod == 'POST' ){ // check is method is same ........
 
-            self::checkUri( $uri ,$action );
+            self::checkUri( $uri ,$action  ); // check uri
 
+        }
+        else if( $uri == self::$uri ){ // if uri is same and method  is different display error message
+
+            self::exeption('Request Method come ' . self::$httpMethod . ' from client , it must be ' .self::$httpMethod. ' in Route '); // call methos for error
         }
     }
 
@@ -48,7 +59,7 @@ class Route {
 
         if( self::$httpMethod =='GET' ){
 
-            self::$params = $_GET[ substr( self::$uri , 1 , strlen( self::$uri ) ) ];
+            self::$params = urldecode( $_GET[ substr( self::$uri , 1 , strlen( self::$uri ) ) ] );
 
         }
 
@@ -97,11 +108,12 @@ class Route {
 
     }
 
-    public static function checkUri( $uri , $action ){
+    public static function checkUri( $uri , $action  ){
 
         if( $uri == self::$uri ){ // yes this route is requested from client
 
-             self::callController( $action );
+            self::callController( $action );
+
 
         }else{
 
@@ -138,38 +150,60 @@ class Route {
 
             $params = self::decryptparams( self::$params );  // every params isencrypted  here in server shoud decrypted it
 
-            if( count( $params ) == 1 ){
+            if( !empty( $params ) ) {
 
-                $params = $params[0];
+                echo $func( $params ) ;
+
+            }else{
+
             }
 
-            echo $func( $params );
         }
 
     }
 
     public function decryptparams( $params ){
 
-        $crypto = new Crypto();
+        $string = crypto::decrypt_in_server( $params );
 
-        $string_object = $crypto->decrypt_in_server( $params );
+        if( self::$httpMethod =='POST' ){
 
-        $end_object=0;
+            $end_object=0;
 
-        for( $i = 0 ; $i < strlen( $string_object ); $i++ ){ // loop string object
-            if(  $string_object[$i] == ']' ){ // find end number string object...................
-                $end_object = $i; // end _String varibale equals with end number string object
-            } // end if
-        } // end loop
+            for( $i = 0 ; $i < strlen( $string ); $i++ ){ // loop string object
+                if(  $string[$i] == ']' ){ // find end number string object...................
+                    $end_object = $i; // end _String varibale equals with end number string object
+                } // end if
+            } // end loop
 
-        $end_object = ++$end_object;
+            $end_object = ++$end_object;
 
-        return $params = json_decode( substr( $string_object , 0 , $end_object) );
+            return $params = json_decode( substr( $string , 0 , $end_object) );
+
+        }else if( self::$httpMethod =='GET' ){
+
+            $end_object=0;
+
+            for( $i = 0 ; $i < strlen( $string ); $i++ ){ // loop string object
+                if(  $string[$i] == '}' ){ // find end number string object...................
+                    $end_object = $i; // end _String varibale equals with end number string object
+                } // end if
+            } // end loop
+
+            $end_object = ++$end_object;
+
+            return $params = json_decode( substr( $string , 0 , $end_object) );
+
+        }else{
+
+            return'';
+        }
+
     }
 
-    public function exeption(){
+    public function exeption( $sms ){
 
-        throw new Exception('Some Error Message');
+        throw new Exception(''.  $sms );
 
     }
 }

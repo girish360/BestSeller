@@ -43,6 +43,12 @@ export class EncryptDecryptService {
 
   }
 
+  public provaen( text ){
+
+    return  crypto.AES.encrypt(text, 'secret key 123');
+
+  }
+
 
 
 }

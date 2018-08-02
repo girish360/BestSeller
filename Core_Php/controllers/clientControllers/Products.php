@@ -1,6 +1,12 @@
 <?php
 
-class Products extends Cookie  // class products extends from fetch keep all method tha are in parent class..................
+use  server\services\crypto\Crypto as crypto;
+
+use  server\database\database as db;
+
+use server\services\fetch\Fetch as fetch;
+
+class Products extends Controller  // class products extends from fetch keep all method tha are in parent class..................
 {
     public $products = array(); //  all products for one page..........................
 
@@ -16,7 +22,6 @@ class Products extends Cookie  // class products extends from fetch keep all met
 
     public function __construct()
     {
-        parent::__CONSTRUCT();
 
     }
 
@@ -42,20 +47,20 @@ class Products extends Cookie  // class products extends from fetch keep all met
         // sdfsdfsdsdfsd
 
 
-        $decrypted = self::decrypt_in_server( $products_object->category_id );
+        $decrypted = crypto::decrypt_in_server( $products_object->category_id );
 
         $products_object->category_id = $decrypted;
 
         if( $products_object->type_products != 'default' ){ // if should get products dependet in a company and a category ..........
 
-            $products_object->type_products = self::decrypt_in_server( $products_object->type_products );
+            $products_object->type_products = crypto::decrypt_in_server( $products_object->type_products );
 
-            $count = self::count_where( $this->table_name, array( "category_id" => $products_object->category_id ,"company_id"=> $products_object->type_products ) );
+            $count = db::count_where( $this->table_name, array( "category_id" => $products_object->category_id ,"company_id"=> $products_object->type_products ) );
 
             $where = ' product.company_id = "'.$products_object->type_products.'" AND product.category_id = "' . $products_object->category_id . '"';
         }else{
 
-            $count = self::count_where( $this->table_name, array( "category_id" => $products_object->category_id ) );
+            $count = db::count_where( $this->table_name, array( "category_id" => $products_object->category_id ) );
 
             $where = ' product.company_id = company.id AND product.category_id = "' . $products_object->category_id . '"';
         }
@@ -73,23 +78,23 @@ class Products extends Cookie  // class products extends from fetch keep all met
                 return self::limit_products( $select_and_tables, $where, $products_object, $count );
             }
         }
-        return self::json_data( array('products' => $this->products, 'pages_details' => 'null'));
+        return fetch::json_data( array('products' => $this->products, 'pages_details' => 'null'));
 
     }
 
     public function all_products( $select_and_tables, $where ) // method to get all products that are in table for one category ............
     {
 
-        $res = self::select_join( $select_and_tables, $where );
+        $res = db::select_join( $select_and_tables, $where );
 
-        $data = self::fetch_data_join_one( $res );
+        $data = fetch::fetch_data_join_one( $res );
 
         foreach ( $data as $ket => $value ) {
 
             $this->products[] = $value;
         }
 
-        return self::json_data( array( 'products' => $this->products, 'pages_details' => 'null' ));
+        return fetch::json_data( array( 'products' => $this->products, 'pages_details' => 'null' ));
 
     }
 
@@ -98,9 +103,9 @@ class Products extends Cookie  // class products extends from fetch keep all met
 
         $limit = --$products_object->number_click * $this->products_for_page . ',' . $this->products_for_page;
 
-        $res = self::select_join_limit( $select_and_tables, $where, $limit );
+        $res = db::select_join_limit( $select_and_tables, $where, $limit );
 
-        $data = self::fetch_data_join_one( $res );
+        $data = fetch::fetch_data_join_one( $res );
 
         foreach ( $data as $ket => $value ) {
 
@@ -111,14 +116,14 @@ class Products extends Cookie  // class products extends from fetch keep all met
 
         self::get_pages_details( $this->total_pages, $products_object );
 
-        return self::json_data( array( 'products' => $this->products, 'pages_details' => $this->pages_details ));
+        return fetch::json_data( array( 'products' => $this->products, 'pages_details' => $this->pages_details ));
 
     }
 
-    public function get_product_details( $status, $product_id ) // method that get product details for one product ......................
+    public function get_product_details( $product ) // method that get product details for one product ......................
     {
 
-        $product_id = self::decrypt_in_server($product_id);
+        $product_id = crypto::decrypt_in_server( $product->product_id );
 
         $select_and_tables = array(  // array with t6ables and respective columns
 
@@ -143,11 +148,11 @@ class Products extends Cookie  // class products extends from fetch keep all met
 
         $where = 'product.company_id = company.id  AND image_product.product_id = product.id AND product.id = "' . $product_id . '"';
 
-        $query = self::select_join( $select_and_tables, $where );
+        $query = db::select_join( $select_and_tables, $where );
 
         if ( $query['query']->rowCount() > 0 ) { //  withs multiple image
 
-            $data = self::fetch_data_join($query);
+            $data = fetch::fetch_data_join($query);
 
             $tmp_image = array();
 
@@ -174,7 +179,7 @@ class Products extends Cookie  // class products extends from fetch keep all met
 
             $this->product_details = $tmp_product;
 
-            return self::json_data( $this->product_details );
+            return fetch::json_data( $this->product_details );
 
         } else { //  dont have multiple image ............
 
@@ -195,11 +200,11 @@ class Products extends Cookie  // class products extends from fetch keep all met
 
             $where = 'product.company_id = company.id  AND product.id = "' . $product_id . '"';
 
-            $query = self::select_join($select_and_tables, $where);
+            $query = db::select_join($select_and_tables, $where);
 
             if ($query['query']->rowCount() > 0) {
 
-                $data = self::fetch_data_join($query);
+                $data = fetch::fetch_data_join($query);
 
                 $tmp_image = array();
 
@@ -224,7 +229,7 @@ class Products extends Cookie  // class products extends from fetch keep all met
 
                 $this->product_details = $tmp_product;
 
-                return self::json_data( $this->product_details );
+                return fetch::json_data( $this->product_details );
             }
         }
 

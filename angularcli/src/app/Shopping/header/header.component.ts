@@ -125,11 +125,20 @@
                 }
             );
 
+        let en = this.dataservices.encryp_AES('klodiandfgdfg_df.') ;
+
+        let de = this.dataservices.decrypt_AES(en);
+
+        console.log(en);
+        console.log(de);
+
     }
 
      ngOnInit() {
 
      }
+
+
 
      check_body(boolean){ // change width inner body
 
@@ -405,20 +414,17 @@
 
     choose_language( language ){  //  function for update language ..........
 
-        this.dataservices.create_object_request( 'changeLanguage', language  );
 
-        this.dataservices.Http_Post( this.dataservices.object_request) // make request ......
+        this.dataservices.Http_Get( 'changeLanguage', { 'language':language }  ) // make request ......
 
             .subscribe( //  take success
 
                 data => {
 
-                    if( data['status'] == 'language' ){
+                    this.dataservices.language = data['data'];
 
-                        this.dataservices.language = data['data'];
+                    this.dataservices.subject_language.next( true );
 
-                        this.dataservices.subject_language.next( true );
-                    }
                 },
                 error => console.log( error['data'] ) // take error .....
 
@@ -571,18 +577,13 @@
 
          this.delete_from_wishList();
 
-         this.dataservices.create_object_request( 'add_cartProducts', this.productsService.cart_properties.array_cartId  );
-
-         this.dataservices.Http_Post( this.dataservices.object_request) // make request ......
+         this.dataservices.Http_Post( 'add_cartProducts', this.productsService.cart_properties.array_cartId ) // make request ......
 
              .subscribe( //  take success
 
                  data => {
 
-                     if( data['status'] == 'add_wishProduct' ){
-
-                         this.Response = data['data']
-                     }
+                     this.Response = data['data']
                  },
                  error => console.log( error['data'] ) // take error .....
 

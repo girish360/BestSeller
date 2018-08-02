@@ -1,8 +1,11 @@
 <?php
 
-$baseDir = dirname( __FILE__);
+$vendorDir = dirname( __FILE__);
 
-require_once ( $baseDir . '/autoload/autoload_files.php' ); // require  autoload files class
+$baseDir = dirname( $vendorDir );
+
+require_once ( $vendorDir . '/autoload/autoload_files.php' ); // require  autoload files class
+
 
 class AutoLoaderClasses {
 
@@ -12,14 +15,26 @@ class AutoLoaderClasses {
 
             $autoloadfiles = autoload_files::classobject();
 
-            $filepath = $autoloadfiles->checkfile( $class_name );
+            $exp_class = explode('\\', strtolower( $class_name ) );
+
+            $class = array_pop( $exp_class );
+
+            $filepath = $autoloadfiles->checkfile( $class );
 
             if( $filepath != false ){
 
                 require $filepath;
+
+
+
+
             }
+
+
         });
     }
 }
+
+
 
 ?>

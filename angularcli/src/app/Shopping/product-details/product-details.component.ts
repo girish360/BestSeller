@@ -52,6 +52,7 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
 
 
       if (navigator.geolocation) {
+
           navigator.geolocation.getCurrentPosition((position) => {
 
           });
@@ -61,43 +62,40 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
 
       this.route.params.subscribe( params => {
 
-        this.product_id = params['name'] ;
+          this.product_id = params['name'] ;
 
-        this.dataservices.update_loader(true);
+          this.dataservices.update_loader(true);
 
-        this.dataservices.create_object_request( 'product_details',  this.product_id  );
+          this.my_product = this.dataservices.Http_Get( 'product_details',  { 'product_id' : this.product_id} ) // make request ......
 
-        this.my_product = this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
+              .subscribe( //  take success
 
-            .subscribe( //  take success
+                  data => {
 
-                data => {
 
-                    if ( data['status'] == 'product_details' ) {
 
-                        this.scroll.window(0,0);
+                      this.scroll.window(0,0);
 
-                        this.product_details = data['data']['product'];
+                      this.product_details = data['data']['product'];
 
-                        this.company =  this.product_details['company'];
+                      this.company =  this.product_details['company'];
 
-                        setTimeout(()=>{
-                            this.dataservices.update_loader(false);
-                        },1000);
+                      setTimeout(()=>{
+                          this.dataservices.update_loader(false);
+                      },1000);
 
-                        this.carousel_image = this.product_details['image_product'];
+                      this.carousel_image = this.product_details['image_product'];
 
-                        $(function() {
+                      $(function() {
 
-                            $('.zoomImg').remove();
+                          $('.zoomImg').remove();
 
-                            $('.primary_image').zoom({ duration: 120, touch: true});
-                        });
+                          $('.primary_image').zoom({ duration: 120, touch: true});
+                      });
 
-                    }
-                },
-                error => console.log( error['data'] ) // take error .....
-            );
+                  },
+                  error => console.log( error['data'] ) // take error .....
+              );
       });
   }
 

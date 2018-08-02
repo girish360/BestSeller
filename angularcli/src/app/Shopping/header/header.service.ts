@@ -158,21 +158,16 @@ export class HeaderService  implements OnInit {
 
     let update_quantity = [{ "id":cart_product.product_id , "quantity": event.target.value }];
 
-    this.dataservices.create_object_request( 'update_quantity_cartList', update_quantity );
-
-    this.dataservices.Http_Post( this.dataservices.object_request) // make request ......
+    this.dataservices.Http_Post( 'update_quantity_cartList', update_quantity ) // make request ......
 
         .subscribe( //  take success
 
             data => {
 
-              if( data['status'] == 'update_quantity_cartList' ){
-
-                this.Response = data['data'];
-
-              }
+              this.Response = data['data'];
 
             },
+
             error => console.log( error['data'] ) // take error .....
 
         );
@@ -225,7 +220,7 @@ export class HeaderService  implements OnInit {
 
       console.log(JSON.stringify( this.wish_properties.array_wishId ));
 
-      this.dataservices.Http_Post('addInWishList', this.wish_properties.array_wishId ) // make request ......
+      this.dataservices.Http_Post( 'addInWishList', this.wish_properties.array_wishId  ) // make request ......
 
           .subscribe( //  take success
 
@@ -270,23 +265,16 @@ export class HeaderService  implements OnInit {
 
       this.subject_products.next(true);
 
-      this.dataservices.create_object_request( 'add_cartProduct', this.cart_properties.array_cartId );
-
-      this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
+      this.dataservices.Http_Post( 'addInCartList' , this.cart_properties.array_cartId ) // make request ......
 
           .subscribe( //  take success
 
               data => {
 
-                if( data['status'] == 'add_cartProduct' ){
-
-                  this.Response = data['data'];
-
-                  console.log(data['data']);
-
-                }
+                this.Response = data['data'];
 
               },
+
               error => console.log( error['data'] ) // take error .....
 
           );
@@ -320,14 +308,19 @@ export class HeaderService  implements OnInit {
 
     this.subject_products.next(true);
 
+    this.dataservices.Http_Post( 'deleteItemsInWish' , this.wish_properties.array_wishId ) // make request ......
 
-  this.Response = this.dataservices.Make_Request_InServer('delete_items_in_wish', this.wish_properties.array_wishId);
+        .subscribe( //  take success
 
-  this.Response.then( response =>{
+            data => {
 
-    this.Response = response;
+              this.Response = data['data'];
 
-  });
+            },
+
+            error => console.log( error['data'] ) // take error .....
+
+        );
 
     this.check_button_deleteProducts_fromwishlist();
 
@@ -359,13 +352,19 @@ export class HeaderService  implements OnInit {
 
     this.subject_products.next(true);
 
-    this.Response = this.dataservices.Make_Request_InServer('delete_items_in_cart', this.cart_properties.array_cartId);
+    this.dataservices.Http_Post( 'deleteItemsInCart' , this.cart_properties.array_cartId ) // make request ......
 
-    this.Response.then( response =>{
+        .subscribe( //  take success
 
-      this.Response = response;
+            data => {
 
-    });
+              this.Response = data['data'];
+
+            },
+
+            error => console.log( error['data'] ) // take error .....
+
+        );
 
     this.check_button_deleteProducts_fromwishlist();
 
@@ -569,18 +568,14 @@ export class HeaderService  implements OnInit {
 
       this.total_items_and_price();
 
-      this.dataservices.create_object_request('add_cartProducts', this.cart_properties.array_cartId);
-
-      this.dataservices.Http_Post(this.dataservices.object_request) // make request ......
+      this.dataservices.Http_Post( 'addInCartList', this.cart_properties.array_cartId ) // make request ......
 
           .subscribe( //  take success
 
               data => {
 
-                if (data['status'] == 'add_wishProduct') {
+                this.Response = data['data']
 
-                  this.Response = data['data']
-                }
               },
               error => console.log(error['data']) // take error .....
 

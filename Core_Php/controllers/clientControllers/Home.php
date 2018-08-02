@@ -1,6 +1,12 @@
 <?php
 
-class Home extends Fetch{
+use  server\services\crypto\Crypto as crypto;
+
+use  server\database\database as db;
+
+use server\services\fetch\Fetch as fetch;
+
+class Home extends Controller {
 
     private $table;
 
@@ -20,13 +26,13 @@ class Home extends Fetch{
 
     public  function get_categories ( $data_object ){
 
-        $array_data = self::convert_to_array( $data_object );
+        $array_data = fetch::convert_to_array( $data_object );
 
         $company_id_encrypted =  $array_data['company_id'];
 
         if( $array_data['company_id'] != false ){
 
-            $company_id = self::decrypt_in_server( $array_data['company_id'] );
+            $company_id = crypto::decrypt_in_server( $array_data['company_id'] );
 
             $array_data['company_id'] = $company_id;
         }
@@ -35,11 +41,11 @@ class Home extends Fetch{
 
             if( $array_data['company_id'] != false ){
 
-                $count = self::count_where($this->table ='company_category' ,array( "company_id" =>  $array_data['company_id'] ));
+                $count = db::count_where($this->table ='company_category' ,array( "company_id" =>  $array_data['company_id'] ));
 
             }else{
 
-                $count = self::count($this->table ='sub_category');
+                $count = db::count($this->table ='sub_category');
             }
 
         } else { // called more than one time and  number total_categories exist come from client ..................................
@@ -53,11 +59,11 @@ class Home extends Fetch{
 
             if ( $count >= 5 ) {
 
-                $query = self::select_limit( $this->table='sub_category' , array('name', 'id', 'image'), $array_data['current_page_categories'], $this->category_for_load );
+                $query = db::select_limit( $this->table='sub_category' , array('name', 'id', 'image'), $array_data['current_page_categories'], $this->category_for_load );
 
             } else {
 
-                $query = self::select( $this->table='sub_category' , array( 'name', 'id', 'image' ) );
+                $query = db::select( $this->table='sub_category' , array( 'name', 'id', 'image' ) );
             }
 
             $this->Categories = $query->fetchAll();
@@ -70,7 +76,7 @@ class Home extends Fetch{
             }
             $store_data = array("current_page_products" => $array_data['current_page_products'], "current_page_categories" => $array_data['current_page_categories'], "total_categories" => $count, "categories_for_page" => $this->category_for_load , "company_id" => false ,"category_id"=>false );
 
-            return self::json_data(  array( "categories" => $result, "store_data" => $store_data) );
+            return fetch::json_data(  array( "categories" => $result, "store_data" => $store_data) );
 
         }else{ // request from company to get categories with some products with  this company unique id....
 
@@ -82,11 +88,11 @@ class Home extends Fetch{
 
                 $limit = $array_data['current_page_categories'] * $this->category_for_load . ',' . $this->category_for_load ;
 
-                $query = self::select_join_limit( $this->select_and_tables , $this->where , $limit );
+                $query = db::select_join_limit( $this->select_and_tables , $this->where , $limit );
 
             } else {
 
-                $query = self::select_join(  $this->select_and_tables , $this->where );
+                $query = db::select_join(  $this->select_and_tables , $this->where );
             }
 
             $this->Categories = $query['query']->fetchAll();
@@ -102,11 +108,11 @@ class Home extends Fetch{
 
             $store_data = array( "current_page_products" => $array_data['current_page_products'], "current_page_categories" => $array_data['current_page_categories'], "total_categories" => $count, "categories_for_page" => $this->category_for_load , "company_id" => $company_id_encrypted,"category_id"=>false );
 
-            $company_query = self::select_where('company',array("id","name","image_slide_id"),array("id"=>$array_data['company_id']) );
+            $company_query = db::select_where('company',array("id","name","image_slide_id"),array("id"=>$array_data['company_id']) );
 
-            $company_info = self::fetch_data_object( $company_query );
+            $company_info = fetch::fetch_data_object( $company_query );
 
-            return self::json_data(  array( "categories" => $result, "store_data" => $store_data , "company_info"=>$company_info ) );
+            return fetch::json_data(  array( "categories" => $result, "store_data" => $store_data , "company_info"=>$company_info ) );
         }
     }
 
@@ -121,15 +127,15 @@ class Home extends Fetch{
 
             $this->categories_products[$category[$category_id_name]] = $category;
 
-            $count = self::count_where( $this->table = 'product' , array( "category_id" => $category[$category_id_name] ) );
+            $count = db::count_where( $this->table = 'product' , array( "category_id" => $category[$category_id_name] ) );
 
             if( $array_data['company_id'] == false ){
 
                 $this->where = 'product.company_id = company.id AND product.category_id = "' .$category[$category_id_name]. '"';
-                $count = self::count_where( $this->table = 'product' , array( "category_id" => $category[$category_id_name] ) );
+                $count = db::count_where( $this->table = 'product' , array( "category_id" => $category[$category_id_name] ) );
 
             }else{
-                $count = self::count_where( $this->table = 'product' , array( "category_id" => $category[$category_id_name] ,"company_id"=>$array_data['company_id']) );
+                $count = db::count_where( $this->table = 'product' , array( "category_id" => $category[$category_id_name] ,"company_id"=>$array_data['company_id']) );
                 $this->where = 'product.company_id = company.id AND  product.company_id = "' .$array_data['company_id']. '" AND product.category_id = "' .$category[$category_id_name]. '"';
             }
 
@@ -177,9 +183,9 @@ class Home extends Fetch{
 
         $this->products =[];
 
-        $res = self::select_join( $this->select_and_tables, $this->where );
+        $res = db::select_join( $this->select_and_tables, $this->where );
 
-        $data = self::fetch_data_join_one( $res );
+        $data = fetch::fetch_data_join_one( $res );
 
         foreach ( $data as $ket => $value ) {
 
@@ -196,9 +202,9 @@ class Home extends Fetch{
 
         $limit = $array_data['current_page_products'] * $this->products_for_category . ',' . $this->products_for_category;
 
-        $res = self::select_join_limit( $this->select_and_tables, $this->where, $limit );
+        $res = db::select_join_limit( $this->select_and_tables, $this->where, $limit );
 
-        $data = self::fetch_data_join_one($res);
+        $data = fetch::fetch_data_join_one($res);
 
         foreach ( $data as $ket => $value ) {
 
@@ -207,11 +213,11 @@ class Home extends Fetch{
 
     }
 
-    public function more_products(  $status , $data_object  ){
+    public function more_products(  $data_object  ){
 
         $tmp_products = [];
 
-        $data_array = self::convert_to_array( $data_object );
+        $data_array = fetch::convert_to_array( $data_object );
 
         self::products_tables();
 
@@ -221,7 +227,7 @@ class Home extends Fetch{
 
         }else{
 
-            $company_id = self::decrypt_in_server( $data_array['company_id'] );
+            $company_id = crypto::decrypt_in_server( $data_array['company_id'] );
 
             $data_array['company_id'] = $company_id;
 
@@ -237,7 +243,7 @@ class Home extends Fetch{
 
         $tmp_products['products'] = $this->products;
 
-        return self::json_data(  $tmp_products );
+        return fetch::json_data(  $tmp_products );
 
     }
 

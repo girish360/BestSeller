@@ -149,17 +149,13 @@ export class ProductService extends HeaderService {
 
     this.dataservices.update_loader(true);
 
-    this.dataservices.create_object_request( 'products', this.send_data_products  );
-
-    this.my_products = this.dataservices.Http_Post( this.dataservices.object_request ) // make request ......
+    this.my_products = this.dataservices.Http_Get( 'products', this.send_data_products ) // make request ......
 
         .subscribe( //  take success
 
             data => {
 
-              if ( data['status'] == 'product' ) {
-
-                if( data['data']['products'] != 'empty') { // Is not empty .............
+              if( data['data']['products'] != 'empty') { // Is not empty .............
 
                   this.products = data['data']['products'];
 
@@ -182,7 +178,7 @@ export class ProductService extends HeaderService {
                 setTimeout(() => {
                   this.dataservices.update_loader(false);
                 }, 1000)
-              }
+
             },
             error => console.log( error['data'] ) // take error .....
 

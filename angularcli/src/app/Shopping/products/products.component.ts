@@ -90,7 +90,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
       let category_id = params['name'];
 
-      this.my_products = this.dataservices.Http_Post('products', [{'type_products':this.productsService.type_products, 'category_id': category_id , 'number_click': 1 }]) // make request ......
+      this.my_products = this.dataservices.Http_Get('products', {'type_products':this.productsService.type_products, 'category_id': category_id , 'number_click': 1 }) // make request ......
 
           .subscribe( //  take success
 

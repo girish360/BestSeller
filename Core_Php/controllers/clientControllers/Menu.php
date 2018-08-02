@@ -1,8 +1,12 @@
 <?php
 // start class for category....................
 
+use server\services\fetch\Fetch as fetch;
 
-class Menu extends Fetch
+use server\database\database as db;
+
+
+class Menu extends Controller
 {
     public  $category;
 
@@ -31,9 +35,9 @@ class Menu extends Fetch
 
     public function get_category() // method get category .......
     {
-        $category_result = self::select( $this->table_name ,$this->select_columns );
+        $category_result = db::select( $this->table_name ,$this->select_columns );
 
-        $category_and_subcategory = self::fetch_data_array_dependet(
+        $category_and_subcategory = fetch::fetch_data_array_dependet(
 
             $category_result,
 
@@ -43,7 +47,7 @@ class Menu extends Fetch
 
         );
 
-        return self::json_data( $category_and_subcategory );
+        return fetch::json_data( $category_and_subcategory );
     }
 
 }

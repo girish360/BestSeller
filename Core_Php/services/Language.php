@@ -1,33 +1,10 @@
 <?php
 
-class Language extends Cookie {
+namespace server\services\language;
+
+class Language {
 
     private $defaultLang ='1';
-
-    public function get_language( ){
-
-        $language_in_coockie = self::check_cookie( 'language' ); //  call method check if have cookie  for language
-
-        if( $language_in_coockie != 'false' ){ // check if  exists cookie for language
-
-            $objct_language = self::object_language( json_decode( $_COOKIE['language'] )); // call method to get language .......
-
-            return self::json_data($objct_language );// return object with language  in frontend.........
-
-        }else{ // else if not exists cookie with language ..........
-
-            $objct_language = self::object_language( $this->defaultLang ); // call method to get language .......
-
-            return self::json_data($objct_language );// return object with language  in frontend.........
-        }
-    }
-
-    public function change_language( $new_language ){
-
-        $objct_language = self::object_language( $new_language ); // call method to get language .......
-
-        return self::json_data($objct_language );// return object with language  in frontend.......
-    }
 
     public function object_language( $lang ){
 
@@ -132,8 +109,6 @@ class Language extends Cookie {
                 break;
 
         }
-
-        self::save_coockie( 'language', $lang ); //save language in cookie .............
 
         return $language;
     }

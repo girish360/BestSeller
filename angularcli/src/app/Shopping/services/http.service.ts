@@ -36,11 +36,10 @@ export class HttpService extends EncryptDecryptService {
 
     if( data != false ){
 
-       body = this.encrypt_object( JSON.stringify( data ) );
+       body =  this.encryp_AES( JSON.stringify( data ) );
 
     }
-
-    params.append( uri , body  );
+    params.append( uri , encodeURIComponent( body ) );
 
     return this.http.get( this.path, { search:params ,headers:headers } )
 
@@ -57,7 +56,7 @@ export class HttpService extends EncryptDecryptService {
 
     headers.append('Accept', 'text/plain');
 
-    const body = this.encrypt_object( JSON.stringify( data ) ); //  call method encrypt data
+    const body =  this.encryp_AES( JSON.stringify( data ) ); //  call method encrypt data
 
     return this.http.post( this.path+'/'+uri, body, { headers:headers } ) // send request
 
@@ -65,10 +64,5 @@ export class HttpService extends EncryptDecryptService {
 
   }
 
-  encrypt_object( object ){ // encrypt method
-
-    return this.encryp_AES( object ); // call encryp_AES in ecrypt-decrypt service
-
-  }
 
 }

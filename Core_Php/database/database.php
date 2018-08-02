@@ -1,29 +1,30 @@
 <?php
 
+namespace server\database;
 
-class database extends Crypto { // start connection class ...
+use \PDO;
 
-    private $host='localhost'; // host
+class database { // start connection class ...
 
-    private $root='root'; // root
+    private static $host='localhost'; // host
 
-    private $dbpass='';  // databse password
+    private static $root='root'; // root
 
-    private $dbname='world_sell';  // databse name
+    private  static $dbpass='';  // databse password
 
-    private $db;
+    private static $dbname='world_sell';  // databse name
 
-    public $data_array=[];
+    private static $db;
 
-    public function __construct(){ //  constructor config database credencials.....................
+    public function conn(){ //  constructor config database credencials.....................
 
-        parent::__construct();  // inital parent constructor , in  crypto class......................
+        self::$db = null;
 
         try {
 
-            $this->db = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->root, $this->dbpass);
+            self::$db = new PDO('mysql:host=localhost;dbname=world_sell', 'root', '');
 
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         }
         catch (PDOException $e) {
@@ -31,16 +32,16 @@ class database extends Crypto { // start connection class ...
             print "Error!: " . $e->getMessage() . "<br/>";
 
             die();
-
         }
 
+        return self::$db;
     }
 
     public function select( $table_name , $array_select ){ // select all data from databse ......
 
         $select_columns = self::select_columns( $array_select );
 
-        $query = $this->db->prepare("SELECT $select_columns FROM `$table_name` ");
+        $query =self::conn()->prepare("SELECT $select_columns FROM `$table_name` ");
 
         $query->execute();
 
@@ -53,7 +54,7 @@ class database extends Crypto { // start connection class ...
 
         $where_columns = self::where_columns_and( $array_where );
 
-        $query = $this->db->prepare("SELECT $select_columns FROM `$table_name` WHERE $where_columns");
+        $query =self::conn()->prepare("SELECT $select_columns FROM `$table_name` WHERE $where_columns");
 
         $query->execute( $array_where );
 
@@ -65,7 +66,7 @@ class database extends Crypto { // start connection class ...
 
         $select_column = implode(',', $array_select); //  all column that should select in databse .............
 
-        $query = $this->db->prepare("SELECT $select_column FROM `$table_name` LIMIT ".$start*$for_page." , ".$for_page."");
+        $query =self::conn()->prepare("SELECT $select_column FROM `$table_name` LIMIT ".$start*$for_page." , ".$for_page."");
 
         $query->execute();
 
@@ -78,7 +79,7 @@ class database extends Crypto { // start connection class ...
 
         $select_column = self::select_columns( $array_select );
 
-        $query = $this->db->prepare("SELECT $select_column FROM `$table_name` WHERE $where_columns LIMIT ".$start*$for_page." , ".$for_page."");
+        $query =self::conn()->prepare("SELECT $select_column FROM `$table_name` WHERE $where_columns LIMIT ".$start*$for_page." , ".$for_page."");
 
         $query->execute();
 
@@ -121,7 +122,7 @@ class database extends Crypto { // start connection class ...
 
         $Tables = implode(',', $Tables); // get table name from array ........
 
-        $query = $this->db->prepare("SELECT $Columns FROM $Tables WHERE $where LIMIT $limit "); // prepare query
+        $query =self::conn()->prepare("SELECT $Columns FROM $Tables WHERE $where LIMIT $limit "); // prepare query
 
         $query->execute(); // execute query ...............
 
@@ -164,7 +165,7 @@ class database extends Crypto { // start connection class ...
 
         $Tables = implode(',', $Tables); // get table name from array ........
 
-        $query = $this->db->prepare("SELECT $Columns FROM $Tables WHERE $where "); // prepare query
+        $query = self::conn()->prepare("SELECT $Columns FROM $Tables WHERE $where "); // prepare query
 
         $query->execute(); // execute query ...............
 
@@ -176,7 +177,7 @@ class database extends Crypto { // start connection class ...
 
     public  function count( $table_name ){
 
-        $query = $this->db->prepare( "SELECT COUNT(*) FROM `$table_name`");
+        $query =self::conn()->prepare( "SELECT COUNT(*) FROM `$table_name`");
 
         $query->execute();
 
@@ -189,7 +190,7 @@ class database extends Crypto { // start connection class ...
 
         $where_columns = self::where_columns_and( $array_where );
 
-        $query = $this->db->prepare( "SELECT COUNT(*) FROM `$table_name` WHERE $where_columns ");
+        $query = self::conn()->prepare( "SELECT COUNT(*) FROM `$table_name` WHERE $where_columns ");
 
         $query->execute( $array_where );
 
@@ -207,7 +208,7 @@ class database extends Crypto { // start connection class ...
 
             $select_column = self::select_columns( $array_select );
 
-            $query = $this->db->prepare("SELECT $select_column FROM `$table_name` WHERE $where_columns "); // query ......
+            $query =self::conn()->prepare("SELECT $select_column FROM `$table_name` WHERE $where_columns "); // query ......
 
             $query->execute( $array_where ); // execute with array  walue that are in where ..............
 
@@ -228,7 +229,7 @@ class database extends Crypto { // start connection class ...
 
             $select_column = self::select_columns( $array_select );
 
-            $query = $this->db->prepare("SELECT $select_column FROM `$table_name` WHERE $where_columns "); // query ......
+            $query = self::conn()->prepare("SELECT $select_column FROM `$table_name` WHERE $where_columns "); // query ......
 
             $query->execute( $array_where ); // execute with array  walue that are in where ..............
 
@@ -249,7 +250,7 @@ class database extends Crypto { // start connection class ...
 
                 $columns = implode(",", array_keys($array_data));  // get columns ...
 
-                $query = $this->db->prepare("insert into `$table_name`(".$columns.")values(:".implode(', :', array_keys($array_data)).")");
+                $query = self::conn()->prepare("insert into `$table_name`(".$columns.")values(:".implode(', :', array_keys($array_data)).")");
 
                 $query->execute($array_data);
 
@@ -267,7 +268,7 @@ class database extends Crypto { // start connection class ...
 
         $where_columns = self::where_columns_or( $array_where_columns );
 
-        $query = $this->db->prepare("DELETE FROM `$table_name` WHERE $where_columns " );
+        $query = self::conn()->prepare("DELETE FROM `$table_name` WHERE $where_columns " );
 
         $query->execute( $array_where_columns );
 
@@ -294,7 +295,7 @@ class database extends Crypto { // start connection class ...
 
             $where = self::where_columns_or( $array_where_columns );
 
-            $query = $this->db->prepare(" UPDATE `$table_name` SET $set WHERE $where " );
+            $query = self::conn()->prepare(" UPDATE `$table_name` SET $set WHERE $where " );
 
             $query->execute( $array_where_columns );
 
@@ -327,7 +328,7 @@ class database extends Crypto { // start connection class ...
 
         $query = "SELECT $select FROM `$table_name` WHERE $where";
 
-        $query = $this->db->prepare($query);
+        $query = self::conn()->prepare($query);
 
         foreach ($array_where as $key => $value) {
 

@@ -1,6 +1,8 @@
 <?php
 
-class Cookie extends Fetch{
+namespace server\services\cookie;
+
+class Cookie{
 
 
     public function save_coockie( $cookie_name , $data_array ){
@@ -10,11 +12,11 @@ class Cookie extends Fetch{
 
             setcookie( $cookie_name , json_encode( $data_array ) , time() + ( (3600*60)*24)*30, '/'); // set cookie ..////////
 
-            return 'true';
+            return true;
 
-        }catch(Exception $e){
+        }catch( Exception $e ){
 
-            return 'false';
+            return false;
         }
 
     }
@@ -23,7 +25,7 @@ class Cookie extends Fetch{
 
         setcookie( $name_cookie, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
 
-        return self::json_data(  'true' );  // return result ......
+        return   true ;  // return result ......
     }
 
     public function check_cookie( $name_cookie ){
@@ -48,11 +50,11 @@ class Cookie extends Fetch{
         }
         else{
 
-            return 'false';
+            return false;
         }
     }
 
-    public function delete_items_in_Cookie( $cookie_name , $Array_selected, $status ) // delete
+    public function delete_items_in_Cookie( $cookie_name , $Array_selected ) // delete
     {
         try {
             if ( isset ( $_COOKIE[$cookie_name] ) ) { // check if exist this cookie .................
@@ -74,19 +76,19 @@ class Cookie extends Fetch{
                             $nr++; // ascending  number in variable ........
                         }
                     }
-                    if( count($array_from_cookie) > 0 ){
+                    if( count( $array_from_cookie ) > 0 ){
 
                         $result = self::save_coockie( $cookie_name, $array_from_cookie ); // call methot to set cookie .....
 
-                        return self::json_data(  $result ); // return result .....
+                        return   $result ; // return result .....
                     }
 
                     return self::remove_cookie( $cookie_name ); // call methot to remove cookie .....
                 }
-                return self::json_data(  'false' ); // return result .....
+                return false ; // return result .....
 
             }else {
-                return self::json_data(  'false' ); // return result .....
+                return  false ; // return result .....
             }
 
         }catch( Exception $e  ){
@@ -114,11 +116,11 @@ class Cookie extends Fetch{
 
             self::save_coockie($cookie_name, $array_from_cookie);
 
-            return 'true';
+            return true;
         }
         catch( Exception $e ){
 
-            return 'false';
+            return false;
 
         }
 

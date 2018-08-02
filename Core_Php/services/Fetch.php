@@ -1,33 +1,37 @@
 <?php
 
-class Fetch extends database {
+namespace server\services\fetch;
 
-    public $Data_array = array();
+use server\database\database as db;
 
-    public $Data_dependet_array = array();
+class Fetch {
 
-    public $dependet = array();
+    public static $Data_array = array();
+
+    public static $Data_dependet_array = array();
+
+    public static $dependet = array();
 
     public function __construct()
     {
-        parent::__CONSTRUCT();
+
     }
 
     public function fetch_data_array( $result_fromDB ){
 
-        $this->Data_array=[];
+         self::$Data_array=[];
 
-        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC )  ){
+        while( $result = $result_fromDB->fetch( \PDO::FETCH_ASSOC )  ){
 
-            $this->Data_array[] = $result;
+             self::$Data_array[] = $result;
         }
 
-        return $this->Data_array;
+        return  self::$Data_array;
     }
 
     public function fetch_data_object( $result_fromDB ){
 
-        $result = $result_fromDB->fetch( PDO::FETCH_ASSOC ) ;
+        $result = $result_fromDB->fetch( \PDO::FETCH_ASSOC ) ;
 
         return  $result;
     }
@@ -43,40 +47,41 @@ class Fetch extends database {
 
         $nr = 0 ;
 
-        $this->Data_array = [];
+         self::$Data_array = [];
 
-        while( $result = $result_fromDB->fetch( PDO::FETCH_ASSOC ) ) {
+        while( $result = $result_fromDB->fetch( \PDO::FETCH_ASSOC ) ) {
 
-            $this->Data_array[ $nr ] = $result;
+             self::$Data_array[ $nr ] = $result;
 
             $array_where = array( $array_dependet['column_dependet']=>$result[$array_dependet['column']] );
 
-            $this->Data_dependet_array = self::data_dependet( $array_dependet['table_name'] , $array_where , $select_dependet );
+            self::$Data_dependet_array = self::data_dependet( $array_dependet['table_name'] , $array_where , $select_dependet );
 
-            $this->Data_array[ $nr ][ $array_dependet['table_name'] ]= $this->Data_dependet_array;
+            self::$Data_array[ $nr ][ $array_dependet['table_name'] ]= self::$Data_dependet_array;
 
             $nr++;
         }
 
-        return $this->Data_array; //  return array
+        return  self::$Data_array; //  return array
     }
 
     public function data_dependet( $table_name , $array_where , $array_select ){
 
-        $this->dependet=[];
+       self::$dependet=[];
 
-        $result_fromDB = self::select_dependet_or( $table_name , $array_where , $array_select ); //select data dependet with where ....
+        $result_fromDB = db::select_dependet_or( $table_name , $array_where , $array_select ); //select data dependet with where ....
 
-        $result= $result_fromDB->fetchAll(PDO::FETCH_ASSOC );
+        $result= $result_fromDB->fetchAll(\PDO::FETCH_ASSOC );
 
-        $this->dependet = $result;
+       self::$dependet = $result;
 
-        return $this->dependet;
+        return self::$dependet;
     }
 
     public function fetch_data_cookie( $array_tables, $array_ID  ){
 
-        $this->Data_array = [];
+        self::$Data_array = [];
+
         $where='';
 
         foreach ( $array_ID as $array_key => $array ) {
@@ -87,7 +92,7 @@ class Fetch extends database {
 
         $where = substr($where , 0 , strlen($where)-3);
 
-        $res = self::select_join( $array_tables, $where );
+        $res = db::select_join( $array_tables, $where );
 
         if ( $res['query']->rowCount() >= 1 ) {
 
@@ -95,20 +100,20 @@ class Fetch extends database {
 
             foreach ( $data as $ket => $value ){
 
-                $this->Data_array[] = $value;
+                self::$Data_array[] = $value;
             }
 
         }
 
-        return   $this->Data_array ;
+        return   self::$Data_array ;
     }
 
     public function fetch_data_join( $array_query ){
-        $this->Data_array = [];
+        self::$Data_array = [];
         $output = array();
         $tmp = array();
         $first_table='';
-        while ($row = $array_query['query']->fetch( PDO::FETCH_ASSOC ) ) {
+        while ($row = $array_query['query']->fetch( \PDO::FETCH_ASSOC ) ) {
             $table_nr = 0;
 
             foreach ( $array_query['fetch'] as $table => $columns ) {
@@ -149,11 +154,11 @@ class Fetch extends database {
     }
 
     public function fetch_data_join_one( $array_query ){
-        $this->Data_array = [];
+        self::$Data_array = [];
         $output = array();
         $tmp = array();
         $first_table='';
-        while ($row = $array_query['query']->fetch( PDO::FETCH_ASSOC ) ) {
+        while ($row = $array_query['query']->fetch( \PDO::FETCH_ASSOC ) ) {
             $table_nr = 0;
 
             foreach ( $array_query['fetch'] as $table => $columns ) {
@@ -194,25 +199,25 @@ class Fetch extends database {
 
     public function  convert_to_array( $data ){
 
-        $this->Data_array = array();
+         self::$Data_array = array();
 
         foreach ( $data as $key => $value )
         {
-            if ( is_object($value) )
+            if (is_object($value))
             {
-                $this->Data_array[$key]=$value;
+                 self::$Data_array[$key]=$value;
             }
             if (is_array($value))
             {
-                $this->Data_array[$key]=$value;
+                 self::$Data_array[$key]=$value;
             }
             else
             {
-                $this->Data_array[$key]=$value;
+                 self::$Data_array[$key]=$value;
             }
         }
 
-        return $this->Data_array;
+        return  self::$Data_array;
     }
 
 }
