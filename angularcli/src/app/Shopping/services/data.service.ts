@@ -26,7 +26,7 @@ export class DataService extends AuthService implements OnInit{
 
     public subject_language = new  BehaviorSubject<boolean>(true);
 
-    status_language = this.subject_language.asObservable();
+    public status_language = this.subject_language.asObservable();
 
     private subject_progress =  new BehaviorSubject<boolean>(true); // loading page
 
@@ -35,6 +35,10 @@ export class DataService extends AuthService implements OnInit{
     private subject_spinner =  new BehaviorSubject<boolean>(false); //loading products
 
     public loading_spinner = this.subject_spinner.asObservable();// loading products
+
+    private subject_menu =  new BehaviorSubject<boolean>(true); //loading products
+
+    public status_menu = this.subject_menu.asObservable();// loading products
 
 
     public Header_property:any = {
@@ -52,6 +56,8 @@ export class DataService extends AuthService implements OnInit{
     public user_info : any;
 
     public change_inner = false;
+
+    public menu_style : any = {'height':'calc( 100vh - 40px  )'};
 
   constructor( private httpservice : HttpService , protected http:Http  ) {
 
@@ -106,6 +112,10 @@ export class DataService extends AuthService implements OnInit{
   update_body( boolean ){
 
       this.change_inner = boolean;
+  }
+  update_menu( boolean ){
+
+      this.subject_menu.next ( boolean ) ;
   }
 
 

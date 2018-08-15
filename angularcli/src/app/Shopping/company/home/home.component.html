@@ -1,4 +1,4 @@
-<div class="home"  *ngIf="company.status_categories_products | async"
+<div class="home"  *ngIf="company.status_categories_products  | async"
      infiniteScroll
      [infiniteScrollDistance]="0"
      [infiniteScrollThrottle]="50"
@@ -12,7 +12,7 @@
 
       <span class="see_all_category">
 
-            <a href="#" (click)="set_router( { path:'products' , data:category.sub_category_id, relative:true })"> See All </a>
+            <a href="#" (click)="set_router( { path:'products' , data:category.sub_category_id, relative:true })"> {{dataservices.language.see_all}} </a>
 
       </span>
 

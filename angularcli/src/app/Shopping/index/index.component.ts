@@ -1,5 +1,7 @@
 import {  Component,DoCheck,OnInit,Renderer ,ElementRef ,AfterViewInit} from '@angular/core';
 
+import {Observable} from 'rxjs/Rx'; // Angular 5
+
 declare var $:any;
 
 import { DataService } from '../services/data.service';
@@ -16,6 +18,14 @@ import { ScrollbarService } from '../../share/scrollbar.service';
 export class IndexComponent implements OnInit {
 
   public status_scroll_up:any= false;
+
+  public hover_settings:any = false;
+
+  public style_settings_icon:any={ 'transform': 'rotate( 0deg )' };
+
+  public deg_rotate_settings_icon: any = 0;
+
+
 
   constructor(
       private scroll : ScrollbarService,
@@ -41,18 +51,91 @@ export class IndexComponent implements OnInit {
          this.status_scroll_up = false;
        }
 
+       this.check_footer();
+
 
     });
+
+    Observable.interval(20 * 2).subscribe(x => {
+      this.get_deg_rotate();
+    });
+
+
 
   }
   ngDoCheck() {
 
   }
+
+  check_footer(){
+
+    let footer = 200;
+
+    let header = 40;
+
+    let scroll_size = this.scroll.scroll_size();
+
+    let screen_size = this.scroll.screen_size();
+
+    let window_scroll = this.scroll.window_scroll();
+
+    if( scroll_size.height -  screen_size.y  - footer <= window_scroll.top ){
+
+      let height = window_scroll.top - ( scroll_size.height -  screen_size.y  - footer )+ header ;
+
+      this.dataservices.menu_style = { 'height': 'calc( 100vh - ' +  height + 'px )' };
+
+      this.dataservices.update_menu(true);
+
+    }else{
+
+      this.dataservices.menu_style = {'height':'calc( 100vh - 40px  )'};
+
+      this.dataservices.update_menu(true);
+
+    }
+
+  }
+
+  show_footer(){
+
+  }
+
+
+
   go_top(){
 
     this.scroll.window_animate(0,0);
 
   }
+
+  get_deg_rotate(){
+
+    if( this.deg_rotate_settings_icon < 360 ){
+
+      this.deg_rotate_settings_icon =  this.deg_rotate_settings_icon +8;
+
+     this.style_settings_icon = { 'transform': 'rotate( '+ this.deg_rotate_settings_icon +'deg )' };
+
+    }else{
+
+      this.deg_rotate_settings_icon = 0;
+
+      this.style_settings_icon = { 'transform': 'rotate( '+ this.deg_rotate_settings_icon +'deg )' };
+    }
+
+  }
+
+  show_settings(){
+
+  }
+  hover_setting(){
+
+    this.hover_settings =  !this.hover_settings;
+
+
+  }
+
   public get_Language:object={};
 
   private wishList_products = [];
@@ -287,21 +370,6 @@ export class IndexComponent implements OnInit {
 
 
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     }); // end document ready.................................................................................
   }

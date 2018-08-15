@@ -5,7 +5,7 @@
     <!-- start outer header full width  ......................  -->
     <div class="response_outer  "  [ngClass]="{'active_menu':productsService.menu_subject.getValue()}">
 
-        <button mat-button class="check_menu " (click)="check_menu()" [ngClass]="{'open_menu':productsService.menu_subject.getValue() }">
+        <button mat-button class="check_menu " color="primary" (click)="check_menu()" [ngClass]="{'open_menu':productsService.menu_subject.getValue() }">
 
             <mat-icon *ngIf="!productsService.menu_subject.getValue()" >view_list</mat-icon>
 

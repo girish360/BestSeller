@@ -1,8 +1,8 @@
-
+<div class="menu" *ngIf="dataservices.status_menu | async" >
 
 <div class="under_menu_left " [ngClass]="{'menu_left_open':productsService.menu_subject.getValue() }"></div>
 
-<div class="menu_left" [ngClass]="{'menu_left_open': productsService.menu_subject.getValue() }" *ngIf="dataservices.status_language | async">
+<div class="menu_left" [ngStyle]="dataservices.menu_style" [ngClass]="{'menu_left_open': productsService.menu_subject.getValue() }" *ngIf="dataservices.status_language | async">
 
   <div class="width_menu_left" >
 
@@ -314,7 +314,7 @@
 
       </div>
 
-      <div class="copyright_in_menu border_bottom">
+      <div class="copyright_in_menu ">
 
         <div class="width_category">
 
@@ -357,8 +357,6 @@
         </button>
 
       </div>
-
-      <br><br><br>
 
     </div>
 
@@ -488,7 +486,7 @@
 
       </div>
 
-      <div class="width_menu_right border_bottom  ">
+      <div class="width_menu_right ">
 
         <div class="copyright_mini_menu">
 
@@ -510,8 +508,6 @@
 
       </div>
 
-      <br><br><br>
-
     </div>
 
   </div>
@@ -519,7 +515,7 @@
 </div>
 
 
-
+</div>
 
 
 

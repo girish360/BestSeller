@@ -1,3 +1,5 @@
+
+
 <app-header >   </app-header>
 
 <div class="menu_pc">
@@ -9,6 +11,51 @@
 
 <app-body>   </app-body>
 
+<div class="settings"  [ngClass]="{'settings_hover': hover_settings }" >
+
+    <div class="border_settings" [ngClass]="{'border_settings_hover': hover_settings }" > </div>
+
+    <div  [ngClass]="{'button_settings_hover': hover_settings }" class="button_setting" (mouseleave)="hover_setting()" (mouseenter)="hover_setting()" (click)="show_settings()">
+
+        <button mat-button color="primary" class="button show_settings_button">
+
+            <mat-icon [ngStyle]="style_settings_icon"  class="icon_settings">settings</mat-icon>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<div class="content_settings box-shadow">
+
+    <div class="header_div">
+
+        <div class="inside_width">
+
+            <mat-icon>exit_to_app</mat-icon>
+
+            Settings
+
+        </div>
+
+       </div>
+
+       <div class="body_div">
+
+           <div class="inside_width">
+
+           ed
+           </div>
+
+       </div>
+
+</div>
+
+
+
 
 <div class="scroll_top" (click)="go_top()" [ngClass]="{'show_scroll_top': status_scroll_up }">
 
@@ -19,6 +66,8 @@
   </button>
 
 </div>
+
+<app-footer> </app-footer>
 
 
 

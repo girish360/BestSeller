@@ -43,6 +43,7 @@ class Language {
                 $language['Cart_Write']="Cart Products";
                 $language['page_products']="Page";
                 $language['total_page_products']="Of";
+                $language['see_all']="See All";
 
                 break;
             case '2':
@@ -77,6 +78,8 @@ class Language {
                 $language['Cart_Write']="Preduktet ne kart";
                 $language['page_products']="Faqa";
                 $language['total_page_products']="Nga";
+                $language['see_all']="Te Gjitha";
+
 
                 break;
 
@@ -103,6 +106,7 @@ class Language {
                 $language['emptycat']='Category Bosh it';
                 $language['Wish_Write']="Wish Products it";
                 $language['Cart_Write']="Preduktet ne kart";
+                $language['see_all']="Te Gjitha";
 
 
 

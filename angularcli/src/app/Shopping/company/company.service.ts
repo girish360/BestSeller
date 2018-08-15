@@ -32,9 +32,16 @@ export class CompanyService {
 
     focus_input_search: false,
 
-    tmp_nav_active: -1
+    tmp_nav_active: -1,
+
+    last_nav:0
+
 
   };
+
+  public search_products:any = [];
+
+  public text_search:any;
 
   public company_info :any={ id:null , name : null };
 

@@ -148,6 +148,15 @@ input[name='search']:focus , input[name='search_wish']:focus{
 
 }
 
+.inside_width{
+    width: 98%;
+    height: 100%;
+
+    margin: 0px auto;
+}
+
+
+
 .response_outer{
     width: calc(100% - 50px);
     float: right;
@@ -313,6 +322,11 @@ mat-checkbox.mat-checked.green{
 .border_bottom{
     border:none;
     border-bottom: 1px solid;
+    color: lightgray;
+}
+.border_top{
+    border:none;
+    border-top: 1px solid;
     color: lightgray;
 }
 

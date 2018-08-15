@@ -77,6 +77,8 @@ export class CompanyComponent implements OnInit {
 
     public comapny_slide: NgxCarousel;
 
+    private _timeoutId: number;
+
     public images_slide = [
 
         {id: 1, src: '1.jpg', title: 'Category1'},
@@ -102,6 +104,7 @@ export class CompanyComponent implements OnInit {
                 path:'about',data:false,relative:true
             }
         }
+
     ];
 
     constructor(
@@ -369,9 +372,9 @@ export class CompanyComponent implements OnInit {
 
     }
 
-    public  set_router(data) {
+    public  set_router( data ) {
 
-        this.setRouter.set_router(data, this.route); // set router .....
+        this.setRouter.set_router( data, this.route); // set router .....
 
     }
 
@@ -402,5 +405,57 @@ export class CompanyComponent implements OnInit {
                 opacity:0.9
             })
         },300);
+    }
+
+    public click_nav( data_nav ){
+
+        this.set_router( data_nav.router );
+
+    }
+
+    public on_search(){
+
+        clearTimeout( this._timeoutId );
+
+        this._timeoutId = setTimeout(() => {
+
+                if( this.company.text_search != '' ) {
+
+                    console.log(this.company.text_search);
+
+                    this.set_router({path: 'search', data: false, relative: true});
+
+                    this.company.company_properties.last_nav =   this.company.company_properties.company_nav_active;
+
+                    this.company.company_properties.company_nav_active = 'search';
+
+
+
+                }else{
+
+                    this.set_last_nav( this.company.company_properties.last_nav );
+
+                    this.company.company_properties.company_nav_active = this.company.company_properties.last_nav;
+
+
+                }
+
+
+        }, 500) //play with delay
+
+    }
+
+    public set_last_nav( last_id ){
+
+        for( let i = 0 ; i < this.company_nav.length ; i++ ){
+
+            if( last_id == this.company_nav[i].id ){
+
+                this.set_router( this.company_nav[i].router );
+
+            }
+
+        }
+
     }
 }

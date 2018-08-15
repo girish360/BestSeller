@@ -39,7 +39,9 @@ import { BodyComponent } from './body/body.component'; // body shopping
 
 import { MenuComponent } from './menu/menu.component';
 
-import { SubscriptionsComponent } from './subscriptions/subscriptions.component'; //  menu  left  in shopping
+import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+
+import { FooterComponent } from './footer/footer.component'; //  menu  left  in shopping
 
 
 
@@ -54,7 +56,8 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
     BodyComponent,
     MenuComponent,
     HomeComponent,
-    SubscriptionsComponent
+    SubscriptionsComponent,
+    FooterComponent
 
 
   ],

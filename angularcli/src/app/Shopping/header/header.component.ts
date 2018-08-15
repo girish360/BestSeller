@@ -436,9 +436,7 @@
 
         this.dataservices.update_language( new_language );
 
-        this.cd.markForCheck();
-
-    }
+ }
 
 
 
