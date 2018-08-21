@@ -4,6 +4,8 @@ import { DataService } from '../services/data.service';
 
 import { ProductService } from '../products/product.service';
 
+import { MenuService } from '../menu/menu.service';
+
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
@@ -14,7 +16,13 @@ import { ProductService } from '../products/product.service';
 export class BodyComponent implements OnInit {
 
 
-  constructor( private productsService : ProductService , private dataservices : DataService ) {
+  constructor(
+      private productsService : ProductService ,
+
+      private dataservices : DataService,
+
+      private menuservice : MenuService,
+  ) {
 
 
   }

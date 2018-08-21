@@ -112,12 +112,12 @@ class Route {
 
         if( $uri == self::$uri ){ // yes this route is requested from client
 
-            self::callController( $action );
+            self::callController( $action ); // call controller
 
 
         }else{
 
-           // is not this route   nothing happend......................
+           // is not this route nothing happend......................
         }
 
     }

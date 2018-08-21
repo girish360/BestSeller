@@ -43,15 +43,23 @@
 }
 
 
-@media only screen and (max-width: 1400px){
+@media only screen and (max-width: 1050px){
 
     .containerleft_new_openmenu{
         width:100%;
     }
+    .containerright{
+        display: none;
+    }
+    .containerleft{
+        width: 100%;
+    }
 
 
 }
-@media only screen and ( min-width: 1200px ){
+
+
+@media only screen and(min-width: 1050px){
 
     .active_menu {
         float: right;
@@ -61,31 +69,27 @@
 
 
     }
-
-}
-@media only screen and (max-width: 1200px){
-
-    .containerright{
-        display: none;
-    }
-    .containerleft{
-        width: 100%;
-    }
-
-
-
-}
-@media only screen and(min-width: 1050px){
     .kerkimresponse{
         display: none;
     }
     .pcheader{
         display: block;
     }
+
+
+}
+@media only screen and ( min-width: 1200px){
+
+    .active_menu {
+        float: right;
+        right: 0;
+        left: 0;
+        width: calc(100% - 250px);
+    }
 }
 
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 750px) {
 
     .change_inner_body{
         width: 100%;

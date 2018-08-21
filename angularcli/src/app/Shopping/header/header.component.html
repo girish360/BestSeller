@@ -2,64 +2,80 @@
 
 
 <div class="header"  *ngIf="dataservices.status_language | async">
+
+    <button mat-button class="check_menu inline-block " color="primary" (click)="check_menu()" >
+
+        <mat-icon *ngIf="!menuservice.menu.getValue()" >view_list</mat-icon>
+
+        <mat-icon  *ngIf="menuservice.menu.getValue()" >exit_to_app</mat-icon>
+
+    </button>
+
+    <div class="icon_openmenu inline-block " [ngClass]="{'showicon_openmenu':menuservice.menu.getValue()}">
+
+        <div class="inside_icon_openmenu " >
+
+            <span class="icon_openmenu_img ">
+
+                <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" > <img src="../../assets/images/icon.png"></a>
+
+            </span>
+
+            <span class="text_icon ">
+
+                <a href="#" class="title_text" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" > BestSeller</a>
+
+            </span>
+
+        </div>
+
+    </div>
+
+
     <!-- start outer header full width  ......................  -->
-    <div class="response_outer  "  [ngClass]="{'active_menu':productsService.menu_subject.getValue()}">
+    <div class="response_outer   "  [ngClass]="{'active_menu':menuservice.menu.getValue()}">
 
-        <button mat-button class="check_menu " color="primary" (click)="check_menu()" [ngClass]="{'open_menu':productsService.menu_subject.getValue() }">
+        <div class="icon inline-block " *ngIf="!menuservice.menu.getValue()">
 
-            <mat-icon *ngIf="!productsService.menu_subject.getValue()" >view_list</mat-icon>
+            <div class="icon_img ">
 
-            <mat-icon *ngIf="productsService.menu_subject.getValue()" >exit_to_app</mat-icon>
+              <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" > <img src="../../assets/images/icon.png"></a>
 
-        </button>
+            </div>
+        </div>
 
         <div class="response_inner  inner_mobile "> <!-- start inner header ................... -->
 
-            <span class="header_left">  <!-- start left header .................................... -->
+            <span class="header_left inline-block">  <!-- start left header .................................... -->
 
-                <div class="icon_header inline-block">
+                <div class="kerkim inline-block">
 
-                    <a href="javascript:void(0)" class="title_text" (click)="set_router( { path:'shopping' , data:false ,relative:false } )"> B </a>
+                    <input type="text" class="searchinput notCloseDropdawnSearch"  name="search" [(ngModel)]="typing_search" (ngModelChange)="search($event)" (focus)="focus_search()"  placeholder="{{dataservices.language.searchproducts}}">
 
-                </div>
+                    <button mat-button color="primary" class=" button buttonsearch   notCloseDropdawnSearch">
 
-                <div class="icon_header_write inline-block">
+                        <mat-icon class="iconbuttonsearch" *ngIf="typing_search.length == 0">search</mat-icon>
 
-                    <a href="javascript:void(0)" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" class="title_text"> Bestseller </a>
+                        <mat-icon  class="iconbuttonsearch" *ngIf="typing_search.length > 0">close</mat-icon>
 
-                </div>
+                    </button>
 
-                <span matTooltip="Search product and company">
+                    <div class="dropdown_search  notCloseDropdawnSearch"  >
 
-                    <div class="search notCloseDropdawnSearch">
+                        <div class=" header_dropsearch header_div">
 
-                        <input type="text" class="kerkim"  name="search" [(ngModel)]="typing_search" placeholder="{{dataservices.language.searchproducts}}">
+                        </div>
 
-                        <a href="#">
+                        <div class=" body_div body_search">
 
-                            <div class="iconsearch">
+                            <br><br><br><br><br><br><br><br><br><br>
 
-                                <div class="imgsearch">
-
-                                    <mat-icon>search</mat-icon>
-
-                                </div>
-
-                                <div class="imgsearchexit">
-
-                                    <span class="glyphicon glyphicon-remove-sign"></span>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                        {{typing_search}}
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                        </div>
 
                     </div>
 
-                </span>
+                </div>
 
             </span> <!-- end left header ..................................... -->
 
@@ -213,24 +229,9 @@
             </span>  <!-- end header modile  -->
 
 
-
             <!--  start dropdown header ..................................................................-->
 
-            <div class="dropdown_search notCloseDropdawnSearch" >
 
-                sdg
-
-                <div class="body_search_header">
-
-                    Search in header
-
-                </div>
-
-                <br><br><br><br><br><br><br><br><br><br>
-
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-            </div>
 
             <div class="dropmore notClosepointerHeader notCloseDropdawnLanguage">
 
@@ -414,8 +415,6 @@
                     </div>
                 </div>
                 <div class="body_div body_cart" *ngIf="productsService.status_products | async">
-
-
 
                     <ng-container *ngIf="productsService.cart_properties.cartList.length > 0 ; else  emptycart">
 

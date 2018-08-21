@@ -10,6 +10,10 @@ import { ProductService } from '../products/product.service'; // ProductServices
 
 import { ScrollbarService } from '../../share/scrollbar.service';
 
+import { SettingsService } from '../services/settings.service';
+
+import { MenuService } from '../menu/menu.service';
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -25,6 +29,7 @@ export class IndexComponent implements OnInit {
 
   public deg_rotate_settings_icon: any = 0;
 
+  public content_settings:any = false;
 
 
   constructor(
@@ -32,7 +37,9 @@ export class IndexComponent implements OnInit {
       private productsService :ProductService,
       private elementRef : ElementRef,
       private renderer : Renderer,
-      private dataservices: DataService
+      private dataservices: DataService,
+      private menuservice : MenuService,
+      private settings: SettingsService
   ) {
 
     this.get_Language = this.dataservices.language;
@@ -61,8 +68,8 @@ export class IndexComponent implements OnInit {
     });
 
 
-
   }
+
   ngDoCheck() {
 
   }
@@ -101,6 +108,36 @@ export class IndexComponent implements OnInit {
 
   }
 
+  setting_menu(){
+
+    if( this.settings.menu == false ){
+
+      this.menuservice.menu.next(true);
+
+    }else{
+
+      this.menuservice.menu.next(false);
+    }
+
+    this.settings.menu = !this.settings.menu;
+
+    this.dataservices.Http_Get( 'settingMenu' , false ) // make request ......
+
+        .subscribe( //  take success
+
+            data => {
+
+             let d =  data['data'];
+
+
+
+            },
+            error => console.log( error['data'] ) // take error .....
+
+        );
+
+  }
+
 
 
   go_top(){
@@ -129,9 +166,22 @@ export class IndexComponent implements OnInit {
   show_settings(){
 
   }
-  hover_setting(){
 
-    this.hover_settings =  !this.hover_settings;
+  out_hover_setting(){
+
+    this.hover_settings = false;
+
+
+  }
+  in_hover_setting(){
+    this.hover_settings = true;
+  }
+
+  check_settings(){
+
+    this.hover_settings = false;
+
+    this.content_settings =  !this.content_settings;
 
 
   }
@@ -176,6 +226,7 @@ export class IndexComponent implements OnInit {
         this.productsService.refresh_button_properties();
 
         $('.write_icon_header').css('visibility', 'visible');
+
       }
 
     })

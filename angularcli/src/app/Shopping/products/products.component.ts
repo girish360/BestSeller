@@ -19,6 +19,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { ProductService } from './product.service';
 
+import { MenuService } from '../menu/menu.service';
+
 import {until} from "selenium-webdriver";
 
 import { ScrollbarService } from '../../share/scrollbar.service';
@@ -77,6 +79,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
       private productsService : ProductService,
       private setRouter: SetRouterService,
       private dataservices: DataService ,
+      private menuservice :MenuService,
       private route: ActivatedRoute,
       private cd : ChangeDetectorRef,
 

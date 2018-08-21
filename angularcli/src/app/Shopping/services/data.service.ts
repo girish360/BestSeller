@@ -64,11 +64,10 @@ export class DataService extends AuthService implements OnInit{
      super( http );
 
   }
+
   ngOnInit(){
 
   }
-
-
 
   public Make_Request_InServer(  status , value ){ // method that get response from http method  with promise ( resolve  and reject )
 

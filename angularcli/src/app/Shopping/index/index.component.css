@@ -7,7 +7,17 @@
     width: 40px;
     height: 35px;
     transition: 0.3s;
+    z-index: 150 !important;
 }
+.content_header_settings{
+
+    height: 35px;
+
+}
+.show_settings{
+    right: 200px;
+}
+
 
 .icon_settings{
     position: relative;
@@ -89,17 +99,22 @@ background: transparent;
 }
 
 .content_settings{
-    position: fixed;
 
+    position: fixed;
     width: 200px;
-    right: 0;
-    top: 100px;
+    right: -210px;
+    top: 50px;
+    transition: 0.3s;
+    z-index: 150 !important;
+
 }
 
 
+.show_content_settings{
+    right: 0;
+}
 
-
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 750px){
     .menu_pc{
         display: none;
     }

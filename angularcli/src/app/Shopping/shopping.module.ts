@@ -21,8 +21,11 @@ import { ProductService } from './products/product.service'; // product service
 
 import { HomeService } from './home/home.service';
 
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { SettingsService } from './services/settings.service';
 
+import { MenuService } from './menu/menu.service';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 // end services .....................................................................................
@@ -77,7 +80,9 @@ import { FooterComponent } from './footer/footer.component'; //  menu  left  in 
     DataService,
     HeaderService,
     ProductService,
-    HomeService
+    HomeService,
+    SettingsService,
+    MenuService
   ]
 
 })

@@ -21,6 +21,7 @@ import {
   MatSelectModule,
   MatTabsModule,
   MatTooltipModule,
+  MatSlideToggleModule
 
 } from '@angular/material';
 
@@ -39,6 +40,7 @@ import {
     MatSelectModule,
     MatTabsModule,
     MatTooltipModule,
+    MatSlideToggleModule
 
   ],
 
@@ -57,6 +59,7 @@ import {
     FilterPipe,
     FormsModule,
     ReactiveFormsModule,
+    MatSlideToggleModule
 
 
 

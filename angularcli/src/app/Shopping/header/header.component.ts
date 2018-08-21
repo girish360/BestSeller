@@ -11,6 +11,8 @@
 
  import { ProductService } from '../products/product.service'; // ProductServices extend HeaderServices that cartList and  wishList ....................
 
+ import { MenuService } from '../menu/menu.service';
+
  import { Subscription } from 'rxjs/Subscription';
 
  import {  ActivatedRoute  ,Params , Data , Router} from '@angular/router';
@@ -65,7 +67,7 @@
 
      public quantity_products:any='1';
 
-     public typing_search:any;
+     public typing_search:any='';
 
      timer_pointer_dropdown : Subscription;
 
@@ -105,6 +107,7 @@
         private productsService : ProductService,
         private deviceService: DeviceDetectorService,
         private dataservices : DataService ,
+        private menuservice :MenuService,
         private route : ActivatedRoute ,
         private setRouter :SetRouterService,
         private cd: ChangeDetectorRef
@@ -211,11 +214,26 @@
 
 
 
+
+
     public  set_router( data ){
 
         this.setRouter.set_router( data , this.route ); // set router .....
 
     }
+
+     search(newvalue){
+
+
+    }
+
+     focus_search(){
+           this.show_dropdown_search('dropdown_search','body_search');
+     }
+
+     focusout_search(){
+         this.hide_dropdown_search('dropdown_search','body_search');
+     }
 
     public find_position(id){
 
@@ -312,6 +330,53 @@
 
     }
 
+     public show_dropdown_search( dropdown_class, body_inside  ){
+
+         $('.'+body_inside).css({ top: '15px'});
+
+         $('.' + dropdown_class).css({top: '40px', opacity: '0.1'}); //  css style...
+
+         $('.' + dropdown_class).show().animate({ // animation effect show dropdown productsService......
+
+             top: '6px',
+
+             opacity: 1
+
+         }, 100);
+
+         $('.' + body_inside).animate({
+
+             top: '0'
+
+         }, 200);
+
+     }
+     public hide_dropdown_search( dropdown_class, body_inside){
+
+         $('.' + body_inside).css({top: '0px'});
+
+         $('.' + dropdown_class).css({top: '40px', opacity: '1'}); // css style...
+
+         $('.' + dropdown_class).animate({ // animation effect hide dropdown productsService......
+
+             top: '70',
+
+             opacity: '0.1',
+
+         }, 100, function () { //  function after effect ............
+
+             $('.' + dropdown_class).hide();
+
+         });
+
+         $('.' + body_inside).animate({
+
+             top: '15'
+
+         }, 200);
+
+     }
+
 
      show_chat(){ /// function show show element  for chat  when user click  on the chat call this function  and open div for chat with animate  ........................
 
@@ -380,14 +445,14 @@
 
      check_menu(){
 
-         if( this.productsService.menu_subject.getValue() == false ){
+         if( this.menuservice.menu.getValue() == false ){
 
-             this.productsService.menu_subject.next(true);
+             this.menuservice.menu.next(true);
 
              return;
          }
 
-         this.productsService.menu_subject.next(false);
+         this.menuservice.menu.next(false);
 
          return;
 

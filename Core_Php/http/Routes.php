@@ -30,5 +30,9 @@ Route::post('/auth' ,'Auth@checkUser');
 
 Route::get('/searchProducts','Products@search');
 
+Route::get('/getSettings' ,'Settings@get_settings' );
+
+Route::get('/settingMenu' ,'Settings@menu' );
+
 
 ?>

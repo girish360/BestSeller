@@ -10,6 +10,10 @@ import { ProductService } from '../products/product.service'; // ProductServices
 
 import { SetRouterService } from '../services/set-router.service';
 
+import { SettingsService } from '../services/settings.service';
+
+import { MenuService } from './menu.service';
+
 import {Observable} from 'rxjs/Observable';
 
 import 'rxjs/Rx';
@@ -31,8 +35,10 @@ export class MenuComponent  implements OnInit  {
       private setRouter :SetRouterService ,
       private route:ActivatedRoute ,
       private dataservices:DataService ,
+      private menuservice :MenuService,
       private router:Router ,
-      private crypto: EncryptDecryptService
+      private crypto: EncryptDecryptService,
+      private Settings : SettingsService,
   )
   {
 

@@ -10,13 +10,7 @@ import {Observable} from 'rxjs/Observable';
 
 import{Subject} from 'rxjs/Subject';
 
-
-
-
 import 'rxjs/Rx';
-
-
-
 
 @Injectable()
 
@@ -47,20 +41,11 @@ export class HeaderService  implements OnInit {
             error => console.log(error['data']) // take error .....
 
         );
-
-
-
   }
-
-
 
   public subject_products =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
 
   public status_products = this.subject_products.asObservable();// identify if cartlist should change
-
-  public menu_subject = new BehaviorSubject<boolean>(false);
-
-  status_menu = this.menu_subject.asObservable();
 
   ngOnInit(){
 

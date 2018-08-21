@@ -103,16 +103,15 @@ input[name='company_search'] {
 
 }
 
-input[name='search']:focus , input[name='search_wish']:focus{
+ input[name='search_wish']:focus{
 
     outline: none;
 
     background-color: floralwhite;
 
-    transition:0.5s;
+    transition:0.3s;
+
 }
-
-
 
 .component-animation {
     animation: component_Animation 0.5s;
@@ -185,7 +184,7 @@ input[name='search']:focus , input[name='search_wish']:focus{
 }
 
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 750px) {
 
     .response_outer {
 
@@ -329,6 +328,10 @@ mat-checkbox.mat-checked.green{
     border-top: 1px solid;
     color: lightgray;
 }
+.border{
+    border: 1px solid;
+    color: lightgray;
+}
 
 .inline-block{
     display: inline-block;
@@ -362,6 +365,7 @@ mat-checkbox.mat-checked.green{
     background-color: white;
     height: 40px;
     width: 100%;
+
 }
 
 .body_div {
