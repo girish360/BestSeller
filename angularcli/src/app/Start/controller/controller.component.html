@@ -1,11 +1,16 @@
 <p>
 
 
- <a [routerLink]="['/shopping']">Shopping</a>
+ <a [routerLink]="['/shopping']" (click)="set_router()" >Shopping</a>
 
- <a [routerLink]="['/business']">Business</a>
-
+ <a [routerLink]="['/business']" (click)="set_router()" >Business</a>
 
 
 
 </p>
+
+<div class="process_spinner" *ngIf="shareService.loading">
+
+ <span class="write_spinner">Loading new departament</span>
+
+</div>

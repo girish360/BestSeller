@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ControllerComponent } from './Start/controller/controller.component';
 
-import { NotfoundComponent } from './Shopping/notfound/notfound.component';
+import { NotFoundComponent } from './share/not-found/not-found.component';
 
 export const router: Routes = [
 
@@ -23,7 +23,7 @@ export const router: Routes = [
     },
 
     {
-        path:'**',component: NotfoundComponent
+        path:'**',component: NotFoundComponent
     }
 ];
 

@@ -60,9 +60,9 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
           alert("Geolocation is not supported by this browser.");
       }
 
-      this.route.params.subscribe( params => {
+      this.route.queryParams.subscribe( params => {
 
-          this.product_id = params['name'] ;
+          this.product_id = params.id;
 
           this.dataservices.update_loader(true);
 

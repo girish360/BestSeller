@@ -1,4 +1,4 @@
-<div class="home"  *ngIf="company.status_categories_products  | async"
+<div class="home" *ngIf="{company : dataservices.company | async , app : dataservices.async | async }"
      infiniteScroll
      [infiniteScrollDistance]="0"
      [infiniteScrollThrottle]="50"
@@ -8,11 +8,11 @@
 
     <div >
 
-      <span class="name_category" >  {{category.sub_category_name}}  </span>
+      <span class="name_category" >  {{category.name}}  </span>
 
       <span class="see_all_category">
 
-            <a href="#" (click)="set_router( { path:'products' , data:category.sub_category_id, relative:true })"> {{dataservices.language.see_all}} </a>
+            <a href="#" (click)="set_router( {path:'products' , data:{ keyparams :'id', params: category.id}, relative:true })"> {{dataservices.language.see_all}} </a>
 
       </span>
 
@@ -31,7 +31,7 @@
 
             <div class="img_item border_bottom " (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })" >
 
-              <img src="../../assets/images/products_image/{{product.product_image}}">
+              <img src="../../assets/images/products_image/{{product.image}}">
 
             </div>
 
@@ -40,14 +40,12 @@
           <div class="content_carousel">
 
             <div class ="">
-              {{product.product_title}}
+              {{product.title}}
             </div>
 
             <div class ="price">
-              price: {{product.product_price}}
+              price: {{product.price}}
             </div>
-
-
 
           </div>
 

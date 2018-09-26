@@ -1,245 +1,270 @@
-<div class="company" *ngIf="dataservices.status_language | async">
-<div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': company.company_properties.sticky_company }">
+<div class="company" *ngIf="{company : dataservices.company | async , app : dataservices.async | async} ">
 
-      <div class="sticky_options">
+    <ng-container *ngIf="dataservices.loaded_component;else loadingCompany">
 
-          <div  class="company_left inline-block">
+        <div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': company.company_properties.sticky_company }">
 
-              <div class="company_img inline-block ">
+            <div class="sticky_options">
 
-                  <img class="full"  src="../../assets/images/company/1.jpg">
+                <div  class="company_left inline-block">
 
-              </div>
+                    <div class="company_img inline-block ">
 
-              <div class="company_name inline-block   ">
+                        <img class="full"  src="../../assets/images/company/1.jpg">
 
-                  <div class="title_text">
-                      Elektronics
-                  </div>
+                    </div>
 
-                  <div>
-                      500 Subscribe
-                  </div>
+                    <div class="company_name inline-block   ">
 
-              </div>
+                        <div class="title_text">
+                            Elektronics
+                        </div>
 
-          </div>
+                        <div>
+                            500 Subscribe
+                        </div>
 
-          <div class="company_right inline-block ">
+                    </div>
 
-              <button mat-button class="button_category">
+                </div>
 
-                  <mat-icon>view_module</mat-icon>
+                <div class="company_right inline-block ">
 
-              </button>
+                    <button mat-button class="button_category">
 
-          </div>
+                        <mat-icon>view_module</mat-icon>
 
-      </div>
+                    </button>
 
-     <div class="sticky_opacity">
-
-     </div>
-
-  </div>
-
- <div class="company_slide component-animation" [ngStyle]=" top_slide ">
-
-     <ngx-carousel class="sliders" [inputs]="comapny_slide"
-                   (carouselLoad)="myfunc($event)"
-                   (onMove)="onmove_item_slide($event)"
-      >
-
-         <ngx-item NgxCarouselItem   *ngFor="let slide of images_slide; let i = index" >
-
-          <img   src="../../assets/images/company/{{slide.src}}">
-
-            <div class="slide_title">
-
-                <button mat-raised-button  class="slide_button button " color="primary" >
-
-                    <span>
-                         {{slide.title}}
-                    </span>
-
-                </button>
+                </div>
 
             </div>
 
-        </ngx-item>
+            <div class="sticky_opacity">
 
-          <a    NgxCarouselPrev >
+            </div>
 
-          <div class="forward" [ngStyle]="button_slide_css.status && button_slide_css">
+        </div>
 
-          </div>
+        <div class="company_slide component-animation" [ngStyle]=" top_slide ">
 
-          <div class="forward_fixed">
 
-          </div>
+            <ngx-carousel class="sliders" [inputs]="comapny_slide"
+                          (carouselLoad)="myfunc($event)"
+                          (onMove)="onmove_item_slide($event)"
+            >
 
-          <div class="forward_hover" [ngStyle]="button_slide_css.status && button_slide_css">
+                <ngx-item NgxCarouselItem   *ngFor="let slide of company.categories; let i = index" >
 
-            <button mat-mini-fab color="primary" class=" mat-fab forward_position" >
+                    <img  src="../../assets/images/company/{{slide.slide_image}}" *ngIf="slide.slide_image != null">
 
-              <mat-icon>
+                    <img  src="../../assets/images/company/{{slide.image}}" *ngIf="slide.slide_image == null" >
 
-                  <span class="glyphicon glyphicon-forward icon_forward"></span>
+                    <div class="slide_title">
 
-              </mat-icon>
+                        <button mat-raised-button  class="slide_button button " color="primary" >
 
-            </button>
+                            <span>
+                                {{slide.name}}
+                            </span>
 
-          </div>
+                        </button>
 
-        </a>
+                    </div>
 
-        <a NgxCarouselNext>
+                </ngx-item>
 
-          <div class="backward" [ngStyle]="button_slide_css.status && button_slide_css">
+                <a    NgxCarouselPrev >
 
-          </div>
+                    <div class="forward" [ngStyle]="button_slide_css.status && button_slide_css">
 
-          <div class="backward_fixed">
+                    </div>
 
-          </div>
+                    <div class="forward_fixed">
 
-          <div class="backward_hover" [ngStyle]="button_slide_css.status && button_slide_css">
+                    </div>
 
-            <button mat-mini-fab color="primary" class=" backward_position" >
+                    <div class="forward_hover" [ngStyle]="button_slide_css.status && button_slide_css">
 
-              <mat-icon> <span class="glyphicon glyphicon-backward icon_backward "></span></mat-icon>
+                        <button mat-mini-fab color="primary" class=" mat-fab forward_position" >
 
-            </button>
+                            <mat-icon>
 
-          </div>
+                                <span class="glyphicon glyphicon-forward icon_forward"></span>
 
-        </a>
+                            </mat-icon>
 
-      </ngx-carousel>
+                        </button>
 
- </div>
+                    </div>
 
-  <div class="categories_opacity">
+                </a>
 
-  </div>
+                <a NgxCarouselNext>
 
+                    <div class="backward" [ngStyle]="button_slide_css.status && button_slide_css">
 
-  <ngx-carousel class="categories" [inputs]="carousel_category"
+                    </div>
 
-                (carouselLoad)="carouselTileOneLoad()"
-                (onMove)="onmove_carousel( $event )"
+                    <div class="backward_fixed">
 
-  >
-      <ngx-tile NgxCarouselItem *ngFor="let category of  category_items; let i = index;">
+                    </div>
 
-          <a href="#">
+                    <div class="backward_hover" [ngStyle]="button_slide_css.status && button_slide_css">
 
-              <div class="items_in_carousel">
+                        <button mat-mini-fab color="primary" class=" backward_position" >
 
-                  <mat-icon>home</mat-icon>
+                            <mat-icon> <span class="glyphicon glyphicon-backward icon_backward "></span></mat-icon>
 
-                  <div class="content_carousel">
+                        </button>
 
-                      {{category.title}}
+                    </div>
 
-                  </div>
+                </a>
 
-              </div>
+            </ngx-carousel>
 
-          </a>
+        </div>
 
-      </ngx-tile>
+        <div class="categories_opacity">
 
-      <div NgxCarouselPrev ></div><div  NgxCarouselNext ></div>
+        </div>
 
-  </ngx-carousel>
 
-  <div class="morecompany body">
+        <ngx-carousel class="categories" [inputs]="carousel_category"
+                      (carouselLoad)="carouselTileOneLoad()"
+                      (onMove)="onmove_carousel( $event )"
+        >
+            <ngx-tile NgxCarouselItem *ngFor="let category of  company.categories; let i = index;">
 
-      <div class="company_option full_width">
+                <a href="#">
 
-          <div class="inner_company_option full_width">
+                    <div class="items_in_carousel">
 
-              <div class="company_profile_img inline-block">
+                        <mat-icon>home</mat-icon>
 
-                  <img class="full" src="../../assets/images/company/1.jpg">
+                        <div class="content_carousel">
 
-              </div>
+                            {{category.name}}
 
+                        </div>
 
-              <div class="company_nav inline-block">
+                    </div>
 
-                  <div class="company_nav_top full_width half_height  border_bottom">
+                </a>
 
-                      <div class="inner_company_nav">
+            </ngx-tile>
 
-                          <div class="company_name title_text">
+            <div NgxCarouselPrev ></div><div  NgxCarouselNext ></div>
 
-                              {{ company.company_info.name }}
+        </ngx-carousel>
 
-                          </div>
+        <div class="morecompany body">
 
-                      </div>
+            <div class="company_option full_width">
 
-                  </div>
+                <div class="inner_company_option full_width">
 
-                  <div class="company_nav_bottom full_width half_height">
+                    <div class="company_profile_img inline-block">
 
-                      <div class="inner_company_nav full_height inline-block">
+                        <img class="full" src="../../assets/images/company/{{company.company_info.image}}">
 
-                          <button mat-button class="nav_button"
-                                  *ngFor="let nav of company_nav; let i = index"
-                                  (click)="click_nav( nav   ) ; change_active_nav( i ) "
-                                  [ngClass]="{'company_nav_active':company.company_properties.company_nav_active == i }"
-                                  (mouseenter)="hover_nav()"
-                                  (mouseleave)="leave_hover_nav()"
-                          >
+                    </div>
 
-                              <span> {{nav.name}} </span>
+                    <div class="company_nav inline-block">
 
-                              <mat-icon>{{nav.icon}}</mat-icon>
+                        <div class="company_nav_top full_width half_height  border_bottom">
 
-                          </button>
+                            <div class="inner_company_nav">
 
-                      </div>
+                                <div class="company_name title_text">
 
-                      <div class="outer_search right_company_nav_bottom " [ngClass]="{'new_outer_search':company.company_properties.focus_input_search ,'company_nav_active':company.company_properties.company_nav_active == 'search'}">
+                                    {{ company.company_info.name }}
 
-                          <input  type="text" #focusInput (focus)="focus_search_function()" (focusout)="focus_search_function()" class="input_search input_search_company"  name="company_search" (keyup)="on_search()"  [(ngModel)]="company.text_search" placeholder="{{dataservices.language.searchproducts}}">
+                                </div>
 
-                          <div class="icon_search full_height" (click)="check_focus()">
+                            </div>
 
-                               <button mat-button class="search_button" >
+                        </div>
 
-                                   <mat-icon *ngIf="!company.company_properties.focus_input_search  ">search</mat-icon>
+                        <div class="company_nav_bottom full_width half_height">
 
-                                   <mat-icon *ngIf="company.company_properties.focus_input_search  ">clear</mat-icon>
+                            <div class="inner_company_nav full_height inline-block">
 
-                               </button>
+                                <button mat-button class="nav_button"
+                                        *ngFor="let nav of company_nav; let i = index"
+                                        (click)="click_nav( nav   ) ; change_active_nav( i ) "
+                                        [ngClass]="{'company_nav_active':company.company_properties.company_nav_active == i }"
+                                        (mouseenter)="hover_nav()"
+                                        (mouseleave)="leave_hover_nav()"
+                                >
 
-                          </div>
+                                    <span> {{nav.name}} </span>
 
-                     </div>
+                                    <mat-icon>{{nav.icon}}</mat-icon>
 
-                  </div>
+                                </button>
 
-              </div>
+                            </div>
 
-          </div>
+                            <div class="outer_search right_company_nav_bottom " [ngClass]="{'new_outer_search':company.company_properties.focus_input_search ,'company_nav_active':company.company_properties.company_nav_active == 'search'}">
 
-      </div><br>
+                                <input  type="text" #focusInput (focus)="focus_search_function()" (focusout)="focus_search_function()" class="input_search input_search_company"  name="company_search" (keyup)="on_search()"  [(ngModel)]="company.text_search" placeholder="{{dataservices.language.searchproducts}}">
 
-      <div class="company_router">
+                                <div class="icon_search full_height" (click)="check_focus()">
 
-          <router-outlet>
+                                    <button mat-button class="search_button" >
 
+                                        <mat-icon *ngIf="!company.company_properties.focus_input_search  ">search</mat-icon>
 
-          </router-outlet>
+                                        <mat-icon *ngIf="company.company_properties.focus_input_search  ">clear</mat-icon>
 
-      </div>
+                                    </button>
 
-  </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div><br>
+
+            <div class="company_router">
+
+                <router-outlet>
+
+                </router-outlet>
+
+            </div>
+
+        </div>
+
+    </ng-container>
+
+    <ng-template #loadingCompany>
+
+        <ng-container *ngIf="!dataservices.not_founded;else notFounded">
+
+            Loading Company
+
+        </ng-container>
+
+        <ng-template #notFounded>
+
+            <app-not-found></app-not-found>
+
+        </ng-template>
+
+        <router-outlet>
+
+        </router-outlet>
+
+    </ng-template>
+
 </div>
 
 

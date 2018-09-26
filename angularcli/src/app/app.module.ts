@@ -21,7 +21,13 @@ import { EncryptDecryptService } from './Shopping/services/encrypt-decrypt.servi
 
 import { ControllerService } from './Start/controller.service';
 
+import { DataService } from './share-service/data.service';
+
 import { ScrollbarService } from './share/scrollbar.service';
+
+
+
+import { ShareModule } from './share/share.module';
 
 // end services .....................................................................................
 
@@ -30,8 +36,6 @@ import { ScrollbarService } from './share/scrollbar.service';
 import { AppComponent } from './app.component';
 
 import { ControllerComponent } from './Start/controller/controller.component';
-
-import { NotfoundComponent } from './Shopping/notfound/notfound.component';
 
 import { SetRouterService } from './Shopping/services/set-router.service';
 
@@ -43,12 +47,12 @@ import { SetRouterService } from './Shopping/services/set-router.service';
 
     AppComponent,
 
-    NotfoundComponent,
-
     ControllerComponent,
   ],
 
   imports: [
+
+    ShareModule ,
 
     BrowserModule,
 
@@ -76,7 +80,13 @@ import { SetRouterService } from './Shopping/services/set-router.service';
 
     ControllerService,
 
-    ScrollbarService
+    ScrollbarService,
+
+    DataService
+
+
+
+
 
   ],
 

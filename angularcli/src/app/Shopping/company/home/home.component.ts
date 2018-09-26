@@ -100,6 +100,8 @@ export class HomeComponent implements OnInit {
 
   onmove_carousel( data_carousel : NgxCarouselStore , current_category ){
 
+    console.log(this.company.company_data_carousel);
+
     if( data_carousel.currentSlide + data_carousel.items  == data_carousel.itemLength
 
         && current_category.current_page_products < 1 && current_category.total_products > current_category.products_for_page
@@ -107,17 +109,17 @@ export class HomeComponent implements OnInit {
 
       this.dataservices.update_loader(true);
 
-      this.company.company_data_carousel.category_id = current_category.sub_category_id;
+      this.company.company_data_carousel.category_id = current_category.id;
 
       this.company.company_data_carousel.current_page_products = current_category.current_page_products+1;
 
-      this.dataservices.Http_Get( 'moreProductsInCategory' , this.company.company_data_carousel ) // make request ......
+      this.dataservices.Http_Get( 'shopping/company/more_products_incarousel' , this.company.company_data_carousel ) // make request ......
 
           .subscribe( //  take success
 
               data => {
 
-                this.more_products( data['data'] , current_category.sub_category_id );
+                this.more_products( data['data'] , current_category.id );
 
                 setTimeout(()=>{
 
@@ -140,7 +142,7 @@ export class HomeComponent implements OnInit {
 
     for ( let i = 0 ; i < this.company.categories_products.length ; i++ ){
 
-      if( category_id == this.company.categories_products[i].sub_category_id ){
+      if( category_id == this.company.categories_products[i].id ){
 
 
         for( let j = 0 ; j < array_data.products.length ; j++ ){
@@ -169,7 +171,7 @@ export class HomeComponent implements OnInit {
 
       this.dataservices.update_spinner(true);
 
-      this.dataservices.Http_Post( 'categories_products', this.company.company_data_carousel ) // make request ......
+      this.dataservices.Http_Get( 'shopping/company/categories', this.company.company_data_carousel ) // make request ......
 
           .subscribe( //  take success
 

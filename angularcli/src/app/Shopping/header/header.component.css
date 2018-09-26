@@ -2,7 +2,11 @@
 
 /* Styles go here */
 
+.border{
 
+    border: 1px solid;
+    border-color: lightgray;
+}
 
 .header{
     height: 40px;
@@ -12,7 +16,7 @@
 .progress{
 
     position: relative;
-    top: -5px;
+    top: -2px;
 }
 
 mat-progress-bar.progress .mat-progress-bar-fill::after {
@@ -60,6 +64,13 @@ a{
 .selected-color-write{
     color: gray;
 }
+.selected-color-number span{
+    color:gray ;
+}
+.spinner{
+    position: relative;
+    top: 2px;
+}
 
 /* Begin css for header profile user here ....................................................................................................*/
 .header{
@@ -80,25 +91,30 @@ a{
 }
 .header_right{
     width: 50%;
+    height: 100%;
 
 }
 
 .number_event{
 
-    margin-left: 30px;
+    position: absolute;
+    margin-left: 20px;
     margin-top: -10px;
-    color: white;
-    font-size: 12px;
     z-index: 10 !important;
 
 
 }
 .write_number{
     position: relative;
-    top: -9px;
+    top: -11px;
     left: -14px;
     color:white;
     font-size: 12px;
+
+}
+.write_number_less{
+    position: relative;
+    left: -10px;
 
 }
 .opacity_detail_product{
@@ -211,6 +227,7 @@ a{
 .check_menu{
     min-width: 50px;
     max-width: 50px;
+    height: 100%;
     border-top:2px solid;
     color: gray;
 }
@@ -304,6 +321,17 @@ a{
     top: 13px;
 }
 
+.drop_wish_title ,.drop_cart_title{
+    position: relative;
+    top: 8px;
+}
+.btns-wish ,.btns-cart{
+    position: relative;
+    top: -5px;
+}
+.search-in-wish , .search-in-cart{
+    vertical-align: top;
+}
 
 .menu1 {
     display: inline-block;
@@ -354,9 +382,8 @@ a{
     top: 2px;
 
 }
-.text_icon a{
-    color: skyblue;
-}
+
+
 .inside_icon_openmenu{
     float: right;
 }
@@ -407,16 +434,25 @@ a{
     float: right;
     display: inline-block;
     width: 70px;
-    height: 40px;
+height: 100%;
     text-align: center;
     overflow: hidden;
 
 
+
 }
-.button_right_pc a{
-    color:white;
-    text-decoration: none;
+.button_header{
+    height: 100%;
+
+    border-radius: 0;
 }
+.icon_button{
+    position: relative;
+    top: 1px;
+
+}
+
+
 
 .button_mobile{
 
@@ -444,8 +480,8 @@ a{
     color: red;
 }
 .write_icon_header{
-    position: relative;
-    top: -6px;
+position: relative;
+    top: -4px;
     z-index: 10 !important;
 }
 
@@ -493,7 +529,7 @@ input[name='search']{
     height: 30px;
     border-radius: 0;
     position: relative;
-    top: 4px;
+    top: 4.5px;
     left: -4px;
     box-shadow: none;
    background-color: white;
@@ -559,7 +595,7 @@ input[name='search']:focus {
 
 .search_wishlist{
     width: 0.0px;
-    height: 30px;
+    height: 100%;
     transition: 0.5s;
     background-color: #E6E6FA;
     border:none;
@@ -575,7 +611,7 @@ input[name='search']:focus {
 
 .show_search_in_wishlist{
 
-    width: 250px;
+    width: 190px;
     visibility: visible;
     transition: 0.5s;
 
@@ -644,19 +680,6 @@ html>/**/body .kerkim, x:-moz-any-link {
 /* End css for header profile user here ....................................................................................................*/
 
 /* dropdown list language ...............*/
-.dropmore{
-
-    position: absolute;
-    width: 500px;
-    height:auto;
-    background-color: white;
-    display: none;
-    -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-
-}
-
 
 
 .search_width{
@@ -677,10 +700,10 @@ html>/**/body .kerkim, x:-moz-any-link {
 }
 
 
-.dropcard{
+.dropcard ,.dropfavority ,.dropmore{
 
     position: absolute;
-    width: 600px;
+    width: 500px;
 
     height:auto;
     background-color: white;
@@ -692,6 +715,7 @@ html>/**/body .kerkim, x:-moz-any-link {
 
 
 }
+
 .dropdown_search{
 
     position: relative;
@@ -723,17 +747,7 @@ html>/**/body .kerkim, x:-moz-any-link {
     left:35px;
     transition: 1s;
 }
-.dropfavority{
 
-    position: absolute;
-    width: 400px;
-    height:auto;
-    background-color: white;
-    display: none;
-    -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-}
 
 .show_dropfavority , .show_dropcard , .show_dropmore{
     display: block;
@@ -775,13 +789,7 @@ html>/**/body .kerkim, x:-moz-any-link {
 
 }
 
-.width_height_top_wish{
-    width: 98%;
-    height: 100%;
 
-    margin: 0px auto;
-
-}
 .all_top_div_wish{
 
     height: 100%;
@@ -811,6 +819,7 @@ html>/**/body .kerkim, x:-moz-any-link {
 
 
 }
+
 .width_top_wish ,.delete_from_wish{
     display: inline;
 }
@@ -902,11 +911,7 @@ html>/**/body .kerkim, x:-moz-any-link {
     text-align: center;
     top: 3px;
 }
-.all_languages:hover, .morelang:hover{
-    color:white;
-    background-color: #004080;
 
-}
 .all_languages h2{
     position: relative;
     top: 2px;
@@ -955,6 +960,86 @@ input[type='radio'] {
 .morelanguageclick{
     display: none;
 }
+.button_search_for{
+
+    height: 100%;
+}
+.button_search_for mat-icon{
+    position: relative;
+    top: -4px;
+}
+.button_search_for span{
+    position: relative;
+    top: -4px;
+}
+.active-search-button{
+    background-color:#E6E6FA;
+}
+.result_search {
+    position: relative;
+    height: 40px;
+    width: 100%;
+
+}
+.body_recent_searches{
+
+    position: relative;
+    height: 40px;
+    width: 100%;
+}
+.recent_searches{
+    position: relative;
+    min-height: 25px;
+}
+.title_resent_research{
+    height: 25px;
+}
+
+.footer_search{
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 35px;
+}
+.finding-results  ,.seeall-results ,.no-results {
+
+    text-align: center;
+    vertical-align: middle;
+    line-height: 25px;
+}
+
+
+
+.result_search:hover .border_bottom ,.body_recent_searches:hover .border_bottom{
+    color:white;
+}
+
+
+.result_search_left{
+    width: 30px;
+    height: 100%;
+
+}
+.result_search_right{
+    width: calc( 100% - 40px );
+    height: 100%;
+    float: right;
+
+}
+.result_search_img{
+    height: 100%;
+    border-radius: 100px;
+    background-color: #f2f2f2;
+}
+.result_search_img img{
+    border-radius: 100px;
+}
+.title{
+    position: relative;
+    top: 7px;
+}
+
+
 
 @media only screen and(min-width: 1050px){
     .kerkimresponse{

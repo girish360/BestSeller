@@ -71,6 +71,8 @@
 
      timer_pointer_dropdown : Subscription;
 
+     private time_search:number;
+
      public language_allow = [
 
          {name: 'English', id: "1" , image:'england.png'},
@@ -79,44 +81,44 @@
 
      ];
 
-
-
-
      public button_right = [
-
-         { id:1 , name:'sign' ,mat_tooltip:'User Panel', different_class:'',
-             icon :'glyphicon-user gh-productsService'
-         },
-         { id:2 , name:'wish' , mat_tooltip:'WishList',  different_class:' notCloseDropdawnFavorite notClosepointerHeader',
-             icon :'glyphicon-heart' , dropdown_class:'dropfavority' ,dropdown_body:'body_wish'
+         { id:4 , name:'more' ,mat_tooltip:'More Options',  different_class:'notClosepointerHeader notCloseDropdawnLanguage',
+             icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'mat-tab-body-wrapper'
          },
          { id:3 , name:'card' ,mat_tooltip:'Your Cart',  different_class:'notClosepointerHeader notCloseDropdawnCard',
              icon :'glyphicon-shopping-cart gh-productsService' , dropdown_class:'dropcard' ,dropdown_body:'body_cart'
          },
-         { id:4 , name:'more' ,mat_tooltip:'More Options',  different_class:'notClosepointerHeader notCloseDropdawnLanguage',
-             icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'mat-tab-body-wrapper'
+         { id:2 , name:'wish' , mat_tooltip:'WishList',  different_class:' notCloseDropdawnFavorite notClosepointerHeader',
+             icon :'glyphicon-heart' , dropdown_class:'dropfavority' ,dropdown_body:'body_wish'
+         },
+
+         { id:1 , name:'sign' ,mat_tooltip:'User Panel', different_class:'',
+             icon :'glyphicon-user gh-productsService'
          }
+     ];
 
-    ];
+     public search_data: any = { product:true ,company:false , value:'', search:false, server_status:true };
 
+     public search_results:any=[];
 
-    constructor(
+     public recent_serches:any = { status:true , data: [] };
 
-        private renderer : Renderer ,
-        private el : ElementRef,
-        private productsService : ProductService,
-        private deviceService: DeviceDetectorService,
-        private dataservices : DataService ,
-        private menuservice :MenuService,
-        private route : ActivatedRoute ,
-        private setRouter :SetRouterService,
-        private cd: ChangeDetectorRef
+     constructor(
+         private renderer : Renderer ,
+         private el : ElementRef,
+         private productsService : ProductService,
+         private deviceService: DeviceDetectorService,
+         private dataservices : DataService ,
+         private menuservice :MenuService,
+         private route : ActivatedRoute ,
+         private setRouter :SetRouterService,
+         private cd: ChangeDetectorRef
 
     ) {
 
         this.get_device_info();
 
-        this.dataservices.Http_Get( 'language', false )
+        this.dataservices.Http_Get('shopping/header/language', false )
 
             .subscribe( //  take success
 
@@ -128,26 +130,16 @@
                 }
             );
 
-        let en = this.dataservices.encryp_AES('klodiandfgdfg_df.') ;
-
-        let de = this.dataservices.decrypt_AES(en);
-
-        console.log(en);
-        console.log(de);
-
     }
 
      ngOnInit() {
 
      }
 
-
-
      check_body(boolean){ // change width inner body
 
          this.dataservices.change_inner = boolean;
      }
-
 
      index(index , item){
 
@@ -156,16 +148,86 @@
         return item.id;
     }
 
-    public get_device_info() {
+     public get_device_info() {
 
         this.deviceInfo = this.deviceService.getDeviceInfo();
 
     }
 
+     public change_search(type_search){
+
+         if( type_search =='product' ){
+
+             this.search_data.product = true;
+             this.search_data.company = false;
+
+         }
+         else if( type_search =='company' ){
+
+             this.search_data.product = false;
+             this.search_data.company = true;
+         }
+         else{
+
+             this.search_data.product = true;
+             this.search_data.company = false;
+         }
+
+
+
+        this.search_data.server_status = true;
+
+        if( this.search_data.value.length != 0 ){
+
+            this.search_data.search = true;
+
+        }else{
+            this.search_results =  [];
+            this.search_data.search = false;
+        }
+
+        if( this.search_data.value.length != 0 ) {
+
+            this.dataservices.Http_Get( 'shopping/header/search', this.search_data )
+
+                .subscribe( //  take success
+
+                    data => {
+
+                        if( data['data'].length != 0 ){
+
+                            this.search_results =  data['data'];
+
+                            this.search_data.server_status = true;
+
+                        }
+
+                        else{
+
+                            this.search_results =  [];
+
+                            this.search_data.server_status = false;
+
+                        }
+
+                        this.search_data.search = false;
+
+                        this.cd.markForCheck();
+                    }
+                );
+
+        }else{
+
+            this.search_results =  [];
+
+            this.cd.markForCheck();
+        }
+
+    }
 
      public check_button( button , i  ,event ){
 
-        this.productsService.button_properties.selectedIndex = i;
+         this.productsService.button_properties.selectedIndex = i;
 
         if( this.productsService.button_properties.disabled == false ) {
 
@@ -181,9 +243,9 @@
 
                 this.productsService.button_properties.active = button.id;
 
-                if (button.id == 1) {
+                if ( button.id == 1) {
 
-                   this.set_router( { path:'login' , data:false , relative:true } );
+                   this.set_router( { path:'login-register' , data:false , relative:true } );
 
                 } else {
 
@@ -212,30 +274,121 @@
 
     }
 
-
-
-
-
-    public  set_router( data ){
+     public  set_router( data ){
 
         this.setRouter.set_router( data , this.route ); // set router .....
 
     }
 
-     search(newvalue){
+     search_new_value(){
+
+        clearTimeout(this.time_search);
+
+         this.search_data.server_status = true;
+
+         if( this.search_data.value.length != 0 ){
+
+             this.search_data.search = true;
+
+         }else{
+             this.search_results =  [];
+             this.search_data.search = false;
+         }
+
+         this.time_search = setTimeout(() => {
+
+             if( this.search_data.value.length != 0 ) {
+
+                 this.dataservices.Http_Get( 'shopping/header/search', this.search_data )
+
+                     .subscribe( //  take success
+
+                         data => {
+
+                             if( data['data'].length != 0 ){
+
+                                 this.search_results =  data['data'];
+
+                                 this.search_data.server_status = true;
+
+                             }
+
+                             else{
+
+                                 this.search_results =  [];
+
+                                 this.search_data.server_status = false;
+
+                             }
+
+                             this.search_data.search = false;
+
+                             this.cd.markForCheck();
 
 
-    }
+                         }
+                     );
+
+             }else{
+
+                 this.search_results =  [];
+
+                 this.cd.markForCheck();
+             }
+
+
+         }, 1000) //play with delay
+     }
+
+     get_recent_searches(){
+
+         this.dataservices.Http_Get( 'recentSearches', this.search_data )
+
+             .subscribe( //  take success
+
+                 data => {
+
+
+                     if( data['data'].length != 0 ){
+
+                         this.recent_serches.data = data['data'];
+
+                         console.log(data['data']);
+                     }
+
+                     this.cd.markForCheck();
+
+                 }
+             );
+     }
+
+     seeAll_searchResuls( data ){
+
+         this.productsService.data_products.type_products = 'search';
+
+         this.set_router( data );
+
+     }
 
      focus_search(){
+
            this.show_dropdown_search('dropdown_search','body_search');
+
+          if( this.recent_serches.status ){
+
+              this.get_recent_searches();
+
+              this.recent_serches.status = false;
+          }
+
      }
 
      focusout_search(){
+
          this.hide_dropdown_search('dropdown_search','body_search');
      }
 
-    public find_position(id){
+     public find_position(id){
 
          $(function(){
 
@@ -243,30 +396,28 @@
 
              if( id == 2 ){
 
-                 $('.treguesi').css({"margin-left": left.left + 12, "background-color": "white"});
+                 $('.treguesi').css({"margin-left": left.left + 6, "background-color": "white"});
              }
              else if( id ==3 ){
 
-                 $('.treguesi').css({"margin-left": left.left + 11, "background-color": "white"});
+                 $('.treguesi').css({"margin-left": left.left + 6, "background-color": "white"});
              }
              else if ( id == 4 ){
 
-                 $('.treguesi').css({"margin-left": left.left + 7, "background-color": "white"});
+                 $('.treguesi').css({"margin-left": left.left +4, "background-color": "white"});
              }
          });
     }
 
-    public find_position_dropdown( event , dropdown_Class  ){
+     public find_position_dropdown( event , dropdown_Class  ){
 
         let left  = event.clientX;
 
-        $( '.'+dropdown_Class ).css({ right: 100% - left-30 });
+        $( '.'+dropdown_Class ).css({ left:  left - 460  });
 
     }
 
-
-
-    public show_dropdown_button( dropdown_class, body_inside , id ){
+     public show_dropdown_button( dropdown_class, body_inside , id ){
 
         $('.treguesi').css({display: 'none'});
 
@@ -300,7 +451,7 @@
 
     }
 
-    public hide_dropdown_button( dropdown_class, body_inside){
+     public hide_dropdown_button( dropdown_class, body_inside){
 
         $('.treguesi').css({display: 'none'});
 
@@ -351,6 +502,7 @@
          }, 200);
 
      }
+
      public hide_dropdown_search( dropdown_class, body_inside){
 
          $('.' + body_inside).css({top: '0px'});
@@ -376,7 +528,6 @@
          }, 200);
 
      }
-
 
      show_chat(){ /// function show show element  for chat  when user click  on the chat call this function  and open div for chat with animate  ........................
 
@@ -480,7 +631,7 @@
     choose_language( language ){  //  function for update language ..........
 
 
-        this.dataservices.Http_Get( 'changeLanguage', { 'language':language }  ) // make request ......
+        this.dataservices.Http_Get( 'shopping/header/change_language', { 'language':language }  ) // make request ......
 
             .subscribe( //  take success
 
@@ -488,7 +639,7 @@
 
                     this.dataservices.language = data['data'];
 
-                    this.dataservices.subject_language.next( true );
+                    this.dataservices.update_app(true);
 
                 },
                 error => console.log( error['data'] ) // take error .....
@@ -501,48 +652,7 @@
 
         this.dataservices.update_language( new_language );
 
- }
-
-
-
-    delete_from_wishList( ){
-
-        this.productsService.wish_properties.filter_wish='';
-
-        for( var i = 0 ; i < this.productsService.wish_properties.selected.length ; i++ ) { // remove from wish list products that are in selected
-
-            var index = this.productsService.wish_properties.wishList.indexOf( this.productsService.wish_properties.selected[i] );
-
-            this.productsService.wish_properties.array_wishId.push( this.productsService.wish_properties.selected[i].product_id );
-
-            if( index  > -1 ){
-
-                this.productsService.wish_properties.wishList.splice( index , 1 );
-            }
-
-        }
-
-        for( var i = 0 ; i < this.productsService.wish_properties.selected.length ; i ++ ){
-
-            this.productsService.wish_properties.selected.splice( this.productsService.wish_properties.selected[i] , this.productsService.wish_properties.selected.length );
-        }
-
-
-        this.Response = this.dataservices.Make_Request_InServer('delete_itemFromCookie', this.productsService.wish_properties.array_wishId);
-
-        this.Response.then( response =>{
-
-            this.Response = response;
-
-        });
-
-        this.check_button_deleteProducts_fromwishlist();
-
-
-
-        this.productsService.wish_properties.array_wishId = []; // empty ....
-    }
-
+     }
 
     toggle_select_wish( item_wish ){
 
@@ -620,7 +730,7 @@
 
     }
 
-     selecteAll_cartList(){
+    selecteAll_cartList(){
 
      }
 
@@ -640,7 +750,7 @@
 
          this.delete_from_wishList();
 
-         this.dataservices.Http_Post( 'add_cartProducts', this.productsService.cart_properties.array_cartId ) // make request ......
+         this.dataservices.Http_Post( 'shopping/header/add_incartList', this.productsService.cart_properties.array_cartId ) // make request ......
 
              .subscribe( //  take success
 
@@ -667,8 +777,6 @@
 
     }
 
-
-
     current_language(id_language){
 
         if( this.dataservices.language.id == id_language ){
@@ -685,7 +793,6 @@
 
     }
 
-
     check_show_hide_search_in_wishlist(){
 
         if( this.productsService.wish_properties.icon_search == true ){
@@ -695,10 +802,5 @@
 
         return '';
     }
-
-
-
-
-
 
  }

@@ -58,12 +58,12 @@ import { CategoriesComponent } from './categories/categories.component'; // comp
 
         CategoriesComponent,
 
-
-  ],
+    ],
     providers: [
 
 
-        CompanyService
+        CompanyService,
+
     ]
 
 })

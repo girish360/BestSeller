@@ -3,8 +3,6 @@ import { NgModule     } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-import { ShareModule } from '../share/share.module';
-
 import { ShoppingRoutingModule } from './shopping-routing.module'; // shopping  config router
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -32,6 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 // componets .....................................................
 
+import { ShareModule } from '../share/share.module';
+
 import { IndexComponent } from './index/index.component'; // index shopping
 
 import { HomeComponent } from './home/home.component'; // home shopping
@@ -47,8 +47,6 @@ import { SubscriptionsComponent } from './subscriptions/subscriptions.component'
 import { FooterComponent } from './footer/footer.component'; //  menu  left  in shopping
 
 
-
-
 // end components ............................................................................................
 
 @NgModule({
@@ -61,7 +59,6 @@ import { FooterComponent } from './footer/footer.component'; //  menu  left  in 
     HomeComponent,
     SubscriptionsComponent,
     FooterComponent
-
 
   ],
 

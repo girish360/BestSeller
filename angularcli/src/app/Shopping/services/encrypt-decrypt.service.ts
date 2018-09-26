@@ -21,11 +21,19 @@ export class EncryptDecryptService {
 
   private data_decription:any;
 
-  public  hash( data ){
+  public  hash( text ){
 
-    return crypto.MD5( data );
+    return crypto.MD5( text );
 
   }
+
+  public unhash(text){
+
+
+
+  }
+
+
 
   public encryp_AES( data  ){
 

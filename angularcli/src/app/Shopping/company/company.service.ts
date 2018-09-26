@@ -20,22 +20,15 @@ export class CompanyService {
 
     company_id:false,
 
-    category_id:false
+    company_name:false
 
   }; // inital  can change later ....
 
   public company_properties:any = {
 
-    company_nav_active:0,
-
     sticky_company :false,
 
     focus_input_search: false,
-
-    tmp_nav_active: -1,
-
-    last_nav:0
-
 
   };
 
@@ -45,9 +38,7 @@ export class CompanyService {
 
   public company_info :any={ id:null , name : null };
 
-  public categories_products_async =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
-
-  public status_categories_products = this.categories_products_async.asObservable();// identify if cartlist should change
+  public categories:any = []; //all categories for a company
 
   constructor(){
 

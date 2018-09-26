@@ -9,6 +9,7 @@
     transition: 0.3s;
     z-index: 150 !important;
 }
+
 .content_header_settings{
 
     height: 35px;
@@ -112,6 +113,10 @@ background: transparent;
 
 .show_content_settings{
     right: 0;
+}
+.menu_settings{
+    position: relative;
+    height: 30px;
 }
 
 @media only screen and (max-width: 750px){

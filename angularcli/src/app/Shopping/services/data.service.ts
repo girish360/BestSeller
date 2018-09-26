@@ -24,21 +24,33 @@ export class DataService extends AuthService implements OnInit{
 
  // identify if cartlist should change
 
-    public subject_language = new  BehaviorSubject<boolean>(true);
+    public loaded_component:any = false; // when response is came from server this property become true
 
-    public status_language = this.subject_language.asObservable();
+    public not_founded:any = false; // when page don't exists this property become true
 
-    private subject_progress =  new BehaviorSubject<boolean>(true); // loading page
+    private app_progress =  new BehaviorSubject<boolean>(true); // loading page
 
-    public loading_progress = this.subject_progress.asObservable();// loading page
+    public progress = this.app_progress.asObservable();// loading page as async
 
-    private subject_spinner =  new BehaviorSubject<boolean>(false); //loading products
+    private app_spinner =  new BehaviorSubject<boolean>(false); //loading products
 
-    public loading_spinner = this.subject_spinner.asObservable();// loading products
+    public spinner = this.app_spinner.asObservable();// loading products
 
-    private subject_menu =  new BehaviorSubject<boolean>(true); //loading products
+    private app_menu =  new BehaviorSubject<boolean>(true); // refresh app menu component
 
-    public status_menu = this.subject_menu.asObservable();// loading products
+    public menu = this.app_menu.asObservable();// menu as async
+
+    private app_products =  new BehaviorSubject<boolean>(true); // refresh app products component
+
+    public products = this.app_products.asObservable();// products as async
+
+    private app_company =  new BehaviorSubject<boolean>(true); // refresh app company component
+
+    public company = this.app_company.asObservable();// company as async
+
+    private app_async =  new BehaviorSubject<boolean>(true); // refresh all components in shopping departament
+
+    public async = this.app_async.asObservable();// refresh all component as async
 
 
     public Header_property:any = {
@@ -95,12 +107,12 @@ export class DataService extends AuthService implements OnInit{
 
   update_loader( new_poperty ){
 
-         this.subject_progress.next( new_poperty );
+         this.app_progress.next( new_poperty );
   }
 
   update_spinner( new_poperty ){
 
-      this.subject_spinner.next( new_poperty );
+      this.app_spinner.next( new_poperty );
   }
 
   update_language( new_language ){
@@ -114,7 +126,25 @@ export class DataService extends AuthService implements OnInit{
   }
   update_menu( boolean ){
 
-      this.subject_menu.next ( boolean ) ;
+      this.app_menu.next ( boolean ) ;
+  }
+
+    update_products( boolean ){
+
+        this.app_products.next ( boolean ) ;
+    }
+
+    update_company( boolean ){
+
+        this.app_company.next ( boolean ) ;
+    }
+
+
+
+    update_app(boolean){
+
+        this.app_async.next(boolean);
+
   }
 
 

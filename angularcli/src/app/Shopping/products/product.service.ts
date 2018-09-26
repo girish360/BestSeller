@@ -12,23 +12,21 @@ import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 
 import { ScrollbarService } from '../../share/scrollbar.service';
 
-
 @Injectable()
 
 export class ProductService extends HeaderService {
 
-  public products:any = [];
+  public products:any = []; // array with products ..........
 
-  public send_data_products={};
+  public info_products:any = {};
 
-  public pages_details:any={};
+  public pages_details:any={};  // object page details   number click etc .....
 
-  public pages_link:any=[];
+  public pages_link:any=[]; // page link .....
 
-  public type_products:any = 'default';
+  public data_products:any = {  type_products : 'default' , category_id: '' , page: 1 , keywerb :''};
 
   my_products :Subscription;
-
 
   constructor(
 
@@ -40,6 +38,23 @@ export class ProductService extends HeaderService {
 
     super(  dataservices );
 
+  }
+
+  public config_default_products(){
+
+    this.data_products.type_products = 'default';
+
+  }
+
+  public config_search_products(){
+
+    this.data_products.type_products = 'company';
+
+  }
+
+  public config_company_products(){
+
+     this.data_products.type_products = 'search';
   }
 
   checked_products_inCart_and_inWish(){
@@ -86,7 +101,6 @@ export class ProductService extends HeaderService {
 
     this.delete_from_wishList(); // delete from wish list in header services  ..............................
 
-
     this.checked_products_inCart_and_inWish(); // remove checked  in products .........................
 
   }
@@ -94,94 +108,46 @@ export class ProductService extends HeaderService {
   check_delete_from_cartList(){
 
     this.delete_from_cartList();
-
     this.checked_products_inCart_and_inWish();
-  }
-
-  check_pages( click_details  ){
-
-    click_details.category_id = this.dataservices.encryp_AES( click_details.category_id );
-
-    if( click_details.active != true ){ // check if is different from active page ...........
-
-      if ( click_details.icon_material == 'skip_next' ) {
-
-        this.send_data_products ={ 'type_products':click_details.type_products,'category_id':click_details.category_id ,'number_click':this.pages_details.number_click+1 };
-
-        this.get_page_products();
-
-      }
-      else if ( click_details.icon_material == 'fast_forward' ) {
-
-        this.send_data_products ={ 'type_products':click_details.type_products,'category_id':click_details.category_id ,'number_click':this.pages_details.number_click+5 };
-
-        this.get_page_products();
-      }
-      else if ( click_details.icon_material =='skip_previous' ) {
-
-        this.send_data_products ={ 'type_products':click_details.type_products,'category_id':click_details.category_id ,'number_click':this.pages_details.number_click-1 };
-
-        this.get_page_products();
-      }
-      else if ( click_details.icon_material == 'fast_rewind' ) {
-
-        this.send_data_products ={'type_products':click_details.type_products,'category_id':click_details.category_id ,'number_click':this.pages_details.number_click-5 };
-
-        this.get_page_products();
-
-      }else{
-
-        this.send_data_products ={'type_products':click_details.type_products, 'category_id':click_details.category_id ,'number_click':click_details.page };
-
-
-       this.get_page_products();
-
-
-      }
-
-    }
 
   }
 
-
-
-  get_page_products(){
+  change_products_for_page(){
 
     this.dataservices.update_loader(true);
 
-    this.my_products = this.dataservices.Http_Get( 'products', this.send_data_products ) // make request ......
+    this.my_products = this.dataservices.Http_Get( 'shopping/products/category_products', this.data_products ) // make request ......
 
         .subscribe( //  take success
-
             data => {
 
               if( data['data']['products'] != 'empty') { // Is not empty .............
 
-                  this.products = data['data']['products'];
+                this.products = data['data']['products'];
 
-                  this.pages_link = [];
+                this.checked_products_inCart_and_inWish();
 
-                  if( data['data']['pages_details'] != 'null' ){
+                this.pages_link = [];
 
-                    this.pages_details = data['data']['pages_details'];
+                if( data['data']['pages_details'] != false ){
 
-                    this.build_pages_link(this.pages_details);
+                  this.pages_details = data['data']['pages_details'];
 
-                  }
-
-                  this.subject_products.next(true);
+                  this.build_pages_link(this.pages_details);
 
                 }
 
-                this.scroll.window( 0, 0); // call function window to move scroll top
+                this.subject_products.next(true);
 
-                setTimeout(() => {
-                  this.dataservices.update_loader(false);
-                }, 1000)
+              }
+
+              this.scroll.window( 0, 0); // call function window to move scroll top
+              setTimeout(() => {
+                this.dataservices.update_loader(false);
+              }, 1000)
 
             },
             error => console.log( error['data'] ) // take error .....
-
         );
   }
 
@@ -189,104 +155,104 @@ export class ProductService extends HeaderService {
 
     this.pages_link = []; // empty pages_link .........
 
-    if( pages_details.number_click <= 3 ){ // check if pages is  smaller than 3 or equals ...........................
+    if( pages_details.page <= 3 ){ // check if pages is  smaller than 3 or equals ...........................
 
-      if( pages_details.total_number <= 8 ){  // check if total pages are smaller than 8  or equals
+      if( pages_details.total_pages <= 8 ){  // check if total pages are smaller than 8  or equals
 
-        if( pages_details.number_click > 1 ){ // check if number_click that more bigger than 1  to add skip_previouse  icon ......................
+        if( pages_details.page > 1 ){ // check if page that more bigger than 1  to add skip_previouse  icon ......................
 
-          this.pages_link.push( {'type_products':pages_details.type_products, 'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'skip_previous' ,'icon':true  });
+          this.pages_link.push( { 'page': i ,'active': false , 'icon_material':'skip_previous' ,'icon':true  });
         }
-        for( var i =1 ; i <= pages_details.total_number ; i++ ){  // loop with number page
+        for( var i =1 ; i <= pages_details.total_pages ; i++ ){  // loop with number page
 
-          if( i == pages_details.number_click ){ // check if  number_ click is equals with item in loop to add property active true .........
+          if( i == pages_details.page ){ // check if  number_ click is equals with item in loop to add property active true .........
 
-            this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': true , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+            this.pages_link.push( {'page': i ,'active': true , 'icon_material':'x' ,'icon':false  });
 
           }else{ // pages not active .................................................
 
-            this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+            this.pages_link.push( {'page': i ,'active': false , 'icon_material':'x' ,'icon':false  });
           }
         }
-        if( pages_details.number_click+5 <= pages_details.total_number ) { // check if number click + 5 is more bigger or equals to add fast_forward icon  with 5 pages ...........
+        if( pages_details.page+5 <= pages_details.total_pages ) { // check if number click + 5 is more bigger or equals to add fast_forward icon  with 5 pages ...........
 
-          this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'fast_forward' ,'icon':true  });
+          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'fast_forward' ,'icon':true  });
 
         }else{ //  add skip_next icon with  one page  increment  ....................
-          if(  pages_details.number_click < pages_details.total_number ){
+          if(  pages_details.page < pages_details.total_pages ){
 
-            this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'skip_next' ,'icon':true  });
+            this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_next' ,'icon':true  });
 
           }
         }
         return ;  // return pages_link that is a array with some objects inside ...........................................................
       }
-      else{  // here total_number pages are more bigger than 8  ...........................
+      else{  // here total_pages pages are more bigger than 8  ...........................
 
-        if( pages_details.number_click == 1 ){ // check if number click is equals with one .............................................
+        if( pages_details.page == 1 ){ // check if number click is equals with one .............................................
 
-          for( var i =1 ; i <= pages_details.number_click+7 ; i++ ){ // loop with number page
+          for( var i =1 ; i <= pages_details.page+7 ; i++ ){ // loop with number page
 
-            if( i == pages_details.number_click ){ // check if  number_ click is equals with item in loop to add property active true .........
+            if( i == pages_details.page ){ // check if  number_ click is equals with item in loop to add property active true .........
 
-              this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': true , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+              this.pages_link.push( {'page': i ,'active': true , 'icon_material':'x' ,'icon':false  });
 
             }else{ // pages not active .................................................
 
-              this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+              this.pages_link.push( {'page': i ,'active': false , 'icon_material':'x' ,'icon':false  });
             }
 
           }
         }
         else{
 
-          if( pages_details.number_click == 2 ){  // check if number click is equals with two .............................................
+          if( pages_details.page == 2 ){  // check if number click is equals with two .............................................
 
-            this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'skip_previous' ,'icon':true  });
+            this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_previous' ,'icon':true  });
 
 
-            for( var i =1 ; i <= pages_details.number_click+5 ; i++ ){
+            for( var i =1 ; i <= pages_details.page+5 ; i++ ){
 
-              if( i == pages_details.number_click ){
+              if( i == pages_details.page ){
 
-                this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': true , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+                this.pages_link.push( {'page': i ,'active': true , 'icon_material':'x' ,'icon':false  });
 
               }else{
 
-                this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+                this.pages_link.push( {'page': i ,'active': false , 'icon_material':'x' ,'icon':false  });
               }
             }
           }
           else{
-            if( pages_details.number_click == 3 ){
+            if( pages_details.page == 3 ){
 
-              this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'skip_previous' ,'icon':true  });
+              this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_previous' ,'icon':true  });
 
-              for( var i =1 ; i <= pages_details.number_click+4 ; i++ ){
+              for( var i =1 ; i <= pages_details.page+4 ; i++ ){
 
-                if( i == pages_details.number_click ){
+                if( i == pages_details.page ){
 
-                  this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': true , 'category_id':pages_details.category_id,'icon_material':'x' ,'icon':false  });
+                  this.pages_link.push( {'page': i ,'active': true , 'category_id':pages_details.category_id,'icon_material':'x' ,'icon':false  });
 
                 }else{
 
-                  this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id,'icon_material':'x' ,'icon':false  });
+                  this.pages_link.push( {'page': i ,'active': false , 'category_id':pages_details.category_id,'icon_material':'x' ,'icon':false  });
                 }
               }
             }
           }
         }
 
-        this.pages_link.push( {'type_products':pages_details.type_products,'page': pages_details.total_number ,'active': false , 'category_id':pages_details.category_id,'icon_material':'x' ,'icon':false  });
+        this.pages_link.push( {'page': pages_details.total_pages ,'active': false , 'category_id':pages_details.category_id,'icon_material':'x' ,'icon':false  });
 
 
-        if( pages_details.number_click+5 <= pages_details.total_number ){
+        if( pages_details.page+5 <= pages_details.total_pages ){
 
-          this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'fast_forward' ,'icon':true  });
+          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'fast_forward' ,'icon':true  });
 
         }else{
 
-          this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'skip_next' ,'icon':true  });
+          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_next' ,'icon':true  });
         }
 
         return ;
@@ -296,112 +262,112 @@ export class ProductService extends HeaderService {
     } // end number click is smaller than 3 or equals ................
     else{ // here number click is bigger than 3 ................
 
-      if( pages_details.total_number > pages_details.number_click+3 ){
+      if( pages_details.total_pages > pages_details.page+3 ){
 
-        if( pages_details.number_click > 5){
+        if( pages_details.page > 5){
 
-          this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'fast_rewind' ,'icon':true  });
+          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'fast_rewind' ,'icon':true  });
         }
         else{
-          this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'skip_previous' ,'icon':true  });
+          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_previous' ,'icon':true  });
         }
 
-        this.pages_link.push( {'type_products':pages_details.type_products,'page': 1 ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+        this.pages_link.push( {'page': 1 ,'active': false , 'icon_material':'x' ,'icon':false  });
 
-        for(  var i = pages_details.number_click-2 ; i <= pages_details.number_click+3 ; i++ ){
+        for(  var i = pages_details.page-2 ; i <= pages_details.page+3 ; i++ ){
 
-          if( i == pages_details.number_click ){
+          if( i == pages_details.page ){
 
-            this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': true , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+            this.pages_link.push( {'page': i ,'active': true , 'icon_material':'x' ,'icon':false  });
 
           }else{
-            this.pages_link.push( {'type_products':pages_details.type_products,'page': i ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+            this.pages_link.push( {'page': i ,'active': false , 'icon_material':'x' ,'icon':false  });
 
           }
         }
 
-        this.pages_link.push( {'type_products':pages_details.type_products,'page': pages_details.total_number ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'x' ,'icon':false  });
+        this.pages_link.push( {'page': pages_details.total_pages ,'active': false , 'icon_material':'x' ,'icon':false  });
 
-        if( pages_details.number_click+5 <= pages_details.total_number ){
+        if( pages_details.page+5 <= pages_details.total_pages ){
 
-          this.pages_link.push( {'type_products':pages_details.type_products,'page': 1 ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'fast_forward' ,'icon':true  });
+          this.pages_link.push( {'page': 1 ,'active': false , 'icon_material':'fast_forward' ,'icon':true  });
 
         }else{
-          this.pages_link.push( {'type_products':pages_details.type_products,'page': 1 ,'active': false , 'category_id':pages_details.category_id ,'icon_material':'skip_next' ,'icon':true  });
+          this.pages_link.push( {'page': 1 ,'active': false , 'icon_material':'skip_next' ,'icon':true  });
         }
         return ;
       }
       else{
-        if( pages_details.total_number >= 10 ) {
+        if( pages_details.total_pages >= 10 ) {
 
-          if (pages_details.number_click > 5) {
+          if (pages_details.page > 5) {
 
-            this.pages_link.push({'type_products':pages_details.type_products,'page': 1, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'fast_rewind', 'icon': true});
+            this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'fast_rewind', 'icon': true});
           }
           else {
 
-            this.pages_link.push({'type_products':pages_details.type_products,'page': 1, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'skip_previous', 'icon': true});
+            this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'skip_previous', 'icon': true});
 
           }
-          this.pages_link.push({'type_products':pages_details.type_products,'page': 1, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+          this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'x', 'icon': false});
 
-          if ( pages_details.number_click + 1 == pages_details.total_number ) {
+          if ( pages_details.page + 1 == pages_details.total_pages ) {
 
-            for (var i = pages_details.number_click - 5; i <= pages_details.total_number; i++) {
+            for (var i = pages_details.page - 5; i <= pages_details.total_pages; i++) {
 
-              if (i == pages_details.number_click) {
+              if (i == pages_details.page) {
 
-                this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': true, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
 
               } else {
 
-                this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false
+                this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false
                 });
               }
             }
           } else {
-            if ( pages_details.number_click == pages_details.total_number ) {
+            if ( pages_details.page == pages_details.total_pages ) {
 
-              for (var i = pages_details.number_click - 7; i <= pages_details.total_number; i++) {
+              for (var i = pages_details.page - 7; i <= pages_details.total_pages; i++) {
 
-                if (i == pages_details.number_click) {
+                if (i == pages_details.page) {
 
-                  this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': true, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                  this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
 
                 } else {
 
-                  this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false
+                  this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false
                   });
                 }
               }
             }
             else {
 
-              if( pages_details.number_click+3 == pages_details.total_number ){
+              if( pages_details.page+3 == pages_details.total_pages ){
 
-                for ( var i = pages_details.number_click - 3; i <= pages_details.total_number; i++) {
+                for ( var i = pages_details.page - 3; i <= pages_details.total_pages; i++) {
 
-                  if (i == pages_details.number_click) {
+                  if (i == pages_details.page) {
 
-                    this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': true, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                    this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
 
                   } else {
 
-                    this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                    this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
                   }
                 }
 
               }
               else{
-                for ( var i = pages_details.number_click - 4; i <= pages_details.total_number; i++) {
+                for ( var i = pages_details.page - 4; i <= pages_details.total_pages; i++) {
 
-                  if (i == pages_details.number_click) {
+                  if (i == pages_details.page) {
 
-                    this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': true, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                    this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
 
                   } else {
 
-                    this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                    this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
                   }
                 }
 
@@ -410,9 +376,9 @@ export class ProductService extends HeaderService {
             }
           }
 
-          if (pages_details.number_click != pages_details.total_number) {
+          if (pages_details.page != pages_details.total_pages) {
 
-            this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'skip_next', 'icon': true});
+            this.pages_link.push({'page': i, 'active': false,  'icon_material': 'skip_next', 'icon': true});
 
           }
 
@@ -420,59 +386,59 @@ export class ProductService extends HeaderService {
 
         }else{
 
-          if (pages_details.number_click > 5) {
+          if (pages_details.page > 5) {
 
-            this.pages_link.push({'type_products':pages_details.type_products,'page': 1, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'fast_rewind', 'icon': true});
+            this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'fast_rewind', 'icon': true});
           }
           else {
 
-            this.pages_link.push({'type_products':pages_details.type_products,'page': 1, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'skip_previous', 'icon': true});
+            this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'skip_previous', 'icon': true});
 
           }
-          this.pages_link.push({'type_products':pages_details.type_products,'page': 1, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+          this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'x', 'icon': false});
 
 
-          if( pages_details.total_number <= 8 ){
+          if( pages_details.total_pages <= 8 ){
 
-            for ( var i = 2; i <= pages_details.total_number; i++) {
+            for ( var i = 2; i <= pages_details.total_pages; i++) {
 
-              if (i == pages_details.number_click) {
+              if (i == pages_details.page) {
 
-                this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': true, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
 
               } else {
 
-                this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
               }
             }
 
           }else{
 
-            if( pages_details.total_number != pages_details.number_click ){
+            if( pages_details.total_pages != pages_details.page ){
 
-              for ( var i = 3; i <= pages_details.total_number; i++) {
+              for ( var i = 3; i <= pages_details.total_pages; i++) {
 
-                if (i == pages_details.number_click) {
+                if (i == pages_details.page) {
 
-                  this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': true, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                  this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
 
                 } else {
 
-                  this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                  this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
                 }
               }
 
             }else{
 
-              for ( var i = 2; i <= pages_details.total_number; i++) {
+              for ( var i = 2; i <= pages_details.total_pages; i++) {
 
-                if (i == pages_details.number_click) {
+                if (i == pages_details.page) {
 
-                  this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': true, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                  this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
 
                 } else {
 
-                  this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'x', 'icon': false});
+                  this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
                 }
               }
 
@@ -480,9 +446,9 @@ export class ProductService extends HeaderService {
 
           }
 
-          if (pages_details.number_click != pages_details.total_number) {
+          if (pages_details.page != pages_details.total_pages) {
 
-            this.pages_link.push({'type_products':pages_details.type_products,'page': i, 'active': false, 'category_id': pages_details.category_id, 'icon_material': 'skip_next', 'icon': true});
+            this.pages_link.push({'page': i, 'active': false,  'icon_material': 'skip_next', 'icon': true});
 
           }
 
@@ -492,10 +458,5 @@ export class ProductService extends HeaderService {
     }
 
   } // End function that build pages link ........................................................
-
-
-
-
-
 
 }

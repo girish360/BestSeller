@@ -219,7 +219,7 @@ export class IndexComponent implements OnInit {
 
       }
 
-      if ( event.target.closest(' .notCloseDropdawnSearch, .notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard' ) == null ) {
+      if ( event.target.closest(' .notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard' ) == null ) {
 
         $('.treguesi').css({display: 'none'});
 

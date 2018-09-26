@@ -217,7 +217,6 @@ ngx-tile div {
 }
 .company_profile_img{
 
-    border-radius: 100px;
     width: calc( 80*0.8px );
     height: 100%;
     float: left;
@@ -225,7 +224,7 @@ ngx-tile div {
 }
 .company_profile_img img{
 
-    border-radius: 100px;
+
 }
 
 .company_nav{

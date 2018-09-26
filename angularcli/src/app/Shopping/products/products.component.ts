@@ -7,13 +7,13 @@ import 'rxjs/Rx'
 
 import 'rxjs/add/observable/interval';
 
-import {  ActivatedRoute  } from '@angular/router';
+import { ActivatedRoute  } from '@angular/router';
 
 import { DataService } from '../services/data.service';
 
 import { SetRouterService } from '../services/set-router.service';
 
-import {  trigger, sequence, transition, animate, style, state } from '@angular/animations';
+import { trigger, sequence, transition, animate, style, state } from '@angular/animations';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -24,8 +24,6 @@ import { MenuService } from '../menu/menu.service';
 import {until} from "selenium-webdriver";
 
 import { ScrollbarService } from '../../share/scrollbar.service';
-
-
 
 import alertIsPresent = until.alertIsPresent; // ProductServices extend HeaderServices that cartList and  wishList ....................
 
@@ -58,9 +56,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
   public pages_details:any={};
 
-  public send_data_products={};
-
-  public selected_for_page :any  = 2; // default is set 40 products for page .......................
+  public selected_for_page :any  = 20; // default is set 20 products for page .......................
 
   public product_properties = {
 
@@ -71,6 +67,8 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
     index_product:'empty'
 
   };
+
+  public uri:any;
 
   my_products :Subscription;
 
@@ -85,65 +83,138 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
   ) {
 
-    this.route.params.subscribe( params => {
+    this.productsService.products = [];
+
+    this.dataservices.loaded_component = false;
+
+      this.dataservices.not_founded = false;
+
+    this.route.params.subscribe( params => {  // get uri
+
+      this.uri = params.name;
+
+    });
+
+    this.route.queryParams.subscribe( params => { // get params from url.................
 
       this.scroll.window(0, 0);
 
       this.dataservices.update_loader( true );
 
-      let category_id = params['name'];
 
-      this.my_products = this.dataservices.Http_Get('products', {'type_products':this.productsService.type_products, 'category_id': category_id , 'number_click': 1 }) // make request ......
+
+        if( !isNaN( params.id )  &&  ( !isNaN( params.page ) || params.page == null  ) ){
+
+          this.productsService.data_products.category_id = params.id; // get category_id from url
+
+          if( params.page == null ){
+
+              this.productsService.data_products.page = 1; // set dafault page number start from 1
+
+          }else{
+
+              this.productsService.data_products.page = params.page; // get number of page from url
+          }
+
+          this.my_products = this.dataservices.Http_Get('shopping/products/category_products', this.productsService.data_products ) // make request to get products ......
+
+              .subscribe( //  take success
+
+                  data => {
+
+                      this.productsService.pages_link = [];
+
+                      if( data['data'] != false ){ // products have came
+
+                          this.productsService.products = data['data']['products'];
+
+                          this.productsService.checked_products_inCart_and_inWish();
+
+                          if ( data['data']['pages_details'] != false ) {
+
+                              this.productsService.pages_details = data['data']['pages_details'];
+
+                              this.pages_details = data['data']['pages_details'];
+
+                              this.productsService.build_pages_link( this.pages_details  );
+
+                          }
+
+                          this.dataservices.loaded_component = true; // data are came display them ........
+
+                      }else{ // this page does not exists
+
+                            this.dataservices.not_founded = true; // nothing founded in server
+                      }
+
+                      this.cd.markForCheck();
+
+                      setTimeout(() => {
+
+                          this.dataservices.update_loader(false);
+
+                      }, 1000);
+
+                  },
+                  error => console.log(error['data']) // take error .....
+
+              );
+
+      }else{ // this page does not exists ..........................
+
+          this.dataservices.update_loader( false );
+
+          this.dataservices.not_founded = true;
+
+      }
+
+
+
+
+    });
+  }
+
+  ngAfterViewInit(){
+
+
+}
+
+  public change_products_for_page(){
+
+      this.my_products = this.dataservices.Http_Get('shopping/products/change_products_forpage', { products_for_page:this.pages_details.products_for_page } ) // make request to get products ......
 
           .subscribe( //  take success
 
               data => {
 
-                this.productsService.pages_link = [];
+                  if( data['data']== true ){
 
-                if( data['data']['products'].length > 0 ){
+                      if( this.productsService.data_products.page == 1 ){
 
-                    this.productsService.products = data['data']['products'];
+                          this.productsService.change_products_for_page();
 
-                    this.productsService.checked_products_inCart_and_inWish();
+                      }else{
 
+                          let router = { path:'shopping/products/'+this.uri , data:
+                              [
+                                  { keyparams :'id', params:  this.productsService.data_products.category_id },
+                                  { keyparams :'page', params:  1 }
+
+                              ] , relative:false };
+
+                          this.set_router(router);
+                      }
                   }
-
-                  if ( data['data']['pages_details'] != 'null') {
-
-                    this.productsService.pages_details = data['data']['pages_details'];
-
-                    this.productsService.build_pages_link(this.productsService.pages_details);
-
-                  }
-
-                  this.cd.markForCheck();
-
-                  setTimeout(() => {
-
-                    this.dataservices.update_loader(false);
-
-                  }, 1000);
 
               },
+
               error => console.log(error['data']) // take error .....
 
           );
-    });
-  }
-
-ngAfterViewInit(){
-
-
-}
-
-  change_products_for_page(){
-
-
 
   }
 
-  index( index , item ){
+  public index( index , item ){
 
     if(!item) return null;
 
@@ -154,30 +225,68 @@ ngAfterViewInit(){
 
   }
 
-  public  set_router( data ){
+  public set_router( data ){
 
     this.setRouter.set_router( data , this.route ); // set router .....
 
   }
 
+  public click_pages( click_details  ){
 
+    let router:any = {};
 
-  click_pages( click_details  ){
+      if( click_details.active != true ){ // check if is different from active page ...........
 
-     this.productsService.check_pages( click_details  );
+        if ( click_details.icon_material == 'skip_next' ) {
 
+          router = { path:'shopping/products/'+this.uri , data:
+              [
+                { keyparams :'id', params:  this.pages_details.category_id },
+                {keyparams :'page', params:  this.pages_details.page+1 }
 
+              ] , relative:false };
+        }
+        else if ( click_details.icon_material == 'fast_forward' ) {
 
+          router = { path:'shopping/products/'+this.uri , data:
+              [
+                { keyparams :'id', params:  this.pages_details.category_id },
+                {keyparams :'page', params:  this.pages_details.page+5 }
 
+              ] , relative:false };
+        }
+        else if ( click_details.icon_material =='skip_previous' ) {
 
+          router = { path:'shopping/products/'+this.uri , data:
+              [
+                { keyparams :'id', params: this.pages_details.category_id},
+                {keyparams :'page', params:  this.pages_details.page-1 }
 
+              ] , relative:false };
+        }
+        else if ( click_details.icon_material == 'fast_rewind' ) {
 
+          router = { path:'shopping/products/'+this.uri , data:
+              [
+                { keyparams :'id', params:  this.pages_details.category_id },
+                {keyparams :'page', params:  this.pages_details.page-5 }
+
+              ] , relative:false };
+
+        }else{
+
+          router = { path:'shopping/products/'+this.uri , data:
+              [
+                { keyparams :'id', params:  this.pages_details.category_id },
+                {keyparams :'page', params:  click_details.page }
+
+              ] , relative:false };
+        }
+
+        this.set_router(router);
+
+      }
 
   }
-
-
-
-
-
 
 }

@@ -47,16 +47,17 @@ export class HomeComponent implements OnInit {
 
   )
   {
-
       this.scroll.window(0,0);
 
       this.dataservices.update_loader(true);
 
       if(   this.homeservice.categories_products.length  == 0) {
 
+          this.dataservices.loaded_component = false;
+
           this.dataservices.update_loader( true );
 
-          this.dataservices.Http_Get( 'categories_products',this.homeservice.store_data_carousel ) // make request ......
+          this.dataservices.Http_Get( 'shopping/home/categories',this.homeservice.store_data_carousel ) // make request ......
 
               .subscribe( //  take success
 
@@ -74,6 +75,8 @@ export class HomeComponent implements OnInit {
                           this.dataservices.update_loader(false);
 
                       }, 1000);
+
+                      this.dataservices.loaded_component = true;
 
 
                   },
@@ -157,7 +160,7 @@ export class HomeComponent implements OnInit {
 
 
 
-      this.dataservices.Http_Get( 'moreProductsInCategory',  this.homeservice.store_data_carousel  ) // make request ......
+      this.dataservices.Http_Get( 'shopping/home/more_products_incarousel',  this.homeservice.store_data_carousel  ) // make request ......
 
           .subscribe( //  take success
 
@@ -215,7 +218,7 @@ export class HomeComponent implements OnInit {
 
           this.dataservices.update_spinner(true);
 
-          this.dataservices.Http_Get( 'categories_products', this.homeservice.store_data_carousel ) // make request ......
+          this.dataservices.Http_Get( 'shopping/home/categories' , this.homeservice.store_data_carousel ) // make request ......
 
               .subscribe( //  take success
 
@@ -254,7 +257,7 @@ export class HomeComponent implements OnInit {
 
   public  set_router( data ){  // set router ..............................
 
-    this.setRouter.set_router( data , this.route ); // set router .....
+      this.setRouter.set_router( data , this.route ); // set router .....
 
   } // end set_rouer
 

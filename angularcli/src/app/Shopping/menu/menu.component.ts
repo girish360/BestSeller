@@ -42,7 +42,7 @@ export class MenuComponent  implements OnInit  {
   )
   {
 
-    this.dataservices.Http_Get( 'menu', false ) // make request ......
+    this.dataservices.Http_Get( 'shopping/menu/category', false ) // make request ......
 
         .subscribe( //  take success
 
@@ -76,10 +76,10 @@ export class MenuComponent  implements OnInit  {
   ];
 
   private subscriptions:object = [
-    { 'icon':'klo.jpg','id':'1','name':'Electronics' },
-    { 'icon':'1234.jpg','id':'2','name':'Phone' },
-    { 'icon':'b3.jpg','id':'3','name':'Samsung' },
-    { 'icon':'klo.jpg','id':'4','name':'T-shirt' }
+    { 'icon':'klo.jpg','id':'1','name':'Elektronics' },
+    { 'icon':'1234.jpg','id':'2','name':'Fashion' },
+    { 'icon':'b3.jpg','id':'3','name':'Agricultural Machinery' },
+    { 'icon':'klo.jpg','id':'4','name':'Vehicles' }
   ];
 
   private settings:object = [
@@ -130,7 +130,9 @@ export class MenuComponent  implements OnInit  {
 
   check_subscribes( company ){
 
-    this.set_router( { path:company.name , data:company.id , relative:true } );
+    let company_path = 'company/'+company.name+'@'+company.id;
+
+    this.set_router( { path:company_path, data: false  , relative:true } );
 
   }
 
@@ -140,7 +142,14 @@ export class MenuComponent  implements OnInit  {
 
   category_products( category ){
 
-    this.set_router( { path:'products/'+category.name+'/2' , data:category.id , relative:true } );
+   let router = { path:'shopping/products/'+category.name , data:
+        [
+          { keyparams :'id', params:  category.id },
+          {keyparams :'page', params:  1 }
+
+        ] , relative:false };
+
+    this.set_router( router );
 
   }
 

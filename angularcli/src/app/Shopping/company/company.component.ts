@@ -1,5 +1,7 @@
 import { Component, OnInit ,OnDestroy,ViewChild, ElementRef, Input  ,Renderer,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 
+import {Location} from '@angular/common';
+
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
@@ -53,56 +55,23 @@ export class CompanyComponent implements OnInit {
 
     public carousel_category: NgxCarousel;
 
-    public category_items = [
 
-        {src: '1234.jpg', title: 'Category1'},
-        {src: 'klo.jpg', title: 'Category2'},
-        {src: 'b3.jpg', title: 'Category3'},
-        {src: '1234.jpg', title: 'Category4'},
-        {src: '1234.jpg', title: 'Category5'},
-        {src: '1234.jpg', title: 'Category1'},
-        {src: '1234.jpg', title: 'Category5'},
-        {src: '1234.jpg', title: 'Category1'},
-        {src: '1234.jpg', title: 'Category1'},
-        {src: 'klo.jpg', title: 'Category2'},
-        {src: 'b3.jpg', title: 'Category3'},
-        {src: '1234.jpg', title: 'Category4'},
-        {src: '1234.jpg', title: 'Category5'},
-        {src: '1234.jpg', title: 'Category1'},
-        {src: '1234.jpg', title: 'Category5'},
-        {src: '1234.jpg', title: 'Category1'},
-
-
-    ];
 
     public comapny_slide: NgxCarousel;
 
     private _timeoutId: number;
 
-    public images_slide = [
-
-        {id: 1, src: '1.jpg', title: 'Category1'},
-        {id: 2, src: '2.jpg', title: 'Category2'},
-
-    ];
-
     public company_nav:any = [
 
-        {id:0 , name:'Home', icon:'home' ,
-            router:{
-                path:'home',data:false,relative:true
-            }
+        { id:0 , name:'Home', icon:'home' ,
+
         },
-        {id:1 , name:'Categories', icon:'view_module',
-            router:{
-                path:'categories',data:false,relative:true
-            }
+        { id:1 , name:'Categories', icon:'view_module',
+
         },
 
-        {id:2 , name:'About', icon:'info',
-            router:{
-                path:'about',data:false,relative:true
-            }
+        { id:2 , name:'About', icon:'info',
+
         }
 
     ];
@@ -114,78 +83,118 @@ export class CompanyComponent implements OnInit {
         private scroll: ScrollbarService,
         private dataservices: DataService,
         private crypto: EncryptDecryptService,
+        private location: Location,
         private route: ActivatedRoute,
         private router: Router,
         private renderer: Renderer,
         private cd: ChangeDetectorRef
     ) {
 
-        this.route.params.subscribe( params => {
+        this.route.params.subscribe( params =>{
 
-            let company_id = params['name'];
+            let company = params.details;
 
-            this.products.type_products = company_id;
+            let company_name;
 
-            this.scroll.window(0, 0);
+            let company_id;
 
-            this.dataservices.update_loader( true );
+            if( company.includes("@") ){
 
-            if ( this.company.categories_products.length == 0 || this.company.company_data_carousel.company_id != company_id) {
+                let index = company.indexOf('@');
 
-                this.company.company_data_carousel = {
+                company_name = company.substring( 0, index ) ;
 
-                    current_page_products: 0,
+                company_id  = company.substring( index+1, company.length );
 
-                    current_page_categories: 0,
+                if( !isNaN( company_id ) && ( company_name instanceof String || isNaN( parseInt(company_name) ) ) ){
 
-                    total_categories: 0,
+                    this.products.data_products.type_products = company_id;
 
-                    categories_for_page: 5,
+                    this.scroll.window(0, 0);
 
-                    company_id: company_id,
+                    this.dataservices.update_loader( true );
 
-                    category_id: false,
+                    if ( this.company.categories_products.length == 0 || this.company.company_data_carousel.company_id != company_id ) {
 
+                        this.dataservices.loaded_component = false;
 
-                }; // inital  can change later ....
+                        this.company.company_data_carousel = {
 
+                            current_page_products: 0,
 
-                let en = this.crypto.encryp_AES( JSON.stringify( this.company.company_data_carousel ) );
+                            current_page_categories : 0,
 
-                this.dataservices.Http_Get( 'categories_products' , this.company.company_data_carousel ) // make request ......
+                            total_categories : 0,
 
-                    .subscribe( //  take success
+                            categories_for_page : 5,
 
-                        data => {
+                            company_id:company_id,
 
-                            this.company.categories_products = data['data']['categories'];
+                            company_name :company_name
 
-                            this.company.company_data_carousel = data['data']['store_data'];
+                        }; // inital  can change later ....
 
-                            this.company.company_info = data['data']['company_info'];
+                        let en = this.crypto.encryp_AES( JSON.stringify( this.company.company_data_carousel ) );
 
-                            this.cd.markForCheck();
+                        this.dataservices.Http_Get( 'shopping/company/load' , this.company.company_data_carousel ) // make request ......
 
-                            this.company.categories_products_async.next(true);
+                            .subscribe( //  take success
 
-                            setTimeout(() => {
+                                response => {
 
-                                this.dataservices.update_loader(false);
+                                    if( response.data != false ){
 
-                            }, 1000);
+                                        this.company.categories_products = response.data.categories_products;
 
-                        },
+                                        this.company.company_data_carousel = response.data.store_data;
 
-                        error => console.log(error['data']) // take error .....
+                                        this.company.categories = response.data.categories;
 
-                    );
-            }else{
-                setTimeout(() => {
+                                        this.company.company_info = response.data.company_info;
 
-                    this.dataservices.update_loader(false);
+                                        this.dataservices.loaded_component = true;
 
-                }, 1000);
+                                    }else{
+
+                                        this.dataservices.not_founded = true;
+                                    }
+
+                                    this.cd.markForCheck();
+
+                                    this.dataservices.update_company(true);
+
+                                    setTimeout(() => {
+
+                                        this.dataservices.update_loader(false);
+
+                                    }, 1000);
+
+                                },
+
+                                error => console.log(error['data']) // take error .....
+
+                            );
+                    }else{
+
+                        setTimeout(() => {
+
+                            this.dataservices.update_loader(false);
+
+                        }, 1000);
+                    }
+
+                }else{ // // does not exists this page name must be string and id must be number ..........
+
+                    this.dataservices.not_founded = true;
+
+                }
+
+            }else{ // does not exists this page @ symbol is not included ..........
+
+                this.dataservices.not_founded = true;
             }
+
+
 
         });
 
@@ -197,7 +206,7 @@ export class CompanyComponent implements OnInit {
 
             this.top_slide.opacity = ( 300 - scroll.top  ) / 300;
 
-            if (scroll.top >= 80) {
+            if ( scroll.top >= 80 ) {
 
                 this.button_slide_css.status = true;
 
@@ -237,42 +246,7 @@ export class CompanyComponent implements OnInit {
 
     ngOnDestroy(){
 
-        this.products.type_products='default'; // when company component destroied type_products should be default ...
-    }
-
-    focus_search_function() { // focus in search
-
-        this.company.company_properties.focus_input_search = !this.company.company_properties.focus_input_search;
-
-    }
-
-    check_focus() {
-
-        this.el.nativeElement.focus();
-
-    }
-
-    hover_nav(){ // enter hover navvv........................
-
-        this.company.company_properties.tmp_nav_active = this.company.company_properties.company_nav_active;
-
-        this.company.company_properties.company_nav_active = -1 ;
-    }
-
-    leave_hover_nav(){ // leave from hover navvvvvvvvvvvv..............
-
-        if( this.company.company_properties.tmp_nav_active != -1 ) {
-
-            this.company.company_properties.company_nav_active = this.company.company_properties.tmp_nav_active;
-        }
-
-    }
-
-    change_active_nav( nav_index ){ // click on nav, change active nav..................
-
-        this.company.company_properties.tmp_nav_active = -1;
-
-        this.company.company_properties.company_nav_active = nav_index;
+        this.products.data_products.type_products='default'; // when company component destroied type_products should be default ...
     }
 
     ngOnInit() {
@@ -363,12 +337,46 @@ export class CompanyComponent implements OnInit {
         }
     }
 
+    public focus_search_function() { // focus in search
 
-    carouselTileOneLoad(ev) {
+        this.company.company_properties.focus_input_search = !this.company.company_properties.focus_input_search;
 
     }
 
-    onmove_carousel(ev) {
+    public check_focus() {
+
+        this.el.nativeElement.focus();
+
+    }
+
+    public hover_nav(){ // enter hover navvv........................
+
+        this.company.company_properties.tmp_nav_active = this.company.company_properties.company_nav_active;
+
+        this.company.company_properties.company_nav_active = -1 ;
+    }
+
+    public leave_hover_nav(){ // leave from hover navvvvvvvvvvvv..............
+
+        if( this.company.company_properties.tmp_nav_active != -1 ) {
+
+            this.company.company_properties.company_nav_active = this.company.company_properties.tmp_nav_active;
+        }
+
+    }
+
+    public change_active_nav( nav_index ){ // click on nav, change active nav..................
+
+        this.company.company_properties.tmp_nav_active = -1;
+
+        this.company.company_properties.company_nav_active = nav_index;
+    }
+
+    public carouselTileOneLoad(ev) {
+
+    }
+
+    public onmove_carousel(ev) {
 
     }
 
@@ -409,7 +417,23 @@ export class CompanyComponent implements OnInit {
 
     public click_nav( data_nav ){
 
-        this.set_router( data_nav.router );
+        let route;
+
+        if( data_nav.id == 0 ){
+
+            route = { path:'shopping/company/'+this.company.company_info.name+'@'+this.company.company_info.id , data: false  , relative:false } ;
+
+        }else if(data_nav.id == 1){
+
+            route = { path:'categories/' ,data:false,relative:true};
+
+        }else if(data_nav.id == 2){
+
+            route = {path:'about/',data:false,relative:true};
+
+        }
+
+        this.set_router( route );
 
     }
 
@@ -421,22 +445,11 @@ export class CompanyComponent implements OnInit {
 
                 if( this.company.text_search != '' ) {
 
-                    console.log(this.company.text_search);
-
                     this.set_router({path: 'search', data: false, relative: true});
-
-                    this.company.company_properties.last_nav =   this.company.company_properties.company_nav_active;
-
-                    this.company.company_properties.company_nav_active = 'search';
-
-
 
                 }else{
 
-                    this.set_last_nav( this.company.company_properties.last_nav );
-
-                    this.company.company_properties.company_nav_active = this.company.company_properties.last_nav;
-
+                    this.location.back();
 
                 }
 
@@ -445,17 +458,5 @@ export class CompanyComponent implements OnInit {
 
     }
 
-    public set_last_nav( last_id ){
 
-        for( let i = 0 ; i < this.company_nav.length ; i++ ){
-
-            if( last_id == this.company_nav[i].id ){
-
-                this.set_router( this.company_nav[i].router );
-
-            }
-
-        }
-
-    }
 }

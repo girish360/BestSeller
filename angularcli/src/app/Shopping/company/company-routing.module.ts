@@ -15,15 +15,15 @@ import { ProductsComponent } from '../products/products.component';
 
 import { CategoriesComponent } from './categories/categories.component'; // company categories ........
 
+
 const routes: Routes = [
 
-  { path: '' , component : CompanyComponent,
+  {
+    path: '' , component : CompanyComponent,
 
     children:[
 
       { path:'' , component:HomeComponent },
-
-      { path:'home' , component:HomeComponent },
 
       { path:'search' , component:SearchComponent },
 
@@ -31,9 +31,10 @@ const routes: Routes = [
 
       { path:'categories' , component:CategoriesComponent },
 
-      { path:'products/:name' , component:ProductsComponent },
+      { path:'products' , component:ProductsComponent },
 
-      { path:'home/products/:name' , component:ProductsComponent },
+
+
     ]
   }
 

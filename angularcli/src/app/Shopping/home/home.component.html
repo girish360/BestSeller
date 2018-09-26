@@ -1,5 +1,7 @@
 
 
+<ng-container *ngIf="dataservices.loaded_component;else loadingHome">
+
 <div class="home"
      infiniteScroll
      [infiniteScrollDistance]="0"
@@ -13,7 +15,7 @@
 
         <span class="see_all_category">
 
-            <a href="#" (click)="set_router( { path:'products/'+category.name+'/2' , data:category.id , relative:true })"> See All </a>
+            <a href="#" (click)="set_router( { path:'products/'+category.name , data:[ { keyparams :'id', params:  category.id } , {keyparams :'page', params:  1} ] , relative:true })"> See All </a>
 
         </span>
 
@@ -31,9 +33,9 @@
 
                     <a href="javascript:void(0)">
 
-                        <div class="img_item border_bottom " (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })" >
+                        <div class="img_item border_bottom " (click)="set_router({ path:'product-details/show' , data:{ keyparams:'id' , params:product.product_id} , relative:true })" >
 
-                            <img src="../../assets/images/products_image/{{product.product_image}}">
+                            <img src="../../assets/images/products_image/{{product.image}}">
 
                         </div>
 
@@ -42,11 +44,11 @@
                     <div class="content_carousel">
 
                          <div class ="">
-                             {{product.product_title}}
+                             {{product.title}}
                          </div>
 
                         <div class ="price">
-                            price: {{product.product_price}}
+                            price: {{product.price}}
                         </div>
 
                     </div>
@@ -70,6 +72,15 @@
     </div>
 
 </div>
+
+</ng-container>
+
+<ng-template #loadingHome>
+
+
+    Loading home compoent
+
+</ng-template>
 
 
 

@@ -18,7 +18,7 @@ export class HeaderService  implements OnInit {
 
   constructor( protected dataservices : DataService ) {
 
-    this.dataservices.Http_Get( 'wishList_cartList', false ) // make request ......
+    this.dataservices.Http_Get( 'shopping/header/wishList_cartList', false ,false ) // make request ......
 
         .subscribe( //  take success
 
@@ -88,7 +88,6 @@ export class HeaderService  implements OnInit {
 
   public button_properties:any = { active:0 , disabled:false , pointer:1 , selectedIndex:'empty' };
 
-
   update_wishList( new_wishlist ){
 
     this.wish_properties.wishList = new_wishlist;
@@ -143,7 +142,7 @@ export class HeaderService  implements OnInit {
 
     let update_quantity = [{ "id":cart_product.product_id , "quantity": event.target.value }];
 
-    this.dataservices.Http_Post( 'update_quantity_cartList', update_quantity ) // make request ......
+    this.dataservices.Http_Post( 'shopping/header/update_cartList', update_quantity ) // make request ......
 
         .subscribe( //  take success
 
@@ -205,7 +204,7 @@ export class HeaderService  implements OnInit {
 
       console.log(JSON.stringify( this.wish_properties.array_wishId ));
 
-      this.dataservices.Http_Post( 'addInWishList', this.wish_properties.array_wishId  ) // make request ......
+      this.dataservices.Http_Post( 'shopping/header/add_inwishList', this.wish_properties.array_wishId  ) // make request ......
 
           .subscribe( //  take success
 
@@ -250,7 +249,7 @@ export class HeaderService  implements OnInit {
 
       this.subject_products.next(true);
 
-      this.dataservices.Http_Post( 'addInCartList' , this.cart_properties.array_cartId ) // make request ......
+      this.dataservices.Http_Post( 'shopping/header/add_incartList' , this.cart_properties.array_cartId ) // make request ......
 
           .subscribe( //  take success
 
@@ -268,9 +267,9 @@ export class HeaderService  implements OnInit {
 
   delete_from_wishList( ){
 
-    this.wish_properties.filter_wish='';
+     this.wish_properties.filter_wish='';
 
-  this.wish_properties.array_wishId = [];
+    this.wish_properties.array_wishId = [];
 
   for( var i = 0 ; i < this.wish_properties.selected.length ; i++ ) { // remove from wish list products that are in selected
 
@@ -293,7 +292,7 @@ export class HeaderService  implements OnInit {
 
     this.subject_products.next(true);
 
-    this.dataservices.Http_Post( 'deleteItemsInWish' , this.wish_properties.array_wishId ) // make request ......
+    this.dataservices.Http_Post( 'shopping/header/delete_items_inWish' , this.wish_properties.array_wishId ) // make request ......
 
         .subscribe( //  take success
 
@@ -313,7 +312,7 @@ export class HeaderService  implements OnInit {
 
   }
 
-  delete_from_cartList( ){
+  delete_from_cartList(){
 
     this.cart_properties.filter_cart='';
 
@@ -337,7 +336,7 @@ export class HeaderService  implements OnInit {
 
     this.subject_products.next(true);
 
-    this.dataservices.Http_Post( 'deleteItemsInCart' , this.cart_properties.array_cartId ) // make request ......
+    this.dataservices.Http_Post( 'shopping/header/delete_items_inCart' , this.cart_properties.array_cartId ) // make request ......
 
         .subscribe( //  take success
 
@@ -359,8 +358,6 @@ export class HeaderService  implements OnInit {
 
     this.total_items_and_price();
   }
-
-
 
   toggle_select_wish( item_wish ){
 
@@ -553,7 +550,7 @@ export class HeaderService  implements OnInit {
 
       this.total_items_and_price();
 
-      this.dataservices.Http_Post( 'addInCartList', this.cart_properties.array_cartId ) // make request ......
+      this.dataservices.Http_Post( 'shopping/header/add_incartList', this.cart_properties.array_cartId ) // make request ......
 
           .subscribe( //  take success
 
@@ -580,6 +577,7 @@ export class HeaderService  implements OnInit {
     this.wish_properties.button = true;
 
   }
+
   check_button_deleteProducts_fromcartlist(){
 
     if( this.cart_properties.selected.length > 0 ){
@@ -593,11 +591,6 @@ export class HeaderService  implements OnInit {
 
   }
 
-
-
-
-
-
   show_hide_search_in_wishlist(){
 
     return this.wish_properties.icon_search = !this.wish_properties.icon_search
@@ -610,7 +603,6 @@ export class HeaderService  implements OnInit {
 
   }
 
-
   check_show_hide_search_in_wishlist(){
 
     if( this.wish_properties.icon_search == true ){
@@ -620,6 +612,7 @@ export class HeaderService  implements OnInit {
 
     return '';
   }
+
   check_show_hide_search_in_cartlist(){
 
     if( this.cart_properties.icon_search == true ){

@@ -8,19 +8,19 @@ import { EncryptDecryptService } from './encrypt-decrypt.service';
 
 export class SetRouterService extends EncryptDecryptService{
 
-  constructor(  private router: Router ) {
+    constructor(  private router: Router ) {
 
      super();
 
-  }
+    }
 
-  public set_router( data , route  ) {
+  public set_router( routing , route  ) {
 
-      if ( data.data == false ) { // router without any data in url ..... ...........................
+      if ( routing.data == false ) { // router without any data in url ..... ...........................
 
-        if( data.relative == true ){
+        if( routing.relative == true ){
 
-          this.router.navigate( [ data.path ],
+          this.router.navigate( [ routing.path ],
 
               {
                 relativeTo: route
@@ -29,28 +29,47 @@ export class SetRouterService extends EncryptDecryptService{
 
         }else{
 
-          this.router.navigate( [ data.path ] );
+          this.router.navigate( [ routing.path ] );
         }
         return;
       }
 
       // router with data in url ..........................................
 
-      let encryp_id = this.encryp_AES( data.data );
+      let paramsInUrl:any = {};
 
-      if(data.relative == true){
+      if( routing.data instanceof Array ){   //  array of object with params ..........................................
 
-        this.router.navigate( [ data.path , encryp_id.toString() ],
+          for( let param of routing.data ){ // loop
+
+              paramsInUrl[param.keyparams] = param.params.toString();
+          }
+
+      }else{ // single param ....................................
+
+          paramsInUrl = { [routing.data.keyparams] : routing.data.params.toString() };
+      }
+
+
+      if( routing.relative == true){
+
+        this.router.navigate( [ routing.path ] ,
 
             {
-              relativeTo: route
+                relativeTo: route ,  queryParams: paramsInUrl
             }
+
 
         );
 
       }else{
 
-        this.router.navigate( [ data.path , encryp_id.toString() ] );
+        this.router.navigate( [ routing.path ] ,
+
+            {
+                queryParams: paramsInUrl
+            }
+        );
       }
     return;
   }

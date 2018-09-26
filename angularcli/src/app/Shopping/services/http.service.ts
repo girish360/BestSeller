@@ -22,7 +22,7 @@ export class HttpService extends EncryptDecryptService {
 
   private path = '/BestSellerApi';
 
-  Http_Get( uri , data ): Observable<any[]>{ // get method  wating for two parameters key string and data object....
+  Http_Get( uri  , data ): Observable<any[]>{ // get method  wating for two parameters key string and data object....
 
     const headers = new Headers();
 
@@ -32,18 +32,27 @@ export class HttpService extends EncryptDecryptService {
 
     let params = new URLSearchParams();
 
-    let body = '';
+
 
     if( data != false ){
 
-       body =  this.encryp_AES( JSON.stringify( data ) );
+     let body =  this.encryp_AES( JSON.stringify( data ) );
 
+     let keyparams ='params';
+
+      params.append( keyparams , encodeURIComponent( body ) );
+
+      return this.http.get( this.path+'/'+uri , { search:params ,headers:headers } )
+
+          .map( ( Response ) => Response.json() );
+
+    }else{
+
+      return this.http.get( this.path+'/'+uri, { headers:headers } )
+
+          .map( ( Response ) => Response.json() );
     }
-    params.append( uri , encodeURIComponent( body ) );
 
-    return this.http.get( this.path, { search:params ,headers:headers } )
-
-        .map( ( Response ) => Response.json() );
 
   }
 

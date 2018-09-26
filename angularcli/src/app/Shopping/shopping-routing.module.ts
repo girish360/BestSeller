@@ -11,6 +11,8 @@ import { MenuComponent } from './menu/menu.component';
 
 import { ProductsComponent } from './products/products.component'; // show products for a category
 
+import { NotFoundComponent } from '../share/not-found/not-found.component';
+
 const routes: Routes = [
 
   {
@@ -20,13 +22,17 @@ const routes: Routes = [
 
       { path: '', component: HomeComponent },
 
-      { path: 'products/:name/:id/:name', component:ProductsComponent },
+      { path: 'products/:name', component:ProductsComponent },
 
-      { path: ':name/:name',  loadChildren :'./company/company.module#CompanyModule'},
+      { path: 'company/:details',  loadChildren :'./company/company.module#CompanyModule'},
 
-      { path: 'login', loadChildren : './login-register/login-register.module#LoginRegisterModule'},
+      { path: 'product-details/:name', loadChildren: './product-details/product-details.module#ProductDetailsModule'},
 
-      { path: 'wish', loadChildren : './wish-list/wish-list.module#WishListModule' },
+      { path: 'login-register', loadChildren : './login-register/login-register.module#LoginRegisterModule'},
+
+      { path: 'wish-list/:id', loadChildren : './wish-list/wish-list.module#WishListModule'},
+
+      { path: ':keyword', loadChildren: './search/search.module#SearchModule'},
 
       // { path: 'card', component: CardComponent},
       //
@@ -36,8 +42,10 @@ const routes: Routes = [
 
       { path: 'menu', component: MenuComponent},
 
-      { path: ':name/:name/:name', loadChildren: './product-details/product-details.module#ProductDetailsModule'}
+      { path:'**',component: NotFoundComponent }
+
     ]
+
   }
 
 ];

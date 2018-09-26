@@ -1,7 +1,9 @@
 
-<div class="component-animation" *ngIf="dataservices.status_language | async"> <!--  this component is inside this div  ...................................................... -->
+<div class="component-animation" *ngIf="{products : dataservices.products | async , app : dataservices.async | async } "> <!--  this component is inside this div  ...................................................... -->
 
-    <div class="sticky " [ngClass]="{'products_sticky':productsService.type_products == 'default'}">
+    <ng-container *ngIf="dataservices.loaded_component ; else loadingProducts" >
+
+    <div class="sticky " [ngClass]="{'products_sticky':productsService.data_products.type_products == 'default'}">
 
         <div class="sticky_options ">  <!--  Options products pagination ,  select  ...................................................... -->
 
@@ -39,29 +41,35 @@
 
                 </div>
 
-                <mat-form-field style="width:50px;  position: relative;top:5px;">
-
-                    <mat-select placeholder="For page" [(value)]="selected_for_page" (change)="change_products_for_page()">
-
-                        <mat-option [value]="1">
-                        20
-                        </mat-option>
-                        <mat-option [value]="2">
-                            40
-                        </mat-option>
-                        <mat-option [value]="3">
-                            60
-                        </mat-option>
-                        <mat-option [value]="4">
-                            80
-                        </mat-option>
-
-                    </mat-select>
-
-                </mat-form-field>
-
-
             </div>
+            <mat-form-field style="width:100px;  position: absolute;right:0;top:-10px; ">
+
+                <mat-select  [(value)]="pages_details.products_for_page" (change)="change_products_for_page()">
+
+                    <mat-option [value]="5">
+                        5 / Page
+                    </mat-option>
+
+                    <mat-option [value]="10">
+                        10 / Page
+                    </mat-option>
+
+                    <mat-option [value]="20">
+                        20 / Page
+                    </mat-option>
+                    <mat-option [value]="40">
+                        40 / Page
+                    </mat-option>
+                    <mat-option [value]="60">
+                        60 / Page
+                    </mat-option>
+                    <mat-option [value]="80">
+                        80 / Page
+                    </mat-option>
+
+                </mat-select>
+
+            </mat-form-field>
 
         </div>
 
@@ -75,23 +83,23 @@
 
       <div class="width_products component-animation " *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':menuservice.status_menu | async  }" >
 
-          <div class="space">
+          <div class="space outer_content">
 
               <div class="width_each_product">
 
-                  <div  class="title_products more_detail_product" (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })">
+                  <div  class="title_products more_detail_product" >
 
-                      {{product.product_title }}
+                      {{product.title }}
 
-                      <span class="glyphicon glyphicon-chevron-down"></span><br>
+                      <mat-icon>arrow_drop_down_circle</mat-icon><br>
 
-                      <div class=' glyphicon glyphicon-time'></div> {{product.product_date}}
+                      <div class=' glyphicon glyphicon-time'></div> {{product.date}}
 
                   </div>
 
-                  <div class="image_product_primary " (click)="set_router({ path:'shopping/'+product['company'].company_name+'/'+product.product_title , data:product.product_id , relative:false })">
+                  <div class="image_product " (click)="set_router({ path:'../../product-details/show' , data:{ keyparams:'id' , params:product.product_id} , relative:true })">
 
-                      <img class="image_product" src="../../assets/images/products_image/{{product.product_image}}">
+                      <img class=" large_img" src="../../assets/images/products_image/{{product.image}}">
 
                   </div>
 
@@ -173,7 +181,25 @@
 
       </div>
 
-  </div>
+    </div>
+
+    </ng-container>
+
+    <ng-template #loadingProducts>
+
+        <ng-container *ngIf="!dataservices.not_founded;else notFounded  ">
+
+            Loading products
+
+        </ng-container>
+
+        <ng-template #notFounded>
+
+            <app-not-found></app-not-found>
+
+        </ng-template>
+
+    </ng-template>
 
 
 </div>

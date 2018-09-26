@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataService } from '../../share-service/data.service';
+
 @Component({
   selector: 'app-controller',
   templateUrl: './controller.component.html',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ControllerComponent implements OnInit {
 
-  constructor() { }
+  constructor( private shareService:DataService ) {
+
+    this.shareService.loading = false;
+  }
 
   ngOnInit() {
+  }
+
+  set_router(){
+
+       this.shareService.loading = true;
+
   }
 
 }

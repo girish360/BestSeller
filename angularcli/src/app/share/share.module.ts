@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProductsComponent } from '../Shopping/products/products.component'; // show products for a category
 
+import { NotFoundComponent } from './not-found/not-found.component';
+
 import {
 
   MatButtonModule,
@@ -25,11 +27,12 @@ import {
 
 } from '@angular/material';
 
+
 @NgModule({
 
   imports: [
-      CommonModule,
 
+    CommonModule,
     MatButtonModule,
     MatCheckboxModule,
     MatIconModule,
@@ -59,7 +62,13 @@ import {
     FilterPipe,
     FormsModule,
     ReactiveFormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+
+
+    NotFoundComponent,
+    ProductsComponent
+
+
 
 
 
@@ -68,7 +77,8 @@ import {
   declarations: [
 
     FilterPipe,
-    ProductsComponent
+    ProductsComponent,
+    NotFoundComponent
 
   ],
 
