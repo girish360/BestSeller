@@ -22,7 +22,7 @@ class Products extends Controller  // class products extends from fetch keep all
 
     private $product_details = array(); //  keep details for one product ............................
 
-    private $table_name = 'product'; // tabel_name to get products.............
+    private $table_name = 'products'; // tabel_name to get products.............
 
     public function __construct()
     {
@@ -56,7 +56,7 @@ class Products extends Controller  // class products extends from fetch keep all
             $count = database::table( $this->table_name )
                 ->count()
                 ->where( 'category_id','=', $request->category_id )
-                ->andWhere( 'company_id','=',$request->type_products )
+                ->andWhere( 'supplier_id','=',$request->type_products )
                 ->get()[0]['count'];
 
         }
@@ -93,16 +93,20 @@ class Products extends Controller  // class products extends from fetch keep all
 
     public function all_products( $request ) // method to get all products that are in table for one category ............
     {
-        $this->products = database::table('product')
+        $this->products = database::table('products')
             ->select(
-                'product.id as product_id', 'product.title', 'product.image_id', 'product.category_id', 'product.price',
-                'product.quantity', 'product.image', 'product.date', 'product.in_cartList', 'product.in_wishList',
-                'company.id as company_id', 'company.name ', 'company.image as company_image'
-            )->join('company','product.company_id','=','company.id')
-            ->where('product.category_id','=',$request->category_id)
+                'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
+                'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                'suppliers.id as company_id', 'suppliers.name ', 'suppliers.image as company_image'
+            )->join('suppliers','products.supplier_id','=','suppliers.id')
+            ->where('products.category_id','=',$request->category_id)
             ->get();
 
-        return fetch::json_data( array( 'products' => $this->products, 'pages_details' => false ));
+
+
+        self::get_pages_details( $request );
+
+        return fetch::json_data( array( 'products' => $this->products, 'pages_details' => $this->pages_details ));
     }
 
     public function limit_products( $request, $count ) // method to get limit products for a category......
@@ -111,26 +115,26 @@ class Products extends Controller  // class products extends from fetch keep all
         if($request->type_products == 'default'){
 
             $startrow = --$request->page * $this->products_for_page ;
-            $this->products = database::table('product')
+            $this->products = database::table('products')
                 ->select(
-                    'product.id as product_id', 'product.title', 'product.image_id', 'product.category_id', 'product.price',
-                    'product.quantity', 'product.image', 'product.date', 'product.in_cartList', 'product.in_wishList',
-                    'company.id as company_id', 'company.name ', 'company.image as company_image'
-                )->join('company','product.company_id','=','company.id')
-                ->where('product.category_id','=',$request->category_id)
+                    'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
+                    'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                    'suppliers.id as company_id', 'suppliers.name ', 'suppliers.image as company_image'
+                )->join('suppliers','products.supplier_id','=','suppliers.id')
+                ->where('products.category_id','=',$request->category_id)
                 ->limit($startrow,$this->products_for_page)
                 ->get();
 
         }else if($request->type_products == 'company'){
 
             $startrow = --$request->page * $this->products_for_page ;
-            $this->products = database::table('product')
+            $this->products = database::table('products')
                 ->select(
-                    'product.id as product_id', 'product.title', 'product.image_id', 'product.category_id', 'product.price',
-                    'product.quantity', 'product.image', 'product.date', 'product.in_cartList', 'product.in_wishList',
-                    'company.id as company_id', 'company.name ', 'company.image as company_image'
-                )->join('company','product.company_id','=','company.id')
-                ->where('product.category_id','=',$request->category_id)
+                    'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
+                    'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                    'suppliers.id as company_id', 'suppliers.name ', 'suppliers.image as company_image'
+                )->join('suppliers','products.company_id','=','suppliers.id')
+                ->where('products.category_id','=',$request->category_id)
                 ->andWhere('')
                 ->limit($startrow,$this->products_for_page)
                 ->get();
@@ -151,7 +155,7 @@ class Products extends Controller  // class products extends from fetch keep all
             //table
             "product" => array(
                 // columns table
-                'product.id', 'product.title', 'product.company_id', 'product.image', 'product.description', 'product.price', 'product.unit_stock'
+                'products.id', 'products.title', 'products.company_id', 'products.image', 'products.description', 'products.price', 'products.unit_stock'
             ),
             // table
 
@@ -162,98 +166,33 @@ class Products extends Controller  // class products extends from fetch keep all
             //  table
             "image_product" => array(
                 //columns table
-                'image_product.id', 'image_product.image', 'image_product.product_id'
+                'image_products.id', 'image_products.image', 'image_products.product_id'
             )
             // more table and columns ............
         );
 
-        $where = 'product.company_id = company.id  AND image_product.product_id = product.id AND product.id = "' . $product->product_id . '"';
+        $product_Details = database::table( $this->table_name )
 
-        $query = db::select_join( $select_and_tables, $where );
+            ->select(
+                'products.id as product_id', 'products.title', 'products.supplier_id', 'products.image', 'products.description', 'products.price', 'products.unit_stock',
+                'suppliers.id as supplier_id', 'suppliers.name', 'suppliers.shipping')
+            ->join('suppliers','products.supplier_id','=','suppliers.id')
+            ->where('products.id','=',$product->product_id)
+            ->get();
 
-        if ( $query['query']->rowCount() > 0 ) { //  withs multiple image
-
-            $data = fetch::fetch_data_join($query);
-
-            $tmp_image = array();
-
-            $tmp_product = array();
-
-            $tmp_company = array();
-
-            foreach ( $data as $key => $value ) {  // convert image into array .....................
-
-                foreach ($value['image_product'] as $key_image => $image) {
-
-                    $tmp_image[] = $image;
-                }
-                foreach ($value['company'] as $key_company => $company) {
-
-                    $tmp_company = $company;
-                }
-                $tmp_product['product'] = $value;
-
-                $tmp_product['product']['company'] = $tmp_company;
-
-                $tmp_product['product']['image_product'] = $tmp_image;
-            }//.....................
-
-            $this->product_details = $tmp_product;
-
-            return fetch::json_data( $this->product_details );
-
-        } else { //  dont have multiple image ............
-
-            $select_and_tables = array(  // array with t6ables and respective columns
-
-                "product" => array(
-                    // columns table
-                    'product.id', 'product.title', 'product.company_id', 'product.image', 'product.description', 'product.price', 'product.unit_stock'
-                ),
-                // table
-
-                "company" => array(
-                    //colums table
-                    'company.id', 'company.name', 'company.shipping'
-                ),
-                // more table and columns ............
-            );
-
-            $where = 'product.company_id = company.id  AND product.id = "' . $product->product_id . '"';
-
-            $query = db::select_join($select_and_tables, $where);
-
-            if ($query['query']->rowCount() > 0) {
-
-                $data = fetch::fetch_data_join($query);
-
-                $tmp_image = array();
-
-                $tmp_product = array();
-
-                $tmp_company = array();
-
-                foreach ($data as $key => $value) {  // convert image into array .....................
-
-                    foreach ($value['company'] as $key_company => $company) {
-
-                        $tmp_company = $company;
-                    }
-
-                    $tmp_product['product'] = $value;
-
-                    $tmp_product['product']['company'] = $tmp_company;
-
-                    $tmp_product['product']['image_product'] = $tmp_image; //  empty image ........... length 0
-                }//.....................
-
-
-                $this->product_details = $tmp_product;
-
-                return fetch::json_data( $this->product_details );
-            }
+        if( count($product_Details) == 1 ){
+            $product_Details = $product_Details[0];
         }
 
+        $tmp_product = array ();
+
+        $tmp_product['product'] = $product_Details;
+
+        $tmp_product['company'] = 0;
+
+
+
+        return fetch::json_data($tmp_product);
     }
 
     public function chnageProductsForPage( $request ){

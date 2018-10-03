@@ -1,4 +1,4 @@
-import { Injectable,OnInit,ChangeDetectorRef,Input, } from '@angular/core';
+import { Injectable,OnInit,ChangeDetectorRef,Input,ElementRef ,ViewChild} from '@angular/core';
 
 import { DataService } from '../services/data.service';
 
@@ -12,33 +12,45 @@ import{Subject} from 'rxjs/Subject';
 
 import 'rxjs/Rx';
 
+declare var $:any;
+
 @Injectable()
 
 export class HeaderService  implements OnInit {
 
+  public search_data: any = { product:true ,company:false , value:'', search:false, server_status:true , dropdown:false };
+
+  public search_results:any=[];
+
+  public recent_serches:any = { status:true , data: [] };
+
   constructor( protected dataservices : DataService ) {
 
-    this.dataservices.Http_Get( 'shopping/header/wishList_cartList', false ,false ) // make request ......
+    this.dataservices.Http_Get( 'shopping/header/wishList_cartList' ,false ) // make request ......
 
         .subscribe( //  take success
 
-            data => {
+            response => {
 
-              if( data['data'] != 'false' ){
+              if( response ){
 
-                this.wish_properties.wishList = data['data']['wishList'];
+                if( response['wishList'] != false ){
 
-                console.log( this.wish_properties.wishList);
+                  this.wish_properties.wishList = response['wishList'];
+                }
 
-                this.set_quantity_in_cartList( data['data']['cookie_cartList'] , data['data']['cartList'] );
+                if( response['cartList'] != false ){
 
-                this.total_items_and_price();
+                  this.set_quantity_in_cartList( response['quantity_items_incart'] , response['cartList'] );
 
+                  this.total_items_and_price();
+
+                }
               }
 
             },
 
-            error => console.log(error['data']) // take error .....
+            error => console.log(error) // take error .....
 
         );
   }
@@ -110,9 +122,9 @@ export class HeaderService  implements OnInit {
 
     for( let i = 0 ; i < this.cart_properties.cartList.length ; i++ ){
 
-      total_price += parseInt(this.cart_properties.cartList[i].product_price)*parseInt(this.cart_properties.cartList[i].product_quantity);
+      total_price += parseInt(this.cart_properties.cartList[i].price)*parseInt(this.cart_properties.cartList[i].quantity);
 
-      total_items += parseInt(this.cart_properties.cartList[i].product_quantity);
+      total_items += parseInt(this.cart_properties.cartList[i].quantity);
 
     }
 
@@ -122,7 +134,7 @@ export class HeaderService  implements OnInit {
 
   }
 
-  update_quantity_cartList( event , cart_product){
+  update_quantity_cartList( cart_product){
 
     let total_price = 0;
 
@@ -130,9 +142,9 @@ export class HeaderService  implements OnInit {
 
     for( let i = 0 ; i < this.cart_properties.cartList.length ; i++ ){
 
-      total_price += parseInt(this.cart_properties.cartList[i].product_price)*parseInt(this.cart_properties.cartList[i].product_quantity);
+      total_price += parseInt(this.cart_properties.cartList[i].price)*parseInt(this.cart_properties.cartList[i].quantity);
 
-      total_items += parseInt(this.cart_properties.cartList[i].product_quantity);
+      total_items += parseInt(this.cart_properties.cartList[i].quantity);
 
     }
 
@@ -140,7 +152,7 @@ export class HeaderService  implements OnInit {
 
     this.cart_properties.total_items = total_items;
 
-    let update_quantity = [{ "id":cart_product.product_id , "quantity": event.target.value }];
+    let update_quantity = [{ "id":cart_product.product_id , "quantity": cart_product.quantity }];
 
     this.dataservices.Http_Post( 'shopping/header/update_cartList', update_quantity ) // make request ......
 
@@ -148,11 +160,11 @@ export class HeaderService  implements OnInit {
 
             data => {
 
-              this.Response = data['data'];
+              this.Response = data;
 
             },
 
-            error => console.log( error['data'] ) // take error .....
+            error => console.log( error ) // take error .....
 
         );
   }
@@ -165,7 +177,7 @@ export class HeaderService  implements OnInit {
 
         if( cartList_in_cookie[j].id == cartList[i].product_id ){
 
-          cartList[i].product_quantity =  cartList_in_cookie[j].quantity ;
+          cartList[i].quantity =  cartList_in_cookie[j].quantity;
 
         }
 
@@ -174,6 +186,8 @@ export class HeaderService  implements OnInit {
     }
 
     this.cart_properties.cartList = cartList;
+
+
 
   }
 
@@ -191,18 +205,16 @@ export class HeaderService  implements OnInit {
 
       }
 
-      this.wish_properties.array_wishId.push( {'id':this.wish_properties.wishList[i].product_id , 'quantity':this.wish_properties.wishList[i].product_quantity });
+      this.wish_properties.array_wishId.push( {'id':this.wish_properties.wishList[i].product_id });
     }
 
     if( this.wish_properties.status_in_wish != true ){ // check if status is not equals with true  to  add this prod in wish ....
 
-      this.wish_properties.array_wishId.unshift( {'id': product.product_id ,'quantity':product.product_quantity} );
+      this.wish_properties.array_wishId.unshift( {'id': product.product_id } );
 
       this.wish_properties.wishList.unshift( product ); // push wish product in wishList products
 
       this.subject_products.next(true);
-
-      console.log(JSON.stringify( this.wish_properties.array_wishId ));
 
       this.dataservices.Http_Post( 'shopping/header/add_inwishList', this.wish_properties.array_wishId  ) // make request ......
 
@@ -210,10 +222,10 @@ export class HeaderService  implements OnInit {
 
               data => {
 
-                this.Response = data['data'];
+                this.Response = data;
 
                 },
-              error => console.log( error['data'] ) // take error .....
+              error => console.log( error ) // take error .....
 
           );
       }
@@ -233,15 +245,13 @@ export class HeaderService  implements OnInit {
         this.cart_properties.status_in_cart = true; //  true status that tell you  that this prod is in wishlist ...
 
       }
-      this.cart_properties.array_cartId.push( {'id':this.cart_properties.cartList[i].product_id , 'quantity':this.cart_properties.cartList[i].product_quantity } );
+      this.cart_properties.array_cartId.push( {'id':this.cart_properties.cartList[i].product_id , 'quantity':this.cart_properties.cartList[i].quantity } );
 
     }
 
     if( this.cart_properties.status_in_cart != true ){ // check if status is not equals with true  to  add this prod in wish ....
 
-      this.cart_properties.array_cartId.unshift( {'id': product.product_id ,'quantity':product.product_quantity} );
-
-      console.log( this.cart_properties.array_cartId);
+      this.cart_properties.array_cartId.unshift( {'id': product.product_id ,'quantity':product.quantity} );
 
       this.cart_properties.cartList.unshift( product ); // push wish product in wishList products
 
@@ -255,11 +265,11 @@ export class HeaderService  implements OnInit {
 
               data => {
 
-                this.Response = data['data'];
+                this.Response = data;
 
               },
 
-              error => console.log( error['data'] ) // take error .....
+              error => console.log( error ) // take error .....
 
           );
     }
@@ -298,11 +308,11 @@ export class HeaderService  implements OnInit {
 
             data => {
 
-              this.Response = data['data'];
+              this.Response = data;
 
             },
 
-            error => console.log( error['data'] ) // take error .....
+            error => console.log( error ) // take error .....
 
         );
 
@@ -342,11 +352,11 @@ export class HeaderService  implements OnInit {
 
             data => {
 
-              this.Response = data['data'];
+              this.Response = data;
 
             },
 
-            error => console.log( error['data'] ) // take error .....
+            error => console.log( error ) // take error .....
 
         );
 
@@ -357,6 +367,136 @@ export class HeaderService  implements OnInit {
     this.cart_properties.array_cartId = []; // empty ....
 
     this.total_items_and_price();
+  }
+
+  public hide_search_content(){
+
+     this.search_data.dropdown = false;
+
+     this.search_data.value='';
+
+     this.hide_dropdown_search('dropdown_search','body_search');
+
+     this.dataservices.update_header(true);
+
+   }
+
+  public show_dropdown_search( dropdown_class, body_inside  ){
+
+    $(function(){
+
+
+
+      $('.'+dropdown_class).css({top: '40px', opacity: '0.1'});
+
+      $('.'+body_inside).css({ top: '15px'});
+
+      $('.'+dropdown_class).show().animate({ // animation effect show dropdown productsService......
+
+        top: '6px',
+
+        opacity: 1
+
+      }, 50);
+
+      $('.'+body_inside).animate({
+
+        top: '0px'
+
+      }, 100);
+
+    });
+
+  }
+
+  public hide_dropdown_search( dropdown_class, body_inside){
+
+    $('.'+body_inside).css({ top: '0px' });
+
+    $('.'+dropdown_class).css({top:'40px',opacity:'1'}); // css style...
+
+    $('.'+dropdown_class).animate({ // animation effect hide dropdown productsService......
+
+      top: '70px',
+
+      opacity: '0.1',
+
+    }, 100, function () { //  function after effect ............
+
+      $('.'+dropdown_class).hide();
+
+    });
+
+    $('.'+body_inside).animate({
+
+      top: '15px'
+
+    }, 200);
+
+  }
+
+  public show_dropdown_button( dropdown_class, body_inside , id ){
+
+    $('.treguesi').css({display: 'none'});
+
+    $('.'+body_inside).css({ top: '15px'});
+
+    $('.' + dropdown_class).css({top: '70px', opacity: '0.1'}); //  css style...
+
+    $('.' + dropdown_class).show().animate({ // animation effect show dropdown productsService......
+
+      top: '40px',
+
+      opacity: 1
+
+    }, 100, function () { //  function after effect ............
+
+      $('.treguesi').css({display: 'block'}); // show pionter......
+
+      $('.write_icon_header').css('visibility', 'visible');
+
+      $('.write_icon_header'+id).css('visibility', 'hidden'); // remove write below icon in productsService
+
+      $('.treguesi').css({display: 'block'});
+
+    });
+
+    $('.' + body_inside).animate({
+
+      top: '0'
+
+    }, 200);
+
+  }
+
+  public hide_dropdown_button( dropdown_class, body_inside){
+
+    $('.treguesi').css({display: 'none'});
+
+    $('.write_icon_header').css('visibility', 'visible');
+
+    $('.' + body_inside).css({top: '0px'});
+
+    $('.' + dropdown_class).css({top: '40px', opacity: '1'}); // css style...
+
+    $('.' + dropdown_class).animate({ // animation effect hide dropdown productsService......
+
+      top: '70',
+
+      opacity: '0.1',
+
+    }, 100, function () { //  function after effect ............
+
+      $('.' + dropdown_class).hide();
+
+    });
+
+    $('.' + body_inside).animate({
+
+      top: '15'
+
+    }, 200);
+
   }
 
   toggle_select_wish( item_wish ){
@@ -539,13 +679,13 @@ export class HeaderService  implements OnInit {
 
       for ( let i = 0; i < this.cart_properties.wish_to_cart.length; i++ ) {
 
-        this.cart_properties.cartList.unshift(this.cart_properties.wish_to_cart[i]);
+        this.cart_properties.cartList.unshift(this.cart_properties.wish_to_cart[i] );
 
       }
 
       for (let i = 0; i < this.cart_properties.cartList.length; i++) {
 
-        this.cart_properties.array_cartId.push(this.cart_properties.cartList[i].product_id);
+        this.cart_properties.array_cartId.push(  {'id':this.cart_properties.cartList[i].product_id , 'quantity':this.cart_properties.cartList[i].quantity } );
       }
 
       this.total_items_and_price();
@@ -556,13 +696,14 @@ export class HeaderService  implements OnInit {
 
               data => {
 
-                this.Response = data['data']
+                this.Response = data
 
               },
-              error => console.log(error['data']) // take error .....
+              error => console.log(error) // take error .....
 
           );
     }
+
   }
 
   check_button_deleteProducts_fromwishlist(){

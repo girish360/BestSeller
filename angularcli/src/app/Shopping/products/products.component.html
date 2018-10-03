@@ -1,5 +1,9 @@
 
+
+
 <div class="component-animation" *ngIf="{products : dataservices.products | async , app : dataservices.async | async } "> <!--  this component is inside this div  ...................................................... -->
+
+
 
     <ng-container *ngIf="dataservices.loaded_component ; else loadingProducts" >
 
@@ -81,7 +85,7 @@
 
     <div class="all_prod" *ngIf="productsService.status_products  |  async "> <!--  start div with products ...................................................... -->
 
-      <div class="width_products component-animation " *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':menuservice.status_menu | async  }" >
+      <div class="width_products component-animation " (contextmenu)="right_click()" *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':menuservice.status_menu | async  }" >
 
           <div class="space outer_content">
 
@@ -181,8 +185,12 @@
 
       </div>
 
-    </div>
+        <div class="contextmenu">
+            context
+        </div>
 
+    </div>
+git
     </ng-container>
 
     <ng-template #loadingProducts>

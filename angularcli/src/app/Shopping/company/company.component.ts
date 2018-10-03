@@ -20,6 +20,8 @@ import { SetRouterService } from '../services/set-router.service';
 
 import { ProductService } from '../products/product.service';
 
+
+
 declare var $:any;
 
 @Component({
@@ -33,6 +35,8 @@ declare var $:any;
 export class CompanyComponent implements OnInit {
 
     @ViewChild("focusInput") el: ElementRef;
+
+    @ViewChild("movecarousel") carousel: ElementRef;
 
     private _timeoutslide: number;
 
@@ -55,11 +59,13 @@ export class CompanyComponent implements OnInit {
 
     public carousel_category: NgxCarousel;
 
-
-
     public comapny_slide: NgxCarousel;
 
     private _timeoutId: number;
+
+    private currentSlide=0;
+
+    private currentSlide_category = 0;
 
     public company_nav:any = [
 
@@ -76,6 +82,7 @@ export class CompanyComponent implements OnInit {
 
     ];
 
+
     constructor(
         private products :ProductService,
         private company: CompanyService,
@@ -87,111 +94,87 @@ export class CompanyComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private renderer: Renderer,
-        private cd: ChangeDetectorRef
+        private cd: ChangeDetectorRef,
+
+        private elementRef : ElementRef
+
+
     ) {
+        this.route.data.subscribe( response => {
 
-        this.route.params.subscribe( params =>{
+           this.currentSlide = 0;
 
-            let company = params.details;
+           this.currentSlide_category = 0;
 
-            let company_name;
+            if ( this.company.resolve ){ // response from  resolve .....
 
-            let company_id;
+                this.dataservices.loaded_component = true;
 
-            if( company.includes("@") ){
+                if( response.company ){  // response from database is is not false this company exist
 
-                let index = company.indexOf('@');
+                    this.company.categories = response.company['categories'];
 
-                company_name = company.substring( 0, index ) ;
+                    this.company.company = response.company['company_info'];
 
-                company_id  = company.substring( index+1, company.length );
+                    this.company.categories_products = response.company['categories_products'];
 
-                if( !isNaN( company_id ) && ( company_name instanceof String || isNaN( parseInt(company_name) ) ) ){
+                    this.dataservices.not_founded = false;
 
-                    this.products.data_products.type_products = company_id;
+                }else{ // dont exists  this company .......
 
-                    this.scroll.window(0, 0);
+                    this.dataservices.not_founded = true;
 
-                    this.dataservices.update_loader( true );
+                }
 
-                    if ( this.company.categories_products.length == 0 || this.company.company_data_carousel.company_id != company_id ) {
+                this.dataservices.update_company(true);
 
-                        this.dataservices.loaded_component = false;
+                this.cd.markForCheck();
 
-                        this.company.company_data_carousel = {
+                setTimeout(() => {
 
-                            current_page_products: 0,
+                    this.dataservices.update_loader(false);
 
-                            current_page_categories : 0,
+                }, 1000);
 
-                            total_categories : 0,
+            } else {
 
-                            categories_for_page : 5,
+                this.dataservices.loaded_component = false;
 
-                            company_id:company_id,
+                this.route.params.subscribe( params => {
 
-                            company_name :company_name
+                    this.company.load_company( params ).subscribe( response =>{
 
-                        }; // inital  can change later ....
+                        this.dataservices.loaded_component = true;
 
-                        let en = this.crypto.encryp_AES( JSON.stringify( this.company.company_data_carousel ) );
+                        if( response ){
 
-                        this.dataservices.Http_Get( 'shopping/company/load' , this.company.company_data_carousel ) // make request ......
+                            this.dataservices.not_founded = false;
 
-                            .subscribe( //  take success
+                            this.company.categories = response['categories'];
 
-                                response => {
+                            this.company.company = response['company_info'];
 
-                                    if( response.data != false ){
+                            this.company.categories_products = response['categories_products'];
 
-                                        this.company.categories_products = response.data.categories_products;
+                        }else{
 
-                                        this.company.company_data_carousel = response.data.store_data;
+                            this.dataservices.not_founded = true;
+                        }
 
-                                        this.company.categories = response.data.categories;
+                        this.dataservices.update_company(true);
 
-                                        this.company.company_info = response.data.company_info;
-
-                                        this.dataservices.loaded_component = true;
-
-                                    }else{
-
-                                        this.dataservices.not_founded = true;
-                                    }
-
-                                    this.cd.markForCheck();
-
-                                    this.dataservices.update_company(true);
-
-                                    setTimeout(() => {
-
-                                        this.dataservices.update_loader(false);
-
-                                    }, 1000);
-
-                                },
-
-                                error => console.log(error['data']) // take error .....
-
-                            );
-                    }else{
+                        this.cd.markForCheck();
 
                         setTimeout(() => {
 
                             this.dataservices.update_loader(false);
 
                         }, 1000);
-                    }
 
-                }else{ // // does not exists this page name must be string and id must be number ..........
+                        this.products.hide_search_content();
 
-                    this.dataservices.not_founded = true;
-
-                }
-
-            }else{ // does not exists this page @ symbol is not included ..........
-
-                this.dataservices.not_founded = true;
+                    });
+                });
             }
 
 
@@ -232,17 +215,10 @@ export class CompanyComponent implements OnInit {
 
         }); // end scroll event .............................................................................
 
-        this.dataservices.update_loader(true);
-
-        setTimeout(() => {
-
-            this.dataservices.update_loader(false);
-
-        }, 1000);
-
         this.on_move_company_slide();
 
     }
+
 
     ngOnDestroy(){
 
@@ -255,7 +231,7 @@ export class CompanyComponent implements OnInit {
             grid: {xs: 1, sm: 1, md: 1, lg: 1, all: 0},
             slide: 1,
             speed: 500,
-            interval: 4000,
+            interval: 6000,
             point: {
                 visible: true,
                 pointStyles: `
@@ -298,7 +274,7 @@ export class CompanyComponent implements OnInit {
             grid: {xs: 3, sm: 3, md: 4, lg: 6, all: 0},
 
             speed: 500,
-            interval: 8000,
+            interval: 10000,
             point: {
                 visible: false,
                 pointStyles: `
@@ -376,7 +352,9 @@ export class CompanyComponent implements OnInit {
 
     }
 
-    public onmove_carousel(ev) {
+    public move_carousel_categories(data : NgxCarouselStore) {
+
+        this.currentSlide_category = data.currentSlide;
 
     }
 
@@ -386,7 +364,10 @@ export class CompanyComponent implements OnInit {
 
     }
 
-    public myfunc(event: Event) {
+    public myfunc( event: NgxCarouselStore ) {
+
+
+
         // carouselLoad will trigger this funnction when your load value reaches
         // it is helps to load the data by parts to increase the performance of the app
         // must use feature to all carousel
@@ -394,17 +375,22 @@ export class CompanyComponent implements OnInit {
 
     }
 
-    public onmove_item_slide(data: NgxCarouselStore) {
+    public move_carousel_slide( data:NgxCarouselStore ) {
 
         this.on_move_company_slide();
 
+        this.currentSlide = data.currentSlide;
     }
 
     public on_move_company_slide() {
 
         $('.slide_title').css({top: '30px', opacity: 0.1, display: 'none'});
 
-        clearTimeout(this._timeoutslide);
+        if( this._timeoutslide ){
+
+            clearTimeout(this._timeoutslide);
+
+        }
 
         this._timeoutslide = setTimeout(() => {
 
@@ -412,16 +398,17 @@ export class CompanyComponent implements OnInit {
                 top:0,
                 opacity:0.9
             })
-        },300);
+        },500);
     }
 
     public click_nav( data_nav ){
+
 
         let route;
 
         if( data_nav.id == 0 ){
 
-            route = { path:'shopping/company/'+this.company.company_info.name+'@'+this.company.company_info.id , data: false  , relative:false } ;
+            route = { path:'shopping/company/'+this.company.company.name+'@'+this.company.company.id , data: false  , relative:false } ;
 
         }else if(data_nav.id == 1){
 

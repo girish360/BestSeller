@@ -25,6 +25,8 @@ import { MenuService } from './menu/menu.service';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 
+import { AuthGuard } from './services/auth.guard';
+
 
 // end services .....................................................................................
 
@@ -44,7 +46,9 @@ import { MenuComponent } from './menu/menu.component';
 
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 
-import { FooterComponent } from './footer/footer.component'; //  menu  left  in shopping
+import { FooterComponent } from './footer/footer.component';
+
+import { UsersComponent } from './users/users.component'; //  menu  left  in shopping
 
 
 // end components ............................................................................................
@@ -58,7 +62,8 @@ import { FooterComponent } from './footer/footer.component'; //  menu  left  in 
     MenuComponent,
     HomeComponent,
     SubscriptionsComponent,
-    FooterComponent
+    FooterComponent,
+    UsersComponent
 
   ],
 
@@ -79,7 +84,8 @@ import { FooterComponent } from './footer/footer.component'; //  menu  left  in 
     ProductService,
     HomeService,
     SettingsService,
-    MenuService
+    MenuService,
+    AuthGuard
   ]
 
 })

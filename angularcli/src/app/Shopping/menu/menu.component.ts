@@ -48,7 +48,7 @@ export class MenuComponent  implements OnInit  {
 
             data => {
 
-              this.categorys = data['data'];
+              this.categorys = data;
 
               this.cd.markForCheck();
 
@@ -56,7 +56,7 @@ export class MenuComponent  implements OnInit  {
 
             },
 
-            error => console.log(error['data']) // take error .....
+            error => console.log(error) // take error .....
 
         );
 

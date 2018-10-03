@@ -1,11 +1,12 @@
 <?php
-include '../JWT.php';
 
+use Firebase\jwt\jwt as jwt;
 
+use server\db\DB as database;
 
-use Firebase\JWT;
+define("SECRET_KEY", "Hello world.");
 
-class Auth  extends Firebase\JWT\JWT {
+class Auth {
 
     private $secret_key_auth = '65757.,/[]Auth_Generate_Token_Engrypto_20568294816';
 
@@ -16,75 +17,57 @@ class Auth  extends Firebase\JWT\JWT {
     private $table_name ='users';
 
 
+    public function check_user(  ){
 
-    public function check_email( $email_or_username ){
 
-        $result = self::select_dependet_or( $this->table_name ,
 
-            array("username"=>$email_or_username ,
-                "email"=>$email_or_username) , array("first_name", "email", "picture")
+
+
+    }
+
+    public function set_token( ){
+
+        echo time()+60*60 . '  >  ' . time()  ; echo '<br>';
+
+        $key = "example_key";
+
+        $expireTime = time()+20*60; // 50 + 50 > 60+60
+
+        $token = array(
+
+            "iss" => "http://example.org",
+            "aud" => "http://example.com",
+            "iat" => $expireTime,
+            "nbf" => $expireTime,
+            "data" => [
+                "userID" => "1213",
+                "username" => 'klodian'
+            ]
         );
 
-        if( $result ->rowCount() > 0 ){
+         echo $jwt = jwt::encode($token, SECRET_KEY );
 
-            $array_data = self::fetch_data_array( $result );
 
-        }
-        else{
+        jwt::$leeway = 60; // $leeway in seconds
 
-            $array_data='false';
-        }
-
-        return self::json_data($array_data );
-    }
-
-    public function check_password( $object_data ){
-
-        $array_data = self::convert_to_array( $object_data );
-
-        $result = self::select_dependet_and( $this->table_name ,
-
-            array( "password"=>$array_data['password'] , "email"=>$array_data['username'] ) ,
-            array("id", "first_name", "last_name","username", "email","local","picture")
-        );
-
-        if( $result ->rowCount() > 0 ){
-
-            $user_data = self::fetch_data_array( $result );
-
-        }
-        else{
-
-            $user_data = 'false';
-        }
-
-        return self::json_data( $user_data );
+        print_r( $decoded = jwt::decode($jwt, SECRET_KEY, array('HS256') ) );
 
     }
 
-    public function check_token(){
+    public static function check_token(){
 
+        jwt::$leeway = 60; // $leeway in seconds
+
+        $jwt ='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9leGFtcGxlLm9yZyIsImF1ZCI6Imh0dHA6XC9cL2V4YW1wbGUuY29tIiwiaWF0IjoxNTM4MTQyNjEyLCJuYmYiOjE1MzgxNDI2MTIsImRhdGEiOnsidXNlcklEIjoiMTIxMyIsInVzZXJuYW1lIjoia2xvZGlhbiJ9fQ.ap1CvQvVcxlAQjY907Hoy6oQ4yYvGdhfBpUOkTYoK5M';
+
+        $decoded = jwt::decode( $jwt, SECRET_KEY  , array('HS256') );
+
+        print_r($decoded);
+
+        echo 'ok';
     }
 
-    public function create_token( $id ){
 
-        $this->Token_details['id'] = $id;
-
-        $this->token = self::encode( $this->Token_details, $this->secret_key_auth );
-
-        return $this->token;
-
-
-
-    }
-
-    public function id($token){
-
-        $token = self::decode( $token, 'secret_server_key' );
-
-        return $token->id;
-
-    }
 
 }
 

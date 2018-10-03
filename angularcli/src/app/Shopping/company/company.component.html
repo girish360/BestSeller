@@ -1,8 +1,10 @@
-<div class="company" *ngIf="{company : dataservices.company | async , app : dataservices.async | async} ">
+<div class="company" *ngIf="{ company : dataservices.company | async , app : dataservices.async | async } ">
 
-    <ng-container *ngIf="dataservices.loaded_component;else loadingCompany">
+        <ng-container *ngIf="dataservices.loaded_component;else loading">
 
-        <div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': company.company_properties.sticky_company }">
+            <ng-container *ngIf="!dataservices.not_founded;else notFounded">
+
+                <div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': company.company_properties.sticky_company }">
 
             <div class="sticky_options">
 
@@ -48,21 +50,25 @@
 
         <div class="company_slide component-animation" [ngStyle]=" top_slide ">
 
-
             <ngx-carousel class="sliders" [inputs]="comapny_slide"
+
+                          [moveToSlide]="currentSlide"
+
                           (carouselLoad)="myfunc($event)"
-                          (onMove)="onmove_item_slide($event)"
+
+                          (onMove)="move_carousel_slide($event)"
+
+
+
             >
 
-                <ngx-item NgxCarouselItem   *ngFor="let slide of company.categories; let i = index" >
+                <ngx-item NgxCarouselItem   *ngFor="let slide of company.categories; let i = index"  >
 
-                    <img  src="../../assets/images/company/{{slide.slide_image}}" *ngIf="slide.slide_image != null">
+                    <img  src="../../assets/images/company/1.jpg"  >
 
-                    <img  src="../../assets/images/company/{{slide.image}}" *ngIf="slide.slide_image == null" >
+                    <div class="slide_title" >
 
-                    <div class="slide_title">
-
-                        <button mat-raised-button  class="slide_button button " color="primary" >
+                        <button mat-raised-button  class="slide_button button " color="primary"   >
 
                             <span>
                                 {{slide.name}}
@@ -133,9 +139,10 @@
 
         <ngx-carousel class="categories" [inputs]="carousel_category"
                       (carouselLoad)="carouselTileOneLoad()"
-                      (onMove)="onmove_carousel( $event )"
+                      (onMove)="move_carousel_categories( $event )"
+                      [moveToSlide]="currentSlide_category"
         >
-            <ngx-tile NgxCarouselItem *ngFor="let category of  company.categories; let i = index;">
+            <ngx-tile NgxCarouselItem *ngFor="let category of  company.categories; let i = index;" >
 
                 <a href="#">
 
@@ -167,7 +174,7 @@
 
                     <div class="company_profile_img inline-block">
 
-                        <img class="full" src="../../assets/images/company/{{company.company_info.image}}">
+                        <img class="full" src="../../assets/images/company/{{company.company.image}}">
 
                     </div>
 
@@ -179,7 +186,7 @@
 
                                 <div class="company_name title_text">
 
-                                    {{ company.company_info.name }}
+                                    {{ company.company.name }}
 
                                 </div>
 
@@ -189,7 +196,7 @@
 
                         <div class="company_nav_bottom full_width half_height">
 
-                            <div class="inner_company_nav full_height inline-block">
+                            <div class="inner_company_nav full_height inline-block"  >
 
                                 <button mat-button class="nav_button"
                                         *ngFor="let nav of company_nav; let i = index"
@@ -233,39 +240,43 @@
 
             </div><br>
 
-            <div class="company_router">
-
-                <router-outlet>
-
-                </router-outlet>
-
-            </div>
-
         </div>
 
-    </ng-container>
+            </ng-container>
 
-    <ng-template #loadingCompany>
 
-        <ng-container *ngIf="!dataservices.not_founded;else notFounded">
+            <ng-template #notFounded>
 
-            Loading Company
+                not founded
+
+            </ng-template>
 
         </ng-container>
 
-        <ng-template #notFounded>
 
-            <app-not-found></app-not-found>
 
-        </ng-template>
+    <ng-template #loading>
+
+        loading .................
+
+    </ng-template>
+
+
+
+    <div class="company_router">
 
         <router-outlet>
 
         </router-outlet>
 
-    </ng-template>
+    </div>
+
+
 
 </div>
+
+
+
 
 
 

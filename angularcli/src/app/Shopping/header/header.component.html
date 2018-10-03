@@ -1,7 +1,6 @@
 
 
-
-<div class="header"  *ngIf="dataservices.async | async">
+<div class="header"  *ngIf="{ header:dataservices.header | async , app:dataservices.async | async }">
 
     <button mat-button class="check_menu inline-block " color="primary" (click)="check_menu()" >
 
@@ -13,9 +12,9 @@
 
     <div class="icon_openmenu inline-block " [ngClass]="{'showicon_openmenu':menuservice.menu.getValue()}">
 
-        <div class="inside_icon_openmenu " >
+        <div class="inside_icon_openmenu">
 
-            <span class="icon_openmenu_img ">
+            <span class="icon_openmenu_img">
 
                 <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" > <img src="../../assets/images/icon.png"></a>
 
@@ -26,6 +25,8 @@
                 <a href="#" class="title_text" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" > BestSeller</a>
 
             </span>
+
+            <a [routerLink]="['users/kloi']">users</a>
 
         </div>
 
@@ -50,13 +51,17 @@
 
                 <div class="kerkim inline-block">
 
-                    <input type="text" class="searchinput notCloseDropdawnSearch"  name="search" [(ngModel)]="search_data.value" (ngModelChange)="search_new_value()" (focus)="focus_search()"  placeholder="{{dataservices.language.searchproducts}}">
+                    <input #searchInput type="text" class="searchinput notCloseDropdawnSearch"  name="search" [(ngModel)]="productsService.search_data.value" (ngModelChange)="search_new_value()" (focus)="focus_search(searchInput)"  placeholder="{{dataservices.language.searchproducts}}">
 
-                    <button mat-button color="primary" class=" button buttonsearch   notCloseDropdawnSearch">
+                    <button mat-button color="primary" *ngIf="!productsService.search_data.dropdown" class=" button buttonsearch notCloseDropdawnSearch" (click)="focus_search(searchInput)" >
 
-                        <mat-icon class="iconbuttonsearch" *ngIf="typing_search.length == 0">search</mat-icon>
+                        <mat-icon class="iconbuttonsearch" >search</mat-icon>
 
-                        <mat-icon  class="iconbuttonsearch" *ngIf="typing_search.length > 0">close</mat-icon>
+                    </button>
+
+                     <button mat-button color="primary" *ngIf="productsService.search_data.dropdown" class=" button buttonsearch   notCloseDropdawnSearch" (click)="productsService.hide_search_content()" >
+
+                        <mat-icon  class="iconbuttonsearch" >close</mat-icon>
 
                     </button>
 
@@ -68,7 +73,7 @@
 
                                 <span>
 
-                                    <button mat-button (click)="change_search('product')" class="button_search_for border" [ngClass]="{'active-search-button':search_data.product}" >
+                                    <button mat-button (click)="change_search('product')" class="button_search_for border" [ngClass]="{'active-search-button':productsService.search_data.product}" >
 
                                         <mat-icon>stars</mat-icon>
 
@@ -80,7 +85,7 @@
 
                                 <span>
 
-                                    <button mat-button (click)="change_search('company')" class="button_search_for border" [ngClass]="{'active-search-button':search_data.company}">
+                                    <button mat-button (click)="change_search('company')" class="button_search_for border" [ngClass]="{'active-search-button':productsService.search_data.company}">
 
                                         <mat-icon>domain</mat-icon>
 
@@ -98,7 +103,7 @@
 
                             <a href="#">
 
-                                <div class="recent_searches " *ngIf="recent_serches.data.length != 0 && search_results.length == 0  ">
+                                <div class="recent_searches " *ngIf="productsService.recent_serches.data.length != 0 && productsService.search_results.length == 0  ">
 
                                     <div class="title_resent_research">
 
@@ -110,7 +115,7 @@
 
                                     </div>
 
-                                   <div class="result_search hover" *ngFor="let results of recent_serches.data" [@wishList_animations]="active">
+                                   <div class="result_search hover" *ngFor="let results of productsService.recent_serches.data" [@wishList_animations]="active" >
 
                                        <div class="inside_width">
 
@@ -135,7 +140,7 @@
 
                                 </div>
 
-                                <div class="result_search hover" *ngFor="let results of search_results" [@wishList_animations]="active">
+                                <div class="result_search hover" *ngFor="let result of productsService.search_results" [@wishList_animations]="active" (click)="route_on_search(result)">
 
                                     <div class="inside_width">
 
@@ -143,7 +148,7 @@
 
                                             <div class="result_search_img ">
 
-                                                <img class="full_height full_width" src="../../assets/images/products_image/{{results.image}}" />
+                                                <img class="full_height full_width" src="../../assets/images/products_image/{{result.image}}" />
 
                                             </div>
 
@@ -151,9 +156,9 @@
 
                                         <div class="result_search_right inline-block border_bottom">
 
-                                            <div *ngIf="results.title != null" class="title">{{results.title}}</div>
+                                            <div *ngIf="result.title != null" class="title">{{result.title}}</div>
 
-                                            <div *ngIf="results.name != null" class="title">{{results.name}}</div>
+                                            <div *ngIf="result.name != null" class="title">{{result.name}}</div>
 
                                         </div>
 
@@ -165,9 +170,9 @@
 
                         </div>
 
-                        <div class="footer_search" *ngIf=" search_data.value.length != 0 ">
+                        <div class="footer_search" *ngIf=" productsService.search_data.value.length != 0 ">
 
-                            <div class="finding-results inside_width" *ngIf=" search_data.search ">
+                            <div class="finding-results inside_width" *ngIf=" productsService.search_data.search ">
 
                                 <span class="spinner inline-block">
 
@@ -180,7 +185,7 @@
                             </div>
 
 
-                            <div class="no-results inside_width" *ngIf="!search_data.server_status ">
+                            <div class="no-results inside_width" *ngIf="!productsService.search_data.server_status ">
 
                               <span> Nothing Founded </span>
 
@@ -188,11 +193,11 @@
 
                             <a href="#">
 
-                                <div class="seeall-results" *ngIf="!search_data.search && search_results.length != 0">
+                                <div class="seeall-results" *ngIf="!productsService.search_data.search && productsService.search_results.length != 0">
 
                                     <div class="inside_width hover" (click)="seeAll_searchResuls({ path:'results/' , data:{ keyparams:'keyword' , params: search_data.value} ,relative:true })">
 
-                                        <span> See all results for {{search_data.value}} </span>
+                                        <span> See all results for {{productsService.search_data.value}} </span>
 
                                     </div>
 
@@ -363,7 +368,7 @@
 
             <!--  start dropdown header ..................................................................-->
 
-            <div class="dropmore notClosepointerHeader notCloseDropdawnLanguage">
+            <div class="dropmore dropdown_button notClosepointerHeader notCloseDropdawnLanguage">
 
                 <mat-tab-group>
 
@@ -496,7 +501,7 @@
                 </a>
             </div>
 
-            <div class="dropcard notClosepointerHeader notCloseDropdawnCard" [ngClass]="{'show_dropcard':drop_Card}">
+            <div class="dropcard dropdown_button notClosepointerHeader notCloseDropdawnCard" [ngClass]="{'show_dropcard':drop_Card}">
 
                 <div class=" header_div">
 
@@ -582,21 +587,21 @@
 
                                 <div class="width_each_wishlist">
 
-                                    <div class="wish_image"  (click)="set_router({ path:cart_product['company'].company_name+'/'+cart_product.product_title , data:cart_product.product_id , relative:true })">
+                                    <div class="wish_image"  (click)="set_router({ path:cart_product.name+'/'+cart_product.title , data:cart_product.product_id , relative:true })">
 
-                                        <img  src="../../assets/images/products_image/{{cart_product.product_image}}">
+                                        <img  src="../../assets/images/products_image/{{cart_product.image}}">
 
                                     </div>
 
                                     <div class="cart_item title">
 
-                                        Title: {{cart_product.product_title}}
+                                        Title: {{cart_product.title}}
 
                                     </div><br>
 
                                     <div class="cart_item price">
 
-                                        Price: ${{ cart_product.product_price }}
+                                        Price: ${{ cart_product.price }}
 
                                     </div>
 
@@ -606,18 +611,18 @@
 
                                         <mat-form-field style="width:40px;">
 
-                                            <mat-select  [(value)]="cart_product.product_quantity" (change)="productsService.update_quantity_cartList( $event , cart_product )">
+                                            <mat-select  [(value)]="cart_product.quantity" (change)="productsService.update_quantity_cartList( cart_product )">
 
-                                                <mat-option [value]="'1'">
+                                                <mat-option [value]="1">
                                                     1
                                                 </mat-option>
-                                                <mat-option [value]="'2'">
+                                                <mat-option [value]="2">
                                                     2
                                                 </mat-option>
-                                                <mat-option [value]="'3'">
+                                                <mat-option [value]="3">
                                                     3
                                                 </mat-option>
-                                                <mat-option [value]="'4'">
+                                                <mat-option [value]="4">
                                                     4
                                                 </mat-option>
 
@@ -630,13 +635,13 @@
                                     <div  class="cart_item seller">
 
                                         Seller:
-                                        <span (click)="set_router({ path:cart_product['company'].company_name , data: cart_product['company'].company_id , relative:true })">{{ cart_product['company'].company_name }}</span>
+                                        <span (click)="set_router({ path:cart_product.name , data: cart_product.company_id , relative:true })">{{ cart_product.name }}</span>
 
                                     </div>
 
                                     <div class="cart_item total_item_price">
 
-                                        Total: ${{ (cart_product.product_price)*cart_product.product_quantity  }}
+                                        Total: ${{ (cart_product.price)*cart_product.quantity  }}
 
                                     </div>
 
@@ -713,7 +718,7 @@
 
             </div>
 
-            <div class="dropfavority notCloseDropdawnFavorite notClosepointerHeader">
+            <div class="dropfavority dropdown_button notCloseDropdawnFavorite notClosepointerHeader">
 
                 <div class="header_div">
 
@@ -801,13 +806,13 @@
 
                                     <div class="wish_image" >
 
-                                        <img  src="../../assets/images/products_image/{{wish_product.product_image}}">
+                                        <img  src="../../assets/images/products_image/{{wish_product.image}}">
 
                                     </div>
 
                                     <div class="title">
 
-                                        Title: {{wish_product.product_title}}
+                                        Title: {{wish_product.title}}
 
                                     </div>
 

@@ -8,11 +8,6 @@
     border-color: lightgray;
 }
 
-.header{
-    height: 40px;
-    z-index: 5 !important;
-}
-
 .progress{
 
     position: relative;
@@ -77,7 +72,7 @@ a{
     position: fixed;
     z-index: 4 !important;
     width: 100%;
-    height: 40px;
+    height: 50px;
     border-bottom: 1px solid;
     color: lightgray;
     background-color:#E6E6FA;
@@ -724,6 +719,7 @@ html>/**/body .kerkim, x:-moz-any-link {
     display: none;
     transition:0.3s;
     background-color: white;
+
 
 
 

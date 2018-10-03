@@ -13,6 +13,8 @@ export class AboutComponent implements OnInit {
 
     this.company.company_properties.company_nav_active = 2;
 
+
+
   }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 
- import { Component, OnInit ,Input ,DoCheck,OnChanges,ChangeDetectorRef,ChangeDetectionStrategy, Output , EventEmitter  ,ElementRef, Renderer } from '@angular/core';
+ import { Component, OnInit ,Input ,DoCheck,ViewChild,OnChanges,ChangeDetectorRef,ChangeDetectionStrategy, Output , EventEmitter  ,ElementRef, Renderer } from '@angular/core';
 
  import { Injectable } from '@angular/core';
 
@@ -57,6 +57,8 @@
 
  export class HeaderComponent implements OnInit   {
 
+     @ViewChild("searchInput") searchEl: ElementRef;
+
      private Response;
 
      public active = 'active';
@@ -97,12 +99,6 @@
          }
      ];
 
-     public search_data: any = { product:true ,company:false , value:'', search:false, server_status:true };
-
-     public search_results:any=[];
-
-     public recent_serches:any = { status:true , data: [] };
-
      constructor(
          private renderer : Renderer ,
          private el : ElementRef,
@@ -124,7 +120,7 @@
 
                 data => {
 
-                    this.dataservices.language = data['data'];
+                    this.dataservices.language = data;
 
                     this.cd.markForCheck();
                 }
@@ -133,6 +129,25 @@
     }
 
      ngOnInit() {
+
+     }
+
+    public route_on_search( result ){
+
+         if( this.productsService.search_data.product ){
+
+             this.set_router( { path:'shopping/product-details/show' , data:{ keyparams:'id' , params:result.id} , relative:false });
+
+         }else if( this.productsService.search_data.company){
+
+             let company_path = 'shopping/company/'+result.name+'@'+result.id;
+
+             this.set_router( { path:company_path, data: false  , relative:false } );
+
+         }
+
+
+
 
      }
 
@@ -154,63 +169,63 @@
 
     }
 
-     public change_search(type_search){
+     public change_search( type_search ){
 
          if( type_search =='product' ){
 
-             this.search_data.product = true;
-             this.search_data.company = false;
+             this.productsService.search_data.product = true;
+             this.productsService.search_data.company = false;
 
          }
          else if( type_search =='company' ){
 
-             this.search_data.product = false;
-             this.search_data.company = true;
+             this.productsService.search_data.product = false;
+             this.productsService.search_data.company = true;
          }
          else{
 
-             this.search_data.product = true;
-             this.search_data.company = false;
+             this.productsService.search_data.product = true;
+             this.productsService.search_data.company = false;
          }
 
 
 
-        this.search_data.server_status = true;
+        this.productsService.search_data.server_status = true;
 
-        if( this.search_data.value.length != 0 ){
+        if( this.productsService.search_data.value.length != 0 ){
 
-            this.search_data.search = true;
+            this.productsService.search_data.search = true;
 
         }else{
-            this.search_results =  [];
-            this.search_data.search = false;
+            this.productsService.search_results =  [];
+            this.productsService.search_data.search = false;
         }
 
-        if( this.search_data.value.length != 0 ) {
+        if( this.productsService.search_data.value.length != 0 ) {
 
-            this.dataservices.Http_Get( 'shopping/header/search', this.search_data )
+            this.dataservices.Http_Get( 'shopping/header/search', this.productsService.search_data )
 
                 .subscribe( //  take success
 
                     data => {
 
-                        if( data['data'].length != 0 ){
+                        if( data ){
 
-                            this.search_results =  data['data'];
+                            this.productsService.search_results = data;
 
-                            this.search_data.server_status = true;
+                            this.productsService.search_data.server_status = true;
 
                         }
 
                         else{
 
-                            this.search_results =  [];
+                            this.productsService.search_results =  [];
 
-                            this.search_data.server_status = false;
+                            this.productsService.search_data.server_status = false;
 
                         }
 
-                        this.search_data.search = false;
+                        this.productsService.search_data.search = false;
 
                         this.cd.markForCheck();
                     }
@@ -218,7 +233,7 @@
 
         }else{
 
-            this.search_results =  [];
+            this.productsService.search_results =  [];
 
             this.cd.markForCheck();
         }
@@ -249,22 +264,19 @@
 
                 } else {
 
-                    this.find_position_dropdown(event,button.dropdown_class );
-
-
-
-                    this.show_dropdown_button(button.dropdown_class, button.dropdown_body , button.id);
 
                     this.productsService.button_properties.pointer = button.id;
 
-                    this.find_position( this.productsService.button_properties.pointer );
+                    this.find_position( this.productsService.button_properties.pointer ,button.dropdown_class );
+
+                    this.productsService.show_dropdown_button(button.dropdown_class, button.dropdown_body , button.id);
                 }
 
             } else {
 
 
 
-                this.hide_dropdown_button( button.dropdown_class, button.dropdown_body  );
+                this.productsService.hide_dropdown_button( button.dropdown_class, button.dropdown_body  );
 
                 this.productsService.button_properties.active = 0;
 
@@ -284,44 +296,44 @@
 
         clearTimeout(this.time_search);
 
-         this.search_data.server_status = true;
+         this.productsService.search_data.server_status = true;
 
-         if( this.search_data.value.length != 0 ){
+         if( this.productsService.search_data.value.length != 0 ){
 
-             this.search_data.search = true;
+             this.productsService.search_data.search = true;
 
          }else{
-             this.search_results =  [];
-             this.search_data.search = false;
+             this.productsService.search_results =  [];
+             this.productsService.search_data.search = false;
          }
 
          this.time_search = setTimeout(() => {
 
-             if( this.search_data.value.length != 0 ) {
+             if( this.productsService.search_data.value.length != 0 ) {
 
-                 this.dataservices.Http_Get( 'shopping/header/search', this.search_data )
+                 this.dataservices.Http_Get( 'shopping/header/search', this.productsService.search_data )
 
                      .subscribe( //  take success
 
                          data => {
 
-                             if( data['data'].length != 0 ){
+                             if( data ){
 
-                                 this.search_results =  data['data'];
+                                 this.productsService.search_results =  data;
 
-                                 this.search_data.server_status = true;
+                                 this.productsService.search_data.server_status = true;
 
                              }
 
                              else{
 
-                                 this.search_results =  [];
+                                 this.productsService.search_results =  [];
 
-                                 this.search_data.server_status = false;
+                                 this.productsService.search_data.server_status = false;
 
                              }
 
-                             this.search_data.search = false;
+                             this.productsService.search_data.search = false;
 
                              this.cd.markForCheck();
 
@@ -331,7 +343,7 @@
 
              }else{
 
-                 this.search_results =  [];
+                 this.productsService.search_results =  [];
 
                  this.cd.markForCheck();
              }
@@ -342,18 +354,18 @@
 
      get_recent_searches(){
 
-         this.dataservices.Http_Get( 'recentSearches', this.search_data )
+         this.dataservices.Http_Get( 'recentSearches', this.productsService.search_data )
 
              .subscribe( //  take success
 
                  data => {
 
 
-                     if( data['data'].length != 0 ){
+                     if( data ){
 
-                         this.recent_serches.data = data['data'];
+                         this.productsService.recent_serches.data = data;
 
-                         console.log(data['data']);
+                         console.log(data);
                      }
 
                      this.cd.markForCheck();
@@ -370,29 +382,23 @@
 
      }
 
-     focus_search(){
+     focus_search( el_search ){
 
-           this.show_dropdown_search('dropdown_search','body_search');
+         this.searchEl.nativeElement.focus();
 
-          if( this.recent_serches.status ){
+         this.productsService.show_dropdown_search('dropdown_search','body_search');
 
-              this.get_recent_searches();
-
-              this.recent_serches.status = false;
-          }
+         this.productsService.search_data.dropdown = true;
 
      }
 
-     focusout_search(){
-
-         this.hide_dropdown_search('dropdown_search','body_search');
-     }
-
-     public find_position(id){
+     public find_position(id , dropdown_Class ){
 
          $(function(){
 
-             var left=  $('.button'+id).find('.glyphicon').offset();
+             var left =  $('.button'+id).find('.glyphicon').offset();
+
+             $( '.'+dropdown_Class ).css({ left:  left.left - 450  });
 
              if( id == 2 ){
 
@@ -408,126 +414,6 @@
              }
          });
     }
-
-     public find_position_dropdown( event , dropdown_Class  ){
-
-        let left  = event.clientX;
-
-        $( '.'+dropdown_Class ).css({ left:  left - 460  });
-
-    }
-
-     public show_dropdown_button( dropdown_class, body_inside , id ){
-
-        $('.treguesi').css({display: 'none'});
-
-        $('.'+body_inside).css({ top: '15px'});
-
-        $('.' + dropdown_class).css({top: '70px', opacity: '0.1'}); //  css style...
-
-        $('.' + dropdown_class).show().animate({ // animation effect show dropdown productsService......
-
-            top: '40px',
-
-            opacity: 1
-
-        }, 100, function () { //  function after effect ............
-
-            $('.treguesi').css({display: 'block'}); // show pionter......
-
-            $('.write_icon_header').css('visibility', 'visible');
-
-            $('.write_icon_header'+id).css('visibility', 'hidden'); // remove write below icon in productsService
-
-            $('.treguesi').css({display: 'block'});
-
-        });
-
-        $('.' + body_inside).animate({
-
-            top: '0'
-
-        }, 200);
-
-    }
-
-     public hide_dropdown_button( dropdown_class, body_inside){
-
-        $('.treguesi').css({display: 'none'});
-
-        $('.write_icon_header').css('visibility', 'visible');
-
-        $('.' + body_inside).css({top: '0px'});
-
-        $('.' + dropdown_class).css({top: '40px', opacity: '1'}); // css style...
-
-        $('.' + dropdown_class).animate({ // animation effect hide dropdown productsService......
-
-            top: '70',
-
-            opacity: '0.1',
-
-        }, 100, function () { //  function after effect ............
-
-            $('.' + dropdown_class).hide();
-
-        });
-
-        $('.' + body_inside).animate({
-
-            top: '15'
-
-        }, 200);
-
-    }
-
-     public show_dropdown_search( dropdown_class, body_inside  ){
-
-         $('.'+body_inside).css({ top: '15px'});
-
-         $('.' + dropdown_class).css({top: '40px', opacity: '0.1'}); //  css style...
-
-         $('.' + dropdown_class).show().animate({ // animation effect show dropdown productsService......
-
-             top: '6px',
-
-             opacity: 1
-
-         }, 100);
-
-         $('.' + body_inside).animate({
-
-             top: '0'
-
-         }, 200);
-
-     }
-
-     public hide_dropdown_search( dropdown_class, body_inside){
-
-         $('.' + body_inside).css({top: '0px'});
-
-         $('.' + dropdown_class).css({top: '40px', opacity: '1'}); // css style...
-
-         $('.' + dropdown_class).animate({ // animation effect hide dropdown productsService......
-
-             top: '70',
-
-             opacity: '0.1',
-
-         }, 100, function () { //  function after effect ............
-
-             $('.' + dropdown_class).hide();
-
-         });
-
-         $('.' + body_inside).animate({
-
-             top: '15'
-
-         }, 200);
-
-     }
 
      show_chat(){ /// function show show element  for chat  when user click  on the chat call this function  and open div for chat with animate  ........................
 
@@ -637,12 +523,12 @@
 
                 data => {
 
-                    this.dataservices.language = data['data'];
+                    this.dataservices.language = data;
 
                     this.dataservices.update_app(true);
 
                 },
-                error => console.log( error['data'] ) // take error .....
+                error => console.log( error ) // take error .....
 
             );
 
@@ -748,7 +634,7 @@
 
          }
 
-         this.delete_from_wishList();
+         this.productsService.delete_from_wishList();
 
          this.dataservices.Http_Post( 'shopping/header/add_incartList', this.productsService.cart_properties.array_cartId ) // make request ......
 

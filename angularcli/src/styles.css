@@ -24,6 +24,9 @@ time, mark, audio, video {
 .slide_button{
     color: white;
 }
+ngx-tile{
+    box-shadow: none;
+}
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 

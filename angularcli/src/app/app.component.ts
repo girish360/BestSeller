@@ -12,6 +12,9 @@ export class AppComponent implements OnInit{
 
     ngOnInit(){
 
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+
         $(document).ready(function() {
 
             var top_scroll = 0;

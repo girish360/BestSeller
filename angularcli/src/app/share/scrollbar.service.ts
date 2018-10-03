@@ -47,6 +47,14 @@ export class ScrollbarService {
 
   }
 
+  public offset(el){
+
+    let rect = el.getBoundingClientRect();
+
+    return rect;
+
+  }
+
   public  element_scroll( event ){
 
     let left = event.srcElement.scrollLeft;

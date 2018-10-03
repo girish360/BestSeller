@@ -38,7 +38,7 @@ class Fetch {
 
     public static function json_data(   $data ){
 
-        $json = json_encode( array ( 'data'=> $data  ) );
+        $json = json_encode( $data );
 
         return $json;
     }
@@ -78,7 +78,7 @@ class Fetch {
         return self::$dependet;
     }
 
-    public function fetch_data_cookie( $array_tables, $array_ID  ){
+    public static function fetch_data_cookie( $array_tables, $array_ID  ){
 
         self::$Data_array = [];
 

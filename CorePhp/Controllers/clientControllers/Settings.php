@@ -27,7 +27,7 @@ class  Settings{
 
 
 
-    public function menu()
+    public function change_menu()
 
     {
 
@@ -36,13 +36,13 @@ class  Settings{
 
             cookie::save_coockie('menu','');
 
-            return fetch::json_data('false');
+            return fetch::json_data(false);
 
         }else{
 
             cookie::remove_cookie('menu');
 
-            return fetch::json_data('true');
+            return fetch::json_data(true);
 
 
         }

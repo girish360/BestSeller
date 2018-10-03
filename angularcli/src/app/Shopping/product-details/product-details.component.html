@@ -5,13 +5,13 @@
 
     <div class="top_left inline-block">
 
-        <img src="../../assets/images/products_image/{{product_details.product_image}}">
+        <img src="../../assets/images/products_image/{{product_details.image}}">
 
     </div>
 
     <div class="top_right inline-block">
 
-        {{product_details.product_title}} shite per arsy mos perdorimi tn shite per arsy mos perdorimi tnshite per arsy mos perdorimi tn
+        {{product_details.title}}
 
     </div>
 
@@ -27,7 +27,7 @@
 
         <div class="primary_image" [ngClass]="{ 'no_multiple_img': carousel_image.length == 0 }">
 
-            <img  id="zoom_image" src="../../assets/images/products_image/{{product_details.product_image}}">
+            <img  id="zoom_image" src="../../assets/images/products_image/{{product_details.image}}">
 
         </div>
 
@@ -76,25 +76,25 @@
 
           <div class="decsription bodyRight_option ">
 
-              Description: {{product_details.product_description}}
+              Description: {{product_details.description}}
 
           </div>
 
           <div class="price bodyRight_option">
 
-          Price: {{product_details.product_price}}
+          Price: {{product_details.price}}
 
           </div>
 
           <div class="shipping bodyRight_option">
 
-              Shipping : {{company.company_shipping}}
+              Shipping : {{company.shipping}}
 
           </div>
 
           <div class="delivery bodyRight_option">
 
-              Delivery By: {{company.company_name}}
+              Delivery By: {{company.name}}
 
           </div>
 

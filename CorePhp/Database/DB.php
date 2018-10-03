@@ -4,6 +4,9 @@ namespace server\db;
 
 use \PDO;
 
+use \Exception;
+
+use \PDOException;
 
 class DB { //class of databse can build query and execute it to get data from databse ...............
 
@@ -262,15 +265,13 @@ class DB { //class of databse can build query and execute it to get data from da
 
         if( !self::getTableColumn( $this->table , $column_value) ){ // check  if $value is not a column
 
-
-
             if ( self::check_key($data) ){
 
                 $new_key = self::set_key( $data );
 
                 $this->where =' where '.$column.' '.$operator.' :'.$new_key.'';
 
-                $this->data[':'.$data] = $value;
+                $this->data[':'.$new_key] = $value;
 
             }else{
 
@@ -282,6 +283,69 @@ class DB { //class of databse can build query and execute it to get data from da
             $this->where =' where '.$column.' '.$operator.' '.$value.'';
         }
 
+
+        return self::end_instance();
+
+    }
+
+    public function like($column , $value){
+
+        if ( self::check_key($column) ){
+
+            $new_key = self::set_key( $column );
+
+            $this->where = ' where '.$column.' like '.':'.$new_key.'';
+
+            $this->data[':'.$new_key] = $value;
+
+        }else{
+
+            $this->where = ' where '.$column.' like '.':'.$column.'';
+
+            $this->data[':'.$column] = $value;
+        }
+
+        return self::end_instance();
+
+    }
+
+    public function orLike($column , $value){
+
+        if ( self::check_key($column) ){
+
+            $new_key = self::set_key( $column );
+
+            $this->where .= ' or '.$column.' like '.':'.$new_key.'';
+
+            $this->data[':'.$new_key] = $value;
+
+        }else{
+
+            $this->where .= ' or '.$column.' like '.':'.$column.'';
+
+            $this->data[':'.$column] = $value;
+        }
+
+        return self::end_instance();
+
+    }
+
+    public function andLike($column , $value){
+
+        if ( self::check_key($column) ){
+
+            $new_key = self::set_key( $column );
+
+            $this->where .= ' and '.$column.' like '.':'.$new_key.'';
+
+            $this->data[':'.$new_key] = $value;
+
+        }else{
+
+            $this->where .= ' and '.$column.' like '.':'.$column.'';
+
+            $this->data[':'.$column] = $value;
+        }
 
         return self::end_instance();
 
@@ -310,20 +374,45 @@ class DB { //class of databse can build query and execute it to get data from da
 
     public function andWhere( $column , $operator , $value ){ // andwhere method add anothercondition in query .........
 
-        if ( self::check_key($column) ){
+        $column_value = $value;
 
-            $new_key = self::set_key( $column );
+        $data = $column;
 
-            $this->where.=' and '.$column.' '.$operator.' :'.$new_key.'';
+        if( stripos( $column, '.',0 ) ){
 
-            $this->data[':'.$new_key] = $value;
 
-        }else{
+            $data  = str_replace('.', '', $column);;
 
-            $this->where.= ' and '.$column. ' ' .$operator.' '.':'.$column.'';
-
-            $this->data[':'.$column] = $value;
         }
+
+        if( $start = stripos( $value, '.',0 ) ){ // if column come with table example table.column shoulb get only column .............
+
+            $column_value =  substr( $value, $start+1 , strlen($value) );
+
+        }
+
+        if( !self::getTableColumn( $this->table , $column_value) ){ // check  if $value is not a column
+
+
+
+            if ( self::check_key($data) ){
+
+                $new_key = self::set_key( $data );
+
+                $this->where .=' and '.$column.' '.$operator.' :'.$new_key.'';
+
+                $this->data[':'.$data] = $value;
+
+            }else{
+
+                $this->where .= ' and '.$column. ' ' .$operator.' '.':'.$data.'';
+
+                $this->data[':'.$data] = $value;
+            }
+        }else{
+            $this->where .=' and '.$column.' '.$operator.' '.$value.'';
+        }
+
 
         return self::end_instance();
     }
@@ -829,7 +918,7 @@ class DB { //class of databse can build query and execute it to get data from da
 
         self::build_prepare( self::end_instance() );
 
-        return  self::execute();
+        return self::execute();
 
     }
 

@@ -124,17 +124,17 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
                       this.productsService.pages_link = [];
 
-                      if( data['data'] != false ){ // products have came
+                      if( data ){ // products have came
 
-                          this.productsService.products = data['data']['products'];
+                          this.productsService.products = data['products'];
 
                           this.productsService.checked_products_inCart_and_inWish();
 
-                          if ( data['data']['pages_details'] != false ) {
+                          if ( data['pages_details'] != false ) {
 
-                              this.productsService.pages_details = data['data']['pages_details'];
+                              this.productsService.pages_details = data['pages_details'];
 
-                              this.pages_details = data['data']['pages_details'];
+                              this.pages_details = data['pages_details'];
 
                               this.productsService.build_pages_link( this.pages_details  );
 
@@ -156,7 +156,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
                       }, 1000);
 
                   },
-                  error => console.log(error['data']) // take error .....
+                  error => console.log(error) // take error .....
 
               );
 
@@ -167,12 +167,13 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
           this.dataservices.not_founded = true;
 
       }
-
-
-
-
     });
   }
+
+    right_click(){
+
+      alert('fg');
+    }
 
   ngAfterViewInit(){
 
@@ -187,7 +188,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
               data => {
 
-                  if( data['data']== true ){
+                  if( data ){
 
                       if( this.productsService.data_products.page == 1 ){
 
@@ -208,7 +209,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
               },
 
-              error => console.log(error['data']) // take error .....
+              error => console.log(error) // take error .....
 
           );
 
@@ -233,6 +234,8 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
   public click_pages( click_details  ){
 
+      console.log(click_details);
+
     let router:any = {};
 
       if( click_details.active != true ){ // check if is different from active page ...........
@@ -250,7 +253,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
           router = { path:'shopping/products/'+this.uri , data:
               [
-                { keyparams :'id', params:  this.pages_details.category_id },
+                {keyparams :'id', params:  this.pages_details.category_id },
                 {keyparams :'page', params:  this.pages_details.page+5 }
 
               ] , relative:false };
@@ -259,7 +262,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
           router = { path:'shopping/products/'+this.uri , data:
               [
-                { keyparams :'id', params: this.pages_details.category_id},
+                {keyparams :'id', params: this.pages_details.category_id},
                 {keyparams :'page', params:  this.pages_details.page-1 }
 
               ] , relative:false };
@@ -268,7 +271,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
           router = { path:'shopping/products/'+this.uri , data:
               [
-                { keyparams :'id', params:  this.pages_details.category_id },
+                {keyparams :'id', params:  this.pages_details.category_id },
                 {keyparams :'page', params:  this.pages_details.page-5 }
 
               ] , relative:false };
@@ -277,7 +280,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
           router = { path:'shopping/products/'+this.uri , data:
               [
-                { keyparams :'id', params:  this.pages_details.category_id },
+                {keyparams :'id', params:  this.pages_details.category_id },
                 {keyparams :'page', params:  click_details.page }
 
               ] , relative:false };

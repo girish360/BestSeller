@@ -13,6 +13,10 @@ import { ProductsComponent } from './products/products.component'; // show produ
 
 import { NotFoundComponent } from '../share/not-found/not-found.component';
 
+import { UsersComponent } from './users/users.component'; //  menu  left  in shopping
+
+import { AuthGuard } from './services/auth.guard';
+
 const routes: Routes = [
 
   {
@@ -33,6 +37,12 @@ const routes: Routes = [
       { path: 'wish-list/:id', loadChildren : './wish-list/wish-list.module#WishListModule'},
 
       { path: ':keyword', loadChildren: './search/search.module#SearchModule'},
+
+      { path: 'users/:name', component: UsersComponent,
+
+        canActivate: [AuthGuard],
+
+      },
 
       // { path: 'card', component: CardComponent},
       //

@@ -66,25 +66,21 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
 
           this.dataservices.update_loader(true);
 
-          this.my_product = this.dataservices.Http_Get( 'product_details',  { 'product_id' : this.product_id} ) // make request ......
+          this.my_product = this.dataservices.Http_Get( 'shopping/products/product_details',  { 'product_id' : this.product_id} ) // make request ......
 
               .subscribe( //  take success
 
                   data => {
 
-
-
                       this.scroll.window(0,0);
 
-                      this.product_details = data['data']['product'];
+                      this.product_details = data['product'];
 
                       this.company =  this.product_details['company'];
 
                       setTimeout(()=>{
                           this.dataservices.update_loader(false);
                       },1000);
-
-                      this.carousel_image = this.product_details['image_product'];
 
                       $(function() {
 
@@ -94,7 +90,7 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
                       });
 
                   },
-                  error => console.log( error['data'] ) // take error .....
+                  error => console.log( error ) // take error .....
               );
       });
   }

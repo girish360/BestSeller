@@ -28,13 +28,13 @@ class Home extends Controller {
 
             if( $request->company_id != false ){
 
-                $count = database::table('company_category')
+                $count = database::table('suppliers_categories')
                     ->count()
-                    ->where('company_id','=',$request->company_id)
+                    ->where('supplier_id','=',$request->company_id)
                     ->get()[0]['count'];
             }else{
 
-                $count = database::table('sub_category')
+                $count = database::table('subcategories')
                     ->count()
                     ->get()[0]['count'];
             }
@@ -50,13 +50,13 @@ class Home extends Controller {
 
                 $startrow =  $request->current_page_categories * $this->category_for_load ;
 
-                $this->Categories = database::table('sub_category')
+                $this->Categories = database::table('subcategories')
                     ->select('name','id','image')
                     ->limit( $startrow , $this->category_for_load )
                     ->get();
             } else {
 
-                $this->Categories = database::table('sub_category')
+                $this->Categories = database::table('subcategories')
                     ->select( 'name', 'id', 'image' )
                     ->get();
             }
@@ -80,19 +80,19 @@ class Home extends Controller {
 
                 $startrow =  $request->current_page_categories * $this->category_for_load ;
 
-                $this->Categories = database::table('company_category')
-                    ->select('sub_category.name','sub_category.id','sub_category.image')
-                    ->join('sub_category','company_category.category_id','=','sub_category.id')
-                    ->where('company_category.company_id','=', $request->company_id)
+                $this->Categories = database::table('suppliers_categories')
+                    ->select('subcategories.name','subcategories.id','subcategories.image')
+                    ->join('subcategories','suppliers_categories.category_id','=','subcategories.id')
+                    ->where('suppliers_categories.supplier_id','=', $request->company_id)
                     ->limit( $startrow , $this->category_for_load )
                     ->get();
 
             } else {
 
-                $this->Categories = database::table('company_category')
-                    ->select('sub_category.name','sub_category.id','sub_category.image')
-                    ->join('sub_category','company_category.category_id','=','sub_category.id')
-                    ->where('company_category.company_id','=', $request->company_id)
+                $this->Categories = database::table('suppliers_categories')
+                    ->select('subcategories.name','subcategories.id','subcategories.image')
+                    ->join('subcategories','suppliers_categories.category_id','=','subcategories.id')
+                    ->where('suppliers_categories.supplier_id','=', $request->company_id)
                     ->get();
             }
 
@@ -107,7 +107,7 @@ class Home extends Controller {
 
             $store_data = array( "current_page_products" => $request->current_page_products, "current_page_categories" => $request->current_page_categories, "total_categories" => $count, "categories_for_page" => $this->category_for_load , "company_id" =>  $request->company_id,"category_id"=>false );
 
-            $company_info = database::table('company')
+            $company_info = database::table('suppliers')
                 ->select("id","name")
                 ->where('id','=',$request->company_id)
                 ->get();
@@ -115,9 +115,6 @@ class Home extends Controller {
             return fetch::json_data(  array( "categories" => $result, "store_data" => $store_data , "company_info"=>$company_info[0] ) );
         }
     }
-
-
-
 
     public function dependet_products( $array_categories ,$request , $category_id_name ){  // get all products .....................................
 
@@ -130,30 +127,25 @@ class Home extends Controller {
 
             if( $request->company_id == false ){
 
-                $this->where = 'product.company_id = company.id AND product.category_id = "' .$category[$category_id_name]. '"';
-
-                $count = database::table('product')
+                $count = database::table('products')
                     ->count()
                     ->where('category_id','=', $category[$category_id_name] )
                     ->get()[0]['count'];
 
             }else{
 
-                $count = database::table('product')
+                $count = database::table('products')
                     ->count()
                     ->where('category_id','=', $category[$category_id_name] )
-                    ->andWhere('company_id','=',$request->company_id)
+                    ->andWhere('supplier_id','=',$request->company_id)
                     ->get()[0]['count'];
-
-
-                $this->where = 'product.company_id = company.id AND  product.company_id = "' .$request->company_id. '" AND product.category_id = "' .$category[$category_id_name]. '"';
             }
 
             if ( $count > 0 ) {
 
                 if ( $count <= $this->products_for_category ){
 
-                    self::all_products( $request->company_id );
+                    self::all_products( $category[$category_id_name] );
 
                     $this->categories_products[$category[$category_id_name]]['products'] = $this->products;
 
@@ -187,15 +179,15 @@ class Home extends Controller {
         }
     }
 
-    public function all_products( $category_id ){
+    public function all_products(  $category_id ){
         $this->products =[];
-        $this->products = database::table('product')
+        $this->products = database::table('products')
             ->select(
-                'product.id as product_id', 'product.title', 'product.image_id', 'product.category_id', 'product.price',
-                'product.quantity', 'product.image', 'product.date', 'product.in_cartList', 'product.in_wishList',
-                'company.id as company_id', 'company.name ', 'company.image as company_image'
-            )->join('company','product.company_id','=','company.id')
-            ->where('product.category_id','=',$category_id)
+                'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
+                'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                'suppliers.id as company_id', 'suppliers.name ', 'suppliers.image as company_image'
+            )->join('suppliers','products.supplier_id','=','suppliers.id')
+            ->where('products.category_id','=',$category_id)
             ->get();
     }
 
@@ -203,14 +195,14 @@ class Home extends Controller {
 
 
         $this->products =[];
-        $this->products = database::table('product')
+        $this->products = database::table('products')
             ->select(
-                'product.id as product_id', 'product.title', 'product.image_id', 'product.category_id', 'product.price',
-                'product.quantity', 'product.image', 'product.date', 'product.in_cartList', 'product.in_wishList',
-                'company.id as company_id', 'company.name ', 'company.image as company_image'
-            )->join('company','product.company_id','=','company.id')
+                'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
+                'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                'suppliers.id as company_id', 'suppliers.name ', 'suppliers.image as company_image'
+            )->join('suppliers','products.supplier_id','=','suppliers.id')
             ->limit( $array_data->current_page_products * $this->products_for_category , $this->products_for_category )
-            ->where('product.category_id','=',$category_id)
+            ->where('products.category_id','=',$category_id)
             ->get();
     }
 
@@ -220,7 +212,7 @@ class Home extends Controller {
 
         if( $data_object->company_id == false ){
 
-            $this->where = 'product.company_id = company.id AND product.category_id = "' . $data_object->category_id . '"';
+            $this->where = 'products.supplier_id = suppliers.id AND products.category_id = "' . $data_object->category_id . '"';
 
         }else{
 
@@ -228,7 +220,7 @@ class Home extends Controller {
 
             $data_object->company_id = $company_id;
 
-            $this->where = 'product.company_id = company.id AND  product.company_id = "' .$data_object->company_id. '" AND product.category_id = "' . $data_object->category_id. '"';
+            $this->where = 'products.supplier_id = suppliers.id AND  products.supplier_id = "' .$data_object->company_id. '" AND products.category_id = "' . $data_object->category_id. '"';
         }
 
 

@@ -27,6 +27,7 @@ import { CompanyService } from './company.service';
 
 import { CategoriesComponent } from './categories/categories.component'; // company categories ........
 
+import { ResolverService } from './resolver.service';
 
 @NgModule({
 
@@ -63,6 +64,11 @@ import { CategoriesComponent } from './categories/categories.component'; // comp
 
 
         CompanyService,
+
+        ResolverService,
+
+
+
 
     ]
 

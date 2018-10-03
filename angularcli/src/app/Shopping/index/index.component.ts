@@ -1,4 +1,4 @@
-import {  Component,DoCheck,OnInit,Renderer ,ElementRef ,AfterViewInit} from '@angular/core';
+import {  Component,DoCheck,OnInit,Renderer ,ElementRef ,AfterViewInit,ChangeDetectorRef} from '@angular/core';
 
 import {Observable} from 'rxjs/Rx'; // Angular 5
 
@@ -31,7 +31,6 @@ export class IndexComponent implements OnInit {
 
   public content_settings:any = false;
 
-
   constructor(
       private scroll : ScrollbarService,
       private productsService :ProductService,
@@ -39,7 +38,9 @@ export class IndexComponent implements OnInit {
       private renderer : Renderer,
       private dataservices: DataService,
       private menuservice : MenuService,
-      private settings: SettingsService
+      private settings: SettingsService,
+
+
   ) {
 
     this.get_Language = this.dataservices.language;
@@ -78,7 +79,7 @@ export class IndexComponent implements OnInit {
 
     let footer = 200;
 
-    let header = 40;
+    let header = 50;
 
     let scroll_size = this.scroll.scroll_size();
 
@@ -121,7 +122,7 @@ export class IndexComponent implements OnInit {
 
     this.settings.menu = !this.settings.menu;
 
-    this.dataservices.Http_Get( 'settingMenu' , false ) // make request ......
+    this.dataservices.Http_Get( 'shopping/settings/change_menu' , false ) // make request ......
 
         .subscribe( //  take success
 
@@ -129,16 +130,12 @@ export class IndexComponent implements OnInit {
 
              let d =  data['data'];
 
-
-
             },
             error => console.log( error['data'] ) // take error .....
 
         );
 
   }
-
-
 
   go_top(){
 
@@ -198,24 +195,25 @@ export class IndexComponent implements OnInit {
 
       if ( event.target.closest('.notCloseDropdawnLanguage') == null) {
 
-        $('.dropmore').hide();
+        this.productsService.hide_dropdown_button('dropmore','mat-tab-body-wrapper');
 
       }
 
       if ( event.target.closest('.notCloseDropdawnFavorite') == null ) {
 
-        $('.dropfavority').hide();
+        this.productsService.hide_dropdown_button('dropfavority','body_wish');
 
       }
 
       if ( event.target.closest('.notCloseDropdawnSearch') == null) {
 
-        $('.dropdown_search').hide();
+        this.productsService.hide_search_content();
+
       }
 
       if ( event.target.closest('.notCloseDropdawnCard') == null ) {
 
-        $('.dropcard').hide();
+        this.productsService.hide_dropdown_button('dropcard','body_cart');
 
       }
 

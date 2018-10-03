@@ -6,7 +6,7 @@ class Language {
 
     private $defaultLang ='1';
 
-    public function object_language( $lang ){
+    public static function language( $lang ){
 
         $language=[];
 

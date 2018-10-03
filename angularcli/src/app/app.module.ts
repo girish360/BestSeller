@@ -13,8 +13,6 @@ import { HttpModule } from "@angular/http";
 
 import { HttpService } from './Shopping/services/http.service';
 
-import { AuthService } from './Shopping/services/auth.service';
-
 import { DeviceDetectorModule } from 'ngx-device-detector';
 
 import { EncryptDecryptService } from './Shopping/services/encrypt-decrypt.service'; // crypto service
@@ -24,8 +22,6 @@ import { ControllerService } from './Start/controller.service';
 import { DataService } from './share-service/data.service';
 
 import { ScrollbarService } from './share/scrollbar.service';
-
-
 
 import { ShareModule } from './share/share.module';
 
@@ -73,8 +69,6 @@ import { SetRouterService } from './Shopping/services/set-router.service';
     SetRouterService,
 
     HttpService,
-
-    AuthService,
 
     EncryptDecryptService,
 

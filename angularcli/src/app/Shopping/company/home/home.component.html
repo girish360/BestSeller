@@ -1,4 +1,7 @@
-<div class="home" *ngIf="{company : dataservices.company | async , app : dataservices.async | async }"
+
+<ng-container *ngIf="{company : dataservices.company | async , app : dataservices.async | async  }">
+
+<div class="home body"   *ngIf="!dataservices.not_founded"
      infiniteScroll
      [infiniteScrollDistance]="0"
      [infiniteScrollThrottle]="50"
@@ -71,3 +74,4 @@
 
 </div>
 
+</ng-container>

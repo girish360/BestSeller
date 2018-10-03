@@ -99,9 +99,9 @@
 
           <div  class=" subcategory sub{{category.id}}">
 
-            <ng-container   *ngIf="category['sub_category'].length>0; else notFirst">
+            <ng-container   *ngIf="category['subcategories'].length>0; else notFirst">
 
-              <div  *ngFor="let subcategory of category['sub_category']" >
+              <div  *ngFor="let subcategory of category['subcategories']" >
 
                 <button  mat-button class="button_menu" (click)="category_products( subcategory )">
 

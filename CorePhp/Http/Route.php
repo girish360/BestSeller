@@ -38,11 +38,12 @@ class Route{
 
             self::getMethod();
 
-            if (self::$httpMethod == 'GET') {
+            if ( self::$httpMethod == 'GET' ) {
 
                 self::callController($action);
 
-            } else if ($route == self::$uri) {
+            }
+            else if ( $route == self::$uri ) {
 
                 self::exeption('Request Method come ' . self::$httpMethod . ' from client , it must be ' . self::$httpMethod . ' in Route ');
 
@@ -260,16 +261,7 @@ class Route{
 
             }else{ // request with params  call method in controller with param
 
-                $params = self::decryptparams( self::$params );  // every params isencrypted  here in server shoud decrypted it
-
-                if( !empty( $params ) ) {
-
-                    echo $func( $params ) ;
-
-                }else{
-
-                }
-
+                echo $func( json_decode(self::$params) ) ;
             }
         }
     }
@@ -317,11 +309,6 @@ class Route{
 
     }
 
-    public static function n( ){
-
-       echo self::$number++;
-
-    }
 }
 
 ?>

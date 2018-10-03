@@ -8,7 +8,7 @@ import { MenuService } from '../menu/menu.service';
 
 export class SettingsService {
 
-  public menu:any=false;
+  public menu:any = false;
 
 
   constructor(
@@ -17,15 +17,17 @@ export class SettingsService {
       private menuservice :MenuService
   ) {
 
-    this.dataservices.Http_Get( 'getSettings' , false ) // make request ......
+    this.dataservices.Http_Get( 'shopping/settings/menu' , false ) // make request ......
 
         .subscribe( //  take success
 
             data => {
 
-              this.menu =  data['data'];
+              this.menu =  data;
 
               this.menuservice.menu.next( this.menu );
+
+
 
             },
 

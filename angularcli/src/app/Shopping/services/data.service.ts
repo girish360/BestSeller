@@ -2,15 +2,13 @@ import { Inject, Injectable ,EventEmitter ,OnInit } from '@angular/core';
 
 import { HttpService } from './http.service';
 
-import { AuthService } from './auth.service';
-
-import {  Http, Response , Headers} from '@angular/http';
+import { Http, Response , Headers } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
 import 'rxjs/Rx'
 
-import{BehaviorSubject } from 'rxjs/BehaviorSubject';
+import{ BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/observable/interval';
 
@@ -20,9 +18,11 @@ import{Subject} from 'rxjs/Subject';
 
 @Injectable()
 
-export class DataService extends AuthService implements OnInit{
+export class DataService extends HttpService implements OnInit{
 
  // identify if cartlist should change
+
+    public app_rendered :any = false;
 
     public loaded_component:any = false; // when response is came from server this property become true
 
@@ -48,6 +48,10 @@ export class DataService extends AuthService implements OnInit{
 
     public company = this.app_company.asObservable();// company as async
 
+    private app_header =  new BehaviorSubject<boolean>(true); // refresh app company component
+
+    public header = this.app_header.asObservable();// company as async
+
     private app_async =  new BehaviorSubject<boolean>(true); // refresh all components in shopping departament
 
     public async = this.app_async.asObservable();// refresh all component as async
@@ -71,7 +75,7 @@ export class DataService extends AuthService implements OnInit{
 
     public menu_style : any = {'height':'calc( 100vh - 40px  )'};
 
-  constructor( private httpservice : HttpService , protected http:Http  ) {
+  constructor(  protected http:Http  ) {
 
      super( http );
 
@@ -87,14 +91,14 @@ export class DataService extends AuthService implements OnInit{
 
     return new Promise( ( resolve , reject ) => {
 
-        this.httpservice.Http_Post('' ,this.object_request )
+        this.Http_Post('' ,this.object_request )
 
         .subscribe(
 
             data => {
 
 
-                resolve( data['data'] );
+                resolve( data );
 
             },
 
@@ -137,6 +141,13 @@ export class DataService extends AuthService implements OnInit{
     update_company( boolean ){
 
         this.app_company.next ( boolean ) ;
+    }
+
+    update_header( boolean ){
+
+
+
+        this.app_header.next( boolean );
     }
 
 

@@ -121,17 +121,17 @@ export class ProductService extends HeaderService {
         .subscribe( //  take success
             data => {
 
-              if( data['data']['products'] != 'empty') { // Is not empty .............
+              if( data['products'] != 'empty') { // Is not empty .............
 
-                this.products = data['data']['products'];
+                this.products = data['products'];
 
                 this.checked_products_inCart_and_inWish();
 
                 this.pages_link = [];
 
-                if( data['data']['pages_details'] != false ){
+                if( data['pages_details'] != false ){
 
-                  this.pages_details = data['data']['pages_details'];
+                  this.pages_details = data['pages_details'];
 
                   this.build_pages_link(this.pages_details);
 
@@ -147,316 +147,344 @@ export class ProductService extends HeaderService {
               }, 1000)
 
             },
-            error => console.log( error['data'] ) // take error .....
+            error => console.log( error ) // take error .....
         );
   }
 
-  build_pages_link( pages_details ){ // that create pages link for products ...............................................................................
+  build_pages_link( pages_details ) { // that create pages link for products ...............................................................................
 
     this.pages_link = []; // empty pages_link .........
 
-    if( pages_details.page <= 3 ){ // check if pages is  smaller than 3 or equals ...........................
+    if (pages_details.total_pages > 1) {
 
-      if( pages_details.total_pages <= 8 ){  // check if total pages are smaller than 8  or equals
 
-        if( pages_details.page > 1 ){ // check if page that more bigger than 1  to add skip_previouse  icon ......................
+      if (pages_details.page <= 3) { // check if pages is  smaller than 3 or equals ...........................
 
-          this.pages_link.push( { 'page': i ,'active': false , 'icon_material':'skip_previous' ,'icon':true  });
-        }
-        for( var i =1 ; i <= pages_details.total_pages ; i++ ){  // loop with number page
+        if (pages_details.total_pages <= 8) {  // check if total pages are smaller than 8  or equals
 
-          if( i == pages_details.page ){ // check if  number_ click is equals with item in loop to add property active true .........
+          if (pages_details.page > 1) { // check if page that more bigger than 1  to add skip_previouse  icon ......................
 
-            this.pages_link.push( {'page': i ,'active': true , 'icon_material':'x' ,'icon':false  });
-
-          }else{ // pages not active .................................................
-
-            this.pages_link.push( {'page': i ,'active': false , 'icon_material':'x' ,'icon':false  });
+            this.pages_link.push({'page': i, 'active': false, 'icon_material': 'skip_previous', 'icon': true});
           }
-        }
-        if( pages_details.page+5 <= pages_details.total_pages ) { // check if number click + 5 is more bigger or equals to add fast_forward icon  with 5 pages ...........
+          for (var i = 1; i <= pages_details.total_pages; i++) {  // loop with number page
 
-          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'fast_forward' ,'icon':true  });
+            if (i == pages_details.page) { // check if  number_ click is equals with item in loop to add property active true .........
 
-        }else{ //  add skip_next icon with  one page  increment  ....................
-          if(  pages_details.page < pages_details.total_pages ){
+              this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
 
-            this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_next' ,'icon':true  });
+            } else { // pages not active .................................................
 
-          }
-        }
-        return ;  // return pages_link that is a array with some objects inside ...........................................................
-      }
-      else{  // here total_pages pages are more bigger than 8  ...........................
-
-        if( pages_details.page == 1 ){ // check if number click is equals with one .............................................
-
-          for( var i =1 ; i <= pages_details.page+7 ; i++ ){ // loop with number page
-
-            if( i == pages_details.page ){ // check if  number_ click is equals with item in loop to add property active true .........
-
-              this.pages_link.push( {'page': i ,'active': true , 'icon_material':'x' ,'icon':false  });
-
-            }else{ // pages not active .................................................
-
-              this.pages_link.push( {'page': i ,'active': false , 'icon_material':'x' ,'icon':false  });
+              this.pages_link.push({'page': i, 'active': false, 'icon_material': 'x', 'icon': false});
             }
-
           }
+          if (pages_details.page + 5 <= pages_details.total_pages) { // check if number click + 5 is more bigger or equals to add fast_forward icon  with 5 pages ...........
+
+            this.pages_link.push({'page': i, 'active': false, 'icon_material': 'fast_forward', 'icon': true});
+
+          } else { //  add skip_next icon with  one page  increment  ....................
+            if (pages_details.page < pages_details.total_pages) {
+
+              this.pages_link.push({'page': i, 'active': false, 'icon_material': 'skip_next', 'icon': true});
+
+            }
+          }
+          return;  // return pages_link that is a array with some objects inside ...........................................................
         }
-        else{
+        else {  // here total_pages pages are more bigger than 8  ...........................
 
-          if( pages_details.page == 2 ){  // check if number click is equals with two .............................................
+          if (pages_details.page == 1) { // check if number click is equals with one .............................................
 
-            this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_previous' ,'icon':true  });
+            for (var i = 1; i <= pages_details.page + 7; i++) { // loop with number page
 
+              if (i == pages_details.page) { // check if  number_ click is equals with item in loop to add property active true .........
 
-            for( var i =1 ; i <= pages_details.page+5 ; i++ ){
+                this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
 
-              if( i == pages_details.page ){
+              } else { // pages not active .................................................
 
-                this.pages_link.push( {'page': i ,'active': true , 'icon_material':'x' ,'icon':false  });
-
-              }else{
-
-                this.pages_link.push( {'page': i ,'active': false , 'icon_material':'x' ,'icon':false  });
+                this.pages_link.push({'page': i, 'active': false, 'icon_material': 'x', 'icon': false});
               }
+
             }
-          }
-          else{
-            if( pages_details.page == 3 ){
-
-              this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_previous' ,'icon':true  });
-
-              for( var i =1 ; i <= pages_details.page+4 ; i++ ){
-
-                if( i == pages_details.page ){
-
-                  this.pages_link.push( {'page': i ,'active': true , 'category_id':pages_details.category_id,'icon_material':'x' ,'icon':false  });
-
-                }else{
-
-                  this.pages_link.push( {'page': i ,'active': false , 'category_id':pages_details.category_id,'icon_material':'x' ,'icon':false  });
-                }
-              }
-            }
-          }
-        }
-
-        this.pages_link.push( {'page': pages_details.total_pages ,'active': false , 'category_id':pages_details.category_id,'icon_material':'x' ,'icon':false  });
-
-
-        if( pages_details.page+5 <= pages_details.total_pages ){
-
-          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'fast_forward' ,'icon':true  });
-
-        }else{
-
-          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_next' ,'icon':true  });
-        }
-
-        return ;
-
-      }
-
-    } // end number click is smaller than 3 or equals ................
-    else{ // here number click is bigger than 3 ................
-
-      if( pages_details.total_pages > pages_details.page+3 ){
-
-        if( pages_details.page > 5){
-
-          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'fast_rewind' ,'icon':true  });
-        }
-        else{
-          this.pages_link.push( {'page': i ,'active': false , 'icon_material':'skip_previous' ,'icon':true  });
-        }
-
-        this.pages_link.push( {'page': 1 ,'active': false , 'icon_material':'x' ,'icon':false  });
-
-        for(  var i = pages_details.page-2 ; i <= pages_details.page+3 ; i++ ){
-
-          if( i == pages_details.page ){
-
-            this.pages_link.push( {'page': i ,'active': true , 'icon_material':'x' ,'icon':false  });
-
-          }else{
-            this.pages_link.push( {'page': i ,'active': false , 'icon_material':'x' ,'icon':false  });
-
-          }
-        }
-
-        this.pages_link.push( {'page': pages_details.total_pages ,'active': false , 'icon_material':'x' ,'icon':false  });
-
-        if( pages_details.page+5 <= pages_details.total_pages ){
-
-          this.pages_link.push( {'page': 1 ,'active': false , 'icon_material':'fast_forward' ,'icon':true  });
-
-        }else{
-          this.pages_link.push( {'page': 1 ,'active': false , 'icon_material':'skip_next' ,'icon':true  });
-        }
-        return ;
-      }
-      else{
-        if( pages_details.total_pages >= 10 ) {
-
-          if (pages_details.page > 5) {
-
-            this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'fast_rewind', 'icon': true});
           }
           else {
 
-            this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'skip_previous', 'icon': true});
+            if (pages_details.page == 2) {  // check if number click is equals with two .............................................
 
-          }
-          this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'x', 'icon': false});
+              this.pages_link.push({'page': i, 'active': false, 'icon_material': 'skip_previous', 'icon': true});
 
-          if ( pages_details.page + 1 == pages_details.total_pages ) {
 
-            for (var i = pages_details.page - 5; i <= pages_details.total_pages; i++) {
-
-              if (i == pages_details.page) {
-
-                this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
-
-              } else {
-
-                this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false
-                });
-              }
-            }
-          } else {
-            if ( pages_details.page == pages_details.total_pages ) {
-
-              for (var i = pages_details.page - 7; i <= pages_details.total_pages; i++) {
+              for (var i = 1; i <= pages_details.page + 5; i++) {
 
                 if (i == pages_details.page) {
 
-                  this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
+                  this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
 
                 } else {
 
-                  this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false
-                  });
+                  this.pages_link.push({'page': i, 'active': false, 'icon_material': 'x', 'icon': false});
                 }
               }
             }
             else {
+              if (pages_details.page == 3) {
 
-              if( pages_details.page+3 == pages_details.total_pages ){
+                this.pages_link.push({'page': i, 'active': false, 'icon_material': 'skip_previous', 'icon': true});
 
-                for ( var i = pages_details.page - 3; i <= pages_details.total_pages; i++) {
-
-                  if (i == pages_details.page) {
-
-                    this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
-
-                  } else {
-
-                    this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
-                  }
-                }
-
-              }
-              else{
-                for ( var i = pages_details.page - 4; i <= pages_details.total_pages; i++) {
+                for (var i = 1; i <= pages_details.page + 4; i++) {
 
                   if (i == pages_details.page) {
 
-                    this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
+                    this.pages_link.push({
+                      'page': i,
+                      'active': true,
+                      'category_id': pages_details.category_id,
+                      'icon_material': 'x',
+                      'icon': false
+                    });
 
                   } else {
 
-                    this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
+                    this.pages_link.push({
+                      'page': i,
+                      'active': false,
+                      'category_id': pages_details.category_id,
+                      'icon_material': 'x',
+                      'icon': false
+                    });
                   }
                 }
-
               }
-
             }
           }
 
-          if (pages_details.page != pages_details.total_pages) {
+          this.pages_link.push({
+            'page': pages_details.total_pages,
+            'active': false,
+            'category_id': pages_details.category_id,
+            'icon_material': 'x',
+            'icon': false
+          });
 
-            this.pages_link.push({'page': i, 'active': false,  'icon_material': 'skip_next', 'icon': true});
 
+          if (pages_details.page + 5 <= pages_details.total_pages) {
+
+            this.pages_link.push({'page': i, 'active': false, 'icon_material': 'fast_forward', 'icon': true});
+
+          } else {
+
+            this.pages_link.push({'page': i, 'active': false, 'icon_material': 'skip_next', 'icon': true});
           }
 
           return;
 
-        }else{
+        }
+
+      } // end number click is smaller than 3 or equals ................
+      else { // here number click is bigger than 3 ................
+
+        if (pages_details.total_pages > pages_details.page + 3) {
 
           if (pages_details.page > 5) {
 
-            this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'fast_rewind', 'icon': true});
+            this.pages_link.push({'page': i, 'active': false, 'icon_material': 'fast_rewind', 'icon': true});
           }
           else {
-
-            this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'skip_previous', 'icon': true});
-
+            this.pages_link.push({'page': i, 'active': false, 'icon_material': 'skip_previous', 'icon': true});
           }
-          this.pages_link.push({'page': 1, 'active': false,  'icon_material': 'x', 'icon': false});
+
+          this.pages_link.push({'page': 1, 'active': false, 'icon_material': 'x', 'icon': false});
+
+          for (var i = pages_details.page - 2; i <= pages_details.page + 3; i++) {
+
+            if (i == pages_details.page) {
+
+              this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
+
+            } else {
+              this.pages_link.push({'page': i, 'active': false, 'icon_material': 'x', 'icon': false});
+
+            }
+          }
+
+          this.pages_link.push({
+            'page': pages_details.total_pages,
+            'active': false,
+            'icon_material': 'x',
+            'icon': false
+          });
+
+          if (pages_details.page + 5 <= pages_details.total_pages) {
+
+            this.pages_link.push({'page': 1, 'active': false, 'icon_material': 'fast_forward', 'icon': true});
+
+          } else {
+            this.pages_link.push({'page': 1, 'active': false, 'icon_material': 'skip_next', 'icon': true});
+          }
+          return;
+        }
+        else {
+          if (pages_details.total_pages >= 10) {
+
+            if (pages_details.page > 5) {
+
+              this.pages_link.push({'page': 1, 'active': false, 'icon_material': 'fast_rewind', 'icon': true});
+            }
+            else {
+
+              this.pages_link.push({'page': 1, 'active': false, 'icon_material': 'skip_previous', 'icon': true});
+
+            }
+            this.pages_link.push({'page': 1, 'active': false, 'icon_material': 'x', 'icon': false});
+
+            if (pages_details.page + 1 == pages_details.total_pages) {
+
+              for (var i = pages_details.page - 5; i <= pages_details.total_pages; i++) {
+
+                if (i == pages_details.page) {
+
+                  this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
+
+                } else {
+
+                  this.pages_link.push({
+                    'page': i, 'active': false, 'icon_material': 'x', 'icon': false
+                  });
+                }
+              }
+            } else {
+              if (pages_details.page == pages_details.total_pages) {
+
+                for (var i = pages_details.page - 7; i <= pages_details.total_pages; i++) {
+
+                  if (i == pages_details.page) {
+
+                    this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
+
+                  } else {
+
+                    this.pages_link.push({
+                      'page': i, 'active': false, 'icon_material': 'x', 'icon': false
+                    });
+                  }
+                }
+              }
+              else {
+
+                if (pages_details.page + 3 == pages_details.total_pages) {
+
+                  for (var i = pages_details.page - 3; i <= pages_details.total_pages; i++) {
+
+                    if (i == pages_details.page) {
+
+                      this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
+
+                    } else {
+
+                      this.pages_link.push({'page': i, 'active': false, 'icon_material': 'x', 'icon': false});
+                    }
+                  }
+
+                }
+                else {
+                  for (var i = pages_details.page - 4; i <= pages_details.total_pages; i++) {
+
+                    if (i == pages_details.page) {
+
+                      this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
+
+                    } else {
+
+                      this.pages_link.push({'page': i, 'active': false, 'icon_material': 'x', 'icon': false});
+                    }
+                  }
+
+                }
+
+              }
+            }
+
+            if (pages_details.page != pages_details.total_pages) {
+
+              this.pages_link.push({'page': i, 'active': false, 'icon_material': 'skip_next', 'icon': true});
+
+            }
+
+            return;
+
+          } else {
+
+            if (pages_details.page > 5) {
+
+              this.pages_link.push({'page': 1, 'active': false, 'icon_material': 'fast_rewind', 'icon': true});
+            }
+            else {
+
+              this.pages_link.push({'page': 1, 'active': false, 'icon_material': 'skip_previous', 'icon': true});
+
+            }
+            this.pages_link.push({'page': 1, 'active': false, 'icon_material': 'x', 'icon': false});
 
 
-          if( pages_details.total_pages <= 8 ){
+            if (pages_details.total_pages <= 8) {
 
-            for ( var i = 2; i <= pages_details.total_pages; i++) {
+              for (var i = 2; i <= pages_details.total_pages; i++) {
 
-              if (i == pages_details.page) {
+                if (i == pages_details.page) {
 
-                this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
+                  this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
+
+                } else {
+
+                  this.pages_link.push({'page': i, 'active': false, 'icon_material': 'x', 'icon': false});
+                }
+              }
+
+            } else {
+
+              if (pages_details.total_pages != pages_details.page) {
+
+                for (var i = 3; i <= pages_details.total_pages; i++) {
+
+                  if (i == pages_details.page) {
+
+                    this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
+
+                  } else {
+
+                    this.pages_link.push({'page': i, 'active': false, 'icon_material': 'x', 'icon': false});
+                  }
+                }
 
               } else {
 
-                this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
-              }
-            }
+                for (var i = 2; i <= pages_details.total_pages; i++) {
 
-          }else{
+                  if (i == pages_details.page) {
 
-            if( pages_details.total_pages != pages_details.page ){
+                    this.pages_link.push({'page': i, 'active': true, 'icon_material': 'x', 'icon': false});
 
-              for ( var i = 3; i <= pages_details.total_pages; i++) {
+                  } else {
 
-                if (i == pages_details.page) {
-
-                  this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
-
-                } else {
-
-                  this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
+                    this.pages_link.push({'page': i, 'active': false, 'icon_material': 'x', 'icon': false});
+                  }
                 }
-              }
 
-            }else{
-
-              for ( var i = 2; i <= pages_details.total_pages; i++) {
-
-                if (i == pages_details.page) {
-
-                  this.pages_link.push({'page': i, 'active': true,  'icon_material': 'x', 'icon': false});
-
-                } else {
-
-                  this.pages_link.push({'page': i, 'active': false,  'icon_material': 'x', 'icon': false});
-                }
               }
 
             }
 
+            if (pages_details.page != pages_details.total_pages) {
+
+              this.pages_link.push({'page': i, 'active': false, 'icon_material': 'skip_next', 'icon': true});
+
+            }
+
+            return;
           }
-
-          if (pages_details.page != pages_details.total_pages) {
-
-            this.pages_link.push({'page': i, 'active': false,  'icon_material': 'skip_next', 'icon': true});
-
-          }
-
-          return;
         }
       }
-    }
 
-  } // End function that build pages link ........................................................
-
+    } // End function that build pages link ........................................................
+  }
 }

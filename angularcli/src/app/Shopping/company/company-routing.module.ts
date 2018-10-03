@@ -15,15 +15,22 @@ import { ProductsComponent } from '../products/products.component';
 
 import { CategoriesComponent } from './categories/categories.component'; // company categories ........
 
+import { ResolverService } from './resolver.service';
 
 const routes: Routes = [
 
   {
     path: '' , component : CompanyComponent,
 
+    resolve:{  company : ResolverService  },
+
     children:[
 
-      { path:'' , component:HomeComponent },
+      {
+
+        path:'' , component:HomeComponent,
+
+      },
 
       { path:'search' , component:SearchComponent },
 
@@ -32,8 +39,6 @@ const routes: Routes = [
       { path:'categories' , component:CategoriesComponent },
 
       { path:'products' , component:ProductsComponent },
-
-
 
     ]
   }

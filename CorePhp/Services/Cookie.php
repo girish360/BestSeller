@@ -2,8 +2,9 @@
 
 namespace server\services\cookie;
 
-class Cookie{
+use \Exception;
 
+class Cookie{
 
     public static function save_coockie( $cookie_name , $data_array ){
 
@@ -21,7 +22,7 @@ class Cookie{
 
     }
 
-    public function remove_cookie( $name_cookie ){
+    public static function remove_cookie( $name_cookie ){
 
         setcookie( $name_cookie, '', time() - ((3600*60)*24)*30, '/' ); // remove cookie .......
 
@@ -54,7 +55,7 @@ class Cookie{
         }
     }
 
-    public function delete_items_in_Cookie( $cookie_name , $Array_selected ) // delete
+    public static function delete_items_in_Cookie( $cookie_name , $Array_selected ) // delete
     {
         try {
             if ( isset ( $_COOKIE[$cookie_name] ) ) { // check if exist this cookie .................
@@ -97,7 +98,7 @@ class Cookie{
         }
     }
 
-    public function update_array( $cookie_name , $array_data ){
+    public static function update_array( $cookie_name , $array_data ){
 
         try{
 
@@ -128,7 +129,5 @@ class Cookie{
 
 
 }
-
-
 
 ?>

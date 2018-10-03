@@ -9,7 +9,9 @@ a{
     height: auto;
 
 }
+.menu {
 
+}
 
 .top_in_menu{
 
@@ -96,8 +98,8 @@ a{
     position: fixed;
     left: -250px;
     width: 300px;
-    top: 40px;
-    height: calc( 100vh - 40px) ;
+    top: 50px;
+    height: calc( 100vh - 50px) ;
     overflow-x: auto;
     opacity: 0.1;
     background: url("../../../assets/images/under_login.jpg") no-repeat;
@@ -108,8 +110,8 @@ a{
     position: fixed;
     left: -250px;
     width: 300px;
-    margin-top: 40px;
-    height: calc( 100vh - 40px) ;
+    margin-top: 50px;
+    height: calc( 100vh - 50px) ;
     overflow-x: hidden;
     overflow-y:overlay ;
     word-wrap: break-word;

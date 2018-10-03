@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
 
       this.dataservices.update_loader(true);
 
-      if(   this.homeservice.categories_products.length  == 0) {
+      if(  this.homeservice.categories_products.length  == 0 ) {
 
           this.dataservices.loaded_component = false;
 
@@ -63,11 +63,9 @@ export class HomeComponent implements OnInit {
 
                   data => {
 
-                      this.homeservice.categories_products = data['data']['categories'];
+                      this.homeservice.categories_products = data['categories'];
 
-                      this.homeservice.store_data_carousel = data['data']['store_data'];
-
-                      this.cd.markForCheck();
+                      this.homeservice.store_data_carousel = data['store_data'];
 
 
                       setTimeout(() => {
@@ -78,14 +76,22 @@ export class HomeComponent implements OnInit {
 
                       this.dataservices.loaded_component = true;
 
+                      this.cd.markForCheck();
+
 
                   },
 
-                  error => console.log(error['data']) // take error .....
+                  error => console.log(error) // take error .....
 
               );
+      }else{
+          this.dataservices.loaded_component = true;
       }
+
+
+
       this.dataservices.update_loader(false);
+
 
   } // end constructor ...................................
 
@@ -166,7 +172,7 @@ export class HomeComponent implements OnInit {
 
               data => {
 
-                  this.more_products( data['data'] , current_category.id );
+                  this.more_products( data , current_category.id );
 
                   setTimeout(()=>{
 
@@ -175,7 +181,7 @@ export class HomeComponent implements OnInit {
                   },1000);
 
               },
-              error => console.log( error['data'] ) // take error .....
+              error => console.log( error ) // take error .....
 
           );
 
@@ -224,14 +230,14 @@ export class HomeComponent implements OnInit {
 
                   data => {
 
-                      let more_categories = data['data']['categories'];
+                      let more_categories = data['categories'];
 
-                      this.homeservice.store_data_carousel = data['data']['store_data'];
+                      this.homeservice.store_data_carousel = data['store_data'];
 
                       this.more_categories( more_categories );
 
                   },
-                  error => console.log(error['data']) // take error .....
+                  error => console.log(error) // take error .....
 
               );
       }

@@ -1,77 +1,66 @@
 <?php
 
-use  server\services\cookie\Cookie as cookie;
+use server\services\cookie\Cookie as cookie;
+
+use server\db\DB as database;
 
 use server\services\fetch\Fetch as fetch;
 
 class Header {
 
+    private $wishList = false;
+
+    private $cartList = false;
+
     public function get_wishlist_cartList(){
 
-        $result_from_wishList = cookie::get_cookie( 'wishList'  );
+        $cookie_wishList = cookie::get_cookie( 'wishList'  );
 
-        $result_from_cartList = cookie::get_cookie( 'cartList'  );
+        $cookie_cartList = cookie::get_cookie( 'cartList'  );
 
-        $wishList_from_databse = [];
+        if( $cookie_wishList != false ){
 
-        $cartList_from_databse = [];
+            $products_id = array();
 
-        if( $result_from_wishList != false ){
+            foreach ( $cookie_wishList as $key => $value ){
 
-            $select_and_tables = array(  // array with t6ables and respective columns
-
-                //table
-                "product"=>array(
-                    // columns table
-                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.unit_stock','product.image','product.date','product.in_cartList' ,'product.in_wishList'
-                ),
-                // table
-                "company"=>array(
-                    //colums table
-                    'company.id','company.name','company.image'
-                )
-                // more table and columns ............
-            );
-
-
-
-            $wishList_from_databse = fetch::fetch_data_cookie( $select_and_tables, $result_from_wishList ); // ffetch data
-
-
+                array_push( $products_id , $value->id );
+            }
+            $this->wishList = database::table('products')
+                ->select(
+                    'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
+                    'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                    'suppliers.id as supplier_id', 'suppliers.name ', 'suppliers.image as supplier_image'
+                )->join('suppliers','products.supplier_id','=','suppliers.id')
+                ->whereIn('products.id' ,$products_id )
+                ->get();
         }
-        if( $result_from_cartList != false ){
+        if( $cookie_cartList != false ){
 
-            $select_and_tables = array(  // array with t6ables and respective columns
+            $product = array();
 
-                //table
-                "product"=>array(
-                    // columns table
-                    'product.id','product.title','product.image_id','product.category_id','product.price','product.quantity','product.unit_stock','product.image','product.date','product.in_cartList' ,'product.in_wishList'
-                ),
-                // table
-                "company"=>array(
-                    //colums table
-                    'company.id','company.name','company.image'
-                )
-                // more table and columns ............
-            );
+            foreach ( $cookie_cartList as $key => $value ){
 
-            $cartList_from_databse = fetch::fetch_data_cookie( $select_and_tables, $result_from_cartList ); // ffetch data
+                array_push( $product , $value->id );
+
+            }
+            $this->cartList = database::table('products')
+                ->select(
+                    'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
+                    'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                    'suppliers.id as supplier_id', 'suppliers.name ', 'suppliers.image as supplier_image'
+                )->join('suppliers','products.supplier_id','=','suppliers.id')
+                ->whereIn('products.id' ,$product )
+                ->get();
         }
+        if( $cookie_cartList != false || $cookie_wishList != false ){
 
-        if( $result_from_cartList != false || $result_from_wishList != false ){
-
-            $result = array('wishList'=>$wishList_from_databse ,'cartList'=> $cartList_from_databse ,'cookie_cartList'=>$result_from_cartList);
+            $result = array('wishList'=>$this->wishList ,'cartList'=> $this->cartList ,'quantity_items_incart'=>$cookie_cartList);
 
             return fetch::json_data(  $result ); // return json data ...........
+
         }
-
-        return fetch::json_data(  'false' ); // return json data ...........
-    }
-
-    public function  get_cartList(){
-
-
+        return fetch::json_data(  false ); // return json data ...........
     }
 
     public function add_cart_cookie(  $data ){
@@ -88,7 +77,7 @@ class Header {
 
         $result = cookie::save_coockie('cartList' , $array_data );
 
-        return fetch::json_data(  $result );  // return result ......
+        return fetch::json_data( $result );  // return result ......
 
     }
 
@@ -110,6 +99,7 @@ class Header {
         return fetch::json_data( $data );  // return result ......
 
     }
+
     public function update_cartList(  $array_quantity ){
 
         if( is_array( $array_quantity ) ){
@@ -143,8 +133,6 @@ class Header {
         return fetch::json_data( $result );
 
     }
-
-
 
 }
 

@@ -1,7 +1,10 @@
 
-
+.company_router{
+    position: relative; width: inherit; height: auto;z-index: 1;
+}
 
 .company_right{
+
     float: right;  height: 100%;
 
 }
@@ -85,6 +88,9 @@
     color: honeydew;  position: relative;  top: -5px;
 
 }
+.tile{
+    box-shadow: none;
+}
 
 .items_in_carousel .mat-icon{
     color:honeydew;
@@ -138,6 +144,7 @@ ngx-item img {
 ngx-tile div {
     position: relative;  color: white;
 }
+ngx-tile
 
 .forward , .forward_fixed{
     position: absolute;  right: 0;  top: 0;  width: 5px;  height: 300px;  display: inline-block;

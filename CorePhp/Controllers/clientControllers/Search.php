@@ -6,42 +6,54 @@ use server\services\fetch\Fetch as fetch;
 
 use server\services\cookie\Cookie as cookie;
 
+use server\db\DB as database ;
+
 class Search{
 
-    private  $tables = array('product'=>'product' , 'company'=>'company');
+    private  $tables = array('products'=>'products' , 'suppliers'=>'suppliers');
 
     private $search_results = array();
 
     private $recent_searches_cookie = 'recent_searches';
 
-    public function get_search_results( $params ){
+    private $result = array();
+
+    public function search_in_header( $params ){
 
         if( $params->product ){
 
-            $count_like = db::count_like( $this->tables['product'] , array('title'=>$params->value) );
+            $this->result = database::table('products')
+                ->select('title','products.id','products.image','name')
+                ->join('suppliers','products.supplier_id','=','suppliers.id')
+                ->like('title','%'.$params->value.'%')
+                ->get();
 
-            $number = fetch::fetch($count_like);
+             if( count( $this->result ) == 0 ){
 
-            $result_search = db::search_query( $this->tables['product'] , array('title'=>$params->value) ,array('title','id','image'));
+                 return fetch::json_data(false);
 
-            $this->search_results = fetch::fetch_data_array( $result_search );
+             }else{
+                 return fetch::json_data( $this->result );
+             }
 
         }
         else if( $params->company ){
 
-            $count_like = db::count_like( $this->tables['company'] , array('name'=>$params->value) );
+            $this->result = database::table('suppliers')
+                ->select('name','id','image')
+                ->like('name','%'.$params->value.'%')
+                ->get();
 
-            $number = fetch::fetch($count_like);
+            if( count( $this->result ) == 0 ){
 
-            $result_search = db::search_query( $this->tables['company'] , array('name'=>$params->value) ,array('name','id','image'));
+                return fetch::json_data(false);
 
-            $this->search_results = fetch::fetch_data_array( $result_search );
+            }else{
+
+                return fetch::json_data( $this->result );
+            }
+
         }
-        else{
-
-        }
-
-        return fetch::json_data( $this->search_results );
     }
 
     public function get_recent_searches( $params ){
@@ -70,6 +82,5 @@ class Search{
     }
 
 }
-
 
 ?>

@@ -19,9 +19,8 @@ use \DateTime;
  * @license  http://opensource.org/licenses/BSD-3-Clause 3-clause BSD
  * @link     https://github.com/firebase/php-jwt
  */
-
-
-class JWT extends \Fetch{
+class JWT
+{
 
     /**
      * When checking nbf, iat or expiration times,
@@ -110,21 +109,23 @@ class JWT extends \Fetch{
 
         // Check the signature
         if (!static::verify("$headb64.$bodyb64", $sig, $key, $header->alg)) {
+
             throw new SignatureInvalidException('Signature verification failed');
+
         }
 
         // Check if the nbf if it is defined. This is the time that the
         // token can actually be used. If it's not yet that time, abort.
-        if (isset($payload->nbf) && $payload->nbf > ($timestamp + static::$leeway)) {
+        if (isset($payload->nbf) && $payload->nbf < ($timestamp + static::$leeway)) {
             throw new BeforeValidException(
-                'Cannot handle token prior to ' . date(DateTime::ISO8601, $payload->nbf)
+                'Cannot handle token prior to ' . $payload->nbf . ' <  ' .( $timestamp + static::$leeway)
             );
         }
 
         // Check that this token has been created before 'now'. This prevents
         // using tokens that have been created for later use (and haven't
         // correctly used the nbf claim).
-        if (isset($payload->iat) && $payload->iat > ($timestamp + static::$leeway)) {
+        if (isset($payload->iat) && $payload->iat < ($timestamp + static::$leeway)) {
             throw new BeforeValidException(
                 'Cannot handle token prior to ' . date(DateTime::ISO8601, $payload->iat)
             );
@@ -172,6 +173,7 @@ class JWT extends \Fetch{
         $segments[] = static::urlsafeB64Encode($signature);
 
         return implode('.', $segments);
+
     }
 
     /**
@@ -378,4 +380,3 @@ class JWT extends \Fetch{
         return strlen($str);
     }
 }
-

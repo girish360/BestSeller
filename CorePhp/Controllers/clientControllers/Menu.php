@@ -14,7 +14,7 @@ class Menu extends Controller
 
     private $select_columns = array('id','name','image');
 
-    private $table_name='category';
+    private $table_name='categories';
 
     public function redukto($word, $limit = '20')
     {
@@ -43,7 +43,7 @@ class Menu extends Controller
 
             array('id','name','image'),
 
-            array('column_dependet'=>'category_id','table_name'=>'sub_category','column'=>'id')
+            array('column_dependet'=>'category_id','table_name'=>'subcategories','column'=>'id')
 
         );
 

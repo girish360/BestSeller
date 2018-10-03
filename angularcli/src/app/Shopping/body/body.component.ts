@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter, DoCheck} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, DoCheck ,AfterViewChecked} from '@angular/core';
 
 import { DataService } from '../services/data.service';
 
@@ -28,6 +28,12 @@ export class BodyComponent implements OnInit {
   }
 
   ngOnInit(){
+
+  }
+
+  ngAfterViewChecked(){
+
+    this.dataservices.app_rendered = true;
 
   }
 }

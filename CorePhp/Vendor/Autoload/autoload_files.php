@@ -24,6 +24,8 @@ class autoload_files{
             'Controllers/clientControllers' => $this->baseDir ,
             'Controllers/companyControllers'=> $this->baseDir,
             'Services' => $this->baseDir,
+            'Services/jwt' => $this->baseDir,
+            'Services/sms' => $this->baseDir,
             'Database' => $this->baseDir,
             'Autoload'=>$this->vendorDir
         );
