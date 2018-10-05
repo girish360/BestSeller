@@ -1,4 +1,12 @@
+.product_options{
 
+    position: absolute;
+
+    width: 200px;
+    height: 250px;
+    z-index: 100 !important;
+    background-color: white;
+}
 
 .settings{
     position: fixed;

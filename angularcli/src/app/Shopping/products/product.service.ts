@@ -16,6 +16,10 @@ import { ScrollbarService } from '../../share/scrollbar.service';
 
 export class ProductService extends HeaderService {
 
+  isOpen = false;
+
+  public product_options:any ={left:0,top:300};
+
   public products:any = []; // array with products ..........
 
   public info_products:any = {};
@@ -39,6 +43,41 @@ export class ProductService extends HeaderService {
     super(  dataservices );
 
   }
+
+  open_options(event) {
+
+    this.isOpen = false;
+
+    setTimeout(()=>{
+
+      this.isOpen = true;
+
+    },50);
+
+
+    let screen_size = this.scroll.screen_size();
+
+    if( screen_size.y  >  event.clientY+250){
+
+      this.product_options.left = event.clientX;
+
+      this.product_options.top = event.clientY;
+
+    }else{
+
+      this.product_options.left = event.clientX;
+
+      this.product_options.top = event.clientY-250;
+
+    }
+  }
+
+
+  close_options() {
+
+    this.isOpen = false;
+  }
+
 
   public config_default_products(){
 

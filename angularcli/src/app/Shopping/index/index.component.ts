@@ -2,6 +2,8 @@ import {  Component,DoCheck,OnInit,Renderer ,ElementRef ,AfterViewInit,ChangeDet
 
 import {Observable} from 'rxjs/Rx'; // Angular 5
 
+import { trigger, sequence, transition, animate, style, state,keyframes } from '@angular/animations';
+
 declare var $:any;
 
 import { DataService } from '../services/data.service';
@@ -17,7 +19,27 @@ import { MenuService } from '../menu/menu.service';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  styleUrls: ['./index.component.css'],
+  animations: [
+    trigger('openClose', [
+      state('closed', style({display:'none'}),{params:{top:0 , left:0 , beforeTop:0}}),
+      state('open', style({top:'{{top}}px', left:'{{left}}px'}),{params:{top:0 , left:0 , beforeTop:0}}),
+
+      transition('open => closed', [
+        style({ opacity: '1'}),
+        sequence([
+          animate("0.1s ease", style({  opacity: '0.1',  transform: 'translateY(50px)'  })),
+        ])
+      ]),
+
+      transition('closed => open', [
+        style({ opacity: '0',   top:'{{beforeTop}}px', left:'{{left}}px' }),
+        sequence([
+          animate("0.2s ease", style({  opacity: '1', transform: 'translateY(-50px)'  }))
+        ])
+      ])
+    ])
+  ]
 })
 export class IndexComponent implements OnInit {
 
@@ -40,7 +62,6 @@ export class IndexComponent implements OnInit {
       private menuservice : MenuService,
       private settings: SettingsService,
 
-
   ) {
 
     this.get_Language = this.dataservices.language;
@@ -48,6 +69,8 @@ export class IndexComponent implements OnInit {
     this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
 
       let scroll = this.scroll.window_scroll();
+
+      this.productsService.close_options();
 
        if( scroll.top >= 50 ){
 
@@ -67,7 +90,6 @@ export class IndexComponent implements OnInit {
     Observable.interval(20 * 2).subscribe(x => {
       this.get_deg_rotate();
     });
-
 
   }
 
@@ -214,6 +236,12 @@ export class IndexComponent implements OnInit {
       if ( event.target.closest('.notCloseDropdawnCard') == null ) {
 
         this.productsService.hide_dropdown_button('dropcard','body_cart');
+
+      }
+
+      if ( event.target.closest('.product_options') == null ) {
+
+        this.productsService.close_options();
 
       }
 

@@ -85,7 +85,7 @@
 
     <div class="all_prod" *ngIf="productsService.status_products  |  async "> <!--  start div with products ...................................................... -->
 
-      <div class="width_products component-animation " (contextmenu)="right_click()" *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':menuservice.status_menu | async  }" >
+      <div class="width_products component-animation " (contextmenu)="productsService.open_options($event)" *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':menuservice.status_menu | async  }" >
 
           <div class="space outer_content">
 
@@ -185,12 +185,10 @@
 
       </div>
 
-        <div class="contextmenu">
-            context
-        </div>
+
 
     </div>
-git
+
     </ng-container>
 
     <ng-template #loadingProducts>

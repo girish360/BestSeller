@@ -13,7 +13,7 @@ import { DataService } from '../services/data.service';
 
 import { SetRouterService } from '../services/set-router.service';
 
-import { trigger, sequence, transition, animate, style, state } from '@angular/animations';
+import { trigger, sequence, transition, animate, style, state,keyframes } from '@angular/animations';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -33,20 +33,12 @@ import alertIsPresent = until.alertIsPresent; // ProductServices extend HeaderSe
   styleUrls: ['./products.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 
-  animations: [
-    trigger('products_animations', [
 
-      transition('void => active', [
-        style({ height: '0', opacity: '0', transform: 'translateX(40px)', 'box-shadow': 'none' }),
-        sequence([
-          animate(".1s ease", style({ height: '*', opacity: '.2', transform: 'translateX(20px)', 'box-shadow': 'none'  })),
-          animate(".35s ease", style({ height: '*', opacity: 1, transform: 'translateX(0)'  }))
-        ])
-      ])
-    ])
-  ]
+
+
 })
 export class ProductsComponent   implements OnInit , AfterViewInit  {
+
 
   public Response:any;
 
@@ -170,10 +162,6 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
     });
   }
 
-    right_click(){
-
-      alert('fg');
-    }
 
   ngAfterViewInit(){
 

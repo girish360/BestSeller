@@ -2,7 +2,7 @@ import { Component, OnInit ,OnDestroy,ViewChild, ElementRef, Input  ,Renderer,Ch
 
 import {Location} from '@angular/common';
 
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute ,NavigationStart,NavigationEnd,NavigationError } from '@angular/router';
 
 import { EncryptDecryptService } from '../services/encrypt-decrypt.service';
 

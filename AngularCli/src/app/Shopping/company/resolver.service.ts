@@ -34,8 +34,6 @@ export class ResolverService implements Resolve<any> {
 
       }
 
-
-
   }
 
 }
