@@ -5,25 +5,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule , APP_INITIALIZER    } from '@angular/core';
 
-import {routes} from './app.router';
+import { routes } from './app.router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpModule } from "@angular/http";
 
-import { HttpService } from './Shopping/services/http.service';
+import { HttpService } from './share_services/http.service';
 
 import { DeviceDetectorModule } from 'ngx-device-detector';
 
-import { EncryptDecryptService } from './Shopping/services/encrypt-decrypt.service'; // crypto service
+import { EncryptDecryptService } from './share_services/encrypt-decrypt.service'; // crypto service
 
-import { ControllerService } from './Start/controller.service';
+import { ControllerService } from './cover_app/controller.service';
 
-import { DataService } from './share-service/data.service';
+import { ScrollbarService } from './share_services/scrollbar.service';
 
-import { ScrollbarService } from './share/scrollbar.service';
+import { ShareModule } from './share_module/share.module';
 
-import { ShareModule } from './share/share.module';
 
 // end services .....................................................................................
 
@@ -31,9 +30,9 @@ import { ShareModule } from './share/share.module';
 
 import { AppComponent } from './app.component';
 
-import { ControllerComponent } from './Start/controller/controller.component';
+import { ControllerComponent } from './cover_app/components/controller/controller.component';
 
-import { SetRouterService } from './Shopping/services/set-router.service';
+import { SetRouterService } from './share_services/set-router.service';
 
 // end components ............................................................................................
 
@@ -75,12 +74,6 @@ import { SetRouterService } from './Shopping/services/set-router.service';
     ControllerService,
 
     ScrollbarService,
-
-    DataService
-
-
-
-
 
   ],
 

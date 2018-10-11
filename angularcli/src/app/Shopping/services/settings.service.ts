@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { DataService } from '../services/data.service';
 
-import { MenuService } from '../menu/menu.service';
+import { MenuService } from './menu.service';
 
 @Injectable()
 

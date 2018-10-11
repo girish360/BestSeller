@@ -1,0 +1,1204 @@
+
+<div class="header"  *ngIf="{ header:dataservices.header | async , app:dataservices.async | async }">
+
+    <button mat-button class="check_menu inline-block " color="primary" (click)="check_menu()" >
+
+        <mat-icon *ngIf="!menuservice.menu.getValue()" >view_list</mat-icon>
+
+        <mat-icon  *ngIf="menuservice.menu.getValue()" >exit_to_app</mat-icon>
+
+    </button>
+
+    <div class="icon_openmenu inline-block " [ngClass]="{'showicon_openmenu':menuservice.menu.getValue()}">
+
+        <div class="inside_icon_openmenu">
+
+            <span class="icon_openmenu_img">
+
+                <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" > <img src="../../assets/images/icon.png"></a>
+
+            </span>
+
+            <span class="text_icon ">
+
+                <a href="#" class="title_text" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" > BestSeller</a>
+
+            </span>
+
+            <a [routerLink]="['users/kloi']">users</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- start outer header full width  ......................  -->
+    <div class="response_outer   "  [ngClass]="{'active_menu':menuservice.menu.getValue()}">
+
+        <div class="icon inline-block " *ngIf="!menuservice.menu.getValue()">
+
+            <div class="icon_img ">
+
+              <a href="#" (click)="set_router( { path:'shopping' , data:false ,relative:false } )" > <img src="../../assets/images/icon.png"></a>
+
+            </div>
+        </div>
+
+        <div class="response_inner  "> <!-- start inner header ................... -->
+
+            <span class="header_left inline-block">  <!-- start left header .................................... -->
+
+                <div class="kerkim inline-block">
+
+                    <input #searchInput type="text" class="searchinput notCloseDropdawnSearch"  name="search" [(ngModel)]="searchService.search_data.value" (ngModelChange)="searchService.search_new_value()" (focus)="searchService.focus_search(searchInput)"  placeholder="{{dataservices.language.searchproducts}}">
+
+                    <button mat-button color="primary" *ngIf="!searchService.search_data.dropdown" class=" button buttonsearch notCloseDropdawnSearch" (click)="button_search(searchInput)" >
+
+                        <mat-icon class="iconbuttonsearch" >search</mat-icon>
+
+                    </button>
+
+                     <button mat-button color="primary" *ngIf="searchService.search_data.dropdown" class=" button buttonsearch   notCloseDropdawnSearch" (click)="searchService.hide_search_content()" >
+
+                        <mat-icon  class="iconbuttonsearch" >close</mat-icon>
+
+                    </button>
+
+                    <div class="dropdown_search  notCloseDropdawnSearch"  >
+
+
+                        <div class="header_dropsearch header_div">
+
+                        <span  [@filter_options]="searchService.search_data.searchFor == 'products' ? 'open' : 'closed'" class="filter_products" >
+
+                               <span>
+
+                                <button mat-button  class="button_search_for active-search-button border" >
+
+
+                                    <mat-select (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.search_data.searchFor">
+
+
+                                        <mat-option value="products" >
+
+                                            For Products
+
+                                            <mat-radio-group class="leftlang">
+
+
+                                                <mat-radio-button class="radiolang"  value="1" [checked]="searchService.search_data.searchFor == 'products' "  >
+
+
+                                                </mat-radio-button>
+
+
+                                            </mat-radio-group>
+
+
+                                        </mat-option>
+
+
+                                        <mat-option value="company">
+
+                                            For Suppliers
+
+                                            <mat-radio-group class="leftlang">
+
+
+                                                <mat-radio-button class="radiolang"  value="1" [checked]="searchService.search_data.searchFor == 'company'" >
+
+
+                                                </mat-radio-button>
+
+
+                                            </mat-radio-group>
+
+                                        </mat-option>
+
+
+                                    </mat-select>
+
+                                   </button>
+
+                               </span>
+
+                                <span>
+                                     <button mat-button  [ngClass]="{'active-search-button':searchService.filter_products.category != 'any_category'}" class="button_search_for  border">
+
+                                        <mat-select (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_products.category">
+
+                                            <mat-option value="{{category.id}}" *ngFor=" let category of menuservice.categories">
+
+                                                {{category.name}}
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.category == category.id"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                             <mat-option value="any_category">
+
+                                               Any category
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.category == 'any_category'"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                   </button>
+
+                                </span>
+
+                                <span>
+                                     <button mat-button  [ngClass]="{'active-search-button':searchService.filter_products.price != 'any_price'}" class="button_search_for  border">
+
+                                        <mat-select (change)="searchService.change_search()"  class="searchFor" [(value)]="searchService.filter_products.price">
+
+                                            <mat-option value="expensive">
+
+                                                Expensive
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.price == 'expensive'"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="cheap">
+
+                                                Cheap
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.price == 'cheap'"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="any_price">
+                                                Any Price
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.price == 'any_price'" >
+
+                                                     </mat-radio-button>
+
+
+                                                 </mat-radio-group>
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                   </button>
+
+                                </span>
+
+                                 <span>
+                                     <button mat-button [ngClass]="{'active-search-button':searchService.filter_products.posted != 'any_time'}" class="button_search_for  border" >
+
+                                        <mat-select (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_products.posted">
+
+                                            <mat-option value="past_day">
+
+                                                Past 24 hours
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.posted == 'past_day'"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="past_week">
+
+                                                Past Week
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.posted == 'past_week'"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="past_month">
+                                                Past Month
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.posted == 'past_month'" >
+
+                                                     </mat-radio-button>
+
+
+                                                 </mat-radio-group>
+                                            </mat-option>
+
+                                             <mat-option value="any_time">
+                                                Any Time
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.posted == 'any_time'" >
+
+                                                     </mat-radio-button>
+
+
+                                                 </mat-radio-group>
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                   </button>
+
+                                </span>
+                                 <span>
+                                     <button mat-button [ngClass]="{'active-search-button':searchService.filter_products.location != 'world'}" class="button_search_for  border" >
+
+                                        <mat-select (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_products.location" style="z-index: 0 !important;">
+
+                                              <div class="search_location">
+
+                                                  <input placeholder="Search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+
+                                             </div>
+
+                                            <mat-option value="current">
+                                                Current Location
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.location == 'current' "  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="world">
+                                                WorldWide
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_products.location == 'world' "  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+
+
+                                        </mat-select>
+
+                                   </button>
+
+                                </span>
+
+                             </span>
+
+                             <span [@filter_options]="searchService.search_data.searchFor == 'products' ? 'closed' : 'open'" class="filter_suppliers">
+
+                                  <span>
+
+                                <button mat-button  class="button_search_for active-search-button border" >
+
+
+                                    <mat-select (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.search_data.searchFor">
+
+
+                                        <mat-option value="products">
+
+                                            For Products
+
+                                            <mat-radio-group class="leftlang">
+
+
+                                                <mat-radio-button class="radiolang"  value="1" [checked]="searchService.search_data.searchFor == 'products' "  >
+
+
+                                                </mat-radio-button>
+
+
+                                            </mat-radio-group>
+
+
+                                        </mat-option>
+
+
+                                        <mat-option value="company">
+
+                                            For Suppliers
+
+                                            <mat-radio-group class="leftlang">
+
+
+                                                <mat-radio-button class="radiolang"  value="1" [checked]="searchService.search_data.searchFor == 'company'" >
+
+
+                                                </mat-radio-button>
+
+
+                                            </mat-radio-group>
+
+                                        </mat-option>
+
+
+                                    </mat-select>
+
+                                   </button>
+
+                            </span>
+
+                                 <span>
+                                     <button mat-button [ngClass]="{'active-search-button':searchService.filter_supplier.posted != 'any_time'}" class="button_search_for  border" >
+
+                                        <mat-select (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_supplier.posted">
+
+                                            <mat-option value="past_day">
+
+                                                Past 24 hours
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.posted == 'past_day'"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="past_week">
+
+                                                Past Week
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.posted == 'past_week'"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="past_month">
+                                                Past Month
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.posted == 'past_month'" >
+
+                                                     </mat-radio-button>
+
+
+                                                 </mat-radio-group>
+                                            </mat-option>
+
+                                             <mat-option value="any_time">
+                                                Any Time
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.posted == 'any_time'" >
+
+                                                     </mat-radio-button>
+
+
+                                                 </mat-radio-group>
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                   </button>
+
+                                </span>
+
+                                 <span>
+                                     <button mat-button [ngClass]="{'active-search-button':searchService.filter_supplier.posted != 'any_time'}" class="button_search_for  border" >
+
+                                        <mat-select  class="searchFor" [(value)]="searchService.filter_supplier.posted">
+
+                                            <mat-option value="past_day">
+
+                                                Past 24 hours
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.posted == 'past_day'"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="past_week">
+
+                                                Past Week
+
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.posted == 'past_week'"  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="past_month">
+                                                Past Month
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.posted == 'past_month'" >
+
+                                                     </mat-radio-button>
+
+
+                                                 </mat-radio-group>
+                                            </mat-option>
+
+                                             <mat-option value="any_time">
+                                                Any Time
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.posted == 'any_time'" >
+
+                                                     </mat-radio-button>
+
+
+                                                 </mat-radio-group>
+                                            </mat-option>
+
+                                        </mat-select>
+
+                                   </button>
+
+                                </span>
+                                 <span>
+                                     <button mat-button [ngClass]="{'active-search-button':searchService.filter_supplier.location != 'world'}" class="button_search_for  border" >
+
+                                        <mat-select class="searchFor" [(value)]="searchService.filter_supplier.location">
+
+                                             <mat-option value="enter">
+                                                Search Location
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.location == 'enter'" >
+
+                                                     </mat-radio-button>
+
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="current">
+                                                Current Location
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.location == 'current' "  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+                                            <mat-option value="world">
+                                                WorldWide
+                                                 <mat-radio-group class="leftlang">
+
+                                                     <mat-radio-button class="radiolang"  value="1" [checked]="searchService.filter_supplier.location == 'world' "  >
+
+                                                     </mat-radio-button>
+
+                                                 </mat-radio-group>
+
+                                            </mat-option>
+
+
+
+                                        </mat-select>
+
+                                   </button>
+
+                                </span>
+
+                             </span>
+
+
+
+
+
+
+
+                        </div>
+                         <drag-scroll></drag-scroll>
+
+                        <div class=" body_div body_search">
+
+                            <a href="#">
+
+                                <div class="recent_searches " *ngIf="searchService.recent_serches.data.length != 0 && searchService.search_results.length == 0  ">
+
+                                    <div class="title_resent_research">
+
+                                          <div class="inside_width">
+
+                                              Recent Searches
+
+                                          </div>
+
+                                    </div>
+
+                                   <div class="result_search hover" *ngFor="let results of searchService.recent_serches.data" [@wishList_animations]="active" >
+
+                                       <div class="inside_width">
+
+                                           <div class="result_search_left inline-block">
+
+                                               <div class="result_search_img ">
+
+                                                   <img class="full_height full_width" src="../../assets/images/products_image/{{results.image}}" />
+
+                                               </div>
+
+                                           </div>
+
+                                           <div class="result_search_right inline-block border_bottom">
+
+                                               <div class="title">{{results.title}}</div>
+
+                                           </div>
+
+                                       </div>
+                                   </div>
+
+                                </div>
+
+                                <div class="result_search hover" *ngFor="let result of searchService.search_results" [@wishList_animations]="active" (click)="route_on_search(result)">
+
+                                    <div class="inside_width">
+
+                                        <div class="result_search_left inline-block">
+
+                                            <div class="result_search_img ">
+
+                                                <img class="full_height full_width" src="../../assets/images/products_image/{{result.image}}" />
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="result_search_right inline-block border_bottom">
+
+                                            <div *ngIf="result.title != null" class="title">{{result.title}}</div>
+
+                                            <div *ngIf="result.name != null" class="title">{{result.name}}</div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                        <div class="footer_search" *ngIf=" searchService.search_data.value.length != 0 ">
+
+                            <div class="finding-results inside_width" *ngIf=" searchService.search_data.search ">
+
+                                <span class="spinner inline-block">
+
+                                    <mat-spinner  diameter="20" ></mat-spinner>
+
+                                </span>
+
+                                <span class="write_spinner inline-block ">Finding Results</span>
+
+                            </div>
+
+
+                            <div class="no-results inside_width" *ngIf="!searchService.search_data.server_status ">
+
+                              <span> Nothing Founded </span>
+
+                            </div>
+
+                            <a href="#">
+
+                                <div class="seeall-results" *ngIf="!searchService.search_data.search && searchService.search_results.length != 0">
+
+                                    <div class="inside_width hover" (click)="seeAll_searchResuls({ path:'shopping/results' , data:{ keyparams:'keyword' , params: searchService.search_data.value} ,relative:false })">
+
+                                        <span> See all results for {{searchService.search_data.value}} </span>
+
+                                    </div>
+
+                                </div>
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </span> <!-- end left header ..................................... -->
+
+            <span class="header_right">
+
+                <a href="#" *ngFor=" let button of button_right  ; let i = index "  class="button_right_pc button{{button.id}} {{button.different_class}}" (click)="check_button(button ,i , $event)">
+
+                    <span  class="glyphicon icon_button {{button.icon}}"  [ngClass]="{'active_wish_list': button.id == 2 && productsService.wish_properties.wishList.length > 0 ,'selected-color-button' : i==productsService.button_properties.selectedIndex }">
+
+                        <div class="number_event"  [ngClass]="{'selected-color-number' : i==productsService.button_properties.selectedIndex }">
+
+                            <span  class="write_number " *ngIf="productsService.wish_properties.wishList.length > 9 && button.id == 2 ">
+                                +9
+                            </span>
+
+                            <span class="write_number write_number_less" *ngIf="productsService.wish_properties.wishList.length <= 9 && button.id == 2 ">
+
+                                {{productsService.wish_properties.wishList.length}}
+
+                            </span>
+
+                            <span class="write_number"  *ngIf="productsService.cart_properties.cartList.length > 9 && button.id == 3">
+                                +9
+                            </span>
+
+                            <span class="write_number write_number_less"  *ngIf="productsService.cart_properties.cartList.length <= 9 && button.id == 3">
+
+                                {{productsService.cart_properties.cartList.length}}
+
+                            </span>
+
+                        </div>
+
+                    </span>
+
+                    <div class="write_icon_header write_icon_header{{button.id}}" > {{ dataservices.language[button.name]}} </div>
+
+                </a>
+
+            </span>
+
+
+            <span class="header_mobile">
+
+                <div class="button_mobile" (click)="set_router( { path:'shopping' , data:false ,relative:false } , check_body(false) )">
+
+                    <div>
+
+                        <span class="glyphicon glyphicon-home"></span>
+
+                    </div>
+
+                    <div class="write_icon_header"> Home </div>
+
+                </div>
+
+
+                <div class="button_mobile" (click)="set_router( { path:'search' , data:false ,relative:true }, check_body(false) )" >
+
+                    <a class="searchresponse" href="#">
+
+                        <span class="glyphicon glyphicon-search"></span>
+
+                    </a>
+
+                    <div class="write_icon_header"> Search </div>
+
+                </div>
+
+                <div class="button_mobile " (click)="set_router( { path:'wish' , data:false ,relative:true } , check_body(true) )"   >
+
+                    <ng-container *ngIf="productsService.wish_properties.wishList.length>0;else empty" >
+
+                        <span class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
+
+                            <div class="number_event">
+
+                                <div class="write_number">
+
+                                    {{productsService.wish_properties.wishList.length}}
+
+                                </div>
+
+                            </div>
+
+                        </span>
+
+                    </ng-container>
+
+                    <ng-template #empty>
+
+                        <span class="glyphicon glyphicon-heart gh-header">
+
+                            <div class="number_event">
+
+                                <div class="write_number">
+
+                                    {{productsService.wish_properties.wishList.length}}
+
+                                </div>
+
+                            </div>
+
+                        </span>
+
+                    </ng-template>
+
+                    <div class="write_icon_header"> {{dataservices.language.wish}} </div>
+
+                </div>
+
+
+
+                <div class="button_mobile " (click)="set_router( { path:'card' , data:false ,relative:true } , check_body(false))" >
+
+                    <span class="glyphicon glyphicon-shopping-cart gh-header">
+
+                        <div class="number_event">
+
+                            <div class="write_number">
+
+                                {{productsService.cart_properties.cartList.length}}
+
+                            </div>
+
+                        </div>
+
+                    </span>
+
+                    <div class="write_icon_header" >{{dataservices.language.card}}</div>
+
+                </div>
+
+                <div class="button_mobile" (click)="set_router( { path:'menu' , data:false ,relative:true }, check_body(true) )">
+
+                    <span class="glyphicon glyphicon-th-large">
+
+                        <div class="number_event">
+
+                            <div class="write_number write_hidden">
+
+                                {{productsService.wish_properties.wishList.length}}
+
+                            </div>
+
+                        </div>
+
+                    </span>
+
+                    <div class="write_icon_header" >{{dataservices.language.more}}</div>
+
+                </div>
+
+            </span>  <!-- end header modile  -->
+
+
+            <!--  start dropdown header ..................................................................-->
+
+            <div class="dropmore dropdown_button notClosepointerHeader notCloseDropdawnLanguage">
+
+                <mat-tab-group>
+
+                    <mat-tab>
+
+                        <ng-template mat-tab-label >
+
+                            <mat-icon>
+                                language
+                            </mat-icon>
+
+                            <div class="label_tab inline-block">
+                                Language
+                            </div>
+
+                        </ng-template>
+
+                        <div class="body_div body_more">
+
+                            <div class="choose">
+
+                                <h2>{{dataservices.language.choselanguage}}</h2>
+
+                            </div><br>
+
+                            <ng-container  *ngFor=" let language of language_allow  ">
+
+                                <div class="all_languages hover" (click)="choose_language(language.id)"  >
+
+                                    <div class="positionlang">
+
+                                        <div class="centerlang">
+
+                                            <div class="iconlang">
+
+                                                <img  src="../../assets/images/{{language.image}}">
+
+                                            </div>
+
+                                            <div class="writelang">
+
+                                                <h2>{{language.name}}</h2>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="leftlang">
+
+                                            <mat-radio-group>
+
+                                                <mat-radio-button class="radiolang"  value="1" [checked]="current_language(language.id)"  >
+
+                                                </mat-radio-button>
+
+                                            </mat-radio-group>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </ng-container><br>
+
+                        </div>
+
+                    </mat-tab>
+
+                    <mat-tab>
+
+                        <ng-template mat-tab-label class="">
+                            <mat-icon>
+                                settings
+                            </mat-icon>
+                            <div class="label_tab inline-block">
+                                Setting
+                            </div>
+                        </ng-template>
+
+                        <div class="body_div body_more">
+
+                            Setting content
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                        </div>
+
+                    </mat-tab>
+
+                    <mat-tab>
+
+                        <ng-template mat-tab-label class="">
+                            <mat-icon>
+                                help
+                            </mat-icon>
+                            <div class="label_tab inline-block">
+                                Help
+                            </div>
+                        </ng-template>
+                        <div class=" body_div body_more">
+                            Help contenc
+
+                        </div>
+                    </mat-tab>
+
+                    <mat-tab>
+
+                        <ng-template mat-tab-label class="">
+                            <mat-icon>
+                                feedback
+                            </mat-icon>
+                            <div class="label_tab inline-block">
+                                Feedback
+                            </div>
+                        </ng-template>
+
+                        <div class="body_div body_more">
+                            Feedback
+
+                        </div>
+                    </mat-tab>
+
+                </mat-tab-group>
+
+                <a href="#" >
+                    <div class="see_all ">
+                        Sell All
+                    </div>
+                </a>
+            </div>
+
+            <div class="dropcard dropdown_button notClosepointerHeader notCloseDropdawnCard" [ngClass]="{'show_dropcard':drop_Card}">
+
+                <div class=" header_div">
+
+                    <div class="inside_width">
+
+                        <span class="drop_cart_title">
+
+                            {{dataservices.language.Cart_Write}}
+
+                        </span>
+
+                        <span  matTooltip="Search" class="search_icon_from_wish">
+
+                            <button mat-icon-button class="btns-cart"  (click)="productsService.show_hide_search_in_cartlist()">
+
+                                <mat-icon class="notCloseDropdawnCard" *ngIf="productsService.cart_properties.icon_search == false">search</mat-icon>
+
+                                <mat-icon class="notCloseDropdawnCard" *ngIf="productsService.cart_properties.icon_search == true">close</mat-icon>
+                            </button>
+
+                        </span>
+
+                        <span class="search_from_wish">
+
+                            <input type="text" [(ngModel)]="filter_cart" placeholder="Serach Wishlist" name="search_wish" class="search-in-cart search_wishlist" [ngClass]="productsService.check_show_hide_search_in_cartlist()">
+
+                        </span>
+
+                        <span  matTooltip="Delete" class="delete_from_wish">
+
+                            <button mat-icon-button class="btns-cart " [ngClass]="{'no-drop' : productsService.cart_properties.button }" [disabled]=" productsService.cart_properties.button " (click)="productsService.check_delete_from_cartList()" >
+
+                                <mat-icon>delete</mat-icon>
+
+                            </button>
+
+                        </span>
+
+                        <span  matTooltip="Add to Wish" class="add_shopping_card_from_wish">
+
+                            <button mat-icon-button class="btns-cart" [ngClass]="{'no-drop' : productsService.cart_properties.button }" [disabled]="productsService.cart_properties.button"  >
+
+                                <mat-icon>favorite</mat-icon>
+
+                            </button>
+
+                        </span>
+
+                        <a (click)="set_router( { path:'wish' , data:false ,relative:true } )" >
+
+                            <span  matTooltip="See All" class="add_shopping_card_from_wish">
+
+                                <button mat-icon-button class="btns-cart" >
+
+                                    <mat-icon>remove_red_eye</mat-icon>
+
+                                </button>
+
+                            </span>
+
+                        </a>
+
+                        <span  matTooltip="Select all" >
+
+                            <mat-checkbox color="primary" class="btns-cart"
+                                          [checked]="productsService.cart_properties.cartList.length == productsService.cart_properties.selected.length && productsService.cart_properties.selected.length > 0 "
+                                          (click)="productsService.selecteAll_cartList()">
+                            </mat-checkbox>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="body_div body_cart" *ngIf="productsService.status_products | async">
+
+                    <ng-container *ngIf="productsService.cart_properties.cartList.length > 0 ; else  emptycart">
+
+                        <div  *ngFor="let cart_product of productsService.cart_properties.cartList | filter: filter_cart "  [@wishList_animations]="active">
+
+                            <button mat-button class="width_body_wish" [ngClass]="productsService.getStyle_cart( cart_product )">
+
+                                <div class="width_each_wishlist">
+
+                                    <div class="wish_image"  (click)="set_router({ path:cart_product.name+'/'+cart_product.title , data:cart_product.product_id , relative:true })">
+
+                                        <img  src="../../assets/images/products_image/{{cart_product.image}}">
+
+                                    </div>
+
+                                    <div class="cart_item title">
+
+                                        Title: {{cart_product.title}}
+
+                                    </div><br>
+
+                                    <div class="cart_item price">
+
+                                        Price: ${{ cart_product.price }}
+
+                                    </div>
+
+                                    <div class=" cart_item quantity">
+
+                                        Quantity:
+
+                                        <mat-form-field style="width:40px;">
+
+                                            <mat-select  [(value)]="cart_product.quantity" (change)="productsService.update_quantity_cartList( cart_product )">
+
+                                                <mat-option [value]="1">
+                                                    1
+                                                </mat-option>
+                                                <mat-option [value]="2">
+                                                    2
+                                                </mat-option>
+                                                <mat-option [value]="3">
+                                                    3
+                                                </mat-option>
+                                                <mat-option [value]="4">
+                                                    4
+                                                </mat-option>
+
+                                            </mat-select>
+
+                                        </mat-form-field>
+
+                                    </div>
+
+                                    <div  class="cart_item seller">
+
+                                        Seller:
+                                        <span (click)="set_router({ path:cart_product.name , data: cart_product.company_id , relative:true })">{{ cart_product.name }}</span>
+
+                                    </div>
+
+                                    <div class="cart_item total_item_price">
+
+                                        Total: ${{ (cart_product.price)*cart_product.quantity  }}
+
+                                    </div>
+
+                                    <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
+
+                                        <span  matTooltip="select">
+
+                                            <mat-checkbox  color="primary" [checked]="productsService.check_selected_cart( cart_product )" (click)="productsService.toggle_select_cart( cart_product )">
+
+                                            </mat-checkbox>
+
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </button>
+
+                        </div>
+
+                    </ng-container >
+
+                    <ng-template #emptycart>
+
+                        your Cart is empty
+
+                    </ng-template>
+                </div>
+
+                <div class="bottom_cart">
+
+                    <div class="inside_bottom_cart">
+
+                        <div class="write_checkout">
+                             Proceed to Checkout  PayPal , Stripe , Visa
+                        </div>
+
+                        <div class="checkout">
+
+                            <span>
+
+                                Total_item: {{productsService.cart_properties.total_items}}
+
+                            </span>
+
+                            <span>
+
+                                Total_price: ${{productsService.cart_properties.total_price}}
+
+                            </span>
+
+                        </div>
+
+                        <div class="button_checkout">
+
+                            <button mat-button class="button">
+
+                                <span>Continue Shopping</span>
+
+                            </button>
+
+                            <button mat-button class="button">
+
+                                <span>Checkout</span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="dropfavorites dropdown_button notCloseDropdawnFavorite notClosepointerHeader">
+
+                <app-wish-list></app-wish-list>
+
+            </div>
+
+            <div class="treguesi notCloseDropdawnFavorite notClosepointerHeader notCloseDropdawnCard notCloseDropdawnLanguage"></div>
+
+        </div>
+
+    </div>
+
+    <mat-progress-bar  mode="indeterminate" class="progress" *ngIf="dataservices.progress | async"></mat-progress-bar>  <!--  progress bar -->
+
+</div> <!-- end header ............................. -->
+
+
+
+
+
+
+
+
+
+

@@ -10,7 +10,7 @@ use server\db\DB as database ;
 
 class Search{
 
-    private  $tables = array('products'=>'products' , 'suppliers'=>'suppliers');
+    private  $tables = array('products'=>'products' , 'supplier'=>'supplier');
 
     private $search_results = array();
 
@@ -20,12 +20,12 @@ class Search{
 
     public function search_in_header( $params ){
 
-        if( $params->product ){
+        if( $params->data->searchFor =='products' ){
 
             $this->result = database::table('products')
                 ->select('title','products.id','products.image','name')
                 ->join('suppliers','products.supplier_id','=','suppliers.id')
-                ->like('title','%'.$params->value.'%')
+                ->like('title','%'.$params->data->value.'%')
                 ->get();
 
              if( count( $this->result ) == 0 ){
@@ -37,11 +37,11 @@ class Search{
              }
 
         }
-        else if( $params->company ){
+        else if( $params->data->searchFor =='company' ){
 
             $this->result = database::table('suppliers')
                 ->select('name','id','image')
-                ->like('name','%'.$params->value.'%')
+                ->like('name','%'.$params->data->value.'%')
                 ->get();
 
             if( count( $this->result ) == 0 ){

@@ -3,19 +3,27 @@ import { NgModule } from '@angular/core';
 
 import { Routes, RouterModule } from '@angular/router';
 
-import { IndexComponent } from './index/index.component';
+import { IndexComponent } from './components/index/index.component';
 
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 
-import { MenuComponent } from './menu/menu.component';
+import { MenuComponent } from './components/menu/menu.component';
 
-import { ProductsComponent } from './products/products.component'; // show products for a category
+import { ProductsComponent } from './components/products/products.component'; // show products for a category
 
-import { NotFoundComponent } from '../share/not-found/not-found.component';
+import { NotFoundComponent } from '../share_components/not-found/not-found.component';
 
-import { UsersComponent } from './users/users.component'; //  menu  left  in shopping
+import { UsersComponent } from './components/users/users.component'; //  menu  left  in shopping
 
 import { AuthGuard } from './services/auth.guard';
+
+import { ResolverService } from './resolvers/resolver.service';
+
+import { ResolverHomeService } from './resolvers/resolver_home.service';
+
+import { WishListComponent } from './components/wish-list/wish-list.component';
+
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
 
@@ -24,19 +32,19 @@ const routes: Routes = [
 
     children: [
 
-      { path: '', component: HomeComponent },
+      { path: '', component: HomeComponent,resolve :{ home :ResolverHomeService } },
 
-      { path: 'products/:name', component:ProductsComponent },
+      { path: 'products/:name', component:ProductsComponent,resolve:{  products : ResolverService  } },
 
-      { path: 'company/:details',  loadChildren :'./company/company.module#CompanyModule'},
+      { path: 'company/:details',  loadChildren :'./lazy_modules/company.module#CompanyModule'},
 
-      { path: 'product-details/:name', loadChildren: './product-details/product-details.module#ProductDetailsModule'},
+      { path: 'product-details/:name', loadChildren: './lazy_modules/product-details.module#ProductDetailsModule'},
 
-      { path: 'login-register', loadChildren : './login-register/login-register.module#LoginRegisterModule'},
+      { path: 'login_register', loadChildren : './lazy_modules/login-register.module#LoginRegisterModule'},
 
-      { path: 'wish-list/:id', loadChildren : './wish-list/wish-list.module#WishListModule'},
+      { path: 'wish_list', component : WishListComponent},
 
-      { path: ':keyword', loadChildren: './search/search.module#SearchModule'},
+      { path: ':keyword', component:SearchComponent},
 
       { path: 'users/:name', component: UsersComponent,
 
@@ -44,7 +52,7 @@ const routes: Routes = [
 
       },
 
-      // { path: 'card', component: CardComponent},
+      //  { path: 'card_list', component: CardComponent},
       //
       // { path: 'search', component: SearchComponent},
       //

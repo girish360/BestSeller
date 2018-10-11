@@ -141,7 +141,7 @@ class GraphEvent extends GraphNode
     }
 
     /**
-     * Returns the `start_time` (Start time) as DateTime if present.
+     * Returns the `start_time` (cover_app time) as DateTime if present.
      *
      * @return \DateTime|null
      */

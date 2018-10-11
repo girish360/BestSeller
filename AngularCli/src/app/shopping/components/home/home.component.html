@@ -1,0 +1,106 @@
+
+
+
+
+<ng-container *ngIf="dataservices.loaded_component;else loading">
+
+    <ng-container *ngIf="!dataservices.not_founded;else notFounded">
+
+<div class="home"
+     infiniteScroll
+     [infiniteScrollDistance]="0"
+     [infiniteScrollThrottle]="150"
+     (scrolled)="onScroll()" >
+
+    <div class="carousel_categories" *ngFor="let category of homeservice.categories_products ">
+
+
+        <span class="name_category" >  {{category.name}}  </span>
+
+        <span class="see_all_category">
+
+            <a href="#" (click)="set_router( { path:'products/'+category.name , data:[ { keyparams :'id', params:  category.id } , {keyparams :'page', params:  1} ] , relative:true })"> See All </a>
+
+        </span>
+
+        <ngx-carousel class="category" [inputs]="carousel_categories"
+
+                      (carouselLoad)="carouselTileOneLoad()"
+
+                      (onMove)="onmove_carousel( $event , category )"
+
+        >
+
+            <ngx-tile NgxCarouselItem *ngFor="let product of category['products']; let i = index;" >
+
+                <div class="items_in_carousel box-shadow" >
+
+                    <a href="javascript:void(0)">
+
+                        <div class="img_item border_bottom " (click)="set_router({ path:'product-details/show' , data:{ keyparams:'id' , params:product.product_id} , relative:true })" >
+
+                            <img src="../../assets/images/products_image/{{product.image}}">
+
+                        </div>
+
+                    </a>
+
+                    <div class="content_carousel">
+
+                         <div class ="">
+                             {{product.title}}
+                         </div>
+
+                        <div class ="price">
+                            price: {{product.price}}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </ngx-tile>
+
+            <button mat-mini-fab NgxCarouselPrev class="leftRs">
+                <mat-icon>skip_previous</mat-icon>
+            </button>
+
+            <button mat-mini-fab NgxCarouselNext class="rightRs">
+                <mat-icon>skip_next</mat-icon>
+            </button>
+
+        </ngx-carousel>
+
+       <br>
+
+    </div>
+
+</div>
+
+    </ng-container>
+
+
+    <ng-template #notFounded>
+
+        not founded
+
+    </ng-template>
+
+</ng-container>
+
+
+
+<ng-template #loading>
+
+    loading .................
+
+</ng-template>
+
+
+
+
+
+
+
+
+

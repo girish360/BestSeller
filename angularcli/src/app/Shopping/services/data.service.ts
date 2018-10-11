@@ -1,6 +1,6 @@
 import { Inject, Injectable ,EventEmitter ,OnInit } from '@angular/core';
 
-import { HttpService } from './http.service';
+import { HttpService } from '../../share_services/http.service';
 
 import { Http, Response , Headers } from '@angular/http';
 

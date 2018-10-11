@@ -1,16 +1,14 @@
 <?php
 
-use  server\services\crypto\Crypto as crypto;
+use server\services\crypto\Crypto as crypto;
 
-use  server\database\database as db;
+use server\database\database as db;
 
 use server\db\DB as database;
 
 use server\services\fetch\Fetch as fetch;
 
 class Home extends Controller {
-
-    private $where;
 
     private $products_for_category = 10;
 
@@ -26,94 +24,41 @@ class Home extends Controller {
 
         if ( $request->total_categories == 0 ) { //  first call................................
 
-            if( $request->company_id != false ){
-
-                $count = database::table('suppliers_categories')
-                    ->count()
-                    ->where('supplier_id','=',$request->company_id)
-                    ->get()[0]['count'];
-            }else{
-
-                $count = database::table('subcategories')
-                    ->count()
-                    ->get()[0]['count'];
-            }
+            $count = database::table('subcategories')
+                ->count()
+                ->get()[0]['count'];
 
         } else { // called more than one time and  number total_categories exist come from client ..................................
 
             $count = $request->total_categories;
         }
 
-        if( $request->company_id == false ){ // check if is not request from company
+        if ( $count >= 5 ) {
 
-            if ( $count >= 5 ) {
+            $startrow =  $request->current_page_categories * $this->category_for_load ;
 
-                $startrow =  $request->current_page_categories * $this->category_for_load ;
+            $this->Categories = database::table('subcategories')
+                ->select('name','id','image')
+                ->limit( $startrow , $this->category_for_load )
+                ->get();
+        }else{
+            $this->Categories = database::table('subcategories')
+                ->select( 'name', 'id', 'image' )
+                ->get();
+        }
 
-                $this->Categories = database::table('subcategories')
-                    ->select('name','id','image')
-                    ->limit( $startrow , $this->category_for_load )
-                    ->get();
-            } else {
+        self::dependet_products( $this->Categories, $request  , 'id' );
 
-                $this->Categories = database::table('subcategories')
-                    ->select( 'name', 'id', 'image' )
-                    ->get();
-            }
+        $result = array();
 
-            self::dependet_products( $this->Categories, $request  , 'id' );
+        foreach ( $this->categories_products as $key => $category ) {
 
-            $result = array();
-
-            foreach ( $this->categories_products as $key => $category ) {
-
-                $result[] = $category;
-            }
+               $result[] = $category;
+        }
 
             $store_data = array("current_page_products" => $request->current_page_products, "current_page_categories" => $request->current_page_categories, "total_categories" => $count, "categories_for_page" => $this->category_for_load , "company_id" => false ,"category_id"=>false );
 
             return fetch::json_data(  array( "categories" => $result, "store_data" => $store_data) );
-
-        }else{ // request from company to get categories with some products with  this company unique id....
-
-            if ( $count >= 5 ) {
-
-                $startrow =  $request->current_page_categories * $this->category_for_load ;
-
-                $this->Categories = database::table('suppliers_categories')
-                    ->select('subcategories.name','subcategories.id','subcategories.image')
-                    ->join('subcategories','suppliers_categories.category_id','=','subcategories.id')
-                    ->where('suppliers_categories.supplier_id','=', $request->company_id)
-                    ->limit( $startrow , $this->category_for_load )
-                    ->get();
-
-            } else {
-
-                $this->Categories = database::table('suppliers_categories')
-                    ->select('subcategories.name','subcategories.id','subcategories.image')
-                    ->join('subcategories','suppliers_categories.category_id','=','subcategories.id')
-                    ->where('suppliers_categories.supplier_id','=', $request->company_id)
-                    ->get();
-            }
-
-            $result = array();
-
-            self::dependet_products( $this->Categories, $request  ,'id');
-
-            foreach ( $this->categories_products as $key => $category ){
-
-                $result[] = $category;
-            }
-
-            $store_data = array( "current_page_products" => $request->current_page_products, "current_page_categories" => $request->current_page_categories, "total_categories" => $count, "categories_for_page" => $this->category_for_load , "company_id" =>  $request->company_id,"category_id"=>false );
-
-            $company_info = database::table('suppliers')
-                ->select("id","name")
-                ->where('id','=',$request->company_id)
-                ->get();
-
-            return fetch::json_data(  array( "categories" => $result, "store_data" => $store_data , "company_info"=>$company_info[0] ) );
-        }
     }
 
     public function dependet_products( $array_categories ,$request , $category_id_name ){  // get all products .....................................
@@ -124,22 +69,10 @@ class Home extends Controller {
 
             $this->categories_products[$category[$category_id_name]] = $category;
 
-
-            if( $request->company_id == false ){
-
-                $count = database::table('products')
-                    ->count()
-                    ->where('category_id','=', $category[$category_id_name] )
-                    ->get()[0]['count'];
-
-            }else{
-
-                $count = database::table('products')
-                    ->count()
-                    ->where('category_id','=', $category[$category_id_name] )
-                    ->andWhere('supplier_id','=',$request->company_id)
-                    ->get()[0]['count'];
-            }
+            $count = database::table('products')
+                ->count()
+                ->where('category_id','=', $category[$category_id_name] )
+                ->get()[0]['count'];
 
             if ( $count > 0 ) {
 
@@ -210,20 +143,6 @@ class Home extends Controller {
 
         $tmp_products = [];
 
-        if( $data_object->company_id == false ){
-
-            $this->where = 'products.supplier_id = suppliers.id AND products.category_id = "' . $data_object->category_id . '"';
-
-        }else{
-
-            $company_id = crypto::decrypt_in_server( $data_object->company_id);
-
-            $data_object->company_id = $company_id;
-
-            $this->where = 'products.supplier_id = suppliers.id AND  products.supplier_id = "' .$data_object->company_id. '" AND products.category_id = "' . $data_object->category_id. '"';
-        }
-
-
         self::limit_products( $data_object , $data_object->category_id );
 
         $tmp_products['current_page_products'] =  $data_object->current_page_products;
@@ -235,8 +154,6 @@ class Home extends Controller {
         return fetch::json_data(  $tmp_products );
 
     }
-
-
 
 }
 

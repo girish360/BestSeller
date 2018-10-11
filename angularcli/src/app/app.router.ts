@@ -4,9 +4,9 @@ import { ModuleWithProviders } from '@angular/core';
 
 import { Routes, RouterModule } from '@angular/router';
 
-import { ControllerComponent } from './Start/controller/controller.component';
+import { ControllerComponent } from './cover_app/components/controller/controller.component';
 
-import { NotFoundComponent } from './share/not-found/not-found.component';
+import { NotFoundComponent } from './share_components/not-found/not-found.component';
 
 export const router: Routes = [
 
@@ -15,11 +15,11 @@ export const router: Routes = [
     },
 
     {
-        path: 'shopping',  loadChildren : './Shopping/shopping.module#ShoppingModule',
+        path: 'shopping',  loadChildren : './shopping/shopping.module#ShoppingModule',
     },
 
     {
-        path: 'business',  loadChildren : './business/business.module#BusinessModule',
+        path: 'supplier',  loadChildren : './supplier/supplier.module#SupplierModule',
     },
 
     {

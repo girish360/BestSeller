@@ -160,7 +160,6 @@ input[name='company_search'] {
     width: calc( 100% - 10px );
     height:calc( 100% - 10px );
 
-
 }
 .inside_width span{
     vertical-align: top;
@@ -229,7 +228,7 @@ input[name='company_search'] {
 }
 
 
-body::-webkit-scrollbar ,.menu_left::-webkit-scrollbar , .dropdown_search::-webkit-scrollbar ,.body_div::-webkit-scrollbar  {
+body::-webkit-scrollbar ,.menu_left::-webkit-scrollbar , drag-scroll::-webkit-scrollbar ,.body_div::-webkit-scrollbar , .header_dropsearch::-webkit-scrollbar  {
 
     width: 7px;
     height: 7px;
@@ -241,25 +240,25 @@ body::-webkit-scrollbar ,.menu_left::-webkit-scrollbar , .dropdown_search::-webk
 }
 
 
-body::-webkit-scrollbar-thumb , .menu_left::-webkit-scrollbar-thumb ,.dropdown_search::-webkit-scrollbar-thumb ,.body_div::-webkit-scrollbar-thumb   {
+body::-webkit-scrollbar-thumb , .menu_left::-webkit-scrollbar-thumb ,drag-scroll::-webkit-scrollbar-thumb ,.body_div::-webkit-scrollbar-thumb ,.header_dropsearch::-webkit-scrollbar-thumb   {
 
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
 
 }
-body::-webkit-scrollbar-track , .menu_left::-webkit-scrollbar-track ,.body_div::-webkit-scrollbar-track ,.dropdown_search::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track , .menu_left::-webkit-scrollbar-track ,.body_div::-webkit-scrollbar-track ,drag-scroll::-webkit-scrollbar-track ,.header_dropsearch::-webkit-scrollbar-track {
 
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.1);
 }
 
 
-body::-webkit-scrollbar-thumb:hover ,.body_div::-webkit-scrollbar-thumb:hover ,.menu_left::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb:hover ,.body_div::-webkit-scrollbar-thumb:hover ,.menu_left::-webkit-scrollbar-thumb:hover ,.header_dropsearch::-webkit-scrollbar-thumb:hover {
 
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
 
 
 }
 
-body::-webkit-scrollbar-track:hover , .menu_left::-webkit-scrollbar-track:hover ,.body_div::-webkit-scrollbar-track:hover ,.dropdown_search::-webkit-scrollbar-track:hover    {
+body::-webkit-scrollbar-track:hover , .menu_left::-webkit-scrollbar-track:hover ,.body_div::-webkit-scrollbar-track:hover ,drag-scroll::-webkit-scrollbar-track:hover ,.header_dropsearch::-webkit-scrollbar-track:hover    {
 
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.3);
 
@@ -397,12 +396,20 @@ mat-checkbox.mat-checked.green{
     background-color:#E6E6FA;
     width: 100%;
     height: auto;
-    max-height: 400px;
+    min-height: 80px;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
 
 }
+
+.dropfavorites .wishlist_component .body_div ,.dropdown_search .body_div{
+
+    max-height: 400px;
+
+}
+
+
 
 
 .zoomImg{  /*  zoom image in product_details */
@@ -460,9 +467,19 @@ mat-checkbox.mat-checked.green{
 }
 
 
+.searchFor div {
+    position: relative;
+    top: -1px;
+}
 
+.searchFor span {
+    position: relative;
+    top: -1px;
+}
 
+.pac-container{ /* search content from google places api */
 
-
-
+    z-index: 2000;
+    position: fixed!important;
+}
 

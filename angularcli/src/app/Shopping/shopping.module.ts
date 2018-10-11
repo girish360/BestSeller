@@ -13,43 +13,55 @@ import 'hammerjs';
 
 import { DataService } from './services/data.service';
 
-import { HeaderService } from './header/header.service'; // header service
+import { HeaderService } from './services/header.service'; // header service
 
-import { ProductService } from './products/product.service'; // product service
+import { ProductService } from './services/product.service'; // product service
 
-import { HomeService } from './home/home.service';
+import { HomeService } from './services/home.service';
 
 import { SettingsService } from './services/settings.service';
 
-import { MenuService } from './menu/menu.service';
+import { MenuService } from './services/menu.service';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AuthGuard } from './services/auth.guard';
 
+import { SearchService } from './services/search.service';
+
+import { ResolverService } from './resolvers/resolver.service';
+
+import { ResolverHomeService } from './resolvers/resolver_home.service';
+
+import { IndexService } from './services/index.service';
 
 // end services .....................................................................................
 
 // componets .....................................................
 
-import { ShareModule } from '../share/share.module';
+import { ShareModule } from '../share_module/share.module';
 
-import { IndexComponent } from './index/index.component'; // index shopping
+import { IndexComponent } from './components/index/index.component'; // index shopping
 
-import { HomeComponent } from './home/home.component'; // home shopping
+import { HomeComponent } from './components/home/home.component'; // home shopping
 
-import { HeaderComponent } from './header/header.component'; // header shopping
+import { HeaderComponent } from './components/header/header.component'; // header shopping
 
-import { BodyComponent } from './body/body.component'; // body shopping
+import { BodyComponent } from './components/body/body.component'; // body shopping
 
-import { MenuComponent } from './menu/menu.component';
+import { SearchComponent } from './components/search/search.component';
 
-import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { MenuComponent } from './components/menu/menu.component';
 
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 
-import { UsersComponent } from './users/users.component'; //  menu  left  in shopping
+import { UsersComponent } from './components/users/users.component'; //  menu  left  in shopping
 
+import { WishListComponent } from './components/wish-list/wish-list.component';
+
+import { CardListComponent } from './components/card-list/card-list.component';
+
+import { AgmCoreModule } from '@agm/core';
 
 // end components ............................................................................................
 
@@ -61,9 +73,11 @@ import { UsersComponent } from './users/users.component'; //  menu  left  in sho
     BodyComponent,
     MenuComponent,
     HomeComponent,
-    SubscriptionsComponent,
     FooterComponent,
-    UsersComponent
+    UsersComponent,
+    WishListComponent,
+    CardListComponent,
+    SearchComponent
 
   ],
 
@@ -73,9 +87,11 @@ import { UsersComponent } from './users/users.component'; //  menu  left  in sho
     NgxCarouselModule,
     ShareModule,
     InfiniteScrollModule,
-    MatPaginatorModule
-
-
+    MatPaginatorModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyCcuMQUe3S0Qk7WTfy8XnBxQPk79eiTTrk",
+      libraries: ["places"]
+    }),
   ],
 
   providers: [
@@ -85,7 +101,11 @@ import { UsersComponent } from './users/users.component'; //  menu  left  in sho
     HomeService,
     SettingsService,
     MenuService,
-    AuthGuard
+    AuthGuard,
+    ResolverService,
+    ResolverHomeService,
+    IndexService,
+    SearchService
   ]
 
 })
