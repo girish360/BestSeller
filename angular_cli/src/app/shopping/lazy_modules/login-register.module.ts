@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { LoginRegisterRoutingModule } from './login-register-routing.module';
 
-import { LoginRegisterComponent } from '../components/login-register/login-register.component';
+import { LoginRegisterComponent } from '../components/login_register/login_register.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 

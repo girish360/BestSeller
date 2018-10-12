@@ -230,7 +230,7 @@
 
          if( this.searchService.search_data.searchFor =='products' ){
 
-             this.set_router( { path:'shopping/product-details/show' , data:{ keyparams:'id' , params:result.id} , relative:false });
+             this.set_router( { path:'shopping/product_details/show' , data:{ keyparams:'id' , params:result.id} , relative:false });
 
          }else if( this.searchService.search_data.searchFor == 'company'){
 

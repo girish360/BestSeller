@@ -57,9 +57,9 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { UsersComponent } from './components/users/users.component'; //  menu  left  in shopping
 
-import { WishListComponent } from './components/wish-list/wish-list.component';
+import { WishListComponent } from './components/wish_list/wish_list.component';
 
-import { CardListComponent } from './components/card-list/card-list.component';
+import { CardListComponent } from './components/card_list/card_list.component';
 
 import { AgmCoreModule } from '@agm/core';
 

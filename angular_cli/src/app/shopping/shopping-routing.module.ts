@@ -21,7 +21,7 @@ import { ResolverService } from './resolvers/resolver.service';
 
 import { ResolverHomeService } from './resolvers/resolver_home.service';
 
-import { WishListComponent } from './components/wish-list/wish-list.component';
+import { WishListComponent } from './components/wish_list/wish_list.component';
 
 import { SearchComponent } from './components/search/search.component';
 
@@ -38,9 +38,9 @@ const routes: Routes = [
 
       { path: 'company/:details',  loadChildren :'./lazy_modules/company.module#CompanyModule'},
 
-      { path: 'product-details/:name', loadChildren: './lazy_modules/product-details.module#ProductDetailsModule'},
+      { path: 'product_details/:name', loadChildren: './lazy_modules/product_details.module#ProductDetailsModule'},
 
-      { path: 'login_register', loadChildren : './lazy_modules/login-register.module#LoginRegisterModule'},
+      { path: 'login_register', loadChildren : './lazy_modules/login_register.module#LoginRegisterModule'},
 
       { path: 'wish_list', component : WishListComponent},
 

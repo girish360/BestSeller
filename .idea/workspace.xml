@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/body/body.component.html" line="1" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="e14b9dbf-ee1a-4b7f-90da-30f0834a13a1" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/card-list/card-list.component.spec.ts" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/card-list/card-list.component.css" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/card_list/card_list.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/card-list/card-list.component.html" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/card_list/card_list.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/card-list/card-list.component.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/card_list/card_list.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/login-register/login-register.component.css" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/login_register/login_register.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/login-register/login-register.component.html" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/login_register/login_register.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/login-register/login-register.component.spec.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/login_register/login_register.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/login-register/login-register.component.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/login_register/login_register.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/product-details/product-details.component.css" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/product_details/product_details.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/product-details/product-details.component.html" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/product_details/product_details.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/product-details/product-details.component.spec.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/product_details/product_details.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/product-details/product-details.component.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/product_details/product_details.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish-list/wish-list.component.css" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish_list/wish_list.component.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish-list/wish-list.component.html" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish_list/wish_list.component.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish-list/wish-list.component.spec.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish_list/wish_list.component.spec.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish-list/wish-list.component.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish_list/wish_list.component.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Config/init.php" afterPath="$PROJECT_DIR$/php_core/config/init.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/Controller.php" afterPath="$PROJECT_DIR$/php_core/controllers/controller.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/clientControllers/Auth.php" afterPath="$PROJECT_DIR$/php_core/controllers/client_controllers/auth.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/clientControllers/Company.php" afterPath="$PROJECT_DIR$/php_core/controllers/client_controllers/supplier.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/clientControllers/Header.php" afterPath="$PROJECT_DIR$/php_core/controllers/client_controllers/header.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/clientControllers/Home.php" afterPath="$PROJECT_DIR$/php_core/controllers/client_controllers/home.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/clientControllers/Language_con.php" afterPath="$PROJECT_DIR$/php_core/controllers/client_controllers/languages.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/clientControllers/Menu.php" afterPath="$PROJECT_DIR$/php_core/controllers/client_controllers/menu.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/clientControllers/Products.php" afterPath="$PROJECT_DIR$/php_core/controllers/client_controllers/products.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/clientControllers/Search.php" afterPath="$PROJECT_DIR$/php_core/controllers/client_controllers/search.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Controllers/clientControllers/Settings.php" afterPath="$PROJECT_DIR$/php_core/controllers/client_controllers/settings.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Database/DB.php" afterPath="$PROJECT_DIR$/php_core/database/DB.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Database/database.php" afterPath="$PROJECT_DIR$/php_core/database/database.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Http/Route.php" afterPath="$PROJECT_DIR$/php_core/Http/route.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Http/Routes.php" afterPath="$PROJECT_DIR$/php_core/Http/routes.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/Cookie.php" afterPath="$PROJECT_DIR$/php_core/services/cookie.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/Crypto.php" afterPath="$PROJECT_DIR$/php_core/services/crypto.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/Fetch.php" afterPath="$PROJECT_DIR$/php_core/services/fetch.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/Language.php" afterPath="$PROJECT_DIR$/php_core/services/language.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/Session.php" afterPath="$PROJECT_DIR$/php_core/services/session.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/User_info.php" afterPath="$PROJECT_DIR$/php_core/services/user_info.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/jwt/BeforeValidException.php" afterPath="$PROJECT_DIR$/php_core/services/jwt/BeforeValidException.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/jwt/ExpiredException.php" afterPath="$PROJECT_DIR$/php_core/services/jwt/ExpiredException.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/jwt/JWT.php" afterPath="$PROJECT_DIR$/php_core/services/jwt/JWT.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/jwt/LICENSE" afterPath="$PROJECT_DIR$/php_core/services/jwt/LICENSE" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/jwt/README.md" afterPath="$PROJECT_DIR$/php_core/services/jwt/README.md" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/jwt/SignatureInvalidException.php" afterPath="$PROJECT_DIR$/php_core/services/jwt/SignatureInvalidException.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/jwt/composer.json" afterPath="$PROJECT_DIR$/php_core/services/jwt/composer.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/mail.php" afterPath="$PROJECT_DIR$/php_core/services/mail.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Services/sms/sms.php" afterPath="$PROJECT_DIR$/php_core/services/sms/sms.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Vendor/Autoload.php" afterPath="$PROJECT_DIR$/php_core/vendor/autoload.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/php_core/Vendor/Autoload/autoload_files.php" afterPath="$PROJECT_DIR$/php_core/vendor/autoload/autoload_files.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/header/header.component.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/header/header.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/index/index.component.html" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/index/index.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/index/index.component.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/components/index/index.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/login-register-routing.module.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/login-register-routing.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/login-register.module.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/login-register.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/product-details-routing.module.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/product-details-routing.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/product-details.module.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/product-details.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/shopping-routing.module.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/shopping-routing.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/app/shopping/shopping.module.ts" afterPath="$PROJECT_DIR$/angular_cli/src/app/shopping/shopping.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/index.html" afterPath="$PROJECT_DIR$/angular_cli/src/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/angular_cli/src/jquery/menu.js" afterPath="$PROJECT_DIR$/angular_cli/src/jquery/menu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/php_core/Index.php" afterPath="$PROJECT_DIR$/php_core/Index.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,7 +85,18 @@
     <favorites_list name="BestSeller" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="product_details.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/components/product_details/product_details.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -70,21 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/wish-list/wish-list.module.ts" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/body/body.component.css" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/body/body.component.html" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/wish-list/wish-list.component.css" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/index/index.component.css" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/wish-list/wish-list.component.ts" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/company/company.component.ts" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/index/index.service.ts" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/search/search.component.ts" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/app.component.ts" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/footer/footer.component.html" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/footer/footer.component.css" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/products/products.component.ts" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/index/index.component.html" />
-        <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/index/index.component.ts" />
         <option value="$PROJECT_DIR$/AngularCli/src/app/Shopping/home/home.component.ts" />
         <option value="$PROJECT_DIR$/AngularCli/package.json" />
         <option value="$PROJECT_DIR$/AngularCli/.angular-cli.json" />
@@ -121,6 +174,21 @@
         <option value="$PROJECT_DIR$/CorePhp/Controllers/clientControllers/Company.php" />
         <option value="$PROJECT_DIR$/CorePhp/Controllers/clientControllers/Header.php" />
         <option value="$PROJECT_DIR$/CorePhp/Controllers/clientControllers/Search.php" />
+        <option value="$PROJECT_DIR$/php_core/Http/Route.php" />
+        <option value="$PROJECT_DIR$/php_core/Http/Routes.php" />
+        <option value="$PROJECT_DIR$/php_core/controllers/controller.php" />
+        <option value="$PROJECT_DIR$/php_core/Vendor/Autoload/autoload_files.php" />
+        <option value="$PROJECT_DIR$/php_core/vendor/autoload.php" />
+        <option value="$PROJECT_DIR$/php_core/vendor/autoload/autoload_files.php" />
+        <option value="$PROJECT_DIR$/php_core/controllers/server_controllers/index.php" />
+        <option value="$PROJECT_DIR$/php_core/Http/route.php" />
+        <option value="$PROJECT_DIR$/php_core/Http/routes.php" />
+        <option value="$PROJECT_DIR$/php_core/services/user_info.php" />
+        <option value="$PROJECT_DIR$/php_core/controllers/client_controllers/languages.php" />
+        <option value="$PROJECT_DIR$/angular_cli/src/index.html" />
+        <option value="$PROJECT_DIR$/angular_cli/src/app/shopping/components/body/body.component.html" />
+        <option value="$PROJECT_DIR$/angular_cli/src/app/shopping/components/index/index.component.html" />
+        <option value="$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish_list/wish_list.component.ts" />
       </list>
     </option>
   </component>
@@ -129,9 +197,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/AngularCli/node_modules" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
@@ -172,7 +237,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -185,8 +249,151 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php_core" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="php_core" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular_cli" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular_cli" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular_cli" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular_cli" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopping" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bestseller" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angular_cli" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="shopping" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -197,19 +404,19 @@
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\suppliers\components" />
-      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\cover_app\components" />
-      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\share_components" />
-      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\share_services" />
-      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\share_modules" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\Shopping\components" />
       <recent name="C:\xampp\htdocs\bestseller\angularcli\src\app\services" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\ServerFile" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src\assets" />
       <recent name="C:\Users\klodian.tik\Desktop\BestSeller\angularcli\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\suppliers\components" />
+      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\cover_app\components" />
+      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\share_components" />
+      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\share_services" />
+      <recent name="C:\Users\klodian.tik\Desktop\Bestseller\AngularCli\src\app\share_modules" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -456,11 +663,12 @@
       <workItem from="1538895861732" duration="18000" />
       <workItem from="1538924572472" duration="44108000" />
       <workItem from="1539161009449" duration="61937000" />
+      <workItem from="1539355500962" duration="8710000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4020210000" />
+    <option name="totallyTimeSpent" value="4028920000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -473,17 +681,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33495146" sideWeight="0.9123414" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30097088" sideWeight="0.9123414" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.011326861" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3252595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4053398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3125721" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4053398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19377163" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3001618" sideWeight="0.08765859" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.05074971" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -560,7 +769,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/AngularCli/src/app/shopping/shopping.module.ts</url>
           <line>41</line>
-          <properties />
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
@@ -583,195 +791,25 @@
           <line>924</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/php_core/controllers/server_controllers/index.php</url>
+          <line>5</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="54" />
+      <option name="time" value="55" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/services/search.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="139" column="30" lean-forward="false" selection-start-line="139" selection-start-column="30" selection-end-line="139" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/footer/footer.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/wish-list/wish-list.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/header/header.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/company/company.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="402" column="0" lean-forward="true" selection-start-line="402" selection-start-column="0" selection-end-line="402" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/header/header.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="981" column="1" lean-forward="true" selection-start-line="981" selection-start-column="1" selection-end-line="981" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share-service/data.service.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share-service/data.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share-service/categories/categories.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share-service/categories/categories.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/cover_app/components/controller/controller.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share_components">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share_services/encrypt-decrypt.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/lazy_modules/company.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/search/search.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/search/search.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="12" lean-forward="false" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#62#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/services/data.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/resolvers/resolver.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
-          <folding>
-            <element signature="e#1#44#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/resolvers/resolver_supplier.service.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/resolvers/resolver_supplier.service.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/resolvers/resolver_supplier.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/index/index.component.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/index/index.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="57" lean-forward="true" selection-start-line="20" selection-start-column="57" selection-end-line="20" selection-end-column="57" />
@@ -793,173 +831,133 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/app.component.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/services/auth.guard.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/services/auth.guard.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#43#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/products/products.component.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/products/products.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="35" column="2" lean-forward="true" selection-start-line="35" selection-start-column="2" selection-end-line="35" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#173#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/body/body.component.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/body/body.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/menu/menu.component.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/menu/menu.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="e#507#585#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/menu/menu.component.css">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/menu/menu.component.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/menu/menu.component.html">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/menu/menu.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6511">
           <caret line="383" column="0" lean-forward="false" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/company/company.component.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/company/company.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="29" column="43" lean-forward="true" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#143#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/company/search/search.component.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/company/search/search.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/cover_app/controller.service.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/cover_app/controller.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share_module/share.module.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/share_module/share.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding>
-            <element signature="e#1#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/cover_app/components/controller/controller.component.html">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/cover_app/components/controller/controller.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/cover_app/controller.service.spec.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/cover_app/controller.service.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/app.module.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-232">
           <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#101#159#0" expanded="true" />
-            <element signature="e#615#682#0" expanded="true" />
-            <element signature="e#988#1035#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/app.router.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/app.router.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share_services/http.service.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/share_services/http.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
           <caret line="52" column="23" lean-forward="false" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/supplier/supplier.module.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/supplier/supplier.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="27" />
-          <folding>
-            <element signature="e#1#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/supplier/supplier-routing.module.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/supplier/supplier-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="e#1#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/shopping.module.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/shopping.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-127">
           <caret line="37" column="56" lean-forward="false" selection-start-line="37" selection-start-column="56" selection-end-line="37" selection-end-column="56" />
@@ -975,60 +973,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/shopping-routing.module.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/shopping-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="29" column="3" lean-forward="true" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
-          <folding>
-            <element signature="e#1#42#0" expanded="true" />
-            <element signature="e#416#502#0" expanded="true" />
-            <element signature="e#602#652#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/header/header.component.html">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/header/header.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="64" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#mat-select#0;n#button#0;n#span#4;n#span#0;n#div#0;n#div#0;n#div#0;n#span#0;n#div#1;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/header/header.component.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/components/header/header.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1785">
           <caret line="39" column="43" lean-forward="true" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding>
-            <element signature="e#2#150#0" expanded="true" />
-            <element signature="e#525#583#0" expanded="true" />
-            <element signature="e#3583#3764#0" expanded="false" />
-            <element signature="n#!!block;n#check_body#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#index#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#check_button#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#find_position#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#show_chat#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#hide_chat#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#check_menu#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#check_chat#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#choose_language#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#toggle_select_wish#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#check_selected_wish#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#getStyle_wish#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#selecteAll_wishList#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#selecteAll_cartList#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#add_from_wish_to_cart#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#check_button_deleteProducts_fromwishlist#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#current_language#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#show_hide_search_in_wishlist#0;n#HeaderComponent#0" expanded="false" />
-            <element signature="n#!!block;n#check_show_hide_search_in_wishlist#0;n#HeaderComponent#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/services/header.service.ts">
+    <entry file="file://$PROJECT_DIR$/angularcli/src/app/shopping/services/header.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
@@ -1070,9 +1036,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2125">
           <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#51#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1080,7 +1043,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1096,7 +1058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1104,7 +1065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="51" column="34" lean-forward="false" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1112,6 +1072,207 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="43" column="59" lean-forward="true" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/controllers/client_controllers/auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/controllers/client_controllers/supplier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/vendor/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="32" column="2" lean-forward="true" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
+          <folding>
+            <element signature="n#AutoLoaderClasses#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/vendor/autoload/autoload_files.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="70" column="2" lean-forward="true" selection-start-line="70" selection-start-column="2" selection-end-line="70" selection-end-column="2" />
+          <folding>
+            <element signature="n#__construct#0;n#autoload_files#0;n#!!top" expanded="false" />
+            <element signature="n#checkfile#0;n#autoload_files#0;n#!!top" expanded="false" />
+            <element signature="n#classobject#0;n#autoload_files#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/Http/route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="324" column="0" lean-forward="true" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
+          <folding>
+            <element signature="n#get#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#post#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#department#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#group#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#routes#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#finished#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#instance#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#getMethod#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#check_params#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#getParams#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#checkUrl#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#build_route#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#call_controller#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#decryptparams#0;n#route#0;n#!!top" expanded="false" />
+            <element signature="n#exeption#0;n#route#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/Index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/controllers/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="n#call#0;n#controller#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/controllers/server_controllers/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="n#wellcome#0;n#index#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="98" column="2" lean-forward="true" selection-start-line="98" selection-start-column="2" selection-end-line="98" selection-end-column="2" />
+          <folding>
+            <element signature="e#230#859#2#PHP" expanded="false" />
+            <element signature="e#898#971#2#PHP" expanded="false" />
+            <element signature="e#1020#1136#2#PHP" expanded="false" />
+            <element signature="e#1175#1323#2#PHP" expanded="false" />
+            <element signature="e#1366#1605#2#PHP" expanded="false" />
+            <element signature="e#1647#1761#2#PHP" expanded="false" />
+            <element signature="e#1804#1937#2#PHP" expanded="false" />
+            <element signature="e#2063#2184#2#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/services/user_info.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular_cli/src/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#47#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/components/body/body.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular_cli/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/controllers/client_controllers/languages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="38" column="2" lean-forward="false" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular_cli/src/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_core/controllers/client_controllers/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/components/index/index.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <marker date="1539363023186" expanded="true" signature="77:305" ph="{...}" />
+            <marker date="1539363023186" expanded="true" signature="139:298" ph="{&quot;top&quot;: productsService.product_options.top...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/components/wish_list/wish_list.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="39" column="2" lean-forward="false" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#58#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/shopping-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/components/product_details/product_details.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

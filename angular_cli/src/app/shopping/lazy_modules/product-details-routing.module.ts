@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProductDetailsComponent } from '../components/product-details/product-details.component';
+import { ProductDetailsComponent } from '../components/product_details/product_details.component';
 
 const routes: Routes = [
 

@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProductDetailsRoutingModule } from './product-details-routing.module';
 
-import { ProductDetailsComponent } from '../components/product-details/product-details.component';
+import { ProductDetailsComponent } from '../components/product_details/product_details.component';
 
 import { NgxCarouselModule } from 'ngx-carousel'; // carousel
 
