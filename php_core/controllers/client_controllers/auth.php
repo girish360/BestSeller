@@ -19,12 +19,7 @@ class auth {
 
     public function check_user(  ){
 
-
-
-
-
     }
-
     public function set_token( ){
 
         echo time()+60*60 . '  >  ' . time()  ; echo '<br>';

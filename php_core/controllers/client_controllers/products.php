@@ -96,7 +96,7 @@ class products extends controller  // class products extends from fetch keep all
         $this->products = database::table('products')
             ->select(
                 'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
-                'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                'products.quantity', 'products.image', 'products.created_at', 'products.in_cartList', 'products.in_wishList',
                 'suppliers.id as company_id', 'suppliers.name ', 'suppliers.image as company_image'
             )->join('suppliers','products.supplier_id','=','suppliers.id')
             ->where('products.category_id','=',$request->category_id)
@@ -118,7 +118,7 @@ class products extends controller  // class products extends from fetch keep all
             $this->products = database::table('products')
                 ->select(
                     'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
-                    'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                    'products.quantity', 'products.image', 'products.created_at', 'products.in_cartList', 'products.in_wishList',
                     'suppliers.id as company_id', 'suppliers.name ', 'suppliers.image as company_image'
                 )->join('suppliers','products.supplier_id','=','suppliers.id')
                 ->where('products.category_id','=',$request->category_id)
@@ -131,7 +131,7 @@ class products extends controller  // class products extends from fetch keep all
             $this->products = database::table('products')
                 ->select(
                     'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
-                    'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                    'products.quantity', 'products.image', 'products.created_at', 'products.in_cartList', 'products.in_wishList',
                     'suppliers.id as company_id', 'suppliers.name ', 'suppliers.image as company_image'
                 )->join('suppliers','products.company_id','=','suppliers.id')
                 ->where('products.category_id','=',$request->category_id)

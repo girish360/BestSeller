@@ -2,6 +2,40 @@
 
 /* Styles go here */
 
+
+
+.open_menu{
+
+
+
+
+
+    width: 50px;
+    height: 100%;
+
+    transition: 0.3s;
+
+}
+
+.button_menu {
+    width: 80%;
+
+    height: 100%;
+
+    position: relative;
+
+    margin: 0 auto;
+}
+
+.button-fab-openmenu{
+
+  position: relative;  top: -1px;
+
+}
+
+
+
+
 .border{
 
     border: 1px solid;
@@ -9,6 +43,11 @@
 }
 
 .progress{
+
+    position: relative;
+    top: 4px;
+}
+.progress_mobile{
 
     position: relative;
     top: -2px;
@@ -68,7 +107,7 @@ a{
 }
 
 /* Begin css for header profile user here ....................................................................................................*/
-.header{
+.header_pc{
     position: fixed;
     z-index: 4 !important;
     width: 100%;
@@ -78,40 +117,119 @@ a{
     background-color:#E6E6FA;
 }
 
+.mobile_top_nav{
+    position: fixed;
+    z-index: 4 !important;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid;
+    color: lightgray;
+    display: none;
+    background-color:#E6E6FA;
+
+}
+
+
+
+
+.mobile_bottom_nav{
+    position: fixed;
+    z-index: 4 !important;
+    width: 100%;
+    height: 50px;
+    border-top: 1px solid;
+    color: lightgray;
+    display: none;
+    background-color:#E6E6FA;
+    bottom: 0;
+}
+
 
 .header_left{
     width: 50%;
+    height: 100%;
     float: left;
 
+
 }
+.mobile_top_nav_input , .pc_top_nav_input{
+    position: relative;
+    height: 100%;
+    width: calc(100% - 50px);
+
+}
+.inner_height button{
+    height: 100%;
+}
+.input_search{
+    height: inherit;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid;
+    display: inline-block;
+    color:gray;
+    border-color: lightgray;
+    background-color: whitesmoke;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+
+}
+
+
+.button_search{
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid;
+    display: inline-block;
+
+    border-color: lightgray;
+    background-color: whitesmoke;
+
+
+    min-width: 50px;
+    max-width: 0;
+
+    box-shadow: none;
+
+
+    color: lightgray;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.button_search .mat-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.mobile_top_nav_button ,.pc_top_nav_button{
+    position: relative;
+    width: 50px;
+    height: 100%;
+
+
+}
+
+
+
 .header_right{
     width: 50%;
     height: 100%;
 
-}
-
-.number_event{
-
-    position: absolute;
-    margin-left: 20px;
-    margin-top: -10px;
-    z-index: 10 !important;
-
 
 }
-.write_number{
-    position: relative;
-    top: -11px;
-    left: -14px;
-    color:white;
-    font-size: 12px;
+.inside_header{
+     padding: 6px 0 6px 0;
+ }
 
-}
-.write_number_less{
-    position: relative;
-    left: -10px;
 
-}
 .opacity_detail_product{
     position: fixed;
     background-color: gray;
@@ -171,11 +289,7 @@ a{
 }
 
 
-.icon-list-remove{
-    position: relative;
-    left: 2px;
-    top: -1px;
-}
+
 .exitlogin ,.exit_details_product{
     color:white;
 
@@ -213,7 +327,7 @@ a{
 }
 
 .check_menu .mat-icon{
-    font-size: 30px;
+
     position: relative;
     top:-4px;
     left: -6px;
@@ -223,8 +337,7 @@ a{
     min-width: 50px;
     max-width: 50px;
     height: 100%;
-    border-top:2px solid;
-    color: gray;
+
 }
 
 /*    here is css for popup when sesioni doesn't  ezists automatik system doing logout*/
@@ -332,23 +445,12 @@ a{
     position: absolute;
 
  }
-.icon_img{
-    width: 24px;
-    margin: 0 auto;
-    height: 24px;
-    position: relative;
-    top: 7px;
 
-}
-.icon_img img{
-    width: 100%;
-    height: 100%;
-}
 .write_icon{
     position: relative;
     top: 5px;
 }
-.icon_openmenu{
+.logo{
     width: 200px;
     height: 100%;
     visibility: hidden;
@@ -356,7 +458,7 @@ a{
     left: -200px;
 }
 
-.icon_openmenu_img {
+.logo_img {
 
     position: relative;
     top: 7px;
@@ -416,15 +518,23 @@ a{
 }
 
 .button_right_pc{
-    float: right;
+
     display: inline-block;
     width: 70px;
-height: 100%;
+    height: inherit;
     text-align: center;
-    overflow: hidden;
 
 
 
+
+
+
+}
+
+.buttons_right_pc{
+    float: right;
+    width: auto;
+    height: inherit;
 }
 .button_header{
     height: 100%;
@@ -438,16 +548,12 @@ height: 100%;
 }
 
 
-
 .button_mobile{
 
     float: left;
     width: 20%;
     height: 100%;
     text-align: center;
-
-
-
 }
 
 .button_mobile a{
@@ -456,23 +562,18 @@ height: 100%;
     text-decoration: none;
 }
 
-.header_mobile{
-    display: none;
-    width: 100%;
-}
+
 
 .active{
     color: red;
 }
 .write_icon_header{
-position: relative;
-    top: -4px;
+
     z-index: 10 !important;
+    position: relative;
+    top: -2px;
+
 }
-
-
-
-
 
 .treguesi{
     position: absolute;
@@ -485,43 +586,32 @@ position: relative;
     -ms-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    margin-top: 33px;
-    left: 0px;
+    margin-top: 37px;
+    left: 0;
     display: none;
     z-index: 0 !important;
-
-
 }
 
-
-
-.iconopenchat{
-    position: relative;
-    top: -50px;
-    left: 10px;
-}
 
 input[name='search']{
-    padding-left: 7px;
-    padding-right: 35px;
+    padding-left: 5px;
+    padding-right: 5px;
 
 }
 
 .buttonsearch{
 
-    min-width: 40px;
-    max-width: 40px;
-    height: 30px;
+    min-width: 50px;
+    max-width: 0;
+    height: inherit;
     border-radius: 0;
-    position: relative;
-    top: 4.5px;
-    left: -4px;
     box-shadow: none;
-   background-color: white;
+    background-color: white;
     border: 1px solid;
     color: lightgray;
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
+
 
 }
 .buttonsearch:hover{
@@ -530,8 +620,8 @@ input[name='search']{
 
 .iconbuttonsearch{
     position: relative;
-    left: -8px;
-    top:-4px;
+    left: -3px;
+
 }
 
 .option{
@@ -546,25 +636,9 @@ input[name='search']{
     margin-left: -82px;
     border:none;
 }
-.kerkim{
-    width:calc( 100% - 45px );
 
-}
 
-.kerkim input{
 
-    width:calc( 100%  - 45px ) ;
-    height: 30px;
-    position: relative;
-    border:none;
-    border: 1px solid;
-    display: inline-block;
-    color:gray;
-    border-color: lightgray;
-  background-color: whitesmoke;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
-}
 input[name='search']:focus {
 
     outline: none;
@@ -600,15 +674,6 @@ input[name='search']:focus {
     visibility: visible;
     transition: 0.5s;
 
-}
-
-
-
-html>/**/body .searchinputresp, x:-moz-any-link {
-    top: -7px;
-}
-html>/**/body .kerkim, x:-moz-any-link {
-    top:-4px;
 }
 
 
@@ -667,25 +732,6 @@ html>/**/body .kerkim, x:-moz-any-link {
 /* dropdown list language ...............*/
 
 
-
-.search_width{
-    position: relative;
-    width: 500px;
-
-    height: 500px;
-    background-color: white;
-
-
-
-
-    -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
-    border-radius: 3px;
-    display: none;
-}
-
-
 .dropcard ,.dropfavorites ,.dropmore{
 
     position: absolute;
@@ -705,7 +751,7 @@ html>/**/body .kerkim, x:-moz-any-link {
 .dropdown_search{
 
     position: relative;
-    width: inherit;
+    width: calc(100% - 55px);
     height:auto;
     display: none;
     transition:0.3s;
@@ -714,6 +760,7 @@ html>/**/body .kerkim, x:-moz-any-link {
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
 }
+
 .header_dropsearch ,.dropdown_search{
 
     border-top-left-radius: 4px;
@@ -943,10 +990,9 @@ input[type='radio'] {
     display: none;
 }
 .button_search_for{
-
     height: 100%;
     width: 150px;
-
+    border-radius:0 ;
 }
 
 .searchFor{
@@ -971,24 +1017,17 @@ input[type='radio'] {
 
 
 .header_dropsearch{
-    height: 45px;
+    height: 40px;
     overflow-y: hidden;
-    overflow-x: auto;
+    overflow-x: overlay;
     white-space: nowrap;
-    padding: 5px;
+
 }
 .body_search{
     min-height: 0;
 }
 
-.button_search_for mat-icon{
-    position: relative;
-    top: -4px;
-}
-.button_search_for span{
-    position: relative;
-    top: -4px;
-}
+
 .active-search-button{
     background-color:#E6E6FA;
 }
@@ -1140,17 +1179,14 @@ input[type='radio'] {
         margin-top:-5px;
 
     }
-    .inner_mobile{
-        width: 100%;
-
-    }
-
-    .header_right ,.header_left{
+    .header_pc {
         display: none;
     }
-    .header_mobile{
+    .mobile_top_nav ,.mobile_bottom_nav{
         display:block;
     }
+
+
 
 
 

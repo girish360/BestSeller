@@ -42,9 +42,9 @@ class DB { //class of databse can build query and execute it to get data from da
 
     private $update = false;
 
-    private $prepare = false; // prepare query
+    public $prepare = false; // prepare query
 
-    private $data = array(); // data in  execute query
+    public $data = array(); // data in  execute query
 
     private static $instances = array(); //  objects of class
 
@@ -80,7 +80,7 @@ class DB { //class of databse can build query and execute it to get data from da
         return  self::$instances[$instance_name];
     }
 
-    private static function end_instance(){
+    public static function end_instance(){
 
         $number = 1;
 
@@ -271,7 +271,7 @@ class DB { //class of databse can build query and execute it to get data from da
 
                 $this->where =' where '.$column.' '.$operator.' :'.$new_key.'';
 
-                $this->data[':'.$new_key] = $value;
+                $this->data[':'.$new_key] =  $value;
 
             }else{
 
@@ -613,13 +613,76 @@ class DB { //class of databse can build query and execute it to get data from da
 
     }
 
+    public function timeStampDiff( $type , $column , $operator , $value ){
+
+        if ( self::check_key($column) ){
+
+            $new_key = self::set_key( $column );
+
+            $this->where =' where TIMESTAMPDIFF('.$type.' , '.$column.' , NOW() ) ' .$operator. ' :'.$new_key.' ';
+
+            $this->data[':'.$new_key] =  $value;
+
+        }else{
+
+            $this->where =' where TIMESTAMPDIFF('.$type.' , '.$column.' , NOW() ) ' .$operator. ' :'.$column.' ';
+
+            $this->data[':'.$column] = $value;
+        }
+
+        return self::end_instance();
+
+    }
+
+    public function orTimeStampDiff( $type , $column , $operator , $value ){
+
+        if ( self::check_key($column) ){
+
+            $new_key = self::set_key( $column );
+
+            $this->where .=' or TIMESTAMPDIFF('.$type.' , '.$column.' , NOW() ) ' .$operator. ' :'.$new_key.' ';
+
+            $this->data[':'.$new_key] =  $value;
+
+        }else{
+
+            $this->where .=' or TIMESTAMPDIFF('.$type.' , '.$column.' , NOW() ) ' .$operator. ' :'.$column.' ';
+
+            $this->data[':'.$column] = $value;
+        }
+
+        return self::end_instance();
+
+    }
+
+    public function andTimeStampDiff( $type , $column , $operator , $value ){
+
+        if ( self::check_key($column) ){
+
+            $new_key = self::set_key( $column );
+
+            $this->where .=' and TIMESTAMPDIFF('.$type.' , '.$column.' , NOW() ) ' .$operator. ' :'.$new_key.' ';
+
+            $this->data[':'.$new_key] =  $value;
+
+        }else{
+
+            $this->where .=' and TIMESTAMPDIFF('.$type.' , '.$column.' , NOW() ) ' .$operator. ' :'.$column.' ';
+
+            $this->data[':'.$column] = $value;
+        }
+
+        return self::end_instance();
+
+    }
+
     public function delete(){
 
         $this->select = false;
 
         $this->delete = 'delete';
 
-        self::build_prepare();
+        self::build_prepare( self::end_instance());
 
         self::execute();
 
@@ -873,21 +936,21 @@ class DB { //class of databse can build query and execute it to get data from da
 
         if( is_callable( $data ) ){
 
-            self::generic_instance( __FUNCTION__ );
+            self::generic_instance( __FUNCTION__ ); // generate a new instance for this class
 
-            $data( self::end_instance() );
+            $data( self::end_instance() ); // exe function that come in this method function
 
             $prepare_subquery = self::build_prepare( self::end_instance() );
 
             $data = self::end_instance()->data;
 
-            self::delete_instance( __FUNCTION__ );
+            self::delete_instance( __FUNCTION__ ); // delete last instance ..........
 
             $this->data = $data;
 
-            $this->where.='where '.$column.' in ('.$prepare_subquery.')';
+            $this->where.='where '.$column.' in ('.$prepare_subquery.')'; // add subquery in query
 
-        }else if( is_array($data) ){
+        }else if( is_array($data) ){ // if is array
 
             $valueIn = implode(',',$data);
 
@@ -958,12 +1021,22 @@ class DB { //class of databse can build query and execute it to get data from da
 
         $query =self::conn()->prepare( $this->prepare );
 
-        $query->execute( $this->data );
+        foreach ( $this->data as $key => &$value ){
+
+            if(is_numeric($value)){
+
+                $query->bindParam( $key, $value , PDO::PARAM_INT );
+
+             }else{
+                 $query->bindParam( $key, $value , PDO::PARAM_STR );
+             }
+
+        }
+        $query->execute();
 
         $result = $query->fetchAll(\PDO::FETCH_ASSOC );
 
         return  $result;
-
     }
 
 }

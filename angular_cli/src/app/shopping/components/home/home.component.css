@@ -97,15 +97,15 @@
 }
 
 
-@media only screen and ( max-width: 500px ){
+@media only screen and ( max-width: 750px ){
 
     .leftRs {
 
-        left: -2.5%;
+        left: 0;
     }
     .rightRs {
 
-        right: -2.5%;
+        right:0;
     }
 
 }

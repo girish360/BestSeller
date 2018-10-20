@@ -29,7 +29,7 @@ class header {
             $this->wishList = database::table('products')
                 ->select(
                     'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
-                    'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                    'products.quantity', 'products.image', 'products.created_at', 'products.in_cartList', 'products.in_wishList',
                     'suppliers.id as supplier_id', 'suppliers.name ', 'suppliers.image as supplier_image'
                 )->join('suppliers','products.supplier_id','=','suppliers.id')
                 ->whereIn('products.id' ,$products_id )
@@ -47,7 +47,7 @@ class header {
             $this->cartList = database::table('products')
                 ->select(
                     'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',
-                    'products.quantity', 'products.image', 'products.date', 'products.in_cartList', 'products.in_wishList',
+                    'products.quantity', 'products.image', 'products.created_at', 'products.in_cartList', 'products.in_wishList',
                     'suppliers.id as supplier_id', 'suppliers.name ', 'suppliers.image as supplier_image'
                 )->join('suppliers','products.supplier_id','=','suppliers.id')
                 ->whereIn('products.id' ,$product )

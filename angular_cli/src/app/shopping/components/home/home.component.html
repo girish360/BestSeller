@@ -1,7 +1,5 @@
 
 
-
-
 <ng-container *ngIf="dataservices.loaded_component;else loading">
 
     <ng-container *ngIf="!dataservices.not_founded;else notFounded">
@@ -28,6 +26,7 @@
                       (carouselLoad)="carouselTileOneLoad()"
 
                       (onMove)="onmove_carousel( $event , category )"
+
 
         >
 
@@ -70,8 +69,6 @@
             </button>
 
         </ngx-carousel>
-
-       <br>
 
     </div>
 

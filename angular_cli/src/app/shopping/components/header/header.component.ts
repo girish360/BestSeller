@@ -1,5 +1,5 @@
 
- import { Component, OnInit,NgZone ,ViewChild,ChangeDetectorRef,ChangeDetectionStrategy , EventEmitter  ,ElementRef, Renderer } from '@angular/core';
+ import { Component, OnInit,NgZone ,HostListener,ViewChild,ChangeDetectorRef,ChangeDetectionStrategy , EventEmitter  ,ElementRef, Renderer } from '@angular/core';
 
  import { Injectable } from '@angular/core';
 
@@ -22,6 +22,8 @@
  import { SetRouterService } from '../../../share_services/set-router.service';
 
  import { SearchService} from '../../services/search.service';
+
+ import { ScrollbarService } from '../../../share_services/scrollbar.service';
 
  import { FormControl } from '@angular/forms';
  import { } from 'googlemaps';
@@ -83,16 +85,17 @@
 
              ])
          ]),
-
-
-
-
-    ]
+     ]
 
 
  })
 
  export class HeaderComponent implements OnInit   {
+
+     @HostListener("mouseup") public enable_button(){
+
+         this.mousedown = false;
+     }
 
      public latitude: number;
      public longitude: number;
@@ -101,9 +104,9 @@
 
      @ViewChild("searchInput") searchEl: ElementRef;
 
-     @ViewChild("search")
+     @ViewChild("search") public searchElementRef: ElementRef;
 
-     public searchElementRef: ElementRef;
+     @ViewChild("movescroll") public movescroll: ElementRef;
 
      private Response;
 
@@ -130,19 +133,26 @@
      ];
 
      public button_right = [
-         { id:4 , name:'more' ,mat_tooltip:'More Options',  different_class:'notClosepointerHeader notCloseDropdawnLanguage',
-             icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'.mat-tab-body-wrapper'
-         },
-         { id:3 , name:'card' ,mat_tooltip:'Your Cart',  different_class:'notClosepointerHeader notCloseDropdawnCard',
-             icon :'glyphicon-shopping-cart gh-productsService' , dropdown_class:'dropcard' ,dropdown_body:'.body_cart'
-         },
-         { id:2 , name:'wish' , mat_tooltip:'WishList',  different_class:' notCloseDropdawnFavorite notClosepointerHeader',
-             icon :'glyphicon-heart' , dropdown_class:'dropfavorites' ,dropdown_body:'.dropfavorites  .wishlist_component  .body_div'
-         },
 
          { id:1 , name:'sign' ,mat_tooltip:'User Panel', different_class:'',
-             icon :'glyphicon-user gh-productsService'
-         }
+             icon :'glyphicon-user gh-productsService' , hide_notification:true
+         },
+         { id:2 , name:'wish' , mat_tooltip:'WishList',  different_class:' notCloseDropdawnFavorite notClosepointerHeader',
+             icon :'glyphicon-heart' , dropdown_class:'dropfavorites' ,dropdown_body:'.dropfavorites  .wishlist_component  .body_div',
+             hide_notification:false
+         },
+         { id:3 , name:'card' ,mat_tooltip:'Your Cart',  different_class:'notClosepointerHeader notCloseDropdawnCard',
+             icon :'glyphicon-shopping-cart gh-productsService' , dropdown_class:'dropcard' ,dropdown_body:'.body_cart',
+             hide_notification:false
+         },
+         { id:4 , name:'more' ,mat_tooltip:'More Options',  different_class:'notClosepointerHeader notCloseDropdawnLanguage',
+             icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'.dropdown_more .mat-tab-body-wrapper',
+             hide_notification:true
+         },
+
+
+
+
      ];
 
      constructor(
@@ -156,6 +166,7 @@
          private route : ActivatedRoute ,
          private setRouter :SetRouterService,
          private cd: ChangeDetectorRef,
+         private scroll :ScrollbarService,
          private mapsAPILoader: MapsAPILoader,
          private ngZone: NgZone
 
@@ -226,7 +237,54 @@
          }
      }
 
-    public route_on_search( result ){
+     public pagex:number;
+
+     public mousedown:boolean = false;
+
+     public kot :number = 2;
+
+     public walk_scroll:number;
+
+     public block:boolean = false;
+
+
+
+     public down(event){
+
+         this.mousedown = true;
+
+         this.block = false;
+
+         this.pagex = event.clientX;
+
+     }
+
+     public up(event){
+
+         this.mousedown = false;
+
+         setTimeout(()=>{
+
+             this.block = false;
+
+         },100);
+     }
+
+     public move(event ,el){
+
+         if( this.mousedown ){
+
+             this.block = true;
+
+             this.walk_scroll = event.clientX - this.pagex;
+
+             this.pagex += this.walk_scroll;
+
+             this.movescroll.nativeElement.scrollLeft -= this.walk_scroll;
+         }
+     }
+
+     public route_on_search( result ){
 
          if( this.searchService.search_data.searchFor =='products' ){
 
@@ -307,7 +365,7 @@
 
      public  set_router( data ){
 
-        this.setRouter.set_router( data , this.route ); // set router .....
+         this.setRouter.set_router( data , this.route ); // set router .....
 
     }
 

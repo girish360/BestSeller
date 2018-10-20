@@ -23,16 +23,21 @@ export class IndexService {
 
     let window_scroll = this.scroll.window_scroll();
 
-    if( scroll_size.height -  screen_size.y  - footer <= window_scroll.top ){
+    if( screen_size.x > 750 ) { // only if width of screen is grater than 750 px
 
-      let height = window_scroll.top - ( scroll_size.height -  screen_size.y  - footer )+ header ;
+      if (scroll_size.height - screen_size.y - footer <= window_scroll.top) {
 
-      this.dataservices.menu_style = { 'height': 'calc( 100vh - ' +  height + 'px )' };
+        let height = window_scroll.top - ( scroll_size.height - screen_size.y - footer ) + header;
 
+        this.dataservices.menu_style = {'height': 'calc( 100vh - ' + height + 'px )'};
+
+      } else {
+
+        this.dataservices.menu_style = {'height': 'calc( 100vh - 40px  )'};
+
+      }
     }else{
-
-      this.dataservices.menu_style = {'height':'calc( 100vh - 40px  )'};
-
+      this.dataservices.menu_style ={};
     }
     this.dataservices.update_menu(true);
 

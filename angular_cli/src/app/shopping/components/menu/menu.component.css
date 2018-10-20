@@ -113,7 +113,7 @@ a{
     margin-top: 50px;
     height: calc( 100vh - 50px) ;
     overflow-x: hidden;
-    overflow-y:overlay ;
+    overflow-y:overlay;
     word-wrap: break-word;
     -webkit-box-shadow: 0 0 6px 0 rgba(210,212,203,1);
     -moz-box-shadow: 0 0 6px 0 rgba(210,212,203,1);
@@ -167,9 +167,7 @@ a{
     width: calc( 100% - 50px );
     opacity: 0;
     position: relative;
-    top: 20px;
-
-visibility: hidden;
+    visibility: hidden;
 
 
 
@@ -189,6 +187,7 @@ visibility: hidden;
     top:-4px;
     margin: 0px auto;
 }
+
 .button_menu_right{
     margin-top: 6px;
 }
@@ -239,12 +238,13 @@ mat-icon{
     top: 20px;
 
 }
+
 .open_left_inside{
 
     visibility: visible;
     width: 100%;
     top: 0;
-     opacity: 1;
+    opacity: 1;
 
 }
 
@@ -389,6 +389,8 @@ mat-icon{
 }
 .namecate {
     display: inline-block;
+    position: relative;
+
 }
 .namecategory{
     text-decoration: none;
@@ -473,8 +475,9 @@ mat-icon{
 
 }
 .imgnc{
-    position: relative;
+
     float: right;
+    right: 0;
     display: inline-block;
 }
 .iconsubcategory{
@@ -517,17 +520,7 @@ categorytype_new_background{
 .exitsub{
     display: block;
 }
-.searchsubscribe{
-    width: 248px;
-    height: 32px;
-    background-color:#eaefff;
-    position: fixed;
-    left: -250px;
-    bottom: 0;
-    z-index: 2 !important;
 
-
-}
 .inputsearchcompany{
     border:none;
     height: 32px;
@@ -537,10 +530,10 @@ categorytype_new_background{
 
     outline: none;
 }
-.iconsearchsub ,.inputsearchcompany ,.searchsub,.settings_delete_search_company{
+ .inputsearchcompany ,.settings_delete_search_company{
     display: inline-block;
 }
-.iconsearchsub ,.settings_delete_search_company{
+.settings_delete_search_company{
 
     width: 25px;
     height: 32px;
@@ -549,32 +542,13 @@ categorytype_new_background{
     top: -4px;
 }
 
-.wisthisearchsub{
-    width: 95%;
-    height: 32px;
-    position:
-            relative;
-    left: 14px;
-    background-color: #eaefff;
-}
-.delete_search_company{
-    display: none;
-}
-.imgsearchsub,.settings_search_company,.delete_search_company{
+
+
+.settings_search_company,.delete_search_company{
     position: relative;
     top: 7px;
 }
-.loadersubscribe{
-    position: fixed;
-    bottom:32px;
-    left: -250px;
-    height: 32px;
-    width: 250px;
-    display: none;
-    background-color:#eaefff;
-    z-index: 3 !important;
 
-}
 .pointer_catego  {
     position: absolute; background-color: gray; z-index: 11 !important;
     width:auto;
@@ -655,64 +629,33 @@ categorytype_new_background{
     display: none;
 }
 
-@media only screen and (max-width: 1050px) { /*  ipad pro ...............*/
+@media (min-width: 1281px) { /* desktop only */
+
 
 
 }
 
-@media only screen and (max-width: 750px) { /*  mobile ...............*/
 
-    .searchsubscribe{
-        width: 100%;
-        height: 32px;
-        background-color:#eaefff;
-        position: fixed;
-        bottom: 0;
-        left: -850px;
+@media (min-width: 1025px) and (max-width: 1280px) { /* laptops and desktop */
 
 
-    }
-    .loadersubscribe{
-        position: fixed;
-        bottom:32px;
-        left: -850px;
-        height: 32px;
-        width: 100%;
 
-        background-color:#eaefff;
+}
+
+@media (min-width: 768px) and (max-width: 10240px) { /* tablest and ipad  ...............*/
 
 
-    }
-    .imgnc{
-        display: block;
-        position: relative;
-        right: 10px;
+}
 
-    }
-    .iconsubcategory{
-        display: none;
-    }
-
-
-    .iconsearchsub{
-        float: right;
-        position: relative;
-        top: 0px;
-        right: 65px;
-    }
-    .searchsub{
-        width: 60%;
-    }
+@media only screen and ( max-width: 750px ) { /*  tablets and mobile ...............*/
 
     .menu_left{
-
         left: 0;
         margin-top: 0;
-
+        position: relative;
         width: 100%;
-        height: auto;
-        overflow-x: hidden;
-        overflow-y:hidden ;
+        height: auto ;
+        overflow-y: hidden;
         box-shadow: none;
 
     }
@@ -722,14 +665,22 @@ categorytype_new_background{
     }
 
     .menu_left_inside{
+
         float: left;
         width: 100%;
         display: block;
+        visibility: visible;
+
+
 
     }
-
-    .width_menu_right{
+    .menu_right_inside{
         display: none;
+        visibility: hidden;
+    }
+    .width_category{
+        width: 95%;
+
     }
 
     .change_inner_body{
@@ -738,10 +689,7 @@ categorytype_new_background{
 }
 
 
-@media only screen and (max-width: 850px){
 
-
-}
 
 
 

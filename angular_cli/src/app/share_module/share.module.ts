@@ -29,6 +29,8 @@ import {
 
 } from '@angular/material';
 
+import {MatBadgeModule} from '@angular/material/badge';
+
 import { AgmCoreModule } from '@agm/core';
 
 
@@ -48,6 +50,7 @@ import { AgmCoreModule } from '@agm/core';
     MatTabsModule,
     MatTooltipModule,
     MatSlideToggleModule,
+    MatBadgeModule,
     DragScrollModule
 
 
@@ -70,6 +73,7 @@ import { AgmCoreModule } from '@agm/core';
     FormsModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
+    MatBadgeModule,
     DragScrollModule,
 
 

@@ -23,6 +23,8 @@ import { ResolverHomeService } from './resolvers/resolver_home.service';
 
 import { WishListComponent } from './components/wish_list/wish_list.component';
 
+import { CardListComponent } from './components/card_list/card_list.component';
+
 import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
@@ -44,6 +46,10 @@ const routes: Routes = [
 
       { path: 'wish_list', component : WishListComponent},
 
+      { path: 'cart_list', component : CardListComponent},
+
+      { path: 'menu', component: MenuComponent},
+
       { path: ':keyword', component:SearchComponent},
 
       { path: 'users/:name', component: UsersComponent,
@@ -58,7 +64,7 @@ const routes: Routes = [
       //
       // { path: 'chat', component: ChatComponent},
 
-      { path: 'menu', component: MenuComponent},
+
 
       { path:'**',component: NotFoundComponent }
 

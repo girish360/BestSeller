@@ -73,7 +73,7 @@ export class DataService extends HttpService implements OnInit{
 
     public change_inner = false;
 
-    public menu_style : any = {'height':'calc( 100vh - 40px  )'};
+    public menu_style : any = {};
 
   constructor(  protected http:Http  ) {
 
