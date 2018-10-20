@@ -1,4 +1,4 @@
-import {  Component,DoCheck,HostListener,OnInit,Renderer ,ElementRef ,AfterViewInit,ChangeDetectorRef, HostListener} from '@angular/core';
+import {  Component,DoCheck,OnInit,Renderer ,ElementRef ,AfterViewInit,ChangeDetectorRef, HostListener} from '@angular/core';
 
 import {Observable} from 'rxjs/Rx'; // Angular 5
 
