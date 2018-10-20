@@ -14,6 +14,8 @@ import { SettingsService } from '../../services/settings.service';
 
 import { MenuService } from '../../services/menu.service';
 
+import { ScrollbarService } from '../../../share_services/scrollbar.service';
+
 import {Observable} from 'rxjs/Observable';
 
 import 'rxjs/Rx';
@@ -39,8 +41,10 @@ export class MenuComponent  implements OnInit  {
       private router:Router ,
       private crypto: EncryptDecryptService,
       private Settings : SettingsService,
+      private scroll : ScrollbarService
   )
   {
+    this.scroll.window(0,0);
 
     this.dataservices.Http_Get( 'shopping/menu/category', false ) // make request ......
 
@@ -130,9 +134,11 @@ export class MenuComponent  implements OnInit  {
 
   check_subscribes( company ){
 
-    let company_path = 'company/'+company.name+'@'+company.id;
+    this.dataservices.update_body(false);
 
-    this.set_router( { path:company_path, data: false  , relative:true } );
+    let company_path = 'shopping/company/'+company.name+'@'+company.id;
+
+    this.set_router( { path:company_path, data: false  , relative:false } );
 
   }
 

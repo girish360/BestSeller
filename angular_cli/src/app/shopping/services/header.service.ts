@@ -374,7 +374,7 @@ export class HeaderService  implements OnInit {
 
     $('.' + dropdown_class).show().animate({ // animation effect show dropdown productsService......
 
-      top: '40px',
+      top: '50px',
 
       opacity: 1
 
@@ -406,7 +406,7 @@ export class HeaderService  implements OnInit {
 
     $(body_inside).css({top: '0px'});
 
-    $('.' + dropdown_class).css({top: '40px', opacity: '1'}); // css style...
+    $('.' + dropdown_class).css({top: '50px', opacity: '1'}); // css style...
 
     $('.' + dropdown_class).animate({ // animation effect hide dropdown productsService......
 

@@ -3,8 +3,6 @@
 
 <div class="component-animation" *ngIf="{products : dataservices.products | async , app : dataservices.async | async } "> <!--  this component is inside this div  ...................................................... -->
 
-
-
     <ng-container *ngIf="dataservices.loaded_component;else loading">
 
         <ng-container *ngIf="!dataservices.not_founded;else notFounded">
@@ -85,9 +83,9 @@
     </div>
 
 
-    <div class="all_prod" *ngIf="productsService.status_products  |  async "> <!--  start div with products ...................................................... -->
+    <div class="all_prod"> <!--  start div with products ...................................................... -->
 
-      <div class="width_products component-animation " (contextmenu)="productsService.open_options($event)" *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':menuservice.status_menu | async  }" >
+      <div class="width_products " (contextmenu)="productsService.open_options($event)" *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':menuservice.status_menu | async  }" >
 
           <div class="space outer_content">
 
@@ -99,7 +97,7 @@
 
                       <mat-icon>arrow_drop_down_circle</mat-icon><br>
 
-                      <div class=' glyphicon glyphicon-time'></div> {{product.date}}
+                      <div class=' glyphicon glyphicon-time'></div> {{product.created_at}}
 
                   </div>
 

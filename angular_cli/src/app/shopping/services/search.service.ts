@@ -8,8 +8,6 @@ declare var $:any;
 
 @Injectable()
 
-
-
 export class SearchService {
 
   public search_component:any = false;
@@ -22,9 +20,9 @@ export class SearchService {
 
   public search_data: any = { searchFor:'products',  value:'', search:false, server_status:true , dropdown:false };
 
-  public filter_products: any = { posted:'any_time' , location:'world' , price:'any_price', category:'any_category' };
+  public filter_products: any = { time:'any_time' , location:'world' , price:'any_price', category:'any_category' };
 
-  public filter_supplier: any = { posted:'any_time' , location:'world' , price:'any_price', category:'any_category' };
+  public filter_supplier: any = { time:'any_time' , location:'world' , price:'any_price', category:'any_category' };
 
   constructor( private setRouter :SetRouterService,private dataservices: DataService) {
 
@@ -62,7 +60,7 @@ export class SearchService {
        request_data = {data: this.search_data ,filters : this.filter_products};
 
     }
-    else if(this.search_data.searchFor =='company'){
+    else if(this.search_data.searchFor =='supplier'){
 
        request_data = { data: this.search_data ,filters : this.filter_supplier };
     }
@@ -142,6 +140,7 @@ export class SearchService {
 
   change_filter_search(){
 
+
     clearTimeout(this.time_search);
 
     this.search_data.server_status = true;
@@ -164,6 +163,8 @@ export class SearchService {
         if (this.search_data.value.length != 0) {
 
           let data = this.set_data_request();
+
+         console.log(data);
 
           this.dataservices.Http_Get('shopping/header/search', data)
 
@@ -244,7 +245,7 @@ export class SearchService {
 
   public change_search(  ){
 
-
+   alert('dfg');
     this.change_filter_search();
 
   }

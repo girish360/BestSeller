@@ -1,5 +1,5 @@
 
-import { Component, OnInit ,OnDestroy , ChangeDetectionStrategy ,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit ,OnDestroy ,HostListener, ChangeDetectionStrategy ,ChangeDetectorRef } from '@angular/core';
 
 import { NgxCarousel ,NgxCarouselStore } from 'ngx-carousel';
 
@@ -27,6 +27,10 @@ import { Observable } from 'rxjs/Observable';
 
 })
 export class HomeComponent implements OnInit {
+
+
+
+
 
     public carousel_categories: NgxCarousel;
 
@@ -111,7 +115,9 @@ export class HomeComponent implements OnInit {
     ngOnDestroy() {
     }
 
+
     ngOnInit() {
+
 
         this.carousel_categories = { // initial carousel .....................
             grid: { xs: 2, sm: 3, md: 4, lg: 5, all: 0 },
@@ -175,7 +181,7 @@ export class HomeComponent implements OnInit {
 
     onmove_carousel( data_carousel : NgxCarouselStore , current_category ){ // onmove_carousel function is called when user is waching more products  in specific category
 
-      if( data_carousel.currentSlide + data_carousel.items  ==
+        if( data_carousel.currentSlide + data_carousel.items  ==
 
           data_carousel.itemLength &&
 

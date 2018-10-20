@@ -10,17 +10,50 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video,button {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
+
     font: inherit;
     vertical-align: baseline;
-    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-family: sans-serif;
     font-size: 14px;
     color:gray;
 }
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
+body{
+
+    background-color:#E6E6FA;
+
+}
+.body{
+    background-color:#E6E6FA;
+}
+
+.stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+}
+
+a{
+    color: gray;
+
+    text-decoration: none;
+}
+
+.glyphicon , .mat-icon{
+    color:slategrey;
+    text-decoration: none;
+}
+
+button:hover .mat-icon , a:hover span ,a:hover .mat-icon{
+    color:darkslategrey;
+}
+
 .slide_button{
     color: white;
 }
@@ -28,17 +61,18 @@ ngx-tile{
     box-shadow: none;
 }
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
 @keyframes component_Animation {
     0% {
 
         opacity: 0;
+        transform: translateY(20px);
+
 
     }
     100% {
 
         opacity: 1;
+
 
     }
 }
@@ -93,9 +127,9 @@ a{
 
 input[name='search'] {
 
-    padding-left: 7px;
+    padding-left: 5px;
 
-    padding-right: 35px;
+    padding-right: 5px;
 
 }
 
@@ -121,7 +155,7 @@ input[name='company_search'] {
 }
 
 .glyphicon  {
-    font-size: 24px;
+    font-size: 22px;
     position: relative;
     top:0px;
 
@@ -161,6 +195,17 @@ input[name='company_search'] {
     height:calc( 100% - 10px );
 
 }
+.inner_height{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: inherit;
+    height:calc( 100% - 6px );
+
+}
 .inside_width span{
     vertical-align: top;
 }
@@ -195,7 +240,7 @@ input[name='company_search'] {
     -webkit-box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
 }
 .transition{
-    transition: 0.3s;
+    transition: 0.4s;
 
 }
 
@@ -210,7 +255,7 @@ input[name='company_search'] {
 
     .response_inner {
 
-        width: 95%;
+        width: 96%;
     }
 
 }
@@ -267,27 +312,10 @@ body::-webkit-scrollbar-track:hover , .menu_left::-webkit-scrollbar-track:hover 
 .mat-tooltip {
     font-size: 12px;
 }
+.mat-mini-fab{
 
-body{
-
-    background-color:#E6E6FA;
-    color:gray;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
 }
-.body{
-    background-color:#E6E6FA;
-}
-
-a{
-    color: gray;
-
-    text-decoration: none;
-}
-
-.glyphicon , .mat-icon{
-    color:slategrey;
-    text-decoration: none;
-}
-
 
 .mat-checkbox-frame{
     border-color: slategrey;
@@ -324,12 +352,6 @@ a{
     -webkit-box-shadow: inset 0 0 100px rgba(0.2,0.2,0.2,0.2);
 
 
-}
-
-
-.label_tab{
-    position: relative;
-    top:-6px;
 }
 
 .mat-tab-label:hover,.mat-tab-label:hover span{
@@ -466,20 +488,12 @@ mat-checkbox.mat-checked.green{
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
 }
 
-
-.searchFor div {
-    position: relative;
-    top: -1px;
-}
-
-.searchFor span {
-    position: relative;
-    top: -1px;
-}
-
 .pac-container{ /* search content from google places api */
 
     z-index: 2000;
     position: fixed!important;
 }
+
+
+
 

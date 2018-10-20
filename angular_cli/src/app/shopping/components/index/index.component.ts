@@ -1,4 +1,4 @@
-import {  Component,DoCheck,OnInit,Renderer ,ElementRef ,AfterViewInit,ChangeDetectorRef} from '@angular/core';
+import {  Component,DoCheck,HostListener,OnInit,Renderer ,ElementRef ,AfterViewInit,ChangeDetectorRef, HostListener} from '@angular/core';
 
 import {Observable} from 'rxjs/Rx'; // Angular 5
 
@@ -51,6 +51,11 @@ import { SearchService } from '../../services/search.service';
 })
 export class IndexComponent implements OnInit {
 
+
+  @HostListener("mouseup") public pressup_swipemenu(){
+    this.press_swipe_menu = false;
+  }
+
   public status_scroll_up:any= false;
 
   public hover_settings:any = false;
@@ -66,6 +71,8 @@ export class IndexComponent implements OnInit {
   private wishList_products = [];
 
   public innerWidth;
+
+  public press_swipe_menu:boolean = false;
 
   constructor(
       private scroll : ScrollbarService,
@@ -210,13 +217,56 @@ export class IndexComponent implements OnInit {
 
   }
 
+  public clientX;
+
+  public swipe_menu_style :any = {};
+
+  swipe_menu( event ){
+
+    
+git status
+    let move_clientX = this.clientX - (event.srcEvent.clientX+100);
+
+  console.log(move_clientX);
+
+
+     if( move_clientX <= 0 ){
+       this.show_menu_content(move_clientX);
+     }
+
+  }
+
+  pressdown_menu(event){
+
+    this.press_swipe_menu = true;
+
+    this.clientX = event.srcEvent.clientX;
+  }
+  pressup_menu(){
+
+    console.log('up');
+
+    this.press_swipe_menu = false;
+
+
+  }
+
+  public hide_menu_content(clientx){
+    this.swipe_menu_style  = { right:clientx+'px'};
+  }
+
+  public show_menu_content(clientx){
+    this.swipe_menu_style  = { right:clientx+'px' };
+  }
+
+
   ngAfterViewInit() {
 
     this.renderer.listen( this.elementRef.nativeElement, 'click', (event) => {
 
       if ( event.target.closest('.notCloseDropdawnLanguage') == null) {
 
-        this.productsService.hide_dropdown_button('dropmore','.mat-tab-body-wrapper');
+        this.productsService.hide_dropdown_button('dropmore','.dropdown_more .mat-tab-body-wrapper');
 
       }
 
@@ -244,6 +294,12 @@ export class IndexComponent implements OnInit {
 
       }
 
+      if( event.target.closest('.swipe_content_menu') == null ){
+
+        this.hide_menu_content(-100);
+
+      }
+
       if ( event.target.closest(' .notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard' ) == null ) {
 
         $('.treguesi').css({display: 'none'});
@@ -259,6 +315,9 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
 
+
+
+
     $(document).ready(function () {
 
       var activ_category=0;
@@ -272,7 +331,7 @@ export class IndexComponent implements OnInit {
       var active_category=0;
       var nrclick_category='fillimi';
       var menu_status=0;
-      var Server_path_http='http://localhost/bestseller/Core_Php/http/Route.php'; //  path where go requests .. ..
+      var Server_path_http='http://localhost/bestseller/Core_Php/http/route.php'; //  path where go requests .. ..
       var Data = ''; // data is to send data in server .........
       var Status = ''; // status is for identify  what kind of http is requests post or get
       var Response;  // response from server ....
