@@ -1,13 +1,13 @@
 
 
 
-<div class="component-animation" *ngIf="{products : dataservices.products | async , app : dataservices.async | async } "> <!--  this component is inside this div  ...................................................... -->
+<div class="products component-animation" *ngIf="{products : dataservices.products | async , app : dataservices.async | async } "> <!--  this component is inside this div  ...................................................... -->
 
     <ng-container *ngIf="dataservices.loaded_component;else loading">
 
         <ng-container *ngIf="!dataservices.not_founded;else notFounded">
 
-    <div class="sticky " [ngClass]="{'products_sticky':productsService.data_products.type_products == 'default'}">
+    <div class="sticky transition " [ngStyle]="productsService.mobile_sticky_style" >
 
         <div class="sticky_options ">  <!--  Options products pagination ,  select  ...................................................... -->
 

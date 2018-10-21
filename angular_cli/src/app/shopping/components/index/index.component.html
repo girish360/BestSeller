@@ -1,177 +1,21 @@
 
 <title>klo</title>
 
-<div class="product_options box-shadow"   [@openClose]="{ value: productsService.isOpen ? 'open' : 'closed' ,  params:{
+<app-header></app-header>
 
-          top : productsService.product_options.top, left:productsService.product_options.left , beforeTop:productsService.product_options.top+50
-         }
-     }">
+<div class="menu_pc"> <app-menu></app-menu> </div>
 
-    <div class="inside_width" >
+<app-body></app-body>
 
-         <div class="product_option hover border_bottom">
-             <span>More</span>
-         </div>
-        <div class="product_option hover border_bottom">
-            <span>Contact Supplier</span>
-        </div>
-        <div class="product_option hover border_bottom">
-            <span>See Details</span>
-        </div>
-        <div class="product_option hover border_bottom">
-            <span>See Images</span>
-        </div>
-        <div class="product_option hover border_bottom">
-            <span>Viwes</span>
-        </div>
-    </div>
+<app-footer></app-footer>
 
-</div>
+<app-context-menu></app-context-menu>
 
+<app-settings-content></app-settings-content>
 
+<app-scroll-top></app-scroll-top>
 
-<app-header >   </app-header>
-
-<div class="menu_pc">
-
-  <app-menu>   </app-menu>
-
-</div>
-
-
-<app-body>   </app-body>
-
-<div class="settings"   [ngClass]="{'settings_hover': hover_settings  , 'show_settings':content_settings  }" >
-
-    <div class="border_settings" [ngClass]="{'border_settings_hover': hover_settings }" > </div>
-
-    <div  [ngClass]="{'button_settings_hover': hover_settings }" class="button_setting" (mouseout)="out_hover_setting()" (mouseover)="in_hover_setting()" (click)="show_settings()">
-
-        <button mat-button color="primary" (click)="check_settings()" class="button show_settings_button ">
-
-            <mat-icon *ngIf="!content_settings" [ngStyle]="style_settings_icon"  class="icon_settings">settings</mat-icon>
-
-            <mat-icon *ngIf="content_settings" class="icon_settings">exit_to_app</mat-icon>
-
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<div class="content_settings box-shadow" [ngClass]="{'show_content_settings':content_settings  }">
-
-    <div class="header_div content_header_settings ">
-
-        <div class="inside_width">
-
-            Settings
-
-        </div>
-
-
-    </div>
-
-       <div class="body_div">
-
-           <div class="menu_settings border_bottom">
-
-               <div class="inside_width">
-
-                   <mat-slide-toggle (click)="setting_menu()" [checked]="settings.menu">Menu</mat-slide-toggle>
-
-               </div>
-
-           </div>
-
-           <div class="menu_settings border_bottom">
-
-               <div class="inside_width">
-
-                   <mat-slide-toggle >Slide me!</mat-slide-toggle>
-
-               </div>
-
-           </div>
-           <div class="menu_settings border_bottom">
-
-               <div class="inside_width">
-
-                   <mat-slide-toggle >Slide me!</mat-slide-toggle>
-
-               </div>
-
-           </div>
-           <div class="menu_settings border_bottom">
-
-               <div class="inside_width">
-
-                   <mat-slide-toggle >Slide me!</mat-slide-toggle>
-
-               </div>
-
-           </div>
-           <div class="menu_settings border_bottom">
-
-               <div class="inside_width">
-
-                   <mat-slide-toggle >Slide me!</mat-slide-toggle>
-
-               </div>
-
-           </div>
-           <div class="menu_settings border_bottom">
-
-               <div class="inside_width">
-
-                   <mat-slide-toggle >Slide me!</mat-slide-toggle>
-
-               </div>
-
-           </div>
-           <div class="menu_settings border_bottom">
-
-               <div class="inside_width">
-
-                   <mat-slide-toggle >Slide me!</mat-slide-toggle>
-
-               </div>
-
-           </div>
-
-       </div>
-
-</div>
-
-
-
-
-<div class="scroll_top" (click)="go_top()" [ngClass]="{'show_scroll_top': status_scroll_up }">
-
-  <button mat-mini-fab color="primary" class="button">
-
-      <mat-icon>expand_less</mat-icon>
-
-  </button>
-
-</div>
-
-<div class="swipe_menu transition"  [ngStyle]="press_swipe_menu && {'width':'20px','transition':'0.2s'}" (press)="pressdown_menu($event)" (panend)="pressup_menu()"  (pressup)="pressup_menu()" (panmove)="swipe_menu($event)">
-
-</div>
-
-<div class="swipe_content_menu" [ngStyle]="swipe_menu_style">
-    klodian
-    shaba
-</div>
-
-<div class="opacity_content">
-    k
-</div>
-
-<app-footer> </app-footer>
+<app-swipe-menu></app-swipe-menu>
 
 <drag-scroll></drag-scroll>
 

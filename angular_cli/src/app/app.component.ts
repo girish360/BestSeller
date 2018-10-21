@@ -48,28 +48,7 @@ export class AppComponent implements OnInit{
 
                  }
 
-                if( scroll_top >= 200 ){ // scroll for option_products ................
 
-                    if( scroll_status == false ) {
-
-                        $('.products_sticky').addClass('sticky_fixed');
-
-                        $('.products_sticky').hide().slideDown('fast');
-                    }
-
-                    scroll_status = true;
-
-                }else{
-                    if( scroll_status == true ) {
-
-                        $('.products_sticky').hide().slideDown('fast');
-
-
-                        $('.products_sticky').removeClass('sticky_fixed');
-                    }
-
-                    scroll_status = false;
-                }
 
 
             });

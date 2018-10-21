@@ -1,0 +1,14 @@
+.product_options{
+
+    position: absolute;
+
+    width: 200px;
+    height: 250px;
+    z-index: 100 !important;
+    background-color: white;
+}
+.product_option{
+    width: 100%;
+    height: 30px;
+
+}

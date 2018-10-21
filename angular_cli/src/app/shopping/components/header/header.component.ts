@@ -26,7 +26,9 @@
  import { ScrollbarService } from '../../../share_services/scrollbar.service';
 
  import { FormControl } from '@angular/forms';
+
  import { } from 'googlemaps';
+
  import { MapsAPILoader } from '@agm/core';
 
  declare var $:any;
@@ -132,6 +134,8 @@
 
      ];
 
+     public top_nav_mobile_style = {};
+
      public button_right = [
 
          { id:1 , name:'sign' ,mat_tooltip:'User Panel', different_class:'',
@@ -172,8 +176,7 @@
 
 
     ) {
-
-        this.get_device_info();
+         this.get_device_info();
 
         this.dataservices.Http_Get('shopping/header/language', false )
 
@@ -186,6 +189,79 @@
                     this.cd.markForCheck();
                 }
             );
+
+         this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
+
+             let screen = this.scroll.screen_size();
+
+             let scroll = this.scroll.window_scroll();
+
+             if( this.productsService.top_nav_data.last_scroll >  scroll.top ){
+
+                 this.top_nav_mobile_style = { top:0 };
+
+                 if( screen.x > 750 ){
+
+                     if( scroll.top > 60 ){
+
+                         this.productsService.mobile_sticky_style = {position:'sticky', top:'50px' };
+
+                     }else{
+
+                         this.productsService.mobile_sticky_style = { position:'relative', top:0, transition:'none' };
+
+                     }
+
+                 }else{
+
+                     if( scroll.top > 60 ){
+
+                         this.productsService.mobile_sticky_style ={ position:'sticky' ,top:'40px' };
+
+                     }else{
+
+                         this.productsService.mobile_sticky_style ={ position:'relative', top:0 ,transition:'none' };
+                     }
+                 }
+
+             }else{
+
+                 if( screen.x > 750 ){
+
+                     if( scroll.top > 60 ){
+
+                         this.top_nav_mobile_style = {top: '-40px'};
+
+                         this.productsService.mobile_sticky_style = { position:'sticky', top:'-50px' };
+
+                     }else{
+
+                         this.productsService.mobile_sticky_style = { position:'relative',  top:0 };
+
+                     }
+
+                 }else{
+
+                     if( scroll.top > 60 ){
+
+                         this.top_nav_mobile_style = { top: '-40px'};
+
+                         this.productsService.mobile_sticky_style = { position:'sticky', top:0 };
+
+                     }else{
+
+                         this.productsService.mobile_sticky_style = {position:'relative', top:0 };
+                     }
+                 }
+             }
+
+             this.productsService.top_nav_data.last_scroll = scroll.top;
+
+             this.dataservices.update_products(true);
+
+             this.cd.markForCheck();
+
+         });
 
     }
 
@@ -246,8 +322,6 @@
      public walk_scroll:number;
 
      public block:boolean = false;
-
-
 
      public down(event){
 
