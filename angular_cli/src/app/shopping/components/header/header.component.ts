@@ -31,6 +31,8 @@
 
  import { MapsAPILoader } from '@agm/core';
 
+ import { AuthService } from '../../services/auth.service';
+
  declare var $:any;
 
  @Injectable()
@@ -172,13 +174,14 @@
          private cd: ChangeDetectorRef,
          private scroll :ScrollbarService,
          private mapsAPILoader: MapsAPILoader,
-         private ngZone: NgZone
+         private ngZone: NgZone,
+         private auth:AuthService
 
 
     ) {
          this.get_device_info();
 
-        this.dataservices.Http_Get('shopping/header/language', false )
+         this.dataservices.Http_Get('shopping/header/language', false )
 
             .subscribe( //  take success
 

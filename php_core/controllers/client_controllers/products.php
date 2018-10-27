@@ -47,7 +47,7 @@ class products extends controller  // class products extends from fetch keep all
             $count = database::table( $this->table_name )
                 ->count()
                 ->where('category_id','=', $request->category_id )
-                ->get()[0]['count'];
+                ->get()['count'];
 
         }else if( $request->type_products == 'supplier'){
 
@@ -57,7 +57,7 @@ class products extends controller  // class products extends from fetch keep all
                 ->count()
                 ->where( 'category_id','=', $request->category_id )
                 ->andWhere( 'supplier_id','=',$request->type_products )
-                ->get()[0]['count'];
+                ->get()['count'];
 
         }
         else if( $request->type_products == 'search'){
@@ -180,9 +180,6 @@ class products extends controller  // class products extends from fetch keep all
             ->where('products.id','=',$product->product_id)
             ->get();
 
-        if( count($product_Details) == 1 ){
-            $product_Details = $product_Details[0];
-        }
 
         $tmp_product = array ();
 

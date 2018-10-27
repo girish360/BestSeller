@@ -16,6 +16,10 @@
 
 
 }
+
+.example-full-width{
+    width: 100%;
+}
 .all_screen_login{
     width: 100%;
     height: 100%;

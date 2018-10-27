@@ -19,7 +19,7 @@ class autoload_files{
 
         $this->directories = array(
 
-            'Http' => $this->baseDir ,
+            'http' => $this->baseDir ,
             'controllers' => $this->baseDir,
             'controllers/client_controllers' => $this->baseDir ,
             'controllers/server_controllers' => $this->baseDir ,

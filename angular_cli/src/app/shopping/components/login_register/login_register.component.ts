@@ -2,9 +2,15 @@ import { Component, OnInit , DoCheck} from '@angular/core';
 
 import {FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 
+import {  ActivatedRoute  ,Params , Data , Router} from '@angular/router';
+
 import {ErrorStateMatcher} from '@angular/material/core';
 
 import { DataService } from '../../services/data.service';
+
+import{ AuthService } from '../../services/auth.service'
+
+import { SetRouterService } from '../../../share_services/set-router.service';
 
 declare var $:any;
 
@@ -28,7 +34,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class LoginRegisterComponent implements OnInit {
 
-  constructor( private dataservices : DataService ) { }
+  constructor( private dataservices : DataService ,
+               private auth :AuthService,
+               private setRouter :SetRouterService,
+               private route :ActivatedRoute
+  ) { }
 
   public login_property:any = {
 
@@ -74,57 +84,23 @@ export class LoginRegisterComponent implements OnInit {
 
   }
 
-  ngDoCheck(){
+  ngDoCheck()
+{
 
-    this.check_form_login();
+  this.check_form_login();
 
-  }
+}
 
-  set_type_account( type_account ){
-
-    if( type_account == 'client' ){
-
-      if( this.login_property.client_account != true ){
-
-        this.login_property.client_account = !this.login_property.client_account;
-
-        this.login_property.business_account = !this.login_property.business_account;
-
-        this.login_property.write_type_login = 'Client login';
-      }
-      return;
-    }
-    if( this.login_property.business_account != true ){
-
-      this.login_property.client_account = !this.login_property.client_account;
-
-      this.login_property.business_account = !this.login_property.business_account;
-
-      this.login_property.write_type_login = 'Business login';
-    }
-  }
 
 
   check_form_login(){
 
     if( this.error_status_from_server != true ) {
 
-      if (this.login_property.steps == '1') {
 
-        if (!this.email_FormControl_login.hasError('required')) {
-
-          this.login_property.button_login = false;
-
-        } else {
-
-          this.login_property.button_login = true;
-
-
-        }
-
-      } else {
-
-        if (!this.password_FormControl_login.hasError('minlength') && !this.password_FormControl_login.hasError('required')) {
+      if (!this.password_FormControl_login.hasError('minlength') &&
+            !this.password_FormControl_login.hasError('required') &&
+            !this.email_FormControl_login.hasError('required') ) {
 
           this.login_property.button_login = false;
 
@@ -132,10 +108,10 @@ export class LoginRegisterComponent implements OnInit {
 
           this.login_property.button_login = true;
 
-
-        }
 
       }
+
+
     }else{
 
       this.login_property.button_login = true;
@@ -145,85 +121,57 @@ export class LoginRegisterComponent implements OnInit {
 
 
   check_user(){  // method check user when user click button in login ................
-    if( this.error_status_from_server != true ) {
 
-      if (this.login_property.steps == '1') { // check email ore usrname in database
-        //request from email .............
-        this.login_property.loading = true;
+    this.login_property.loading = true;
 
-        let response = this.dataservices.Make_Request_InServer("check_email", this.user_details_loginForm.username);
+         this.dataservices.Http_Post('shopping/clientAuth/check_client',
 
-        response.then(result => {
+            { 'username':this.user_details_loginForm.username , 'password':this.user_details_loginForm.password })
 
-          if (result != 'false') {
+             .subscribe( result => {
 
-            this.login_property.loading = false;
+               let authorization = result.headers.get('Authorization');
 
-            this.user_details = result[0];
+               if( authorization ){
 
-            this.login_property.steps = '2';
+                 this.auth.set_storage( this.auth.token_key, authorization );
 
-          } else {
+               }
 
-            this.login_property.loading = false;
+               if ( result.body ) {
 
-            this.show_error();
+                 this.auth.client = result.body;
 
-            this.login_property.button_login = true;
+                 this.auth.status = true;
 
-            this.error_status_from_server = true;
+                 this.login_property.loading = false;
 
-            this.login_property.error='This Email dont exists';
-          }
+                 this.user_details = result.body;
 
-        });
-      }
-      else if (this.login_property.steps == '2') { // check password with this email ore username that is seted before password
-        this.login_property.loading = true;
+                 this.dataservices.update_app(true);
 
-        let response = this.dataservices.Make_Request_InServer("check_password",
-            { 'username':this.user_details_loginForm.username , 'password':this.user_details_loginForm.password } );
+                 this.setRouter.set_router( { path:'shopping/client/'+this.auth.client.first_name , data:false , relative:false},this.route);
 
-        response.then(result => {
+               } else {
 
-          if (result != 'false') {
+                 this.login_property.loading = false;
 
-            this.login_property.loading = false;
+                 this.show_error();
 
-            this.user_details = result[0];
+                 this.login_property.button_login = true;
 
-            this.login_property.steps = '2';
+                 this.error_status_from_server = true;
 
-            console.log(result);
+                 this.login_property.error='Email or Password doesnt match';
+               }
 
-          } else {
 
-            this.login_property.loading = false;
+             },error => {} );
 
-            this.show_error();
 
-            this.login_property.button_login = true;
 
-            this.error_status_from_server = true;
-
-            this.login_property.error='Password isnot match with your email';
-          }
-
-        });
-      }
-    }
-  }
-  kot(){
-    let response = this.dataservices.Make_Request_InServer("kot","kot");
-
-    response.then(result => {
-
-      console.log(result);
-
-    });
 
   }
-
 
   hide_error(){
 
@@ -261,7 +209,7 @@ export class LoginRegisterComponent implements OnInit {
 
   another_account(){
 
-    this.login_property.steps='1';
+
 
   }
 

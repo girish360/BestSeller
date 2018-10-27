@@ -110,22 +110,25 @@ class JWT
         // Check the signature
         if (!static::verify("$headb64.$bodyb64", $sig, $key, $header->alg)) {
 
-            throw new SignatureInvalidException('Signature verification failed');
+           header("HTTP/1.1 401 Unauthorized");
+
+           echo 'error: Signature failed';
+
+           exit;
 
         }
 
         // Check if the nbf if it is defined. This is the time that the
         // token can actually be used. If it's not yet that time, abort.
-        if (isset($payload->nbf) && $payload->nbf < ($timestamp + static::$leeway)) {
+        if (isset($payload->nbf) && $payload->nbf > ($timestamp + static::$leeway)) {
             throw new BeforeValidException(
-                'Cannot handle token prior to ' . $payload->nbf . ' <  ' .( $timestamp + static::$leeway)
+                'Cannot handle token prior to ' . date(DateTime::ISO8601, $payload->nbf)
             );
         }
-
         // Check that this token has been created before 'now'. This prevents
         // using tokens that have been created for later use (and haven't
         // correctly used the nbf claim).
-        if (isset($payload->iat) && $payload->iat < ($timestamp + static::$leeway)) {
+        if (isset($payload->iat) && $payload->iat > ($timestamp + static::$leeway)) {
             throw new BeforeValidException(
                 'Cannot handle token prior to ' . date(DateTime::ISO8601, $payload->iat)
             );
@@ -133,7 +136,13 @@ class JWT
 
         // Check if this token has expired.
         if (isset($payload->exp) && ($timestamp - static::$leeway) >= $payload->exp) {
-            throw new ExpiredException('Expired token');
+
+            header("HTTP/1.1 403 Forbidden ");
+
+            echo 'error: Expired Token';
+
+            exit;
+
         }
 
         return $payload;
@@ -170,6 +179,7 @@ class JWT
         $signing_input = implode('.', $segments);
 
         $signature = static::sign($signing_input, $key, $alg);
+
         $segments[] = static::urlsafeB64Encode($signature);
 
         return implode('.', $segments);
@@ -238,12 +248,13 @@ class JWT
                 }
                 // returns 1 on success, 0 on failure, -1 on error.
                 throw new DomainException(
-                    'OpenSSL error: ' . openssl_error_string()
+                    'OpenSSL error:' . openssl_error_string()
                 );
             case 'hash_hmac':
             default:
                 $hash = hash_hmac($algorithm, $msg, $key, true);
                 if (function_exists('hash_equals')) {
+
                     return hash_equals($signature, $hash);
                 }
                 $len = min(static::safeStrlen($signature), static::safeStrlen($hash));

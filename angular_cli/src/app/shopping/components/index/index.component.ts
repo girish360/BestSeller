@@ -25,6 +25,8 @@ import { SearchService } from '../../services/search.service';
 
 import { SwipeMenuService } from '../../services/swipe-menu.service';
 
+import { AuthService} from '../../services/auth.service';
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -50,9 +52,38 @@ export class IndexComponent implements OnInit {
       private menuservice : MenuService,
       private settings: SettingsService,
       private router: Router,
-      private swipe:SwipeMenuService
+      private swipe:SwipeMenuService,
+      private auth :AuthService
 
   ) {
+
+    let token = this.auth.get_storage('bestseller_token');
+
+    if( token ){
+
+      this.dataservices.Http_Post( 'shopping/clientAuth/check_token' , token ) // make request ......
+
+          .subscribe( //  take success
+
+              response => {
+
+                console.log(response.body);
+
+               this.auth.client = response.body;
+
+               this.auth.status = true;
+
+
+              },
+
+              error => console.log( error['data'] ) // take error .....
+
+          );
+
+    }
+
+
+
 
     this.router.events.subscribe( ( event:Event )  =>{
 

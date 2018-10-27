@@ -2,6 +2,8 @@
 
 use server\services\crypto\crypto as crypto;
 
+use server\services\auth\auth as auth;
+
 class route{
 
     private static $number = 0;
@@ -10,6 +12,8 @@ class route{
 
     private static $httpMethod;  // method come from request ...........
 
+    private static $httpRouterMethod;
+
     private static $uri;   // params come from request ...........
 
     private static $keyparams; // key to get params ...................
@@ -17,6 +21,8 @@ class route{
     private static $class; // controller's class name
 
     private static $method; // method of class
+
+    private static $action;
 
     private static $departament = false; // can set a departament of routes in a group ....
 
@@ -30,44 +36,70 @@ class route{
 
     private static $stepsUrl;
 
+    private static $user_details;
+
+    private static $required_auth = false;
+
     public static function get( $route , $action ){ // params come from Routes ...........
+
+        self::$required_auth = false;
+
+        self::$action = $action;
+
+        self::$route = $route;
+
+        self::$httpRouterMethod ='GET';
+
+        return self::instance();
+    }
+
+    public static function post( $route , $action ){ // params come from Routes ...........
+
+        self::$required_auth = false;
+
+        self::$route = $route;
+
+        self::$action = $action;
+
+        self::$httpRouterMethod ='POST';
+
+        return self::instance();
+    }
+
+    public function exe(){
 
         if( self::$routeExecuted == false ) { // check is any from group is executed dont need to check more ......
 
-            self::$route = $route;
+            self::getMethod();  // get method request in server
 
-            self::getMethod();
+            if ( self::$httpMethod == self::$httpRouterMethod ) {
 
-            if ( self::$httpMethod == 'GET' ) {
+                if( self::$uri == self::build_route() ) { // if is  exactly this route required execute it ...................
 
-                self::call_controller($action);
+                    if( self::$required_auth == true ){ // check if in this route required authetification ...
 
-            }
-            else if ( $route == self::$uri ) {
+                        self::$user_details = auth::check_auth();  // if is authetification is failed brings a error and exit with header 401 unauthorization
+
+                    }
+
+                    self::call_controller(self::$action);
+                }
+
+            } else if (self::$route == self::$uri){
 
                 self::exeption('Request Method come ' . self::$httpMethod . ' from client , it must be ' . self::$httpMethod . ' in route ');
 
             }
         }
+
     }
 
-    public static function post( $route , $action ){ // params come from Routes ...........
+    public static function auth(){ //  requiared authetification to access specific route ...............
 
-        if( self::$routeExecuted == false ) { // check is any from group is executed dont need to check more ......
+        self::$required_auth = true;
 
-            self::$route = $route;
+        return self::instance();
 
-            self::getMethod();  // get method request in server
-
-            if ( self::$httpMethod == 'POST' ) { // check is method is same ........
-
-                self::call_controller($action); // check uri
-
-            } else if ($route == self::$uri) { // if uri is same and method  is different display error message
-
-                self::exeption('Request Method come ' . self::$httpMethod . ' from client , it must be ' . self::$httpMethod . ' in route '); // call methos for error
-            }
-        }
     }
 
     public static function department( $departament ){
@@ -202,8 +234,6 @@ class route{
                 self::$stepsUrl = '/'.$array_uri[self::$number];
             }
 
-
-
         }else{
 
             $i = 0;
@@ -221,8 +251,6 @@ class route{
                 $i++;
             }
         }
-
-
 
         self::$route = false;
 
@@ -247,35 +275,41 @@ class route{
 
     public static function call_controller(  $action ){
 
-        if( self::$uri == self::build_route() ){ //  execute route ...................
+        self::$routeExecuted = true;
 
-            self::$routeExecuted = true;
+        $nr = 0 ;
 
-            $nr = 0 ;
+        for( $i = 0 ; $i < strlen( $action ) ; $i++ ){
 
-            for( $i = 0 ; $i < strlen( $action ) ; $i++ ){
+            if( $action[$i] == '@' ){
 
-                if( $action[$i] == '@' ){
-
-                    $nr = $i;
-                }
-            }
-
-            self::$class = substr( $action ,0 , $nr ); //get class of controller from routes................
-
-            self::$method = substr( $action , $nr+1 , strlen( $action ) ); // get method from routes
-
-            $func = array( new self::$class , self::$method ); // new object of controller ......................
-
-            if( strlen( self::$params ) == 0 ) { // request without params
-
-                echo $func();   // call method in specific controller and get result .....
-
-            }else{ // request with params  call method in controller with param
-
-                echo $func( json_decode(self::$params) ) ;
+                $nr = $i;
             }
         }
+
+        self::$class = substr( $action ,0 , $nr ); //get class of controller from routes................
+
+        self::$method = substr( $action , $nr+1 , strlen( $action ) ); // get method from routes
+
+        $func = array( new self::$class , self::$method ); // new object of controller ......................
+
+        if( strlen( self::$params ) == 0 ) { // request without params
+
+            echo $func();   // call method in specific controller and get result .....
+
+        }else{ // request with params  call method in controller with param
+
+            if( json_decode(self::$params) ){
+
+                echo $func( json_decode(self::$params) ) ;
+
+            }else{
+
+                echo $func( self::$params ) ;
+            }
+
+        }
+
     }
 
     public function decryptparams( $params ){

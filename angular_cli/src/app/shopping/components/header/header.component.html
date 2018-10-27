@@ -612,17 +612,38 @@
 
             <span class="header_right">
 
+
                 <div class="buttons_right_pc">
 
-                    <a href="#" *ngFor=" let button of button_right  ; let i = index "  class="button_right_pc button{{button.id}} {{button.different_class}}" (click)="check_button(button ,i , $event)">
+                    <div class="button_right_pc"  *ngFor=" let button of button_right  ; let i = index "  >
 
-                        <span matBadge="11" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn" [matBadgeHidden]="button.hide_notification" class="glyphicon icon_button {{button.icon}}"  [ngClass]="{'selected-color-button' : i==productsService.button_properties.selectedIndex }">
+                        <span *ngIf="auth.status && button.id == 1 ; else looggedout">
+
+                            <button class="user_dropdown" mat-icon-button >
+
+                                <img class="full" src="../../assets/images/users/{{auth.client.picture}}">
+
+                            </button>
+
+
 
                         </span>
 
-                        <div class="write_icon_header write_icon_header{{button.id}}" > {{ dataservices.language[button.name]}} </div>
+                        <ng-template #looggedout >
 
-                    </a>
+                              <div href="#"  (click)="check_button(button ,i , $event)" class="drop_button button{{button.id}} {{button.different_class}}">
+
+                                  <span matBadge="11" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn" [matBadgeHidden]="button.hide_notification" class="glyphicon icon_button {{button.icon}}"  [ngClass]="{'selected-color-button' : i==productsService.button_properties.selectedIndex }">
+
+                                  </span>
+
+                                  <div class="write_icon_header write_icon_header{{button.id}}" > {{ dataservices.language[button.name]}} </div>
+
+                              </div>
+
+                        </ng-template>
+
+                    </div>
 
                 </div>
 

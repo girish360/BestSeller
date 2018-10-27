@@ -9,7 +9,7 @@ import { routes } from './app.router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpModule } from "@angular/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { HttpService } from './share_services/http.service';
 
@@ -22,6 +22,8 @@ import { ControllerService } from './cover_app/controller.service';
 import { ScrollbarService } from './share_services/scrollbar.service';
 
 import { ShareModule } from './share_module/share.module';
+
+import { HttpInterceptorService } from './shopping/services/http-interceptor.service';
 
 
 // end services .....................................................................................
@@ -55,7 +57,7 @@ import { SetRouterService } from './share_services/set-router.service';
 
     routes,
 
-    HttpModule,
+    HttpClientModule,
 
     DeviceDetectorModule.forRoot()
 
@@ -74,6 +76,12 @@ import { SetRouterService } from './share_services/set-router.service';
     ControllerService,
 
     ScrollbarService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:HttpInterceptorService,
+      multi:true
+
+    }
 
   ],
 

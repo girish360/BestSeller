@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { SettingsService } from '../../services/settings.service';
 
+import { MenuService } from '../../services/menu.service';
+
+import { DataService } from '../../services/data.service';
+
 import {Observable} from 'rxjs/Rx'; // Angular 5
 
 @Component({
@@ -19,7 +23,11 @@ export class SettingsContentComponent implements OnInit {
 
   public content_settings:any = false;
 
-  constructor(private settings:SettingsService) {
+  constructor(
+      private settings:SettingsService ,
+      private menuservice:MenuService,
+      private dataservices:DataService,
+  ) {
 
     Observable.interval(20 * 2).subscribe(x => {
       this.get_deg_rotate();
