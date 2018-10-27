@@ -30,9 +30,55 @@
       <file leaf-file-name="scrollbar.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/share_services/scrollbar.service.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="625">
               <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+=======
+            <state relative-caret-position="391">
+<<<<<<< HEAD
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding>
+                <marker date="1540054996046" expanded="true" signature="8712:8888" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="8712:8909" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="8712:8927" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="8712:8943" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="8712:8957" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="8712:11706" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="8781:8868" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9010:9456" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9052:9442" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9144:9426" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9204:9408" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9271:9387" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9510:10178" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9557:10164" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9644:10148" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9699:10130" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9855:10109" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="9925:10090" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10232:10748" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10274:10734" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10351:10718" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10401:10700" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10504:10679" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10573:10659" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10802:11316" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10840:11302" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10914:11286" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="10965:11268" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="11070:11247" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="11139:11227" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="11355:11694" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="11398:11680" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="11442:11664" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="11484:11646" ph="..." />
+                <marker date="1540054996046" expanded="true" signature="11551:11625" ph="..." />
+              </folding>
+=======
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+>>>>>>> future
               <folding />
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -40,8 +86,18 @@
       <file leaf-file-name="products.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/components/products/products.component.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="408">
               <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="425">
+              <caret line="157" column="6" lean-forward="false" selection-start-line="157" selection-start-column="6" selection-end-line="157" selection-end-column="6" />
+              <folding />
+=======
+            <state relative-caret-position="663">
+              <caret line="171" column="6" lean-forward="true" selection-start-line="171" selection-start-column="6" selection-end-line="171" selection-end-column="6" />
+>>>>>>> future
               <folding>
                 <marker date="1540055285350" expanded="true" signature="3490:3517" ph="..." />
                 <marker date="1540055285350" expanded="true" signature="3490:6548" ph="..." />
@@ -64,6 +120,7 @@
                 <marker date="1540055285350" expanded="true" signature="6655:6704" ph="..." />
                 <marker date="1540055285350" expanded="true" signature="6755:6810" ph="..." />
               </folding>
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -71,6 +128,7 @@
       <file leaf-file-name="header.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/components/header/header.component.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="452">
               <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding>
@@ -123,6 +181,19 @@
                 <marker date="1540055285209" expanded="true" signature="18024:18181" ph="{...}" />
                 <marker date="1540055285209" expanded="true" signature="18097:18155" ph="{...}" />
               </folding>
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="34">
+              <caret line="135" column="0" lean-forward="false" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+              <folding>
+                <marker date="1540054995926" expanded="true" signature="1816:1825" ph="{...}" />
+              </folding>
+=======
+            <state relative-caret-position="442">
+              <caret line="159" column="17" lean-forward="true" selection-start-line="159" selection-start-column="17" selection-end-line="159" selection-end-column="17" />
+              <folding />
+>>>>>>> master
+>>>>>>> future
             </state>
           </provider>
         </entry>
@@ -130,6 +201,7 @@
       <file leaf-file-name="menu.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/components/menu/menu.component.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="125">
               <caret line="62" column="57" lean-forward="false" selection-start-line="62" selection-start-column="57" selection-end-line="62" selection-end-column="57" />
               <folding>
@@ -140,6 +212,16 @@
                 <marker date="1540055285303" expanded="true" signature="3688:3872" ph="{...}" />
                 <marker date="1540055285303" expanded="true" signature="3746:3853" ph="[...]" />
               </folding>
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="391">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+=======
+            <state relative-caret-position="510">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+>>>>>>> master
+              <folding />
+>>>>>>> future
             </state>
           </provider>
         </entry>
@@ -147,12 +229,30 @@
       <file leaf-file-name="index.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/components/index/index.component.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="0">
               <caret line="0" column="27" lean-forward="false" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
               <folding>
                 <element signature="e#300#358#0" expanded="true" />
                 <element signature="e#516#593#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="459">
+<<<<<<< HEAD
+              <caret line="84" column="19" lean-forward="false" selection-start-line="84" selection-start-column="19" selection-end-line="84" selection-end-column="19" />
+              <folding>
+                <marker date="1540054995912" expanded="true" signature="2162:2174" ph="..." />
+                <marker date="1540054995912" expanded="true" signature="2162:2182" ph="..." />
+                <marker date="1540054995912" expanded="true" signature="2162:2203" ph="..." />
+                <marker date="1540054995912" expanded="true" signature="2162:2293" ph="..." />
+                <marker date="1540054995912" expanded="true" signature="2235:2276" ph="..." />
+                <marker date="1540054995912" expanded="true" signature="2319:2366" ph="..." />
+              </folding>
+=======
+              <caret line="81" column="19" lean-forward="true" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
+              <folding />
+>>>>>>> master
+>>>>>>> future
             </state>
           </provider>
         </entry>
@@ -160,8 +260,17 @@
       <file leaf-file-name="shopping_routing.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/shopping_routing.module.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="578">
               <caret line="56" column="33" lean-forward="true" selection-start-line="56" selection-start-column="33" selection-end-line="56" selection-end-column="33" />
+=======
+            <state relative-caret-position="625">
+<<<<<<< HEAD
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+=======
+              <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+>>>>>>> master
+>>>>>>> future
               <folding />
             </state>
           </provider>
@@ -170,9 +279,43 @@
       <file leaf-file-name="product_details.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/product_details.module.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="374">
               <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="442">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <marker date="1540054996113" expanded="true" signature="3557:3584" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="3557:6615" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="3557:6633" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="3557:6647" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="3557:6661" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="3557:6686" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="3557:6792" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="3761:3894" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="4086:4547" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="4596:6416" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="4646:5002" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="4710:4971" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="4858:4937" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="5205:5824" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="5269:5793" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="5681:5759" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="5880:6390" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="6088:6359" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="6247:6325" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="6464:6542" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="6722:6771" ph="..." />
+                <marker date="1540054996113" expanded="true" signature="6822:6877" ph="..." />
+              </folding>
+=======
+            <state relative-caret-position="408">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+>>>>>>> future
               <folding />
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -180,9 +323,67 @@
       <file leaf-file-name="product_details-routing.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/product_details-routing.module.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="418">
+              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+              <folding>
+                <marker date="1540054995882" expanded="false" signature="9:37" ph="..." />
+                <marker date="1540054995882" expanded="true" signature="9408:9490" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="9408:16997" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="9513:9733" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="9767:9863" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="9912:10535" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="9936:10527" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="10108:10223" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="10254:10369" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="10402:10516" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="10553:11258" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="10736:10947" ph="{&quot;height&quot;: &quot;400px&quot;...}" />
+                <marker date="1540054995882" expanded="true" signature="10962:11081" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="11180:11242" ph="{&quot;top&quot;: '0'...}" />
+                <marker date="1540054995882" expanded="true" signature="11332:11845" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="11477:11706" ph="{&quot;height&quot;: &quot;60px&quot;...}" />
+                <marker date="1540054995882" expanded="true" signature="11721:11779" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="11907:12119" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="11966:12048" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="12138:12480" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="12196:12347" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="12513:12973" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="12750:12883" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="13010:13166" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="13203:13565" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="13319:13407" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="13411:13498" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="13603:13778" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="13734:13772" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="13810:13994" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="13899:13948" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="13952:13987" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="14022:15144" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="14095:14536" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="14628:14996" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="14757:14840" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="15225:16184" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="15355:15739" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="16012:16083" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="16232:16471" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="16305:16403" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="16506:16633" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="16567:16604" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="16669:16794" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="16836:16993" ph="{...}" />
+                <marker date="1540054995882" expanded="true" signature="16909:16967" ph="{...}" />
+              </folding>
+=======
+            <state relative-caret-position="10">
+              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+>>>>>>> future
               <folding />
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -190,9 +391,26 @@
       <file leaf-file-name="shopping.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/shopping.module.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+            <state relative-caret-position="57">
+<<<<<<< HEAD
+              <caret line="58" column="57" lean-forward="false" selection-start-line="58" selection-start-column="57" selection-end-line="58" selection-end-column="57" />
+              <folding>
+                <marker date="1540054996052" expanded="true" signature="3404:3415" ph="{...}" />
+                <marker date="1540054996052" expanded="true" signature="3404:3712" ph="{...}" />
+                <marker date="1540054996052" expanded="true" signature="3429:3435" ph="{...}" />
+                <marker date="1540054996052" expanded="true" signature="3468:3709" ph="{...}" />
+                <marker date="1540054996052" expanded="true" signature="3487:3671" ph="{...}" />
+                <marker date="1540054996052" expanded="true" signature="3545:3652" ph="[...]" />
+              </folding>
+=======
+              <caret line="62" column="57" lean-forward="false" selection-start-line="62" selection-start-column="57" selection-end-line="62" selection-end-column="57" />
+>>>>>>> future
               <folding />
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -200,10 +418,26 @@
       <file leaf-file-name="login_register.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/angular_cli/src/app/shopping/lazy_modules/login_register.module.ts">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="629">
               <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding>
                 <element signature="e#1#42#0" expanded="true" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="481">
+              <caret line="210" column="3" lean-forward="false" selection-start-line="210" selection-start-column="3" selection-end-line="210" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#111#0" expanded="true" />
+                <element signature="e#286#344#0" expanded="true" />
+                <element signature="e#502#579#0" expanded="true" />
+=======
+            <state relative-caret-position="515">
+              <caret line="225" column="4" lean-forward="false" selection-start-line="225" selection-start-column="4" selection-end-line="225" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#138#0" expanded="true" />
+>>>>>>> master
+>>>>>>> future
               </folding>
             </state>
           </provider>
@@ -311,9 +545,12 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
+=======
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/angular_cli/node_modules" />
   </component>
+>>>>>>> master
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="1592" />
@@ -1108,7 +1345,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="4159001000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="4020267000" />
+=======
+    <option name="totallyTimeSpent" value="4158758000" />
+>>>>>>> master
+>>>>>>> future
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1138,6 +1383,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1149,6 +1395,23 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3252595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.011326861" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4053398" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3125721" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298731" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0032133677" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+<<<<<<< HEAD
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33495146" sideWeight="0.9123414" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.011326861" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4053398" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3252595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> master
+>>>>>>> future
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3001618" sideWeight="0.08765859" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.05074971" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1263,6 +1526,59 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/services/search.service.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/footer/footer.component.html" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/wish-list/wish-list.component.html" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/header/header.component.spec.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/company/company.component.html" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/styles.css" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/header/header.component.css" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share-service/data.service.spec.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share-service/data.service.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share-service/categories/categories.component.html" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share-service/categories/categories.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/cover_app/components/controller/controller.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share_components" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share_services/encrypt-decrypt.service.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/lazy_modules/company.module.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/search/search.component.html" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/search/search.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/services/data.service.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/resolvers/resolver.service.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/resolvers/resolver_supplier.service.spec.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/resolvers/resolver_supplier.service.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/index/index.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/app.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/services/auth.guard.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/products/products.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/body/body.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/menu/menu.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/menu/menu.component.css" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/menu/menu.component.html" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/company/company.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/company/search/search.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/cover_app/controller.service.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share_module/share.module.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/cover_app/components/controller/controller.component.html" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/cover_app/controller.service.spec.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/app.module.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/app.router.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/share_services/http.service.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/supplier/supplier.module.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/supplier/supplier-routing.module.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/shopping.module.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/shopping-routing.module.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/header/header.component.html" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/components/header/header.component.ts" />
+    <entry file="file://$PROJECT_DIR$/AngularCli/src/app/shopping/services/header.service.ts" />
+    <entry file="file://$PROJECT_DIR$/CorePhp/Controllers/clientControllers/Home.php" />
+    <entry file="file://$PROJECT_DIR$/CorePhp/Controllers/clientControllers/Menu.php" />
+    <entry file="file://$PROJECT_DIR$/CorePhp/Controllers/clientControllers/Products.php" />
+    <entry file="file://$PROJECT_DIR$/CorePhp/Controllers/clientControllers/Company.php" />
+    <entry file="file://$PROJECT_DIR$/CorePhp/Controllers/clientControllers/Header.php" />
+    <entry file="file://$PROJECT_DIR$/CorePhp/Controllers/clientControllers/Search.php" />
+=======
     <entry file="file://$PROJECT_DIR$/php_core/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
@@ -1775,5 +2091,6 @@
         </state>
       </provider>
     </entry>
+>>>>>>> master
   </component>
 </project>

@@ -35,6 +35,8 @@ import { ResolverHomeService } from './resolvers/resolver_home.service';
 
 import { IndexService } from './services/index.service';
 
+import { SwipeMenuService } from './services/swipe-menu.service';
+
 // end services .....................................................................................
 
 // componets .....................................................
@@ -63,6 +65,11 @@ import { CardListComponent } from './components/card_list/card_list.component';
 
 import { AgmCoreModule } from '@agm/core';
 
+import { SwipeMenuComponent } from './components/swipe-menu/swipe-menu.component';
+import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+import { SettingsContentComponent } from './components/settings-content/settings-content.component';
+import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+
 // end components ............................................................................................
 
 @NgModule({
@@ -77,7 +84,11 @@ import { AgmCoreModule } from '@agm/core';
     UsersComponent,
     WishListComponent,
     CardListComponent,
-    SearchComponent
+    SearchComponent,
+    SwipeMenuComponent,
+    ScrollTopComponent,
+    SettingsContentComponent,
+    ContextMenuComponent
 
   ],
 
@@ -105,7 +116,8 @@ import { AgmCoreModule } from '@agm/core';
     ResolverService,
     ResolverHomeService,
     IndexService,
-    SearchService
+    SearchService,
+    SwipeMenuService
   ]
 
 })

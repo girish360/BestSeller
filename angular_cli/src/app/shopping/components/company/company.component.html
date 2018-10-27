@@ -4,51 +4,52 @@
 
             <ng-container *ngIf="!dataservices.not_founded;else notFounded">
 
-                <div class="sticky company_sticky" style="display: none" [ngClass]="{'sticky_fixed': company.company_properties.sticky_company }">
+                <div class="sticky transition " [ngStyle]="get_style_sticky()" >
 
-            <div class="sticky_options">
+                    <div class="sticky_options">
 
-                <div  class="company_left inline-block">
+                        <div  class="company_left inline-block">
 
-                    <div class="company_img inline-block ">
+                            <div class="company_img inline-block ">
 
-                        <img class="full"  src="../../assets/images/company/1.jpg">
+                                <img class="full"  src="../../assets/images/company/1.jpg">
+
+                            </div>
+
+                            <div class="company_name inline-block   ">
+
+                                <div class="title_text">
+                                    Elektronics
+                                </div>
+
+
+                                <div>
+                                    500 Subscribe
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="company_right inline-block ">
+
+                            <button mat-button class="button_category">
+
+                                <mat-icon>view_module</mat-icon>
+
+                            </button>
+
+                        </div>
 
                     </div>
 
-                    <div class="company_name inline-block   ">
-
-                        <div class="title_text">
-                            Elektronics
-                        </div>
-
-                        <div>
-                            500 Subscribe
-                        </div>
+                    <div class="sticky_opacity">
 
                     </div>
 
                 </div>
 
-                <div class="company_right inline-block ">
-
-                    <button mat-button class="button_category">
-
-                        <mat-icon>view_module</mat-icon>
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="sticky_opacity">
-
-            </div>
-
-        </div>
-
-        <div class="company_slide component-animation" [ngStyle]=" top_slide ">
+        <div class="company_slide" [ngStyle]=" top_slide ">
 
             <ngx-carousel class="sliders" [inputs]="comapny_slide"
 
@@ -241,6 +242,7 @@
             </div>
 
         </div>
+
 
             </ng-container>
 

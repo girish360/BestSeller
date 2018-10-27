@@ -62,6 +62,24 @@ export class HeaderService  implements OnInit {
 
   public status_chat = false;
 
+  public top_nav_data:any = {
+
+     last_scroll:0,
+
+     up:false,
+
+     activated_up:0,
+
+    activated_down:0,
+
+     position_static:false,
+
+    diff:false
+
+  };
+
+  public mobile_sticky_style :any={};
+
   public cart_properties:any= {
 
     button:true,

@@ -1,0 +1,104 @@
+
+<div class="settings"   [ngClass]="{'settings_hover': hover_settings  , 'show_settings':content_settings  }" >
+
+  <div class="border_settings" [ngClass]="{'border_settings_hover': hover_settings }" > </div>
+
+  <div  [ngClass]="{'button_settings_hover': hover_settings }" class="button_setting" (mouseout)="out_hover_setting()" (mouseover)="in_hover_setting()" (click)="show_settings()">
+
+    <button mat-button color="primary" (click)="check_settings()" class="button show_settings_button ">
+
+      <mat-icon *ngIf="!content_settings" [ngStyle]="style_settings_icon"  class="icon_settings">settings</mat-icon>
+
+      <mat-icon *ngIf="content_settings" class="icon_settings">exit_to_app</mat-icon>
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<div class="content_settings box-shadow" [ngClass]="{'show_content_settings':content_settings  }">
+
+  <div class="header_div content_header_settings ">
+
+    <div class="inside_width">
+
+      Settings
+
+    </div>
+
+
+  </div>
+
+  <div class="body_div">
+
+    <div class="menu_settings border_bottom">
+
+      <div class="inside_width">
+
+        <mat-slide-toggle (click)="setting_menu()" [checked]="settings.menu">Menu</mat-slide-toggle>
+
+      </div>
+
+    </div>
+
+    <div class="menu_settings border_bottom">
+
+      <div class="inside_width">
+
+        <mat-slide-toggle >Slide me!</mat-slide-toggle>
+
+      </div>
+
+    </div>
+    <div class="menu_settings border_bottom">
+
+      <div class="inside_width">
+
+        <mat-slide-toggle >Slide me!</mat-slide-toggle>
+
+      </div>
+
+    </div>
+    <div class="menu_settings border_bottom">
+
+      <div class="inside_width">
+
+        <mat-slide-toggle >Slide me!</mat-slide-toggle>
+
+      </div>
+
+    </div>
+    <div class="menu_settings border_bottom">
+
+      <div class="inside_width">
+
+        <mat-slide-toggle >Slide me!</mat-slide-toggle>
+
+      </div>
+
+    </div>
+    <div class="menu_settings border_bottom">
+
+      <div class="inside_width">
+
+        <mat-slide-toggle >Slide me!</mat-slide-toggle>
+
+      </div>
+
+    </div>
+    <div class="menu_settings border_bottom">
+
+      <div class="inside_width">
+
+        <mat-slide-toggle >Slide me!</mat-slide-toggle>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

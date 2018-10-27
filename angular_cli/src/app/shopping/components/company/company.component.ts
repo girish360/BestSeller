@@ -67,6 +67,8 @@ export class CompanyComponent implements OnInit {
 
     private currentSlide_category = 0;
 
+    private sticky :any ={visibility:'hidden'};
+
     public company_nav:any = [
 
         { id:0 , name:'Home', icon:'home' ,
@@ -169,7 +171,22 @@ export class CompanyComponent implements OnInit {
 
             let scroll = this.scroll.window_scroll();
 
-            this.top_slide.top = scroll.top / 1.5 + 'px';
+            if( scroll.top > 300 ){
+
+                this.sticky.visibility = 'visible';
+
+
+            }else{
+
+                this.sticky.visibility = 'hidden';
+
+            }
+
+
+                this.top_slide.top = scroll.top / 2 + 'px';
+
+
+
 
             this.top_slide.opacity = ( 300 - scroll.top  ) / 300;
 
@@ -182,19 +199,6 @@ export class CompanyComponent implements OnInit {
                 this.button_slide_css.status = false;
             }
 
-            if (scroll.top >= 400) {
-
-                $('.company_sticky').slideDown('fast');
-
-                this.company.company_properties.sticky_company = true;
-
-
-            } else {
-
-                this.company.company_properties.sticky_company = false;
-
-                $('.company_sticky').hide();
-            }
             this.cd.markForCheck();
 
         }); // end scroll event .............................................................................
@@ -207,6 +211,10 @@ export class CompanyComponent implements OnInit {
     ngOnDestroy(){
 
         this.products.data_products.type_products='default'; // when company component destroied type_products should be default ...
+    }
+
+    get_style_sticky(){
+       return Object.assign( this.products.mobile_sticky_style, this.sticky );
     }
 
     ngOnInit() {

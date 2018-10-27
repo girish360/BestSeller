@@ -1,0 +1,16 @@
+<div class="swipe_menu" (press)="swipe.pressdown_menu($event)" (panend)="swipe.swipeend_menu($event)"  (pressup)="swipe.pressup_menu()" (panmove)="swipe.swipe_menu($event)">
+
+  <div class="swipe_menu_pointer transition border"  [ngStyle]="swipe.swipe_menu_style" >
+
+  </div>
+
+</div>
+
+<div class="swipe_content_menu" [ngStyle]="swipe.swipe_content_menu">
+  klodian
+  shaba
+</div>
+
+<div class="opacity_content" [ngStyle]="swipe.opacity_content_style">
+
+</div>

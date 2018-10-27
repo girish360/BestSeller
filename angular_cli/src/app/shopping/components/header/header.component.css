@@ -119,6 +119,7 @@ a{
 
 .mobile_top_nav{
     position: fixed;
+    top: 0;
     z-index: 4 !important;
     width: 100%;
     height: 40px;
@@ -520,19 +521,31 @@ a{
 .button_right_pc{
 
     display: inline-block;
-    width: 70px;
+    width: auto;
     height: inherit;
     text-align: center;
+}
+
+.user_dropdown{
+    top: 0;
+    width: 44px;
+    height: 100%;
+}
+
+.user_dropdown img{
+    border-radius: 100%;
+}
 
 
+.drop_button {
 
-
-
-
+    width: 70px;
+    height: inherit;
 }
 
 .buttons_right_pc{
     float: right;
+
     width: auto;
     height: inherit;
 }

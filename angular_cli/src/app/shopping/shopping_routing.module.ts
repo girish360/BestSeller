@@ -52,7 +52,7 @@ const routes: Routes = [
 
       { path: ':keyword', component:SearchComponent},
 
-      { path: 'users/:name', component: UsersComponent,
+      { path: 'client/:name', component: UsersComponent,
 
         canActivate: [AuthGuard],
 

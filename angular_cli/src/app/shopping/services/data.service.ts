@@ -2,7 +2,7 @@ import { Inject, Injectable ,EventEmitter ,OnInit } from '@angular/core';
 
 import { HttpService } from '../../share_services/http.service';
 
-import { Http, Response , Headers } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
 
@@ -75,7 +75,7 @@ export class DataService extends HttpService implements OnInit{
 
     public menu_style : any = {};
 
-  constructor(  protected http:Http  ) {
+  constructor(  protected http:HttpClient  ) {
 
      super( http );
 

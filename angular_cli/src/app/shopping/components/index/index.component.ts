@@ -23,56 +23,23 @@ import { IndexService } from '../../services/index.service';
 
 import { SearchService } from '../../services/search.service';
 
+import { SwipeMenuService } from '../../services/swipe-menu.service';
+
+import { AuthService} from '../../services/auth.service';
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css'],
-  animations: [
-    trigger('openClose', [
-      state('closed', style({display:'none'}),{params:{top:0 , left:0 , beforeTop:0}}),
-      state('open', style({top:'{{top}}px', left:'{{left}}px'}),{params:{top:0 , left:0 , beforeTop:0}}),
 
-      transition('open => closed', [
-        style({ opacity: '1'}),
-        sequence([
-          animate("0.1s ease", style({  opacity: '0.1',  transform: 'translateY(50px)'  })),
-        ])
-      ]),
-
-      transition('closed => open', [
-        style({ opacity: '0',   top:'{{beforeTop}}px', left:'{{left}}px' }),
-        sequence([
-          animate("0.2s ease", style({  opacity: '1', transform: 'translateY(-50px)'  }))
-        ])
-      ])
-    ]),
-
-  ]
 })
 export class IndexComponent implements OnInit {
-
-
-  @HostListener("mouseup") public pressup_swipemenu(){
-    this.press_swipe_menu = false;
-  }
-
-  public status_scroll_up:any= false;
-
-  public hover_settings:any = false;
-
-  public style_settings_icon:any={ 'transform': 'rotate( 0deg )' };
-
-  public deg_rotate_settings_icon: any = 0;
-
-  public content_settings:any = false;
 
   public get_Language:object={};
 
   private wishList_products = [];
 
   public innerWidth;
-
-  public press_swipe_menu:boolean = false;
 
   constructor(
       private scroll : ScrollbarService,
@@ -85,8 +52,38 @@ export class IndexComponent implements OnInit {
       private menuservice : MenuService,
       private settings: SettingsService,
       private router: Router,
+      private swipe:SwipeMenuService,
+      private auth :AuthService
 
   ) {
+
+    let token = this.auth.get_storage('bestseller_token');
+
+    if( token ){
+
+      this.dataservices.Http_Post( 'shopping/clientAuth/check_token' , token ) // make request ......
+
+          .subscribe( //  take success
+
+              response => {
+
+                console.log(response.body);
+
+               this.auth.client = response.body;
+
+               this.auth.status = true;
+
+
+              },
+
+              error => console.log( error['data'] ) // take error .....
+
+          );
+
+    }
+
+
+
 
     this.router.events.subscribe( ( event:Event )  =>{
 
@@ -114,24 +111,12 @@ export class IndexComponent implements OnInit {
 
       this.productsService.close_options();
 
-       if( scroll.top >= 50 ){
-
-         this.status_scroll_up = true;
-
-
-       }else{
-
-         this.status_scroll_up = false;
-       }
-
-       this.indexService.check_footer();
+      this.indexService.check_footer();
 
 
     });
 
-    Observable.interval(20 * 2).subscribe(x => {
-      this.get_deg_rotate();
-    });
+
 
   }
 
@@ -143,121 +128,6 @@ export class IndexComponent implements OnInit {
 
   }
 
-  setting_menu(){
-
-    if( this.settings.menu == false ){
-
-      this.menuservice.menu.next(true);
-
-    }else{
-
-      this.menuservice.menu.next(false);
-    }
-
-    this.settings.menu = !this.settings.menu;
-
-    this.dataservices.Http_Get( 'shopping/settings/change_menu' , false ) // make request ......
-
-        .subscribe( //  take success
-
-            data => {
-
-             let d =  data['data'];
-
-            },
-            error => console.log( error['data'] ) // take error .....
-
-        );
-
-  }
-
-  go_top(){
-
-    this.scroll.window_animate(0,0);
-
-  }
-
-  get_deg_rotate(){
-
-    if( this.deg_rotate_settings_icon < 360 ){
-
-      this.deg_rotate_settings_icon =  this.deg_rotate_settings_icon +8;
-
-     this.style_settings_icon = { 'transform': 'rotate( '+ this.deg_rotate_settings_icon +'deg )' };
-
-    }else{
-
-      this.deg_rotate_settings_icon = 0;
-
-      this.style_settings_icon = { 'transform': 'rotate( '+ this.deg_rotate_settings_icon +'deg )' };
-    }
-
-  }
-
-  show_settings(){
-
-  }
-
-  out_hover_setting(){
-
-    this.hover_settings = false;
-
-
-  }
-  in_hover_setting(){
-    this.hover_settings = true;
-  }
-
-  check_settings(){
-
-    this.hover_settings = false;
-
-    this.content_settings =  !this.content_settings;
-
-
-  }
-
-  public clientX;
-
-  public swipe_menu_style :any = {};
-
-  swipe_menu( event ){
-
-    
-
-    let move_clientX = this.clientX - (event.srcEvent.clientX+100);
-
-  console.log(move_clientX);
-
-
-     if( move_clientX <= 0 ){
-       this.show_menu_content(move_clientX);
-     }
-
-  }
-
-  pressdown_menu(event){
-
-    this.press_swipe_menu = true;
-
-    this.clientX = event.srcEvent.clientX;
-  }
-  pressup_menu(){
-
-    console.log('up');
-
-    this.press_swipe_menu = false;
-
-
-  }
-
-  public hide_menu_content(clientx){
-    this.swipe_menu_style  = { right:clientx+'px'};
-  }
-
-  public show_menu_content(clientx){
-    this.swipe_menu_style  = { right:clientx+'px' };
-  }
 
 
   ngAfterViewInit() {
@@ -296,8 +166,7 @@ export class IndexComponent implements OnInit {
 
       if( event.target.closest('.swipe_content_menu') == null ){
 
-        this.hide_menu_content(-100);
-
+        this.swipe.hide_menu_content(-100);
       }
 
       if ( event.target.closest(' .notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard' ) == null ) {
@@ -314,9 +183,6 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
-
 
     $(document).ready(function () {
 

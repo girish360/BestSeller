@@ -1,0 +1,33 @@
+.scroll_top{
+    position: fixed;
+    bottom: 10px;
+    right: -50px;
+    transition: 0.5s;
+}
+
+.show_scroll_top{
+
+    right: 10px;
+    transition: 0.5s;
+}
+.scroll_top_button{
+    background-color: white;
+}
+
+@media only screen and (max-width: 750px){
+
+    .scroll_top{
+
+        bottom: 52px;
+        left: -50px;
+
+    }
+
+    .show_scroll_top{
+
+        left: 2px;
+        transition: 0.5s;
+    }
+
+
+}

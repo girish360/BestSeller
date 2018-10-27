@@ -3,6 +3,10 @@
 
 * { border:0; margin:0; padding:0; }
 
+.products{
+    width: 100%;
+    position: relative;
+}
 
 @keyframes Products_Animation {
     0% {

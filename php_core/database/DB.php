@@ -1034,9 +1034,22 @@ class DB { //class of databse can build query and execute it to get data from da
         }
         $query->execute();
 
-        $result = $query->fetchAll(\PDO::FETCH_ASSOC );
+        $result_from_db = $query->fetchAll(\PDO::FETCH_ASSOC );
 
-        return  $result;
+        $count = count( $result_from_db );
+
+        if( $count  > 1 ){
+
+            return  $result_from_db;
+
+        }else if( $count == 1 ){
+
+           return $result_from_db[0];
+
+        }else{
+
+            return false;
+        }
     }
 
 }

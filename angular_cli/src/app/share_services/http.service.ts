@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 
-import {  Http, Response , Headers ,URLSearchParams } from '@angular/http';
+import { HttpClient, HttpHeaders ,HttpParams ,HttpErrorResponse ,HttpResponse } from '@angular/common/http';
 
 import { map } from 'rxjs/operators';
+
+import { catchError } from 'rxjs/operators';
+
+import { throwError } from 'rxjs';
 
 import {Observable} from "rxjs/Observable";
 
@@ -12,76 +16,103 @@ import { EncryptDecryptService } from './encrypt-decrypt.service';
 
 export class HttpService extends EncryptDecryptService {
 
-  constructor( protected http : Http ) {
+  constructor( protected http : HttpClient ) {
 
     super(); // initial parent ......................
 
   }
 
-  private path = '/BestSellerApi';
+  private baseUrl = '/BestSellerApi';
 
+    Http_Get( uri  , data ): Observable<any[]>{ // get method  wating for two parameters key string and data object....
 
+        if( data != false ){
 
-  Http_Get( uri  , data ): Observable<any[]>{ // get method  wating for two parameters key string and data object....
+            let keyparams ='params';
 
-    const headers = new Headers();
+            const params = new HttpParams().set( keyparams , encodeURIComponent( JSON.stringify( data ) ) );
 
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+            const httpOptions = {
 
-    headers.append('Accept', 'text/plain');
+                headers: new HttpHeaders({
 
-    let params = new URLSearchParams();
+                    'Content-Type':  'application/json; charset=utf-8'
+                }),
+                params:params,
+                responseType: 'json',
 
+            };
 
+            return this.http.get<any[]>( this.baseUrl+'/'+uri ,  httpOptions   )
 
-    if( data != false ){
+                .pipe(
 
-     let body =  this.encryp_AES( JSON.stringify( data ) );
+                    catchError(this.handleError)
+                );
 
-     let keyparams ='params';
+        }else{
 
-      params.append( keyparams , encodeURIComponent( JSON.stringify( data ) ) );
+            const httpOptions  = {
 
-      return this.http.get( this.path+'/'+uri , { search:params ,headers:headers } )
+                headers: new HttpHeaders({
 
-          .pipe(
-              map(( Response ) => Response.json() )
-          );
+                    'Content-Type':  'application/json; charset=utf-8'
+                }),
+                responseType: 'json',
 
-    }else{
+            };
 
-      return this.http.get( this.path+'/'+uri, { headers:headers } )
+            return this.http.get<any[]>( this.baseUrl+'/'+uri,  httpOptions  )
 
-          .pipe(
-              map(( Response ) => Response.json() )
-          );
+                .pipe(
 
+                    catchError(this.handleError)
+                );
+
+        }
 
     }
 
 
-  }
-
-
   Http_Post( uri , data ): Observable<any[]>{  // method that make popst request in server  and return response...........
 
-    const headers = new Headers();
+      const httpOptions = {
 
-    headers.append( 'Content-Type', 'application/x-www-form-urlencoded' );
+          headers: new HttpHeaders({
 
-    headers.append('Accept', 'text/plain');
+              'Content-Type':  'application/x-www-form-urlencoded'
+          }),
+          observe:'response',
 
+          responseType: 'json',
 
+      };
 
-    const body =  this.encryp_AES( JSON.stringify( data ) ); //  call method encrypt data
-
-    return this.http.post( this.path+'/'+uri, JSON.stringify( data ), { headers:headers } ) // send request
+      return this.http.post<HttpResponse<Object>>( this.baseUrl+'/'+uri, JSON.stringify( data ), httpOptions ) // send request
 
         .pipe(
-            map(( Response ) => Response.json() )
+
+            catchError(this.handleError)
+
         );
 
   }
+
+    private handleError(error: HttpErrorResponse) {
+        if (error.error instanceof ErrorEvent) {
+            // A client-side or network error occurred. Handle it accordingly.
+            console.error('An error occurred:', error.error.message);
+        } else {
+            // The backend returned an unsuccessful response code.
+            // The response body may contain clues as to what went wrong,
+            console.error(
+                `Backend returned code ${error.status}, ` +
+                `body was: ${error.error}`);
+        }
+        // return an observable with a user-facing error message
+        return throwError(
+        'Something bad happened; please try again later.');
+    };
 
 
 }

@@ -27,7 +27,6 @@
         </div>
         <br>
 
-
         <div class="width_login"> <!-- container sing in ..............................................................................-->
 
           <div class="user-icon center">
@@ -40,15 +39,9 @@
 
           <ng-container *ngIf=" login_property.steps == 1; else step2 ">
 
-            {{login_property.write_type_login}}<br><br>
+            {{login_property.write_type_login}}<br>
 
-            <mat-radio-group>
 
-              <mat-radio-button class="green" value="1"  (click)="set_type_account('client')" [checked]="login_property.client_account">Client</mat-radio-button>
-
-              <mat-radio-button class="green" value="2"  (click)="set_type_account('business')" [checked]="login_property.business_account" >Business</mat-radio-button>
-
-            </mat-radio-group><br>
 
             <form class="example-form"  >
 
@@ -72,7 +65,7 @@
 
                 >
 
-                <mat-hint>Errors appear instantly!</mat-hint>
+
 
                 <mat-error *ngIf="email_FormControl_login.hasError('required')">
 
@@ -81,18 +74,6 @@
                 </mat-error>
 
               </mat-form-field>
-
-            </form>
-
-          </ng-container>
-
-          <ng-template #step2>
-
-            Hi {{user_details.first_name}} <br><br>
-
-            {{user_details.email}}
-
-            <form class="example-form" >
 
               <mat-form-field class="example-full-width">
 
@@ -113,8 +94,6 @@
 
                 >
 
-                <mat-hint>Errors appear instantly!</mat-hint>
-
                 <mat-error *ngIf="password_FormControl_login.hasError('minlength') && !password_FormControl_login.hasError('required')">
 
                   Please enter more than 6 charcters
@@ -131,7 +110,7 @@
 
             </form>
 
-          </ng-template><br>
+          </ng-container><br>
 
           <button  (click)="check_user()" [disabled]="login_property.button_login" mat-button class="button" >
 
