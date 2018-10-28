@@ -95,7 +95,7 @@ export class HttpService extends EncryptDecryptService{
 
           .pipe(
 
-            catchError(this.handleError) // catch error
+              catchError(this.handleError) // catch error
 
         );
 
