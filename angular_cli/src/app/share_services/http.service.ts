@@ -14,7 +14,7 @@ import { EncryptDecryptService } from './encrypt-decrypt.service';
 
 @Injectable()
 
-export class HttpService extends EncryptDecryptService {
+export class HttpService extends EncryptDecryptService{
 
   constructor( protected http : HttpClient ) {
 
@@ -24,45 +24,48 @@ export class HttpService extends EncryptDecryptService {
 
   private baseUrl = '/BestSellerApi';
 
-    Http_Get( uri  , data ): Observable<any[]>{ // get method  wating for two parameters key string and data object....
+    Http_Get( uri  , data ): Observable<HttpResponse<any>>{ // get method  wating for two parameters key string and data object....
 
-        if( data != false ){
+        if( data != false ){ // get http with params in url
 
             let keyparams ='params';
 
             const params = new HttpParams().set( keyparams , encodeURIComponent( JSON.stringify( data ) ) );
 
-            const httpOptions = {
+            return this.http.get<any>( this.baseUrl+'/'+uri ,
 
-                headers: new HttpHeaders({
+                {
 
-                    'Content-Type':  'application/json; charset=utf-8'
-                }),
-                params:params,
-                responseType: 'json',
+                    headers: new HttpHeaders({
 
-            };
+                        'Content-Type':  'application/json; charset=utf-8'
 
-            return this.http.get<any[]>( this.baseUrl+'/'+uri ,  httpOptions   )
+                    }),
+
+                    params:params
+                }
+            )
+
 
                 .pipe(
 
                     catchError(this.handleError)
                 );
 
-        }else{
+        }else{ // without params
 
-            const httpOptions  = {
+            return this.http.get<any>( this.baseUrl+'/'+uri,
 
-                headers: new HttpHeaders({
+                {
 
-                    'Content-Type':  'application/json; charset=utf-8'
-                }),
-                responseType: 'json',
+                    headers: new HttpHeaders({
 
-            };
+                        'Content-Type':  'application/json; charset=utf-8'
 
-            return this.http.get<any[]>( this.baseUrl+'/'+uri,  httpOptions  )
+                    }),
+
+                }
+            )
 
                 .pipe(
 
@@ -74,32 +77,32 @@ export class HttpService extends EncryptDecryptService {
     }
 
 
-  Http_Post( uri , data ): Observable<any[]>{  // method that make popst request in server  and return response...........
+  Http_Post( uri , data ): Observable<HttpResponse<any>>{  // method that make popst request in server  and return response...........
 
-      const httpOptions = {
 
-          headers: new HttpHeaders({
+      return this.http.post<any>( this.baseUrl+'/'+uri, JSON.stringify( data ), // url and body
 
-              'Content-Type':  'application/x-www-form-urlencoded'
-          }),
-          observe:'response',
+          {  // http options
+              headers: new HttpHeaders({
 
-          responseType: 'json',
+                  'Content-Type':  'application/json; charset=utf-8'
 
-      };
+              }),
 
-      return this.http.post<HttpResponse<Object>>( this.baseUrl+'/'+uri, JSON.stringify( data ), httpOptions ) // send request
+              observe: 'response'
+          }
+      ) // send request
 
-        .pipe(
+          .pipe(
 
-            catchError(this.handleError)
+            catchError(this.handleError) // catch error
 
         );
 
   }
 
     private handleError(error: HttpErrorResponse) {
-        if (error.error instanceof ErrorEvent) {
+        if ( error.error instanceof ErrorEvent) {
             // A client-side or network error occurred. Handle it accordingly.
             console.error('An error occurred:', error.error.message);
         } else {

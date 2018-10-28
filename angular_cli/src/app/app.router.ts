@@ -11,7 +11,7 @@ import { NotFoundComponent } from './share_components/not-found/not-found.compon
 export const router: Routes = [
 
     {
-        path: '', component: ControllerComponent,
+        path: '', component: ControllerComponent
     },
 
     {

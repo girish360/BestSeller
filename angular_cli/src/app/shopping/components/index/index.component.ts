@@ -67,11 +67,7 @@ export class IndexComponent implements OnInit {
 
               response => {
 
-                console.log(response.body);
-
-               this.auth.client = response.body;
-
-               this.auth.status = true;
+                this.auth.status = true;
 
 
               },

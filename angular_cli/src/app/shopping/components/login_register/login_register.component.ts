@@ -124,29 +124,23 @@ export class LoginRegisterComponent implements OnInit {
 
     this.login_property.loading = true;
 
-         this.dataservices.Http_Post('shopping/clientAuth/check_client',
+         this.dataservices.Http_Post('shopping/auth/check_client',
 
             { 'username':this.user_details_loginForm.username , 'password':this.user_details_loginForm.password })
 
              .subscribe( result => {
 
-               let authorization = result.headers.get('Authorization');
+               console.log(result.headers.get('Authorization'));
 
-               if( authorization ){
+               if ( result ) {
 
-                 this.auth.set_storage( this.auth.token_key, authorization );
-
-               }
-
-               if ( result.body ) {
-
-                 this.auth.client = result.body;
+                 this.auth.client = result;
 
                  this.auth.status = true;
 
                  this.login_property.loading = false;
 
-                 this.user_details = result.body;
+                 this.user_details = result;
 
                  this.dataservices.update_app(true);
 
