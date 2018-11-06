@@ -58,8 +58,6 @@ export class SetRouterService extends EncryptDecryptService{
             {
                 relativeTo: route ,  queryParams: paramsInUrl
             }
-
-
         );
 
       }else{

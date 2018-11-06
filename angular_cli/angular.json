@@ -32,7 +32,8 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/jquery-color-animation/jquery.animate-colors-min.js",
               "node_modules/bootstrap-toggle/js/bootstrap-toggle.min.js",
-              "node_modules/jquery-zoom/jquery.zoom.js"
+              "node_modules/jquery-zoom/jquery.zoom.js",
+              "node_modules/fingerprintjs2/dist/fingerprint2.min.js"
             ]
           },
           "configurations": {

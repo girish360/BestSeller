@@ -8,46 +8,52 @@ use server\db\DB as database;
 
 use server\services\fetch\fetch as fetch;
 
+use server\services\error\error as error;
+
+use Exception;
+
 class auth {
 
-    public static function check_client( $request ){
+    public static $user_details = false; // kept user details ,
 
-        $user_details = database::table('users')
+    public  static $x_token = false; // token of client  kept user's  details , epiration time , client_signature etc...
+
+    public static $x_signature = false; //this is client signature that come  over each request when user is login or when  send credencials to login
+
+    public static $x_refresh_token = false;
+
+    public static function check_credentials( $request  ){
+
+        $user_details = database::table('users') // query to get from db specific user dependet from their credentials....
             ->select('id','email', 'picture' ,'first_name','last_name','language')
             ->where('email','=',$request->username)
             ->andWhere('password','=',$request->password)
             ->get();
 
-        if( empty($user_details) ){
+        if( $user_details ){ // user does not exists in db return false  ........
 
-            return fetch::json_data(false);
+            self::$user_details = $user_details[0];
+
+            return true;
 
         }
-        $token = self::set_token([
-            "userid" => $user_details['id'],
-            "email" => $user_details['email']
-        ]);
+        // user exists return user's details
 
-        header('Authorization:'.$token.'');
-
-        return fetch::json_data( $token );
+        return false;
 
     }
 
-    public static function set_token( $user_data ){
+    public static function generate_token( $user_data , $browser_signature ){
 
-        $passphrase = 'somestring';
-
-        $key_private = openssl_get_privatekey( file_get_contents(__DIR__."/../config/private_key.pem" ), $passphrase );
-
-        $issuedAt   = time();
+        $private_key = openssl_get_privatekey( file_get_contents(__DIR__."/../config/private_key.pem" ) ); // get private_ket
+        $issuedAt   = time(); // get time
         $notBefore  = $issuedAt + 10;             //Adding 10 seconds
-        $expire     = $notBefore + 20*60;            // Adding 60 seconds
-        $serverName = 'localhost:8080'; // Retrieve the server name from
+        $expire     = $issuedAt + 15*60;            // add 15 minutes to access token ....
+        $serverName = 'localhost:8080'; // domain name
 
-        $token = array(
+        $token_details = array( // generate array with token details ..........
             "iss" => $serverName,
-            "aud" => $serverName,
+            "aud" => $browser_signature,
             "iat" => $issuedAt,
             "nbf" => $notBefore,
             "exp" => $expire,
@@ -55,63 +61,137 @@ class auth {
             "data" => $user_data
         );
 
-        return $jwt = jwt::encode( $token, $key_private , 'RS256' );
-    }
+        $jwt = jwt::encode( $token_details, $private_key , 'RS256' ); // generate token and return it ......
 
-    public static function check_token( $token  ){
+        database::table('users') // update token in db and uid of token ........
+            ->update(['oauth_provider'=>$jwt , 'oauth_uid'=> $browser_signature ])
+            ->where('id','=',$user_data['id'])->execute();
 
-        $key_public = openssl_get_publickey( file_get_contents(__DIR__."/../config/public_key.pem" ) );
-
-        jwt::$leeway = 60; // $leeway in seconds
-
-        $decode_token = jwt::decode( $token, $key_public ,array('RS256'));
-
-        return fetch::json_data ( $decode_token );
-
+        return $jwt   ; // return
 
     }
 
-    public static function check_auth( ){
+    public static function generate_refresh_token( $user_data , $browser_signature ){
 
-        if( isset($_SERVER['HTTP_AUTHORIZATION']) ) {
+        $hour = 60*60;
 
-            $token = $_SERVER['HTTP_AUTHORIZATION'];
+        $day = $hour*24;
 
-            return self::check_token($token);
+        $month = $day*30;
+
+        $key_private = openssl_get_privatekey( file_get_contents(__DIR__."/../config/private_key.pem" ));
+        $issuedAt   = time(); // time
+        $notBefore  = $issuedAt + 10;             //Adding 10 seconds
+        $expire     = $issuedAt + $month;  //  expire time of refresh token if user's does not open their account within one moth their refresh token will expire
+        $serverName = 'localhost:8080'; // Retrieve the server name from
+
+        $token = array(
+            "iss" => $serverName,
+            "aud" => $browser_signature,
+            "iat" => $issuedAt,
+            "nbf" => $notBefore,
+            "exp" => $expire,
+            "data" => $user_data
+        );
+
+        return jwt::encode( $token, $key_private , 'RS256' );
+
+    }
+
+    public static function check_token(){
+
+        try { // try some code .......
+
+            $key_public = openssl_get_publickey(file_get_contents(__DIR__ . "/../config/public_key.pem"));
+
+            jwt::$leeway = 60; // $leeway in seconds
+
+            $decode_token = jwt::decode(self::$x_token, $key_public, array('RS256'));
+
+            $client = database::table('users')
+                ->select('id', 'oauth_provider', 'oauth_uid', 'first_name', 'last_name', 'picture')
+                ->where('id', '=', $decode_token->data->id)
+                ->get();
+
+            if ( count($client) == 1 ) { // only one row
+                self::$user_details = $client[0]; // get user details .............
+            } else if (count($client) == 0) { // does not exists user in db with id that is in X_token ....
+                self::$user_details = false;
+            } else { // query have find more than 1 row
+                self::$user_details = false; //  never shouldn't have duplicate id in users table
+            }
+
+
+            if ( self::$user_details['oauth_uid'] != self::$x_signature && self::$user_details['oauth_provider'] != self::$x_token  ) { // valid  refresh token ..........
+
+                self::$user_details = false;
+
+                throw new Exception('client signature dose not match');
+
+            }else{
+
+                unset(self::$user_details['oauth_provider']); // remove token from user details it needed just to match with token that is come from client
+
+                unset(self::$user_details['oauth_uid']); // remove client id from user details it needed just to match  singnature that come from client .....
+            }
+        }
+        catch ( Exception $exception ){ // catch any error ...............
+
+            error::header_error('401 Unauthorized'); // brings a 401  status error and a message
+
+            echo $exception;
+
+            exit;
+
         }
 
-        else
-
-        header("HTTP/1.1 401 Unauthorized");
-
-        echo 'error: Signature failed';
-
-        exit;
-
     }
 
-    // Function to get the client IP address
-    public static function get_client_ip() {
-        $ipaddress = '';
-        if (isset($_SERVER['HTTP_CLIENT_IP']))
-            $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
-        else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        else if(isset($_SERVER['HTTP_X_FORWARDED']))
-            $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
-        else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
-            $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
-        else if(isset($_SERVER['HTTP_FORWARDED']))
-            $ipaddress = $_SERVER['HTTP_FORWARDED'];
-        else if(isset($_SERVER['REMOTE_ADDR']))
-            $ipaddress = $_SERVER['REMOTE_ADDR'];
-        else
-            $ipaddress = 'UNKNOWN';
-        return $ipaddress;
+    public static function check_refresh_token(){
+
+
+            $key_public = openssl_get_publickey(file_get_contents(__DIR__ . "/../config/public_key.pem"));
+
+            jwt::$leeway = 60; // $leeway in seconds
+
+            $decode_refresh_token = jwt::decode( self::$x_refresh_token, $key_public, array('RS256') );
+
+            $client = database::table('users')
+                ->select('id', 'oauth_provider', 'oauth_uid', 'first_name', 'last_name', 'picture' ,'email')
+                ->where('id', '=', $decode_refresh_token->data->id)
+                ->get();
+
+            if (count($client) == 1) { // only one row
+                self::$user_details = $client[0]; // get user details .............
+            } else if (count($client) == 0) { // does not exists user in db with id that is in X_token ....
+                self::$user_details = false;
+            } else { // query have find more than 1 row
+                self::$user_details = $client; //  never shouldn't have duplicate id in users table
+            }
+
+
+
+        if ( self::$user_details['oauth_uid'] != self::$x_signature  ) { // valid token ..........
+
+            throw new Exception('Client signature failed');
+
+        }  // does not match signature that is in db with it in request  or token that is in db with it in request ...........
     }
 
+    public static function check_auth(){
 
+        if( isset($_SERVER['HTTP_X_TOKEN']) && isset($_SERVER['HTTP_X_SIGNATURE'] ) ) {
 
+            self::$x_token = $_SERVER['HTTP_X_TOKEN'] ;
+
+            self::$x_signature = $_SERVER['HTTP_X_SIGNATURE'];
+
+            return true;
+        }
+
+        else return false;
+
+    }
 
 }
 

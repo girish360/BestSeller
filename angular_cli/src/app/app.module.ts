@@ -78,10 +78,13 @@ import { SetRouterService } from './share_services/set-router.service';
     ScrollbarService,
     {
       provide:HTTP_INTERCEPTORS,
+
       useClass:HttpInterceptorService,
+
       multi:true
 
     }
+
 
   ],
 

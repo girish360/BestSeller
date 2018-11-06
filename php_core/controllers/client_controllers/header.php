@@ -6,11 +6,57 @@ use server\db\DB as database;
 
 use server\services\fetch\fetch as fetch;
 
+use server\services\language\language as language;
+
+use server\services\auth\auth as auth ;
+
 class header {
 
     private $wishList = false;
 
     private $cartList = false;
+
+    public function load_header(){ // must to get all data that needed in header ..............
+
+        $language = json_decode( self::get_language() );
+
+        $wishlist_cartlist = json_decode( self::get_wishlist_cartList() );
+
+        if( auth::$user_details ){ // user exist ............................
+
+            return fetch::json_data( array( 'client'=>auth::$user_details,'language'=>$language , 'wishlist_cartlist' => $wishlist_cartlist)) ;// return object with language  in frontend.........
+        }
+
+        return fetch::json_data( array( 'language'=>$language , 'wishlist_cartlist' => $wishlist_cartlist)) ;// return object with language  in frontend.........
+
+    }
+
+    public function get_language(){ // get language in object
+
+        $language_in_coockie = cookie::check_cookie( 'language' ); //  call method check if have cookie  for language
+
+        if( $language_in_coockie != false ){ // check if  exists cookie for language
+
+            $objct_language = language::language( json_decode( $_COOKIE['language'] )); // call method to get language .......
+
+            return fetch::json_data( $objct_language );// return object with language  in frontend.........
+
+        }else{ // else if not exists cookie with language ..........
+
+            $objct_language = language::language( '1' ); // call method to get language with default value  .......
+
+            return fetch::json_data($objct_language );// return object with language  in frontend.........
+        }
+    }
+
+    public function change_language( $new_language ){ // change language ....
+
+        $objct_language = language::language( $new_language->language ); // call method to get language .......
+
+        cookie::save_coockie( 'language', $new_language->language  ); //save language in cookie .............
+
+        return fetch::json_data($objct_language );// return object with language  in frontend.......
+    }
 
     public function get_wishlist_cartList(){
 
@@ -44,6 +90,7 @@ class header {
                 array_push( $product , $value->id );
 
             }
+
             $this->cartList = database::table('products')
                 ->select(
                     'products.id as product_id', 'products.title', 'products.image_id', 'products.category_id', 'products.price',

@@ -6,6 +6,8 @@ use \InvalidArgumentException;
 use \UnexpectedValueException;
 use \DateTime;
 
+use server\services\error\error as error;
+
 /**
  * JSON Web Token implementation, based on this spec:
  * https://tools.ietf.org/html/rfc7519
@@ -110,11 +112,7 @@ class JWT
         // Check the signature
         if (!static::verify("$headb64.$bodyb64", $sig, $key, $header->alg)) {
 
-           header("HTTP/1.1 401 Unauthorized");
-
-           echo 'error: Signature failed';
-
-           exit;
+            throw new SignatureInvalidException('Signature failed');
 
         }
 
@@ -137,12 +135,7 @@ class JWT
         // Check if this token has expired.
         if (isset($payload->exp) && ($timestamp - static::$leeway) >= $payload->exp) {
 
-            header("HTTP/1.1 403 Forbidden ");
-
-            echo 'error: Expired Token';
-
-            exit;
-
+            throw new ExpiredException(' Token has expire ');
         }
 
         return $payload;

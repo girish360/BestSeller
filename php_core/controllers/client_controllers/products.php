@@ -47,7 +47,7 @@ class products extends controller  // class products extends from fetch keep all
             $count = database::table( $this->table_name )
                 ->count()
                 ->where('category_id','=', $request->category_id )
-                ->get()['count'];
+                ->get()[0]['count'];
 
         }else if( $request->type_products == 'supplier'){
 

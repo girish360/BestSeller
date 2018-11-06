@@ -50,9 +50,11 @@ a{
     text-decoration: none;
 }
 
-button:hover .mat-icon , a:hover span ,a:hover .mat-icon{
+button:hover .mat-icon , a:hover span ,a:hover .mat-icon {
     color:darkslategrey;
 }
+
+
 
 .slide_button{
     color: white;

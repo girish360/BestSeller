@@ -29,9 +29,9 @@ export class SettingsService {
 
 
 
-            },
+            }
 
-            error => console.log( error['data'] ) // take error .....
+
 
         );
   }

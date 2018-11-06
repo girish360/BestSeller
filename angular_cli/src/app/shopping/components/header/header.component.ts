@@ -27,6 +27,8 @@
 
  import { FormControl } from '@angular/forms';
 
+
+
  import { } from 'googlemaps';
 
  import { MapsAPILoader } from '@agm/core';
@@ -34,6 +36,7 @@
  import { AuthService } from '../../services/auth.service';
 
  declare var $:any;
+
 
  @Injectable()
 
@@ -140,8 +143,9 @@
 
      public button_right = [
 
-         { id:1 , name:'sign' ,mat_tooltip:'User Panel', different_class:'',
-             icon :'glyphicon-user gh-productsService' , hide_notification:true
+         { id:1 , name:'sign' ,mat_tooltip:'User Panel',
+             icon :'glyphicon-user gh-productsService' , dropdown_class:'dropclient' , dropdown_body:'.bodydropclient' ,
+             hide_notification:true ,different_class :'notCloseDropdawnClient notClosepointerHeader'
          },
          { id:2 , name:'wish' , mat_tooltip:'WishList',  different_class:' notCloseDropdawnFavorite notClosepointerHeader',
              icon :'glyphicon-heart' , dropdown_class:'dropfavorites' ,dropdown_body:'.dropfavorites  .wishlist_component  .body_div',
@@ -155,9 +159,6 @@
              icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'.dropdown_more .mat-tab-body-wrapper',
              hide_notification:true
          },
-
-
-
 
      ];
 
@@ -179,19 +180,54 @@
 
 
     ) {
-         this.get_device_info();
-
-         this.dataservices.Http_Get('shopping/header/language', false )
+         this.dataservices.Http_Get('shopping/header', false )
 
             .subscribe( //  take success
 
-                data => {
+                response => {
 
-                    this.dataservices.language = data;
+                    if( response ){
 
-                    this.cd.markForCheck();
+                        let language = response['language'];
+
+                        let wishlist = response['wishlist_cartlist']['wishList'];
+
+                        let cartlist = response['wishlist_cartlist']['cartList'];
+
+                        let quantity_items_incart = response['wishlist_cartlist']['quantity_items_incart'] ;
+
+                        if( response['client'] ){
+
+                           this.auth.client = response['client'];
+
+
+                        }
+
+
+                        if( wishlist ){
+
+                            this.productsService.wish_properties.wishList = wishlist ;
+                        }
+
+                        if( cartlist  ){
+
+                            this.productsService.set_quantity_in_cartList( quantity_items_incart , cartlist );
+
+                            this.productsService.total_items_and_price();
+
+                        }
+
+
+
+                        this.dataservices.language = language;
+
+                        this.cd.markForCheck();
+                    }
+
+
                 }
             );
+
 
          this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
 
@@ -267,6 +303,8 @@
          });
 
     }
+
+
 
      ngOnInit() {
          //set google maps defaults
@@ -414,7 +452,19 @@
 
                 if ( button.id == 1) {
 
-                   this.set_router( { path:'login_register' , data:false , relative:true } );
+                    if( this.auth.token ){
+
+                        this.productsService.button_properties.pointer = button.id;
+
+                        this.find_position( this.productsService.button_properties.pointer ,button.dropdown_class );
+
+                        this.productsService.show_dropdown_button(button.dropdown_class, button.dropdown_body , button.id);
+
+                    }else{
+                        this.set_router( { path:'login_register' , data:false , relative:true } );
+                    }
+
+
 
                 } else {
 
@@ -429,6 +479,7 @@
             } else {
 
 
+                $('.write_icon_header').css('color', 'slategrey');
 
                 this.productsService.hide_dropdown_button( button.dropdown_class, button.dropdown_body  );
 
@@ -467,21 +518,30 @@
 
          $(function(){
 
-             var left =  $('.button'+id).find('.glyphicon').offset();
-
-             $( '.'+dropdown_Class ).css({ left:  left.left - 450  });
+             var left =  $('.button'+id).offset();
 
              if( id == 2 ){
 
-                 $('.treguesi').css({"margin-left": left.left + 6, "background-color": "white"});
+                 $( '.'+dropdown_Class ).css({ left:  left.left - 430  });
+
+                 $('.treguesi').css({"margin-left": left.left + 27, "background-color": "white"});
+
              }
              else if( id ==3 ){
+                 $( '.'+dropdown_Class ).css({ left:  left.left - 430  });
 
-                 $('.treguesi').css({"margin-left": left.left + 6, "background-color": "white"});
+                 $('.treguesi').css({"margin-left": left.left + 27, "background-color": "white"});
              }
              else if ( id == 4 ){
 
-                 $('.treguesi').css({"margin-left": left.left +4, "background-color": "white"});
+                 $( '.'+dropdown_Class ).css({ left:  left.left - 430  });
+
+                 $('.treguesi').css({"margin-left": left.left +27, "background-color": "white"});
+             }else{
+
+                 $( '.'+dropdown_Class ).css({ left:  left.left - 180  });
+
+                 $('.treguesi').css({"margin-left": left.left +27, "background-color": "white"});
              }
          });
     }

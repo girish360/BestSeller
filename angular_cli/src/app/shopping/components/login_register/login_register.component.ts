@@ -124,23 +124,37 @@ export class LoginRegisterComponent implements OnInit {
 
     this.login_property.loading = true;
 
-         this.dataservices.Http_Post('shopping/auth/check_client',
+    this.auth.login_request = true;
+
+    this.dataservices.Http_Post('shopping/auth/credentials',
 
             { 'username':this.user_details_loginForm.username , 'password':this.user_details_loginForm.password })
 
              .subscribe( result => {
 
-               console.log(result.headers.get('Authorization'));
+               if ( result.body ) {
 
-               if ( result ) {
+                 let token = result.headers.get('x-token'); // get token from  response header
 
-                 this.auth.client = result;
+                 let refresh_token = result.headers.get('x-refresh-token'); // get refresh_token from  response header
 
-                 this.auth.status = true;
+                 if( token && refresh_token  ){
+
+                   this.auth.token = token; // set token in variable
+
+                   this.auth.refresh_token = refresh_token; // set refresh token in variable
+
+                   this.auth.set_storage(this.auth.token_key , token );
+
+                   this.auth.set_storage(this.auth.refresh_token_key , refresh_token );
+
+                 }
+
+                 this.auth.client = result.body;
 
                  this.login_property.loading = false;
 
-                 this.user_details = result;
+                 this.user_details = result.body;
 
                  this.dataservices.update_app(true);
 
@@ -163,8 +177,7 @@ export class LoginRegisterComponent implements OnInit {
              },error => {} );
 
 
-
-
+    this.auth.login_request = false;
   }
 
   hide_error(){

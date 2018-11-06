@@ -21,33 +21,7 @@ export class HeaderService  implements OnInit {
 
   constructor( protected dataservices : DataService ) {
 
-    this.dataservices.Http_Get( 'shopping/header/wishList_cartList' ,false ) // make request ......
 
-        .subscribe( //  take success
-
-            response => {
-
-              if( response ){
-
-                if( response['wishList'] != false ){
-
-                  this.wish_properties.wishList = response['wishList'];
-                }
-
-                if( response['cartList'] != false ){
-
-                  this.set_quantity_in_cartList( response['quantity_items_incart'] , response['cartList'] );
-
-                  this.total_items_and_price();
-
-                }
-              }
-
-            },
-
-            error => console.log(error) // take error .....
-
-        );
   }
 
   public subject_products =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
@@ -384,7 +358,7 @@ export class HeaderService  implements OnInit {
 
   public show_dropdown_button( dropdown_class, body_inside , id ){
 
-    $('.treguesi').css({display: 'none'});
+
 
     $(body_inside).css({ top: '15px'});
 
@@ -398,13 +372,9 @@ export class HeaderService  implements OnInit {
 
     }, 100, function () { //  function after effect ............
 
-      $('.treguesi').css({display: 'block'}); // show pionter......
+      $('.write_icon_header').css('color', 'slategrey');
 
-      $('.write_icon_header').css('visibility', 'visible');
-
-      $('.write_icon_header'+id).css('visibility', 'hidden'); // remove write below icon in productsService
-
-      $('.treguesi').css({display: 'block'});
+      $('.write_icon_header'+id).css('color', 'white'); // remove write below icon in productsService
 
     });
 
@@ -417,10 +387,6 @@ export class HeaderService  implements OnInit {
   }
 
   public hide_dropdown_button( dropdown_class, body_inside){
-
-    $('.treguesi').css({display: 'none'});
-
-    $('.write_icon_header').css('visibility', 'visible');
 
     $(body_inside).css({top: '0px'});
 

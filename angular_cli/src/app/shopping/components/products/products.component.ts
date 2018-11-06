@@ -190,6 +190,8 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
                           this.set_router(router);
                       }
+
+
                   }
 
               },

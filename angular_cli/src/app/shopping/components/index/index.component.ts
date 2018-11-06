@@ -6,6 +6,8 @@ import { trigger, sequence, transition, animate, style, state,keyframes } from '
 
 declare var $:any;
 
+declare var Fingerprint2: any;
+
 import { DataService } from '../../services/data.service';
 
 import { ProductService } from '../../services/product.service'; // ProductServices extend HeaderServices that cartList and  wishList ....................
@@ -35,6 +37,8 @@ import { AuthService} from '../../services/auth.service';
 })
 export class IndexComponent implements OnInit {
 
+
+
   public get_Language:object={};
 
   private wishList_products = [];
@@ -56,30 +60,6 @@ export class IndexComponent implements OnInit {
       private auth :AuthService
 
   ) {
-
-    let token = this.auth.get_storage('bestseller_token');
-
-    if( token ){
-
-      this.dataservices.Http_Post( 'shopping/clientAuth/check_token' , token ) // make request ......
-
-          .subscribe( //  take success
-
-              response => {
-
-                this.auth.status = true;
-
-
-              },
-
-              error => console.log( error['data'] ) // take error .....
-
-          );
-
-    }
-
-
-
 
     this.router.events.subscribe( ( event:Event )  =>{
 
@@ -112,8 +92,6 @@ export class IndexComponent implements OnInit {
 
     });
 
-
-
   }
 
   ngDoCheck() {
@@ -129,6 +107,12 @@ export class IndexComponent implements OnInit {
   ngAfterViewInit() {
 
     this.renderer.listen( this.elementRef.nativeElement, 'click', (event) => {
+
+      if ( event.target.closest('.notCloseDropdawnClient') == null) {
+
+        this.productsService.hide_dropdown_button('dropclient','.bodydropclient');
+
+      }
 
       if ( event.target.closest('.notCloseDropdawnLanguage') == null) {
 
@@ -156,6 +140,7 @@ export class IndexComponent implements OnInit {
 
       if ( event.target.closest('.product_options') == null ) {
 
+
         this.productsService.close_options();
 
       }
@@ -165,13 +150,15 @@ export class IndexComponent implements OnInit {
         this.swipe.hide_menu_content(-100);
       }
 
-      if ( event.target.closest(' .notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard' ) == null ) {
+      if ( event.target.closest(' .notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard ,.notCloseDropdawnClient' ) == null ) {
 
-        $('.treguesi').css({display: 'none'});
+
+
+        $('.write_icon_header').css('color', 'slategrey');
 
         this.productsService.refresh_button_properties();
 
-        $('.write_icon_header').css('visibility', 'visible');
+
 
       }
 
@@ -179,6 +166,12 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    document.addEventListener("contextmenu", function(event){
+
+      event.preventDefault();
+      document.getElementById("demo").innerHTML = "Hello World";
+    });
 
     $(document).ready(function () {
 

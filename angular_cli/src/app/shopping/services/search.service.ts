@@ -245,8 +245,7 @@ export class SearchService {
 
   public change_search(  ){
 
-   alert('dfg');
-    this.change_filter_search();
+      this.change_filter_search();
 
   }
 
@@ -262,7 +261,7 @@ export class SearchService {
 
       $('.'+dropdown_class).show().animate({ // animation effect show dropdown productsService......
 
-        top: '6px',
+        top: '3px',
 
         opacity: 1
 

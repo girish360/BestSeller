@@ -21,6 +21,8 @@ import { ResolverService } from './resolvers/resolver.service';
 
 import { ResolverHomeService } from './resolvers/resolver_home.service';
 
+import { ResolverIndexService } from './resolvers/resolver-index.service';
+
 import { WishListComponent } from './components/wish_list/wish_list.component';
 
 import { CardListComponent } from './components/card_list/card_list.component';
@@ -30,7 +32,7 @@ import { SearchComponent } from './components/search/search.component';
 const routes: Routes = [
 
   {
-    path: '', component: IndexComponent,
+    path: '', component: IndexComponent, resolve : {index :ResolverIndexService },
 
     children: [
 

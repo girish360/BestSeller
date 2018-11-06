@@ -83,10 +83,10 @@
                                 <button mat-button  class="button_search_for active-search-button border" >
 
 
-                                    <mat-select [disabled]="block"   (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.search_data.searchFor">
+                                    <mat-select [disabled]="block"   (selectionChange)="searchService.change_search()" class="searchFor" [(value)]="searchService.search_data.searchFor">
 
 
-                                        <mat-option value="products" >
+                                        <mat-option value="products">
 
                                             For Products
 
@@ -132,7 +132,7 @@
                                 <span>
                                      <button mat-button  [ngClass]="{'active-search-button':searchService.filter_products.category != 'any_category'}" class="button_search_for  border">
 
-                                        <mat-select [disabled]="block"  (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_products.category">
+                                        <mat-select [disabled]="block"  (selectionChange)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_products.category">
 
                                             <mat-option value="{{category.id}}" *ngFor=" let category of menuservice.categories">
 
@@ -171,7 +171,7 @@
                                 <span>
                                      <button mat-button  [ngClass]="{'active-search-button':searchService.filter_products.price != 'any_price'}" class="button_search_for  border">
 
-                                        <mat-select [disabled]="block"  (change)="searchService.change_search()"  class="searchFor" [(value)]="searchService.filter_products.price">
+                                        <mat-select [disabled]="block"  (selectionChange)="searchService.change_search()"  class="searchFor" [(value)]="searchService.filter_products.price">
 
                                             <mat-option value="expensive">
 
@@ -222,7 +222,7 @@
                                  <span>
                                      <button mat-button [disabled]="block"  [ngClass]="{'active-search-button':searchService.filter_products.time != 'any_time'}" class="button_search_for  border" >
 
-                                        <mat-select [disabled]="block" (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_products.time">
+                                        <mat-select [disabled]="block" (selectionChange)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_products.time">
 
                                             <mat-option value="past_day">
 
@@ -284,7 +284,7 @@
                                  <span>
                                      <button mat-button [ngClass]="{'active-search-button':searchService.filter_products.location != 'world'}" class="button_search_for  border" >
 
-                                        <mat-select [disabled]="block"  (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_products.location" style="z-index: 0 !important;">
+                                        <mat-select [disabled]="block"  (selectionChange)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_products.location" style="z-index: 0 !important;">
 
                                               <div class="search_location">
 
@@ -333,7 +333,7 @@
                                 <button mat-button  class="button_search_for active-search-button border" >
 
 
-                                    <mat-select (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.search_data.searchFor">
+                                    <mat-select (selectionChange)="searchService.change_search()" class="searchFor" [(value)]="searchService.search_data.searchFor">
 
 
                                         <mat-option value="products">
@@ -382,7 +382,7 @@
                                  <span>
                                      <button mat-button [ngClass]="{'active-search-button':searchService.filter_supplier.time != 'any_time'}" class="button_search_for  border" >
 
-                                        <mat-select (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_supplier.time">
+                                        <mat-select (selectionChange)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_supplier.time">
 
                                             <mat-option value="past_day">
 
@@ -445,7 +445,7 @@
                                  <span>
                                      <button mat-button [ngClass]="{'active-search-button':searchService.filter_supplier.location != 'world'}" class="button_search_for  border" >
 
-                                        <mat-select (change)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_supplier.location">
+                                        <mat-select (selectionChange)="searchService.change_search()" class="searchFor" [(value)]="searchService.filter_supplier.location">
 
                                              <mat-option value="enter">
                                                 Search Location
@@ -617,17 +617,21 @@
 
                     <div class="button_right_pc"  *ngFor=" let button of button_right  ; let i = index "  >
 
-                        <span *ngIf="auth.status && button.id == 1 ; else looggedout">
+                        <a href="#">
 
-                            <button class="user_dropdown" mat-icon-button >
-
-                                <img class="full" src="../../assets/images/users/{{auth.client.picture}}">
-
-                            </button>
+                        <div href="#" class="drop_button button{{button.id}} {{button.different_class}}" *ngIf="auth.token && button.id == 1 ; else looggedout" (click)="check_button(button ,i , $event)">
 
 
+                            <span matBadge="11" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn" [matBadgeHidden]="false" class="glyphicon icon_button "  [ngClass]="{'selected-color-button' : i==productsService.button_properties.selectedIndex }">
 
-                        </span>
+                                <img class="client_img" src="../../assets/images/users/{{auth.client.picture}}">
+
+                            </span>
+
+
+                            <div class="write_icon_header write_icon_header{{button.id}}" > {{auth.client.first_name}} </div>
+
+                        </div>
 
                         <ng-template #looggedout >
 
@@ -642,6 +646,7 @@
                               </div>
 
                         </ng-template>
+                        </a>
 
                     </div>
 
@@ -649,6 +654,34 @@
 
             </span>
             <!--  start dropdown header ..................................................................-->
+
+            <div class="dropclient  dropdown_button notClosepointerHeader notCloseDropdawnClient">
+
+
+
+                    <div class="header_div">
+                        klodian shaba ketu
+                    </div>
+
+
+                <div class=" body_div bodydropclient">
+
+
+                    <div class="client_option hover" (click)="auth.logout()">
+                        logout
+                    </div>
+
+                    <div class="client_option hover">
+                        Profile
+                    </div>
+
+                    <div class="client_option hover">
+                        settings
+                    </div>
+                </div>
+
+
+            </div>
 
             <div class="dropmore dropdown_button notClosepointerHeader notCloseDropdawnLanguage">
 
@@ -893,7 +926,7 @@
 
                                         <mat-form-field style="width:40px;">
 
-                                            <mat-select  [(value)]="cart_product.quantity" (change)="productsService.update_quantity_cartList( cart_product )">
+                                            <mat-select  [(value)]="cart_product.quantity" (selectionChange)="productsService.update_quantity_cartList( cart_product )">
 
                                                 <mat-option [value]="1">
                                                     1
@@ -1006,7 +1039,7 @@
 
             </div>
 
-            <div class="treguesi notCloseDropdawnFavorite notClosepointerHeader notCloseDropdawnCard notCloseDropdawnLanguage"></div>
+            <div class="treguesi notCloseDropdawnFavorite notClosepointerHeader notCloseDropdawnCard notCloseDropdawnLanguage notCloseDropdawnClient"></div>
 
         </div>
 

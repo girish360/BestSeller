@@ -1,34 +1,56 @@
 
-
 <!DOCTYPE html>
+
 <html>
 
 <head>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
   <meta charset="utf-8">
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" href="">
+
   <title>klo</title>
+
   <base href="/">
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <script src="../node_modules/fingerprintjs2/dist/fingerprint2.min.js"></script>
+
+  <script>
+
+      var clientSignature; // fingerprint
+
+      var SingatureComponents; // fingerprint components
+
+      var options = {
+         excludes :{ screenResolution : true ,availableScreenResolution: true },
+
+      };
+
+      Fingerprint2.get( options ,function (components) {
+
+          clientSignature = Fingerprint2.x64hash128( components.map(function (pair) { return pair.value }).join(), 31 );
+
+          SingatureComponents =  components;
+
+      });
+
+  </script>
 
 </head>
 
 <body>
 
-
 <app-root></app-root> <!-- this is the  BestSeller app ......-->
-
 
 </body>
 

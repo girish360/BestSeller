@@ -48,7 +48,7 @@
             </div>
             <mat-form-field style="width:100px;  position: absolute;right:0;top:-10px; ">
 
-                <mat-select  [(value)]="pages_details.products_for_page" (change)="change_products_for_page()">
+                <mat-select  [(value)]="pages_details.products_for_page" (selectionChange)="change_products_for_page()">
 
                     <mat-option [value]="5">
                         5 / Page

@@ -26,7 +26,7 @@ class home extends controller {
 
             $count = database::table('subcategories')
                 ->count()
-                ->get()['count'];
+                ->get()[0]['count'];
 
         } else { // called more than one time and  number total_categories exist come from client ..................................
 
@@ -72,7 +72,7 @@ class home extends controller {
             $count = database::table('products')
                 ->count()
                 ->where('category_id','=', $category[$category_id_name] )
-                ->get()['count'];
+                ->get()[0]['count'];
 
             if ( $count > 0 ) {
 

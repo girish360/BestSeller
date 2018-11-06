@@ -24,7 +24,7 @@ class DB { //class of databse can build query and execute it to get data from da
 
     private $select = 'select'; // selecte statments
 
-    private $from = ' from ';  // tables
+    private $from;  // tables
 
     private $where = false; // where clause
 
@@ -118,11 +118,9 @@ class DB { //class of databse can build query and execute it to get data from da
 
         $instance = self::generic_instance( __FUNCTION__ );
 
-        $instance->from .=' '.$table_name;
+        $instance->from =' from '.$table_name;
 
         $instance->table = $table_name ;
-
-
 
         return $instance;
 
@@ -131,6 +129,11 @@ class DB { //class of databse can build query and execute it to get data from da
     public function from( $from ){
 
         $this->table = $from;
+
+        if( empty( $this->from )){
+
+            $this->from =' from '.$this->table;
+        }
 
         $this->from .=' '.$this->table;
 
@@ -239,7 +242,6 @@ class DB { //class of databse can build query and execute it to get data from da
     public function join($addtable,$primarykey,$operator,$foreignkey){  // joind method add multiple tables in query ..........
 
         $this->from .= " join " .$addtable .' on '.$primarykey.' '.$operator.' '.$foreignkey ;
-
 
         return self::end_instance();
     }
@@ -764,14 +766,10 @@ class DB { //class of databse can build query and execute it to get data from da
 
             }
 
-            $this->update = "update ".$this->table.' set '.$set.' '.$this->where;
+            $this->update = "update ".$this->table.' set '.$set;
 
-            $this->prepare =  $this->update;
 
-            self::execute();
-
-            return  $this->prepare;
-
+            return self::end_instance();
 
         }else{
 
@@ -784,15 +782,7 @@ class DB { //class of databse can build query and execute it to get data from da
     public function execute_insert( $columns , $values ){
 
 
-        $columnss = implode( ", ", array_keys( $columns ) );
 
-        $valuess = implode( ", ", array_keys(  $values ) );
-
-        $this->insert = "insert into ".$this->table. "( ".$columnss." ) values ( ".$valuess." )";
-
-        $this->prepare = $this->insert;
-
-        self::execute();
 
     }
 
@@ -981,13 +971,30 @@ class DB { //class of databse can build query and execute it to get data from da
 
         self::build_prepare( self::end_instance() );
 
-        return self::execute();
+        return self::execute_query();
+
+    }
+
+    public function execute(){
+
+         self::build_prepare( self::end_instance() );
+
+        return self::execute_query();
+
 
     }
 
     public function build_prepare( $instance ){ // build prepare query without data
 
+        if( !empty($this->update) ){
+
+            $instance->select = false;
+
+            $instance->from = false;
+        }
+
         $instance->prepare =
+            $instance->update.' '.
             $instance->delete.' '.
             $instance->select.' '.
             $instance->from.' '.
@@ -1017,9 +1024,9 @@ class DB { //class of databse can build query and execute it to get data from da
         }catch(PDOException $e){die($e->getMessage());}
     }
 
-    public function execute(){ // execute query
+    public function execute_query(){ // execute query
 
-        $query =self::conn()->prepare( $this->prepare );
+        $query = self::conn()->prepare( $this->prepare );
 
         foreach ( $this->data as $key => &$value ){
 
@@ -1038,17 +1045,14 @@ class DB { //class of databse can build query and execute it to get data from da
 
         $count = count( $result_from_db );
 
-        if( $count  > 1 ){
+        if( $count  >= 1 ){
 
             return  $result_from_db;
 
-        }else if( $count == 1 ){
-
-           return $result_from_db[0];
-
-        }else{
+        }else {
 
             return false;
+
         }
     }
 

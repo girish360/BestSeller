@@ -203,7 +203,7 @@ export class ProductService extends HeaderService {
 
                 }
 
-                this.subject_products.next(true);
+                this.dataservices.update_products(true);
 
               }
 

@@ -16,7 +16,9 @@ import {Observable} from 'rxjs/Observable';
 
 import{Subject} from 'rxjs/Subject';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 
 export class DataService extends HttpService implements OnInit{
 

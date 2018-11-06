@@ -58,9 +58,9 @@ export class MenuComponent  implements OnInit  {
 
 
 
-            },
+            }
 
-            error => console.log(error) // take error .....
+
 
         );
 

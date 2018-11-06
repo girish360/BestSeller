@@ -16,13 +16,15 @@ import { EncryptDecryptService } from './encrypt-decrypt.service';
 
 export class HttpService extends EncryptDecryptService{
 
-  constructor( protected http : HttpClient ) {
+    constructor( protected http : HttpClient ) {
 
-    super(); // initial parent ......................
+      super(); // initial parent ......................
 
-  }
 
-  private baseUrl = '/BestSellerApi';
+
+    }
+
+    private baseUrl = '/BestSellerApi';
 
     Http_Get( uri  , data ): Observable<HttpResponse<any>>{ // get method  wating for two parameters key string and data object....
 
@@ -46,12 +48,6 @@ export class HttpService extends EncryptDecryptService{
                 }
             )
 
-
-                .pipe(
-
-                    catchError(this.handleError)
-                );
-
         }else{ // without params
 
             return this.http.get<any>( this.baseUrl+'/'+uri,
@@ -67,17 +63,12 @@ export class HttpService extends EncryptDecryptService{
                 }
             )
 
-                .pipe(
-
-                    catchError(this.handleError)
-                );
-
         }
 
     }
 
 
-  Http_Post( uri , data ): Observable<HttpResponse<any>>{  // method that make popst request in server  and return response...........
+    Http_Post( uri , data ): Observable<HttpResponse<any>>{  // method that make popst request in server  and return response...........
 
 
       return this.http.post<any>( this.baseUrl+'/'+uri, JSON.stringify( data ), // url and body
@@ -93,13 +84,9 @@ export class HttpService extends EncryptDecryptService{
           }
       ) // send request
 
-          .pipe(
-
-              catchError(this.handleError) // catch error
-
-        );
 
   }
+
 
     private handleError(error: HttpErrorResponse) {
         if ( error.error instanceof ErrorEvent) {

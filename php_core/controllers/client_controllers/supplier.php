@@ -63,8 +63,14 @@ class supplier extends controller {
             ->where( 'id','=',$this->request->company_id )
             ->get();
 
+
+
         if( !empty( $supplier )  ) {
 
+            if( count($supplier) == 1 ){
+
+                $supplier = $supplier[0];
+            }
 
             if ( $supplier['name'] == $this->request->company_name) {
 
@@ -103,7 +109,7 @@ class supplier extends controller {
             $count = database::table(CATEGORIES )
                 ->count()
                 ->where('supplier_id','=',$request->company_id)
-                ->get()['count'];
+                ->get()[0]['count'];
 
 
         } else { // called more than one time and  number total_categories exist come from client ..................................
@@ -191,7 +197,7 @@ class supplier extends controller {
                     ->count()
                     ->where('category_id','=', $category[$category_id_name] )
                     ->andWhere('supplier_id','=',$request->company_id)
-                    ->get()['count'];
+                    ->get()[0]['count'];
 
             }
 
