@@ -24,6 +24,8 @@ export class DataService extends HttpService implements OnInit{
 
  // identify if cartlist should change
 
+    public resolve:boolean = false;
+
     public app_rendered :any = false;
 
     public loaded_component:any = false; // when response is came from server this property become true

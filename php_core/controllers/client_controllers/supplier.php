@@ -138,12 +138,17 @@ class supplier extends controller {
                 ->where('suppliers_categories.supplier_id','=', $request->company_id )
                  ->get();
 
-            $this->categories = $categories;
+
         }
 
         $result = array();
 
-        self::dependet_products( $categories, $request  ,'id');
+        if( $categories ){
+
+            $this->categories = $categories;
+
+            self::dependet_products( $categories, $request  ,'id');
+        }
 
         foreach ( $this->categories_products as $key => $category ){
 
@@ -164,13 +169,10 @@ class supplier extends controller {
             ->where('suppliers_categories.supplier_id','=', $this->request->company_id)
             ->get();
 
-        if( count( $categories ) >= 1 ){
+        if( $categories ){
 
             $this->categories = $categories;
 
-        }else{
-
-            $this->categories = false;
         }
 
     }

@@ -4,15 +4,13 @@ import { DataService } from './data.service';
 
 import { Observable } from 'rxjs/Observable';
 
-import { HttpClient ,HttpHeaders  } from '@angular/common/http';
+import { HttpClient   } from '@angular/common/http';
 
-import {  throwError ,BehaviorSubject} from 'rxjs';
+import { SetRouterService } from '../../share_services/set-router.service';
 
-import { catchError, mergeMap , switchMap ,finalize ,take ,filter } from 'rxjs/operators';
+import { ProductService } from './product.service';
 
 import{ Router } from '@angular/router';
-
-import { map , share } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +31,7 @@ export class AuthService {
 
   public refresh_token_request:boolean = false;
 
-  constructor( private dataservices : DataService , private http : HttpClient , private router: Router ) {
+  constructor( private productsService :ProductService, private set_router :SetRouterService ,private dataservices : DataService , private http : HttpClient , private router: Router ) {
 
   }
 
@@ -52,6 +50,10 @@ export class AuthService {
     this.token = false;
 
     this.refresh_token = false;
+
+    this.productsService.hide_dropdown_button('dropclient','.bodydropclient');
+
+    this.set_router.set_router( { path:'shopping/', data:false ,relative:false },false);
 
   }
 

@@ -15,13 +15,9 @@ import { NotFoundComponent } from '../share_components/not-found/not-found.compo
 
 import { UsersComponent } from './components/users/users.component'; //  menu  left  in shopping
 
-import { AuthGuard } from './services/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
-import { ResolverService } from './resolvers/resolver.service';
-
-import { ResolverHomeService } from './resolvers/resolver_home.service';
-
-import { ResolverIndexService } from './resolvers/resolver-index.service';
+import { ResolveService } from './guards/resolve.service';
 
 import { WishListComponent } from './components/wish_list/wish_list.component';
 
@@ -32,21 +28,27 @@ import { SearchComponent } from './components/search/search.component';
 const routes: Routes = [
 
   {
-    path: '', component: IndexComponent, resolve : {index :ResolverIndexService },
+    path: '', component: IndexComponent, resolve : { index :ResolveService },
 
     children: [
 
-      { path: '', component: HomeComponent,resolve :{ home :ResolverHomeService } },
+      { path: '', component: HomeComponent,resolve :{ home :ResolveService } },
 
-      { path: 'products/:name', component:ProductsComponent,resolve:{  products : ResolverService  } },
+      { path: 'products/:name', component:ProductsComponent,resolve:{  products : ResolveService  } },
 
       { path: 'company/:details',  loadChildren :'./lazy_modules/company.module#CompanyModule'},
 
       { path: 'product_details/:name', loadChildren: './lazy_modules/product_details.module#ProductDetailsModule'},
 
-      { path: 'login_register', loadChildren : './lazy_modules/login_register.module#LoginRegisterModule'},
+      {
+        path: 'login_register', loadChildren : './lazy_modules/login_register.module#LoginRegisterModule',
 
-      { path: 'wish_list', component : WishListComponent},
+      },
+
+      {
+        path: 'wish_list', component : WishListComponent,
+
+      },
 
       { path: 'cart_list', component : CardListComponent},
 

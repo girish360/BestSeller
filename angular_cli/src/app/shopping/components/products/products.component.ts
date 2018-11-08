@@ -87,7 +87,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
           this.scroll.window(0, 0);
 
-          if ( this.productsService.resolver ){ // response from  resolve .....
+          if ( this.dataservices.resolve ){ // response from  resolve .....
 
               this.dataservices.loaded_component = true;
 
@@ -123,7 +123,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
               this.route.queryParams.subscribe( params => {
 
-                  this.productsService.load_products( params ).subscribe( response =>{
+                  this.productsService.load_products( { queryParams:params } ).subscribe( response =>{
 
                       this.dataservices.loaded_component = true;
 

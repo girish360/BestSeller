@@ -12,7 +12,9 @@ import { EncryptDecryptService } from '../../share_services/encrypt-decrypt.serv
 
 import { ScrollbarService } from '../../share_services/scrollbar.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class ProductService extends HeaderService {
 
@@ -46,7 +48,9 @@ export class ProductService extends HeaderService {
 
   }
 
-  public load_products( params ): Observable<any>{
+  public load_products( route ): Observable<any>{
+
+    let params = route.queryParams;
 
     if( !isNaN( params.id )  &&  ( !isNaN( params.page ) || params.page == null  ) ){
 

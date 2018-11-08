@@ -21,16 +21,13 @@ export class HeaderService  implements OnInit {
 
   constructor( protected dataservices : DataService ) {
 
-
   }
 
   public subject_products =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
 
   public status_products = this.subject_products.asObservable();// identify if cartlist should change
 
-  ngOnInit(){
-
-  }
+  ngOnInit(){}
 
   private Response :any;
 

@@ -15,14 +15,16 @@ import { ProductsComponent } from '../components/products/products.component';
 
 import { CategoriesComponent } from '../components/company/categories/categories.component'; // company categories ........
 
-import { ResolverService } from '../resolvers/resolver_supplier.service';
+import { ResolveService } from '../guards/resolve.service';
+
+
 
 const routes: Routes = [
 
   {
     path: '' , component : CompanyComponent,
 
-    resolve:{  company : ResolverService  },
+    resolve:{  company : ResolveService  },
 
     children:[
 

@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ResolverService } from './resolver.service';
+import { ResolveService } from './resolve.service';
 
 describe('ResolverService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ResolverService]
+      providers: [ResolveService]
     });
   });
 
-  it('should be created', inject([ResolverService], (service: ResolverService) => {
+  it('should be created', inject([ResolveService], (service: ResolveService) => {
     expect(service).toBeTruthy();
   }));
 });

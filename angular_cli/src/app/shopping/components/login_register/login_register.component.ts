@@ -2,7 +2,7 @@ import { Component, OnInit , DoCheck} from '@angular/core';
 
 import {FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 
-import {  ActivatedRoute  ,Params , Data , Router} from '@angular/router';
+import { ActivatedRoute  ,Params , Data , Router} from '@angular/router';
 
 import {ErrorStateMatcher} from '@angular/material/core';
 
@@ -158,7 +158,7 @@ export class LoginRegisterComponent implements OnInit {
 
                  this.dataservices.update_app(true);
 
-                 this.setRouter.set_router( { path:'shopping/client/'+this.auth.client.first_name , data:false , relative:false},this.route);
+                 this.setRouter.set_router( { path:'shopping/', data:false , relative:false},this.route);
 
                } else {
 

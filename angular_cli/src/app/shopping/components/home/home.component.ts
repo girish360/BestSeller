@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
 
           this.scroll.window(0, 0);
 
-          if ( this.homeservice.resolver ){ // response from  resolve .....
+          if ( this.dataservices.resolve ){ // response from  resolve .....
 
               this.dataservices.loaded_component = true;
 

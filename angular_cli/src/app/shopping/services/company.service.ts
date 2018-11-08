@@ -52,11 +52,12 @@ export class CompanyService {
 
   public load_company( params ): Observable<any>{
 
-      let company = params.details;
+      let company = params.params.details;
 
       let company_name;
 
       let company_id;
+
 
       if (company.includes("@")) {
 
@@ -65,6 +66,8 @@ export class CompanyService {
         company_name = company.substring(0, index);
 
         company_id = company.substring(index + 1, company.length);
+
+        console.log('name: '+company_name+ ' id: '+company_id);
 
         if (!isNaN(company_id) && ( company_name instanceof String || isNaN(parseInt(company_name)) )) {
 

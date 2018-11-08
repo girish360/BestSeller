@@ -25,15 +25,15 @@ import { MenuService } from './services/menu.service';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
 
-import { AuthGuard } from './services/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 import { SearchService } from './services/search.service';
 
-import { ResolverService } from './resolvers/resolver.service';
-
-import { ResolverHomeService } from './resolvers/resolver_home.service';
+import { ResolveService } from './guards/resolve.service';
 
 import { IndexService } from './services/index.service';
+
+import { CompanyService } from './services/company.service';
 
 import { SwipeMenuService } from './services/swipe-menu.service';
 
@@ -113,9 +113,9 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
     SettingsService,
     MenuService,
     AuthGuard,
-    ResolverService,
-    ResolverHomeService,
+    ResolveService,
     IndexService,
+    CompanyService,
     SearchService,
     SwipeMenuService
   ]

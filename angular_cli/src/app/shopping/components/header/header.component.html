@@ -1,4 +1,4 @@
-
+git add .
 <div class="header_pc  inside_header"  *ngIf="{ header:dataservices.header | async , app:dataservices.async | async }">
 
 
@@ -667,17 +667,21 @@
                 <div class=" body_div bodydropclient">
 
 
+                    <a href="#">
+
+
                     <div class="client_option hover" (click)="auth.logout()">
                         logout
                     </div>
 
-                    <div class="client_option hover">
+                    <div class="client_option hover" (click)="client_profile()">
                         Profile
                     </div>
 
                     <div class="client_option hover">
                         settings
                     </div>
+                    </a>
                 </div>
 
 

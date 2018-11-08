@@ -33,7 +33,7 @@ export class BodyComponent implements OnInit {
 
   ngAfterViewChecked(){
 
-    this.dataservices.app_rendered = true;
+    this.dataservices.app_rendered = true; // first load  true ........
 
   }
 }

@@ -27,8 +27,6 @@ import { CompanyService } from '../services/company.service';
 
 import { CategoriesComponent } from '../components/company/categories/categories.component'; // company categories ........
 
-import { ResolverService } from '../resolvers/resolver_supplier.service';
-
 import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
@@ -72,11 +70,6 @@ import { AgmCoreModule } from '@agm/core';
 
 
         CompanyService,
-
-        ResolverService,
-
-
-
 
     ]
 

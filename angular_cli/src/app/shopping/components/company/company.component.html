@@ -1,10 +1,12 @@
+
+
 <div class="company" *ngIf="{ company : dataservices.company | async , app : dataservices.async | async } ">
 
-        <ng-container *ngIf="dataservices.loaded_component;else loading">
+    <ng-container *ngIf="dataservices.loaded_component;else loading">
 
             <ng-container *ngIf="!dataservices.not_founded;else notFounded">
 
-                <div class="sticky transition " [ngStyle]="get_style_sticky()" >
+                <div class="sticky company_sticky transition " [ngStyle]="get_style_sticky()" >
 
                     <div class="sticky_options">
 
@@ -247,9 +249,12 @@
             </ng-container>
 
 
-            <ng-template #notFounded>
-
+            <ng-template  #notFounded>
+                <div class="not_founded_company">
                 not founded
+                </div>
+
+
 
             </ng-template>
 
@@ -257,9 +262,13 @@
 
 
 
-    <ng-template #loading>
+    <ng-template  #loading>
 
+        <div class="loading_company">
         loading .................
+        </div>
+
+
 
     </ng-template>
 

@@ -200,9 +200,7 @@
 
                            this.auth.client = response['client'];
 
-
                         }
-
 
                         if( wishlist ){
 
@@ -214,16 +212,13 @@
                             this.productsService.set_quantity_in_cartList( quantity_items_incart , cartlist );
 
                             this.productsService.total_items_and_price();
-
                         }
-
 
 
                         this.dataservices.language = language;
 
                         this.cd.markForCheck();
                     }
-
 
                 }
             );
@@ -495,6 +490,11 @@
 
          this.setRouter.set_router( data , this.route ); // set router .....
 
+    }
+
+    client_profile(){
+
+        this.set_router( { path:'shopping/client/'+this.auth.client.first_name , data:false , relative:false} );
     }
 
     button_search(el){

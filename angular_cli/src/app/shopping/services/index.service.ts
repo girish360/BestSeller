@@ -5,11 +5,23 @@ import { DataService } from './data.service';
 
 import { ScrollbarService } from '../../share_services/scrollbar.service';
 
+import { AuthService} from '../services/auth.service';
+
 @Injectable()
 
 export class IndexService {
 
-  constructor( private dataservices: DataService , private scroll:ScrollbarService) { }
+  constructor( private auth :AuthService,  private dataservices: DataService , private scroll:ScrollbarService) { }
+
+  load_index(){
+
+    this.auth.token = this.auth.get_storage( this.auth.token_key ); // get token from local store or null if dose not exists
+
+    this.auth.refresh_token = this.auth.get_storage( this.auth.refresh_token_key ); // get refresh token from local store or null if dose not exists
+
+    return true;
+
+  }
 
   public check_footer(){
 

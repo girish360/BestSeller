@@ -8,7 +8,7 @@ import { EncryptDecryptService } from './encrypt-decrypt.service';
 
 export class SetRouterService extends EncryptDecryptService{
 
-    constructor(  private router: Router ) {
+    constructor(  private router: Router  ) {
 
      super();
 

@@ -18,7 +18,7 @@ import { SettingsService } from '../../services/settings.service';
 
 import { MenuService } from '../../services/menu.service';
 
-import { Router, ActivatedRoute ,Event,NavigationStart,NavigationEnd,NavigationError } from '@angular/router';
+import { Router, ActivatedRoute ,Event,NavigationStart,NavigationEnd,NavigationError,NavigationCancel } from '@angular/router';
 
 import { IndexService } from '../../services/index.service';
 
@@ -68,7 +68,7 @@ export class IndexComponent implements OnInit {
         this.dataservices.update_loader(true);
       }
 
-      if( event instanceof NavigationEnd ) {
+      if( event instanceof NavigationEnd || event instanceof NavigationCancel) {
 
         setTimeout(() => {
 

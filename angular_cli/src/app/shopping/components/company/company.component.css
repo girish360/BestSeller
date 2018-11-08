@@ -4,6 +4,11 @@
 
 
 }
+
+.not_founded_company , .loading_company{
+
+    margin-top: 40px;
+}
 .company_router{
     position: relative; width: inherit; height: auto;z-index: 1;
 }

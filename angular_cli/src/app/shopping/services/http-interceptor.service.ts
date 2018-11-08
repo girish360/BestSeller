@@ -16,6 +16,7 @@ declare var clientSignature:any;
   providedIn: 'root'
 
 })
+
 export class HttpInterceptorService implements HttpInterceptor {
 
   constructor(private auth : AuthService ) { }

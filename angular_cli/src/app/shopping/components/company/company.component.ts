@@ -107,7 +107,7 @@ export class CompanyComponent implements OnInit {
 
            this.currentSlide_category = 0;
 
-            if ( this.company.resolve ){ // response from  resolve .....
+            if ( this.dataservices.resolve ){ // response from  resolve .....
 
                 this.dataservices.loaded_component = true;
 
@@ -136,7 +136,7 @@ export class CompanyComponent implements OnInit {
 
                 this.route.params.subscribe( params => {
 
-                    this.company.load_company( params ).subscribe( response =>{
+                    this.company.load_company( {params : params } ).subscribe( response =>{
 
                         this.dataservices.loaded_component = true;
 

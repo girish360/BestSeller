@@ -5,8 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginRegisterComponent } from '../components/login_register/login_register.component';
 
+import { AuthGuard } from '../guards/auth.guard';
+
 const routes: Routes = [
-  { path:'', component : LoginRegisterComponent }
+  { path:'', component : LoginRegisterComponent,
+
+    canActivate: [AuthGuard],
+  }
 ];
 
 @NgModule({
