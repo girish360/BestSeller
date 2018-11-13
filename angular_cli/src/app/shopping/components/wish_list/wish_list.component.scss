@@ -1,12 +1,5 @@
 /* Styles go here */
 
-button:disabled {
-    cursor: not-allowed;
-    pointer-events: all !important;
-}
-
-.no-drop {cursor: no-drop;}
-
 .selected_wish{
     background-color:  #f2f2f2;
     transition: 0.5s;

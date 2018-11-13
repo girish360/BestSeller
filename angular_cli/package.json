@@ -42,6 +42,7 @@
     "ngx-device-detector": "^1.2.1",
     "ngx-drag-scroll": "^2.0.1",
     "ngx-infinite-scroll": "^6.0.0",
+    "node-sass": "^4.10.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
     "typings": "^2.1.1",

@@ -1,6 +1,6 @@
 <div class="menu" *ngIf="{menu : dataservices.menu | async , app : dataservices.async | async} " >
 
-<div class="under_menu_left " [ngStyle]="dataservices.menu_style" [ngClass]="{'menu_left_open':menuservice.menu.getValue() }"></div>
+<div class="under_menu_left body " [ngStyle]="dataservices.menu_style" [ngClass]="{'menu_left_open':menuservice.menu.getValue() }"></div>
 
 <div class="menu_left" [ngStyle]="dataservices.menu_style" [ngClass]="{'menu_left_open': menuservice.menu.getValue() }">
 

@@ -27,7 +27,7 @@ declare var $:any;
 @Component({
     selector: 'app-company',
     templateUrl: './company.component.html',
-    styleUrls: ['./company.component.css'],
+    styleUrls: ['./company.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 
 })

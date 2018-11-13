@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
 
     let component_name = route.routeConfig.component.name;
 
-     if( component_name == 'UsersComponent' ){
+     if( component_name == 'ClientComponent' ){
 
        if( !this.dataservices.app_rendered ){ // if is first load
 

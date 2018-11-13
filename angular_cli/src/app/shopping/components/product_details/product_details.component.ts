@@ -17,7 +17,7 @@ declare var $ :any;
 @Component({
   selector: 'app-product-details',
   templateUrl: './product_details.component.html',
-  styleUrls: ['./product_details.component.css']
+  styleUrls: ['./product_details.component.scss']
 })
 export class ProductDetailsComponent implements OnInit , OnDestroy {
 

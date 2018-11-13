@@ -3,7 +3,7 @@
     width: 30px;
     background: transparent;
     position: fixed;
-    bottom: 50px;
+    bottom: 40px;
     right: 0;
     display: none;
     border-top-left-radius: 6px;
@@ -23,7 +23,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    height: calc(100vh - 50px );
+    height: calc(100vh - 40px );
     background-color: cornflowerblue;
     z-index: 1000 !important;
 }
@@ -34,7 +34,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 40px);
     z-index: 999 !important;
 
 }

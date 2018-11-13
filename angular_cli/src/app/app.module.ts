@@ -25,6 +25,8 @@ import { ShareModule } from './share_module/share.module';
 
 import { HttpInterceptorService } from './shopping/services/http-interceptor.service';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 // end services .....................................................................................
 
@@ -36,6 +38,8 @@ import { ControllerComponent } from './cover_app/components/controller/controlle
 
 import { SetRouterService } from './share_services/set-router.service';
 
+
+
 // end components ............................................................................................
 
 @NgModule({
@@ -45,6 +49,8 @@ import { SetRouterService } from './share_services/set-router.service';
     AppComponent,
 
     ControllerComponent,
+
+
   ],
 
   imports: [
@@ -52,6 +58,8 @@ import { SetRouterService } from './share_services/set-router.service';
     ShareModule ,
 
     BrowserModule,
+
+    ReactiveFormsModule,
 
     BrowserAnimationsModule,
 

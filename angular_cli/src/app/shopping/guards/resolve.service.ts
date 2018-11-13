@@ -15,6 +15,8 @@ import { IndexService } from '../services/index.service';
 
 import { CompanyService } from '../services/company.service';
 
+import { ClientService } from '../services/client.service';
+
 @Injectable()
 
 export class ResolveService implements Resolve<any> {
@@ -23,7 +25,8 @@ export class ResolveService implements Resolve<any> {
                private products:ProductService ,
                private home:HomeService,
                private index :IndexService,
-               private company : CompanyService
+               private company : CompanyService,
+               private client:ClientService
   ) { }
 
   resolve( route:ActivatedRouteSnapshot , state: RouterStateSnapshot ): Observable<any> | Promise<any> | Boolean | Object {

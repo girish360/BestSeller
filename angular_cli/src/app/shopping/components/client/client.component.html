@@ -1,0 +1,40 @@
+
+<div class="client component-animation" *ngIf="{ client : dataservices.client | async , app : dataservices.async | async } "> <!--  this component is inside this div  ...................................................... -->
+
+  <ng-container *ngIf="dataservices.loaded_component;else loading">
+
+    <ng-container *ngIf="!dataservices.not_founded;else notFounded">
+
+         client works
+
+    </ng-container>
+
+
+    <ng-template #notFounded>
+
+      not founded
+
+    </ng-template>
+
+  </ng-container>
+
+
+
+  <ng-template #loading>
+
+    loading .................
+
+  </ng-template>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+

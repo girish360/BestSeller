@@ -46,7 +46,7 @@
 
     templateUrl: './header.component.html' ,
 
-     styleUrls: ['./header.component.css'],
+     styleUrls: ['./header.component.scss'],
 
      changeDetection :ChangeDetectionStrategy.OnPush,
 
@@ -143,20 +143,24 @@
 
      public button_right = [
 
-         { id:1 , name:'sign' ,mat_tooltip:'User Panel',
-             icon :'glyphicon-user gh-productsService' , dropdown_class:'dropclient' , dropdown_body:'.bodydropclient' ,
+         { id:4 , name:'sign' ,tooltip:'User Panel',  length:'',
+             icon :'account_box' , dropdown_class:'dropclient' , dropdown_body:'.bodydropclient' ,
              hide_notification:true ,different_class :'notCloseDropdawnClient notClosepointerHeader'
          },
-         { id:2 , name:'wish' , mat_tooltip:'WishList',  different_class:' notCloseDropdawnFavorite notClosepointerHeader',
-             icon :'glyphicon-heart' , dropdown_class:'dropfavorites' ,dropdown_body:'.dropfavorites  .wishlist_component  .body_div',
+         { id:3 , name:'notification' ,tooltip:'Notify Panel',length:'count_notify',
+             icon :'notifications_active' , dropdown_class:'dropnotify' , dropdown_body:'.body_notify' ,
+             hide_notification:false ,different_class :'notCloseDropdawnNotify notClosepointerHeader'
+         },
+         { id:2 , name:'wish' , tooltip:'WishList.length', length:'count_wish', different_class:' notCloseDropdawnFavorite notClosepointerHeader',
+             icon :'favorite' , dropdown_class:'dropfavorites' ,dropdown_body:'.dropfavorites  .wishlist_component  .body_div',
              hide_notification:false
          },
-         { id:3 , name:'card' ,mat_tooltip:'Your Cart',  different_class:'notClosepointerHeader notCloseDropdawnCard',
-             icon :'glyphicon-shopping-cart gh-productsService' , dropdown_class:'dropcard' ,dropdown_body:'.body_cart',
+         { id:1 , name:'card' ,tooltip:'Your Cart',length:'count_cart',  different_class:'notClosepointerHeader notCloseDropdawnCard',
+             icon :'shopping_cart' , dropdown_class:'dropcard' ,dropdown_body:'.body_cart',
              hide_notification:false
          },
-         { id:4 , name:'more' ,mat_tooltip:'More Options',  different_class:'notClosepointerHeader notCloseDropdawnLanguage',
-             icon :'glyphicon-option-vertical', dropdown_class:'dropmore' ,dropdown_body:'.dropdown_more .mat-tab-body-wrapper',
+         { id:0 , name:'more' ,tooltip:'More Options', length:'', different_class:'notClosepointerHeader notCloseDropdawnLanguage',
+             icon :'view_module', dropdown_class:'dropmore' ,dropdown_body:'.dropdown_more .mat-tab-body-wrapper',
              hide_notification:true
          },
 
@@ -315,15 +319,15 @@
 
          //load Places Autocomplete
          this.mapsAPILoader.load().then(() => {
+
              let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
                  types: ["address"]
              });
+
              autocomplete.addListener("place_changed", () => {
                  this.ngZone.run(() => {
                      //get the place result
                      let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-
 
                      //verify result
                      if (place.geometry === undefined || place.geometry === null) {
@@ -429,6 +433,8 @@
 
      public check_button( button , i  ,event ){
 
+
+
          this.productsService.button_properties.selectedIndex = i;
 
         if( this.productsService.button_properties.disabled == false ) {
@@ -441,11 +447,11 @@
 
             },300);
 
-            if (this.productsService.button_properties.active != button.id) {
+            if ( this.productsService.button_properties.active != button.id ) {
 
                 this.productsService.button_properties.active = button.id;
 
-                if ( button.id == 1) {
+                if ( button.id == 4) {
 
                     if( this.auth.token ){
 
@@ -473,12 +479,9 @@
 
             } else {
 
-
-                $('.write_icon_header').css('color', 'slategrey');
+                this.productsService.button_properties.active = -1;
 
                 this.productsService.hide_dropdown_button( button.dropdown_class, button.dropdown_body  );
-
-                this.productsService.button_properties.active = 0;
 
                 this.productsService.button_properties.selectedIndex = 'empty';
             }
@@ -494,10 +497,17 @@
 
     client_profile(){
 
-        this.set_router( { path:'shopping/client/'+this.auth.client.first_name , data:false , relative:false} );
+         let client_name = this.auth.client.first_name;
+
+         let client_id = this.auth.client.id;
+
+
+        let client = 'shopping/client/'+client_name+'@'+client_id;
+
+        this.set_router( { path:client , data:false , relative:false} );
     }
 
-    button_search(el){
+    button_search( el ){
 
         this.searchService.search_component = true;
 
@@ -518,31 +528,11 @@
 
          $(function(){
 
-             var left =  $('.button'+id).offset();
+             let position =id * 70 ;
 
-             if( id == 2 ){
 
-                 $( '.'+dropdown_Class ).css({ left:  left.left - 430  });
+             $( '.'+dropdown_Class ).css({ right: position });
 
-                 $('.treguesi').css({"margin-left": left.left + 27, "background-color": "white"});
-
-             }
-             else if( id ==3 ){
-                 $( '.'+dropdown_Class ).css({ left:  left.left - 430  });
-
-                 $('.treguesi').css({"margin-left": left.left + 27, "background-color": "white"});
-             }
-             else if ( id == 4 ){
-
-                 $( '.'+dropdown_Class ).css({ left:  left.left - 430  });
-
-                 $('.treguesi').css({"margin-left": left.left +27, "background-color": "white"});
-             }else{
-
-                 $( '.'+dropdown_Class ).css({ left:  left.left - 180  });
-
-                 $('.treguesi').css({"margin-left": left.left +27, "background-color": "white"});
-             }
          });
     }
 

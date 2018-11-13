@@ -9,9 +9,7 @@ a{
     height: auto;
 
 }
-.menu {
 
-}
 
 .top_in_menu{
 
@@ -94,19 +92,21 @@ a{
 }
 .under_menu_left{
 
-    z-index:2 !important;
+    z-index:5 !important;
     position: fixed;
     left: -250px;
     width: 300px;
     top: 50px;
     height: calc( 100vh - 50px) ;
     overflow-x: auto;
-    opacity: 0.1;
-    background: url("../../../../assets/images/under_login.jpg") no-repeat;
+
+
+
+
 }
 .menu_left{
 
-    z-index: 2 !important;
+    z-index: 5 !important;
     position: fixed;
     left: -250px;
     width: 300px;

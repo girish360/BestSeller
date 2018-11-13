@@ -26,7 +26,7 @@
               },
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-toggle/css/bootstrap2-toggle.min.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -92,7 +92,7 @@
               },
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap-toggle/css/bootstrap2-toggle.min.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "assets": [
               "src/assets",
@@ -144,7 +144,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "css"
+      "styleext": "sass"
     },
     "@schematics/angular:directive": {
       "prefix": "app"

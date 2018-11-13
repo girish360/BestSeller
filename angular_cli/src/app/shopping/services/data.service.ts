@@ -58,6 +58,10 @@ export class DataService extends HttpService implements OnInit{
 
     private app_async =  new BehaviorSubject<boolean>(true); // refresh all components in shopping departament
 
+    private app_client = new BehaviorSubject<boolean>(true);
+
+    public client = this.app_client.asObservable();
+
     public async = this.app_async.asObservable();// refresh all component as async
 
 
@@ -78,6 +82,8 @@ export class DataService extends HttpService implements OnInit{
     public change_inner = false;
 
     public menu_style : any = {};
+
+    public tabIndex = 0;
 
   constructor(  protected http:HttpClient  ) {
 
@@ -154,13 +160,19 @@ export class DataService extends HttpService implements OnInit{
         this.app_header.next( boolean );
     }
 
+    update_client(boolean){
+
+        this.app_client.next(boolean);
+    }
+
 
 
     update_app(boolean){
 
         this.app_async.next(boolean);
+    }
 
-  }
+
 
 
 

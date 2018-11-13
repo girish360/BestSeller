@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import{BehaviorSubject } from 'rxjs/BehaviorSubject';
-
 import { DataService } from '../services/data.service';
 
 import {Observable} from "rxjs/Observable";
@@ -52,12 +50,11 @@ export class CompanyService {
 
   public load_company( params ): Observable<any>{
 
-      let company = params.params.details;
+      let company = params.params.company;
 
       let company_name;
 
       let company_id;
-
 
       if (company.includes("@")) {
 
@@ -66,8 +63,6 @@ export class CompanyService {
         company_name = company.substring(0, index);
 
         company_id = company.substring(index + 1, company.length);
-
-        console.log('name: '+company_name+ ' id: '+company_id);
 
         if (!isNaN(company_id) && ( company_name instanceof String || isNaN(parseInt(company_name)) )) {
 
@@ -92,6 +87,7 @@ export class CompanyService {
         }else { // // does not exists this page name must be string and id must be number ..........
 
           return Observable.of(false);
+
         }
 
       }else { // does not exists this page @ symbol is not included ..........

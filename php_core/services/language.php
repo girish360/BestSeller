@@ -34,6 +34,7 @@ class language {
                 $language['header']="EN";
                 $language['sign']="Sign In";
                 $language['wish']="WishList";
+                $language['notification']="Notifications";
                 $language['card']="Cart";
                 $language['more']="More";
                 $language['User']="User";
@@ -70,6 +71,7 @@ class language {
                 $language['sign']="Hyni";
                 $language['wish']="Preferencat";
                 $language['card']="Karta";
+                $language['notification']="Njoftimet";
                 $language['more']="Me shum";
                 $language['User']="Perdorues";
                 $language['login_register']="Hyni/Regjistrohu";
@@ -103,6 +105,7 @@ class language {
                 $language['login_register']="Hyni/Regjistrohu it";
                 $language['add_wishlist']='WishList it';
                 $language['chat']="Chat Live it";
+                $language['notification']="Njoftimet";
                 $language['emptycat']='Category Bosh it';
                 $language['Wish_Write']="Wish products it";
                 $language['Cart_Write']="Preduktet ne kart";

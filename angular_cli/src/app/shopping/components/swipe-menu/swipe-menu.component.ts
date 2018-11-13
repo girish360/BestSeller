@@ -5,7 +5,7 @@ import { SwipeMenuService } from '../../services/swipe-menu.service';
 @Component({
   selector: 'app-swipe-menu',
   templateUrl: './swipe-menu.component.html',
-  styleUrls: ['./swipe-menu.component.css']
+  styleUrls: ['./swipe-menu.component.scss']
 })
 export class SwipeMenuComponent implements OnInit {
 

@@ -50,6 +50,8 @@ class DB { //class of databse can build query and execute it to get data from da
 
     private static $class = __CLASS__;
 
+    public static $lastid = false;
+
     public function conn(){ //  constructor config database credencials.....................
 
         self::$db = null;
@@ -695,12 +697,9 @@ class DB { //class of databse can build query and execute it to get data from da
 
     public function insert( $data ){  // $data must be a array with columns name of table as keys and values as values
 
-        $columns = '';
-
-        $values = '';
-
         $multi_array = false;
 
+        $columns = '';
 
         if( is_array( $data ) ){ // check if param is array .............
 
@@ -716,7 +715,15 @@ class DB { //class of databse can build query and execute it to get data from da
 
                     }
 
-                    self::execute_insert( $value , $this->data );
+                    $columns = implode(',' , array_keys($value) );
+
+                    $values = implode( ',' , array_keys($this->data));
+
+                    $this->insert = "insert into " . $this->table . " (".$columns.") values (".$values.") ";
+
+                    return self::execute();
+
+
 
                 }
 
@@ -730,7 +737,13 @@ class DB { //class of databse can build query and execute it to get data from da
 
             if( $multi_array == false ){
 
-                self::execute_insert( $data , $this->data );
+                $columns = implode(',' , array_keys($data) );
+
+                $values = implode( ',' , array_keys($this->data));
+
+                $this->insert = "insert into " . $this->table . " (".$columns.") values (".$values.") ";
+
+                return self::execute();
 
             }
 
@@ -779,12 +792,7 @@ class DB { //class of databse can build query and execute it to get data from da
 
     }
 
-    public function execute_insert( $columns , $values ){
 
-
-
-
-    }
 
     public function check_key($column){
 
@@ -986,7 +994,7 @@ class DB { //class of databse can build query and execute it to get data from da
 
     public function build_prepare( $instance ){ // build prepare query without data
 
-        if( !empty($this->update) ){
+        if( !empty( $this->update )  || !empty( $this->insert ) ){
 
             $instance->select = false;
 
@@ -994,6 +1002,7 @@ class DB { //class of databse can build query and execute it to get data from da
         }
 
         $instance->prepare =
+            $instance->insert.' '.
             $instance->update.' '.
             $instance->delete.' '.
             $instance->select.' '.
@@ -1039,11 +1048,18 @@ class DB { //class of databse can build query and execute it to get data from da
              }
 
         }
+
+
+
         $query->execute();
+
+
 
         $result_from_db = $query->fetchAll(\PDO::FETCH_ASSOC );
 
         $count = count( $result_from_db );
+
+        self::$lastid =  self::$db->lastInsertId();
 
         if( $count  >= 1 ){
 

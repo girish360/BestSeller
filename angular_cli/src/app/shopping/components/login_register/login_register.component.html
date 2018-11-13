@@ -2,15 +2,15 @@
 
   <div class="login">
 
-    <mat-tab-group>
+    <mat-tab-group (selectedTabChange)="tabClick($event)" [selectedIndex]="dataservices.tabIndex">
 
       <mat-tab>  <!-- tab sing in ..............................................................................-->
 
-        <ng-template mat-tab-label>  <!-- tab label sing in ..............................................................................-->
+        <ng-template mat-tab-label style="background-color: slategrey">  <!-- tab label sing in ..............................................................................-->
 
           <mat-icon>
 
-            <span class="glyphicon glyphicon-log-in"></span>
+            person
 
           </mat-icon>
 
@@ -22,9 +22,6 @@
 
         </ng-template>
 
-        <div class="login_loading">
-
-        </div>
         <br>
 
         <div class="width_login"> <!-- container sing in ..............................................................................-->
@@ -33,129 +30,69 @@
 
             <span  *ngIf="login_property.steps == 1 " class="glyphicon glyphicon-user user_icon"></span>
 
-            <img *ngIf="login_property.steps == 2 " src="../../assets/images/products_image/{{user_details.picture}}">
-
           </div><br><br>
 
-          <ng-container *ngIf=" login_property.steps == 1; else step2 ">
+          <form  [formGroup]="signinForm" >
 
-            {{login_property.write_type_login}}<br>
+              <mat-form-field class="input">
 
+                <mat-icon class="icon_email"> email </mat-icon>
 
+                <input matInput placeholder="Set Email or Username"  formControlName="email"
 
-            <form class="example-form"  >
+                       (keypress)="keypres()" required >
 
-              <mat-form-field class="example-full-width">
+                <mat-error *ngIf="emailSignin.invalid && (emailSignin.dirty || emailSignin.touched)"  class="input_error">
 
-                <mat-icon class="icon_email"> <span class="glyphicon glyphicon-envelope"></span> </mat-icon>
-
-                <input matInput
-
-                       placeholder="Set Email or Username"
-
-                       [(ngModel)]="user_details_loginForm.username"
-
-                       [formControl]="email_FormControl_login"
-
-                       [errorStateMatcher]="matcher"
-
-                       (keypress)="keypres()"
-
-
-
-                >
-
-
-
-                <mat-error *ngIf="email_FormControl_login.hasError('required')">
-
-                  Email is <strong>required</strong>
+                  <label *ngIf=" emailSignin.errors.required">Email is <strong>required</strong></label>
 
                 </mat-error>
 
               </mat-form-field>
 
-              <mat-form-field class="example-full-width">
+              <mat-form-field class="input" >
 
                 <mat-icon  class="icon_email"> vpn_key </mat-icon>
 
-                <input matInput
+                <input matInput placeholder="Set Password" formControlName="password"
 
-                       placeholder="Set Password"
+                      (keypress)="keypres()" required >
 
-                       [(ngModel)]="user_details_loginForm.password"
+                <mat-error *ngIf="passwordSignin.invalid && (passwordSignin.dirty || passwordSignin.touched)"  class="input_error">
 
-                       [formControl]="password_FormControl_login"
+                  <label *ngIf= "passwordSignin.errors.required" > password is <strong>required</strong></label>
 
-                       [errorStateMatcher]="matcher"
-
-                       (keypress)="keypres()"
-
-
-                >
-
-                <mat-error *ngIf="password_FormControl_login.hasError('minlength') && !password_FormControl_login.hasError('required')">
-
-                  Please enter more than 6 charcters
+                  <label *ngIf="passwordSignin.errors.minlength" > Must be more than 6 <strong>characters</strong></label>
 
                 </mat-error>
 
-                <mat-error *ngIf="password_FormControl_login.hasError('required')">
+              </mat-form-field><br><br>
 
-                  Password is <strong>required</strong>
+            <button  (click)="onSignin()" [disabled]="!signinForm.valid" mat-button class="button" >
 
-                </mat-error>
+              <span *ngIf="login_property.loading == false ; else loading">Login</span>
 
-              </mat-form-field>
+              <ng-template #loading>
 
-            </form>
+                <mat-icon  class="icon_button_login">
 
-          </ng-container><br>
+                  <mat-spinner [diameter]="30"  class="loading center">
 
-          <button  (click)="check_user()" [disabled]="login_property.button_login" mat-button class="button" >
+                  </mat-spinner>
 
-            <span *ngIf="login_property.loading == false ; else loading">{{login_property.write_button}}</span>
+                </mat-icon>
 
-            <ng-template #loading>
+              </ng-template>
 
-              <mat-icon  class="icon_button_login">
+            </button>
 
-                <mat-spinner [diameter]="30"  class="loading center">
+          </form><br>
 
-                </mat-spinner>
+          <a href="#" class="forget_email inline-block">
 
-              </mat-icon>
+            Forget Password?
 
-            </ng-template>
-
-          </button><br><br>
-
-          <ng-container  *ngIf="login_property.steps == 1;else forget_password ">
-
-            <a href="#" class="forget_email inline-block">
-
-              Forget Email?
-
-            </a>
-
-          </ng-container>
-
-          <ng-template #forget_password>
-
-            <a href="#"  (click)="kot()" class="forget_email inline-block">
-
-              Forget Password?
-
-            </a>
-
-            <a href="#" (click)="another_account()" class="another_account inline-block">
-
-              <mat-icon> keyboard_arrow_left </mat-icon>
-
-            </a>
-
-          </ng-template >
-
+          </a>
 
         </div><!-- end container sing in ..............................................................................-->
 
@@ -163,11 +100,11 @@
 
       <mat-tab>
 
-        <ng-template mat-tab-label>
+        <ng-template mat-tab-label class="login_tabs" >
 
           <mat-icon>
 
-            <span class="glyphicon glyphicon-user"></span>
+            assignment_ind
 
           </mat-icon>
 
@@ -179,30 +116,127 @@
 
         </ng-template>
 
-        <div class="login_loading" [ngClass]="{'login_loading_show' : login_property.loading == true }">
-
-        </div>
-
         <br>
 
         <div class="width_login">
 
-          ckemi
+          <form  [formGroup]="userRegistrationForm">
+
+            <mat-form-field class="first_name" >
+
+              <mat-icon class="icon_email" > assignment </mat-icon>
+
+              <input matInput type="text" placeholder="Fisrt name" formControlName="firstName" required >
+
+              <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"  class="input_error">
+
+                  <label *ngIf=" firstName.errors.required">Fist name is <strong>required</strong></label>
+
+              </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field class="last_name" >
+
+              <mat-icon class="icon_email" > assignment </mat-icon>
+
+              <input matInput type="text" placeholder="Last name" formControlName="lastName" required >
+
+              <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"  class="input_error">
+
+                <label *ngIf=" lastName.errors.required">Last name is <strong>required</strong></label>
+
+              </mat-error>
+
+            </mat-form-field>
+
+            <div formGroupName="emailGroup" >
+
+              <mat-form-field  class="input">
+
+                <mat-icon class="icon_email"> email </mat-icon>
+
+                <input matInput type="text" placeholder="Email or Phone" formControlName="email" required >
+
+                <mat-error *ngIf="email?.invalid && (email?.dirty || email?.touched)"  class="input_error">
+
+                  <label *ngIf="email?.errors.required">Email is <strong>required</strong></label>
+
+                </mat-error>
+
+              </mat-form-field>
+            </div>
+
+
+
+            <mat-form-field formGroupName="passwordGroup" class="input">
+
+                <mat-icon class="icon_email"> vpn_key </mat-icon>
+
+                <input matInput type="text" placeholder="Password" formControlName="password" required >
+
+                <mat-error *ngIf="password?.invalid && (password?.dirty || password?.touched)"  class="input_error">
+
+                  <label *ngIf=" password?.errors.required">Password is <strong>required</strong></label>
+
+                  <label *ngIf="password?.errors?.minlength">Must be more than 8 characters</label>
+
+                </mat-error>
+
+              </mat-form-field>
+
+              <mat-form-field formGroupName="passwordGroup" class="input">
+
+                <mat-icon class="icon_email" > vpn_key </mat-icon>
+
+                <input matInput type="text" placeholder="Confirm password" formControlName="confirmPassword" [errorStateMatcher]="match_pass"
+                     required >
+
+                <mat-error *ngIf="signupForm.hasError('match')"  class="input_error">
+
+                  <label> Password does not <strong>match</strong> </label>
+
+                </mat-error>
+
+              </mat-form-field>
+
+           <br><br>
+
+            <button (click)="onSignup()" [disabled]="!userRegistrationForm.valid || error_status_from_server " mat-button class="button" >
+
+              <span *ngIf="login_property.loading == false ; else loading">Sign up</span>
+
+              <ng-template #loading>
+
+                <mat-icon  class="icon_button_login">
+
+                  <mat-spinner [diameter]="30"  class="loading center">
+
+                  </mat-spinner>
+
+                </mat-icon>
+
+              </ng-template>
+
+            </button>
+
+          </form><br>
+
+          <a href="#" *ngIf="error_status_from_server" class="forget_email inline-block">
+
+            Forget Password?
+
+          </a>
 
         </div>
 
       </mat-tab>
 
+    </mat-tab-group><br>
 
-    </mat-tab-group>
+    <div class=" error cross-validation-error-message alert alert-danger">
 
-    <div class="error">
-
-      <div class="write_error">
-
-        {{login_property.error}}
-
-      </div>
+      <strong>{{login_property.error}}</strong>
 
     </div>
 

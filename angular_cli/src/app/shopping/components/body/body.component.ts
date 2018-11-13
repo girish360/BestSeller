@@ -9,7 +9,7 @@ import { MenuService } from '../../services/menu.service';
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css']
+  styleUrls: ['./body.component.scss']
 
 })
 

@@ -13,7 +13,7 @@ import { ProductsComponent } from './components/products/products.component'; //
 
 import { NotFoundComponent } from '../share_components/not-found/not-found.component';
 
-import { UsersComponent } from './components/users/users.component'; //  menu  left  in shopping
+import { ClientComponent } from './components/client/client.component';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -36,7 +36,7 @@ const routes: Routes = [
 
       { path: 'products/:name', component:ProductsComponent,resolve:{  products : ResolveService  } },
 
-      { path: 'company/:details',  loadChildren :'./lazy_modules/company.module#CompanyModule'},
+      { path: 'company/:company',  loadChildren :'./lazy_modules/company.module#CompanyModule'},
 
       { path: 'product_details/:name', loadChildren: './lazy_modules/product_details.module#ProductDetailsModule'},
 
@@ -56,9 +56,11 @@ const routes: Routes = [
 
       { path: ':keyword', component:SearchComponent},
 
-      { path: 'client/:name', component: UsersComponent,
+      { path: 'client/:client', component: ClientComponent,
 
         canActivate: [AuthGuard],
+
+        resolve:{ client: ResolveService }
 
       },
 

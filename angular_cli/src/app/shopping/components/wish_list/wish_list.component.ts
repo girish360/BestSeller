@@ -14,7 +14,7 @@ import { SetRouterService } from '../../../share_services/set-router.service';
 @Component({
   selector: 'app-wish-list',
   templateUrl: './wish_list.component.html',
-  styleUrls: ['./wish_list.component.css'],
+  styleUrls: ['./wish_list.component.scss'],
   animations: [
     trigger('wishList_animations', [
       transition('* => void', [

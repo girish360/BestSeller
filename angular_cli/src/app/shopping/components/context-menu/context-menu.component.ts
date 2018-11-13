@@ -7,7 +7,7 @@ import { ProductService } from '../../services/product.service'; // ProductServi
 @Component({
   selector: 'app-context-menu',
   templateUrl: './context-menu.component.html',
-  styleUrls: ['./context-menu.component.css'],
+  styleUrls: ['./context-menu.component.scss'],
   animations: [
     trigger('openClose', [
       state('closed', style({display:'none'}),{params:{top:0 , left:0 , beforeTop:0}}),

@@ -44,6 +44,38 @@ class client_auth {
         }
     }
 
+    public function sign_up( $request ){
+
+        if( isset($_SERVER['HTTP_X_SIGNATURE']) ) {
+
+            auth::$x_signature = $_SERVER['HTTP_X_SIGNATURE'];
+
+            $user_details = auth::sing_up( $request );
+
+            if( $user_details ){ // check if user exist........
+
+                self::generate_tokens();
+
+                header('X-Token:' .$this->token ); // set X_Token in response header .........
+
+                header('X-Refresh-Token:' .$this->refresh_token ); // set X_Token in response header .........
+
+                return fetch::json_data(auth::$user_details);
+
+            } else { // response to client this user does not exist .....
+
+                return fetch::json_data(false); // return false this user exist in db ....
+            }
+
+        }else{  //
+
+            error::header_error('400 Unsignature' ); // brings a 401  status error and a message
+
+            error::error('client signature failed'); // set error ........
+        }
+
+    }
+
     public function refresh_token(){
 
         try{

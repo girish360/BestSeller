@@ -32,7 +32,7 @@ import { AuthService} from '../../services/auth.service';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  styleUrls: ['./index.component.scss'],
 
 })
 export class IndexComponent implements OnInit {
@@ -114,6 +114,12 @@ export class IndexComponent implements OnInit {
 
       }
 
+      if ( event.target.closest('.notCloseDropdawnNotify') == null) {
+
+        this.productsService.hide_dropdown_button('dropnotify','.body_notify');
+
+      }
+
       if ( event.target.closest('.notCloseDropdawnLanguage') == null) {
 
         this.productsService.hide_dropdown_button('dropmore','.dropdown_more .mat-tab-body-wrapper');
@@ -167,11 +173,7 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
 
-    document.addEventListener("contextmenu", function(event){
 
-      event.preventDefault();
-      document.getElementById("demo").innerHTML = "Hello World";
-    });
 
     $(document).ready(function () {
 

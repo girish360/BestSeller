@@ -9,7 +9,7 @@ declare var $:any;
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
-  styleUrls: ['./slideshow.component.css'],
+  styleUrls: ['./slideshow.component.scss'],
   changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class SlideshowComponent implements OnInit ,OnDestroy {

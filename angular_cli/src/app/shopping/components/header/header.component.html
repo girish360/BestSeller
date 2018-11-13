@@ -1,4 +1,4 @@
-git add .
+
 <div class="header_pc  inside_header"  *ngIf="{ header:dataservices.header | async , app:dataservices.async | async }">
 
 
@@ -57,13 +57,13 @@ git add .
 
                 <div class="mobile_top_nav_button inline-block">
 
-                    <button mat-button color="primary" *ngIf="!searchService.search_data.dropdown" class="button button_search notCloseDropdawnSearch" (click)="button_search(searchInput)" >
+                    <button matTooltip="search somthing" mat-button color="primary" *ngIf="!searchService.search_data.dropdown" class="button button_search notCloseDropdawnSearch" (click)="button_search(searchInput)" >
 
                         <mat-icon class="iconbuttonsearch" >search</mat-icon>
 
                     </button>
 
-                    <button mat-button color="primary" *ngIf="searchService.search_data.dropdown" class=" button button_search   notCloseDropdawnSearch" (click)="searchService.hide_search_content()" >
+                    <button matTooltip="close search" mat-button color="primary" *ngIf="searchService.search_data.dropdown" class=" button button_search   notCloseDropdawnSearch" (click)="searchService.hide_search_content()" >
 
                         <mat-icon  class="iconbuttonsearch" >close</mat-icon>
 
@@ -422,6 +422,7 @@ git add .
 
 
                                                  </mat-radio-group>
+
                                             </mat-option>
 
                                              <mat-option value="any_time">
@@ -455,7 +456,6 @@ git add .
 
                                                      </mat-radio-button>
 
-
                                                  </mat-radio-group>
 
                                             </mat-option>
@@ -483,8 +483,6 @@ git add .
                                                  </mat-radio-group>
 
                                             </mat-option>
-
-
 
                                         </mat-select>
 
@@ -610,84 +608,168 @@ git add .
 
             </span> <!-- end left header ..................................... -->
 
-            <span class="header_right">
-
+            <div class="header_right">
 
                 <div class="buttons_right_pc">
 
                     <div class="button_right_pc"  *ngFor=" let button of button_right  ; let i = index "  >
 
-                        <a href="#">
+                        <div href="#" class="drop_client button{{button.id}} {{button.different_class}}" *ngIf="auth.token && button.id == 4 ; else looggedout" (click)="check_button(button ,i , $event)">
 
-                        <div href="#" class="drop_button button{{button.id}} {{button.different_class}}" *ngIf="auth.token && button.id == 1 ; else looggedout" (click)="check_button(button ,i , $event)">
+                            <button mat-icon-button>
 
+                                <span matTooltip="{{button.tooltip}}" matBadge="11" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn" [matBadgeHidden]="button.hide_notification" class="glyphicon icon_button "  [ngClass]="{'selected-color-button' : i==productsService.button_properties.selectedIndex }">
 
-                            <span matBadge="11" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn" [matBadgeHidden]="false" class="glyphicon icon_button "  [ngClass]="{'selected-color-button' : i==productsService.button_properties.selectedIndex }">
+                                    <img class="client_img" src="../../assets/images/users/{{auth.client.picture}}">
 
-                                <img class="client_img" src="../../assets/images/users/{{auth.client.picture}}">
+                                </span>
 
-                            </span>
-
-
-                            <div class="write_icon_header write_icon_header{{button.id}}" > {{auth.client.first_name}} </div>
+                            </button>
 
                         </div>
 
-                        <ng-template #looggedout >
+                        <ng-template #looggedout>
 
-                              <div href="#"  (click)="check_button(button ,i , $event)" class="drop_button button{{button.id}} {{button.different_class}}">
+                            <div *ngIf="!auth.token && button.id != 3 || auth.token "  (click)="check_button(button ,i , $event)" class="drop_button button{{button.id}} {{button.different_class}}">
 
-                                  <span matBadge="11" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn" [matBadgeHidden]="button.hide_notification" class="glyphicon icon_button {{button.icon}}"  [ngClass]="{'selected-color-button' : i==productsService.button_properties.selectedIndex }">
+                                <button mat-icon-button>
 
-                                  </span>
+                                       <!--  icon with notification pointer on top -->
+                                    <mat-icon *ngIf="!button.hide_notification ; else notnotify" matTooltip="{{button.tooltip}}" matBadge="{{ productsService[button.length]() <= 9  ? productsService.count : '9+' }}" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn" [matBadgeHidden]="button.hide_notification" [ngClass]="{'selected-color-button' : i==productsService.button_properties.selectedIndex }">
 
-                                  <div class="write_icon_header write_icon_header{{button.id}}" > {{ dataservices.language[button.name]}} </div>
+                                        {{button.icon}}
+                                    </mat-icon>
+                                    <!--  icon without notification pointer on top -->
+                                    <ng-template #notnotify>
 
-                              </div>
+                                        <mat-icon  matTooltip="{{button.tooltip}}" matBadge="0" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn" [matBadgeHidden]="button.hide_notification" [ngClass]="{'selected-color-button' : i==productsService.button_properties.selectedIndex }">
+
+                                            {{button.icon}}
+
+                                        </mat-icon>
+
+                                    </ng-template>
+
+                                </button>
+
+                            </div>
 
                         </ng-template>
-                        </a>
+
+                    </div>
+
+                </div><br>
+
+                <div *ngIf="auth.token" class="dropclient  dropdown_button notClosepointerHeader notCloseDropdawnClient">
+
+                    <div class="header_client header_div padding">
+
+                        <div class="client_picture border inline-block">
+
+                            <img class="full" src="../../assets/images/users/{{auth.client.picture}}">
+
+                        </div>
+
+                        <div class="right_header_client inline-block" >
+
+                            <div class="right_header_client_top border_bottom">
+                                <div class="wellcome_client">
+                                    <b> Wellcome: {{auth.client.first_name}} {{auth.client.last_name}}</b>
+                                </div>
+
+                            </div>
+
+                            <div class="right_header_client_bottom">
+
+                                <div class="client_email">
+                                    <b> {{auth.client.email}}</b>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class=" body_div bodydropclient">
+
+                        <div href="#" class="client_option hover" (click)="client_profile()">
+
+                            <a href="#">
+                                <div class="padding">
+
+                                    <div class="icon_option inline-block">
+                                        <mat-icon>person</mat-icon>
+                                    </div>
+
+                                    <div class="write_option inline-block">
+                                        <p>My Profile</p>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+
+                        <div href="#" class="client_option hover">
+                            <a href="#">
+                                <div class="padding">
+
+                                    <div class="icon_option inline-block">
+                                        <mat-icon>home</mat-icon>
+                                    </div>
+
+                                    <div class="write_option inline-block">
+                                        <p>My Orders</p>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+                        <div href="#" class="client_option hover" >
+                            <a href="#">
+                                <div class="padding">
+
+                                    <div class="icon_option inline-block">
+                                        <mat-icon>settings</mat-icon>
+                                    </div>
+
+                                    <div class="write_option inline-block">
+                                        <p> Settings</p>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
+
+                        <div href="#" class="client_option hover" (click)="auth.logout()">
+                            <a href="#">
+                                <div class="padding">
+
+                                    <div class="icon_option inline-block">
+                                        <mat-icon>exit_to_app</mat-icon>
+                                    </div>
+
+                                    <div class="write_option inline-block">
+                                        <p>Logout</p>
+                                    </div>
+
+                                </div>
+                            </a>
+                        </div>
 
                     </div>
 
                 </div>
 
-            </span>
-            <!--  start dropdown header ..................................................................-->
+                <div *ngIf="auth.token" class="dropnotify  dropdown_button notClosepointerHeader notCloseDropdawnNotify">
 
-            <div class="dropclient  dropdown_button notClosepointerHeader notCloseDropdawnClient">
-
-
-
-                    <div class="header_div">
-                        klodian shaba ketu
+                    <div class=" body_div body_notify">
+                         body notify
                     </div>
 
-
-                <div class=" body_div bodydropclient">
-
-
-                    <a href="#">
-
-
-                    <div class="client_option hover" (click)="auth.logout()">
-                        logout
-                    </div>
-
-                    <div class="client_option hover" (click)="client_profile()">
-                        Profile
-                    </div>
-
-                    <div class="client_option hover">
-                        settings
-                    </div>
-                    </a>
                 </div>
 
-
-            </div>
-
-            <div class="dropmore dropdown_button notClosepointerHeader notCloseDropdawnLanguage">
+                    <div class="dropmore dropdown_button notClosepointerHeader notCloseDropdawnLanguage">
 
                 <mat-tab-group class="dropdown_more">
 
@@ -699,7 +781,7 @@ git add .
                                 language
                             </mat-icon>
 
-                            <div class=" inline-block">
+                            <div class="label_tab inline-block">
                                 Language
                             </div>
 
@@ -763,7 +845,7 @@ git add .
                             <mat-icon>
                                 settings
                             </mat-icon>
-                            <div class=" inline-block">
+                            <div class="label_tab inline-block">
                                 Setting
                             </div>
                         </ng-template>
@@ -784,7 +866,7 @@ git add .
                             <mat-icon>
                                 help
                             </mat-icon>
-                            <div class=" inline-block">
+                            <div class="label_tab inline-block">
                                 Help
                             </div>
                         </ng-template>
@@ -800,7 +882,7 @@ git add .
                             <mat-icon>
                                 feedback
                             </mat-icon>
-                            <div class=" inline-block">
+                            <div class="label_tab inline-block">
                                 Feedback
                             </div>
                         </ng-template>
@@ -818,13 +900,14 @@ git add .
                         Sell All
                     </div>
                 </a>
-            </div>
 
-            <div class="dropcard dropdown_button notClosepointerHeader notCloseDropdawnCard" [ngClass]="{'show_dropcard':drop_Card}">
 
-                <div class=" header_div">
+                </div>
+                <div class="dropcard dropdown_button notClosepointerHeader notCloseDropdawnCard" [ngClass]="{'show_dropcard':drop_Card}">
 
-                    <div class="inside_width">
+                    <div class=" header_div">
+
+                        <div class="inside_width">
 
                         <span class="drop_cart_title">
 
@@ -832,7 +915,7 @@ git add .
 
                         </span>
 
-                        <span  matTooltip="Search" class="search_icon_from_wish">
+                            <span  matTooltip="Search" class="search_icon_from_wish">
 
                             <button mat-icon-button class="btns-cart"  (click)="productsService.show_hide_search_in_cartlist()">
 
@@ -843,13 +926,13 @@ git add .
 
                         </span>
 
-                        <span class="search_from_wish">
+                            <span class="search_from_wish">
 
                             <input type="text" [(ngModel)]="filter_cart" placeholder="Serach Wishlist" name="search_wish" class="search-in-cart search_wishlist" [ngClass]="productsService.check_show_hide_search_in_cartlist()">
 
                         </span>
 
-                        <span  matTooltip="Delete" class="delete_from_wish">
+                            <span  matTooltip="Delete" class="delete_from_wish">
 
                             <button mat-icon-button class="btns-cart " [ngClass]="{'no-drop' : productsService.cart_properties.button }" [disabled]=" productsService.cart_properties.button " (click)="productsService.check_delete_from_cartList()" >
 
@@ -859,7 +942,7 @@ git add .
 
                         </span>
 
-                        <span  matTooltip="Add to Wish" class="add_shopping_card_from_wish">
+                            <span  matTooltip="Add to Wish" class="add_shopping_card_from_wish">
 
                             <button mat-icon-button class="btns-cart" [ngClass]="{'no-drop' : productsService.cart_properties.button }" [disabled]="productsService.cart_properties.button"  >
 
@@ -869,7 +952,7 @@ git add .
 
                         </span>
 
-                        <a (click)="set_router( { path:'wish' , data:false ,relative:true } )" >
+                            <a (click)="set_router( { path:'wish' , data:false ,relative:true } )" >
 
                             <span  matTooltip="See All" class="add_shopping_card_from_wish">
 
@@ -881,9 +964,9 @@ git add .
 
                             </span>
 
-                        </a>
+                            </a>
 
-                        <span  matTooltip="Select all" >
+                            <span  matTooltip="Select all" >
 
                             <mat-checkbox color="primary" class="btns-cart"
                                           [checked]="productsService.cart_properties.cartList.length == productsService.cart_properties.selected.length && productsService.cart_properties.selected.length > 0 "
@@ -892,81 +975,81 @@ git add .
 
                         </span>
 
+                        </div>
+
                     </div>
 
-                </div>
+                    <div class="body_div body_cart" *ngIf="productsService.status_products | async">
 
-                <div class="body_div body_cart" *ngIf="productsService.status_products | async">
+                        <ng-container *ngIf="productsService.cart_properties.cartList.length > 0 ; else  emptycart">
 
-                    <ng-container *ngIf="productsService.cart_properties.cartList.length > 0 ; else  emptycart">
+                            <div  *ngFor="let cart_product of productsService.cart_properties.cartList | filter: filter_cart "  [@wishList_animations]="active">
 
-                        <div  *ngFor="let cart_product of productsService.cart_properties.cartList | filter: filter_cart "  [@wishList_animations]="active">
+                                <button mat-button class="width_body_wish" [ngClass]="productsService.getStyle_cart( cart_product )">
 
-                            <button mat-button class="width_body_wish" [ngClass]="productsService.getStyle_cart( cart_product )">
+                                    <div class="width_each_wishlist">
 
-                                <div class="width_each_wishlist">
+                                        <div class="wish_image"  (click)="set_router({ path:cart_product.name+'/'+cart_product.title , data:cart_product.product_id , relative:true })">
 
-                                    <div class="wish_image"  (click)="set_router({ path:cart_product.name+'/'+cart_product.title , data:cart_product.product_id , relative:true })">
+                                            <img  src="../../assets/images/products_image/{{cart_product.image}}">
 
-                                        <img  src="../../assets/images/products_image/{{cart_product.image}}">
+                                        </div>
 
-                                    </div>
+                                        <div class="cart_item title">
 
-                                    <div class="cart_item title">
+                                            Title: {{cart_product.title}}
 
-                                        Title: {{cart_product.title}}
+                                        </div><br>
 
-                                    </div><br>
+                                        <div class="cart_item price">
 
-                                    <div class="cart_item price">
+                                            Price: ${{ cart_product.price }}
 
-                                        Price: ${{ cart_product.price }}
+                                        </div>
 
-                                    </div>
+                                        <div class=" cart_item quantity">
 
-                                    <div class=" cart_item quantity">
+                                            Quantity:
 
-                                        Quantity:
+                                            <mat-form-field style="width:40px;">
 
-                                        <mat-form-field style="width:40px;">
+                                                <mat-select  [(value)]="cart_product.quantity" (selectionChange)="productsService.update_quantity_cartList( cart_product )">
 
-                                            <mat-select  [(value)]="cart_product.quantity" (selectionChange)="productsService.update_quantity_cartList( cart_product )">
+                                                    <mat-option [value]="1">
+                                                        1
+                                                    </mat-option>
+                                                    <mat-option [value]="2">
+                                                        2
+                                                    </mat-option>
+                                                    <mat-option [value]="3">
+                                                        3
+                                                    </mat-option>
+                                                    <mat-option [value]="4">
+                                                        4
+                                                    </mat-option>
 
-                                                <mat-option [value]="1">
-                                                    1
-                                                </mat-option>
-                                                <mat-option [value]="2">
-                                                    2
-                                                </mat-option>
-                                                <mat-option [value]="3">
-                                                    3
-                                                </mat-option>
-                                                <mat-option [value]="4">
-                                                    4
-                                                </mat-option>
+                                                </mat-select>
 
-                                            </mat-select>
+                                            </mat-form-field>
 
-                                        </mat-form-field>
+                                        </div>
 
-                                    </div>
+                                        <div  class="cart_item seller">
 
-                                    <div  class="cart_item seller">
+                                            Seller:
+                                            <span (click)="set_router({ path:cart_product.name , data: cart_product.company_id , relative:true })">{{ cart_product.name }}</span>
 
-                                        Seller:
-                                        <span (click)="set_router({ path:cart_product.name , data: cart_product.company_id , relative:true })">{{ cart_product.name }}</span>
+                                        </div>
 
-                                    </div>
+                                        <div class="cart_item total_item_price">
 
-                                    <div class="cart_item total_item_price">
+                                            Total: ${{ (cart_product.price)*cart_product.quantity  }}
 
-                                        Total: ${{ (cart_product.price)*cart_product.quantity  }}
+                                        </div>
 
-                                    </div>
+                                        <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
 
-                                    <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
-
-                                        <span  matTooltip="select">
+                                            <span  matTooltip="select">
 
                                             <mat-checkbox  color="primary" [checked]="productsService.check_selected_cart( cart_product )" (click)="productsService.toggle_select_cart( cart_product )">
 
@@ -974,32 +1057,32 @@ git add .
 
                                         </span>
 
+                                        </div>
+
                                     </div>
 
-                                </div>
+                                </button>
 
-                            </button>
+                            </div>
 
-                        </div>
+                        </ng-container >
 
-                    </ng-container >
+                        <ng-template #emptycart>
 
-                    <ng-template #emptycart>
+                            your Cart is empty
 
-                        your Cart is empty
+                        </ng-template>
+                    </div>
 
-                    </ng-template>
-                </div>
+                    <div class="bottom_cart">
 
-                <div class="bottom_cart">
+                        <div class="inside_bottom_cart">
 
-                    <div class="inside_bottom_cart">
+                            <div class="write_checkout">
+                                Proceed to Checkout  PayPal , Stripe , Visa
+                            </div>
 
-                        <div class="write_checkout">
-                             Proceed to Checkout  PayPal , Stripe , Visa
-                        </div>
-
-                        <div class="checkout">
+                            <div class="checkout">
 
                             <span>
 
@@ -1007,27 +1090,29 @@ git add .
 
                             </span>
 
-                            <span>
+                                <span>
 
                                 Total_price: ${{productsService.cart_properties.total_price}}
 
                             </span>
 
-                        </div>
+                            </div>
 
-                        <div class="button_checkout">
+                            <div class="button_checkout">
 
-                            <button mat-button class="button">
+                                <button mat-button class="button">
 
-                                <span>Continue Shopping</span>
+                                    <span>Continue Shopping</span>
 
-                            </button>
+                                </button>
 
-                            <button mat-button class="button">
+                                <button mat-button class="button">
 
-                                <span>Checkout</span>
+                                    <span>Checkout</span>
 
-                            </button>
+                                </button>
+
+                            </div>
 
                         </div>
 
@@ -1035,16 +1120,14 @@ git add .
 
                 </div>
 
+                <div class="dropfavorites dropdown_button notCloseDropdawnFavorite notClosepointerHeader">
+
+                    <app-wish-list></app-wish-list>
+
+                </div>
+
             </div>
-
-            <div class="dropfavorites dropdown_button notCloseDropdawnFavorite notClosepointerHeader">
-
-                <app-wish-list></app-wish-list>
-
-            </div>
-
-            <div class="treguesi notCloseDropdawnFavorite notClosepointerHeader notCloseDropdawnCard notCloseDropdawnLanguage notCloseDropdawnClient"></div>
-
+            <!--  start dropdown header ..................................................................-->
         </div>
 
     </div>
@@ -1053,68 +1136,75 @@ git add .
 
 </div> <!-- end header ............................. -->
 
-<div class="mobile_top_nav transition response_outer " [ngStyle]="top_nav_mobile_style">
+<div class="mobile_top_nav  transition response_outer " [ngStyle]="top_nav_mobile_style">
 
     <div class="response_inner" >
 
-        <div class="inner_height">
-
-            <div class="mobile_top_nav_input inline-block">
+        <div class="mobile_top_nav_input inline-block">
 
             <input #searchInput type="text" class="input_search notCloseDropdawnSearch"  name="search" [(ngModel)]="searchService.search_data.value" (ngModelChange)="searchService.search_new_value()" (focus)="searchService.focus_search(searchInput)"  placeholder="{{dataservices.language.searchproducts}}">
 
-            </div>
+        </div>
 
-            <div class="mobile_top_nav_button inline-block">
+        <div class="mobile_top_nav_button inline-block">
 
-                <button mat-button color="primary" *ngIf="!searchService.search_data.dropdown" class="button button_search notCloseDropdawnSearch" (click)="button_search(searchInput)" >
+            <button mat-button color="primary" *ngIf="!searchService.search_data.dropdown" class="button button_search notCloseDropdawnSearch" (click)="button_search(searchInput)" >
 
-                    <mat-icon class="iconbuttonsearch" >search</mat-icon>
+                <mat-icon class="iconbuttonsearch" >search</mat-icon>
 
-                </button>
+            </button>
 
-                <button mat-button color="primary" *ngIf="searchService.search_data.dropdown" class=" button button_search   notCloseDropdawnSearch" (click)="searchService.hide_search_content()" >
+            <button mat-button color="primary" *ngIf="searchService.search_data.dropdown" class=" button button_search   notCloseDropdawnSearch" (click)="searchService.hide_search_content()" >
 
-                    <mat-icon  class="iconbuttonsearch" >close</mat-icon>
+                <mat-icon  class="iconbuttonsearch" >close</mat-icon>
 
-                </button>
-
-            </div>
-
-
+            </button>
 
         </div>
 
     </div>
+
     <mat-progress-bar  mode="indeterminate" class="progress_mobile" *ngIf="dataservices.progress | async"></mat-progress-bar>  <!--  progress bar -->
 
 </div>  <!-- end header modile  -->
 
-<div class="mobile_bottom_nav inside_header">
+<div class="mobile_bottom_nav">
     <a href="#">
 
-    <div class="button_mobile" (click)="set_router( { path:'shopping' , data:false ,relative:false } , check_body(false) )">
+    <div class="button_mobile" (click)="set_router( { path:'shopping' , data:false ,relative:false } ); check_body(false)">
 
 
-        <span class="glyphicon glyphicon-home"></span>
+        <button mat-icon-button>
+
+            <mat-icon >
+               home
+            </mat-icon>
+
+        </button>
 
 
 
-        <div class="write_icon_header"> Home </div>
+
 
 
     </div>
     </a>
     <a href="#">
 
-        <div class="button_mobile" (click)="set_router( { path:'shopping/login_register' , data:false ,relative:false } , check_body(false) )">
+        <div class="button_mobile" (click)="set_router( { path:'shopping/login_register' , data:false ,relative:false } ); check_body(false)">
 
 
-            <span class="glyphicon glyphicon-user gh-productsService"></span>
+            <button mat-icon-button>
+
+                <mat-icon >
+                    person
+                </mat-icon>
+
+            </button>
 
 
 
-            <div class="write_icon_header"> User </div>
+
 
 
         </div>
@@ -1122,39 +1212,52 @@ git add .
 
 
     <a href="#">
-    <div class="button_mobile " (click)="set_router( { path:'shopping/wish_list' , data:false ,relative:false } , check_body(true) )"   >
+    <div class="button_mobile " (click)="set_router( { path:'shopping/wish_list' , data:false ,relative:false } ); check_body(true)"   >
 
 
-        <span matBadge="{{productsService.wish_properties.wishList.length <= 9 ? productsService.wish_properties.wishList.length : '9+' }}" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn"  class="glyphicon glyphicon-heart " [ngClass]="{'active': true}"  >
 
-        </span>
+        <button mat-icon-button >
 
-        <div class="write_icon_header"> {{dataservices.language.wish}} </div>
+            <mat-icon matBadge="{{productsService.wish_properties.wishList.length <= 9 ? productsService.wish_properties.wishList.length : '9+' }}" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn">
+                favorite
+            </mat-icon>
+
+        </button>
+
+
 
     </div>
     </a>
 
 
     <a href="#">
-    <div class="button_mobile " (click)="set_router( { path:'shopping/cart_list' , data:false ,relative:false } , check_body(false))" >
+    <div class="button_mobile " (click)="set_router( { path:'shopping/cart_list' , data:false ,relative:false }  );check_body(false)" >
 
-        <span matBadge="{{productsService.cart_properties.cartList.length <= 9 ? productsService.cart_properties.cartList.length : '9+' }}" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn" class="glyphicon glyphicon-shopping-cart gh-header">
 
-        </span>
+        <button mat-icon-button  >
 
-        <div class="write_icon_header" >{{dataservices.language.card}}</div>
+            <mat-icon matBadge="{{productsService.cart_properties.cartList.length <= 9 ? productsService.cart_properties.cartList.length : '9+' }}" matBadgeOverlap="true" matBadgeSize="small" matBadgePosition="above after" matBadgeColor="warn">
+                shopping_cart
+            </mat-icon>
+
+        </button>
+
 
     </div>
     </a>
     <a href="#">
 
-    <div class="button_mobile" (click)="set_router( { path:'shopping/menu' , data:false ,relative:false }, check_body(true) )">
+    <div class="button_mobile" (click)="set_router( { path:'shopping/menu' , data:false ,relative:false }  );check_body(true)">
 
-        <span class="glyphicon glyphicon-th-large">
+        <button mat-icon-button >
 
-        </span>
+            <mat-icon >
+               view_list
+            </mat-icon>
 
-        <div class="write_icon_header" >{{dataservices.language.more}}</div>
+        </button>
+
+
 
     </div>
     </a>

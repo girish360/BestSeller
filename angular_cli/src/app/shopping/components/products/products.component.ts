@@ -30,7 +30,7 @@ import alertIsPresent = until.alertIsPresent; // ProductServices extend HeaderSe
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
+  styleUrls: ['./products.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 
 })

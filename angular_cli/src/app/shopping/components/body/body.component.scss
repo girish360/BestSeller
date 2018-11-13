@@ -25,6 +25,11 @@
     width: calc(100% - 320px);
     min-height: calc( 100vh - 60px ); /* Minimum height for modern browsers */
     height: auto;
+
+
+}
+.top_containerright a {
+    float: right;
 }
 
 
@@ -35,6 +40,7 @@
     height: auto;
     display: inline-block;
     float: right;
+
 
 }
 .top_containerright{

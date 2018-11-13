@@ -12,12 +12,14 @@
 
      route::group('/client')->routes( function() {
          // security route need Authorized to execute or error Unauthorized ....
-         route::get('/get_client','client@get_client')->auth()->exe();
+         route::get('/load_client','client@load_client')->auth()->exe();
      });
 
      route::group('/auth')->routes( function() {
 
          route::post('/credentials','client_auth@login')->exe();
+
+         route::post('/sign_up','client_auth@sign_up')->exe();
 
          route::get('/refresh_token','client_auth@refresh_token')->exe();
 

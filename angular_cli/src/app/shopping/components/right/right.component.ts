@@ -6,22 +6,38 @@ import { MenuService } from '../../services/menu.service';
 
 import { DataService } from '../../services/data.service';
 
-import {Observable} from 'rxjs/Rx'; // Angular 5
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-settings-content',
-  templateUrl: './settings-content.component.html',
-  styleUrls: ['./settings-content.component.css']
+  selector: 'app-right',
+  templateUrl: './right.component.html',
+  styleUrls: ['./right.component.scss']
 })
-export class SettingsContentComponent implements OnInit {
+export class RightComponent implements OnInit {
 
-  public hover_settings:any = false;
+  public hover:any = false;
 
   public style_settings_icon:any={ 'transform': 'rotate( 0deg )' };
 
   public deg_rotate_settings_icon: any = 0;
 
   public content_settings:any = false;
+
+  public buttons =[
+    {
+      id:1 , name:'Product' , icon:'library_add', exit_icon:'exit_to_app', rotate:false
+    },
+
+    {
+      id:2 , name:'Settings' , icon:'settings', exit_icon:'exit_to_app', rotate:true
+    },
+
+    {
+      id:3, name:'Color' , icon:'color_lens', exit_icon:'exit_to_app', rotate:false
+    }
+  ];
+
+  public index_button :number;
 
   constructor(
       private settings:SettingsService ,
@@ -88,21 +104,35 @@ export class SettingsContentComponent implements OnInit {
 
   out_hover_setting(){
 
-    this.hover_settings = false;
+    this.hover = false;
+
+    this.index_button = -1;
+
+  }
+
+  in_hover_setting(index){
+
+    this.hover = true;
+
+    this.index_button = index;
+
+  }
+
+  check_button( button ){
+
+    if( button.id == 2 ){
+      this.hover = false;
+
+      this.content_settings =  true;
+    }
+
+
 
 
   }
-  in_hover_setting(){
-    this.hover_settings = true;
-  }
 
-  check_settings(){
-
-    this.hover_settings = false;
-
-    this.content_settings =  !this.content_settings;
-
-
+  hide_settings(){
+    this.content_settings =  false;
   }
 
 }

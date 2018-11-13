@@ -57,8 +57,6 @@ import { MenuComponent } from './components/menu/menu.component';
 
 import { FooterComponent } from './components/footer/footer.component';
 
-import { UsersComponent } from './components/users/users.component'; //  menu  left  in shopping
-
 import { WishListComponent } from './components/wish_list/wish_list.component';
 
 import { CardListComponent } from './components/card_list/card_list.component';
@@ -66,9 +64,19 @@ import { CardListComponent } from './components/card_list/card_list.component';
 import { AgmCoreModule } from '@agm/core';
 
 import { SwipeMenuComponent } from './components/swipe-menu/swipe-menu.component';
+
 import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
-import { SettingsContentComponent } from './components/settings-content/settings-content.component';
+
 import { ContextMenuComponent } from './components/context-menu/context-menu.component';
+
+import { ClientComponent } from './components/client/client.component';
+
+import{ SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
+
+import { ChatComponent } from './components/chat/chat.component';
+
+import { RightComponent } from './components/right/right.component';
+
 
 // end components ............................................................................................
 
@@ -81,14 +89,16 @@ import { ContextMenuComponent } from './components/context-menu/context-menu.com
     MenuComponent,
     HomeComponent,
     FooterComponent,
-    UsersComponent,
     WishListComponent,
     CardListComponent,
     SearchComponent,
     SwipeMenuComponent,
     ScrollTopComponent,
-    SettingsContentComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+    ClientComponent,
+    SubscriptionsComponent,
+    ChatComponent,
+    RightComponent
 
   ],
 

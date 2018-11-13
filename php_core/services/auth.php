@@ -26,8 +26,9 @@ class auth {
 
         $user_details = database::table('users') // query to get from db specific user dependet from their credentials....
             ->select('id','email', 'picture' ,'first_name','last_name','language')
-            ->where('email','=',$request->username)
-            ->andWhere('password','=',$request->password)
+            ->where('password','=',$request->password)
+            ->andWhere('email','=',$request->email)
+            ->orWhere('phone','=',$request->email)
             ->get();
 
         if( $user_details ){ // user does not exists in db return false  ........
@@ -40,6 +41,48 @@ class auth {
         // user exists return user's details
 
         return false;
+
+    }
+
+    public static function sing_up( $request ){
+
+
+        if( !empty($request->firstName)  && !empty($request->lastName) && !empty($request->email) && !empty($request->password) && !empty($request->confirmPassword) ){
+
+            if( $request->password === $request->confirmPassword ){
+
+                $user = database::table('users') // query to get from db specific user dependet from their credentials....
+                ->select('id','email', 'picture' ,'first_name','last_name','language')
+                    ->where('email','=',$request->email)
+                    ->orWhere('phone','=',$request->email)
+                    ->get();
+
+                if( !$user ){  // this user does not exists go ahead create a new account ....................................
+
+                      database::table('users')
+                          ->insert(
+                              [
+                                  'first_name'=>$request->firstName,
+                                  'last_name'=>$request->lastName,
+                                  'email'=>$request->email,
+                                  'password'=>$request->password
+                              ]
+                          );
+
+                      auth::$user_details = array( 'id'=> database::$lastid , 'email'=> $request->email, 'first_name'=>$request->firstName ,'last_name'=> $request->lastName ,'picture'=>null , 'language'=>null  );
+
+                      return true;
+
+                }
+
+                return false;
+            }
+
+            return false;
+
+        }
+        return false;
+
 
     }
 
@@ -109,7 +152,7 @@ class auth {
             $decode_token = jwt::decode(self::$x_token, $key_public, array('RS256'));
 
             $client = database::table('users')
-                ->select('id', 'oauth_provider', 'oauth_uid', 'first_name', 'last_name', 'picture')
+                ->select('id', 'oauth_provider', 'oauth_uid', 'first_name', 'last_name', 'picture','email','username','language','phone')
                 ->where('id', '=', $decode_token->data->id)
                 ->get();
 

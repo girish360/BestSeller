@@ -4,6 +4,8 @@ import { DataService } from './data.service';
 
 import{BehaviorSubject } from 'rxjs/BehaviorSubject';
 
+
+
 import 'rxjs/add/observable/interval';
 
 import {Observable} from 'rxjs/Observable';
@@ -32,6 +34,8 @@ export class HeaderService  implements OnInit {
   private Response :any;
 
   public status_chat = false;
+
+  public count = 0;
 
   public top_nav_data:any = {
 
@@ -82,7 +86,25 @@ export class HeaderService  implements OnInit {
 
   };
 
-  public button_properties:any = { active:0 , disabled:false , pointer:1 , selectedIndex:'empty' };
+  count_wish(){
+
+    this.count = this.wish_properties.wishList.length ;
+
+    return this.count;
+  }
+  count_cart(){
+
+    this.count = this.cart_properties.cartList.length;
+    return  this.count;
+  }
+
+  count_notify(){
+
+    this.count =0;
+    return this.count;
+  }
+
+  public button_properties:any = { active:-1 , disabled:false , pointer:1 , selectedIndex:'empty' };
 
   update_wishList( new_wishlist ){
 
@@ -357,27 +379,22 @@ export class HeaderService  implements OnInit {
 
 
 
-    $(body_inside).css({ top: '15px'});
+    $(body_inside).css({ top: '200px', opacity: '0.1'});
 
-    $('.' + dropdown_class).css({top: '70px', opacity: '0.1'}); //  css style...
+    $('.' + dropdown_class).css({top: '30px', opacity: '0.1' }); //  css style...
 
     $('.' + dropdown_class).show().animate({ // animation effect show dropdown productsService......
 
-      top: '50px',
+      top: '6px',
 
       opacity: 1
 
-    }, 100, function () { //  function after effect ............
-
-      $('.write_icon_header').css('color', 'slategrey');
-
-      $('.write_icon_header'+id).css('color', 'white'); // remove write below icon in productsService
-
-    });
+    },100);
 
     $(body_inside).animate({
 
-      top: '0'
+      top: '0px',
+      opacity: 1
 
     }, 200);
 
@@ -387,13 +404,13 @@ export class HeaderService  implements OnInit {
 
     $(body_inside).css({top: '0px'});
 
-    $('.' + dropdown_class).css({top: '50px', opacity: '1'}); // css style...
+    $('.' + dropdown_class).css({top: 0, opacity: '1'}); // css style...
 
     $('.' + dropdown_class).animate({ // animation effect hide dropdown productsService......
 
-      top: '70',
+      top: '200px',
 
-      opacity: '0.1',
+      opacity: '0.1'
 
     }, 100, function () { //  function after effect ............
 
@@ -403,7 +420,7 @@ export class HeaderService  implements OnInit {
 
     $(body_inside).animate({
 
-      top: '15'
+      top: '20px'
 
     }, 200);
 

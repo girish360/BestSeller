@@ -31,7 +31,7 @@
 
              <span  matTooltip="Delete" >
 
-                            <button mat-icon-button class=" btns-wish" [ngClass]="{'no-drop' : productsService.wish_properties.button }" [disabled]="productsService.wish_properties.button" (click)="productsService.check_delete_from_wishList()" >
+                            <button mat-icon-button class="btns-wish"  [disabled]="productsService.wish_properties.button" (click)="productsService.check_delete_from_wishList()" >
 
                                 <mat-icon>delete</mat-icon>
 
@@ -41,7 +41,7 @@
 
              <span  matTooltip="Add to Cart" >
 
-                            <button mat-icon-button class="btns-wish" [ngClass]="{'no-drop' : productsService.wish_properties.button }" [disabled]="productsService.wish_properties.button" (click)="productsService.add_from_wish_to_cart( productsService.wish_properties.selected )" >
+                            <button mat-icon-button class="btns-wish"  [disabled]="productsService.wish_properties.button" (click)="productsService.add_from_wish_to_cart( productsService.wish_properties.selected )" >
 
                                 <mat-icon>shopping cart</mat-icon>
 
