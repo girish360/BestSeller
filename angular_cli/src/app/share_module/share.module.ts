@@ -75,17 +75,11 @@ import { AgmCoreModule } from '@agm/core';
     MatSlideToggleModule,
     MatBadgeModule,
     DragScrollModule,
-
-
     NotFoundComponent,
     ProductsComponent,
 
-
-
-
-
-
   ],
+
 
   declarations: [
 

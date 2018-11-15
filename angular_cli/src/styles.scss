@@ -1,3 +1,8 @@
+
+@import "variables.scss"; // style variables
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -18,12 +23,8 @@ time, mark, audio, video,button {
     vertical-align: baseline;
     font-family: sans-serif;
     font-size: 14px;
-    color:gray;
+    color:$color;
 }
-
-@import "variables.scss"; // style variables
-
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 
 body{
@@ -562,6 +563,12 @@ mat-checkbox.mat-checked.green{
     color: $active_color;
 
 }
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label{
+    color:$color;
+}
+
+
 
 
 

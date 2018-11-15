@@ -1,3 +1,5 @@
+
+
 <div class="all_screen_login component-animation">
 
   <div class="login">
@@ -26,53 +28,59 @@
 
         <div class="width_login"> <!-- container sing in ..............................................................................-->
 
-          <div class="user-icon center">
+          <div class="user-icon hover center">
 
-            <span  *ngIf="login_property.steps == 1 " class="glyphicon glyphicon-user user_icon"></span>
+            <span class="glyphicon glyphicon-user user_icon"></span>
 
           </div><br><br>
 
-          <form  [formGroup]="signinForm" >
+          <form  [formGroup]="userLoginForm" #loginForm="ngForm" (ngSubmit)="onLoginUser(userLoginForm.value)" novalidate>
 
               <mat-form-field class="input">
 
-                <mat-icon class="icon_email"> email </mat-icon>
+                <mat-icon class="icon_email" [ngClass]="{'error_icon' : loginEmail.invalid && loginForm.submitted }"> email </mat-icon>
 
-                <input matInput placeholder="Set Email or Username"  formControlName="email"
+                <input #emailInput matInput placeholder="Set Email or Username"  formControlName="email" [errorStateMatcher]="matcher" autocomplete="off"
 
-                       (keypress)="keypres()" required >
+                       (input)="loginInput(userLoginForm.value)" (keydown.enter)="enterLoginInput(loginForm )" required >
 
-                <mat-error *ngIf="emailSignin.invalid && (emailSignin.dirty || emailSignin.touched)"  class="input_error">
+                <mat-error *ngIf="loginEmail.invalid &&  loginForm.submitted"  class="input_error">
 
-                  <label *ngIf=" emailSignin.errors.required">Email is <strong>required</strong></label>
+                  <label *ngIf=" loginEmail.errors.required">Email is <strong>required</strong></label>
+
+                  <label *ngIf=" loginEmail.errors.incorrect">Email is <strong>incorrect</strong></label>
 
                 </mat-error>
 
               </mat-form-field>
 
-              <mat-form-field class="input" >
+              <mat-form-field class="input">
 
-                <mat-icon  class="icon_email"> vpn_key </mat-icon>
+                <mat-icon  class="icon_email" [ngClass]="{'error_icon' : loginPassword.invalid && loginForm.submitted }"> vpn_key </mat-icon>
 
-                <input matInput placeholder="Set Password" formControlName="password"
+                <input #passwordInput matInput placeholder="Set Password" formControlName="password" [errorStateMatcher]="matcher" autocomplete="off"
 
-                      (keypress)="keypres()" required >
+                      (input)="loginInput(userLoginForm.value)" (keydown.enter)="enterLoginInput(loginForm)" required >
 
-                <mat-error *ngIf="passwordSignin.invalid && (passwordSignin.dirty || passwordSignin.touched)"  class="input_error">
+                <mat-error *ngIf="loginPassword.invalid &&  loginForm.submitted"  class="input_error">
 
-                  <label *ngIf= "passwordSignin.errors.required" > password is <strong>required</strong></label>
+                  <label *ngIf= "loginPassword.errors.required" >password is <strong>required</strong></label>
 
-                  <label *ngIf="passwordSignin.errors.minlength" > Must be more than 6 <strong>characters</strong></label>
+                  <label *ngIf="loginPassword.errors.pattern">uppercase, lowercase, number are <strong>required</strong></label>
+
+                  <label *ngIf="loginPassword.errors.minlength && !loginPassword.errors.pattern">must be more than 8 <strong>characters</strong></label>
+
+                  <label *ngIf="loginPassword.errors.incorrect">Password is <strong>incorrect</strong></label>
 
                 </mat-error>
 
               </mat-form-field><br><br>
 
-            <button  (click)="onSignin()" [disabled]="!signinForm.valid" mat-button class="button" >
+            <button [disabled]="userLoginForm.invalid && loginFirstSubmit || loading" mat-button class="button" >
 
-              <span *ngIf="login_property.loading == false ; else loading">Login</span>
+              <span *ngIf="loading == false ; else loading_spinner_login">Login</span>
 
-              <ng-template #loading>
+              <ng-template #loading_spinner_login>
 
                 <mat-icon  class="icon_button_login">
 
@@ -120,17 +128,19 @@
 
         <div class="width_login">
 
-          <form  [formGroup]="userRegistrationForm">
+          <form  #registerForm="ngForm" [formGroup]="userRegistrationForm" (ngSubmit)="onRegisterUser(userRegistrationForm.value)"   novalidate>
 
             <mat-form-field class="first_name" >
 
-              <mat-icon class="icon_email" > assignment </mat-icon>
+              <mat-icon class="icon_email" [ngClass]="{'error_icon':firstName.invalid && registerForm.submitted}" > assignment </mat-icon>
 
-              <input matInput type="text" placeholder="Fisrt name" formControlName="firstName" required >
+              <input #registerFirstNameInput matInput type="text" placeholder="Fisrt name" formControlName="firstName" (keydown.enter)="enterRegisterInput(registerForm)" [errorStateMatcher]="matcher" autocomplete="off" required>
 
-              <mat-error *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"  class="input_error">
+              <mat-error *ngIf="firstName.invalid && registerForm.submitted"  class="input_error">
 
                   <label *ngIf=" firstName.errors.required">Fist name is <strong>required</strong></label>
+
+                  <label *ngIf=" firstName.errors.minlength">mor than <strong>2</strong></label>
 
               </mat-error>
 
@@ -138,11 +148,11 @@
 
             <mat-form-field class="last_name" >
 
-              <mat-icon class="icon_email" > assignment </mat-icon>
+              <mat-icon class="icon_email" [ngClass]="{'error_icon':lastName.invalid && registerForm.submitted}" > assignment </mat-icon>
 
-              <input matInput type="text" placeholder="Last name" formControlName="lastName" required >
+              <input #registerLastNameInput matInput type="text" placeholder="Last name" formControlName="lastName" (keydown.enter)="enterRegisterInput(registerForm)" [errorStateMatcher]="matcher" autocomplete="off" required>
 
-              <mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"  class="input_error">
+              <mat-error *ngIf="lastName.invalid && registerForm.submitted "  class="input_error">
 
                 <label *ngIf=" lastName.errors.required">Last name is <strong>required</strong></label>
 
@@ -150,63 +160,66 @@
 
             </mat-form-field>
 
-            <div formGroupName="emailGroup" >
+            <mat-form-field  class="input">
+
+                <mat-icon class="icon_email" [ngClass]="{'error_icon':email.invalid && registerForm.submitted}"> email </mat-icon>
+
+                <input #registerEmailInput matInput type="text" (input)="registerInput(userRegistrationForm.value)" placeholder="Email or Phone" formControlName="email" (keydown.enter)="enterRegisterInput(registerForm)" [errorStateMatcher]="matcher" autocomplete="off" required >
+
+                <mat-error *ngIf="email.invalid && registerForm.submitted "  class="input_error">
+
+                  <label *ngIf="email.errors.required">Email is <strong>required</strong></label>
+
+                  <label *ngIf="email.errors.incorrect"> email <strong>exist</strong></label>
+
+                </mat-error>
+
+              </mat-form-field>
+
+            <div formGroupName="passwordGroup">
 
               <mat-form-field  class="input">
 
-                <mat-icon class="icon_email"> email </mat-icon>
+                <mat-icon class="icon_email" [ngClass]="{'error_icon':password.invalid && registerForm.submitted}"> vpn_key </mat-icon>
 
-                <input matInput type="text" placeholder="Email or Phone" formControlName="email" required >
+                <input #registerPasswordInput matInput type="text" placeholder="Password" formControlName="password" (keydown.enter)="enterRegisterInput(registerForm)" [errorStateMatcher]="matcher" autocomplete="off" required>
 
-                <mat-error *ngIf="email?.invalid && (email?.dirty || email?.touched)"  class="input_error">
+                <mat-error *ngIf="password.invalid &&  registerForm.submitted "  class="input_error" style="position: relative">
 
-                  <label *ngIf="email?.errors.required">Email is <strong>required</strong></label>
+                  <label *ngIf=" password.errors.required">Password is <strong>required</strong></label>
+
+                  <label *ngIf="password.errors.pattern">uppercase,lowercase,numbers are <strong>required</strong></label>
+
+                  <label *ngIf="password.errors.minlength && !password.errors.pattern">must be 8 <strong>characters</strong></label>
 
                 </mat-error>
 
               </mat-form-field>
+
+              <mat-form-field class="input">
+
+                <mat-icon class="icon_email" [ngClass]="{'error_icon':passwordGroup.hasError('match')}"> vpn_key </mat-icon>
+
+                <input #registerConfirmPasswordInput matInput type="text" placeholder="Confirm password" formControlName="confirmPassword" (keydown.enter)="enterRegisterInput(registerForm)" [errorStateMatcher]="match_pass"
+                       autocomplete="off"  required >
+
+                <mat-error *ngIf="passwordGroup.hasError('match')"  class="input_error">
+
+                  <label>Password must <strong>match</strong></label>
+
+                </mat-error>
+
+              </mat-form-field>
+
             </div>
 
+            <br>
 
+            <button type="submit" mat-button class="button" [disabled]="userRegistrationForm.invalid && registerFistSubtmit">
 
-            <mat-form-field formGroupName="passwordGroup" class="input">
+              <span *ngIf="loading == false ; else loading_spinner_register">Sign up</span>
 
-                <mat-icon class="icon_email"> vpn_key </mat-icon>
-
-                <input matInput type="text" placeholder="Password" formControlName="password" required >
-
-                <mat-error *ngIf="password?.invalid && (password?.dirty || password?.touched)"  class="input_error">
-
-                  <label *ngIf=" password?.errors.required">Password is <strong>required</strong></label>
-
-                  <label *ngIf="password?.errors?.minlength">Must be more than 8 characters</label>
-
-                </mat-error>
-
-              </mat-form-field>
-
-              <mat-form-field formGroupName="passwordGroup" class="input">
-
-                <mat-icon class="icon_email" > vpn_key </mat-icon>
-
-                <input matInput type="text" placeholder="Confirm password" formControlName="confirmPassword" [errorStateMatcher]="match_pass"
-                     required >
-
-                <mat-error *ngIf="signupForm.hasError('match')"  class="input_error">
-
-                  <label> Password does not <strong>match</strong> </label>
-
-                </mat-error>
-
-              </mat-form-field>
-
-           <br><br>
-
-            <button (click)="onSignup()" [disabled]="!userRegistrationForm.valid || error_status_from_server " mat-button class="button" >
-
-              <span *ngIf="login_property.loading == false ; else loading">Sign up</span>
-
-              <ng-template #loading>
+              <ng-template #loading_spinner_register>
 
                 <mat-icon  class="icon_button_login">
 
@@ -220,9 +233,11 @@
 
             </button>
 
-          </form><br>
+          </form>
 
-          <a href="#" *ngIf="error_status_from_server" class="forget_email inline-block">
+          <br>
+
+          <a href="#" class="forget_email inline-block">
 
             Forget Password?
 
@@ -233,13 +248,6 @@
       </mat-tab>
 
     </mat-tab-group><br>
-
-    <div class=" error cross-validation-error-message alert alert-danger">
-
-      <strong>{{login_property.error}}</strong>
-
-    </div>
-
   </div>
 
 </div>

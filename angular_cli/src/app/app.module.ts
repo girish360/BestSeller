@@ -1,9 +1,10 @@
 
 // services ......................................................................................
 
+import { NgModule,APP_INITIALIZER     } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 
-import { NgModule , APP_INITIALIZER    } from '@angular/core';
 
 import { routes } from './app.router';
 
@@ -27,7 +28,6 @@ import { HttpInterceptorService } from './shopping/services/http-interceptor.ser
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 // end services .....................................................................................
 
 // componets .....................................................
@@ -38,8 +38,6 @@ import { ControllerComponent } from './cover_app/components/controller/controlle
 
 import { SetRouterService } from './share_services/set-router.service';
 
-
-
 // end components ............................................................................................
 
 @NgModule({
@@ -49,25 +47,24 @@ import { SetRouterService } from './share_services/set-router.service';
     AppComponent,
 
     ControllerComponent,
-
-
   ],
 
   imports: [
 
-    ShareModule ,
+    ShareModule,
 
     BrowserModule,
+
+    routes,
 
     ReactiveFormsModule,
 
     BrowserAnimationsModule,
 
-    routes,
-
     HttpClientModule,
 
     DeviceDetectorModule.forRoot()
+
 
   ],
 
@@ -95,6 +92,8 @@ import { SetRouterService } from './share_services/set-router.service';
 
 
   ],
+
+
 
   bootstrap: [AppComponent]
 })

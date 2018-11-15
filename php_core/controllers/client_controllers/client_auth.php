@@ -20,9 +20,9 @@ class client_auth {
 
             auth::$x_signature = $_SERVER['HTTP_X_SIGNATURE'];
 
-            $user_details = auth::check_credentials( $request );
+            $user = auth::check_credentials( $request );
 
-            if( $user_details ){ // check if user exist........
+            if( $user ){ // check if user exist........
 
                  self::generate_tokens();
 
@@ -44,13 +44,13 @@ class client_auth {
         }
     }
 
-    public function sign_up( $request ){
+    public function register( $request ){
 
         if( isset($_SERVER['HTTP_X_SIGNATURE']) ) {
 
             auth::$x_signature = $_SERVER['HTTP_X_SIGNATURE'];
 
-            $user_details = auth::sing_up( $request );
+            $user_details = auth::register( $request );
 
             if( $user_details ){ // check if user exist........
 

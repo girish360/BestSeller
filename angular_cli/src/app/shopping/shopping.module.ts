@@ -3,6 +3,8 @@ import { NgModule     } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
+
+
 import { ShoppingRoutingModule } from './shopping_routing.module'; // shopping  config router
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';

@@ -1,8 +1,8 @@
-import { Component, OnInit , DoCheck} from '@angular/core';
+import { Component, OnInit ,ViewChild ,ElementRef } from '@angular/core';
 
 import {FormControl,FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators ,ValidatorFn,ValidationErrors } from '@angular/forms';
 
-import { ActivatedRoute  ,Params , Data , Router} from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 
 import {ErrorStateMatcher} from '@angular/material/core';
 
@@ -14,8 +14,7 @@ import { SetRouterService } from '../../../share_services/set-router.service';
 
 declare var $:any;
 
-/** Error when invalid control is dirty, touched, or submitted. */
-
+/** Error when invalid  or form is submitted. without touched  */
 
 export class matcherPassword implements ErrorStateMatcher {
 
@@ -23,10 +22,24 @@ export class matcherPassword implements ErrorStateMatcher {
 
     const isSubmitted = form && form.submitted;
 
-    return !!(control && control.parent.get('password').value !== control.parent.get('confirmPassword').value && control.dirty  );
+    const password = control.parent.get('password').value;
+
+    const confirmPassword = control.parent.get('confirmPassword').value;
+
+    return !!( control  && password !== confirmPassword && isSubmitted  );
 
   }
 
+}
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+
+    const isSubmitted = form && form.submitted;
+
+    return !!( control && control.invalid && isSubmitted );
+
+  }
 }
 
 export const matchPassword: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
@@ -35,18 +48,8 @@ export const matchPassword: ValidatorFn = (control: FormGroup): ValidationErrors
 
   const confirmPassword = control.get('confirmPassword').value;
 
-  return password === confirmPassword ? null :{match:true};
+  return password === confirmPassword ? null :{ match:true };
 
-};
-
-export const existEmail: ValidatorFn = ( control: FormGroup): ValidationErrors | null => {
-
-  return { exist:true };
-
-};
-
-export const regExps: { [key: string]: RegExp } = {
-  password: /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/
 };
 
 @Component({
@@ -67,86 +70,127 @@ export class LoginRegisterComponent implements OnInit {
                private route :ActivatedRoute,
                private formBuilder : FormBuilder
 
-  ) { this.createForm(); }
+  ) { this.createRegisterForm(); this.createLoginForm();  }
 
-  public login_property:any = {
+  ngOnInit() {}
 
-    client_account:true ,
-    business_account:false,
-    button_login:true,
-    loading:false,
-    error:''
+  //login view child input ......
+
+  @ViewChild('emailInput')
+
+  private emailInput:ElementRef;
+
+  @ViewChild('passwordInput')
+
+  private passwordInput:ElementRef;
+
+  //register view child input ....
+
+  @ViewChild('registerEmailInput')
+
+  private registerEmailInput:ElementRef;
+
+  @ViewChild('registerFirstNameInput')
+
+  private registerFirstNameInput:ElementRef;
+
+  @ViewChild('registerLastNameInput')
+
+  private registerLastNameInput:ElementRef;
+
+  @ViewChild('registerPasswordInput')
+
+  private registerPasswordInput:ElementRef;
+
+  @ViewChild('registerConfirmPasswordInput')
+
+  private registerConfirmPasswordInput:ElementRef;
+  //
+  public pattern_password = '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{3,}';  // password pattern
+
+  public loading = false; // loading spinner in button when send request
+
+  private login_server_error:any = { // login server error
+
+    email:false,  // kept all emails that are tried but are incorrect....
+    password:false // kept all passwords that are tried but are incorrect ......
 
   };
 
-  public error_status_from_server = false;
+  private register_server_error:any = { // register server error
 
-  match_pass = new matcherPassword();
+    email:false // keept all emails that are tried but are incorrect ...
 
-  userRegistrationForm: FormGroup;
+   };
 
-  // login from group ...............
+  public registerFistSubtmit = false; // register first submit
 
-  signinForm = new FormGroup({
+  public loginFirstSubmit = false; // login first submit
 
-    email: new FormControl('',[ Validators.required ]) ,
+  match_pass = new matcherPassword(); // error state matcher when confirm password  does not math with password
 
-    password: new FormControl('',[ Validators.required , Validators.minLength(6)])
+  matcher =  new MyErrorStateMatcher(); // error state matcher for inputs
 
-  });
+  userRegistrationForm: FormGroup; // register form group controler
 
-   // get login controller
+  userLoginForm : FormGroup; // login form group controler
 
-  get emailSignin(){ return this.signinForm.get('email') }
-
-  get passwordSignin(){ return this.signinForm.get('password') }
-
-   // create account from group .....
-  signupForm = new FormGroup({
-
-    firstName: new FormControl('',[   Validators.required  ]),
-
-    lastName: new FormControl('',[   Validators.required  ]),
-
-    email: new FormControl('',[   Validators.required  ]),
-
-    password: new FormControl('',[ Validators.required , Validators.minLength(6)]),
-
-    confirmPassword: new FormControl()
-
-  } , {  validators: matchPassword  });
-
-
-  createForm() {
+  createRegisterForm() { // create from group controller for register  .....
 
     this.userRegistrationForm = this.formBuilder.group({
+
       firstName: ['', [
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(128)
       ]],
+
       lastName: ['', [
         Validators.required,
         Validators.minLength(1),
         Validators.maxLength(128)
       ]],
-      emailGroup: this.formBuilder.group({
-        email: ['', [
-          Validators.required,
-          Validators.email
-        ]]
-      }, {validator: existEmail}),
+
+      email: ['', [
+        Validators.required
+      ]],
+
       passwordGroup: this.formBuilder.group({
         password: ['', [
           Validators.required,
-          Validators.pattern(regExps.password)
+          Validators.pattern(this.pattern_password),
+          Validators.minLength(8),
+
         ]],
-        confirmPassword: ['', Validators.required]
+        confirmPassword: ['']
       }, {validator: matchPassword})
     });
   }
 
-   // get create account controller .....
+  createLoginForm() {// create form group controller for login
+
+    this.userLoginForm = this.formBuilder.group({
+      email: ['', [
+        Validators.required
+      ]],
+
+      password: ['', [
+          Validators.required,
+          Validators.pattern(this.pattern_password),
+          Validators.minLength(8),
+
+      ]]
+
+    });
+  }
+
+  // get login controller
+
+  get loginEmail(){ return this.userLoginForm.get('email') }
+
+  get loginPassword(){ return this.userLoginForm.get('password') }
+
+   // get register controller .....
 
   get firstName() { return this.userRegistrationForm.get('firstName'); }
 
@@ -154,168 +198,289 @@ export class LoginRegisterComponent implements OnInit {
 
   get email() { return this.userRegistrationForm.get('email'); }
 
-  get password() { return this.userRegistrationForm.get('password'); }
+  get password() { return this.userRegistrationForm.get('passwordGroup.password'); }
 
-  get confirmPassword() { return this.userRegistrationForm.get('confirmPassword'); }
+  get confirmPassword() { return this.userRegistrationForm.get('passwordGroup.confirmPassword'); }
 
-  ngOnInit() {}
+  get passwordGroup(){return this.userRegistrationForm.get('passwordGroup');  }
 
-  ngDoCheck() {  }
+  onRegisterUser( values ){ // send request in server to crerate account .................
 
+    if( this.userRegistrationForm.valid ){
 
- // send request in server to crerate account .................
-  onSignup(){
+      this.loading = true;
 
-    this.auth.login_request = true;
+      this.auth.login_request = true;
 
-    this.login_property.loading = true;
+      this.dataservices.Http_Post( 'shopping/auth/register_user', values )
 
-    this.dataservices.Http_Post( 'shopping/auth/sign_up',this.signupForm.value )
+          .subscribe(result => {
 
-        .subscribe(result => {
+            if (result.body) {
 
-          if ( result.body ) {
+              let token = result.headers.get('x-token'); // get token from  response header
 
-            let token = result.headers.get('x-token'); // get token from  response header
+              let refresh_token = result.headers.get('x-refresh-token'); // get refresh_token from  response header
 
-            let refresh_token = result.headers.get('x-refresh-token'); // get refresh_token from  response header
+              if( token && refresh_token ) {
 
-            if (token && refresh_token) {
+                this.auth.token = token; // set token in variable
 
-              this.auth.token = token; // set token in variable
+                this.auth.refresh_token = refresh_token; // set refresh token in variable
 
-              this.auth.refresh_token = refresh_token; // set refresh token in variable
+                this.auth.set_storage(this.auth.token_key, token);
 
-              this.auth.set_storage(this.auth.token_key, token);
+                this.auth.set_storage(this.auth.refresh_token_key, refresh_token);
 
-              this.auth.set_storage(this.auth.refresh_token_key, refresh_token);
+              }
 
-            }
+              this.auth.client = result.body;
 
-            this.auth.client = result.body;
+              this.loading = false;
 
-            this.login_property.loading = false;
+              this.dataservices.update_app(true);
 
-            this.dataservices.update_app(true);
-
-            this.setRouter.set_router({path: 'shopping/', data: false, relative: false}, this.route);
-
-          } else {
-
-            this.login_property.loading = false;
-
-            this.show_error();
-
-            this.error_status_from_server = true;
-
-            this.login_property.error = 'This email exist';
-          }
-
-        }, error => {
-        });
-
-    this.auth.login_request = false;
-
-  }
-
-
-  // send request in  server to check credencials ..........
-  onSignin(){  // method check user when user click button in login ................
-
-    this.login_property.loading = true;
-
-    this.auth.login_request = true;
-
-    this.dataservices.Http_Post('shopping/auth/credentials',this.signinForm.value)
-
-        .subscribe(result => {
-
-          if (result.body) {
-
-            let token = result.headers.get('x-token'); // get token from  response header
-
-            let refresh_token = result.headers.get('x-refresh-token'); // get refresh_token from  response header
-
-            if (token && refresh_token) {
-
-              this.auth.token = token; // set token in variable
-
-              this.auth.refresh_token = refresh_token; // set refresh token in variable
-
-              this.auth.set_storage(this.auth.token_key, token);
-
-              this.auth.set_storage(this.auth.refresh_token_key, refresh_token);
+              this.setRouter.set_router({path: 'shopping/', data: false, relative: false}, this.route);
 
             }
 
-            this.auth.client = result.body;
+          }, error => {
 
-            this.login_property.loading = false;
+            switch (error.status){
 
-            this.dataservices.update_app(true);
+              case  403:
 
-            this.setRouter.set_router({path: 'shopping/', data: false, relative: false}, this.route);
+                this.loading = false;
 
-          } else {
+                this.userRegistrationForm.controls['email'].setErrors({'incorrect': true});
 
-            this.login_property.loading = false;
+                this.registerEmailInput.nativeElement.focus();
 
-            this.show_error();
+                if( this.register_server_error.email instanceof Array && this.register_server_error.email !== false ){
 
-            this.error_status_from_server = true;
+                  let new_incorrect_email = { value : values.email }; // set this email in correct try one other .......
 
-            this.login_property.error = 'Email or Password doesnt match';
-          }
-        }, error => {
+                  this.register_server_error.email.push( new_incorrect_email ); // set this email in correct try one other .......
 
-        });
+                }else{
+                  this.register_server_error.email = [ { value:values.email} ]; // set this email in correct try one other .......
+                }
+
+                break;
+            }
+
+          });
 
       this.auth.login_request = false;
 
-  }
+    }else{
 
-  hide_error(){
+      this.set_register_focus();
 
-    $('.error').animate({
-
-      width:'1%'
-
-    },100,function(){
-
-      $('.error').css( {visibility:'hidden' })
-
-    });
-  }
-
-  show_error(){
-
-    $('.error').css({visibility: 'visible'}).animate({
-
-      width: '100%'
-
-    },100);
-  }
-
-  keypres(){
-
-    if( this.error_status_from_server == true ){
-
-      this.hide_error();
-
-      this.error_status_from_server = false;
     }
 
+    this.registerFistSubtmit = true;
 
   }
 
-  tabClick(tab){
+  onLoginUser(values){  // method check user when user click button in login ................
 
-    this.hide_error();
+    if( this.userLoginForm.valid ){
 
-    this.error_status_from_server = false;
+      this.loading = true;
+
+      this.auth.login_request = true;
+
+      this.dataservices.Http_Post('shopping/auth/credentials', values)
+
+          .subscribe(result => {
+
+            if (result.body) {
+
+              let token = result.headers.get('x-token'); // get token from  response header
+
+              let refresh_token = result.headers.get('x-refresh-token'); // get refresh_token from  response header
+
+              if (token && refresh_token) {
+
+                this.auth.token = token; // set token in variable
+
+                this.auth.refresh_token = refresh_token; // set refresh token in variable
+
+                this.auth.set_storage(this.auth.token_key, token);
+
+                this.auth.set_storage(this.auth.refresh_token_key, refresh_token);
+
+              }
+
+              this.auth.client = result.body;
+
+              this.loading = false;
+
+              this.dataservices.update_app(true);
+
+              this.setRouter.set_router({path: 'shopping/', data: false, relative: false}, this.route);
+
+            }
+
+          }, error => {
+
+            switch (error.status){
+
+              case  404:
+
+                this.loading = false;
+
+                this.userLoginForm.controls['email'].setErrors({'incorrect': true});
+
+                this.emailInput.nativeElement.focus();
+
+                if( this.login_server_error.email instanceof Array && this.login_server_error.email !== false ){
+
+                  let new_incorrect_email = { value : values.email }; // set this email in correct try one other .......
+
+                  this.login_server_error.email.push( new_incorrect_email ); // set this email in correct try one other .......
+
+                }else{
+                  this.login_server_error.email = [ { value:values.email} ]; // set this email in correct try one other .......
+                }
+
+                break;
+
+              case 401:
+
+                this.loading = false;
+
+                this.userLoginForm.controls['password'].setErrors({'incorrect': true});
+
+                this.passwordInput.nativeElement.focus();
+
+                if( this.login_server_error.password instanceof Array && this.login_server_error.password !== false ){
+
+                  let new_incorrect_password = { value : values.password }; // set this email in correct try one other .......
+
+                  this.login_server_error.password.push( new_incorrect_password ); // set this email in correct try one other .......
+
+                }else{
+                  this.login_server_error.password = [ { value:values.password} ]; // set this email in correct try one other .......
+                }
+
+                break
+            }
+
+          });
+
+      this.auth.login_request = false;
+
+
+
+    }else{
+
+      this.set_login_focus(); // check which input should focus on it ............
+
+    }
+    this.loginFirstSubmit = true;
+  }
+
+  enterLoginInput(form){ // on keydown.enter  login inputs
+
+    if( form.invalid )
+
+      this.set_login_focus();
 
   }
 
+  enterRegisterInput(form){ // on keydown.enter register inputs
 
+    if( form.invalid )
+
+      this.set_register_focus();
+  }
+
+  set_login_focus(){ //  set focus when user click enter on input's login form and when click button but inputs are invalid ....
+
+    if( this.loginEmail.invalid ){
+
+      this.emailInput.nativeElement.focus();
+
+    }
+    else if( this.loginPassword.invalid ){
+
+      this.passwordInput.nativeElement.focus();
+    }
+
+  }
+
+  set_register_focus(){ // set register input focus or if is not any input invalid submit the form with enter .....
+
+    if( this.firstName.invalid )
+      this.registerFirstNameInput.nativeElement.focus();
+    else if( this.lastName.invalid )
+      this.registerLastNameInput.nativeElement.focus();
+    else if ( this.email.invalid)
+       this.registerEmailInput.nativeElement.focus();
+    else if(this.password.invalid)
+     this.registerPasswordInput.nativeElement.focus();
+    else if( this.passwordGroup.hasError('match') )
+      this.registerConfirmPasswordInput.nativeElement.focus();
+
+
+  }
+
+  registerInput( values ){ // handler input new character in any inputs of register
+
+    if( this.register_server_error.email instanceof Array && this.register_server_error.email !== false ){
+
+      let foundet = this.register_server_error.email.some(function (item){
+
+        return item.value === values.email;
+
+      });
+
+      if( foundet ){
+
+        this.userRegistrationForm.controls['email'].setErrors({'incorrect':true}); // set  incorret email error .......
+
+      }
+    }
+  }
+
+  loginInput( values ){ // handler input new character in any inputs of login
+
+    if( this.login_server_error.email instanceof Array && this.login_server_error.email !== false ){
+
+      let foundet = this.login_server_error.email.some(function (item){
+
+        return item.value === values.email;
+
+      });
+
+      if( foundet ){
+
+        this.userLoginForm.controls['email'].setErrors({'incorrect':true}); // set  incorret email error .......
+
+      }
+    }
+
+    if( this.login_server_error.password instanceof Array && this.login_server_error.password !== false ){
+
+      let foundet = this.login_server_error.password.some(function (item){
+
+        return item.value === values.password;
+
+      });
+
+      if( foundet ){
+
+        this.userLoginForm.controls['password'].setErrors({'incorrect':true}); // set incorret password error .....
+
+      }
+    }
+
+  }
+
+  tabClick(tab){ // tabs  login and register content ......
+
+  }
 
 }

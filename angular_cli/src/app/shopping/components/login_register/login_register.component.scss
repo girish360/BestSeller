@@ -30,16 +30,18 @@
 }
 
 .input_error label{
-    font-size: 12px;
+    font-size: 11px;
     position: relative;
     top: -3px;
     color: red;
 
 }
-
+.error_icon{
+    color:red;
+}
 
 .input_error label strong{
-    font-size: 12px;
+    font-size: 11px;
 
 }
 
@@ -123,19 +125,7 @@
     color: #F5F5F5;
 
 }
-.error{
 
-    width: 1%;
-    height: 20px;
-    margin:0 auto;
-    bottom: 0;
-    border-radius: 0;
-    visibility: hidden;
-}
-.error strong{
-    position: relative;
-    top: -7px;
-}
 
 .user-icon img{
     width: 100%;
@@ -151,10 +141,7 @@
     left: 12px;
     top: -12px;
 }
-.user-icon:hover{
-    background-color: green;
 
-}
 .mat-button{
     width: 100%;
 

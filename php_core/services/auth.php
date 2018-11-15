@@ -25,31 +25,44 @@ class auth {
     public static function check_credentials( $request  ){
 
         $user_details = database::table('users') // query to get from db specific user dependet from their credentials....
-            ->select('id','email', 'picture' ,'first_name','last_name','language')
-            ->where('password','=',$request->password)
-            ->andWhere('email','=',$request->email)
+            ->select('id','email', 'picture' ,'first_name','last_name','language','password')
+            ->where('email','=',$request->email)
             ->orWhere('phone','=',$request->email)
             ->get();
 
         if( $user_details ){ // user does not exists in db return false  ........
-
             self::$user_details = $user_details[0];
 
-            return true;
+            if( self::$user_details['password']  == $request->password ){ // if and password is same return true
 
+                 unset( self::$user_details['password'] ); // remove password from user's details ...
+
+                return true; // return successful
+
+            }
+            // incorrect password ............
+            error::header_error('401 Unauthorized'); // 401 error password is incorrect
+
+            error::error('Email is incorrect'); // throw exeption message .......
+
+            exit; // exit request .............
         }
-        // user exists return user's details
+        // email is incorrect
+        error::header_error('404 Email not founded '); // 401 error email is incorrect
 
-        return false;
+        error::error('Password is incorrect'); // throw exeption message .......
+
+        exit; // exit request .............
+
 
     }
 
-    public static function sing_up( $request ){
+    public static function register( $request ){
 
 
-        if( !empty($request->firstName)  && !empty($request->lastName) && !empty($request->email) && !empty($request->password) && !empty($request->confirmPassword) ){
+        if( !empty($request->firstName)  && !empty($request->lastName) && !empty($request->email) && !empty($request->passwordGroup->password) && !empty($request->passwordGroup->confirmPassword) ){
 
-            if( $request->password === $request->confirmPassword ){
+            if( $request->passwordGroup->password === $request->passwordGroup->confirmPassword ){
 
                 $user = database::table('users') // query to get from db specific user dependet from their credentials....
                 ->select('id','email', 'picture' ,'first_name','last_name','language')
@@ -65,7 +78,7 @@ class auth {
                                   'first_name'=>$request->firstName,
                                   'last_name'=>$request->lastName,
                                   'email'=>$request->email,
-                                  'password'=>$request->password
+                                  'password'=>$request->passwordGroup->password
                               ]
                           );
 
@@ -74,15 +87,27 @@ class auth {
                       return true;
 
                 }
+                //this email is exists ask if forgot password ........
 
-                return false;
+                error::header_error('403 Email exist');
+
+                error::error('Email already exists');
+
+                exit;
             }
 
-            return false;
+            error::header_error('400 Confirm password');
+
+            error::error('Confirm password does not much with password');
+
+            exit;
 
         }
-        return false;
+        error::header_error('400 invalid data');
 
+        error::error('must come all data that are required to create a account');
+
+        exit;
 
     }
 

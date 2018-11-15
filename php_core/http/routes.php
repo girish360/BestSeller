@@ -19,7 +19,7 @@
 
          route::post('/credentials','client_auth@login')->exe();
 
-         route::post('/sign_up','client_auth@sign_up')->exe();
+         route::post('/register_user','client_auth@register')->exe();
 
          route::get('/refresh_token','client_auth@refresh_token')->exe();
 

@@ -41,8 +41,11 @@ export class HttpInterceptorService implements HttpInterceptor {
                           if (err instanceof HttpErrorResponse) {
                               switch ((<HttpErrorResponse>err).status) {
                                   case 401: // if is 401 error
-                                      return this.handle401Error(request, next);  // return handle401Error method
+                                      if( this.auth.refresh_token ){ // if exists refresh token make a request to refresh token
+                                          return this.handle401Error(request, next);  // return handle401Error method
+                                      }
                               }
+
                           } else {
                               return throwError(err);
                           }
