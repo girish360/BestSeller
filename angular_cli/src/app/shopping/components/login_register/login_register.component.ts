@@ -64,11 +64,11 @@ export const matchPassword: ValidatorFn = (control: FormGroup): ValidationErrors
 
 export class LoginRegisterComponent implements OnInit {
 
-  constructor( private dataservices : DataService ,
+  constructor( private ds : DataService ,
                private auth :AuthService,
-               private setRouter :SetRouterService,
+               private sr :SetRouterService,
                private route :ActivatedRoute,
-               private formBuilder : FormBuilder
+               private fb : FormBuilder
 
   ) { this.createRegisterForm(); this.createLoginForm();  }
 
@@ -137,7 +137,7 @@ export class LoginRegisterComponent implements OnInit {
 
   createRegisterForm() { // create from group controller for register  .....
 
-    this.userRegistrationForm = this.formBuilder.group({
+    this.userRegistrationForm = this.fb.group({
 
       firstName: ['', [
         Validators.required,
@@ -155,7 +155,7 @@ export class LoginRegisterComponent implements OnInit {
         Validators.required
       ]],
 
-      passwordGroup: this.formBuilder.group({
+      passwordGroup: this.fb.group({
         password: ['', [
           Validators.required,
           Validators.pattern(this.pattern_password),
@@ -169,7 +169,7 @@ export class LoginRegisterComponent implements OnInit {
 
   createLoginForm() {// create form group controller for login
 
-    this.userLoginForm = this.formBuilder.group({
+    this.userLoginForm = this.fb.group({
       email: ['', [
         Validators.required
       ]],
@@ -212,7 +212,7 @@ export class LoginRegisterComponent implements OnInit {
 
       this.auth.login_request = true;
 
-      this.dataservices.Http_Post( 'shopping/auth/register_user', values )
+      this.ds.Http_Post( 'shopping/auth/register_user', values )
 
           .subscribe(result => {
 
@@ -238,9 +238,9 @@ export class LoginRegisterComponent implements OnInit {
 
               this.loading = false;
 
-              this.dataservices.update_app(true);
+              this.ds.update_app(true);
 
-              this.setRouter.set_router({path: 'shopping/', data: false, relative: false}, this.route);
+              this.sr.set_router({path: 'shopping/', data: false, relative: false}, this.route);
 
             }
 
@@ -291,7 +291,7 @@ export class LoginRegisterComponent implements OnInit {
 
       this.auth.login_request = true;
 
-      this.dataservices.Http_Post('shopping/auth/credentials', values)
+      this.ds.Http_Post('shopping/auth/credentials', values)
 
           .subscribe(result => {
 
@@ -317,9 +317,9 @@ export class LoginRegisterComponent implements OnInit {
 
               this.loading = false;
 
-              this.dataservices.update_app(true);
+              this.ds.update_app(true);
 
-              this.setRouter.set_router({path: 'shopping/', data: false, relative: false}, this.route);
+              this.sr.set_router({path: 'shopping/', data: false, relative: false}, this.route);
 
             }
 

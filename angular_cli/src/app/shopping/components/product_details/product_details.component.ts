@@ -42,7 +42,7 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
 
   constructor(
       private scroll :ScrollbarService ,
-      private dataservices :DataService,
+      private ds :DataService,
       private crypto : EncryptDecryptService ,
       private route: ActivatedRoute ,
       private router: Router
@@ -64,9 +64,9 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
 
           this.product_id = params.id;
 
-          this.dataservices.update_loader(true);
+          this.ds.update_loader(true);
 
-          this.my_product = this.dataservices.Http_Get( 'shopping/products/product_details',  { 'product_id' : this.product_id} ) // make request ......
+          this.my_product = this.ds.Http_Get( 'shopping/products/product_details',  { 'product_id' : this.product_id} ) // make request ......
 
               .subscribe( //  take success
 
@@ -79,7 +79,7 @@ export class ProductDetailsComponent implements OnInit , OnDestroy {
                       this.company =  this.product_details['company'];
 
                       setTimeout(()=>{
-                          this.dataservices.update_loader(false);
+                          this.ds.update_loader(false);
                       },1000);
 
                       $(function() {

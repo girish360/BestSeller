@@ -55,13 +55,11 @@ a{
     text-decoration: none;
 }
 
-button:hover .mat-icon , a:hover span ,a:hover .mat-icon , a:hover p {
+button:hover .mat-icon , a:hover span ,a:hover .mat-icon , a:hover p, a:hover b {
 
-    color:darkslategrey;
+    color:$hover_color;
 
 }
-
-
 
 .slide_button{
     color: white;
@@ -193,18 +191,7 @@ input[name='company_search'] {
 
 }
 
-.inside_width{
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: calc( 100% - 10px );
-    width: calc( 100% - 10px );
 
-
-}
 .inner_height{
     position: absolute;
     margin: auto;
@@ -375,8 +362,6 @@ body::-webkit-scrollbar-track:hover , .menu_left::-webkit-scrollbar-track:hover 
 .hover:hover ,.menu_settings:hover{
 
     -webkit-box-shadow: inset 0 0 100px rgba(0.2,0.2,0.2,0.2);
-
-
 }
 
 .mat-tab-label:hover,.mat-tab-label:hover span{

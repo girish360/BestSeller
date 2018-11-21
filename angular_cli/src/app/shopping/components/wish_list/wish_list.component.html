@@ -1,114 +1,125 @@
 
- <div class="wishlist_component ">
+ <div class="wishlist_component "   *ngIf="{ header:dataservices.header | async , app:dataservices.async | async }">
 
      <div class="header_div">
 
-         <div class="inside_width">
+         <span  matTooltip="Search" >
 
-                        <span class="drop_wish_title">
+                 <button mat-icon-button   class="btns-wish"  (click)="productsService.show_hide_search_in_wishlist()">
 
-                            {{dataservices.language.Wish_Write}}
+                     <mat-icon class="notCloseDropdawnFavorite" *ngIf="!productsService.wish_properties.search">search</mat-icon>
 
-                        </span>
+                     <mat-icon class="notCloseDropdawnFavorite" *ngIf="productsService.wish_properties.search">close</mat-icon>
 
-             <span  matTooltip="Search" >
+                 </button>
 
-                            <button mat-icon-button   class="btns-wish"  (click)="productsService.show_hide_search_in_wishlist()">
+             </span>
 
-                                <mat-icon class="notCloseDropdawnFavorite" *ngIf="productsService.wish_properties.icon_search == false">search</mat-icon>
+             <span class="search_from_wish">
 
-                                <mat-icon class="notCloseDropdawnFavorite" *ngIf="productsService.wish_properties.icon_search == true">close</mat-icon>
+                 <input  type="text" [(ngModel)]="filter_wish" placeholder="Serach wish" name="search_wish" class=" search-in-wish search_wishlist" [ngClass]="productsService.check_show_hide_search_in_wishlist()">
 
-                            </button>
-
-                        </span>
-
-             <span>
-
-                            <input  type="text" [(ngModel)]="filter_wish" placeholder="Serach Wishlist" name="search_wish" class=" search-in-wish search_wishlist" [ngClass]="productsService.check_show_hide_search_in_wishlist()">
-
-                        </span>
+             </span>
 
              <span  matTooltip="Delete" >
 
-                            <button mat-icon-button class="btns-wish"  [disabled]="productsService.wish_properties.button" (click)="productsService.check_delete_from_wishList()" >
+                 <button mat-icon-button class="btns-wish"  [disabled]="productsService.wish_properties.button" (click)="productsService.check_delete_from_wishList()" >
 
-                                <mat-icon>delete</mat-icon>
+                     <mat-icon>delete</mat-icon>
 
-                            </button>
+                 </button>
 
-                        </span>
+             </span>
 
              <span  matTooltip="Add to Cart" >
 
-                            <button mat-icon-button class="btns-wish"  [disabled]="productsService.wish_properties.button" (click)="productsService.add_from_wish_to_cart( productsService.wish_properties.selected )" >
+                 <button mat-icon-button class="btns-wish"  [disabled]="productsService.wish_properties.button" (click)="productsService.add_from_wish_to_cart( productsService.wish_properties.selected )" >
 
-                                <mat-icon>shopping cart</mat-icon>
+                     <mat-icon>shopping cart</mat-icon>
 
-                            </button>
+                 </button>
 
-                        </span>
+             </span>
 
              <a (click)="set_router( { path:'shopping/wish_list' , data:false ,relative:false } )" >
 
-                            <span  matTooltip="See All" >
+                 <span  matTooltip="See All" >
 
-                                <button mat-icon-button  class="btns-wish" >
+                     <button mat-icon-button  class="btns-wish" >
 
-                                    <mat-icon>remove_red_eye</mat-icon>
+                         <mat-icon>remove_red_eye</mat-icon>
 
-                                </button>
-                            </span>
+                     </button>
+
+                 </span>
 
              </a>
 
              <span  matTooltip="Select all">
 
-                            <mat-checkbox color="primary" class=" btns-wish"
-                                          [checked]="productsService.wish_properties.wishList.length == productsService.wish_properties.selected.length &&  productsService.wish_properties.selected.length > 0 "
-                                          (click)="productsService.selecteAll_wishList()">
-                            </mat-checkbox>
+                 <mat-checkbox color="primary" class=" btns-wish"
+                               [checked]="productsService.wish_properties.selectedAll"
+                               (click)="productsService.selecteAll_wishList();false">
+                 </mat-checkbox>
 
-                        </span>
+             </span>
+
+         <span class="right_header_wish">
+
+
+             <span class="drop_wish_title">
+
+                 {{dataservices.language.Wish_Write}}
+
+             </span>
+
+             <span  matTooltip="Add to Cart" >
+
+                 <button mat-icon-button class="btns-wish"  >
+
+                     <mat-icon>settings</mat-icon>
+
+                 </button>
+             </span>
+
+         </span>
+
+     </div>
+
+     <div class="body_div">
+
+         <div  *ngFor="let wish_product of productsService.wish_properties.wishList | filter: filter_wish "  [@wishList_animations]="active">
+
+             <button mat-button class="width_body_wish" [ngClass]="productsService.getStyle_wish( wish_product )">
+
+                 <div class="width_each_wishlist">
+
+                     <div class="wish_image" >
+
+                         <img  src="../../assets/images/products_image/{{wish_product.image}}">
+
+                     </div>
+
+                     <div class="title">
+                         {{wish_product.title}}
+                     </div>
+
+                     <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
+                         <span  matTooltip="select">
+                             <mat-checkbox  color="primary" [checked]="productsService.check_selected_wish( wish_product )" (click)="productsService.toggle_select_wish( wish_product );false">
+
+                             </mat-checkbox>
+                         </span>
+
+                     </div>
+
+                 </div>
+
+             </button>
 
          </div>
 
      </div>
 
-  <div class="body_div">
-
-    <div  *ngFor="let wish_product of productsService.wish_properties.wishList | filter: filter_wish "  [@wishList_animations]="active">
-
-      <button mat-button class="width_body_wish" [ngClass]="productsService.getStyle_wish( wish_product )">
-
-        <div class="width_each_wishlist">
-
-          <div class="wish_image" >
-
-            <img  src="../../assets/images/products_image/{{wish_product.image}}">
-
-          </div>
-
-          <div class="title">
-            {{wish_product.title}}
-          </div>
-
-          <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
-            <span  matTooltip="select">
-              <mat-checkbox  color="primary" [checked]="productsService.check_selected_wish( wish_product )" (click)="productsService.toggle_select_wish( wish_product )">
-
-              </mat-checkbox>
-            </span>
-
-          </div>
-
-        </div>
-
-      </button>
-
-    </div>
-
-  </div>
-
-</div>
+ </div>
 

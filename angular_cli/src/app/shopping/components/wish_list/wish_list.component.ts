@@ -1,4 +1,4 @@
-import { Component, OnInit,DoCheck } from '@angular/core';
+import { Component, OnInit,DoCheck,ChangeDetectionStrategy } from '@angular/core';
 
 import { ActivatedRoute} from '@angular/router';
 
@@ -15,6 +15,7 @@ import { SetRouterService } from '../../../share_services/set-router.service';
   selector: 'app-wish-list',
   templateUrl: './wish_list.component.html',
   styleUrls: ['./wish_list.component.scss'],
+  changeDetection :ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('wishList_animations', [
       transition('* => void', [

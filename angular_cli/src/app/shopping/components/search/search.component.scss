@@ -1,3 +1,110 @@
+@import "../../../../variables.scss";
+
 .full_search{
     width: 100%;
+}
+
+.button_search_for{
+    height: 100%;
+    width: 150px;
+    border-radius:0 ;
+}
+
+.searchFor{
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+.search_location{
+    padding: 5px;
+
+}
+
+
+
+.header_dropsearch{
+    height: 40px;
+    overflow-y: hidden;
+    overflow-x: overlay;
+    white-space: nowrap;
+
+}
+.body_search{
+    min-height: 0;
+}
+
+
+.active-search-button{
+
+    background-color: $background;
+
+}
+.result_search {
+    position: relative;
+    height: 40px;
+    width: 100%;
+    padding: $padding;
+
+}
+.body_recent_searches{
+
+    position: relative;
+    height: 40px;
+    width: 100%;
+}
+.recent_searches{
+    position: relative;
+    min-height: 25px;
+}
+.title_resent_research{
+    height: 25px;
+}
+
+.footer_search{
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 35px;
+}
+.finding-results  ,.seeall-results ,.no-results {
+
+    text-align: center;
+    vertical-align: middle;
+    line-height: 25px;
+}
+
+
+
+.result_search:hover .border_bottom ,.body_recent_searches:hover .border_bottom{
+    color:white;
+}
+
+
+.result_search_left{
+    width: 30px;
+    height: 100%;
+
+}
+.result_search_right{
+    width: calc( 100% - 40px );
+    height: 100%;
+    float: right;
+
+}
+.result_search_img{
+    height: 100%;
+    border-radius: 100px;
+    background-color: #f2f2f2;
+}
+.result_search_img img{
+    border-radius: 100px;
 }

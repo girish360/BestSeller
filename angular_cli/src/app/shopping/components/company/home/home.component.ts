@@ -29,21 +29,21 @@ export class HomeComponent implements OnInit {
 
   constructor(
 
-      private company : CompanyService,
+      private cs : CompanyService,
 
       private scroll : ScrollbarService,
 
-      private dataservices : DataService,
+      private ds : DataService,
 
       private cd :ChangeDetectorRef,
 
-      private setRouter : SetRouterService,
+      private sr : SetRouterService,
 
       private route : ActivatedRoute ,
 
   )
   {
-    this.company.company_properties.company_nav_active = 0;
+    this.cs.company_properties.company_nav_active = 0;
 
     this.scroll.window_animate(0,0);
   }
@@ -101,20 +101,20 @@ export class HomeComponent implements OnInit {
 
   onmove_carousel( data_carousel : NgxCarouselStore , current_category ){
 
-    console.log(this.company.carousel_data);
+    console.log(this.cs.carousel_data);
 
     if( data_carousel.currentSlide + data_carousel.items  == data_carousel.itemLength
 
         && current_category.current_page_products < 1 && current_category.total_products > current_category.products_for_page
     ){
 
-      this.dataservices.update_loader(true);
+      this.ds.update_loader(true);
 
-      this.company.carousel_data.category_id = current_category.id;
+      this.cs.carousel_data.category_id = current_category.id;
 
-      this.company.carousel_data.current_page_products = current_category.current_page_products+1;
+      this.cs.carousel_data.current_page_products = current_category.current_page_products+1;
 
-      this.dataservices.Http_Get( 'shopping/company/more_products_incarousel' , this.company.carousel_data ) // make request ......
+      this.ds.Http_Get( 'shopping/company/more_products_incarousel' , this.cs.carousel_data ) // make request ......
 
           .subscribe( //  take success
 
@@ -124,7 +124,7 @@ export class HomeComponent implements OnInit {
 
                 setTimeout(()=>{
 
-                  this.dataservices.update_loader(false);
+                  this.ds.update_loader(false);
 
                 },1000);
 
@@ -141,18 +141,18 @@ export class HomeComponent implements OnInit {
 
   public more_products( array_data , category_id ){
 
-    for ( let i = 0 ; i < this.company.categories_products.length ; i++ ){
+    for ( let i = 0 ; i < this.cs.categories_products.length ; i++ ){
 
-      if( category_id == this.company.categories_products[i].id ){
+      if( category_id == this.cs.categories_products[i].id ){
 
 
         for( let j = 0 ; j < array_data.products.length ; j++ ){
 
-          this.company.categories_products[i].products.push( array_data.products[j] );
+          this.cs.categories_products[i].products.push( array_data.products[j] );
 
         }
 
-        this.company.categories_products[i].current_page_products = array_data.current_page_products;
+        this.cs.categories_products[i].current_page_products = array_data.current_page_products;
 
       } //
 
@@ -164,15 +164,15 @@ export class HomeComponent implements OnInit {
 
   onScroll() {
 
-    if( (this.company.carousel_data.current_page_categories+1)*this.company.carousel_data.categories_for_page < this.company.carousel_data.total_categories ) {
+    if( (this.cs.carousel_data.current_page_categories+1)*this.cs.carousel_data.categories_for_page < this.cs.carousel_data.total_categories ) {
 
-      this.company.carousel_data.current_page_products = 0;
+      this.cs.carousel_data.current_page_products = 0;
 
-      this.company.carousel_data.current_page_categories = this.company.carousel_data.current_page_categories + 1;
+      this.cs.carousel_data.current_page_categories = this.cs.carousel_data.current_page_categories + 1;
 
-      this.dataservices.update_spinner(true);
+      this.ds.update_spinner(true);
 
-      this.dataservices.Http_Get( 'shopping/company/categories', this.company.carousel_data ) // make request ......
+      this.ds.Http_Get( 'shopping/company/categories', this.cs.carousel_data ) // make request ......
 
           .subscribe( //  take success
 
@@ -180,7 +180,7 @@ export class HomeComponent implements OnInit {
 
                 let more_categories = data['data']['categories'];
 
-                this.company.carousel_data = data['data']['store_data'];
+                this.cs.carousel_data = data['data']['store_data'];
 
                 this.more_categories( more_categories );
 
@@ -200,14 +200,14 @@ export class HomeComponent implements OnInit {
 
     for( let i = 0 ; i < more_categories.length ; i++ ){
 
-      this.company.categories_products.push(more_categories[i]);
+      this.cs.categories_products.push(more_categories[i]);
     }
 
     this.cd.markForCheck();
 
     setTimeout(()=>{
 
-      this.dataservices.update_spinner(false);
+      this.ds.update_spinner(false);
 
     },1000);
 
@@ -216,7 +216,7 @@ export class HomeComponent implements OnInit {
 
   public  set_router( data ){
 
-    this.setRouter.set_router( data , this.route ); // set router .....
+    this.sr.set_router( data , this.route ); // set router .....
 
   }
 

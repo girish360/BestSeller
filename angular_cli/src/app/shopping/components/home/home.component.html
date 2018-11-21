@@ -1,8 +1,8 @@
 
 
-<ng-container *ngIf="dataservices.loaded_component;else loading">
+<ng-container *ngIf="ds.loaded_component;else loading">
 
-    <ng-container *ngIf="!dataservices.not_founded;else notFounded">
+    <ng-container *ngIf="!ds.not_founded;else notFounded">
 
 <div class="home"
      infiniteScroll
@@ -10,14 +10,14 @@
      [infiniteScrollThrottle]="150"
      (scrolled)="onScroll()" >
 
-    <div class="carousel_categories" *ngFor="let category of homeservice.categories_products ">
+    <div class="carousel_categories" *ngFor="let category of hs.categories_products ">
 
 
-        <span class="name_category" >  {{category.name}}  </span>
+        <span class="name_category"> {{category.name}} </span>
 
         <span class="see_all_category">
 
-            <a href="#" (click)="set_router( { path:'products/'+category.name , data:[ { keyparams :'id', params:  category.id } , {keyparams :'page', params:  1} ] , relative:true })"> See All </a>
+            <a href="javascript:" (click)="set_router( { path:'products/'+category.name , data:[ { keyparams :'id', params:  category.id } , {keyparams :'page', params:  1} ] , relative:true })"> See All </a>
 
         </span>
 
@@ -34,7 +34,7 @@
 
                 <div class="items_in_carousel box-shadow" >
 
-                    <a href="javascript:void(0)">
+                    <a href="javascript:">
 
                         <div class="img_item border_bottom " (click)="set_router({ path:'product-details/show' , data:{ keyparams:'id' , params:product.product_id} , relative:true })" >
 

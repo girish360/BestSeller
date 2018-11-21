@@ -61,10 +61,10 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
   constructor(
       private scroll:ScrollbarService,
-      private productsService : ProductService,
-      private setRouter: SetRouterService,
-      private dataservices: DataService ,
-      private menuservice :MenuService,
+      private ps : ProductService,
+      private sr: SetRouterService,
+      private ds: DataService ,
+      private ms :MenuService,
       private route: ActivatedRoute,
       private cd : ChangeDetectorRef,
 
@@ -74,7 +74,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
           this.uri = params.name;
 
-          if ( this.uri.includes("_")) {
+          if ( this.uri.includes("_") ) {
 
               let index =  this.uri.indexOf('_');
 
@@ -87,69 +87,69 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
           this.scroll.window(0, 0);
 
-          if ( this.dataservices.resolve ){ // response from  resolve .....
+          if ( this.ds.resolve ){ // response from  resolve .....
 
-              this.dataservices.loaded_component = true;
+              this.ds.loaded_component = true;
 
               if( response.products ){  // response from database is is not false this company exist
 
-                  this.productsService.products = response.products['products'];
+                  this.ps.products = response.products['products'];
 
-                  this.productsService.checked_products_inCart_and_inWish();
+                  this.ps.checked_products_inCart_and_inWish();
 
                   if ( response['pages_details'] != false ) {
 
-                      this.productsService.pages_details = response.products['pages_details'];
+                      this.ps.pages_details = response.products['pages_details'];
 
                       this.pages_details = response.products['pages_details'];
 
-                      this.productsService.build_pages_link( this.pages_details  );
+                      this.ps.build_pages_link( this.pages_details  );
                   }
 
-                  this.dataservices.not_founded = false;
+                  this.ds.not_founded = false;
 
               }else{ // dont exists  this company .......
 
-                  this.dataservices.not_founded = true;
+                  this.ds.not_founded = true;
               }
 
-              this.dataservices.update_products(true);
+              this.ds.update_products(true);
 
               this.cd.markForCheck();
 
           } else {
 
-              this.dataservices.loaded_component = false;
+              this.ds.loaded_component = false;
 
               this.route.queryParams.subscribe( params => {
 
-                  this.productsService.load_products( { queryParams:params } ).subscribe( response =>{
+                  this.ps.load_products( { queryParams:params } ).subscribe( response =>{
 
-                      this.dataservices.loaded_component = true;
+                      this.ds.loaded_component = true;
 
                       if( response ){
 
-                          this.dataservices.not_founded = false;
+                          this.ds.not_founded = false;
 
-                          this.productsService.products = response['products'];
+                          this.ps.products = response['products'];
 
-                          this.productsService.checked_products_inCart_and_inWish();
+                          this.ps.checked_products_inCart_and_inWish();
 
                           if ( response['pages_details'] != false ) {
 
-                              this.productsService.pages_details = response['pages_details'];
+                              this.ps.pages_details = response['pages_details'];
 
                               this.pages_details = response['pages_details'];
 
-                              this.productsService.build_pages_link( this.pages_details  );
+                              this.ps.build_pages_link( this.pages_details  );
                           }
 
                       }else{
 
-                          this.dataservices.not_founded = true;
+                          this.ds.not_founded = true;
                       }
 
-                      this.dataservices.update_products(true);
+                      this.ds.update_products(true);
 
                       this.cd.markForCheck();
 
@@ -167,7 +167,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
   public change_products_for_page(){
 
-      this.my_products = this.dataservices.Http_Get('shopping/products/change_products_forpage', { products_for_page:this.pages_details.products_for_page } ) // make request to get products ......
+      this.my_products = this.ds.Http_Get('shopping/products/change_products_forpage', { products_for_page:this.pages_details.products_for_page } ) // make request to get products ......
 
           .subscribe( //  take success
 
@@ -175,15 +175,15 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
                   if( data ){
 
-                      if( this.productsService.data_products.page == 1 ){
+                      if( this.ps.data_products.page == 1 ){
 
-                          this.productsService.change_products_for_page();
+                          this.ps.change_products_for_page();
 
                       }else{
 
                           let router = { path:'shopping/products/'+this.uri , data:
                               [
-                                  { keyparams :'id', params:  this.productsService.data_products.category_id },
+                                  { keyparams :'id', params:  this.ps.data_products.category_id },
                                   { keyparams :'page', params:  1 }
 
                               ] , relative:false };
@@ -215,7 +215,7 @@ export class ProductsComponent   implements OnInit , AfterViewInit  {
 
   public set_router( data ){
 
-    this.setRouter.set_router( data , this.route ); // set router .....
+    this.sr.set_router( data , this.route ); // set router .....
 
   }
 

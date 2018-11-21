@@ -17,11 +17,11 @@ export class BodyComponent implements OnInit {
 
 
   constructor(
-      private productsService : ProductService ,
+      private ps : ProductService ,
 
-      private dataservices : DataService,
+      private ds : DataService,
 
-      private menuservice : MenuService,
+      private ms : MenuService,
   ) {
 
 
@@ -33,7 +33,7 @@ export class BodyComponent implements OnInit {
 
   ngAfterViewChecked(){
 
-    this.dataservices.app_rendered = true; // first load  true ........
+    this.ds.app_rendered = true; // first load  true ........
 
   }
 }

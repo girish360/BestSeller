@@ -11,7 +11,10 @@ export class ScrollTopComponent implements OnInit {
 
   public status_scroll_up:any= false;
 
-  constructor(private renderer: Renderer , private scroll:ScrollbarService) {
+  constructor(
+      private renderer: Renderer ,
+      private scroll:ScrollbarService
+  ) {
 
     this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
 

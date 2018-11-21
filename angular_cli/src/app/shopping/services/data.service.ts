@@ -62,6 +62,10 @@ export class DataService extends HttpService implements OnInit{
 
     public client = this.app_client.asObservable();
 
+    private app_search = new BehaviorSubject<boolean>(true);
+
+    public search = this.app_search.asObservable();
+
     public async = this.app_async.asObservable();// refresh all component as async
 
 
@@ -155,8 +159,6 @@ export class DataService extends HttpService implements OnInit{
 
     update_header( boolean ){
 
-
-
         this.app_header.next( boolean );
     }
 
@@ -165,6 +167,10 @@ export class DataService extends HttpService implements OnInit{
         this.app_client.next(boolean);
     }
 
+    update_search( boolean ){
+
+        this.app_search.next(boolean);
+    }
 
 
     update_app(boolean){

@@ -41,8 +41,8 @@ export class RightComponent implements OnInit {
 
   constructor(
       private settings:SettingsService ,
-      private menuservice:MenuService,
-      private dataservices:DataService,
+      private ms:MenuService,
+      private ds:DataService,
   ) {
 
     Observable.interval(20 * 2).subscribe(x => {
@@ -57,16 +57,16 @@ export class RightComponent implements OnInit {
 
     if( this.settings.menu == false ){
 
-      this.menuservice.menu.next(true);
+      this.ms.menu.next(true);
 
     }else{
 
-      this.menuservice.menu.next(false);
+      this.ms.menu.next(false);
     }
 
     this.settings.menu = !this.settings.menu;
 
-    this.dataservices.Http_Get( 'shopping/settings/change_menu' , false ) // make request ......
+    this.ds.Http_Get( 'shopping/settings/change_menu' , false ) // make request ......
 
         .subscribe( //  take success
 

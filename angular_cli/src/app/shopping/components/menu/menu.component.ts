@@ -1,6 +1,6 @@
-import { Component, OnInit , AfterViewInit , Input, NgZone ,DoCheck,ChangeDetectionStrategy ,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,ChangeDetectionStrategy ,ChangeDetectorRef } from '@angular/core';
 
-import { RouterModule, Router , ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from '../../services/data.service';
 
@@ -16,8 +16,6 @@ import { MenuService } from '../../services/menu.service';
 
 import { ScrollbarService } from '../../../share_services/scrollbar.service';
 
-import {Observable} from 'rxjs/Observable';
-
 import 'rxjs/Rx';
 
 @Component({
@@ -32,70 +30,57 @@ import 'rxjs/Rx';
 export class MenuComponent  implements OnInit  {
 
   constructor(
-      private cd :ChangeDetectorRef,
-      private productsService:ProductService ,
-      private setRouter :SetRouterService ,
-      private route:ActivatedRoute ,
-      private dataservices:DataService ,
-      private menuservice :MenuService,
-      private router:Router ,
-      private crypto: EncryptDecryptService,
-      private Settings : SettingsService,
-      private scroll : ScrollbarService
+      private cd :ChangeDetectorRef, // cd as ChangeDetectorRef
+      private ps:ProductService , // ps as product service  ....
+      private sr :SetRouterService ,  // sr as set router
+      private route:ActivatedRoute , // route as ActivatedRoute
+      private ds:DataService , // ds as data service
+      private ms :MenuService, // ms as menu service
+      private scroll : ScrollbarService  // scroll as ScrollbarService
   )
   {
     this.scroll.window(0,0);
 
-    this.dataservices.Http_Get( 'shopping/menu/category', false ) // make request ......
+    this.ds.Http_Get( 'shopping/menu/category', false ) // make request ......
 
         .subscribe( //  take success
 
             data => {
 
-              this.menuservice.categories = data;
+              this.ms.categories = data;
 
               this.cd.markForCheck();
 
-
-
             }
-
-
-
         );
-
   }
 
-
-
-  public id_company:any;
-
   private top_menus:object = [
-    { icon:'home',id:'1',name:'Home'   },
-    { icon:'star rate',id:'2',name:'Expensive'  },
-    { 'icon':'last_page','id':'3','name':'Lastest'  },
-    { 'icon':'subscriptions','id':'4','name':'Subscriptions' },
-    { 'icon':'whatshot','id':'5','name':'Trending'  },
-    { 'icon':'history','id':'6','name':'History'  }
+    { icon:'home',id:1,name:'Home'   },
+    { icon:'star rate',id:2,name:'Expensive'  },
+    { icon:'last_page',id:3,name:'Lastest'  },
+    { icon:'subscriptions',id:4,name:'Subscriptions' },
+    { icon:'whatshot',id:5,name:'Trending'  },
+    { icon:'history',id:6,name:'History'  }
   ];
 
   private subscriptions:object = [
-    { 'icon':'klo.jpg','id':'1','name':'Elektronics' },
-    { 'icon':'1234.jpg','id':'2','name':'Fashion' },
-    { 'icon':'b3.jpg','id':'3','name':'Agricultural Machinery' },
-    { 'icon':'klo.jpg','id':'4','name':'Vehicles' }
+    { icon:'klo.jpg',id:1,name:'Elektronics' },
+    { icon:'1234.jpg',id:2,name:'Fashion' },
+    { icon:'b3.jpg',id:3,name:'Agricultural Machinery' },
+    { icon:'klo.jpg',id:4,name:'Vehicles' }
   ];
 
   private settings:object = [
-    { 'icon':'settings','id':'11','name':'Settings' },
-    { 'icon':'help','id':'12','name':'Help' },
-    { 'icon':'feedback','id':'13','name':'Feedback' }
+    { icon:'settings',id:1,name:'Settings' },
+    { icon:'help',id:2,name:'Help' },
+    { icon:'feedback',id:3,name:'Feedback' }
 
   ];
 
   private user:object = [
-    { 'icon':'language','id':'14','name':'Language' },
-    { 'icon':'person pin','id':'15','name':'User Panel' }
+    { icon:'language',id:14,name:'Language' },
+    { icon:'person pin',id:15,name:'User Panel' }
 
 
   ];
@@ -128,13 +113,37 @@ export class MenuComponent  implements OnInit  {
 
   public set_router( data ){
 
-    this.setRouter.set_router( data , this.route );
+    this.sr.set_router( data , this.route );
+
+  }
+
+  click_settings( item ){
+
+    if( item.id == 1){
+
+      this.ps.more_properties.selectedIndex = 1;
+
+    }else if(item.id == 2){
+
+      this.ps.more_properties.selectedIndex = 2;
+
+    }else if(item.id == 3){
+
+      this.ps.more_properties.selectedIndex = 3;
+
+    }
+
+    if( this.ps.active_button != 0){
+
+      this.ps.show_dropdown_button(0);
+
+    }
 
   }
 
   check_subscribes( company ){
 
-    this.dataservices.update_body(false);
+    this.ds.update_body(false);
 
     let company_path = 'shopping/company/'+company.name+'@'+company.id;
 

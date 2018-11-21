@@ -1,4 +1,6 @@
 /* Begin css for category profile user here ....................................................................................................*/
+@import "../../../../variables.scss";
+
 a{
     color: gray;
     text-decoration: none;
@@ -216,7 +218,7 @@ a{
     background-color: red;
 }
 .button-fab-menu-right:hover mat-icon ,.button_menu:hover mat-icon ,.button_menu:hover .namecategory ,.new_color_namecategory ,.new_color_mat_icon{
-    color:darkslategrey;
+    color:$hover_color;
 }
 mat-icon{
     color:slategrey;

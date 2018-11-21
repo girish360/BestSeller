@@ -51,7 +51,7 @@ export class AuthService {
 
     this.refresh_token = false;
 
-    this.productsService.hide_dropdown_button('dropclient','.bodydropclient');
+    this.productsService.hide_dropdown_button(4);
 
     this.set_router.set_router( { path:'shopping/', data:false ,relative:false },false);
 

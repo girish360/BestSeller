@@ -32,7 +32,7 @@ import { ProductService } from '../../services/product.service'; // ProductServi
 })
 export class ContextMenuComponent implements OnInit {
 
-  constructor(private productsService :ProductService) { }
+  constructor(private ps :ProductService) { }
 
   ngOnInit() {
   }

@@ -1,7 +1,7 @@
 
- <div class="response_outer containere" [ngClass]="{'active_menu':menuservice.menu.getValue()}">  <!-- container for products .....................................-->
+ <div class="response_outer containere" [ngClass]="{'active_menu':ms.menu.getValue()}">  <!-- container for products .....................................-->
 
-     <div class="response_inner "  [ngClass]="{'change_inner_body':dataservices.change_inner}">
+     <div class="response_inner "  [ngClass]="{'change_inner_body':ds.change_inner}">
 
          <div class="containerleft"> <!--  left container here is router-outlet that can set different component with router-->
 
@@ -9,7 +9,7 @@
                  <!-- body  -->
              </router-outlet>
 
-             <div class="process_spinner" *ngIf="dataservices.spinner | async">
+             <div class="process_spinner" *ngIf="ds.spinner | async">
 
                  <span class="spinner">
 

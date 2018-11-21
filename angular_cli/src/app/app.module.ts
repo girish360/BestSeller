@@ -5,7 +5,6 @@ import { NgModule,APP_INITIALIZER     } from '@angular/core';
 
 import { BrowserModule } from '@angular/platform-browser';
 
-
 import { routes } from './app.router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

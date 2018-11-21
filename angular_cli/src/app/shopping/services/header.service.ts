@@ -2,9 +2,7 @@ import { Injectable,OnInit,ChangeDetectorRef,Input,ElementRef ,ViewChild} from '
 
 import { DataService } from './data.service';
 
-import{BehaviorSubject } from 'rxjs/BehaviorSubject';
-
-
+import{ BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/observable/interval';
 
@@ -20,16 +18,44 @@ declare var $:any;
 
 export class HeaderService  implements OnInit {
 
-
   constructor( protected dataservices : DataService ) {
 
   }
+
+  public buttons = [
+
+    { id:4 , name:'sign' ,tooltip:'User Panel',  length:'',
+      icon :'account_box' , dropdown_class:'dropclient' , dropdown_body:'.bodydropclient' ,
+      hide_notification:true ,different_class :'notCloseDropdawnClient notClosepointerHeader'
+    },
+    { id:3 , name:'notification' ,tooltip:'Notify Panel',length:'count_notify',
+      icon :'notifications_active' , dropdown_class:'dropnotify' , dropdown_body:'.body_notify' ,
+      hide_notification:false ,different_class :'notCloseDropdawnNotify notClosepointerHeader'
+    },
+    { id:2 , name:'wish' , tooltip:'WishList.length', length:'count_wish', different_class:' notCloseDropdawnFavorite notClosepointerHeader',
+      icon :'favorite' , dropdown_class:'dropfavorites' ,dropdown_body:'.dropfavorites  .wishlist_component  .body_div',
+      hide_notification:false
+    },
+    { id:1 , name:'card' ,tooltip:'Your Cart',length:'count_cart',  different_class:'notClosepointerHeader notCloseDropdawnCard',
+      icon :'shopping_cart' , dropdown_class:'dropcard' ,dropdown_body:'.body_cart',
+      hide_notification:false
+    },
+    { id:0 , name:'more' ,tooltip:'More Options', length:'', different_class:'notClosepointerHeader notCloseDropdawnMore',
+      icon :'view_module', dropdown_class:'dropmore' ,dropdown_body:'.dropdown_more .mat-tab-body-wrapper',
+      hide_notification:true
+    },
+
+  ];
+
+  public active_button = -1;
 
   public subject_products =  new BehaviorSubject<boolean>(true); // identify if cartlist should change
 
   public status_products = this.subject_products.asObservable();// identify if cartlist should change
 
-  ngOnInit(){}
+  ngOnInit(){
+
+  }
 
   private Response :any;
 
@@ -39,26 +65,26 @@ export class HeaderService  implements OnInit {
 
   public top_nav_data:any = {
 
-     last_scroll:0,
+    last_scroll:0,
 
-     up:false,
+    up:false,
 
-     activated_up:0,
+    activated_up:0,
 
     activated_down:0,
 
-     position_static:false,
+    position_static:false,
 
     diff:false
 
   };
 
-  public mobile_sticky_style :any={};
+  public mobile_sticky_style :any= { };
 
   public cart_properties:any= {
 
     button:true,
-    icon_search: false,
+    search: false,
     array_cartId : [],
     filter_cart: '',
     selectedAll : false,
@@ -76,7 +102,7 @@ export class HeaderService  implements OnInit {
   public wish_properties:any = {
 
     button:true ,
-    icon_search: false,
+    search: false,
     array_wishId : [],
     filter_wish: '',
     selectedAll : false,
@@ -85,6 +111,27 @@ export class HeaderService  implements OnInit {
     status_in_wish:false
 
   };
+
+  public more_properties:any = {
+
+    selectedIndex:0
+
+  };
+
+  public notify_properties:any = {
+
+    notify_list:
+        [
+          {id:1,title:'samsung s9', image:'klo.jpg',name:'Electronics'},
+          {id:2,title:'samsung s10', image:'klo.jpg',name:'Fashion'}
+        ]
+  };
+
+  set_more_selectedIndex( nr ){
+
+     this.more_properties.selectedIndex = nr;
+
+  }
 
   count_wish(){
 
@@ -114,9 +161,9 @@ export class HeaderService  implements OnInit {
 
   refresh_button_properties(){
 
-    this.button_properties = { active:0 , disabled:false , pointer:1 , selectedIndex:'empty' };
+    this.button_properties = { active:-1 , disabled:false , pointer:1 , selectedIndex:'empty' };
 
-    this.subject_products.next(true);
+   this.dataservices.update_header(true);
 
   }
 
@@ -192,8 +239,6 @@ export class HeaderService  implements OnInit {
     }
 
     this.cart_properties.cartList = cartList;
-
-
 
   }
 
@@ -375,54 +420,101 @@ export class HeaderService  implements OnInit {
     this.total_items_and_price();
   }
 
-  public show_dropdown_button( dropdown_class, body_inside , id ){
+  public show_dropdown_button( nr ){
 
+    let button = this.get_button_details( nr );
 
+    if( button ) {
 
-    $(body_inside).css({ top: '200px', opacity: '0.1'});
+      this.active_button = nr;
 
-    $('.' + dropdown_class).css({top: '30px', opacity: '0.1' }); //  css style...
+      console.log(button.dropdown_class);
 
-    $('.' + dropdown_class).show().animate({ // animation effect show dropdown productsService......
+      $(button.dropdown_body).css({top: '200px', opacity: '0.1'});
 
-      top: '6px',
+      $('.' + button.dropdown_class).css({top: '30px', opacity: '0.1'}); //  css style...
 
-      opacity: 1
+      $('.' + button.dropdown_class).show().animate({ // animation effect show dropdown productsService......
 
-    },100);
+        top: '6px',
 
-    $(body_inside).animate({
+        opacity: 1
 
-      top: '0px',
-      opacity: 1
+      }, 100);
 
-    }, 200);
+      $(button.dropdown_body).animate({
+
+        top: '0px',
+        opacity: 1
+
+      }, 200);
+    }
 
   }
 
-  public hide_dropdown_button( dropdown_class, body_inside){
+  public get_button_details(nr){
 
-    $(body_inside).css({top: '0px'});
+    let button_details:any = {};
 
-    $('.' + dropdown_class).css({top: 0, opacity: '1'}); // css style...
+    let button  = this.buttons.some( function( button ) {
 
-    $('.' + dropdown_class).animate({ // animation effect hide dropdown productsService......
+      if( button.id == nr ){
 
-      top: '200px',
+        button_details = button; // get iteam
 
-      opacity: '0.1'
+        return true;
 
-    }, 100, function () { //  function after effect ............
+      }else{
 
-      $('.' + dropdown_class).hide();
+        return false // return false does not exist
+
+      }
 
     });
 
-    $(body_inside).animate({
+    if( button ){
 
-      top: '20px'
+     return button_details
 
-    }, 200);
+    }
+
+    return false;
+  }
+
+  public hide_dropdown_button( nr ){
+
+    let button = this.get_button_details( nr );
+
+    if( button ) {
+
+      if( button.id ==  this.active_button ){ // if user is  close dropdown that is active make hide from active button variable ...
+
+        this.active_button = -1;
+      }
+
+      $( button.dropdown_body ).css({top: '0px'});
+
+      $('.' + button.dropdown_class).css({top: 0, opacity: '1'}); // css style...
+
+      $('.' + button.dropdown_class).animate({ // animation effect hide dropdown productsService......
+
+        top: '200px',
+
+
+        opacity: '0.1'
+
+      }, 100, function () { //  function after effect ............
+
+        $('.' + button.dropdown_class).hide();
+
+      });
+
+      $(button.dropdown_body).animate({
+
+        top: '20px'
+
+      }, 200);
+    }
 
   }
 
@@ -440,11 +532,13 @@ export class HeaderService  implements OnInit {
     }
 
     this.check_button_deleteProducts_fromwishlist();
+
+    this.check_selectedAll_wishList();
   }
 
   toggle_select_cart( item_cart ){
 
-    var index = this.cart_properties.selected.indexOf( item_cart );
+    let index = this.cart_properties.selected.indexOf( item_cart );
 
     if( index > -1 ){
 
@@ -456,6 +550,8 @@ export class HeaderService  implements OnInit {
     }
 
     this.check_button_deleteProducts_fromcartlist();
+    this.check_selectedAll_cartList();
+
   }
 
   check_selected_wish( item_wish ){
@@ -468,6 +564,8 @@ export class HeaderService  implements OnInit {
 
       return false;
     }
+
+
   }
 
   check_selected_cart( item_cart ){
@@ -480,6 +578,7 @@ export class HeaderService  implements OnInit {
 
       return false;
     }
+
   }
 
   getStyle_wish( item_wish ){
@@ -517,6 +616,9 @@ export class HeaderService  implements OnInit {
       }
 
       this.wish_properties.selectedAll = false;
+
+      this.check_button_deleteProducts_fromwishlist();
+
       return;
     }
 
@@ -543,12 +645,15 @@ export class HeaderService  implements OnInit {
 
     if( this.cart_properties.selectedAll == true ){ // check if  are all wish list  selected  .........
 
-      for( var i = 0 ; i < this.cart_properties.selected.length ; i ++ ){
+      for( let i = 0 ; i < this.cart_properties.selected.length ; i ++ ){
 
         this.cart_properties.selected.splice(this.cart_properties.selected[i] , this.cart_properties.selected.length);
       }
 
       this.cart_properties.selectedAll = false;
+
+      this.check_button_deleteProducts_fromcartlist();
+
       return;
     }
 
@@ -568,6 +673,32 @@ export class HeaderService  implements OnInit {
     this.check_button_deleteProducts_fromcartlist();
 
     return;
+  }
+
+  check_selectedAll_cartList(){
+
+    if(this.cart_properties.cartList.length == this.cart_properties.selected.length && this.cart_properties.selected.length > 0 ){
+
+      this.cart_properties.selectedAll = true;
+
+    }else{
+
+      this.cart_properties.selectedAll = false;
+
+    }
+  }
+
+  check_selectedAll_wishList(){
+
+    if( this.wish_properties.wishList.length == this.wish_properties.selected.length && this.wish_properties.selected.length > 0 ){
+
+      this.wish_properties.selectedAll = true;
+
+    }else{
+
+      this.wish_properties.selectedAll = false;
+
+    }
   }
 
   add_from_wish_to_cart( selected_wish ) {
@@ -661,19 +792,20 @@ export class HeaderService  implements OnInit {
 
   show_hide_search_in_wishlist(){
 
-    return this.wish_properties.icon_search = !this.wish_properties.icon_search
+    return this.wish_properties.search = !this.wish_properties.search
 
   }
 
   show_hide_search_in_cartlist(){
 
-    return this.cart_properties.icon_search = !this.cart_properties.icon_search
+    return this.cart_properties.search = !this.cart_properties.search
 
   }
 
+
   check_show_hide_search_in_wishlist(){
 
-    if( this.wish_properties.icon_search == true ){
+    if( this.wish_properties.search == true ){
 
       return 'show_search_in_wishlist';
     }
@@ -683,7 +815,7 @@ export class HeaderService  implements OnInit {
 
   check_show_hide_search_in_cartlist(){
 
-    if( this.cart_properties.icon_search == true ){
+    if( this.cart_properties.search == true ){
 
       return 'show_search_in_wishlist';
     }

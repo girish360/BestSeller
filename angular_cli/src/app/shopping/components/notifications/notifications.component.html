@@ -1,0 +1,44 @@
+<div class="notify_component"  *ngIf="{ header:dataservices.header | async , app:dataservices.async | async }">
+
+<div class="header_div header_notify">
+
+    <span class="text_notify">
+
+        Notifications
+
+    </span>
+
+    <span class="right_header_notify">
+
+        <span  matTooltip="settings" >
+
+            <button mat-icon-button class="btns-wish"  >
+
+                <mat-icon>settings</mat-icon>
+
+            </button>
+
+        </span>
+
+    </span>
+
+</div>
+
+<div class=" body_div body_notify">
+
+    <div class="nofitication" *ngFor="let notify of productService.notify_properties.notify_list">
+
+        <div class="hover">
+
+            <div class="inside_body_notifications">
+
+                {{notify.name}}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>

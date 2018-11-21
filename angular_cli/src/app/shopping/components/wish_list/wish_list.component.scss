@@ -1,11 +1,15 @@
 /* Styles go here */
 
+@import "../../../../variables.scss";
+
 .selected_wish{
     background-color:  #f2f2f2;
     transition: 0.5s;
 }
 
+
 .search_wishlist{
+
     width: 0.0px;
     height: 30px;
     transition: 0.5s;
@@ -17,26 +21,25 @@
     border-color: lightgray;
     border-radius: 2px;
 
+    z-index: 5 !important;
+
+
 }
 .drop_wish_title ,.drop_cart_title{
-    position: relative;
-    top: 8px;
-}
-.btns-wish ,.btns-cart{
-    position: relative;
-    top: -5px;
-}
 
-.search-in-wish , .search-in-cart{
-    vertical-align: top;
 }
 
 .show_search_in_wishlist{
 
-    width: 250px;
+    width: 150px;
     visibility: visible;
     transition: 0.5s;
 
+
+}
+
+.right_header_wish{
+    float: right;
 }
 
 .wishlist_component{
@@ -131,13 +134,17 @@
 .check_checkbox_wish{
     display: inline-block;
     float: right;
-    margin-top: 20px;
+
     margin-right: 10px;
 }
 
 .add_card{
     position: relative;
     top: 0px;
+}
+
+.cart_item{
+    display: inline-block;
 }
 
 

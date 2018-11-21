@@ -1,5 +1,5 @@
 
-/* Styles go here */
+@import "../../../../variables.scss";
 
 .open_menu{
     width: 50px;
@@ -275,7 +275,7 @@ a{
 
 }
 .inside_header{
-     padding: 6px 0 6px 0;
+     padding: $padding_top_bottom;
  }
 
 
@@ -613,9 +613,11 @@ float: right;
     border-radius: 100px;
 }
 
+
+
+
 .buttons_right_pc{
     float: right;
-
     width: auto;
     height: inherit;
 }
@@ -735,29 +737,7 @@ input[name='search']:focus {
     box-shadow: inset 0px 0.2px 0.2px 0.2px rgba(118,128,240,1);
 }
 
-.search_wishlist{
-    width: 0.0px;
-    height: 100%;
-    transition: 0.5s;
-    background-color: #E6E6FA;
-    border:none;
-    border: 1px solid;
-    display: inline-block;
-    color:gray;
-    border-color: lightgray;
-    border-radius: 2px;
 
-
-
-}
-
-.show_search_in_wishlist{
-
-    width: 190px;
-    visibility: visible;
-    transition: 0.5s;
-
-}
 
 
 .header-icon-right {
@@ -800,11 +780,19 @@ input[name='search']:focus {
     width: 100%;
     height: 20px;
     text-align: center;
+
+}
+.see_all b {
+    position: relative;
+    top:2px;
 }
 
 .see_all:hover{
-    background-color: #004080;
-    color:white;
+
+    -webkit-box-shadow:$hover;
+
+    color:$hover_color;
+
 }
 
 
@@ -841,7 +829,7 @@ input[name='search']:focus {
     float: right;
 
     transition:0.3s;
-    background-color: white;
+    background-color: $background;
     -webkit-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     -moz-box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
     box-shadow: 0px 2px 6px 1px rgba(210,212,203,1);
@@ -887,19 +875,7 @@ input[name='search']:focus {
 .show_dropfavority , .show_dropcard , .show_dropmore{
     display: block;
 }
-.bottom_cart{
-    width: 100%;
-    height: 100px;
-    background-color: white;
 
-}
-
-.inside_bottom_cart{
-    height: 100%;
-    width: 98%;
-    margin: auto;
-    margin-top: 2px;
-}
 
 
 .body_more{
@@ -910,56 +886,6 @@ input[name='search']:focus {
 
 }
 
-.write_checkout,.checkout ,.button_checkout{
-    height: 30%;
-
-
-}
-.top_wish{
-    width: 100%;
-    height: 40px;
-
-}
-
-
-.all_top_div_wish{
-
-    height: 100%;
-
-}
-
-
-.width_each_wishlist  {
-
-    height: 100%;
-    width: 98%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-}
-
-
-.width_body_wish{
-    width: 100%;
-    height: 80px;
-    border-radius: 0px;
-    position: relative;
-    margin-top: -2px;
-
-
-}
-
-.width_top_wish ,.delete_from_wish{
-    display: inline;
-}
-
-.select_all_wishlist{
-    position: relative;
-    top:-6px;
-}
 
 .mat-checkbox-inner-container {
     border-color: red;
@@ -971,34 +897,7 @@ input[name='search']:focus {
 .mat-fab.mat-accent[disabled]{
     background-color: red;
 }
-.wish_image{
-    width: 70px;
-    height:70px ;
-    display: inline-block;
-    border-radius: 100px;
-    overflow: hidden;
-    float: left;
-    position: relative;
-    top:5px;
-}
-.wish_image img{
-    width: 100%;
-    height: 100%;
-}
-.title ,.price , .quantity ,.seller ,.total_item_price{
-    float: left;
-}
 
-.cart_item{
-    margin-left: 10px;
-}
-.check_checkbox_wish{
-
-    position: absolute;
-    top: 2px;
-    right: 5px;
-
-}
 
 .lang a{
     color: gray;
@@ -1009,7 +908,7 @@ input[name='search']:focus {
 }
 .add_card{
     position: relative;
-    top: 0px;
+    top: 0;
 }
 .footer_products a{
     text-decoration: none;

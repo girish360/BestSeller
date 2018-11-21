@@ -1,3 +1,233 @@
-<p>
-  card-list works!
-</p>
+
+
+<div class="cartList_component"  *ngIf="{ header:ds.header | async , app:ds.async | async }">
+
+
+    <div class="header_div" >
+
+    <span  matTooltip="Search" class="search_icon_from_wish ">
+
+        <button mat-icon-button class="btns-cart "  (click)="ps.show_hide_search_in_cartlist()">
+
+            <mat-icon class="notCloseDropdawnCard" *ngIf="!ps.cart_properties.search">search</mat-icon>
+
+            <mat-icon class="notCloseDropdawnCard " *ngIf="ps.cart_properties.search">close</mat-icon>
+
+        </button>
+
+    </span>
+
+    <span class="search_from_wish">
+
+        <input type="text" [(ngModel)]="filter_cart" placeholder="Serach Wishlist" name="search_wish" class="search-in-cartList  search_wishlist" [ngClass]="ps.check_show_hide_search_in_cartlist()">
+
+    </span>
+
+    <span  matTooltip="Delete" class="delete_from_wish">
+
+        <button mat-icon-button class="btns-cart "  [disabled]=" ps.cart_properties.button " (click)="ps.check_delete_from_cartList()" >
+
+            <mat-icon>delete</mat-icon>
+
+        </button>
+
+    </span>
+
+    <span  matTooltip="Add to Wish" class="add_shopping_card_from_wish">
+
+        <button mat-icon-button class="btns-cart" [ngClass]="{'no-drop' : ps.cart_properties.button }" [disabled]="ps.cart_properties.button"  >
+
+            <mat-icon>favorite</mat-icon>
+
+        </button>
+
+    </span>
+
+    <a (click)="set_router( { path:'shopping/cart_list' , data:false ,relative:false } )" >
+
+        <span  matTooltip="See All" class="add_shopping_card_from_wish">
+
+            <button mat-icon-button class="btns-cart" >
+
+                <mat-icon>remove_red_eye</mat-icon>
+
+            </button>
+
+        </span>
+    </a>
+
+    <span  matTooltip="Select all" >
+
+        <mat-checkbox color="primary" class="btns-cart"
+                      [checked]="ps.cart_properties.selectedAll"
+                      (click)="ps.selecteAll_cartList();false">
+        </mat-checkbox>
+
+    </span>
+
+    <span class="right_header_wish">
+
+        <span class="drop_wish_title">
+
+            {{ds.language.Wish_Write}}
+
+        </span>
+
+        <span  matTooltip="Add to Cart" >
+
+            <button mat-icon-button class="btns-wish"  >
+
+                <mat-icon>settings</mat-icon>
+
+            </button>
+
+        </span>
+
+    </span>
+
+</div>
+
+<div class="body_div body_cart" *ngIf="ps.status_products | async">
+
+    <ng-container *ngIf="ps.cart_properties.cartList.length > 0 ; else  emptycart">
+
+        <div  *ngFor="let cart_product of ps.cart_properties.cartList | filter: filter_cart "  [@wishList_animations]="active">
+
+            <button mat-button class="width_body_wish" [ngClass]="ps.getStyle_cart( cart_product )">
+
+                <div class="width_each_wishlist">
+
+                    <div class="wish_image"  (click)="set_router({ path:cart_product.name+'/'+cart_product.title , data:cart_product.product_id , relative:true })">
+
+                        <img  src="../../assets/images/products_image/{{cart_product.image}}">
+
+                    </div>
+
+                    <div class="= title">
+
+                        Title: {{cart_product.title}}
+
+                    </div><br>
+
+                    <div class="cart_item price">
+
+                        Price: ${{ cart_product.price }}
+
+                    </div>
+
+                    <div class=" cart_item quantity">
+
+                        Quantity:
+
+                        <mat-form-field style="width:40px;">
+
+                            <mat-select  [(value)]="cart_product.quantity" (selectionChange)="ps.update_quantity_cartList( cart_product )">
+
+                                <mat-option [value]="1">
+                                    1
+                                </mat-option>
+
+                                <mat-option [value]="2">
+                                    2
+                                </mat-option>
+
+                                <mat-option [value]="3">
+                                    3
+                                </mat-option>
+                                <mat-option [value]="4">
+                                    4
+                                </mat-option>
+
+                            </mat-select>
+
+                        </mat-form-field>
+
+                    </div>
+
+                    <div  class="cart_item seller">
+
+                        Seller:
+                        <span (click)="set_router({ path:cart_product.name , data: cart_product.company_id , relative:true })">{{ cart_product.name }}</span>
+
+                    </div>
+
+                    <div class="cart_item total_item_price">
+
+                        Total: ${{ (cart_product.price)*cart_product.quantity  }}
+
+                    </div>
+
+                    <div class="check_checkbox_wish"> <!-- start div select checbox for products in wishlist -->
+
+                        <span  matTooltip="select">
+
+                            <mat-checkbox  color="primary" [checked]="ps.check_selected_cart( cart_product )" (click)="ps.toggle_select_cart( cart_product );false">
+
+                            </mat-checkbox>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </button>
+
+        </div>
+
+    </ng-container >
+
+    <ng-template #emptycart>
+
+        your Cart is empty
+
+    </ng-template>
+
+</div>
+
+
+<div class="bottom_cart">
+
+    <div class="inside_bottom_cart">
+
+        <div class="write_checkout">
+            Proceed to Checkout  PayPal , Stripe , Visa
+        </div>
+
+        <div class="checkout">
+
+            <span>
+
+                Total_item: {{ps.cart_properties.total_items}}
+
+            </span>
+
+            <span>
+
+                Total_price: ${{ps.cart_properties.total_price}}
+
+            </span>
+
+        </div>
+
+        <div class="button_checkout">
+
+            <button mat-button class="button">
+
+                <span>Continue Shopping</span>
+
+            </button>
+
+            <button mat-button class="button">
+
+                <span>Checkout</span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>

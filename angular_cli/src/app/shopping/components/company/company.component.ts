@@ -86,19 +86,19 @@ export class CompanyComponent implements OnInit {
 
 
     constructor(
-        private products :ProductService,
-        private company: CompanyService,
-        private setRouter: SetRouterService,
+        private ps :ProductService,
+        private cs: CompanyService,
+        private sr: SetRouterService,
         private scroll: ScrollbarService,
-        private dataservices: DataService,
-        private searchService: SearchService,
+        private ds: DataService,
+        private search: SearchService,
         private crypto: EncryptDecryptService,
         private location: Location,
         private route: ActivatedRoute,
         private router: Router,
         private renderer: Renderer,
         private cd: ChangeDetectorRef,
-        private elementRef : ElementRef
+        private er : ElementRef
     ) {
 
         this.route.data.subscribe( response => {
@@ -107,59 +107,59 @@ export class CompanyComponent implements OnInit {
 
            this.currentSlide_category = 0;
 
-            if ( this.dataservices.resolve ){ // response from  resolve .....
+            if ( this.ds.resolve ){ // response from  resolve .....
 
-                this.dataservices.loaded_component = true;
+                this.ds.loaded_component = true;
 
                 if( response.company ){  // response from database is is not false this company exist
 
-                    this.company.categories = response.company['categories'];
+                    this.cs.categories = response.company['categories'];
 
-                    this.company.company = response.company['company_info'];
+                    this.cs.company = response.company['company_info'];
 
-                    this.company.categories_products = response.company['categories_products'];
+                    this.cs.categories_products = response.company['categories_products'];
 
-                    this.dataservices.not_founded = false;
+                    this.ds.not_founded = false;
 
                 }else{ // dont exists  this company .......
 
-                    this.dataservices.not_founded = true;
+                    this.ds.not_founded = true;
                 }
 
-                this.dataservices.update_company(true);
+                this.ds.update_company(true);
 
                 this.cd.markForCheck();
 
             } else {
 
-                this.dataservices.loaded_component = false;
+                this.ds.loaded_component = false;
 
                 this.route.params.subscribe( params => {
 
-                    this.company.load_company( {params : params } ).subscribe( response =>{
+                    this.cs.load_company( {params : params } ).subscribe( response =>{
 
-                        this.dataservices.loaded_component = true;
+                        this.ds.loaded_component = true;
 
                         if( response ){
 
-                            this.dataservices.not_founded = false;
+                            this.ds.not_founded = false;
 
-                            this.company.categories = response['categories'];
+                            this.cs.categories = response['categories'];
 
-                            this.company.company = response['company_info'];
+                            this.cs.company = response['company_info'];
 
-                            this.company.categories_products = response['categories_products'];
+                            this.cs.categories_products = response['categories_products'];
 
                         }else{
 
-                            this.dataservices.not_founded = true;
+                            this.ds.not_founded = true;
                         }
 
-                        this.dataservices.update_company(true);
+                        this.ds.update_company(true);
 
                         this.cd.markForCheck();
 
-                        this.searchService.hide_search_content();
+                        this.search.hide_search_content();
 
                     });
                 });
@@ -210,11 +210,11 @@ export class CompanyComponent implements OnInit {
 
     ngOnDestroy(){
 
-        this.products.data_products.type_products='default'; // when company component destroied type_products should be default ...
+        this.ps.data_products.type_products='default'; // when company component destroied type_products should be default ...
     }
 
     get_style_sticky(){
-       return Object.assign( this.products.mobile_sticky_style, this.sticky );
+       return Object.assign( this.ps.mobile_sticky_style, this.sticky );
     }
 
     ngOnInit() {
@@ -307,7 +307,7 @@ export class CompanyComponent implements OnInit {
 
     public focus_search_function() { // focus in search
 
-        this.company.company_properties.focus_input_search = !this.company.company_properties.focus_input_search;
+        this.cs.company_properties.focus_input_search = !this.cs.company_properties.focus_input_search;
 
     }
 
@@ -319,25 +319,25 @@ export class CompanyComponent implements OnInit {
 
     public hover_nav(){ // enter hover navvv........................
 
-        this.company.company_properties.tmp_nav_active = this.company.company_properties.company_nav_active;
+        this.cs.company_properties.tmp_nav_active = this.cs.company_properties.company_nav_active;
 
-        this.company.company_properties.company_nav_active = -1 ;
+        this.cs.company_properties.company_nav_active = -1 ;
     }
 
     public leave_hover_nav(){ // leave from hover navvvvvvvvvvvv..............
 
-        if( this.company.company_properties.tmp_nav_active != -1 ) {
+        if( this.cs.company_properties.tmp_nav_active != -1 ) {
 
-            this.company.company_properties.company_nav_active = this.company.company_properties.tmp_nav_active;
+            this.cs.company_properties.company_nav_active = this.cs.company_properties.tmp_nav_active;
         }
 
     }
 
     public change_active_nav( nav_index ){ // click on nav, change active nav..................
 
-        this.company.company_properties.tmp_nav_active = -1;
+        this.cs.company_properties.tmp_nav_active = -1;
 
-        this.company.company_properties.company_nav_active = nav_index;
+        this.cs.company_properties.company_nav_active = nav_index;
     }
 
     public carouselTileOneLoad(ev) {
@@ -352,7 +352,7 @@ export class CompanyComponent implements OnInit {
 
     public  set_router( data ) {
 
-        this.setRouter.set_router( data, this.route); // set router .....
+        this.sr.set_router( data, this.route); // set router .....
 
     }
 
@@ -400,7 +400,7 @@ export class CompanyComponent implements OnInit {
 
         if( data_nav.id == 0 ){
 
-            route = { path:'shopping/company/'+this.company.company.name+'@'+this.company.company.id , data: false  , relative:false } ;
+            route = { path:'shopping/company/'+this.cs.company.name+'@'+this.cs.company.id , data: false  , relative:false } ;
 
         }else if(data_nav.id == 1){
 
@@ -422,7 +422,7 @@ export class CompanyComponent implements OnInit {
 
         this._timeoutId = setTimeout(() => {
 
-                if( this.company.text_search != '' ) {
+                if( this.cs.text_search != '' ) {
 
                     this.set_router({path: 'search', data: false, relative: true});
 

@@ -31,7 +31,7 @@ export class ResolveService implements Resolve<any> {
 
   resolve( route:ActivatedRouteSnapshot , state: RouterStateSnapshot ): Observable<any> | Promise<any> | Boolean | Object {
 
-    let component_name  = route.routeConfig.component.name;  // get component name in route that wait to activate
+    let component_name  = route.routeConfig.component.name;  // get component name in route that is waiting to activate
 
     let n = component_name.indexOf("Component"); // find number of name without " Component " word
 

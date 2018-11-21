@@ -40,17 +40,17 @@ export class HomeComponent implements OnInit {
 
         private scroll : ScrollbarService,
 
-        private homeservice : HomeService,
+        private hs : HomeService,
 
-        private dataservices : DataService,
+        private ds : DataService,
 
         private cd :ChangeDetectorRef,
 
-        private setRouter : SetRouterService,
+        private sr : SetRouterService,
 
         private route : ActivatedRoute ,
 
-        private indexService:IndexService
+        private is:IndexService
 
     )
     {
@@ -58,49 +58,49 @@ export class HomeComponent implements OnInit {
 
           this.scroll.window(0, 0);
 
-          if ( this.dataservices.resolve ){ // response from  resolve .....
+          if ( this.ds.resolve ){ // response from  resolve .....
 
-              this.dataservices.loaded_component = true;
+              this.ds.loaded_component = true;
 
               if( response.home ){  // response from database is is not false this company exist
 
-                  this.homeservice.categories_products = response.home['categories'];
+                  this.hs.categories_products = response.home['categories'];
 
-                  this.homeservice.store_data_carousel = response.home['store_data'];
+                  this.hs.store_data_carousel = response.home['store_data'];
 
-                  this.dataservices.not_founded = false;
+                  this.ds.not_founded = false;
 
               }else{ // dont exists  this company .......
 
-                  this.dataservices.not_founded = true;
+                  this.ds.not_founded = true;
               }
 
-              this.dataservices.update_products(true);
+              this.ds.update_products(true);
 
               this.cd.markForCheck();
 
           } else {
 
-              this.dataservices.loaded_component = false;
+              this.ds.loaded_component = false;
 
-              this.homeservice.load_home().subscribe( response =>{
+              this.hs.load_home().subscribe( response =>{
 
-                  this.dataservices.loaded_component = true;
+                  this.ds.loaded_component = true;
 
                   if( response ){
 
-                      this.dataservices.not_founded = false;
+                      this.ds.not_founded = false;
 
-                      this.homeservice.categories_products = response['categories'];
+                      this.hs.categories_products = response['categories'];
 
-                      this.homeservice.store_data_carousel = response['store_data'];
+                      this.hs.store_data_carousel = response['store_data'];
 
                   }else{
 
-                      this.dataservices.not_founded = true;
+                      this.ds.not_founded = true;
                   }
 
-                  this.dataservices.update_products(true);
+                  this.ds.update_products(true);
 
                   this.cd.markForCheck();
 
@@ -189,13 +189,13 @@ export class HomeComponent implements OnInit {
       ) // check if this category have more products in server and is less than 1
       {
 
-      this.dataservices.update_loader(true);
+      this.ds.update_loader(true);
 
-      this.homeservice.store_data_carousel.category_id = current_category.id;
+      this.hs.store_data_carousel.category_id = current_category.id;
 
-      this.homeservice.store_data_carousel.current_page_products = current_category.current_page_products+1;
+      this.hs.store_data_carousel.current_page_products = current_category.current_page_products+1;
 
-      this.dataservices.Http_Get( 'shopping/home/more_products_incarousel',  this.homeservice.store_data_carousel  ) // make request ......
+      this.ds.Http_Get( 'shopping/home/more_products_incarousel',  this.hs.store_data_carousel  ) // make request ......
 
           .subscribe( //  take success
 
@@ -205,7 +205,7 @@ export class HomeComponent implements OnInit {
 
                   setTimeout(()=>{
 
-                      this.dataservices.update_loader(false);
+                      this.ds.update_loader(false);
 
                   },1000);
 
@@ -222,16 +222,16 @@ export class HomeComponent implements OnInit {
 
     public more_products( array_data , category_id ){ // add more products in specific category..........................
 
-      for ( let i = 0 ; i < this.homeservice.categories_products.length ; i++ ){
+      for ( let i = 0 ; i < this.hs.categories_products.length ; i++ ){
 
-          if( category_id == this.homeservice.categories_products[i].id ){
+          if( category_id == this.hs.categories_products[i].id ){
 
               for( let j = 0 ; j < array_data.products.length ; j++ ){
 
-                  this.homeservice.categories_products[i].products.push( array_data.products[j] );
+                  this.hs.categories_products[i].products.push( array_data.products[j] );
 
               }
-              this.homeservice.categories_products[i].current_page_products = array_data.current_page_products;
+              this.hs.categories_products[i].current_page_products = array_data.current_page_products;
 
           } // end if
       } // end loop
@@ -242,18 +242,18 @@ export class HomeComponent implements OnInit {
 
     onScroll() {  //  onscroll function is called when scroll is bottom............
 
-      if ( ( this.homeservice.store_data_carousel.current_page_categories+1 ) * this.homeservice.store_data_carousel.categories_for_page
-          < this.homeservice.store_data_carousel.total_categories
+      if ( ( this.hs.store_data_carousel.current_page_categories+1 ) * this.hs.store_data_carousel.categories_for_page
+          < this.hs.store_data_carousel.total_categories
       )  // check if have more category in server ......................
       {
 
-          this.homeservice.store_data_carousel.current_page_products = 0;
+          this.hs.store_data_carousel.current_page_products = 0;
 
-          this.homeservice.store_data_carousel.current_page_categories = this.homeservice.store_data_carousel.current_page_categories + 1;
+          this.hs.store_data_carousel.current_page_categories = this.hs.store_data_carousel.current_page_categories + 1;
 
-          this.dataservices.update_spinner(true);
+          this.ds.update_spinner(true);
 
-          this.dataservices.Http_Get( 'shopping/home/categories' , this.homeservice.store_data_carousel ) // make request ......
+          this.ds.Http_Get( 'shopping/home/categories' , this.hs.store_data_carousel ) // make request ......
 
               .subscribe( //  take success
 
@@ -261,7 +261,7 @@ export class HomeComponent implements OnInit {
 
                       let more_categories = data['categories'];
 
-                      this.homeservice.store_data_carousel = data['store_data'];
+                      this.hs.store_data_carousel = data['store_data'];
 
                       this.more_categories( more_categories );
 
@@ -276,16 +276,16 @@ export class HomeComponent implements OnInit {
 
         for( let i = 0 ; i < more_categories.length ; i++ ){
 
-            this.homeservice.categories_products.push(more_categories[i]);
+            this.hs.categories_products.push(more_categories[i]);
         }
 
         this.cd.markForCheck();
 
         setTimeout(()=>{
 
-            this.dataservices.update_spinner(false);
+            this.ds.update_spinner(false);
 
-            this.indexService.check_footer();
+            this.is.check_footer();
 
         },50);
 
@@ -293,7 +293,7 @@ export class HomeComponent implements OnInit {
 
     public  set_router( data ){  // set router ..............................
 
-        this.setRouter.set_router( data , this.route ); // set router .....
+        this.sr.set_router( data , this.route ); // set router .....
 
   } // end set_rouer
 

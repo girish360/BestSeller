@@ -1,10 +1,10 @@
 
 
-<div class="company" *ngIf="{ company : dataservices.company | async , app : dataservices.async | async } ">
+<div class="company" *ngIf="{ company : ds.company | async , app : ds.async | async } ">
 
-    <ng-container *ngIf="dataservices.loaded_component;else loading">
+    <ng-container *ngIf="ds.loaded_component;else loading">
 
-            <ng-container *ngIf="!dataservices.not_founded;else notFounded">
+            <ng-container *ngIf="!ds.not_founded;else notFounded">
 
                 <div class="sticky company_sticky transition " [ngStyle]="get_style_sticky()" >
 
@@ -65,7 +65,7 @@
 
             >
 
-                <ngx-item NgxCarouselItem   *ngFor="let slide of company.categories; let i = index"  >
+                <ngx-item NgxCarouselItem   *ngFor="let slide of cs.categories; let i = index"  >
 
                     <img  src="../../assets/images/company/1.jpg"  >
 
@@ -145,7 +145,7 @@
                       (onMove)="move_carousel_categories( $event )"
                       [moveToSlide]="currentSlide_category"
         >
-            <ngx-tile NgxCarouselItem *ngFor="let category of  company.categories; let i = index;" >
+            <ngx-tile NgxCarouselItem *ngFor="let category of  cs.categories; let i = index;" >
 
                 <a href="#">
 
@@ -177,7 +177,7 @@
 
                     <div class="company_profile_img inline-block">
 
-                        <img class="full" src="../../assets/images/company/{{company.company.image}}">
+                        <img class="full" src="../../assets/images/company/{{cs.company.image}}">
 
                     </div>
 
@@ -189,7 +189,7 @@
 
                                 <div class="company_name title_text">
 
-                                    {{ company.company.name }}
+                                    {{ cs.company.name }}
 
                                 </div>
 
@@ -204,7 +204,7 @@
                                 <button mat-button class="nav_button"
                                         *ngFor="let nav of company_nav; let i = index"
                                         (click)="click_nav( nav   ) ; change_active_nav( i ) "
-                                        [ngClass]="{'company_nav_active':company.company_properties.company_nav_active == i }"
+                                        [ngClass]="{'company_nav_active':cs.company_properties.company_nav_active == i }"
                                         (mouseenter)="hover_nav()"
                                         (mouseleave)="leave_hover_nav()"
                                 >
@@ -217,17 +217,17 @@
 
                             </div>
 
-                            <div class="outer_search right_company_nav_bottom " [ngClass]="{'new_outer_search':company.company_properties.focus_input_search ,'company_nav_active':company.company_properties.company_nav_active == 'search'}">
+                            <div class="outer_search right_company_nav_bottom " [ngClass]="{'new_outer_search':cs.company_properties.focus_input_search ,'company_nav_active':cs.company_properties.company_nav_active == 'search'}">
 
-                                <input  type="text" #focusInput (focus)="focus_search_function()" (focusout)="focus_search_function()" class="input_search input_search_company"  name="company_search" (keyup)="on_search()"  [(ngModel)]="company.text_search" placeholder="{{dataservices.language.searchproducts}}">
+                                <input  type="text" #focusInput (focus)="focus_search_function()" (focusout)="focus_search_function()" class="input_search input_search_company"  name="company_search" (keyup)="on_search()"  [(ngModel)]="cs.text_search" placeholder="{{ds.language.searchproducts}}">
 
                                 <div class="icon_search full_height" (click)="check_focus()">
 
                                     <button mat-button class="search_button" >
 
-                                        <mat-icon *ngIf="!company.company_properties.focus_input_search  ">search</mat-icon>
+                                        <mat-icon *ngIf="!cs.company_properties.focus_input_search  ">search</mat-icon>
 
-                                        <mat-icon *ngIf="company.company_properties.focus_input_search  ">clear</mat-icon>
+                                        <mat-icon *ngIf="cs.company_properties.focus_input_search  ">clear</mat-icon>
 
                                     </button>
 

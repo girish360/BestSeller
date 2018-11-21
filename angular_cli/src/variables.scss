@@ -1,11 +1,21 @@
-$background:#E6E6FA;
+$background:#E6E6FA; // background color
 
-$poster_background:#F5F5F5;
+$poster_background:#F5F5F5; // poster background color
 
-$title_text:16px;
+$title_text:16px; // title text size
 
-$border_color:lightgray;
+$border_color:lightgray; // border color
 
-$active_color:cornflowerblue;
+$active_color:cornflowerblue; // color for icon and text when button is active .....
 
-$color:gray;
+$color:gray; //  font color
+
+$padding:5px; // padding left , top , bottom and right
+
+$padding_top_bottom:6px 0 6px 0; // padding only top and bottom
+
+$padding_left_right:0 5px 0 5px;
+
+$hover:inset 0 0 100px rgba(0.2,0.2,0.2,0.2); // hover background..
+
+$hover_color:#004080; // hover color text

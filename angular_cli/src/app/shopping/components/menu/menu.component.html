@@ -1,16 +1,16 @@
-<div class="menu" *ngIf="{menu : dataservices.menu | async , app : dataservices.async | async} " >
+<div class="menu" *ngIf="{menu : ds.menu | async , app : ds.async | async} " >
 
-<div class="under_menu_left body " [ngStyle]="dataservices.menu_style" [ngClass]="{'menu_left_open':menuservice.menu.getValue() }"></div>
+<div class="under_menu_left body " [ngStyle]="ds.menu_style" [ngClass]="{'menu_left_open':ms.menu.getValue() }"></div>
 
-<div class="menu_left" [ngStyle]="dataservices.menu_style" [ngClass]="{'menu_left_open': menuservice.menu.getValue() }">
+<div class="menu_left" [ngStyle]="ds.menu_style" [ngClass]="{'menu_left_open': ms.menu.getValue() }">
 
   <div class="width_menu_left">
 
-    <div class="menu_left_inside " [ngClass]="{'open_left_inside transition': menuservice.status_menu | async }">
+    <div class="menu_left_inside " [ngClass]="{'open_left_inside transition': ms.status_menu | async }">
       <!--  show all category type -->
       <div class="top_in_menu border_bottom" >
 
-        <button  mat-button class="button_menu"  *ngFor="let top_menu of top_menus" (click)=" click_top_menu( top_menu.id ) ; dataservices.update_body(false)">
+        <button  mat-button class="button_menu"  *ngFor="let top_menu of top_menus" (click)=" click_top_menu( top_menu.id ) ; ds.update_body(false)">
 
           <a  href="javascript:void(0)" class="menu_navigation menu_navigation{{top_menu.id}}" id="{{top_menu.id}}" >
 
@@ -50,7 +50,7 @@
 
             <div class="catgowrite">
 
-              {{dataservices.language.category}}
+              {{ds.language.category}}
 
             </div>
 
@@ -58,7 +58,7 @@
 
         </div>
 
-        <div *ngFor="let category of menuservice.categories">
+        <div *ngFor="let category of ms.categories">
 
           <button  mat-button class="button_menu"  >
 
@@ -151,7 +151,7 @@
 
                     <div class="namecate">
 
-                      <div class="namecategory" >{{dataservices.language.emptycat}}</div>
+                      <div class="namecategory" >{{ds.language.emptycat}}</div>
 
                     </div>
 
@@ -177,7 +177,7 @@
 
             <div class="catgowrite">
 
-              {{dataservices.language.subscribe}}
+              {{ds.language.subscribe}}
 
             </div>
 
@@ -225,7 +225,7 @@
 
             <div class="catgowrite">
 
-              {{dataservices.language.settings}}
+              {{ds.language.settings}}
 
             </div>
 
@@ -233,9 +233,9 @@
 
         </div>
 
-        <button  mat-button class="button_menu"  *ngFor="let setting of settings">
+        <button  mat-button class="button_menu notCloseDropdawnMore"  *ngFor="let setting of settings" (click)="click_settings(setting)" >
 
-          <a   href="javascript:void(0)" class="menu_navigation menu_navigation{{setting.id}}" id="{{setting.id}}" >
+          <a  href="javascript:" class="menu_navigation menu_navigation{{setting.id}}" >
 
             <div class="categorytype" >
 
@@ -251,7 +251,7 @@
 
                 <div class="namecate">
 
-                  <div class="namecategory" href="javascript:void(0)">{{setting.name}}</div>
+                  <div class="namecategory" href="javascript:">{{setting.name}}</div>
 
                 </div>
 
@@ -273,7 +273,7 @@
 
             <div class="catgowrite">
 
-              {{dataservices.language.users}}
+              {{ds.language.users}}
 
             </div>
 
@@ -360,7 +360,7 @@
 
     </div>
 
-    <div class="menu_right_inside" [ngClass]="{'hide_menu_right' : menuservice.menu.getValue()}">
+    <div class="menu_right_inside" [ngClass]="{'hide_menu_right' : ms.menu.getValue()}">
 
       <div class="width_menu_right border_bottom  ">
 
@@ -391,7 +391,7 @@
 
         <div class="category_mini_menu">
 
-          <div class="button_menu_right " *ngFor="let category of menuservice.categories">
+          <div class="button_menu_right " *ngFor="let category of ms.categories">
 
             <span matTooltip="{{category.name_category}}">
 

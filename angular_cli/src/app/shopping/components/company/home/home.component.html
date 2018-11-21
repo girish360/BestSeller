@@ -1,13 +1,13 @@
 
-<ng-container *ngIf="{company : dataservices.company | async , app : dataservices.async | async  }">
+<ng-container *ngIf="{company : ds.company | async , app : ds.async | async  }">
 
-<div class="home body"   *ngIf="!dataservices.not_founded"
+<div class="home body"   *ngIf="!ds.not_founded"
      infiniteScroll
      [infiniteScrollDistance]="0"
      [infiniteScrollThrottle]="50"
      (scrolled)="onScroll()" >
 
-  <div class="carousel_categories" *ngFor="let category of company.categories_products ">
+  <div class="carousel_categories" *ngFor="let category of cs.categories_products ">
 
     <div >
 
@@ -15,7 +15,7 @@
 
       <span class="see_all_category">
 
-            <a href="#" (click)="set_router( {path:'products' , data:{ keyparams :'id', params: category.id}, relative:true })"> {{dataservices.language.see_all}} </a>
+            <a href="#" (click)="set_router( {path:'products' , data:{ keyparams :'id', params: category.id}, relative:true })"> {{ds.language.see_all}} </a>
 
       </span>
 

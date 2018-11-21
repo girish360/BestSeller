@@ -1,19 +1,19 @@
 
 
 
-<div class="products component-animation" *ngIf="{products : dataservices.products | async , app : dataservices.async | async } "> <!--  this component is inside this div  ...................................................... -->
+<div class="products component-animation" *ngIf="{products : ds.products | async , app : ds.async | async } "> <!--  this component is inside this div  ...................................................... -->
 
-    <ng-container *ngIf="dataservices.loaded_component;else loading">
+    <ng-container *ngIf="ds.loaded_component;else loading">
 
-        <ng-container *ngIf="!dataservices.not_founded;else notFounded">
+        <ng-container *ngIf="!ds.not_founded;else notFounded">
 
-    <div class="sticky transition " [ngStyle]="productsService.mobile_sticky_style" >
+    <div class="sticky transition " [ngStyle]="ps.mobile_sticky_style" >
 
         <div class="sticky_options ">  <!--  Options products pagination ,  select  ...................................................... -->
 
             <div class="inside_option_products">
 
-                <div class="outer_page_products" *ngFor="let page of productsService.pages_link ">
+                <div class="outer_page_products" *ngFor="let page of ps.pages_link ">
 
                     <div class="inner_page_products body">
 
@@ -85,7 +85,7 @@
 
     <div class="all_prod"> <!--  start div with products ...................................................... -->
 
-      <div class="width_products " (contextmenu)="productsService.open_options($event)" *ngFor="let product of productsService.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':menuservice.status_menu | async  }" >
+      <div class="width_products " (contextmenu)="ps.open_options($event)" *ngFor="let product of ps.products ; trackBy: index"  [ngClass]="{ 'width_products_open_menu':ms.status_menu | async  }" >
 
           <div class="space outer_content">
 
@@ -107,9 +107,9 @@
 
                   </div>
 
-                  <button  (click)="product.product_in_wishList='true'; productsService.add_wish_list( product )" mat-button class="wish_list  notCloseDropdawnFavorite notCloseDropdawnCard">
+                  <button  (click)="product.product_in_wishList='true'; ps.add_wish_list( product )" mat-button class="wish_list  notCloseDropdawnFavorite notCloseDropdawnCard">
 
-                      <span class="write_add_wish">{{dataservices.language.add_wishlist}}</span>
+                      <span class="write_add_wish">{{ds.language.add_wishlist}}</span>
 
                       <mat-icon *ngIf="product.product_in_wishList == 'false' " class="notCloseDropdawnFavorite notCloseDropdawnCard">favorite_border</mat-icon>
 
@@ -135,7 +135,7 @@
 
                       </span>
 
-                      <span matTooltip="Add to your card"  class="notCloseDropdawnCard notCloseDropdawnFavorite " (click)="product.product_in_cartList='true'; productsService.add_cart_list( product )">
+                      <span matTooltip="Add to your card"  class="notCloseDropdawnCard notCloseDropdawnFavorite " (click)="product.product_in_cartList='true'; ps.add_cart_list( product )">
 
                           <div class="button_footer_products">
 

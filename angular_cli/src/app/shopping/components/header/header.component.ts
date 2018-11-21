@@ -25,14 +25,6 @@
 
  import { ScrollbarService } from '../../../share_services/scrollbar.service';
 
- import { FormControl } from '@angular/forms';
-
-
-
- import { } from 'googlemaps';
-
- import { MapsAPILoader } from '@agm/core';
-
  import { AuthService } from '../../services/auth.service';
 
  declare var $:any;
@@ -68,30 +60,6 @@
                 ])
             ])
         ]),
-
-         trigger('filter_options', [
-
-             state('closed', style({display:'none',position:'relative'})),
-
-             state('open', style({position:'relative'})),
-
-             transition('open => closed', [
-
-                 style({ opacity: '1',position:'absolute',margin: 'auto',top:0,left:'5px',right:0,bottom:0 }),
-
-                 animate(".40s ease", style({  opacity: '0.3', top:'40px' })),
-
-             ]),
-
-             transition('closed => open', [
-
-                 style({ opacity: '1' ,position:'absolute',margin: 'auto' ,top:'-40px',left:'5px',right:0,bottom:0}),
-
-
-                 animate(".40s ease", style({  opacity: '0.3', top:0  })),
-
-             ])
-         ]),
      ]
 
 
@@ -99,21 +67,6 @@
 
  export class HeaderComponent implements OnInit   {
 
-     @HostListener("mouseup") public enable_button(){
-
-         this.mousedown = false;
-     }
-
-     public latitude: number;
-     public longitude: number;
-     public searchControl: FormControl;
-     public zoom: number;
-
-     @ViewChild("searchInput") searchEl: ElementRef;
-
-     @ViewChild("search") public searchElementRef: ElementRef;
-
-     @ViewChild("movescroll") public movescroll: ElementRef;
 
      private Response;
 
@@ -159,7 +112,7 @@
              icon :'shopping_cart' , dropdown_class:'dropcard' ,dropdown_body:'.body_cart',
              hide_notification:false
          },
-         { id:0 , name:'more' ,tooltip:'More Options', length:'', different_class:'notClosepointerHeader notCloseDropdawnLanguage',
+         { id:0 , name:'more' ,tooltip:'More Options', length:'', different_class:'notClosepointerHeader notCloseDropdawnMore',
              icon :'view_module', dropdown_class:'dropmore' ,dropdown_body:'.dropdown_more .mat-tab-body-wrapper',
              hide_notification:true
          },
@@ -169,22 +122,21 @@
      constructor(
          private renderer : Renderer ,
          private el : ElementRef,
-         private productsService : ProductService,
-         private deviceService: DeviceDetectorService,
-         private dataservices : DataService ,
-         private menuservice :MenuService,
+         private ps : ProductService,
+         private device: DeviceDetectorService,
+         private ds : DataService ,
+         private ms :MenuService,
          private searchService:SearchService,
          private route : ActivatedRoute ,
-         private setRouter :SetRouterService,
+         private sr :SetRouterService,
          private cd: ChangeDetectorRef,
          private scroll :ScrollbarService,
-         private mapsAPILoader: MapsAPILoader,
          private ngZone: NgZone,
          private auth:AuthService
 
 
     ) {
-         this.dataservices.Http_Get('shopping/header', false )
+         this.ds.Http_Get('shopping/header', false )
 
             .subscribe( //  take success
 
@@ -208,18 +160,20 @@
 
                         if( wishlist ){
 
-                            this.productsService.wish_properties.wishList = wishlist ;
+                            this.ps.wish_properties.wishList = wishlist ;
                         }
 
                         if( cartlist  ){
 
-                            this.productsService.set_quantity_in_cartList( quantity_items_incart , cartlist );
+                            this.ps.set_quantity_in_cartList( quantity_items_incart , cartlist );
 
-                            this.productsService.total_items_and_price();
+                            this.ps.total_items_and_price();
                         }
 
 
-                        this.dataservices.language = language;
+                        this.ds.language = language;
+
+                        this.ds.update_header('true');
 
                         this.cd.markForCheck();
                     }
@@ -234,7 +188,7 @@
 
              let scroll = this.scroll.window_scroll();
 
-             if( this.productsService.top_nav_data.last_scroll >  scroll.top ){
+             if( this.ps.top_nav_data.last_scroll >  scroll.top ){
 
                  this.top_nav_mobile_style = { top:0 };
 
@@ -242,11 +196,11 @@
 
                      if( scroll.top > 60 ){
 
-                         this.productsService.mobile_sticky_style = {position:'sticky', top:'50px' };
+                         this.ps.mobile_sticky_style = {position:'sticky', top:'50px' };
 
                      }else{
 
-                         this.productsService.mobile_sticky_style = { position:'relative', top:0, transition:'none' };
+                         this.ps.mobile_sticky_style = { position:'relative', top:0, transition:'none' };
 
                      }
 
@@ -254,11 +208,11 @@
 
                      if( scroll.top > 60 ){
 
-                         this.productsService.mobile_sticky_style ={ position:'sticky' ,top:'40px' };
+                         this.ps.mobile_sticky_style ={ position:'sticky' ,top:'40px' };
 
                      }else{
 
-                         this.productsService.mobile_sticky_style ={ position:'relative', top:0 ,transition:'none' };
+                         this.ps.mobile_sticky_style ={ position:'relative', top:0 ,transition:'none' };
                      }
                  }
 
@@ -270,11 +224,11 @@
 
                          this.top_nav_mobile_style = {top: '-40px'};
 
-                         this.productsService.mobile_sticky_style = { position:'sticky', top:'-50px' };
+                         this.ps.mobile_sticky_style = { position:'sticky', top:'-50px' };
 
                      }else{
 
-                         this.productsService.mobile_sticky_style = { position:'relative',  top:0 };
+                         this.ps.mobile_sticky_style = { position:'relative',  top:0 };
 
                      }
 
@@ -284,18 +238,18 @@
 
                          this.top_nav_mobile_style = { top: '-40px'};
 
-                         this.productsService.mobile_sticky_style = { position:'sticky', top:0 };
+                         this.ps.mobile_sticky_style = { position:'sticky', top:0 };
 
                      }else{
 
-                         this.productsService.mobile_sticky_style = {position:'relative', top:0 };
+                         this.ps.mobile_sticky_style = {position:'relative', top:0 };
                      }
                  }
              }
 
-             this.productsService.top_nav_data.last_scroll = scroll.top;
+             this.ps.top_nav_data.last_scroll = scroll.top;
 
-             this.dataservices.update_products(true);
+             this.ds.update_products(true);
 
              this.cd.markForCheck();
 
@@ -306,116 +260,12 @@
 
 
      ngOnInit() {
-         //set google maps defaults
-         this.zoom = 4;
-         this.latitude = 39.8282;
-         this.longitude = -98.5795;
-
-         //create search FormControl
-         this.searchControl = new FormControl();
-
-         //set current position
-         this.setCurrentPosition();
-
-         //load Places Autocomplete
-         this.mapsAPILoader.load().then(() => {
-
-             let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-                 types: ["address"]
-             });
-
-             autocomplete.addListener("place_changed", () => {
-                 this.ngZone.run(() => {
-                     //get the place result
-                     let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-                     //verify result
-                     if (place.geometry === undefined || place.geometry === null) {
-                         return;
-                     }
-
-                     //set latitude, longitude and zoom
-                     this.latitude = place.geometry.location.lat();
-                     this.longitude = place.geometry.location.lng();
-                     this.zoom = 12;
-                 });
-             });
-         });
-     }
-
-     private setCurrentPosition() {
-         if ("geolocation" in navigator) {
-             navigator.geolocation.getCurrentPosition((position) => {
-                 this.latitude = position.coords.latitude;
-                 this.longitude = position.coords.longitude;
-                 this.zoom = 12;
-             });
-         }
-     }
-
-     public pagex:number;
-
-     public mousedown:boolean = false;
-
-     public kot :number = 2;
-
-     public walk_scroll:number;
-
-     public block:boolean = false;
-
-     public down(event){
-
-         this.mousedown = true;
-
-         this.block = false;
-
-         this.pagex = event.clientX;
 
      }
-
-     public up(event){
-
-         this.mousedown = false;
-
-         setTimeout(()=>{
-
-             this.block = false;
-
-         },100);
-     }
-
-     public move(event ,el){
-
-         if( this.mousedown ){
-
-             this.block = true;
-
-             this.walk_scroll = event.clientX - this.pagex;
-
-             this.pagex += this.walk_scroll;
-
-             this.movescroll.nativeElement.scrollLeft -= this.walk_scroll;
-         }
-     }
-
-     public route_on_search( result ){
-
-         if( this.searchService.search_data.searchFor =='products' ){
-
-             this.set_router( { path:'shopping/product_details/show' , data:{ keyparams:'id' , params:result.id} , relative:false });
-
-         }else if( this.searchService.search_data.searchFor == 'company'){
-
-             let company_path = 'shopping/company/'+result.name+'@'+result.id;
-
-             this.set_router( { path:company_path, data: false  , relative:false } );
-
-         }
-    }
 
      check_body(boolean){ // change width inner body
 
-         this.dataservices.change_inner = boolean;
+         this.ds.change_inner = boolean;
      }
 
      index(index , item){
@@ -427,71 +277,65 @@
 
      public get_device_info() {
 
-        this.deviceInfo = this.deviceService.getDeviceInfo();
+        this.deviceInfo = this.device.getDeviceInfo();
 
     }
 
      public check_button( button , i  ,event ){
 
+         this.ps.button_properties.selectedIndex = i;
 
+        if( this.ps.button_properties.disabled == false ) {
 
-         this.productsService.button_properties.selectedIndex = i;
-
-        if( this.productsService.button_properties.disabled == false ) {
-
-            this.productsService.button_properties.disabled = true;
+            this.ps.button_properties.disabled = true;
 
             setTimeout(()=>{    //<<<---    using ()=> syntax
 
-                this.productsService.button_properties.disabled = false;
+                this.ps.button_properties.disabled = false;
 
             },300);
 
-            if ( this.productsService.button_properties.active != button.id ) {
+            if ( this.ps.button_properties.active != button.id ) {
 
-                this.productsService.button_properties.active = button.id;
+                this.ps.button_properties.active = button.id;
 
                 if ( button.id == 4) {
 
                     if( this.auth.token ){
 
-                        this.productsService.button_properties.pointer = button.id;
+                        this.ps.button_properties.pointer = button.id;
 
-                        this.find_position( this.productsService.button_properties.pointer ,button.dropdown_class );
+                        this.find_position( this.ps.button_properties.pointer ,button.dropdown_class );
 
-                        this.productsService.show_dropdown_button(button.dropdown_class, button.dropdown_body , button.id);
+                        this.ps.show_dropdown_button( button.id );
 
                     }else{
                         this.set_router( { path:'login_register' , data:false , relative:true } );
                     }
 
-
-
                 } else {
 
+                    this.ps.button_properties.pointer = button.id;
 
-                    this.productsService.button_properties.pointer = button.id;
+                    this.find_position( this.ps.button_properties.pointer ,button.dropdown_class );
 
-                    this.find_position( this.productsService.button_properties.pointer ,button.dropdown_class );
-
-                    this.productsService.show_dropdown_button(button.dropdown_class, button.dropdown_body , button.id);
+                    this.ps.show_dropdown_button( button.id );
                 }
 
             } else {
 
-                this.productsService.button_properties.active = -1;
+                this.ps.button_properties.active = -1;
 
-                this.productsService.hide_dropdown_button( button.dropdown_class, button.dropdown_body  );
+                this.ps.hide_dropdown_button(  button.id );
 
-                this.productsService.button_properties.selectedIndex = 'empty';
+                this.ps.button_properties.selectedIndex = 'empty';
             }
         }
-
-    }
+     }
 
      public  set_router( data ){
 
-         this.setRouter.set_router( data , this.route ); // set router .....
+         this.sr.set_router( data , this.route ); // set router .....
 
     }
 
@@ -509,7 +353,8 @@
 
     button_search( el ){
 
-        this.searchService.search_component = true;
+      this.searchService.search_component = true;
+
 
         this.searchEl.nativeElement.focus();
 
@@ -518,7 +363,7 @@
 
      seeAll_searchResuls( data ){
 
-         this.searchService.hide_search_content();
+       this.searchService.hide_search_content();
 
          this.set_router( data );
 
@@ -528,7 +373,7 @@
 
          $(function(){
 
-             let position =id * 70 ;
+             let position = id * 70 ;
 
 
              $( '.'+dropdown_Class ).css({ right: position });
@@ -603,14 +448,14 @@
 
      check_menu(){
 
-         if( this.menuservice.menu.getValue() == false ){
+         if( this.ms.menu.getValue() == false ){
 
-             this.menuservice.menu.next(true);
+             this.ms.menu.next(true);
 
              return;
          }
 
-         this.menuservice.menu.next(false);
+         this.ms.menu.next(false);
 
          return;
 
@@ -618,11 +463,11 @@
 
      check_chat(){
 
-         if( this.productsService.status_chat == true ){
+         if( this.ps.status_chat == true ){
 
              this.hide_chat();
 
-             this.productsService.status_chat = !this.productsService.status_chat;
+             this.ps.status_chat = !this.ps.status_chat;
 
              return;
 
@@ -630,7 +475,7 @@
 
          this.show_chat();
 
-         this.productsService.status_chat = !this.productsService.status_chat;
+         this.ps.status_chat = !this.ps.status_chat;
 
          return;
      }
@@ -638,15 +483,15 @@
     choose_language( language ){  //  function for update language ..........
 
 
-        this.dataservices.Http_Get( 'shopping/header/change_language', { 'language':language }  ) // make request ......
+        this.ds.Http_Get( 'shopping/header/change_language', { 'language':language }  ) // make request ......
 
             .subscribe( //  take success
 
                 data => {
 
-                    this.dataservices.language = data;
+                    this.ds.language = data;
 
-                    this.dataservices.update_app(true);
+                    this.ds.update_app(true);
 
                 },
                 error => console.log( error ) // take error .....
@@ -657,21 +502,21 @@
 
     update_language( new_language ){ // change language to services file that  make share language to all components  .....
 
-        this.dataservices.update_language( new_language );
+        this.ds.update_language( new_language );
 
      }
 
     toggle_select_wish( item_wish ){
 
-        var index = this.productsService.wish_properties.selected.indexOf( item_wish );
+        var index = this.ps.wish_properties.selected.indexOf( item_wish );
 
         if( index > -1 ){
 
-            this.productsService.wish_properties.selected.splice(index,1);
+            this.ps.wish_properties.selected.splice(index,1);
 
         }else{
 
-            this.productsService.wish_properties.selected.push(item_wish);
+            this.ps.wish_properties.selected.push(item_wish);
         }
 
         this.check_button_deleteProducts_fromwishlist();
@@ -682,7 +527,7 @@
 
     check_selected_wish( item_wish ){
 
-        if( this.productsService.wish_properties.selected.indexOf( item_wish ) > -1 ) {
+        if( this.ps.wish_properties.selected.indexOf( item_wish ) > -1 ) {
 
             return true;
 
@@ -694,7 +539,7 @@
 
     getStyle_wish( item_wish ){
 
-        if( this.productsService.wish_properties.selected.indexOf( item_wish ) > -1 ) {
+        if( this.ps.wish_properties.selected.indexOf( item_wish ) > -1 ) {
 
             return 'selected_wish';
 
@@ -707,29 +552,29 @@
 
     selecteAll_wishList( ){
 
-        if( this.productsService.wish_properties.selectedAll == true ){ // check if  are all wish list  selected  .........
+        if( this.ps.wish_properties.selectedAll == true ){ // check if  are all wish list  selected  .........
 
-            for( var i = 0 ; i < this.productsService.wish_properties.selected.length ; i ++ ){
+            for( var i = 0 ; i < this.ps.wish_properties.selected.length ; i ++ ){
 
-                this.productsService.wish_properties.selected.splice(this.productsService.wish_properties.selected[i] , this.productsService.wish_properties.selected.length);
+                this.ps.wish_properties.selected.splice(this.ps.wish_properties.selected[i] , this.ps.wish_properties.selected.length);
             }
 
-            this.productsService.wish_properties.selectedAll = false;
+            this.ps.wish_properties.selectedAll = false;
             return;
         }
 
-        for( var i = 0 ; i < this.productsService.wish_properties.wishList.length ; i ++ ){
+        for( var i = 0 ; i < this.ps.wish_properties.wishList.length ; i ++ ){
 
-            if( this.productsService.wish_properties.selected.indexOf(this.productsService.wish_properties.wishList[i]) > -1 ){
+            if( this.ps.wish_properties.selected.indexOf(this.ps.wish_properties.wishList[i]) > -1 ){
 
                 continue // exist in selected_wishlist next .....
 
             }
 
-            this.productsService.wish_properties.selected.push( this.productsService.wish_properties.wishList[i] ); // push in selected_wishlist
+            this.ps.wish_properties.selected.push( this.ps.wish_properties.wishList[i] ); // push in selected_wishlist
         }
 
-        this.productsService.wish_properties.selectedAll = true;
+        this.ps.wish_properties.selectedAll = true;
 
         this.check_button_deleteProducts_fromwishlist();
 
@@ -743,21 +588,21 @@
 
      add_from_wish_to_cart( selected_wish ){
 
-         this.productsService.cart_properties.array_cartId = [];
+         this.ps.cart_properties.array_cartId = [];
 
          for( let i = 0 ; i  < selected_wish.length  ; i++  ){
 
-             this.productsService.cart_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
+             this.ps.cart_properties.status_in_wish = true; //  true status that tell you  that this prod is in wishlist ...
 
-             this.productsService.cart_properties.cartList.unshift( selected_wish[i] ); // push wish product in wishList products
+             this.ps.cart_properties.cartList.unshift( selected_wish[i] ); // push wish product in wishList products
 
-             this.productsService.cart_properties.array_cartId.push( selected_wish[i].product_id );
+             this.ps.cart_properties.array_cartId.push( selected_wish[i].product_id );
 
          }
 
-         this.productsService.delete_from_wishList();
+         this.ps.delete_from_wishList();
 
-         this.dataservices.Http_Post( 'shopping/header/add_incartList', this.productsService.cart_properties.array_cartId ) // make request ......
+         this.ds.Http_Post( 'shopping/header/add_incartList', this.ps.cart_properties.array_cartId ) // make request ......
 
              .subscribe( //  take success
 
@@ -773,20 +618,20 @@
 
     check_button_deleteProducts_fromwishlist(){
 
-        if( this.productsService.wish_properties.selected.length > 0 ){
+        if( this.ps.wish_properties.selected.length > 0 ){
 
-            this.productsService.wish_properties.button = false;
+            this.ps.wish_properties.button = false;
 
             return;
         }
 
-        this.productsService.wish_properties.button = true;
+        this.ps.wish_properties.button = true;
 
     }
 
     current_language(id_language){
 
-        if( this.dataservices.language.id == id_language ){
+        if( this.ds.language.id == id_language ){
 
             return true;
         }
@@ -796,13 +641,13 @@
 
     show_hide_search_in_wishlist(){
 
-        return this.productsService.wish_properties.icon_search = !this.productsService.wish_properties.icon_search
+        return this.ps.wish_properties.icon_search = !this.ps.wish_properties.icon_search
 
     }
 
     check_show_hide_search_in_wishlist(){
 
-        if( this.productsService.wish_properties.icon_search == true ){
+        if( this.ps.wish_properties.icon_search == true ){
 
             return 'show_search_in_wishlist';
         }

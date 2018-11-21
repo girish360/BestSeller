@@ -1,0 +1,18 @@
+@import "../../../../variables.scss";
+
+
+.header_notify ,.inside_body_notifications {
+  padding: $padding_left_right;
+}
+
+.right_header_notify{
+  float: right;
+}
+
+.text_notify{
+
+  font-size: $title_text;
+  position: relative;
+  top: 12px;
+
+}

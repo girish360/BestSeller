@@ -4,7 +4,7 @@
 
   <div class="login">
 
-    <mat-tab-group (selectedTabChange)="tabClick($event)" [selectedIndex]="dataservices.tabIndex">
+    <mat-tab-group (selectedTabChange)="tabClick($event)" [selectedIndex]="ds.tabIndex">
 
       <mat-tab>  <!-- tab sing in ..............................................................................-->
 
@@ -58,7 +58,7 @@
 
                 <mat-icon  class="icon_email" [ngClass]="{'error_icon' : loginPassword.invalid && loginForm.submitted }"> vpn_key </mat-icon>
 
-                <input #passwordInput matInput placeholder="Set Password" formControlName="password" [errorStateMatcher]="matcher" autocomplete="off"
+                <input type="password" #passwordInput matInput placeholder="Set Password" formControlName="password" [errorStateMatcher]="matcher" autocomplete="off"
 
                       (input)="loginInput(userLoginForm.value)" (keydown.enter)="enterLoginInput(loginForm)" required >
 
@@ -182,7 +182,7 @@
 
                 <mat-icon class="icon_email" [ngClass]="{'error_icon':password.invalid && registerForm.submitted}"> vpn_key </mat-icon>
 
-                <input #registerPasswordInput matInput type="text" placeholder="Password" formControlName="password" (keydown.enter)="enterRegisterInput(registerForm)" [errorStateMatcher]="matcher" autocomplete="off" required>
+                <input  #registerPasswordInput matInput type="password" placeholder="Password" formControlName="password" (keydown.enter)="enterRegisterInput(registerForm)" [errorStateMatcher]="matcher" autocomplete="off" required>
 
                 <mat-error *ngIf="password.invalid &&  registerForm.submitted "  class="input_error" style="position: relative">
 
@@ -198,9 +198,9 @@
 
               <mat-form-field class="input">
 
-                <mat-icon class="icon_email" [ngClass]="{'error_icon':passwordGroup.hasError('match')}"> vpn_key </mat-icon>
+                <mat-icon class="icon_email" [ngClass]="{'error_icon':passwordGroup.hasError('match') && registerForm.submitted}"> vpn_key </mat-icon>
 
-                <input #registerConfirmPasswordInput matInput type="text" placeholder="Confirm password" formControlName="confirmPassword" (keydown.enter)="enterRegisterInput(registerForm)" [errorStateMatcher]="match_pass"
+                <input #registerConfirmPasswordInput matInput type="password" placeholder="Confirm password" formControlName="confirmPassword" (keydown.enter)="enterRegisterInput(registerForm)" [errorStateMatcher]="match_pass"
                        autocomplete="off"  required >
 
                 <mat-error *ngIf="passwordGroup.hasError('match')"  class="input_error">

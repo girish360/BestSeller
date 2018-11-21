@@ -31,8 +31,6 @@ export class SearchService {
 
   focus_search( el_search ){
 
-    if( !this.search_component ){
-
       if( !this.search_data.dropdown ){
 
         this.show_dropdown_search('dropdown_search','body_search');
@@ -44,11 +42,6 @@ export class SearchService {
         }
 
       }
-
-
-
-    }
-
   }
 
    set_data_request(){
@@ -86,6 +79,8 @@ export class SearchService {
       this.search_data.search = false;
     }
 
+      this.dataservices.update_search(true);
+
     this.time_search = setTimeout(() => {
 
       if( !this.search_component ) {
@@ -118,7 +113,7 @@ export class SearchService {
 
                     this.search_data.search = false;
 
-                   this.dataservices.update_header(true);
+                   this.dataservices.update_search(true);
                   }
               );
 
@@ -126,7 +121,7 @@ export class SearchService {
 
           this.search_results = [];
 
-          this.dataservices.update_header(true);
+          this.dataservices.update_search(true);
         }
       }else{
 
@@ -164,9 +159,7 @@ export class SearchService {
 
           let data = this.set_data_request();
 
-         console.log(data);
-
-          this.dataservices.Http_Get('shopping/header/search', data)
+            this.dataservices.Http_Get('shopping/header/search', data)
 
               .subscribe( //  take success
 
@@ -190,7 +183,7 @@ export class SearchService {
 
                     this.search_data.search = false;
 
-                    this.dataservices.update_header(true);
+                      this.dataservices.update_search(true);
                   }
               );
 
@@ -198,7 +191,7 @@ export class SearchService {
 
           this.search_results = [];
 
-          this.dataservices.update_header(true);
+            this.dataservices.update_search(true);
         }
       }else{
 
@@ -225,7 +218,7 @@ export class SearchService {
 
 
               }
-              this.dataservices.update_header(true);
+                this.dataservices.update_search(true);
 
 
             }
@@ -239,7 +232,7 @@ export class SearchService {
 
     this.hide_dropdown_search('dropdown_search','body_search');
 
-    this.dataservices.update_header(true);
+      this.dataservices.update_search(true);
 
   }
 
@@ -253,7 +246,7 @@ export class SearchService {
 
 
 
-    $(function(){
+      $(function(){
 
       $('.'+dropdown_class).css({top: '40px', opacity: '0.1'});
 

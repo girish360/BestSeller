@@ -3,8 +3,6 @@ import { NgModule     } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-
-
 import { ShoppingRoutingModule } from './shopping_routing.module'; // shopping  config router
 
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -79,6 +77,19 @@ import { ChatComponent } from './components/chat/chat.component';
 
 import { RightComponent } from './components/right/right.component';
 
+import { NotificationsComponent } from './components/notifications/notifications.component';
+
+import { SettingsComponent } from './components/settings/settings.component';
+
+import { LanguageComponent } from './components/language/language.component';
+
+import { HelpComponent } from './components/help/help.component';
+
+import { FeedbackComponent } from './components/feedback/feedback.component';
+
+import { AddProductComponent } from './components/add-product/add-product.component';
+
+
 
 // end components ............................................................................................
 
@@ -100,7 +111,14 @@ import { RightComponent } from './components/right/right.component';
     ClientComponent,
     SubscriptionsComponent,
     ChatComponent,
-    RightComponent
+    RightComponent,
+    NotificationsComponent,
+    SettingsComponent,
+    LanguageComponent,
+    HelpComponent,
+    FeedbackComponent,
+    AddProductComponent,
+
 
   ],
 

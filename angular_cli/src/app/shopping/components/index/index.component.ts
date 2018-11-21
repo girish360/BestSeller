@@ -47,17 +47,14 @@ export class IndexComponent implements OnInit {
 
   constructor(
       private scroll : ScrollbarService,
-      private productsService :ProductService,
+      private ps :ProductService,
       private elementRef : ElementRef,
       private renderer : Renderer,
-      private dataservices: DataService,
-      private searchService:SearchService,
-      private indexService:IndexService,
-      private menuservice : MenuService,
-      private settings: SettingsService,
+      private ds: DataService,
+      private search:SearchService,
+      private is:IndexService,
       private router: Router,
       private swipe:SwipeMenuService,
-      private auth :AuthService
 
   ) {
 
@@ -65,29 +62,29 @@ export class IndexComponent implements OnInit {
 
       if( event instanceof NavigationStart ){
 
-        this.dataservices.update_loader(true);
+        this.ds.update_loader(true);
       }
 
       if( event instanceof NavigationEnd || event instanceof NavigationCancel) {
 
         setTimeout(() => {
 
-          this.dataservices.update_loader(false);
+          this.ds.update_loader(false);
 
         }, 1000);
       }
 
     });
 
-    this.get_Language = this.dataservices.language;
+    this.get_Language = this.ds.language;
 
     this.renderer.listen('window', 'scroll', (evt) => { // scroll event in company page ..................
 
       let scroll = this.scroll.window_scroll();
 
-      this.productsService.close_options();
+      this.ps.close_options();
 
-      this.indexService.check_footer();
+      this.is.check_footer();
 
 
     });
@@ -110,44 +107,44 @@ export class IndexComponent implements OnInit {
 
       if ( event.target.closest('.notCloseDropdawnClient') == null) {
 
-        this.productsService.hide_dropdown_button('dropclient','.bodydropclient');
+        this.ps.hide_dropdown_button(4);
 
       }
 
       if ( event.target.closest('.notCloseDropdawnNotify') == null) {
 
-        this.productsService.hide_dropdown_button('dropnotify','.body_notify');
+        this.ps.hide_dropdown_button(3);
 
       }
 
-      if ( event.target.closest('.notCloseDropdawnLanguage') == null) {
+      if ( event.target.closest('.notCloseDropdawnMore') == null) {
 
-        this.productsService.hide_dropdown_button('dropmore','.dropdown_more .mat-tab-body-wrapper');
+        this.ps.hide_dropdown_button(0);
 
       }
 
       if ( event.target.closest('.notCloseDropdawnFavorite') == null ) {
 
-        this.productsService.hide_dropdown_button('dropfavorites','.dropfavorites  .wishlist_component  .body_div');
+        this.ps.hide_dropdown_button(2);
 
       }
 
       if ( event.target.closest('.notCloseDropdawnSearch') == null) {
 
-        this.searchService.hide_search_content();
+        this.search.hide_search_content();
 
       }
 
       if ( event.target.closest('.notCloseDropdawnCard') == null ) {
 
-        this.productsService.hide_dropdown_button('dropcard','.body_cart');
+        this.ps.hide_dropdown_button(1);
 
       }
 
       if ( event.target.closest('.product_options') == null ) {
 
 
-        this.productsService.close_options();
+        this.ps.close_options();
 
       }
 
@@ -156,15 +153,12 @@ export class IndexComponent implements OnInit {
         this.swipe.hide_menu_content(-100);
       }
 
-      if ( event.target.closest(' .notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard ,.notCloseDropdawnClient' ) == null ) {
-
-
+      if ( event.target.closest(' .notCloseDropdawnFavorite , .notClosepointerHeader ,.notCloseDropdawnCard ,.notCloseDropdawnClient' ) == null  ||
+          event.target.closest('.logout') != null ) {
 
         $('.write_icon_header').css('color', 'slategrey');
 
-        this.productsService.refresh_button_properties();
-
-
+        this.ps.refresh_button_properties();
 
       }
 

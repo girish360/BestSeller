@@ -7,13 +7,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 export class FilterPipe implements PipeTransform {
 
-  transform( wishList: any, value: any ): any {
+  transform( allProducts: any, value: any ): any {
 
-    if ( value === undefined || value.length == 0 ) return wishList;
+    if ( value === undefined || value.length == 0 ) return allProducts;
 
-    return wishList.filter( function( wish_prod ){
+    return allProducts.filter( function( products ){
 
-      return wish_prod.product_title.toLowerCase().includes(value.toLowerCase());
+      return products.title.toLowerCase().includes(value.toLowerCase());
 
     })
 
